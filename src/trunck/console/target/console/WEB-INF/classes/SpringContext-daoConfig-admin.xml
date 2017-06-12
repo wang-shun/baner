@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+		<bean id="sysBusinessMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysBusinessMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysbusinessDao" class="cn.msec.msc.mysqlgens.admin.dao.SysBusinessDao" >
+ 		<property name="mapper" ref="sysBusinessMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysMenuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysMenuMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysmenuDao" class="cn.msec.msc.mysqlgens.admin.dao.SysMenuDao" >
+ 		<property name="mapper" ref="sysMenuMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysroleDao" class="cn.msec.msc.mysqlgens.admin.dao.SysRoleDao" >
+ 		<property name="mapper" ref="sysRoleMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysRoleMenuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysRoleMenuMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysrolemenuDao" class="cn.msec.msc.mysqlgens.admin.dao.SysRoleMenuDao" >
+ 		<property name="mapper" ref="sysRoleMenuMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysRoleMutexMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysRoleMutexMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysrolemutexDao" class="cn.msec.msc.mysqlgens.admin.dao.SysRoleMutexDao" >
+ 		<property name="mapper" ref="sysRoleMutexMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysUserMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysuserDao" class="cn.msec.msc.mysqlgens.admin.dao.SysUserDao" >
+ 		<property name="mapper" ref="sysUserMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysUserRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysUserRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysuserroleDao" class="cn.msec.msc.mysqlgens.admin.dao.SysUserRoleDao" >
+ 		<property name="mapper" ref="sysUserRoleMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysActionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysActionMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysactionDao" class="cn.msec.msc.mysqlgens.admin.dao.SysActionDao" >
+ 		<property name="mapper" ref="sysActionMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysRoleActionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysRoleActionMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysroleactionDao" class="cn.msec.msc.mysqlgens.admin.dao.SysRoleActionDao" >
+ 		<property name="mapper" ref="sysRoleActionMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysRspCodeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysRspCodeMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysrspcodeDao" class="cn.msec.msc.mysqlgens.admin.dao.SysRspCodeDao" >
+ 		<property name="mapper" ref="sysRspCodeMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysBranchMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysBranchMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysbranchDao" class="cn.msec.msc.mysqlgens.admin.dao.SysBranchDao" >
+ 		<property name="mapper" ref="sysBranchMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="sysOpLogsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.SysOpLogsMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="sysoplogsDao" class="cn.msec.msc.mysqlgens.admin.dao.SysOpLogsDao" >
+ 		<property name="mapper" ref="sysOpLogsMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="tradeParamMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.msec.msc.mysqlgens.admin.mapper.TradeParamMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="tradeparamDao" class="cn.msec.msc.mysqlgens.admin.dao.TradeParamDao" >
+ 		<property name="mapper" ref="tradeParamMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	
+</beans>

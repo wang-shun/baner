@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../../">
+
+<meta charset="utf-8" />
+<title>外汇管理</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+<script type="text/javascript"
+	src="assets/global/plugins/bootstrap-datetimepicker/js/locales/moment-with-locales.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"
+	charset="UTF-8"></script>
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					外汇管理<small>发起付汇</small>
+				</h3>
+
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+					<div class="col-sm-4 form-group">
+						<div class="btn-group input-group">
+							<div class="input-group-addon">商户名称</div>
+							<select class="form-control" id="merchertname">
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">开始日期</div>
+							<input id="startdate"
+								class="inputclear form-control form_datetime"
+								data-date-format="YYYYMMDD" type="text"> <span
+								class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+						<script type="text/javascript">
+							$('.form_datetime').datetimepicker();
+						</script>
+					</div>
+
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">结束日期</div>
+							<input id="enddate" class="inputclear form-control form_datetime"
+								data-date-format="YYYYMMDD" type="text"> <span
+								class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+						<script type="text/javascript">
+							$('.form_datetime').datetimepicker();
+						</script>
+					</div>
+					<div>
+						<button type="button" id="pay" name="pay"
+							class="btn btn-sm btn-primary" onclick="startpay()"
+							style="display: block;">发起付汇</button>
+						<button type="button" id="uploadfile" name="uploadfile"
+							class="btn btn-sm btn-primary" onclick="uploadfile()"
+							style="display: none;">上传付汇文件</button>
+					</div>
+					<!--   <div class="container-fluid">
+						<div id="divtable" class="table-responsive container col-md-12">
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					-->
+				</div>
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+					<div class="input-group-addon" style="font-size: 15px">
+						附言 <span style="color: red; font-size: 12px">（最多60汉字)</span>
+					</div>
+					<textarea id="REMARK" rows="3" cols="20" maxlength="60"
+						class="inputclear form-control"></textarea>
+				</div>
+
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px; display: none;" id="detailinfo">
+					<div id="payinfo" class="input-group-addon">
+						<span style="color: red; font-size: 15px">此次付汇具体信息如下请核实</span>
+					</div>
+
+				</div>
+			</div>
+			<!-- END CONTENT -->
+			<script>
+				$.include("parts/pages/quicksidebar.shtml");
+			</script>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+		var xw;
+		//发起付汇方法，和平台服务交互，生成付汇文件，并将文件名称等信息返回。
+		var startpay = function() {
+			//取出所需参数 
+			var merchantid = $("#merchertname").val();
+			var startdate = $("#startdate").val();
+			var enddate = $("#enddate").val();
+			var REMARK = $("#REMARK").val();
+			//把已经输入值的标签置为锁定状态
+			$("#merchertname").attr("disabled", true);
+			$("#startdate").attr("disabled", true);
+			$("#enddate").attr("disabled", true);
+			$("#REMARK").attr("disabled", true);
+			$
+					.ajax({
+						url : wpfrest + 'foreigexchange/startpay',
+						dataType : 'JSON',
+						type : 'POST',
+						data : {
+							'merchantId' : merchantid,
+							'startdate' : startdate,
+							'enddate' : enddate,
+							'REMARK' : REMARK
+						},
+						success : function(data) {
+							//获取到返回值之后，如果返回成功，则显示具体付汇信息，失败则显示付汇失败
+							var flag = data.success;
+							var detaildata = data.retObj;
+							if (flag) {
+								//如果返回结果成功则将发起付汇按钮隐藏，显示上传文件按钮
+								$("#pay").hide();
+								$("#uploadfile").show();
+								//将后台返回的信息写到页面上
+								var starttime = detaildata.startdate;
+								var endtime = detaildata.enddate;
+								var filename = detaildata.fileName;
+								var filedate = detaildata.fileDate;
+								var count = detaildata.count;
+								var totalamt = detaildata.totalAmt;
+								var currency = detaildata.currency_type;
+								var TradeSn = detaildata.tradeSn;
+
+								var innerhtml = "<table tyle=\"BORDER-COLLAPSE: collapse\" borderColor=#428bca cellSpacing=0 rules=all width=600 align=center bgColor=#e1f8ff border=1 >";
+								innerhtml = innerhtml
+										+ "<tr><th>开始时间</th><th>结束时间</th><th>文件名称</th><th>文件日期</th><th>交易量</th><th>总金额</th><th>币种</th><th>附言</th></tr>";
+								innerhtml = innerhtml + "<tr><th>" + starttime
+										+ "</th><th>" + endtime + "</th><th>"
+										+ filename + "</th><th>" + filedate
+										+ "</th><th>" + count + "</th><th>"
+										+ totalamt + "</th><th>" + currency
+										+ "</th><th>" + TradeSn
+										+ "</th></tr></table>";
+
+								//新创建一个元素，用于存放文件名，方便后期调用上传文件方法使用 		
+								innerhtml = innerhtml
+										+ "<input id=\"fileName\" hidden=\"hidden\" type=\"text\" value=\""+filename+"\" >";
+
+								innerhtml = innerhtml
+										+ "<input id=\"fileDate\" hidden=\"hidden\" type=\"text\" value=\""+filedate+"\" >";
+
+								innerhtml = innerhtml
+										+ "<input id=\"tradeSn\" hidden=\"hidden\" type=\"text\" value=\""+TradeSn+"\" >";
+
+								$("#detailinfo").append(innerhtml);
+								$("#detailinfo").show();
+								//location.reload(true);
+							} else {
+								alert(data.description);
+								location.reload(true);
+							}
+						},
+						error : function() {
+							alert("发起付汇失败 ！！");
+							location.reload(true);
+						},
+					})
+		}
+
+		//上传文件方法，调用此方法将文件上传给银行
+		var uploadfile = function() {
+
+			//取出所需参数 
+			var fileName = $("#fileName").val();
+			var fileDate = $("#fileDate").val();
+			var tradeSn = $("#tradeSn").val();
+
+			$.ajax({
+				url : wpfrest + 'payforeigexchange/uploadfile',
+				dataType : 'JSON',
+				type : 'POST',
+				data : {
+					'fileName' : filename,
+					'fileDate' : fileDate,
+					'tradeSn' : tradeSn
+				},
+				success : function(data) {
+					//获取到返回值之后，如果返回成功，则弹出提示消息后 刷新页面，失败则显示失败信息，然后刷新页面
+					var flag = data.success;
+					if (flag) {
+						alert("上传付汇文件成功  ！");
+						location.reload(true);
+					} else {
+						alert(data.description);
+						location.reload(true);
+					}
+				},
+				error : function() {
+					alert("上传付汇文件失败  ！");
+					location.reload(true);
+				},
+			})
+
+		}
+
+		//当信息中存在状态字段时，设置默认值
+		/**		var validEditBuilder = function(val) {
+		 console.log("setBuilder::" + val);
+		 if (val == "0") {
+		 return "<select id='valid' name='valid' class='form-control select2me'><option value='1'>有效</option><option value='0' selected>无效</option></select>";
+		 }
+		 return "<select id='valid' name='valid' class='form-control select2me'><option value='1' selected>有效</option><option value='0' >无效</option></select>";
+
+		 };
+		 **/
+		$(function() {
+			//初始化页面标题
+			initTitle();
+			xw = XWATable.init({
+				//----------------table的选项-------
+				pageSize : 10, //Initial pagesize
+				// filter: true,               //Show filter fields
+				// sorting: true,              //Enable sorting
+				columnPicker : true, //Show the columnPicker button
+				transition : 'flip', //(bounce, fade, flip, rotate, scroll, slide).
+				// pageSizes: [1,5,8,12,200],  //Set custom pageSizes. Leave empty array to hide button.
+				// hidePagerOnEmpty: true,     //Removes the pager if data is empty.
+				checkboxes : false, //Make rows checkable. (Note. You need a column with the 'unique' property)
+				checkAllToggle : false, //Show the check-all toggle//+RQLBuilder.like("KEYY", "a").rql()
+				//	rowClicked : function(data) {
+				//		console.log('row clicked users.html 542'); //data.event holds the original jQuery event.
+				//		console.log(data); //data.row holds the underlying row you supplied.
+				//	},
+				//----------------基本restful地址---
+				restbase : wpfrisk + '/bumbcheckinglog',
+				key_column : "_id",
+				//---------------行定义
+
+				//---------------查询时过滤条件
+				onAdded : function(ret, jsondata) {
+					return validateForm(ret, jsondata);
+
+				},
+				onUpdated : function(ret, jsondata) {
+					console.log("onUpdated callback:" + ret + ",obj="
+							+ JSON.stringify(jsondata));
+					return validateForm(ret, jsondata);
+				},
+				onDeleted : function(ret, jsondata) {
+					console.log("onDeleted callback:" + ret + ",obj="
+							+ JSON.stringify(jsondata));
+				},
+
+			});//--end init
+		});
+		window.onload = function() {
+			$
+					.ajax({
+						url : wpfrest + '/bmerchantinfo',
+						dataType : 'JSON',
+						type : 'GET',
+						success : function(data) {
+							if (data == null) {
+								alert("获取商户信息失败 ！");
+								//location.reload(true)
+							} else {
+								var select = $("#merchertname");
+								//将获取到的信息拼接到select下拉框
+								var inner = "";
+								for (var i = 0; i < data.length; i++) {
+									inner = inner
+											+ " <option value='"+data[i].merchantid+"'>"
+											+ data[i].merchantname
+											+ "</option> ";
+								}
+								select.append(inner)
+							}
+						},
+
+						error : function(data) {
+							alert("获取商户信息失败 ！");
+						}
+					})
+		};
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

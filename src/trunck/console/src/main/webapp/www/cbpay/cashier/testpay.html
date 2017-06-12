@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../../">
+
+<meta charset="utf-8" />
+<title>测试支付</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					 测试专用<small>支付测试</small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+				<!-- 	<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							查询条件控件
+							<div class="input-group-addon">商户id</div>
+							<input id="find_merchantId" class="inputclear form-control" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+					<div class="col-sm-9 form-group">
+						<button type="button" id="makexml" name="makexml"
+							class="btn btn-sm btn-primary" onclick="makexml()"
+							style="display: block;">生成支付报文</button>
+					</div> -->
+				</div>
+				<form action="testpay" id="msg">
+					<table id="head" class="watable table table-striped table-hover table-bordered table-condensed">
+						<thead>
+							<tr>
+								<td colspan="6">
+									报文头
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td width="8%">商户号</td>
+								<td width="23%"><input name="merchantNo" type="text" value="CF3000036439"></input></td>
+								<td width="8%">交易流水号</td>
+								<td width="23%"><input name="tranFlow" type="text" value="000000000000000002"></input></td>
+								<td width="8%">交易码</td>
+								<td width="23%"><input name="tranCode" type="text" value="cbp001"></input></td>
+							</tr>
+						</tbody>
+					</table>
+					<table id="body" class="watable table table-striped table-hover table-bordered table-condensed">
+						<thead>
+							<tr>
+								<td colspan="6">
+									报文体
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td width="8%">页面返回路径</td>
+								<td width="23%"><input name="pageReturnUrl" type="text" value="http://172.30.12.33:8380/Shopping"></input></td>
+								<td width="8%">后台返回路径</td>
+								<td width="23%"><input name="offlineNotifyUrl" type="text" value="http://172.30.12.33:8380/Shopping/receive"></input></td>
+								<td width="8%">购买者标示</td>
+								<td width="23%"><input name="purchaserId" type="text" value="purchaser30001"></input></td>
+							</tr>
+							<tr>
+								<td width="8%">订单号</td>
+								<td width="23%"><input name="orderId" type="text" value=""></input></td>
+								<td width="8%">订单日期</td>
+								<td width="23%"><input name="orderDate" type="text" value=""></input></td>
+								<td width="8%">订单时间</td>
+								<td width="23%"><input name="orderTime" type="text" value="111522"></input></td>
+							</tr>
+							<tr>
+								<td width="8%">订单描述</td>
+								<td width="23%"><input name="orderDesc" type="text" value="衣服"></input></td>
+								<td width="8%">商户描述</td>
+								<td width="23%"><input name="merchantName" type="text" value="民生电商"></input></td>
+								<td width="8%">订单价格</td>
+								<td width="23%"><input name="totalAmount" type="text" value=""></input></td>
+							</tr>
+							<tr>
+								<td width="8%">币种</td>
+								<td width="23%"><input name="currency" type="text" value=""></input></td>
+								<td width="8%">产品名称</td>
+								<td width="23%"><input name="productName" type="text" value="安踏运动衣"></input></td>
+								<td width="8%">产品号</td>
+								<td width="23%"><input name="productId" type="text" value="00001"></input></td>
+							</tr>
+							<tr>
+								<td width="8%">产品描述</td>
+								<td width="23%"><input name="productDesc" type="text" value="安踏"></input></td>
+								<td width="8%">产品展示url</td>
+								<td width="23%"><input name="showUrl" type="text" value="http://172.30.12.33:8380/Shopping"></input></td>
+								<td width="8%"></td>
+								<td width="23%"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div>
+						<button type="button" id="makexml" name="makexml"
+							class="btn btn-sm btn-primary" onclick="makeXml()"
+							style="display: inline;">生成xml</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" id="topay" name="topay"
+							class="btn btn-sm btn-primary" onclick="toPay()"
+							style="display: none;">支付</button>
+					</div>
+					<input type="hidden" name="reqxml" id="reqxml"></input>
+				</form>
+				<form action="http://172.30.12.33:8380/cashier/msds.do" method="post" id="pay">
+					<input type="hidden" name="param" id="param" value=""/>
+				</form>
+				<div>
+				<textarea  id="returnValue" style="width: 90%;height: 100px">
+				</textarea>
+				</div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+		<script>
+			$.include("parts/pages/quicksidebar.shtml");
+		</script>
+
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+		initTitle();
+		var makeXml = function(){
+			$.ajax({
+				url : '../paytest/makexml',
+				type : 'POST',
+				async : false,
+				data : $('#msg').serializeArray(),
+				error : function(data) {
+					bootbox.alert("<br><center><h4>生成xml有误</h4></center><br>");
+				},
+				success : function(data) {
+					if(data=="systemerror"){
+						bootbox.alert("<br><center><h4>生成xml有误</h4></center><br>");
+						return;
+					}
+					$("#reqxml").val(data);
+					$("#returnValue").html(data);
+					$("#topay").show();
+				},
+			})
+		}
+		var toPay = function(){
+			if($("#reqxml").val()==""){
+				bootbox.alert("<br><center><h4>生成xml有误，请重新生成或找管理员！</h4></center><br>");
+				return;
+			}
+			$.ajax({
+				url : '../paytest/mksecrit',
+				type : 'POST',
+				async : false,
+				data : 'reqxml='+$("#reqxml").val(),
+				error : function(data) {
+					bootbox.alert("<br><center><h4>支付错误</h4></center><br>");
+				},
+				success : function(data) {
+					if(data==""||data=="systemerror"){
+						bootbox.alert("<br><center><h4>生成支付文件错误</h4></center><br>");
+						return;
+					}
+					$("#param").val(data);
+					$("#pay").submit();
+				},
+			})
+		}
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

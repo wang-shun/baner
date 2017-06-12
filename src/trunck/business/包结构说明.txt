@@ -1,0 +1,7 @@
+1.com.ztkx.cbpay.business.bean																				和业务相关的数据库表的javabean
+2.com.ztkx.cbpay.business.enanddecryption.handler											之前的每个服务或者渠道的加解密工具
+3.com.ztkx.cbpay.business.identifyimp																	交易码识别类
+4.com.ztkx.cbpay.business.serviceimp.CBEC															CBEC对应的业务服务
+5.com.ztkx.cbpay.business.serviceimp.PAB															平安银行对应的业务服务
+6.com.ztkx.cbpay.business.serviceimp.PLATFORM													平台提供的服务
+7.com.ztkx.cbpay.business.system.handler															每个系统的特殊处理类

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<base href="./" >
+
+	<meta charset="utf-8"/>
+	<title>WPF管理平台</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css">
+	<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-toastr/toastr.min.css"/>
+	<script type="text/javascript" src="parts/js/header.js"></script>
+	<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+	
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>$.include("parts/pages/topmenu.shtml");</script>
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+	<script>$.include("parts/pages/sidebar.shtml");</script>
+
+	<!-- END SIDEBAR -->
+	<div class="page-content-wrapper" id="notice_view" style="display:none">	
+           	      <script>$.include("notice/noticeView.shtml");</script>
+	    </div>	
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper" id="main_view">
+		  
+		<div class="page-content" >
+			<script>$.include("parts/pages/style.shtml");</script>
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			Dashboard <small>reports & statistics</small>
+			</h3>		
+
+			<!-- END PAGE HEADER-->
+			
+			<!-- BEGIN DASHBOARD STATS -->
+			<div class="row" >
+			<div class="col-md-7 col-sm-7">			<!-- BEGIN PORTLET-->
+			     
+				<div class="portlet box blue" id="btn_portlet">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-list"></i> &nbsp; 任务列表
+						</div>
+						
+					</div>
+					<div class="portlet-body" id="__tasklist">
+					<script type="text/x-template" id="__dust_tasklist" >
+						{#data}
+							<a href="{url}" class="icon-btn">
+								<i class="fa {icon}"></i>
+								<div>{taskname}</div>
+								{?counter} <span class="badge badge-primary">{counter} </span> {/counter} 
+							</a>
+						{/data}
+					</script>
+					</div>
+				</div>
+				<div class="form-actions">
+
+					<div class="row">						
+						<div class="col-md-7">
+							<button type="button" id="btnsignin" class="btn purple"><i class="fa fa-check"></i>&nbsp;签 &nbsp;&nbsp; 到</button>
+							<button type="button" id="btnsignout" class="btn green"><i class="fa fa-check"></i>&nbsp;签 &nbsp;&nbsp; 退</button>
+							<p id="sign_time" class="text-info" style="margin-top:5px"></p>
+						</div>
+					</div>
+				</div>			
+			<!-- END PORTLET-->
+			</div>
+				<div class="col-md-5 col-sm-5">
+					<div class="portlet box blue-steel" id="news_portlet">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-rss"></i>最新讯息
+							</div>
+							<div class="tools">								
+								<a href="" class="reload" data-original-title="" title="">
+								</a>
+								
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+								<table class="table table-striped table-advance table-hover">
+									<tbody id="__newslist">									
+										<script type="text/x-template" id="__dust_newslist" >
+										{#data}										
+											<tr class="unread">
+												<td class="view-message hidden-xs">
+													 <span class="label label-primary">{noticeTypeName}</span>
+												</td>
+												<td class="view-message ">
+													<a href="javascript:;" onClick="Dashboard.showNews('{noticeId}');">{noticeTitle}</a>
+												</td>												
+												<td class="view-message text-right">
+													 <span >{showStartTime}</span>
+												</td>
+											</tr>
+										{/data}
+										</script>
+									</tbody>
+								</table>
+							</div>
+							<div class="scroller-footer">
+								<div class="btn-arrow-link pull-right">
+									<a href="notice/noticeMore.html">more</a>
+									<i class="icon-arrow-right"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END DASHBOARD STATS -->
+			<div class="clearfix">
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- END CONTAINER -->
+<script>$.include("parts/pages/foot.shtml");</script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+<script type="text/javascript" src="parts/js/dashboard.js"></script>
+<script type="text/javascript" src="notice/noticeView.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() { 
+	Dashboard.init();  	
+	$('#news_portlet .portlet-title a.reload').click(function(e){
+       Dashboard.reload();
+    })
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

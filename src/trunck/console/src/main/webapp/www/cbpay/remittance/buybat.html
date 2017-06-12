@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../../">
+
+<meta charset="utf-8" />
+<title>购汇管理</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+<script type="text/javascript"
+	src="assets/global/plugins/bootstrap-datetimepicker/js/locales/moment-with-locales.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"
+	charset="UTF-8"></script>
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					购汇管理<small>发起购汇</small>
+				</h3>
+
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<div class="input-group-addon">商户名称</div>
+							<select class="form-control" id="merchantname">
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">币种</div>
+							<input id="currency" class="inputclear form-control"
+								type="text"> <span
+								class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">日期</div>
+							<input id="orderdate" class="inputclear form-control form_datetime" data-date-format="YYYYMMDD" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+					<script type="text/javascript">
+							$('.form_datetime').datetimepicker();
+						</script>
+					<div class="col-sm-3 form-group">
+						<button type="button" id="pay" name="pay"
+							class="btn btn-sm btn-primary" onclick="makefile()"
+							style="display: block;">生成清算单</button>
+					</div>
+				</div>
+				<table id="total" class="watable table table-striped table-hover table-bordered table-condensed" style="display: none;">
+						<thead>
+							<tr class="sort">
+								<th><a class="pull-left">商户号</a></th>
+								<th><a class="pull-left">商户名称</a></th>
+								<th><a class="pull-left">币种</a></th>
+								<th><a class="pull-left">原因</a></th>
+								<th><a class="pull-left">总笔数</a></th>
+								<th><a class="pull-left">总金额</a></th>
+								<th><a class="pull-left">操作</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="even">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>未划转未购汇</td>
+								<td></td>
+								<td></td>
+								<td><button name="btn" value="1" class="btn btn-sm btn-primary" onclick="buybat(0)">购汇</button></td>
+							</tr>
+							<tr class="odd">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>划转未购汇</td>
+								<td></td>
+								<td></td>
+								<td><button name="btn" value="0" class="btn btn-sm btn-primary" onclick="buybat(1)">购汇</button></td>
+							</tr>
+							<tr class="even">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>购汇未划转</td>
+								<td></td>
+								<td></td>
+								<td><button name="btn" value="1" class="btn btn-sm btn-primary" onclick="buybat(2)">购汇</button></td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="container-fluid">
+					<div id="divtable" class="table-responsive container col-md-12">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<!-- END CONTENT -->
+			<script>
+				$.include("parts/pages/quicksidebar.shtml");
+			</script>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+			initTitle();
+			 window.onload = function() {
+					$.ajax({
+							url : '../bmerchantinfo',
+							dataType : 'JSON',
+							type : 'GET',
+							success : function(data) {
+								if (data == null) {
+									alert("获取商户信息失败 ！");
+									//location.reload(true)
+								} else {
+									var select = $("#merchantname");
+									//将获取到的信息拼接到select下拉框
+									var inner = "<option></option>";
+									for (var i = 0; i < data.length; i++) {
+										inner = inner
+												+ " <option value='"+data[i].merchantid+"'>"
+												+ data[i].merchantname+"|"+data[i].merchantid
+												+ "</option> ";
+									}
+									select.append(inner)
+								}
+							},
+
+							error : function(data) {
+								alert("获取商户信息失败 ！");
+							}
+						})
+				}
+			 var notbatnotchangemount = '0';
+			 var changenotbatmount = '0';
+			 var batnotchangemount = '0';
+			 var makefile=function(){
+					var filter_merchantname = undefined;
+					var filter_currency = undefined;
+					var filter_orderdate = undefined;
+
+					if ($('#merchantname').val().length > 0) {
+						filter_merchantname = RQLBuilder.like("merchantid", $('#merchantname').val());
+					}else{
+						bootbox.alert("<br><center><h4>商户不能为空</h4></center><br>");
+						return;
+					}
+					
+					if ($('#orderdate').val().length > 0) {
+						filter_orderdate = RQLBuilder.equal("orderdate", $('#orderdate').val());
+					}else{
+						bootbox.alert("<br><center><h4>日期不能为空</h4></center><br>");
+						return;
+					}
+
+					if ($('#currency').val().length > 0) {
+						filter_currency = RQLBuilder.like("currency", $('#currency').val());
+					}
+					var filter = RQLBuilder.and([ filter_merchantname,filter_orderdate,filter_currency]);
+					var info = filter.rql();
+					$.ajax({
+						url : '../buybat/queryExceptionOrder',
+						type : 'GET',
+						async : false,
+						data : 'query='+info,
+						error : function(data) {
+							bootbox.alert("<br><center><h4>查询订单信息异常</h4></center><br>");
+						},
+						success : function(data) {
+							var valueTotal = eval(data);
+							$("#total").show();
+							notbatnotchangemount = valueTotal[0].orderMount;
+							changenotbatmount = valueTotal[1].orderMount;
+							batnotchangemount = valueTotal[2].orderMount;
+							$("#total").find("tbody").children("tr").eq(0).find("td").eq(0).html($("#merchantname").val());
+							$("#total").find("tbody").children("tr").eq(0).find("td").eq(1).html($("#merchantname").find("option:selected").text());
+							$("#total").find("tbody").children("tr").eq(0).find("td").eq(2).html(valueTotal[0].currency);
+							$("#total").find("tbody").children("tr").eq(0).find("td").eq(4).html(valueTotal[0].orderCount);
+							$("#total").find("tbody").children("tr").eq(0).find("td").eq(5).html(valueTotal[0].orderMount);
+							$("#total").find("tbody").children("tr").eq(1).find("td").eq(0).html($("#merchantname").val());
+							$("#total").find("tbody").children("tr").eq(1).find("td").eq(1).html($("#merchantname").find("option:selected").text());
+							$("#total").find("tbody").children("tr").eq(1).find("td").eq(2).html(valueTotal[1].currency);
+							$("#total").find("tbody").children("tr").eq(1).find("td").eq(4).html(valueTotal[1].orderCount);
+							$("#total").find("tbody").children("tr").eq(1).find("td").eq(5).html(valueTotal[1].orderMount);
+							$("#total").find("tbody").children("tr").eq(2).find("td").eq(0).html($("#merchantname").val());
+							$("#total").find("tbody").children("tr").eq(2).find("td").eq(1).html($("#merchantname").find("option:selected").text());
+							$("#total").find("tbody").children("tr").eq(2).find("td").eq(2).html(valueTotal[2].currency);
+							$("#total").find("tbody").children("tr").eq(2).find("td").eq(4).html(valueTotal[2].orderCount);
+							$("#total").find("tbody").children("tr").eq(2).find("td").eq(5).html(valueTotal[2].orderMount);
+						},
+					})
+				} 
+			 var buybat = function(value){
+					if(value=='0'&&notbatnotchangemount=='0'){
+						bootbox.alert("<br><center><h4>金额为0，不需要购汇</h4></center><br>");
+						return;
+					}else if(value=='1'&&changenotbatmount=='0'){
+						bootbox.alert("<br><center><h4>金额为0，不需要购汇</h4></center><br>");
+						return;
+					}else if(value=='2'&&batnotchangemount=='0'){
+						bootbox.alert("<br><center><h4>金额为0，不需要购汇</h4></center><br>");
+						return;
+					}
+					$.ajax({
+						url : '../buybat/sendtobuy',
+						type : 'POST',
+						async : false,
+						data : 'cause='+value,
+						error : function(data) {
+							bootbox.alert("<br><center><h4>系统异常or连接失败</h4></center><br>");
+						},
+						success : function(data) {
+							if(data=="col005error"){
+								alert(data);
+							}else if(data=="col006error"){
+								alert(data);
+							}else if(data=="dataerror"){
+								alert(data);
+							}else if(data=="syserror"){
+								alert(data);
+							}else if(data=="succ"){
+								alert(data);
+								makefile();
+							}else{
+								alert("响应数据异常");
+							}
+						},
+					})
+				}
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

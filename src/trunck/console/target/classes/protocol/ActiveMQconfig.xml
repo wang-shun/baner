@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe>
+	<inboxs>
+		<inbox>
+			<service name="console_other">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://172.30.12.33:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/console_other.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>3</sessionCounts>
+				<messageListener>com.ztkx.cbpay.invoker.msglistener.InvokerClientMsgListener</messageListener>
+				<selector>containid='CONSOLE'</selector>
+			</service>
+		</inbox>
+	</inboxs>
+	<outboxs>
+		<outbox>
+			<service name="console_other">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://172.30.12.33:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/console_other.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>3</sessionCounts>
+				<messageListener></messageListener>
+				<selector></selector>
+			</service>
+		</outbox>
+	</outboxs>
+</recipe>

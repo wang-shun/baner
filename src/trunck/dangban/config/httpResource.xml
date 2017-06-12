@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+	<resource name="cbec" port="8082" code="GBK" file="msg/cbec">
+		<business name="cbec_pay" field="url" policy="1,2">
+			
+		</business>
+	</resource>
+</request>

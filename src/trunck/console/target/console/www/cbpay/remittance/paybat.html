@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../../">
+
+<meta charset="utf-8" />
+<title>付汇管理</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet' href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/locales/moment-with-locales.js" charset="UTF-8"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					付汇管理<small>发起付汇</small>
+				</h3>
+
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+					<div class="col-sm-4 form-group">
+						<div class="btn-group input-group">
+							<div class="input-group-addon">商户名称</div>
+							<select class="form-control" id="merchantname">
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">开始日期</div>
+							<input id="startdate" class="inputclear form-control form_datetime" data-date-format="YYYYMMDD" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">结束日期</div>
+							<input id="enddate" class="inputclear form-control form_datetime"
+								data-date-format="YYYYMMDD" type="text" > <span
+								class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+						<script type="text/javascript">
+							$('.form_datetime').datetimepicker();
+						</script>
+					</div>
+					<div>
+						<button type="button" id="pay" name="pay"
+							class="btn btn-sm btn-primary" onclick="makefile()"
+							style="display: block;">生成清算单</button>
+						<button type="button" id="uploadfile" name="uploadfile"
+							class="btn btn-sm btn-primary" onclick="uploadfile()"
+							style="display: none;">发起付汇</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" id="cancel" name="cancel"
+							class="btn btn-sm btn-primary" onclick="cancel()"
+							style="display: none;">取消</button>
+					</div>
+					<table id="total" class="watable table table-striped table-hover table-bordered table-condensed" style="display: none;">
+						<thead>
+							<tr class="sort">
+								<th><a class="pull-left">商户名称</a></th>
+								<th><a class="pull-left">开始时间</a></th>
+								<th><a class="pull-left">结束时间</a></th>
+								<th><a class="pull-left">总笔数</a></th>
+								<th><a class="pull-left">总金额</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="fy" class="note note-success container col-sm-12"
+					style="padding-bottom: 0px;display: none">
+					<div class="input-group-addon" style="font-size: 15px;">
+						附言 <span style="color: red; font-size: 12px">（最多60汉字)（必填项)</span>
+					</div>
+					<textarea id="REMARK" rows="3" cols="20" maxlength="60"
+						class="inputclear form-control"></textarea>
+				</div>
+
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px; display: none;" id="detailinfo">
+					<div id="payinfo" class="input-group-addon">
+						<span style="color: red; font-size: 15px">此次付汇具体信息如下请核实</span>
+					</div>
+				</div>
+			</div>
+			<!-- END CONTENT -->
+			<script>
+				$.include("parts/pages/quicksidebar.shtml");
+			</script>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+		initTitle();
+		 window.onload = function() {
+			$.ajax({
+						url : '../bmerchantinfo',
+						dataType : 'JSON',
+						type : 'GET',
+						success : function(data) {
+							if (data == null) {
+								alert("获取商户信息失败 ！");
+								//location.reload(true)
+							} else {
+								var select = $("#merchantname");
+								//将获取到的信息拼接到select下拉框
+								var inner = "";
+								for (var i = 0; i < data.length; i++) {
+									inner = inner
+											+ " <option value='"+data[i].merchantid+"'>"
+											+ data[i].merchantname+"|"+data[i].merchantid
+											+ "</option> ";
+								}
+								select.append(inner)
+							}
+						},
+
+						error : function(data) {
+							alert("获取商户信息失败 ！");
+						}
+					})
+		}
+		 var cancel=function(){
+			$("#total").hide();
+			$("#pay").show();
+			$("#uploadfile").hide();
+			$("#fy").hide();
+			$("#cancel").hide();
+		 }
+		var makefile=function(){
+			var filter_merchantname = undefined;
+			var filter_startdate = undefined;
+			var filter_enddate = undefined;
+
+			if ($('#merchantname').val().length > 0) {
+				filter_merchantname = RQLBuilder.like("merchantid", $('#merchantname').val());
+			}else{
+				bootbox.alert("<br><center><h4>商户不能为空</h4></center><br>");
+				return;
+			}
+
+			if ($('#startdate').val().length > 0) {
+				filter_startdate = RQLBuilder.condition("orderdate","$gte", $('#startdate').val());
+			}else {
+				bootbox.alert("<br><center><h4>开始日期不能为空</h4></center><br>");
+				return;
+			}
+
+			if ($('#enddate').val().length > 0) {
+				filter_enddate = RQLBuilder.condition("orderdate","$lte", $('#enddate').val());
+			}else{
+				bootbox.alert("<br><center><h4>结束日期不能为空</h4></center><br>");
+				return;
+			}
+			var filter = RQLBuilder.and([ filter_merchantname,filter_startdate, filter_enddate ]);
+			var info = filter.rql();
+			$.ajax({
+				url : '../paybat/makeDetail',
+				type : 'GET',
+				async : false,
+				data : 'query='+info,
+				error : function(data) {
+					bootbox.alert("<br><center><h4>查询订单信息异常</h4></center><br>");
+				},
+				success : function(data) {
+					var valueTotal = eval(data);
+					$("#total").show();
+					$("#total").find("tbody").find("td").eq(0).html($("#merchantname").find("option:selected").text());
+					$("#total").find("tbody").find("td").eq(1).html($('#startdate').val());
+					$("#total").find("tbody").find("td").eq(2).html($('#enddate').val());
+					$("#total").find("tbody").find("td").eq(3).html(valueTotal.orderCount);
+					$("#total").find("tbody").find("td").eq(4).html(valueTotal.orderMount);
+					$("#pay").hide();
+					$("#uploadfile").show();
+					$("#fy").show();
+					$("#cancel").show();
+				},
+			})
+		} 
+		var uploadfile = function(){
+			if($("#REMARK").val()==""){
+				bootbox.alert("<br><center><h4>请填写付汇附言</h4></center><br>");
+				$("#REMARK").focus();
+			}else{
+				$.ajax({
+					url : '../paybat/sendCountChange',
+					type : 'POST',
+					async : false,
+					data : 'remark='+$("#REMARK").val(),
+					error : function(data) {
+						bootbox.alert("<br><center><h4>系统异常or连接失败</h4></center><br>");
+					},
+					success : function(data) {
+						if(data=="col005error"){
+							alert(data);
+						}else if(data=="col001error"){
+							alert(data);
+						}else if(data=="col002error"){
+							alert(data);
+						}
+						else if(data=="syserror"){
+							alert(data);
+						}else{
+							alert("响应数据异常");
+						}
+					},
+				})
+			}
+			
+		}
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

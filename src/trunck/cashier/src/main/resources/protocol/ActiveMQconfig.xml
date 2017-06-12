@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe>
+	<inboxs>
+		
+	</inboxs>
+	<outboxs>
+		<outbox>
+			<service name="cashier_discenter">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://172.30.12.33:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/cashier_discenter.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</outbox>
+	</outboxs>
+</recipe>

@@ -1,0 +1,4 @@
+LoadAndCheckOrderBuss 检测交易状态
+BuyFCPrepareBuss 为购汇准备数据
+BuyFCBuss 购汇
+BatchUpdateBuyFCInfoBuss 批量购汇

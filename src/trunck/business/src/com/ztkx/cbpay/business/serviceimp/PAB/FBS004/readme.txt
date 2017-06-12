@@ -1,0 +1,3 @@
+购汇查询
+查询客户号 QueryCustNo
+根据平安银行响应信息修改购汇交易状态 UpdateBuyFCStatusBuss

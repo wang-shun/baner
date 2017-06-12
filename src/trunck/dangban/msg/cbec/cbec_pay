@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status>AAAAAAA</status>
+<statusText>status为AAAAAAA代表该请求由系统处理完成</statusText>
+<data>
+<?xml version="1.0" encoding="GBK" ?> 
+<stream>
+	<status>AAAAAAA</status>
+	<statusText>当前交易业务状态的说明信息</statusText>
+ 	<tranNo>100001</tranNo> 
+  	<exRate>1.09</exRate> 
+  	<cnyExAmt>100</cnyExAmt> 
+  	<fcyExAmt>100</fcyExAmt> 
+  	<e3rdTranNo>121212</e3rdTranNo> 
+  	<currencyID>CNY</currencyID> 
+  	<exType>GH</exType>
+  	<txCode>xxxxx</txCode>
+ 	<cbecTime></cbecTime >
+</stream>
+</data>
+</stream>

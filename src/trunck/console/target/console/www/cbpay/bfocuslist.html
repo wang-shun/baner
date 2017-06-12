@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../">
+
+<meta charset="utf-8" />
+<title>关注名单</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel="stylesheet" type="text/css" 	href="assets/global/plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" />	
+<link rel='stylesheet' href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet' href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/locales/moment-with-locales.js" charset="UTF-8"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					 跨境支付<small>关注名单</small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">证件号</div>
+							<input id="find_idno" class="inputclear form-control" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							<!-- 查询条件控件 -->
+							<div class="input-group-addon">日期</div>
+							<input id="find_createdate" class="inputclear form-control form_datetime" data-date-format="YYYYMMDD" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide "></span>
+							<script type="text/javascript">
+								$('.form_datetime').datetimepicker();
+							</script>
+						</div>
+					</div>
+					<div class="col-sm-6 form-group">
+						<script>
+							$.include("parts/pages/crudbtn_r.shtml");
+						</script>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div id="divtable" class="table-responsive container col-md-12">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+		<script>
+			$.include("parts/pages/quicksidebar.shtml");
+		</script>
+
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+		var xw;
+		$(function() {
+			//初始化页面标题
+			initTitle();
+			xw = XWATable.init({
+						//----------------table的选项-------
+						pageSize : 10, //Initial pagesize
+						//filter: true,               //Show filter fields
+						sorting: true,              //Enable sorting
+						columnPicker : true, //Show the columnPicker button
+						transition : 'scroll', //(bounce, fade, flip, rotate, scroll, slide).
+						//pageSizes: [1,5,8,12,200],  //Set custom pageSizes. Leave empty array to hide button.
+						//hidePagerOnEmpty: true,     //Removes the pager if data is empty.
+						//checkboxes : true, //Make rows checkable. (Note. You need a column with the 'unique' property)
+						//checkAllToggle : true, //Show the check-all toggle//+RQLBuilder.like("KEYY", "a").rql()
+						/* rowClicked : function(data) {
+							console.log('row clicked users.html 542'); //data.event holds the original jQuery event.
+							console.log(data); //data.row holds the underlying row you supplied.
+						}, */
+						//----------------基本restful地址---
+						restbase : wpfrisk+'bfocuslist',
+						key_column : "_id",
+						//---------------行定义
+						coldefs : [
+								{
+									col : "chnname",
+									friendly : "中文名"
+								},{
+									col : "_id",
+									hidden:true,
+									nonedit : "nosend"
+								},{
+									col : "engname",
+									friendly : "英文名"
+								},{
+									col : "idtype",
+									friendly : "证件类型"
+								}, 
+								{
+									col : "idno",
+									friendly : "证件号"
+								},
+								{
+									col : "createdate",
+									friendly : "日期"
+								}],
+						//---------------查询时过滤条件
+						findFilter : function() {//find function
+							var filter_fromId=undefined;
+							var filter_recvDate=undefined;
+
+							if ($('#find_idno').val().length>0) {
+								filter_fromId = RQLBuilder.like("idno", $('#find_idno').val());
+							}
+
+							if ($('#find_createdate').val().length>0) {
+								filter_recvDate = RQLBuilder.like("createdate", $('#find_createdate').val());
+							}
+							var filter = RQLBuilder.and([ filter_fromId,filter_recvDate ]);
+							return filter.rql();
+						}
+					});
+		//--end init
+		});
+		//-----------------ENDOFSCIPT------
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

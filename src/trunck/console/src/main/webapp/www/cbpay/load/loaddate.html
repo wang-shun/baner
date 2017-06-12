@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<base href="../../">
+
+<meta charset="utf-8" />
+<title>刷新平台日期</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/watable.css' />
+<link rel='stylesheet'
+	href='assets/global/plugins/jquery-watable/animate.min.css' />
+<link rel='stylesheet' href='assets/global/plugins/icheck/skins/all.css' />
+
+<script type="text/javascript" src="parts/js/header.js"></script>
+<script type="text/javascript" src="parts/js/wpfcfg.js"></script>
+
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+	<script>
+		$.include("parts/pages/topmenu.shtml");
+	</script>
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<script>
+			$.include("parts/pages/sidebar.shtml");
+		</script>
+
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<script>
+					$.include("parts/pages/style.shtml");
+				</script>
+
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					业务处理<small>刷新平台日期</small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html"></a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="#"></a></li>
+					</ul>
+					<div class="page-toolbar">
+						<div id="dashboard-report-range"
+							class="pull-right tooltips btn btn-fit-height grey-salt"
+							data-placement="top"
+							data-original-title="Change dashboard date range">
+							<i class="icon-calendar"></i>&nbsp; <span
+								class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+
+				<div class="note note-success container col-sm-12"
+					style="padding-bottom: 0px">
+				<!-- 	<div class="col-sm-3 form-group">
+						<div class="btn-group input-group">
+							查询条件控件
+							<div class="input-group-addon">商户id</div>
+							<input id="find_merchantId" class="inputclear form-control" type="text"> 
+							<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+						</div>
+					</div>
+					<div class="col-sm-9 form-group">
+						<button type="button" id="makexml" name="makexml"
+							class="btn btn-sm btn-primary" onclick="makexml()"
+							style="display: block;">生成支付报文</button>
+					</div> -->
+				</div>
+				<button value="刷新日期" onclick="refreshDate()" class="btn btn-sm btn-primary" id="refresh">刷新内存</button>
+				<div id="can_select" style="margin-top: 10px"></div>
+				<div id="result"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+		<script>
+			$.include("parts/pages/quicksidebar.shtml");
+		</script>
+
+	</div>
+	<script type="text/javascript">
+		$.include("parts/pages/xwatable-form.shtml");
+	</script>
+	<script>
+		$.include("parts/pages/foot_table.shtml");
+	</script>
+	<script type="text/javascript" src="assets/addons/jquery.md5.js"></script>
+	<script type="text/javascript" src="assets/addons/jquery.uuid.js"></script>
+	<script type="text/javascript">
+		initTitle();
+		var refreshDate = function(){
+			$("#refresh").attr("disabled",true);
+			var url = "../tappcontain/load";
+			$.ajax({
+				url : url,
+				type : 'GET',
+				data : 'invokerId='+$("[name='invokerId']:checked").val(),
+				async : false,
+				error : function(data) {
+					bootbox.alert("<br><center><h4>刷新失败</h4></center><br>");
+					$("#refresh").attr("disabled",false);
+				},
+				success : function(data) {
+					if(data=="systemerror"){
+						bootbox.alert("<br><center><h4>刷新失败</h4></center><br>");
+						$("#refresh").attr("disabled",false);
+						return;
+					}
+					if(data.length>0){
+						returnresult(data);
+					}
+				},
+			})
+		}
+		function returnresult(data){
+			data = data.substring(0,data.length-1);
+			var dataArray = data.split("-");
+			var value="<table class='watable table table-striped table-hover table-bordered table-condensed'>";
+			value = value +"<tr><td>clusterId</td><td>容器</td><td>ip</td><td>操作类型</td><td>结果</td></tr>";
+			$.each(dataArray,function(i,n){
+				value=value+"<tr>";
+				var tmparray = n.split(":");
+				value = value+"<td>"+tmparray[0]+"</td>";
+				value = value+"<td>"+tmparray[1]+"</td>";
+				value = value+"<td>"+tmparray[2]+"</td>";
+				value = value+"<td>"+tmparray[3]+"</td>";
+				if(tmparray[4]=="true"){
+					value = value+"<td>成功</td>";
+				}else{
+					value = value+"<td>失败</td>";
+				}
+				value=value+"</tr>"
+			})
+			value=value+"</table>";
+			$("#result").html(value);
+			$("#refresh").attr("disabled",false);
+		}
+		$(document).ready(function(){
+			var can_value = "<table style='width: 90%'>"+
+				"<tr>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='loaddate' value='loaddate' checked/><label for='loaddate'>刷新日期</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='keymsg' value='keymsg'/><label for='keymsg'>加载keyMsg</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='reloadxml'  value='reloadxml'/><label for='reloadxml'>加载xml</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='set'  value='set'/><label for='set'>加载交易配置表</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='channelinfo'  value='channelinfo'/><label for='channelinfo'>加载渠道服务信息</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='platparam'  value='platparam'/><label for='platparam'>加载平台参数</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='reloadrescode'  value='reloadrescode'/><label for='reloadrescode'>加载响应码配置</label>"+
+				"</td>"+
+				"<td>"+
+					"<input type='radio' name='invokerId' id='all'  value='all'/><label for='all'>ALL</label>"+
+				"</td>"+
+			"</tr>"+
+		"</table>";
+		$("#can_select").html(can_value);
+		$("[name=command]").change(function(){
+			$("#result").html("");
+		})
+		})
+		
+	</script>
+	<!-- End of User Script-->
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

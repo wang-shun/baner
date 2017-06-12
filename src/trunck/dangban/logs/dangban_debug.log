@@ -1,0 +1,730 @@
+2016-01-20 15:01:06,700 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:01:06,715 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:01:06,809 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:01:06,809 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:01:06,809 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:01:06,809 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:01:06,809 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:01:06,809 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:01:06,809 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:02:03,962 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-1] [] - payh request is begin. 
+2016-01-20 15:02:03,978 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-1] [] - http request data is GET /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:02:03 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8081
+
+ 
+2016-01-20 15:02:03,978 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-1] [] - http method is GET 
+2016-01-20 15:02:03,978 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-1] [] - HttpPojo [server=/httpsTest/Test, method=GET, data=aa=bb] 
+2016-01-20 15:02:03,978 http.service.imp.DataHttpService.service(DataHttpService.java:38) [ERROR] [Thread-1] [] - msg/cbec\cbec is not exist! 
+2016-01-20 15:02:03,994 http.BusiManage.run(BusiManage.java:83) [ERROR] [Thread-1] [] - server start is error java.lang.NullPointerException 
+2016-01-20 15:03:08,572 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:03:08,588 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:03:08 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+
+ 
+2016-01-20 15:03:08,588 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:03:08,588 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=Host: localhost:8082] 
+2016-01-20 15:03:08,588 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:03:08 CST 2016
+Content-Length: 20
+
+Host: localhost:8082 
+2016-01-20 15:03:08,588 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:03:39,692 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:03:39,723 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:03:39 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:03:39,723 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:03:39,723 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:03:39,723 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:03:39 CST 2016
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:03:39,723 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:07:43,510 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:07:43,510 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:07:43,573 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:07:43,573 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:07:43,573 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:07:43,573 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:07:43,573 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:07:43,573 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:07:43,573 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:09:32,463 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:09:32,479 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:09:32 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:09:32,479 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:09:32,479 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:09:32,479 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:09:32 CST 2016
+Content-Length: 235
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status></status><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data></data><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:09:32,494 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:15:36,958 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:15:36,958 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:15:37,020 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:15:37,020 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:15:37,020 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:15:37,020 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:15:37,020 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:15:37,020 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:15:37,020 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:15:37,053 http.BusiManage.run(BusiManage.java:83) [ERROR] [Thread-1] [] - server start is error java.net.BindException: Address already in use: JVM_Bind 
+2016-01-20 15:15:37,053 http.BusiManage.run(BusiManage.java:83) [ERROR] [Thread-0] [] - server start is error java.net.BindException: Address already in use: JVM_Bind 
+2016-01-20 15:15:45,009 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:15:45,041 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:15:44 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:15:45,042 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:15:45,042 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:15:45,043 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:15:45 CST 2016
+Content-Length: 235
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status></status><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data></data><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:15:45,043 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:17:13,671 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:17:13,671 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:17:13,749 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:17:13,749 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:17:13,749 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:17:13,749 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:17:13,749 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:17:13,749 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:17:13,765 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:17:17,747 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:17:17,762 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:17:17 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:17:17,762 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:17:17,762 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:17:24,235 http.service.imp.DataHttpService.service(DataHttpService.java:27) [INFO ] [Thread-0] [] - ====================== 
+2016-01-20 15:17:26,258 http.service.imp.DataHttpService.service(DataHttpService.java:28) [INFO ] [Thread-0] [] -  
+2016-01-20 15:22:03,113 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:22:03,113 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:22:03,176 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:22:03,176 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:22:03,176 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:22:03,176 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:22:03,176 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:22:03,176 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:22:03,176 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:22:08,712 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:22:08,727 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is  
+2016-01-20 15:22:08,727 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=null, method=null, data=null] 
+2016-01-20 15:22:08,727 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:22:08,727 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:22:08,743 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:22:08 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:22:08,743 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:22:08,743 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:22:08,743 http.service.imp.DataHttpService.service(DataHttpService.java:27) [INFO ] [Thread-0] [] - ====================== 
+2016-01-20 15:22:08,759 http.service.imp.DataHttpService.service(DataHttpService.java:28) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:22:08,759 http.service.imp.DataHttpService.service(DataHttpService.java:29) [INFO ] [Thread-0] [] - ====================== 
+2016-01-20 15:22:08,775 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:22:08 CST 2016
+Content-Length: 235
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status></status><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data></data><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:22:08,775 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:24:05,883 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:24:05,898 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:24:05 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:24:05,898 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:24:05,898 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:24:05,898 http.service.imp.DataHttpService.service(DataHttpService.java:27) [INFO ] [Thread-0] [] - ====================== 
+2016-01-20 15:24:05,898 http.service.imp.DataHttpService.service(DataHttpService.java:28) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:24:05,898 http.service.imp.DataHttpService.service(DataHttpService.java:29) [INFO ] [Thread-0] [] - ====================== 
+2016-01-20 15:24:05,898 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:24:05 CST 2016
+Content-Length: 235
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status></status><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data></data><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:24:05,898 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:27:49,604 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:27:49,607 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:27:49,670 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:27:49,671 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:27:49,671 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:27:49,673 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:27:49,674 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:27:49,674 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:27:49,674 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:27:55,490 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:27:55,502 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:27:55 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:27:55,505 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:27:55,506 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:27:55,516 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is 
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:27:55,517 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - 
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:27:55,522 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:27:55 CST 2016
+Content-Length: 30
+
+
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:27:55,524 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:29:18,563 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:29:18,567 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:29:18,629 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:29:18,630 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:29:18,630 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:29:18,632 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:29:18,633 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:29:18,633 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:29:18,633 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:29:23,911 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:29:23,923 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:29:23 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:29:23,925 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:29:23,926 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:29:23,941 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:29:23,941 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:29:23,947 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:29:23 CST 2016
+Content-Length: 30
+
+
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:29:23,950 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:30:00,789 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:30:00,800 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:30:00 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:30:00,800 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:30:00,801 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:30:00,803 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:30:00,804 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:30:00,804 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:30:00 CST 2016
+Content-Length: 30
+
+
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:30:00,804 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:33:03,409 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:33:03,412 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:33:03,476 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:33:03,478 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:33:03,478 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:33:03,480 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:33:03,481 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:33:03,481 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:33:03,481 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:33:08,085 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:33:08,089 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:33:08,156 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:33:08,157 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:33:08,157 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:33:08,160 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:33:08,165 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:33:08,165 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:33:08,165 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:33:12,533 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:33:12,545 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:33:12 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:33:12,548 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:33:12,548 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:33:12,564 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:33:12,568 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:33:12,575 http.BusiManage.invokeServer(BusiManage.java:46) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:33:12 CST 2016
+Content-Length: 30
+
+
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:33:12,579 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:34:20,719 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:34:20,723 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:34:20,792 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:34:20,793 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:34:20,793 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:34:20,795 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:34:20,801 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:34:20,801 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:34:20,802 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:34:33,370 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:34:33,382 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:34:33 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:34:33,385 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:34:33,386 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:34:33,403 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:34:33,403 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:36:01,173 http.BusiManage.invokeServer(BusiManage.java:62) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:34:45 CST 2016
+Content-Length: 30
+
+
+
+该请求的系统状态的说明信息
+
+ 
+2016-01-20 15:36:06,951 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:36:38,922 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:36:38,932 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:36:38 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:36:38,933 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:36:38,933 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:36:38,937 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:36:38,937 http.service.imp.DataHttpService.service(DataHttpService.java:26) [INFO ] [Thread-0] [] - <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:38:11,881 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:38:11,884 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:38:11,948 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:38:11,949 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:38:11,949 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:38:11,951 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:38:11,952 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:38:11,952 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:38:11,952 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:38:17,593 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:38:17,605 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test?aa=bb HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:38:17 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:38:17,608 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:38:17,608 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test?aa=bb, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:38:17,624 http.service.imp.DataHttpService.service(DataHttpService.java:24) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:38:17,629 http.BusiManage.invokeServer(BusiManage.java:62) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 15:38:17 CST 2016
+Content-Length: 216
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status/><!--该请求的系统处理状态-->
+<statusText>该请求的系统状态的说明信息</statusText>
+<data/><!--交易数据以及签名数据包，如果status 为失败，该标签可以不要-->
+</stream> 
+2016-01-20 15:38:17,630 http.BusiManage.invokeServer(BusiManage.java:72) [DEBUG] [Thread-0] [] - socket closed. 
+2016-01-20 15:49:38,574 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:49:38,578 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:49:38,640 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:49:38,641 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:49:38,641 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:49:38,643 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:49:38,644 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:49:38,644 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:49:38,644 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:49:45,271 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:49:45,283 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:49:45 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:49:45,286 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:49:45,287 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:49:45,336 http.BusiManage.run(BusiManage.java:83) [ERROR] [Thread-0] [] - server start is error java.lang.NullPointerException 
+2016-01-20 15:50:39,097 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:50:39,100 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:50:39,163 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:50:39,164 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:50:39,164 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:50:39,166 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:50:39,167 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:50:39,167 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:50:39,167 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:50:44,371 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:50:44,384 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:50:44 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:50:44,386 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:50:44,387 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:50:44,418 http.BusiManage.run(BusiManage.java:83) [ERROR] [Thread-0] [] - server start is error java.lang.NullPointerException 
+2016-01-20 15:57:22,261 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:57:22,265 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:57:22,328 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:57:22,329 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:57:22,329 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:57:22,332 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:57:22,333 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:57:22,333 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:57:22,333 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:57:26,110 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:57:26,123 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:57:26 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:57:26,125 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:57:26,126 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:57:26,127 http.util.HttpParse.parse(HttpParse.java:56) [INFO ] [Thread-0] [] - http parse is succ... 
+2016-01-20 15:57:26,135 http.BusiManage.invokeServer(BusiManage.java:57) [INFO ] [Thread-0] [] - BusinessPojo is find msg/cbec\cbec_pay 
+2016-01-20 15:57:26,162 http.BusiManage.run(BusiManage.java:85) [ERROR] [Thread-0] [] - server start is error java.lang.NullPointerException 
+2016-01-20 15:58:31,145 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:58:31,149 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:58:31,219 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:58:31,220 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:58:31,220 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:58:31,222 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:58:31,231 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:58:31,231 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:58:31,232 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:58:31,238 http.BusiManage.run(BusiManage.java:85) [ERROR] [Thread-1] [] - server start is error java.net.BindException: Address already in use: JVM_Bind 
+2016-01-20 15:58:31,238 http.BusiManage.run(BusiManage.java:85) [ERROR] [Thread-0] [] - server start is error java.net.BindException: Address already in use: JVM_Bind 
+2016-01-20 15:58:43,850 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 15:58:43,854 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 15:58:43,924 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 15:58:43,926 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 15:58:43,926 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 15:58:43,928 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 15:58:43,935 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 15:58:43,935 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 15:58:43,935 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 15:58:51,405 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 15:58:51,418 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 15:58:51 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 15:58:51,421 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 15:58:51,422 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 15:58:51,423 http.util.HttpParse.parse(HttpParse.java:56) [INFO ] [Thread-0] [] - http parse is succ... 
+2016-01-20 15:58:51,430 http.BusiManage.invokeServer(BusiManage.java:57) [INFO ] [Thread-0] [] - BusinessPojo is find msg/cbec\cbec_pay 
+2016-01-20 15:59:40,245 http.BusiManage.run(BusiManage.java:85) [ERROR] [Thread-0] [] - server start is error java.lang.NullPointerException 
+2016-01-20 16:02:04,286 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 16:02:04,289 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 16:02:04,350 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 16:02:04,351 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 16:02:04,351 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 16:02:04,353 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 16:02:04,354 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 16:02:04,354 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 16:02:04,354 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 16:02:09,814 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 16:02:09,826 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 16:02:09 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 16:02:09,828 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 16:02:09,829 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 16:02:09,830 http.util.HttpParse.parse(HttpParse.java:56) [INFO ] [Thread-0] [] - http parse is succ... 
+2016-01-20 16:02:09,836 http.BusiManage.invokeServer(BusiManage.java:57) [INFO ] [Thread-0] [] - BusinessPojo is find msg/cbec\cbec_pay 
+2016-01-20 16:02:09,837 http.service.imp.DataHttpService.service(DataHttpService.java:18) [INFO ] [Thread-0] [] - DataHttpService is begin 
+2016-01-20 16:02:09,864 http.BusiManage.run(BusiManage.java:85) [ERROR] [Thread-0] [] - server start is error java.lang.NullPointerException 
+2016-01-20 16:05:57,010 http.HttpMain.init(HttpMain.java:50) [INFO ] [main] [] - init is start. 
+2016-01-20 16:05:57,014 http.util.XmlParse.parse(XmlParse.java:20) [INFO ] [main] [] - xml parse begin... 
+2016-01-20 16:05:57,077 http.util.XmlParse.parse(XmlParse.java:27) [DEBUG] [main] [] - resource tag size is 2 
+2016-01-20 16:05:57,078 http.util.XmlParse.parse(XmlParse.java:47) [INFO ] [main] [] - xml parse success! 
+2016-01-20 16:05:57,078 http.HttpMain.init(HttpMain.java:57) [INFO ] [main] [] - init is succ... 
+2016-01-20 16:05:57,080 http.HttpMain.receive(HttpMain.java:60) [INFO ] [main] [] - receive is start. 
+2016-01-20 16:05:57,081 http.HttpMain.receive(HttpMain.java:67) [INFO ] [main] [] - receive is succ... 
+2016-01-20 16:05:57,081 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-1] [] - payh's port is 8081 
+2016-01-20 16:05:57,081 http.BusiManage.invokeServer(BusiManage.java:27) [INFO ] [Thread-0] [] - cbec's port is 8082 
+2016-01-20 16:06:26,147 http.BusiManage.invokeServer(BusiManage.java:31) [DEBUG] [Thread-0] [] - cbec request is begin. 
+2016-01-20 16:06:26,159 http.util.HttpParse.parse(HttpParse.java:34) [DEBUG] [Thread-0] [] - http request data is POST /httpsTest/Test HTTP/1.1
+Accept: text/xml,text/javascript,text/html
+User-Agent: stargate
+Connection: close
+DATE: Wed Jan 20 16:06:26 CST 2016
+Content-Type: application/x-www-form-urlencoded
+Host: localhost:8082
+Content-Length: 1686
+
+SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream> 
+2016-01-20 16:06:26,161 http.util.HttpParse.parse(HttpParse.java:40) [DEBUG] [Thread-0] [] - http method is POST 
+2016-01-20 16:06:26,162 http.util.HttpParse.parse(HttpParse.java:54) [DEBUG] [Thread-0] [] - HttpPojo [server=/httpsTest/Test, method=POST, data=SIGNREQMSG=<?xml version="1.0" encoding="GBK"?><stream><bankName>银行名称</bankName><e3rdPayNo>第三方支付机构号</e3rdPayNo><transTime>银行发起时间</transTime><exQuoteDate>牌价日期</exQuoteDate><exQuoteTime>牌价时间</exQuoteTime ><exQuoteListNum>牌价数量</exQuoteListNum><list name="exQuoteList"><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashSellPrice>钞卖价</cashSellPrice><exSellPrice>汇卖价</exSellPrice></row><row><currencyID>币种</currencyID><cashBuyPrice>钞买价</cashBuyPrice><exBuyPrice>汇买价</exBuyPrice><cashPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSellPrice>钞卖价</cashSellPrice><exSellPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaPriceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>汇卖价</exSellPrice></row></list></stream>] 
+2016-01-20 16:06:26,163 http.util.HttpParse.parse(HttpParse.java:56) [INFO ] [Thread-0] [] - http parse is succ... 
+2016-01-20 16:06:26,169 http.BusiManage.invokeServer(BusiManage.java:57) [INFO ] [Thread-0] [] - BusinessPojo is find msg/cbec\cbec_pay 
+2016-01-20 16:06:26,170 http.service.imp.DataHttpService.service(DataHttpService.java:20) [INFO ] [Thread-0] [] - DataHttpService is begin 
+2016-01-20 16:06:26,172 http.service.imp.DataHttpService.service(DataHttpService.java:36) [DEBUG] [Thread-0] [] - read return xml is <?xml version="1.0" encoding="GBK"?>
+<stream>
+<status>AAAAAAA</status>
+<statusText>status为AAAAAAA代表该请求由系统处理完成</statusText>
+<data>
+<?xml version="1.0" encoding="GBK" ?> 
+<stream>
+		<status>当前交易业务状态码</status>
+		<statusText>当前交易业务状态的说明信息</statusText>
+ 	<tranNo>银行流水号</tranNo> 
+  	<exRate>结售汇汇率</exRate> 
+  	<cnyExAmt>结售汇金额（人民币）</cnyExAmt> 
+  	<fcyExAmt>结售汇金额（外币）</fcyExAmt> 
+  	<e3rdTranNo>第三方支付交易流水号</e3rdTranNo> 
+  	<currencyID>结售汇币别</currencyID> 
+  	<exType>结售汇类型</exType>
+  	<txCode>交易编码</txCode>
+ 	<cbecTime>银行交易时间</cbecTime >
+</stream>
+</data>
+</stream> 
+2016-01-20 16:06:26,173 http.service.imp.DataHttpService.service(DataHttpService.java:38) [INFO ] [Thread-0] [] - DataHttpService is succ... 
+2016-01-20 16:06:26,179 http.BusiManage.invokeServer(BusiManage.java:64) [DEBUG] [Thread-0] [] - http response data is HTTP/1.1 200 OK
+Server: Sunpache 1.0
+Date: Wed Jan 20 16:06:26 CST 2016
+Content-Length: 670
+
+<?xml version="1.0" encoding="GBK"?>
+<stream>
+<status>AAAAAAA</status>
+<statusText>status为AAAAAAA代表该请求由系统处理完成</statusText>
+<data>
+<?xml version="1.0" encoding="GBK" ?> 
+<stream>
+		<status>当前交易业务状态码</status>
+		<statusText>当前交易业务状态的说明信息</statusText>
+ 	<tranNo>银行流水号</tranNo> 
+  	<exRate>结售汇汇率</exRate> 
+  	<cnyExAmt>结售汇金额（人民币）</cnyExAmt> 
+  	<fcyExAmt>结售汇金额（外币）</fcyExAmt> 
+  	<e3rdTranNo>第三方支付交易流水号</e3rdTranNo> 
+  	<currencyID>结售汇币别</currencyID> 
+  	<exType>结售汇类型</exType>
+  	<txCode>交易编码</txCode>
+ 	<cbecTime>银行交易时间</cbecTime >
+</stream>
+</data>
+</stream> 
+2016-01-20 16:06:26,179 http.BusiManage.invokeServer(BusiManage.java:74) [DEBUG] [Thread-0] [] - socket closed. 
