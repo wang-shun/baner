@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe>
+	<inboxs>
+		<inbox>
+			<service name="send1">
+				<url>tcp://localhost:61616</url>
+				<queueName>FirstQueue</queueName>
+				<sessionCounts>5</sessionCounts>
+				<factory></factory>
+			</service>
+		</inbox>
+		<inbox>
+			<service name="send2">
+				<url>tcp://localhost:61616</url>
+				<queueName>FirstQueues</queueName>
+				<sessionCounts>5</sessionCounts>
+				<factory></factory>
+			</service>
+		</inbox>
+	</inboxs>
+	<outboxs>
+		<outbox>
+			<service name="receive">
+				<url>tcp://localhost:61616</url>
+				<queueName>FirstQueue</queueName>
+				<sessionCounts>5</sessionCounts>
+				<factory></factory>
+			</service>
+		</outbox>
+		<outbox>
+			<service name="receive2">
+				<url>tcp://localhost:61616</url>
+				<queueName>FirstQueues</queueName>
+				<sessionCounts>5</sessionCounts>
+				<factory></factory>
+			</service>
+		</outbox>
+	</outboxs>
+</recipe>

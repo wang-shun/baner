@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<formula id="">
+	<include></include>
+	<field name="stream">
+		<format type="virtual"  />
+	</field>
+	<field name="status">
+		<format type="s" length="" default_value="00025" function="" necessary="true" fill_type="" fill_char="0x30" frommsg="true" />
+	</field>
+	<field name="statusText">
+		<format type="s" length="" convert="trancode" frommsg="true" />
+	</field>
+	<field name="data">
+		<format type="xml" length="" convert="trancode" frommsg="true" />
+		<field name="stream">
+			<format type="virtual" />
+		</field>
+		<field name="status">
+			<format type="s"   />
+		</field>
+		<field name="statusText">
+			<format type="s"  />
+		</field>
+	</field>
+	<compositField name="exQuoteList" sizeRef="exQuoteListNum">
+		<field name="row">
+			<format type="virtual" />
+		</field>
+		<field name="currencyID">
+			<format type="s" length="" convert="trancode" necessary="true" />
+		</field>
+		<field name="cashBuyPrice">
+			<format type="s" length="" convert="trancode" necessary="true" />
+		</field>
+	</compositField>
+</formula>

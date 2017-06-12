@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tranfroms>
+	<system id="merchant" from="properties" type="channel" format="xml" encoding="ISO8859-1" >
+		<keyfield>
+			<field name="bankName">
+				<format type="x" length="20" offset="90" />
+			</field>
+		</keyfield>
+	</system>
+	
+	<system id="cbec" from="msg" type="channel" format="xml" encoding="ISO8859-1" >
+		<keyfield>
+			<field name="trancode">
+				<format type="x" length="20" offset="90" />
+			</field>
+		</keyfield>
+	</system>
+</tranfroms>

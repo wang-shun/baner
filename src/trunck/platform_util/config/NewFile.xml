@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<formula id="cbp002_0">
+	<include></include>
+	<field name="bankName">
+		<format type=""  length=""  default_value="00025"  function=""  necessary="true"  fill_type=""  fill_char="0x30" />
+	</field>
+	<field name="e3rdPayNo">
+		<format type="" length="" convert="trancode" />
+	</field>
+	<field name="exQuoteListNum">
+		<format type="" length="" convert="trancode" />
+	</field>
+	<field name="xxx">
+		<format type="" length="" convert="trancode" virtual="true" />
+	</field>
+	<compositField name="exQuoteList" sizeRef="exQuoteListNum">
+		<row>
+			<field name="currencyID">
+				<format type="" length="" convert="trancode" necessary="true" />
+			</field>
+			<field name="cashBuyPrice">
+				<format type="" length="" convert="trancode" necessary="true" />
+			</field>
+		</row>
+	</compositField>
+</formula>

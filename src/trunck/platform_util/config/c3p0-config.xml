@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<!--配置数据源，名称为myApp -->
+	<named-config name="myApp">
+		<!-- 数据库用户名 -->
+		<property name="user">cbpay</property>
+		<!-- 数据库密码 -->
+		<property name="password">cbpay</property>
+		<!-- 驱动类 -->
+		<property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+		<!-- jdbc的url地址 -->
+		<property name="jdbcUrl">jdbc:oracle:thin:@172.30.12.26:1521:msds
+		</property>
+		<!-- 连接池初始化建立的连接数 -->
+		<property name="initialPoolSize">3</property>
+		<!-- 连接池中的最大连接数,当连接池中的连接打到这个数值后，连接池不会再新建连接，而是等到现有连接被释放 -->
+		<property name="maxPoolSize">30</property>
+		<!-- 连接池中的需要保留的最小连接数 -->
+		<property name="minPoolSize">3</property>
+		<!-- 当连接池中不存在空闲连接时，每次新建连接的个数 -->
+		<property name="acquireIncrement">3</property>
+		<!-- 连接最大空闲时间，如果一个连接超过这个时间还没有被使用，数据源将会断开这个链接 ，单位是 s ，设定为 0 时，表示永不过期 -->
+		<property name="maxIdleTime">0</property>
+		<!-- 这项配置的功能是减轻资源池负载，当连接池中的存在多余连接时（现存连接数大于连接池需要保留的最少连接数）时，如果连接空闲时间超过这个设定的时间将会被回收，一直到连接池中连接数等于需要保留的最小连接数为止，单位 
+			是s -->
+		<property name="maxIdleTimeExcessConnections">60</property>
+		<!-- 配置测试空闲连接的间隔时间 ，这项配置保证连接池每过一定时间对空闲连接进行一次测试，解决数据库断开连接的问题，如MySQL8小时无会话将断开连接，单位是s。 -->
+		<property name="idleConnectionTestPeriod">60</property>
+		<!-- 测试sql，连接池将根据这条sql测试测试空闲连接，和前一项配置idleConnectionTestPeriod对应 -->
+		<property name="preferredTestQuery">select 1 from trans_info </property>
+		<!-- 连接池在获取连接失败时，重试的次数，如果小于等于0将会无限重试，一直到获取连接成功 -->
+		<property name="acquireRetryAttempts">30</property>
+		<!-- 连接池获取连接失败后，重新获取连接的时间间隔，单位 ms -->
+		<property name="acquireRetryDelay">1000</property>
+		<!-- 性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的 时候都将校验其有效性。Default: false -->
+		<property name="testConnectionOnCheckout">false</property>
+
+
+
+
+	</named-config>
+</c3p0-config> 
