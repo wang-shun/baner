@@ -8,11 +8,11 @@ import java.security.PrivateKey;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 
-import com.ztkx.cbpay.platformutil.baseUtil.BaseUtil;
-import com.ztkx.cbpay.platformutil.enanddecrypt.Base64Util;
-import com.ztkx.cbpay.platformutil.enanddecrypt.CertificateCoder;
-import com.ztkx.cbpay.platformutil.enanddecrypt.RandomUtil;
-import com.ztkx.cbpay.platformutil.enanddecrypt.ThreeDES;
+import com.ztkx.transplat.platformutil.baseUtil.BaseUtil;
+import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
+import com.ztkx.transplat.platformutil.enanddecrypt.CertificateCoder;
+import com.ztkx.transplat.platformutil.enanddecrypt.RandomUtil;
+import com.ztkx.transplat.platformutil.enanddecrypt.ThreeDES;
 
 public class EnAndDcryTest {
 	public static final int MESSAGE_LENGTH_DIGIT = 6;
@@ -199,13 +199,13 @@ public class EnAndDcryTest {
 		String message = EnAndDcryTest.readFile();
 		String msg = service.formatMessage(message);
 
-		System.out.println("ÃÜÎÄ:\n" + msg);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½:\n" + msg);
 		
 //		String resmsg = "000207E000000000<sessionkey>YKlWYJfuU3xW7pECwTGovlVGfY4ZQvbLAoPRhAO058WS2lGhTUMTl1k37kOxNR+eVmKyQ3Lr4hIV5X2Rb1pjUNxXYuq9S6/TQn6FveaOKhQXdktx2RKFpg/+fYF8tgDYbHgFd76kBBStBJ5+NuuhvVEehizfmey6o0W5IYoIEqs=</sessionkey>ny54ZAcBWsDOE+fx/7Q8kWVWa1XWiOw0nWbBFzpe3h0m5jXbIm8B2JpYXTXCn3SKn9M6scetflHQ+f1TFlGaqyTrBRwGrIx+QCaq5kOSciN5vzjPh0pJa5+qlmP4AS1UuteZhGVtctQpkqZpxOgJFJA7WC5WAog1aCZSJ1uNPbQj43PsIU4bVAUz5n3sK9YCGE+spdsDeGqmPKonPbnMObUSBJ5Kl4QuScd9kA1uiPKdK6fHNhpDhBI0rIbLNNGrdMYkzCsnU2XDc0AfW7W9lTLnN0vCya7tlalfF2Ha+Z9mWYly3/R9ygWNqGr4yGLpcjKGNYWBR2hEJKWJLd1/0CsI/M68cSYGZOljw+ERBq53vVrP8C4PzOEhcIJqzeU1zbvKCIuH4+M4jSPaPg28ki/4B7nPv1LQ/AepE5Rs25806OAnQMjy7h0JopvBxfBYqygPP/+hOIOf2O3ZvGLvvNroPCx+Fl6HOOnQj6pZ/cuN4TtBP5e5TdJPbJ8n12XGgLy6uPLvTGAjfNRKcJ1lZF5mCVggvI6apK/QGIU6h7qOYDRstDzOfb3kBjq6H/KdVOT8XbL8blvIsAZPpKU1jyvgOS3v82v+DjdQMVweNV8SCsU1Et0Krw4uWa4B9S5Sh2SsQZMtS7NiLxrzDaEKOP88Y7P1dO0z";
-		System.err.println("Ã÷ÎÄ:\n" + service.reductionMessage(msg));
+		System.err.println("ï¿½ï¿½ï¿½ï¿½:\n" + service.reductionMessage(msg));
 
-		System.out.println("ÃÜÎÄ:\n" + msg);
-		System.err.println("Ã÷ÎÄ:\n" + service.reductionMessage(msg));
+		System.out.println("ï¿½ï¿½ï¿½ï¿½:\n" + msg);
+		System.err.println("ï¿½ï¿½ï¿½ï¿½:\n" + service.reductionMessage(msg));
 
 		System.out.println("å¯†æ–‡:\n" + msg);
 		System.err.println("æ˜Žæ–‡:\n" + service.reductionMessage(msg));

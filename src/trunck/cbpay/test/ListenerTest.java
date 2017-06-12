@@ -6,9 +6,9 @@ import org.apache.activemq.Message;
 import org.apache.activemq.command.ActiveMQBytesMessage;
 import org.apache.log4j.Logger;
 
-import com.ztkx.cbpay.container.constant.ContainerConstantField;
-import com.ztkx.cbpay.container.msglistener.TempletMsgListener;
-import com.ztkx.cbpay.platformutil.baseconfig.ConstantConfigField;
+import com.ztkx.transplat.container.constant.ContainerConstantField;
+import com.ztkx.transplat.container.msglistener.TempletMsgListener;
+import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 
 public class ListenerTest {
 	static Logger logger = Logger.getLogger(ListenerTest.class);

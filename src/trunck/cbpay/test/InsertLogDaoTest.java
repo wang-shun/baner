@@ -16,8 +16,8 @@ public class InsertLogDaoTest {
 	public void insertLog(String flowNo, String tranDate, String MsgOrder,
 			byte[] msg) {
 		String url = "jdbc:oracle:thin:@172.30.12.26:1521:msds";
-		String username = "cbpay";
-		String password = "cbpay";
+		String username = "transplat";
+		String password = "transplat";
 		Connection connection = null;
 		PreparedStatement ps = null;
 		Statement stmt = null;
