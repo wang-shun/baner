@@ -1,14 +1,5 @@
 package com.ztkx.transplat.container.run.startup;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import com.ztkx.transplat.container.initload.InitLoaderManager;
 import com.ztkx.transplat.container.preload.PreLoadManager;
 import com.ztkx.transplat.container.protocol.ProtocolManager;
@@ -21,6 +12,14 @@ import com.ztkx.transplat.platformutil.context.imp.ContextManager;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import com.ztkx.transplat.platformutil.flowno.FlowNoPoolManager;
 import com.ztkx.transplat.platformutil.threadpool.ThreadPoolManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class OutContainerStartup{
 	
@@ -80,7 +79,7 @@ public class OutContainerStartup{
 		PropertyConfigurator.configure(BaseConfig.getConfig(ConstantConfigField.CONFIGPATH)+log4jProperties);
 		logger.info("load log4j params succ...\n");
 		
-		//初始化上线文pool
+		//初始化上下文pool
 		logger.info("load system context pool start...\n");
 		ContextManager.getInstance();
 		logger.info("load system context pool succ...\n");
