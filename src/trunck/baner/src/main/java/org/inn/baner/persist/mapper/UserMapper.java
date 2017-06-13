@@ -13,8 +13,8 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-import org.inn.baner.persist.example.User;
-import org.inn.baner.persist.example.UserExample;
+import org.inn.baner.bean.User;
+import org.inn.baner.bean.UserExample;
 
 public interface UserMapper {
     /**

@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-import org.inn.baner.persist.example.Post;
-import org.inn.baner.persist.example.PostExample;
+import org.inn.baner.bean.Post;
+import org.inn.baner.bean.PostExample;
 
 public interface PostMapper {
     /**

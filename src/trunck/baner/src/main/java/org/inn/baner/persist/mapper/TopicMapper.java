@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-import org.inn.baner.persist.example.Topic;
-import org.inn.baner.persist.example.TopicExample;
+import org.inn.baner.bean.Topic;
+import org.inn.baner.bean.TopicExample;
 
 public interface TopicMapper {
     /**

@@ -3,10 +3,10 @@ package org.inn.baner.persist.mapper;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.inn.baner.persist.example.Post;
-import org.inn.baner.persist.example.PostExample.Criteria;
-import org.inn.baner.persist.example.PostExample.Criterion;
-import org.inn.baner.persist.example.PostExample;
+import org.inn.baner.bean.Post;
+import org.inn.baner.bean.PostExample.Criteria;
+import org.inn.baner.bean.PostExample.Criterion;
+import org.inn.baner.bean.PostExample;
 
 public class PostSqlProvider {
 

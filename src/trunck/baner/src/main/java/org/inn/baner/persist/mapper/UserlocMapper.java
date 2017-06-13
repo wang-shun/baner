@@ -13,8 +13,8 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-import org.inn.baner.persist.example.Userloc;
-import org.inn.baner.persist.example.UserlocExample;
+import org.inn.baner.bean.Userloc;
+import org.inn.baner.bean.UserlocExample;
 
 public interface UserlocMapper {
     /**

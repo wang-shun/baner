@@ -3,10 +3,10 @@ package org.inn.baner.persist.mapper;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.inn.baner.persist.example.User;
-import org.inn.baner.persist.example.UserExample.Criteria;
-import org.inn.baner.persist.example.UserExample.Criterion;
-import org.inn.baner.persist.example.UserExample;
+import org.inn.baner.bean.User;
+import org.inn.baner.bean.UserExample.Criteria;
+import org.inn.baner.bean.UserExample.Criterion;
+import org.inn.baner.bean.UserExample;
 
 public class UserSqlProvider {
 

@@ -3,10 +3,10 @@ package org.inn.baner.persist.mapper;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.inn.baner.persist.example.Userloc;
-import org.inn.baner.persist.example.UserlocExample.Criteria;
-import org.inn.baner.persist.example.UserlocExample.Criterion;
-import org.inn.baner.persist.example.UserlocExample;
+import org.inn.baner.bean.Userloc;
+import org.inn.baner.bean.UserlocExample.Criteria;
+import org.inn.baner.bean.UserlocExample.Criterion;
+import org.inn.baner.bean.UserlocExample;
 
 public class UserlocSqlProvider {
 

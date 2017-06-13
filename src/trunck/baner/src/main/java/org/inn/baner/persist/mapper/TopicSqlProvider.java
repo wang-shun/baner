@@ -3,10 +3,10 @@ package org.inn.baner.persist.mapper;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.inn.baner.persist.example.Topic;
-import org.inn.baner.persist.example.TopicExample.Criteria;
-import org.inn.baner.persist.example.TopicExample.Criterion;
-import org.inn.baner.persist.example.TopicExample;
+import org.inn.baner.bean.Topic;
+import org.inn.baner.bean.TopicExample.Criteria;
+import org.inn.baner.bean.TopicExample.Criterion;
+import org.inn.baner.bean.TopicExample;
 
 public class TopicSqlProvider {
 

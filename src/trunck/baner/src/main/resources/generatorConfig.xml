@@ -12,22 +12,14 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="org.inn.baner.persist.example" targetProject="src/main/java" />
+		<javaModelGenerator targetPackage="org.inn.baner.bean" targetProject="src/main/java" />
 
 		<sqlMapGenerator targetPackage="org.inn.baner.persist.mapper" targetProject="src/main/java"/>
 
 		<javaClientGenerator targetPackage="org.inn.baner.persist.mapper" implementationPackage="" targetProject="src/main/java" type="ANNOTATEDMAPPER">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
-        <!--<table  tableName="CM_Cardcoupons" >
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyyMMddHH24miss')||cm_cardcoupons_seq.NEXTVAL AS id FROM DUAL" type="pre"/>
-            <columnOverride column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
-            <columnOverride column="updatetime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
-        </table>-->
-		<!--
-		<table  tableName="CM_coupons_distributed" >
-		</table>
-		-->
+
         <table  tableName="post" >
 			<columnOverride column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
 			<columnOverride column="updatetime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
