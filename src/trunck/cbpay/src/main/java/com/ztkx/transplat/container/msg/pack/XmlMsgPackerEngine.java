@@ -1,5 +1,16 @@
 package com.ztkx.transplat.container.msg.pack;
 
+import com.ztkx.transplat.container.constant.ErrorCodeConstant;
+import com.ztkx.transplat.container.util.ContextUtil;
+import com.ztkx.transplat.platformutil.context.CommonContext;
+import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
+import com.ztkx.transplat.platformutil.msg.*;
+import com.ztkx.transplat.platformutil.xml.StreamXmlUtil;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -7,23 +18,6 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-
-import com.ztkx.transplat.container.constant.ErrorCodeConstant;
-import com.ztkx.transplat.container.util.ContextUtil;
-import com.ztkx.transplat.platformutil.context.CommonContext;
-import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
-import com.ztkx.transplat.platformutil.msg.CompositField;
-import com.ztkx.transplat.platformutil.msg.Field;
-import com.ztkx.transplat.platformutil.msg.FieldFormat;
-import com.ztkx.transplat.platformutil.msg.MsgConstantField;
-import com.ztkx.transplat.platformutil.msg.MsgXmlDescriber;
-import com.ztkx.transplat.platformutil.xml.StreamXmlUtil;
 
 public class XmlMsgPackerEngine {
 
@@ -262,7 +256,7 @@ public class XmlMsgPackerEngine {
 		List<Field> fieldList = msgXmlDescriber.getList();
 		String fieldName = null;
 		try {
-			//拆普通字段
+			//组普通字段
 			for (int i = 0; i < fieldList.size(); i++) {
 				Field f = fieldList.get(i);
 				fieldName = f.getName();

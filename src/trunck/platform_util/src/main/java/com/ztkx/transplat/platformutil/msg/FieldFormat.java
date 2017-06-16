@@ -1,8 +1,8 @@
 package com.ztkx.transplat.platformutil.msg;
 
 public class FieldFormat {
-	private String type;
-	private int length;
+	private String type;	//数据类型
+	private int length;		//数据长度
 	private String default_value;
 	private boolean necessary=true;
 	private String function;
@@ -10,20 +10,48 @@ public class FieldFormat {
 	private String convert;
 	private int fill_char=-1;
 	private boolean frommsg=true;		//表示当前字段是否需要从报文中拆出来
-	private int level=-1;				//标签层级
-	
-	
+	private int level=-1;				//标签层级   从1开始，到循环报文里面层级从1开始重新计算
+	private String super_field;			//上级标签
+	private int super_level;			//上级标签的级别
+
+	public boolean isNecessary() {
+		return necessary;
+	}
+
+	public void setNecessary(boolean necessary) {
+		this.necessary = necessary;
+	}
+
+	public int getSuper_level() {
+		return super_level;
+	}
+
+	public void setSuper_level(int super_level) {
+		this.super_level = super_level;
+	}
+
+	public String getSuper_field() {
+		return super_field;
+	}
+
+	public void setSuper_field(String super_field) {
+		this.super_field = super_field;
+	}
+
 	public int getLevel() {
 		return level;
 	}
-	public void setLevel(int level) {
-		this.level = level;
-	}
+
 	public boolean isFrommsg() {
 		return frommsg;
 	}
+
 	public void setFrommsg(boolean frommsg) {
 		this.frommsg = frommsg;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	public String getConvert() {
 		return convert;
@@ -55,12 +83,7 @@ public class FieldFormat {
 	public void setDefault_value(String default_value) {
 		this.default_value = default_value;
 	}
-	public boolean getNecessary() {
-		return necessary;
-	}
-	public void setNecessary(boolean necessary) {
-		this.necessary = necessary;
-	}
+
 	public String getFill_type() {
 		return fill_type;
 	}

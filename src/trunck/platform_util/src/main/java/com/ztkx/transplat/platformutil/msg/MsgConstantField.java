@@ -30,6 +30,7 @@ public class MsgConstantField {
 	public static final String ATTR_NAME="name";	//
 	public static final String ATTR_FROMMSG="frommsg";	//
 	public static final String ATTR_DEFAULT_VALUE="default_value";	//
+	public static final String ATTR_SUPER_FIELD="super_field";	//
 	public static final String ATTR_FILL_CHAR="fill_char";	//
 	public static final String ATTR_FILL_TYPE="fill_type";	//
 	public static final String ATTR_FUNCTION="function";	//
@@ -52,6 +53,7 @@ public class MsgConstantField {
 	public static final String ATTR_TYPE_S="s";	// type属性的s值
 	public static final String ATTR_TYPE_N="n";	// type属性的n值
 	public static final String ATTR_TYPE_XML = "xml"; //type属性的值xml
+	public static final String ATTR_TYPE_JSON = "json"; //type属性的值xml
 	public static final String ATTR_FILL_TYPE_RIGHT="right";	// type属性的n值
 	public static final String ATTR_FILL_TYPE_LEFT="left";	// type属性的n值
 	

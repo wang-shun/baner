@@ -1,7 +1,9 @@
 package com.ztkx.transplat.platformutil.msg;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 报文配置的全流程描述
@@ -11,6 +13,7 @@ public class MsgXmlDescriber {
 	private String id ;
 	private List<String> include = new ArrayList<String>();
 	private List<Field> list = new ArrayList<Field>();
+	private Map<String, Field> virtualMap = new HashMap<>();
 	private CompositField cf = null;
 	private String filePaht = null;		//当前describer映射的xml文件
 	
@@ -48,7 +51,15 @@ public class MsgXmlDescriber {
 	 */
 	public void addField(Field field){
 		list.add(field);
+		if(field.getFieldFormat().getType().equals(MsgConstantField.ATTR_TYPE_VIRTUAL)){
+			virtualMap.put(field.getName()+"_"+field.getFieldFormat().getLevel(),field);
+		}
 	}
+
+	public Field getVirtualField(String name, int level) {
+		return virtualMap.get(name + "_" + level);
+	}
+
 	public CompositField getCf() {
 		return cf;
 	}

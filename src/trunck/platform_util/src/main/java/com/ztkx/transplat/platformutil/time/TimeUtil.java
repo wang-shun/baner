@@ -1,11 +1,11 @@
 package com.ztkx.transplat.platformutil.time;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import org.apache.log4j.Logger;
 
 /**
  * 时间工具类
@@ -69,8 +69,8 @@ public class TimeUtil {
 		Date overTime = new Date(sendTime + timeoutMillisecond);
 		Date nowTime = new Date();
 		if (logger.isDebugEnabled()) {
-			logger.debug("overTime = " + overTime.toGMTString()
-					+ " | nowTime= " + nowTime.toGMTString());
+			logger.debug("overTime = " + overTime.toString()
+					+ " | nowTime= " + nowTime.toString());
 		}
 		if (overTime.after(nowTime)) {
 			return true;

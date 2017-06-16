@@ -24,7 +24,7 @@ public class FieldFormatCheckUtil {
 	}
 	
 	/**
-	 * 完成字段填充
+	 * json报文不需要填充
 	 * @param fieldName
 	 * @param value
 	 * @param ff
@@ -46,7 +46,7 @@ public class FieldFormatCheckUtil {
 	 */
 	public static boolean necessaryCheck(String fieldName,String value,FieldFormat ff){
 		//校验是否必输
-		if(ff.getNecessary()){
+		if(ff.isNecessary()){
 			if(StringUtils.isEmpty(value) || "".equals(value)){
 				logger.error(fieldName + " field is necessary current value is ["+value+"]");
 				return false;

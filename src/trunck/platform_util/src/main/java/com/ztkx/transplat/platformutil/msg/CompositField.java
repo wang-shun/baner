@@ -13,8 +13,26 @@ public class CompositField {
 	private String sizeRef;
 	private List<Field> list = null;
 	private boolean outPut = false;			//组包的时候是否输出到xml报文中
-	
-	
+	private String super_field;			//上级标签
+	private int super_level;			//上级标签的级别
+
+
+	public String getSuper_field() {
+		return super_field;
+	}
+
+	public void setSuper_field(String super_field) {
+		this.super_field = super_field;
+	}
+
+	public int getSuper_level() {
+		return super_level;
+	}
+
+	public void setSuper_level(int super_level) {
+		this.super_level = super_level;
+	}
+
 	public boolean isOutPut() {
 		return outPut;
 	}

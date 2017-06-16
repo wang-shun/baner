@@ -49,8 +49,6 @@ public class XmlParseUtil {
 				int levelInt = Integer.parseInt(level);
 				ff.setLevel(levelInt);
 			}
-			field.setFieldFormat(ff);
-			return field;
 		}
 		
 		String frommsg = formateEle.attributeValue("frommsg");
@@ -94,7 +92,12 @@ public class XmlParseUtil {
 		if(StringUtils.isNotEmpty(convert)){
 			ff.setConvert(convert.trim());
 		}
-		
+
+		String superField = formateEle.attributeValue(MsgConstantField.ATTR_SUPER_FIELD);
+		if(StringUtils.isNotEmpty(superField)){
+			ff.setSuper_field(superField.trim());
+		}
+
 		field.setFieldFormat(ff);
 		
 		return field;
