@@ -10,7 +10,7 @@ import com.ztkx.transplat.reload.ReloadAble;
  * @author zhangxiaoyun
  * @date 2016年6月30日 下午3:54:22
  */
-public interface LoadInitDataInterface extends ReloadAble,DbMapperInterface {
+public interface LoadInitDataInterface extends ReloadAble,TransactionMJDBC {
 	/**
 	 * 初始化的时候加载数据
 	 * 2016年6月30日 下午2:13:18

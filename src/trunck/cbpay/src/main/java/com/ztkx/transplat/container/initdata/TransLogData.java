@@ -3,7 +3,7 @@ package com.ztkx.transplat.container.initdata;
 import org.apache.log4j.Logger;
 
 import com.ztkx.transplat.container.HandlerException;
-import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.container.initload.AbstractTMJDBC;
 import com.ztkx.transplat.container.javabean.TransLog;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 
@@ -12,7 +12,7 @@ import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
  * @author tianguanggzhao
  *
  */
-public class TransLogData extends AbstractDbMapper{
+public class TransLogData extends AbstractTMJDBC {
 	Logger logger = Logger.getLogger(TransLogData.class);
 	private static final String tableName = "TRANS_LOG";
 	

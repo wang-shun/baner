@@ -10,11 +10,11 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.ztkx.transplat.container.constant.ContainerConstantField;
-import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.container.initload.AbstractTMJDBC;
 import com.ztkx.transplat.container.javabean.TransMgsLogStamp;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 
-public class TransMgsLogStampData extends AbstractDbMapper {
+public class TransMgsLogStampData extends AbstractTMJDBC {
 
 	Logger logger = Logger.getLogger(TransMgsLogStampData.class);
 	static Map<String, TransMgsLogStamp> map = new HashMap<String, TransMgsLogStamp>();

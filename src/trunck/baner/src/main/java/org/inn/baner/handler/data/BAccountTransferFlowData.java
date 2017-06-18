@@ -2,7 +2,7 @@ package org.inn.baner.handler.data;
 
 
 import com.ztkx.transplat.container.HandlerException;
-import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.container.initload.AbstractTMJDBC;
 import com.ztkx.transplat.platformutil.db.DBUtil;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import org.apache.log4j.Logger;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @author tianguangzhao
  *
  */
-public class BAccountTransferFlowData extends AbstractDbMapper {
+public class BAccountTransferFlowData extends AbstractTMJDBC {
 
 	Logger logger = Logger.getLogger(BAccountTransferFlowData.class);
 	static String tableName = "B_ACCOUNT_TRANSFER_FLOW";

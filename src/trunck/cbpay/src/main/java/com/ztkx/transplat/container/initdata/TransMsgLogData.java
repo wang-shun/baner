@@ -4,7 +4,7 @@ import java.io.ByteArrayInputStream;
 
 import org.apache.log4j.Logger;
 
-import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.container.initload.AbstractTMJDBC;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import com.ztkx.transplat.platformutil.time.TimeUtil;
 
@@ -14,7 +14,7 @@ import com.ztkx.transplat.platformutil.time.TimeUtil;
  * @author tianguangzhao update by zhangxiaoyun 2016年1月11日14:07:11
  *         1.将blog字段inser修改为一次插入流程,提高效率
  */
-public class TransMsgLogData extends AbstractDbMapper {
+public class TransMsgLogData extends AbstractTMJDBC {
 	static Logger logger = Logger.getLogger(TransMsgLogData.class);
 
 	/**

@@ -59,7 +59,11 @@ public class MybatisUtil {
 
     // 获取数据库session
     public static SqlSession getSqlSession() {
-        return factory.openSession();
+        return getSqlSession(false);
+    }
+
+    public static SqlSession getSqlSession(boolean autoCommit) {
+        return factory.openSession(autoCommit);
     }
 
     // 释放数据库连接

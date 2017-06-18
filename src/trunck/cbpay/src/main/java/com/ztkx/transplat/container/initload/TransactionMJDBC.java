@@ -7,12 +7,12 @@ import com.ztkx.transplat.container.HandlerException;
 
 
 /**
- * @ClassName: DbMapperInterface
- * @Description:平台启动加载表数据
+ * @ClassName: TransactionMJDBC
+ * @Description:jdbc事物管理工具接口
  * @author zhangxiaoyun
  * @date 2016年6月30日 下午2:09:24
  */
-public interface DbMapperInterface {
+public interface TransactionMJDBC {
 	
 	/**
 	 * 获取初始化数据库链接

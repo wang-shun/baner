@@ -2,7 +2,7 @@ package org.inn.baner.handler.data;
 
 
 import com.ztkx.transplat.container.HandlerException;
-import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.container.initload.AbstractTMJDBC;
 import com.ztkx.transplat.platformutil.db.DBUtil;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import org.apache.log4j.Logger;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public class BMerchantPermissionData extends AbstractDbMapper {
+public class BMerchantPermissionData extends AbstractTMJDBC {
 
 	Logger logger = Logger.getLogger(BMerchantPermissionData.class);
 	private String tableName = " b_merchant_permission ";

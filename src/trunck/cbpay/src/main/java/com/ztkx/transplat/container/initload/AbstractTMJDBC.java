@@ -10,7 +10,7 @@ import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 
 
 
-public abstract class AbstractDbMapper implements DbMapperInterface {
+public abstract class AbstractTMJDBC implements TransactionMJDBC {
 
 	public Connection connection = null;
 	public PreparedStatement psmt = null;
