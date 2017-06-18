@@ -1,12 +1,10 @@
 package org.inn.baner.handler.data;
 
-import com.ztkx.cbpay.business.bean.BAccountTransferFlow;
-import com.ztkx.cbpay.business.constant.BusinessConstantField;
-import com.ztkx.cbpay.container.HandlerException;
-import com.ztkx.cbpay.container.initload.AbstractDbMapper;
-import com.ztkx.cbpay.platformutil.db.DBUtil;
-import com.ztkx.cbpay.platformutil.db.c3p0.DataSourceUtil;
-import com.ztkx.cbpay.platformutil.time.TimeUtil;
+
+import com.ztkx.transplat.container.HandlerException;
+import com.ztkx.transplat.container.initload.AbstractDbMapper;
+import com.ztkx.transplat.platformutil.db.DBUtil;
+import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;

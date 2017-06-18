@@ -1,16 +1,14 @@
 package org.inn.baner.handler.data;
 
-import com.ztkx.cbpay.business.bean.BForeignCurrencyRate;
-import com.ztkx.cbpay.container.HandlerException;
-import com.ztkx.cbpay.container.initload.AbstractDbMapper;
-import com.ztkx.cbpay.platformutil.db.DBUtil;
-import com.ztkx.cbpay.platformutil.db.c3p0.DataSourceUtil;
+
+
+import com.ztkx.transplat.container.initload.AbstractDbMapper;
 import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
 
-public class BForeignCurrencyRateData extends AbstractDbMapper{
+public class BForeignCurrencyRateData extends AbstractDbMapper {
 
 	Logger logger = Logger.getLogger(BForeignCurrencyRateData.class);
 	
