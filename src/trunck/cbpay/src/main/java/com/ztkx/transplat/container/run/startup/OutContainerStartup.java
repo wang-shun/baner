@@ -10,6 +10,7 @@ import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.imp.ContextManager;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
+import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
 import com.ztkx.transplat.platformutil.flowno.FlowNoPoolManager;
 import com.ztkx.transplat.platformutil.threadpool.ThreadPoolManager;
 import org.apache.log4j.Logger;
@@ -98,6 +99,11 @@ public class OutContainerStartup{
 		logger.info("load system db pool start...\n");
 		DataSourceUtil.getInstance();
 		logger.info("load system db pool succ...\n");
+
+		//初始化业务数据库连接池
+		logger.info("load business db pool start...\n");
+		MybatisUtil.getInstance();
+		logger.info("load business db pool succ...\n");
 		
 		//启动加载基础数据
 		logger.info("load system initloader start...\n");
