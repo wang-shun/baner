@@ -34,6 +34,7 @@ public class JsonMsgPackerEngine {
 
         //key 为fieldName_2这样
         Map<String, Map<String, Object>> virtualMap = new HashMap<>();
+
         Map<Integer, List<Field>> virtualFieldMap = new HashMap<>();
         try {
             //组普通字段
