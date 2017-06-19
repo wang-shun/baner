@@ -22,6 +22,10 @@ public class TimeUtil {
 
 	}
 
+	public static String dateFormate(String formate,Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat(formate);
+		return sdf.format(date);
+	}
 	/**
 	 * 获取当前时间
 	 * @param pattern 时间格式

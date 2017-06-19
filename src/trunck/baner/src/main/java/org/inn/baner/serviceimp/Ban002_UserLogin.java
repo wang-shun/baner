@@ -12,39 +12,41 @@ import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.UserData;
 
 /**
- * 用户注册
+ * 用户登录
  * @author zhangxiaoyun
- * 2017-06-19
+ * 2016-3-15 16:24:11
  * <p>Company:ztkx</p>
  */
-public class Ban001_UserRegist implements BusinessService {
+public class Ban002_UserLogin implements BusinessService {
 
-	private Logger logger = Logger.getLogger(Ban001_UserRegist.class);
+	private Logger logger = Logger.getLogger(Ban002_UserLogin.class);
 
 	@Override
 	public CommonContext service(CommonContext context) throws ServiceException {
 
 		String mobileno = context.getFieldStr(Ban.mobileno, CommonContext.SCOPE_GLOBAL);
-		String nickName = context.getFieldStr(Ban.nickname, CommonContext.SCOPE_GLOBAL);
 		String passwd = context.getFieldStr(Ban.passwd, CommonContext.SCOPE_GLOBAL);
 
 		logger.info("mobileno [" + mobileno + "]");
-		logger.info("nickName [" + nickName + "]");
 		logger.info("passwd [" + passwd + "]");
+
 		UserData userData = null;
 		try {
-			User user = new User();
-			user.setMobileno(mobileno);
-			user.setNickname(nickName);
-			user.setPasswd(passwd);
 
 			userData = new UserData();
-			userData.insertRecord(user);
-			logger.info("user regist succ");
+			User user = userData.qryByMobile(mobileno);
+			if (!user.getPasswd().equals(passwd)) {
+				logger.warn("user pwd error ["+BErrorCode.PWDERROR.desc+"]");
+				ContextUtil.setErrorCode(BErrorCode.PWDERROR.code, context);
+			}else{
+				logger.info("user regist succ");
+			}
+
+			context.setFieldStr(Ban.nickname,user.getNickname(),CommonContext.SCOPE_GLOBAL);
 
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
-			logger.error("buss service exec exception ["+BErrorCode.FAIL.desc+"]",e);
+			logger.error("buss service exec exception ",e);
 		}
 		return context;
 	}

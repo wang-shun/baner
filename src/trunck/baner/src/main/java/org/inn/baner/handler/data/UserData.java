@@ -7,12 +7,6 @@ import org.apache.log4j.Logger;
 import org.inn.baner.bean.User;
 import org.inn.baner.persist.mapper.UserMapper;
 
-/**
- * 操作账户划转信息表数据的类
- *
- * @author tianguangzhao
- *
- */
 public class UserData extends AbstractTMMybatis {
 
 	Logger logger = Logger.getLogger(UserData.class);
@@ -38,5 +32,25 @@ public class UserData extends AbstractTMMybatis {
 		}finally {
 			relaceResource();
 		}
+	}
+
+	public User qryByMobile(String mobileno) throws HandlerException {
+		User user = null;
+		try {
+			//初始化sqlSession
+			getSqlSession();
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			user = userMapper.selectByPrimaryKey(mobileno);
+
+			if (logger.isDebugEnabled()) {
+				logger.debug("qry table " + tableName + " success");
+			}
+		} catch (HandlerException e) {
+			logger.error("exec sql error", e);
+			throw new HandlerException(e);
+		}finally {
+			relaceResource();
+		}
+		return user;
 	}
 }

@@ -346,4 +346,30 @@ public class CbpayContext implements CommonContext {
 		return localContainer;
 	}
 
+	@Override
+	public Integer getInt(String key, String scope) {
+
+		if (scope.equals(SCOPE_LOCAL) && localContainer.containsKey(key)) {
+			return  (Integer)localContainer.get(key);
+		} else if (scope.equals(SCOPE_GLOBAL)	&& globalContainer.containsKey(key)) {
+			return (Integer) globalContainer.get(key);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public Integer getInt(String key) {
+		return getInt(key, SCOPE_LOCAL);
+	}
+
+	@Override
+	public void setInt(String key, Integer val, String scope) {
+		setObj(key, val, scope);
+	}
+
+	@Override
+	public void setInt(String key, Integer val) {
+		setObj(key, val);
+	}
 }

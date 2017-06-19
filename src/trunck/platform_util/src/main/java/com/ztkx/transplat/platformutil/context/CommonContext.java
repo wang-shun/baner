@@ -230,4 +230,40 @@ public interface CommonContext extends Serializable {
 	 * @param value
 	 */
 //	public void setResMsgField(String value);
+
+	/**
+	 * 从指定区域已对象的形式获取值
+	 *
+	 * @param key
+	 * @param scope
+	 *            区域
+	 * @return
+	 */
+	public Integer getInt(String key, String scope);
+
+	/**
+	 * 默认从SCOPE_LOCAL区域获取值
+	 *
+	 * @param key
+	 * @return
+	 */
+	public Integer getInt(String key);
+	/**
+	 * 从指定区域已对象的形式获取值
+	 *
+	 * @param key
+	 * @param scope
+	 *            区域
+	 * @return
+	 * String key, byte[] val, String scope
+	 */
+	public void setInt(String key, Integer val,String scope);
+
+	/**
+	 * 默认从SCOPE_LOCAL区域获取值
+	 *
+	 * @param key
+	 * @return
+	 */
+	public void setInt(String key, Integer val);
 }
