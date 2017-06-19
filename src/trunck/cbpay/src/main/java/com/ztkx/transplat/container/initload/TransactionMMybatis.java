@@ -19,7 +19,7 @@ public interface TransactionMMybatis {
 	 * @return
 	 * @throws HandlerException
      */
-	public SqlSession getSqlConnection() throws HandlerException;
+	public SqlSession getSqlSession() throws HandlerException;
 
 	/**
 	 * 获取sqlsession同时这是是否自动提交
@@ -27,7 +27,7 @@ public interface TransactionMMybatis {
 	 * @return
 	 * @throws HandlerException
      */
-	public SqlSession getSqlConnection(Boolean autoCommit) throws HandlerException;
+	public SqlSession getSqlSession(Boolean autoCommit) throws HandlerException;
 	/**
 	 * 将外面的sqlSession传进来
 	 * @param sqlSession

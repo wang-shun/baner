@@ -20,7 +20,7 @@ public abstract class AbstractTMMybatis implements TransactionMMybatis {
 	private boolean isRelaseConn = true;	//是否释放链接  默认释放
 
 	@Override
-	public SqlSession getSqlConnection() throws HandlerException{
+	public SqlSession getSqlSession() throws HandlerException{
 		if(sqlSession==null){
 			sqlSession = MybatisUtil.getSqlSession();
 		}
@@ -28,7 +28,7 @@ public abstract class AbstractTMMybatis implements TransactionMMybatis {
 	}
 
 	@Override
-	public SqlSession getSqlConnection(Boolean autoCommit) throws HandlerException{
+	public SqlSession getSqlSession(Boolean autoCommit) throws HandlerException{
 		if(sqlSession==null){
 			sqlSession = MybatisUtil.getSqlSession(autoCommit);
 		}
