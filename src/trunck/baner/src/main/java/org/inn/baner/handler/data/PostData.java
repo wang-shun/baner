@@ -6,12 +6,12 @@ import com.ztkx.transplat.container.initload.AbstractTMMybatis;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
 import org.inn.baner.bean.PostExample;
-import org.inn.baner.bean.Topic;
-import org.inn.baner.bean.TopicExample;
+import org.inn.baner.constant.Ban;
 import org.inn.baner.persist.mapper.PostMapper;
-import org.inn.baner.persist.mapper.TopicMapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PostData extends AbstractTMMybatis {
 
@@ -40,5 +40,52 @@ public class PostData extends AbstractTMMybatis {
 			relaceResource();
 		}
 		return postList;
+	}
+
+	public int zan(int topicid,int postid) throws HandlerException {
+		List<Post> postList = null;
+		int res = -1;
+		try {
+			//初始化sqlSession
+			getSqlSession();
+			Map<String, Object> para = new HashMap<>();
+			para.put(Ban.topicid, topicid);
+			para.put(Ban.postid, postid);
+
+			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapper.zan",para);
+			if (logger.isDebugEnabled()) {
+				logger.debug("update table " + tableName + " success update row  size ["+res+"]");
+			}
+		} catch (HandlerException e) {
+			logger.error("exec sql error", e);
+			throw new HandlerException(e);
+		}finally {
+			relaceResource();
+		}
+		return res;
+	}
+
+	public int cancleZan(int topicid,int postid) throws HandlerException {
+		List<Post> postList = null;
+		int res = -1;
+		try {
+			//初始化sqlSession
+			getSqlSession();
+			Map<String, Object> para = new HashMap<>();
+			para.put(Ban.topicid, topicid);
+			para.put(Ban.postid, postid);
+
+			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapper.cancleZan",para);
+
+			if (logger.isDebugEnabled()) {
+				logger.debug("update table " + tableName + " success update row  size ["+res+"]");
+			}
+		} catch (HandlerException e) {
+			logger.error("exec sql error", e);
+			throw new HandlerException(e);
+		}finally {
+			relaceResource();
+		}
+		return res;
 	}
 }
