@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 /**
- * gzip 进行压缩和解压缩的工具类
+ * gzip 杩涜鍘嬬缉鍜岃В鍘嬬缉鐨勫伐鍏风被
  * @author tianguangzhao
  *
  */
 public class GzipUtil {
 
 	/**
-	 * 加压方法
+	 * 鍔犲帇鏂规硶
 	 *
-	 * @param sourBytes，待压缩的byte[]
-	 * @return 压缩后的 byte[]
+	 * @param sourBytes锛屽緟鍘嬬缉鐨刡yte[]
+	 * @return 鍘嬬缉鍚庣殑 byte[]
 	 * @throws IOException
 	 */
 	public static byte[] compress(byte[] sourBytes) throws IOException {
@@ -32,10 +32,10 @@ public class GzipUtil {
 	}
 
 	/**
-	 * 解压方法，解压后按照行，封装成list
+	 * 瑙ｅ帇鏂规硶锛岃В鍘嬪悗鎸夌収琛岋紝灏佽鎴恖ist
 	 *
-	 * @param bytes 待解压的byte[]
-	 * @return 解压后的byte[]
+	 * @param bytes 寰呰В鍘嬬殑byte[]
+	 * @return 瑙ｅ帇鍚庣殑byte[]
 	 * @throws IOException
 	 */
 	public static List<String> uncompressToList(byte[] bytes) throws IOException {
@@ -57,13 +57,13 @@ public class GzipUtil {
 	}
 
 	/**
-	 * 将原byte[]解压为字符串
-	 * @param bytes 待解压的byte[]
-	 * @return 解压后得到的byte[]
+	 * 灏嗗師byte[]瑙ｅ帇涓哄瓧绗︿覆
+	 * @param bytes 寰呰В鍘嬬殑byte[]
+	 * @return 瑙ｅ帇鍚庡緱鍒扮殑byte[]
 	 * @throws IOException
 	 */
 	public static byte[] uncompressToBytes (byte[] bytes) throws IOException{
-		//如果传入的参数为空，则直接返回null
+		//濡傛灉浼犲叆鐨勫弬鏁颁负绌猴紝鍒欑洿鎺ヨ繑鍥瀗ull
 		if (bytes == null || bytes.length == 0) {
           return null;
 		} else {
@@ -76,7 +76,7 @@ public class GzipUtil {
 				while ((n = gunzip.read(buffer)) >= 0) {
 					out.write(buffer, 0, n);
 				}
-				// toString()使用平台默认编码，也可以显式的指定如toString(GBK)
+				// toString()浣跨敤骞冲彴榛樿缂栫爜锛屼篃鍙互鏄惧紡鐨勬寚瀹氬toString(GBK)
 				return out.toByteArray();
 			} catch (IOException e) {
 				throw e;

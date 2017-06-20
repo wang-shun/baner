@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * ´Ë¹¤¾ßÀàÓÃÓÚ¼ÆËãhashÖµ£¬·µ»ØÏàÓ¦µÄ×Ö·û´®
+ * æ­¤å·¥å…·ç±»ç”¨äºè®¡ç®—hashå€¼ï¼Œè¿”å›ç›¸åº”çš„å­—ç¬¦ä¸²
  * @author tianguangzhao
  *
  */
@@ -17,10 +17,10 @@ public class HashUtil {
 	static Logger logger = Logger.getLogger(HashUtil.class);
 
 	/**
-	 * Í¨¹ıSHA¼ÆËãhashÖµ
+	 * é€šè¿‡SHAè®¡ç®—hashå€¼
 	 *
-	 * @param data Ô­Êı¾İ
-	 * @param type  hashcodeÀàĞÍ
+	 * @param data åŸæ•°æ®
+	 * @param type  hashcodeç±»å‹
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
@@ -31,13 +31,13 @@ public class HashUtil {
 		} else {
 			try {
 				MessageDigest messageDigest = MessageDigest.getInstance(type);
-				// ´«ÈëÒª¼ÓÃÜµÄ×Ö·û´®
+				// ä¼ å…¥è¦åŠ å¯†çš„å­—ç¬¦ä¸²
 				if (StringUtils.isEmpty(encode)) {
 					messageDigest.update(data.getBytes());
 				} else {
 					messageDigest.update(data.getBytes(encode));
 				}
-				// µÃµ½ÀàĞÍ½á¹û
+				// å¾—åˆ°ç±»å‹ç»“æœ
 				bytes = messageDigest.digest();
 			} catch (NoSuchAlgorithmException e) {
 				logger.error("type error !",e);

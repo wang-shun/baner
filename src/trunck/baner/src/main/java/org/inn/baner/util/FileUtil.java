@@ -8,12 +8,12 @@ import java.util.List;
 
 public class FileUtil {
 	/**
-	 * ¸ù¾İÄÚÈİÒÔ×Ö·ûÁ÷µÄ·½Ê½Ğ´ÎÄ¼ş
+	 * æ ¹æ®å†…å®¹ä»¥å­—ç¬¦æµçš„æ–¹å¼å†™æ–‡ä»¶
 	 * @param fileName
 	 * @param content
 	 * @param encoding
 	 * @throws IOException
-	 * 2016Äê3ÔÂ25ÈÕ ÉÏÎç9:43:24
+	 * 2016å¹´3æœˆ25æ—¥ ä¸Šåˆ9:43:24
 	 * @author zhangxiaoyun
 	 */
 	public static void writeFile(String fileName,List<String> content,String encoding) throws IOException{
@@ -24,7 +24,7 @@ public class FileUtil {
 				bw.write(content.get(i));
 
 				if(i<(content.size()-1)){
-					//×îºóÒ»ĞĞ²»Ğ´»Ø³µ»»ĞĞ
+					//æœ€åä¸€è¡Œä¸å†™å›è½¦æ¢è¡Œ
 					bw.newLine();
 				}
 			}
@@ -38,12 +38,12 @@ public class FileUtil {
 
 
 	/**
-	 * ¸ù¾İÄÚÈİÒÔ×Ö·ûÁ÷µÄ·½Ê½Ğ´ÎÄ¼ş
+	 * æ ¹æ®å†…å®¹ä»¥å­—ç¬¦æµçš„æ–¹å¼å†™æ–‡ä»¶
 	 * @param fileName
 	 * @param content
 	 * @param encoding
 	 * @throws IOException
-	 * 2016Äê3ÔÂ25ÈÕ ÉÏÎç9:43:24
+	 * 2016å¹´3æœˆ25æ—¥ ä¸Šåˆ9:43:24
 	 * @author zhangxiaoyun
 	 */
 	public static void writeFile(String fileName,List<String> content) throws IOException{
@@ -54,7 +54,7 @@ public class FileUtil {
 				bw.write(content.get(i));
 
 				if(i<(content.size()-1)){
-					//×îºóÒ»ĞĞ²»Ğ´»Ø³µ»»ĞĞ
+					//æœ€åä¸€è¡Œä¸å†™å›è½¦æ¢è¡Œ
 					bw.newLine();
 				}
 			}
@@ -67,7 +67,7 @@ public class FileUtil {
 	}
 //	public static void main(String[] args) throws IOException {
 //		List<String> content = new ArrayList<String>();
-//		String name = "¹ş¹ş¹ş¹ş¹ş¹ş¹ş¹ş¹ş¹ş¹ş";
+//		String name = "å“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆ";
 //		StringBuilder sb  = new StringBuilder();
 //		sb.append(new String(name.getBytes(),"GBK"));
 //		content.add(sb.toString());
