@@ -1,9 +1,9 @@
 package com.ztkx.transplat.platformutil.context;
 
+import com.ztkx.transplat.platformutil.context.imp.CommonSDO;
+
 import java.io.Serializable;
 import java.util.Map;
-
-import com.ztkx.transplat.platformutil.context.imp.CommonSDO;
 
 /**
  * 交易上下文公共接口
@@ -266,4 +266,6 @@ public interface CommonContext extends Serializable {
 	 * @return
 	 */
 	public void setInt(String key, Integer val);
+
+	public <T> T getBean(Class<T> clazz);
 }

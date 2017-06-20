@@ -1,13 +1,13 @@
 package com.ztkx.transplat.platformutil.context.imp;
 
+import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
+import com.ztkx.transplat.platformutil.context.CommonContext;
+import org.apache.commons.lang.StringUtils;
+
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.commons.lang.StringUtils;
-
-import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
-import com.ztkx.transplat.platformutil.context.CommonContext;
 
 /**
  * 上下文容器的第一个实现
@@ -371,5 +371,23 @@ public class CbpayContext implements CommonContext {
 	@Override
 	public void setInt(String key, Integer val) {
 		setObj(key, val);
+	}
+
+	@Override
+	public <T> T getBean(Class<T> clazz){
+		T obj = null;
+		try {
+			obj = clazz.newInstance();
+			Field[] fields = clazz.getDeclaredFields();
+			for (Field field : fields) {
+				field.setAccessible(true);
+				field.set(obj, getObj(field.getName(), CommonContext.SCOPE_GLOBAL));
+			}
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return obj;
 	}
 }
