@@ -15,14 +15,14 @@ public class UserLocData extends AbstractTMMybatis {
 	static String tableName = "userloc";
 
 	/**
-	 * 插入用户位置信息
+	 * 鎻掑叆鐢ㄦ埛浣嶇疆淇℃伅
 	 * @param userloc
 	 * @throws HandlerException
      */
 	public int insertRecord(Userloc userloc) throws HandlerException {
 		int res = -1;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			UserlocMapper userlocMapper = sqlSession.getMapper(UserlocMapper.class);
 			res = userlocMapper.insert(userloc);
@@ -41,7 +41,7 @@ public class UserLocData extends AbstractTMMybatis {
 	public User qryByMobile(String mobileno) throws HandlerException {
 		User user = null;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			user = userMapper.selectByPrimaryKey(mobileno);

@@ -21,7 +21,7 @@ public class PostData extends AbstractTMMybatis {
 	public List<Post> qryByTopicId(int topicid) throws HandlerException {
 		List<Post> postList = null;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 
 			PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
@@ -46,7 +46,7 @@ public class PostData extends AbstractTMMybatis {
 		List<Post> postList = null;
 		int res = -1;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			Map<String, Object> para = new HashMap<>();
 			para.put(Ban.topicid, topicid);
@@ -69,7 +69,7 @@ public class PostData extends AbstractTMMybatis {
 		List<Post> postList = null;
 		int res = -1;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			Map<String, Object> para = new HashMap<>();
 			para.put(Ban.topicid, topicid);

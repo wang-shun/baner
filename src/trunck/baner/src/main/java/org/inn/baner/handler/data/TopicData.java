@@ -6,9 +6,7 @@ import com.ztkx.transplat.container.initload.AbstractTMMybatis;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Topic;
 import org.inn.baner.bean.TopicExample;
-import org.inn.baner.bean.User;
 import org.inn.baner.persist.mapper.TopicMapper;
-import org.inn.baner.persist.mapper.UserMapper;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class TopicData extends AbstractTMMybatis {
 	public List<Topic> qryAll() throws HandlerException {
 		List<Topic> topicList = null;
 		try {
-			//≥ı ºªØsqlSession
+			//ÂàùÂßãÂåñsqlSession
 			getSqlSession();
 
 			TopicMapper topicMapper = sqlSession.getMapper(TopicMapper.class);

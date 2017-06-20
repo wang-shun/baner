@@ -13,13 +13,13 @@ public class UserData extends AbstractTMMybatis {
 	static String tableName = "user";
 
 	/**
-	 * 插入用户信息
+	 * 鎻掑叆鐢ㄦ埛淇℃伅
 	 * @param user
 	 * @throws HandlerException
      */
 	public void insertRecord(User user) throws HandlerException {
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			int count = userMapper.insert(user);
@@ -37,7 +37,7 @@ public class UserData extends AbstractTMMybatis {
 	public User qryByMobile(String mobileno) throws HandlerException {
 		User user = null;
 		try {
-			//初始化sqlSession
+			//鍒濆鍖杝qlSession
 			getSqlSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			user = userMapper.selectByPrimaryKey(mobileno);
