@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.sql.*;
 
 /**
  * 数据源工具类
@@ -32,7 +31,7 @@ public class MybatisUtil {
         if (factory == null) {
             try {
                 logger.info("mybatis configuration file is " + (filePath + fileName));
-                InputStream inputStream = new FileInputStream(filePath);
+                InputStream inputStream = new FileInputStream(filePath+fileName);
                 SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
                 SqlSessionFactory factory = builder.build(inputStream);
                 // 获取数据源信息，数据库名称，URL，最大线程数等；
