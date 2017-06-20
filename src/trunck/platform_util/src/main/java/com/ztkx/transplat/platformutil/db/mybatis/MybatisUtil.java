@@ -23,7 +23,7 @@ public class MybatisUtil {
     private static SqlSessionFactory factory = null;
     // mybatis配置文件目录
     private String fileName = ConstantConfigField.DB_MYBATISCONFIGFILE;
-    private String filePath = BaseConfig.getConfig(ConstantConfigField.CONFIGPATH) + File.separator + "dbpool" + File.separator;
+    private String filePath = BaseConfig.getConfig(ConstantConfigField.CONFIGPATH) + "dbpool" + File.separator;
     static Logger logger = Logger.getLogger(MybatisUtil.class);
 
     // 构造方法中初始化数据库连接池
@@ -36,7 +36,7 @@ public class MybatisUtil {
                 SqlSessionFactory factory = builder.build(inputStream);
                 // 获取数据源信息，数据库名称，URL，最大线程数等；
             } catch (Exception e) {
-                logger.error("create SqlSessionFactory error !", e);
+                logger.error("create SqlSessionFactory error", e);
             }
         }
     }

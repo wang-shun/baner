@@ -1,16 +1,15 @@
 package com.ztkx.transplat.container.initdata;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.initload.AbstractLoadInit;
 import com.ztkx.transplat.container.javabean.SystemDict;
 import com.ztkx.transplat.invokerexecutor.InvokerExecutor;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
+import org.apache.log4j.Logger;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * 系统参数配置表（console模块使用）
  * @author tianguangzhao
@@ -61,9 +60,9 @@ public class SystemDictData extends AbstractLoadInit implements InvokerExecutor{
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				SystemDict systemDict = new SystemDict();
-		        systemDict.setKey(rs.getString("KEY")); 
-		        systemDict.setDesc(rs.getString("DESC"));
-		        systemDict.setName(rs.getString("NAME"));
+		        systemDict.setKey(rs.getString("keyvalue"));
+		        systemDict.setDesc(rs.getString("description"));
+		        systemDict.setName(rs.getString("namevalue"));
 		        systemDict.setType(rs.getString("TYPE"));
 		        //将记录封装到map中。
 		        target.put(systemDict.getKey(), systemDict);
