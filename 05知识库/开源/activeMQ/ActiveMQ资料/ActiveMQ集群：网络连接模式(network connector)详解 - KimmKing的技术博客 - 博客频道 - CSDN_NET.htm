@@ -1,0 +1,1265 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0054)http://blog.csdn.net/kimmking/article/details/8440150/ -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ActiveMQ集群：网络连接模式(network connector)详解 - KimmKing的技术博客 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="状态转移方程是dp[i][j]=max(dp[i][j],dp[i-1][k]+inc[i][j]-co[k][j]);#include#includeint dp[105][105];//第i天在j城市的最大收入int inc[105][105];//i天在j城市的收入int co[105][105];//从i城市到j城市花费int main(){&#9;int m,n;&#9;whil">
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/KimmKing/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/kimmking">KimmKing的技术博客</A></H2>
+<H3>我看不清的,何止是你的眼睛.</H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/kimmking?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/kimmking?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/kimmking/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "KimmKing";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/kimmking";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://huiyi.csdn.net/activity/product/goods_list?project_id=2741"><FONT 
+color=red>2016软考项目经理实战班 </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://edu.csdn.net/yearPromotion"><FONT color=blue>学院周年礼-顶尖课程钜惠呈现 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/blogdevteam/article/details/50495973"><FONT 
+color=red>有奖征文：在云上开发的无限可能 </FONT>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/dba_huangzj/article/details/50469185"><FONT 
+color=blue>【博客专家】有奖试读—Windows PowerShell实战指南 </FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/kimmking/article/details/8440150">ActiveMQ集群：网络连接模式(network 
+connector)详解 </A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_r><SPAN class=link_postdate>2012-12-30 17:53</SPAN> <SPAN 
+class=link_view title=阅读次数>15916人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/kimmking/article/details/8440150/#comments">评论</A>(8)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('ActiveMQ集群：网络连接模式(network connector)详解','8440150');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(8440150,2);return false;" 
+href="http://blog.csdn.net/kimmking/article/details/8440150/#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('1293901','KimmKing','top','8440150');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">JMS/MQ<EM>（39）</EM></SPAN> 
+<IMG style="DISPLAY: inline" class=arrow-down 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+<IMG style="DISPLAY: none" class=arrow-up 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/KimmKing/article/category/1293901">作者同类文章</A><I 
+class=J_close>X</I></DIV>
+<UL id=top_1293901 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class=bog_copyright>
+<P class=copyright_p>版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content>
+<P align=center><SPAN style="FONT-SIZE: 24px">ActiveMQ集群：网络连接模式(network 
+connector)详解</SPAN></P>
+<P align=right>kimmking@163.com</P>
+<P align=right>2012-12-26</P>
+<H1>网络连接模式(network connector)</H1>
+<P>针对海量消息所要求的横向扩展性和系统的高可用性，ActiveMQ提供了网络连接模式的集群功能。简单的说，就是通过把多个不同的broker实例连接在一起，作为一个整体对外提供服务，从而提高整体对外的消息服务能力。通过这种方式连接在一起的broker实例之间，可以共享队列和消费者列表，从而达到分布式队列的目的。</P>
+<H2>拓扑结构</H2>
+<P>几种不同的ActiveMQ部署拓扑结构（嵌入、主从复制、网络连接）：</P>
+<P><IMG alt="" 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/BrokerTopology-1.png"><SPAN 
+style="BACKGROUND: white"><A 
+href="http://activemq.org/BrokerTopology.pdf"></A></SPAN></P>
+<H2>配置示例</H2>
+<P>在activemq.xml的broker节点内添加：</P>
+<P align=left><SPAN style="COLOR: #000091">&lt;networkConnectors&gt;</SPAN></P>
+<P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN 
+style="COLOR: #000091">&lt;networkConnectoruri=</SPAN><SPAN 
+style="COLOR: #009100">"static:(tcp://localhost:62001)"</SPAN><SPAN 
+style="COLOR: #000091">/&gt;</SPAN></P>
+<P align=left><SPAN style="COLOR: #000091">&lt;/networkConnectors&gt;</SPAN></P>
+<P>uri也可以使用其他两种方式：</P><PRE><SPAN style="COLOR: #009100">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN><SPAN style="COLOR: #009100">multicast://default</SPAN></PRE><PRE><SPAN style="COLOR: #009100">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN><SPAN style="COLOR: #009100">masterslave:(tcp://host1:61616,tcp://host2:61616,tcp://..)</SPAN></PRE>
+<P>其中masterslave方式的第一个url需要是master，其他是slave。</P>
+<P>一个broker的实例内可以配置多个networkConnector，如果有两个以上的networkConnector指向同一个broker，则需要显式的指定name。</P>
+<H2>静态URI配置</H2>
+<P>使用静态URI方式可以指定多个URL，networkConnector将连接到每一个broker。</P><PRE><SPAN style="COLOR: #000091">&lt;networkConnectors&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;networkConnector uri=</SPAN><SPAN style="COLOR: #009100">"static:(tcp://host1:61616,tcp://host2:61616,tcp://..)"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE><SPAN style="COLOR: #000091">&lt;/networkConnectors&gt;</SPAN></PRE>
+<P>URI的几个属性：</P>
+<TABLE style="BACKGROUND: white" border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>属性</STRONG></P></TD>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>默认值</STRONG></P></TD>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>描述</STRONG></P></TD></TR>
+  <TR>
+    <TD>
+      <P align=left>initialReconnectDelay</P></TD>
+    <TD>
+      <P align=left>1000</P></TD>
+    <TD>
+      <P align=left>重连之前等待的时间(ms) (如果useExponentialBackOff为 false)</P></TD></TR>
+  <TR>
+    <TD>
+      <P align=left>maxReconnectDelay</P></TD>
+    <TD>
+      <P align=left>30000</P></TD>
+    <TD>
+      <P align=left>重连之前等待的最大时间(ms)</P></TD></TR>
+  <TR>
+    <TD>
+      <P align=left>useExponentialBackOff</P></TD>
+    <TD>
+      <P align=left>true</P></TD>
+    <TD>
+      <P align=left>每次重连失败时是否增大等待时间</P></TD></TR>
+  <TR>
+    <TD>
+      <P align=left>backOffMultiplier</P></TD>
+    <TD>
+      <P align=left>2</P></TD>
+    <TD>
+      <P align=left>增大等待时间的系数</P></TD></TR></TBODY></TABLE>
+<H2>networkConnector配置</H2>
+<H3>配置参数</H3>
+<TABLE style="BACKGROUND: white" border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>属性</STRONG></P></TD>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>默认值</STRONG></P></TD>
+    <TD style="BACKGROUND: #f0f0f0">
+      <P align=center><STRONG>描述</STRONG></P></TD></TR>
+  <TR>
+    <TD>
+      <P>name</P></TD>
+    <TD>
+      <P>bridge</P></TD>
+    <TD>
+      <P>名称</P></TD></TR>
+  <TR>
+    <TD>
+      <P>dynamicOnly</P></TD>
+    <TD>
+      <P>false</P></TD>
+    <TD>
+      <P>如果为true, 持久订阅被激活时才创建对应的网路持久订阅。默认是启动时激活。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>decreaseNetworkConsumerPriority</P></TD>
+    <TD>
+      <P>false</P></TD>
+    <TD>
+      <P>如果为true，网络的消费者优先级降低为-5。如果为false，则默认跟本地消费者一样为0.</P></TD></TR>
+  <TR>
+    <TD>
+      <P>networkTTL</P></TD>
+    <TD>
+      <P>1</P></TD>
+    <TD>
+      <P>消息和订阅在网络上通过的broker数量</P></TD></TR>
+  <TR>
+    <TD>
+      <P><SPAN style="COLOR: red">conduitSubscriptions</SPAN></P></TD>
+    <TD>
+      <P><SPAN style="COLOR: red">true</SPAN></P></TD>
+    <TD>
+      <P><SPAN style="COLOR: red">多个网络消费者是否被当做一个消费者来对待。</SPAN></P></TD></TR>
+  <TR>
+    <TD>
+      <P>excludedDestinations</P></TD>
+    <TD>
+      <P>empty</P></TD>
+    <TD>
+      <P>不通过网络转发的destination</P></TD></TR>
+  <TR>
+    <TD>
+      <P>dynamicallyIncludedDestinations</P></TD>
+    <TD>
+      <P>empty</P></TD>
+    <TD>
+      <P>通过网络转发的destinations，注意空列表代表所有的都转发。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>staticallyIncludedDestinations</P></TD>
+    <TD>
+      <P>empty</P></TD>
+    <TD>
+      <P>匹配的都将通过网络转发-即使没有对应的消费者</P></TD></TR>
+  <TR>
+    <TD>
+      <P><SPAN style="COLOR: red">duplex</SPAN></P></TD>
+    <TD>
+      <P><SPAN style="COLOR: red">false</SPAN></P></TD>
+    <TD>
+      <P><SPAN style="COLOR: red">如果为true</SPAN>，则既可消费又可生产消息到网络broker</P></TD></TR>
+  <TR>
+    <TD>
+      <P>prefetchSize</P></TD>
+    <TD>
+      <P>1000</P></TD>
+    <TD>
+      <P>设置网络消费者的<A title="What is the prefetch limit for" 
+      href="http://activemq.apache.org/what-is-the-prefetch-limit-for.html"><SPAN 
+      style="COLOR: #880055">prefetch 
+      size</SPAN></A>参数。必须大于0，因为网络消费者不能自己轮询消息。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>suppressDuplicateQueueSubscriptions</P></TD>
+    <TD>
+      <P>false</P></TD>
+    <TD>
+      <P>(从5.3版本开始) 如果为true, 重复的订阅关系一产生即被阻止。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>bridgeTempDestinations</P></TD>
+    <TD>
+      <P>true</P></TD>
+    <TD>
+      <P>是否广播advisory messages来创建临时destination。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>alwaysSyncSend</P></TD>
+    <TD>
+      <P>false</P></TD>
+    <TD>
+      <P>(从 5.6版本开始) 
+    如果为true，非持久化消息也将使用request/reply方式代替oneway方式发送到远程broker。</P></TD></TR>
+  <TR>
+    <TD>
+      <P>staticBridge</P></TD>
+    <TD>
+      <P>false</P></TD>
+    <TD>
+      <P>(从5.6版本开始) 
+      如果为true，只有staticallyIncludedDestinations中配置的destination可以被处理。</P></TD></TR></TBODY></TABLE>
+<P>networkConnector的实现原理是基于ActiveMQ的公告消息（AdvisoryMessage）机制的（参见<A 
+href="http://activemq.apache.org/advisory-message.html">此处</A>）。当broker2通过networkConnector、duplex方式指向broker1时，发生了什么呢？</P>
+<P>假定broker1已经启动，这时候broker2开始启动。</P>
+<P>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;broker2先启动自己的connector</P>
+<P>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后使用一个vm的connector，创建一个connection，把自己作为一个client，连接到broker1。</P>
+<P>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过订阅Advisory 
+Message，拿到相互的Consumer与相应的Queue列表。</P>
+<P>至此，双方建立关系。</P>
+<P>然后通过broker1的转发，broker1上的消费者，就可以消费broker2的queue上的消息。这个过程可以看做一个消息被消费了两次，broker1作为消费者，消费掉broker2上的消息，broker1再作为broker，把消息投递给实际的消费者。</P>
+<P align=center><IMG alt="" 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/1356515314_5094.jpg"></P>
+<H3>管道订阅(conduit subscription)</H3>
+<P>conduitSubscriptions选择决定网络消费者在所有消费者中的比重。假如有2个同一个远程的broker1上的网络消费者和一个broker2的本地消费者。</P>
+<P>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conduitSubscriptions为true，则2个网络消费者只相当于一个消费者，broker1仅仅在broker2上注册了一个消费者。这时往broker2上发送300个消息，2个网络消费者各接收到75个消息，一个本地消费者接收到150 
+消息。</P>
+<P>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conduitSubscriptions为false，则3个消费者平分所有消息，broker1在broker2上将注册了两个消费者。这时往broker2上发送300个消息，2个网络消费者和本地消费者一样，各接收到100个消息。</P>
+<H3>双向网络连接(duplex networkConnector) </H3>
+<P>默认NetworkConnector在需要转发消息时是单向连接的。当duplex=true时，就变成了双向连接，这时配置在broker2端的指向broker1的duplex 
+networkConnector，相当于即配置了</P>
+<P>broker2到broker1的网络连接，也配置了broker1到broker2的网络连接。（就是说不管broker1同意与否，都被绑架了。）当然，仅仅在broker1上配置也有同样的效果。</P>
+<P>注意：可以在两个broker间建立两个以上的双向网络连接来增加吞吐量或对主题\队列分区，只需要指定他们使用不同的name即可。</P>
+<H3>指定和限制Destination</H3>
+<P>通过NetworkConnector共享的destination太多，传输的Advisory 
+Message就会变的非常多，系统的拓扑结构将变得非常复杂，所有才有多种方式来限制这些destination配置：</P>
+<P>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dynamicallyIncludedDestinations</P>
+<P>ü&nbsp; 这里匹配到的destination，在需要时将被转发</P>
+<P>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludedDestinations</P>
+<P>ü&nbsp; 这里匹配到的destination，将不会被转发</P>
+<P>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;staticallyIncludedDestinations</P>
+<P>ü&nbsp; 
+如果指定了staticBridge为true，则只有这里匹配的destination可以被转发。此时本地broker完全被其他broker代理。并且本broker不会订阅其他broker上的AdvisoryMessage，也不会获取任何远程consumer信息。</P>
+<P>这几个配置可以使用通配符，比如“&gt;”，详见<A 
+href="http://activemq.apache.org/wildcards.html">wildcard</A>。</P>
+<P>示例代码：</P><PRE><SPAN style="COLOR: #000091">&lt;networkConnectors&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;networkConnector uri=<SPAN style="COLOR: #009100">"static:(tcp://localhost:61617)"</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name=<SPAN style="COLOR: #009100">"bridge"</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; conduitSubscriptions=<SPAN style="COLOR: #009100">"true"</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decreaseNetworkConsumerPriority=<SPAN style="COLOR: #009100">"false"</SPAN>&gt;</PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;dynamicallyIncludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;queue physicalName=</SPAN><SPAN style="COLOR: #009100">"include.test.foo"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;topic physicalName=</SPAN><SPAN style="COLOR: #009100">"include.test.bar"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;/dynamicallyIncludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;excludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;queue physicalName=</SPAN><SPAN style="COLOR: #009100">"exclude.test.foo"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;topic physicalName=</SPAN><SPAN style="COLOR: #009100">"exclude.test.bar"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;/excludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;staticallyIncludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;queue physicalName=</SPAN><SPAN style="COLOR: #009100">"always.include.queue"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;topic physicalName=</SPAN><SPAN style="COLOR: #009100">"always.include.topic"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <SPAN style="COLOR: #000091">&lt;/staticallyIncludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/networkConnector&gt;</SPAN></PRE><PRE>&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/networkConnectors&gt;</SPAN></PRE>
+<P>此外，从5.6版本起，可以在networkConnector上设置destinationFilter来指定感兴趣的Advisory 
+Message将被传播。</P><PRE><SPAN style="COLOR: #000091">&lt;networkConnector uri=</SPAN><SPAN style="COLOR: #009100">"static:(tcp://host)"</SPAN><SPAN style="COLOR: #000091"> destinationFilter=</SPAN><SPAN style="COLOR: #009100">"Queue.include.test.foo,ActiveMQ.Advisory.Consumer.Topic.include.test.bar"</SPAN><SPAN style="COLOR: #000091">&gt;</SPAN></PRE><PRE> &nbsp;<SPAN style="COLOR: #000091">&lt;dynamicallyIncludedDestinations&gt;</SPAN></PRE><PRE>&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;queue physicalName=</SPAN><SPAN style="COLOR: #009100">"include.test.foo"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;topic physicalName=</SPAN><SPAN style="COLOR: #009100">"include.test.bar"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE> &nbsp;<SPAN style="COLOR: #000091">&lt;/dynamicallyIncludedDestinations&gt;</SPAN></PRE><PRE><SPAN style="COLOR: #000091">&lt;/networkConnector&gt;</SPAN></PRE>
+<H3>被卡住的消息</H3>
+<P>一个很有意思的场景是，broker1和broker2通过networkConnector连接。一些个consumers连接到broker1，消费broker2上的消息。消息先被broker1从broker2上消费掉，然后转发给这些consumers。不幸的是转发部分消息的时候broker1重启了，这些consumers发现broker1连接失败，通过failover连接到broker2上去了，但是有一部分他们还没有消费的消息被broker2已经分发到了broker1上去了。这些消息，就好像是消失了，除非有消费者重新连接到broker1上来消费。怎么办呢？</P>
+<P>办法就是从5.6版本destinationPolicy上新增的选项replayWhenNoConsumers。这个选项使得broker1上有需要转发的消息但是没有消费者时，把消息回流到它原始的broker。同时把enableAudit设置为false，为了防止消息回流后被当做重复消息而不被分发。</P><PRE><SPAN style="COLOR: #000091">&lt;destinationPolicy&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;policyMap&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;policyEntries&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;policyEntry queue=</SPAN><SPAN style="COLOR: #009100">"TEST.&gt;</SPAN><SPAN style="COLOR: #000091">"</SPAN> &gt;</PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;conditionalNetworkBridgeFilterFactory </SPAN><SPAN style="COLOR: red">replayWhenNoConsumers=</SPAN><SPAN style="COLOR: red">"true"</SPAN><SPAN style="COLOR: red"> enableAudit=</SPAN><SPAN style="COLOR: red">"false"</SPAN><SPAN style="COLOR: #000091">/&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/policyEntry&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/policyEntries&gt;</SPAN></PRE><PRE>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/policyMap&gt;</SPAN></PRE><PRE>&nbsp;&nbsp; &nbsp;<SPAN style="COLOR: #000091">&lt;/destinationPolicy&gt;</SPAN></PRE>
+<P>更详细的讨论见这里：</P>
+<P><A 
+href="http://tmielke.blogspot.de/2012/03/i-have-messages-on-queue-but-they-dont.html">http://tmielke.blogspot.de/2012/03/i-have-messages-on-queue-but-they-dont.html</A></P>
+<H3>其他说明</H3>
+<P>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NetworkConnector基于AdvisoryMessage机制，如果broker的advisorySupport选型被禁用，则NetworkConnector将不起作用。</P>
+<P>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用作转发的broker中入列出列这些统计信息只记录其转发的数据。</P>
+<P>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用作转发的broker中无法看到远程broker的相同队列中的数据（browse消息列表为空，queuesize为0）。</P>
+<H2>使用示例</H2>
+<P>下载ActiveMQ 5.7版本，其中带了包含static network connector的例子。</P>
+<P>即配置文件activemq-static-network-broker1.xml和activemq-static-network-broker2.xml。</P>
+<P>他们分别使用端口 tcp://localhost:61616和tcp://localhost:61618</P>
+<P>static network connector在第二个文件里。</P>
+<P>分别使用这两个配置文件启动两个broker实例（先启动broker1，再启动broker2）。</P>
+<P>在broker2的控制台看到：</P>
+<P><EM><SPAN style="COLOR: #bfbfbf">INFO | Establishing network connection 
+fromvm://static-broker2?async=false&amp;network=true to 
+tcp://localhost:61616</SPAN></EM></P>
+<P><EM><SPAN style="COLOR: #bfbfbf">&nbsp;INFO |Connector vm://static-broker2 
+Started</SPAN></EM></P>
+<P><EM><SPAN style="COLOR: #bfbfbf">&nbsp;INFO |Network Connector 
+DiscoveryNetworkConnector:NC:BrokerService[static-broker2]Started</SPAN></EM></P>
+<P><EM><SPAN style="COLOR: #bfbfbf">&nbsp;INFO |Apache ActiveMQ 5.7.0 
+(static-broker2, ID:kimmking-2270-1356502079016-0:1)started</SPAN></EM></P>
+<P><EM><SPAN style="COLOR: #bfbfbf">&nbsp;INFO |For help or more information 
+please see: http://activemq.apache.org</SPAN></EM></P>
+<P><EM><SPAN style="COLOR: #bfbfbf">&nbsp;INFO |Network connection between 
+vm://static-broker2#0 andtcp://localhost/127.0.0.1:61616 @2271(static-broker1) 
+has been established.</SPAN></EM></P>
+<P>在broker1的控制台看到：</P>
+<P><EM><SPAN style="COLOR: #bfbfbf">INFO | Network connection 
+betweenvm://static-broker1#0 and tcp:///127.0.0.1:1710@61616 (static-broker2) 
+has beenestablished.</SPAN></EM></P>
+<P>在命令行输入jconsole，然后分别通过下列url连接jmx控制台来管理broker：</P>
+<P>ü&nbsp; service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi</P>
+<P>ü&nbsp; service:jmx:rmi:///jndi/rmi://localhost:1100/jmxrmi</P>
+<P>也可以再这两个xml中配置jetty来使用web控制台查看和管理。</P>
+<P>然后可以通过代码在两个broker中通过static network connector存取消息。</P>
+<P><IMG alt="" 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/1356515345_1663.jpg"><IMG 
+alt="" 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/1356515352_3637.jpg"><BR></P>
+<P>测试代码：</P>
+<P></P><PRE class=java name="code">package org.qsoft.activemq.test;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueReceiver;
+import javax.jms.QueueSession;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQQueue;
+
+public class TestReceiver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			// init connection factory with activemq
+			QueueConnectionFactory factoryA = new ActiveMQConnectionFactory("tcp://127.0.0.1:61616");
+			// specify the destination
+			Queue queueB = new ActiveMQQueue("kk.b");
+			// create connection,session,consumer and receive message
+			QueueConnection connA = factoryA.createQueueConnection();
+			connA.start();
+			
+			// first receiver on broker1
+			QueueSession sessionA1 = connA.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+			QueueReceiver receiverA1 = sessionA1.createReceiver(queueB);
+			final AtomicInteger aint1 = new AtomicInteger(0);
+			MessageListener listenerA1 = new MessageListener(){
+				public void onMessage(Message message) {
+					try {
+						System.out.println(aint1.incrementAndGet()+" =&gt; A1 receive from kk.b: " + ((TextMessage)message).getText());
+					} catch (JMSException e) {
+						e.printStackTrace();
+					}
+				}};
+			receiverA1.setMessageListener(listenerA1 );
+			
+			// second receiver on broker1
+			QueueSession sessionA2 = connA.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+			QueueReceiver receiverA2 = sessionA2.createReceiver(queueB);
+			final AtomicInteger aint2 = new AtomicInteger(0);
+			MessageListener listenerA2 = new MessageListener(){
+				public void onMessage(Message message) {
+					try {
+						System.out.println(aint2.incrementAndGet()+" =&gt; A2 receive from kk.b: " + ((TextMessage)message).getText());
+					} catch (JMSException e) {
+						e.printStackTrace();
+					}
+				}};
+			receiverA2.setMessageListener(listenerA2 );
+			
+			// a fake one on broker1
+			QueueReceiver receiverA3 = sessionA2.createReceiver(queueB);
+			final AtomicInteger aint3 = new AtomicInteger(0);
+			MessageListener listenerA3 = new MessageListener(){
+				public void onMessage(Message message) {
+					try {
+						System.out.println(aint3.incrementAndGet()+" =&gt; A3 receive from kk.b: " + ((TextMessage)message).getText());
+					} catch (JMSException e) {
+						e.printStackTrace();
+					}
+				}};
+			receiverA3.setMessageListener(listenerA3 );
+			
+			QueueConnectionFactory factoryB = new ActiveMQConnectionFactory("tcp://127.0.0.1:61618");
+			Queue queueB1 = new ActiveMQQueue("kk.b");
+			QueueConnection connB = factoryB.createQueueConnection();
+			connB.start();
+			
+			// one receiver on broker2
+			QueueSession sessionB1 = connB.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+			QueueReceiver receiverB1 = sessionB1.createReceiver(queueB);
+			final AtomicInteger bint1 = new AtomicInteger(0);
+			MessageListener listenerB1 = new MessageListener(){
+				public void onMessage(Message message) {
+					try {
+						System.out.println(bint1.incrementAndGet()+" =&gt; B1 receive from kk.b: " + ((TextMessage)message).getText());
+					} catch (JMSException e) {
+						e.printStackTrace();
+					}
+				}};
+				receiverB1.setMessageListener(listenerB1 );
+			
+			// producer  on broker2
+			QueueSession sessionBp = connB.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+			MessageProducer producer = sessionBp.createProducer(queueB1);
+			int index = 0;
+			while(index++&lt;300){
+				TextMessage message = sessionBp.createTextMessage(index + " from kk.b on broker2");
+				producer.send(message);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+
+	}
+
+}
+</PRE><BR><BR>
+<P></P></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/kimmking/article/details/8440150/#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.14--><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="8440150">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>7 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>0 </DD></DL></DIV>
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/kimmking/article/details/8447517';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/kimmking/article/details/8447517">ActiveMQ的断线重连机制</A> 
+  </LI>
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/kimmking/article/details/8502069';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/kimmking/article/details/8502069">ActiveMQ的kahadb写入消息性能测试（包括SSD硬盘）</A> 
+  </LI></UL>
+<DIV style="HEIGHT: 10px; CLEAR: both"></DIV>
+<DIV style="DISPLAY: none" class=similar_article>
+<H4>我的同类文章</H4>
+<DIV style="MARGIN: 20px 0px 0px" class=similar_c>
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN style="CURSOR: pointer" 
+onclick="GetCategoryArticles('1293901','KimmKing','foot','8440150');">JMS/MQ<EM>（39）</EM></SPAN> 
+</LABEL></DIV>
+<DIV style="MAX-HEIGHT: 195px" class="similar_wrap tracking-ad" 
+data-mod="popu_141"><A style="DISPLAY: none" 
+href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('1293901', 'KimmKing','foot','8440150');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/KimmKing/svc/GetSuggestContent/8440150",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8440150",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'ActiveMQ集群：网络连接模式(network connector)详解' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '8440150';
+    var commentscount = 8;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/KimmKing/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/KimmKing" target=_blank><IMG 
+  style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/1_kimmking.png"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/KimmKing" 
+  target=_blank>KimmKing</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=KimmKing','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV 
+  style="WIDTH: 60px; BACKGROUND: url(http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png) no-repeat; HEIGHT: 60px; CURSOR: pointer" 
+  class=ico_expert title=CSDN认证专家 
+  onclick="javascript:location='http://blog.csdn.net/experts/rule.html'"></DIV>
+  <DIV id=bms_box><A target=_blank><IMG onmouseover=m_over_m(this,4) 
+  onmouseout=m_out_m() alt=2 
+  src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/chizhiyiheng.png"> 
+  </A></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>797449次</SPAN> 
+    <LI>积分：<SPAN>9898</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/blog6.png"> 
+
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：9898 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>第903名</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>144篇</SPAN> </LI>
+    <LI>转载：<SPAN>21篇</SPAN> </LI>
+    <LI>译文：<SPAN>3篇</SPAN> </LI>
+    <LI>评论：<SPAN>522条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>博客专栏</SPAN></UL>
+<UL id=sp_column class=panel_body>
+  <TABLE cellSpacing=0 cellPadding=0>
+    <TBODY>
+    <TR>
+      <TD 
+      style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; PADDING-TOP: 10px"><A 
+        href="http://blog.csdn.net/column/details/activemq.html" 
+        target=_blank><IMG style="WIDTH: 75px; HEIGHT: 75px" 
+        src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/20151123175511036"></A> 
+      </TD>
+      <TD 
+      style="PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: top; PADDING-TOP: 10px"><A 
+        href="http://blog.csdn.net/column/details/activemq.html" 
+        target=_blank>ActiveMQ技术详解</A> 
+        <P>文章：30篇</P><SPAN>阅读：232787</SPAN> </TD></TR></TBODY></TABLE></UL></DIV>
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/294188">.net</A><SPAN>(16)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/294189">java</A><SPAN>(15)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293866">SOA</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293865">ESB</A><SPAN>(9)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293901">JMS/MQ</A><SPAN>(40)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/517923">前端与js技术</A><SPAN>(12)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/294190">数据库技术</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/507659">office开发技术</A><SPAN>(10)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/342475">JSF相关技术</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1285472">POI相关技术</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293868">我的作品</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1292664">开源框架推荐</A><SPAN>(9)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293867">算法与数据结构</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293871">搜索技术</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293875">web框架技术</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293872">报表图表技术</A><SPAN>(16)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293873">文档处理技术</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293874">ActiveX技术</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293898">XML处理</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1293896">二维码与图像图形处理</A><SPAN>(11)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1294085">UI技术</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1292663">创业相关</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/508084">程序人生</A><SPAN>(10)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/508083">乱七八糟</A><SPAN>(9)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1374330">移动开发</A><SPAN>(8)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1419785">scala</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1560609">构建工具</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1637699">weixin</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/1836647">项目管理</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2214879">shiro</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2752313">智能设备</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2835413">nodejs</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2874079">RPC</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2894929">浏览器</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2894931">webkit</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2894933">swing</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/KimmKing/article/category/2897599">git</A><SPAN>(1)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2015/12">2015年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2015/02">2015年02月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2015/01">2015年01月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/12">2014年12月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/06">2014年06月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/05">2014年05月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/04">2014年04月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/03">2014年03月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/02">2014年02月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2014/01">2014年01月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/12">2013年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/10">2013年10月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/09">2013年09月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/08">2013年08月</A><SPAN>(11)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/07">2013年07月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/06">2013年06月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/05">2013年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/04">2013年04月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/03">2013年03月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/02">2013年02月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2013/01">2013年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2012/12">2012年12月</A><SPAN>(45)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2012/11">2012年11月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2011/06">2011年06月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2009/02">2009年02月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2009/01">2009年01月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2008/12">2008年12月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2008/06">2008年06月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2008/05">2008年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2008/01">2008年01月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/10">2007年10月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/09">2007年09月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/08">2007年08月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/07">2007年07月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/06">2007年06月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/05">2007年05月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/KimmKing/article/month/2007/04">2007年04月</A><SPAN>(3)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=拉卡拉手机刷卡器音频通讯技术原理初步分析 
+  href="http://blog.csdn.net/kimmking/article/details/8712161">拉卡拉手机刷卡器音频通讯技术原理初步分析</A><SPAN>(28384)</SPAN> 
+
+  <LI><A title=ActiveMQ传输文件的几种方式原理与优劣 
+  href="http://blog.csdn.net/kimmking/article/details/8351451">ActiveMQ传输文件的几种方式原理与优劣</A><SPAN>(22610)</SPAN> 
+
+  <LI><A title=网页生成pdf文件。（html转pdf）(带效果图) 
+  href="http://blog.csdn.net/kimmking/article/details/2029351">网页生成pdf文件。（html转pdf）(带效果图)</A><SPAN>(21995)</SPAN> 
+
+  <LI><A title=使用ActiveMQ+MQTT实现Android点对点消息通知 
+  href="http://blog.csdn.net/kimmking/article/details/17449019">使用ActiveMQ+MQTT实现Android点对点消息通知</A><SPAN>(19660)</SPAN> 
+
+  <LI><A title=VS平台账号注册机--源码--详细文档--分析-原理-实现 
+  href="http://blog.csdn.net/kimmking/article/details/3630678">VS平台账号注册机--源码--详细文档--分析-原理-实现</A><SPAN>(16856)</SPAN> 
+
+  <LI><A title=ActiveMQ的断线重连机制 
+  href="http://blog.csdn.net/kimmking/article/details/8447517">ActiveMQ的断线重连机制</A><SPAN>(16406)</SPAN> 
+
+  <LI><A title="ActiveMQ集群：网络连接模式(network connector)详解" 
+  href="http://blog.csdn.net/kimmking/article/details/8440150">ActiveMQ集群：网络连接模式(network 
+  connector)详解</A><SPAN>(15883)</SPAN> 
+  <LI><A title=ActiveMQ的集群与高可用 
+  href="http://blog.csdn.net/kimmking/article/details/13768367">ActiveMQ的集群与高可用</A><SPAN>(15605)</SPAN> 
+
+  <LI><A title=谈谈程序员的绩效考核 
+  href="http://blog.csdn.net/kimmking/article/details/9946319">谈谈程序员的绩效考核</A><SPAN>(15045)</SPAN> 
+
+  <LI><A title=晒晒76的一个朋友在北京月入7000的生活 
+  href="http://blog.csdn.net/kimmking/article/details/3910311">晒晒76的一个朋友在北京月入7000的生活</A><SPAN>(12961)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=晒晒76的一个朋友在北京月入7000的生活 
+  href="http://blog.csdn.net/kimmking/article/details/3910311">晒晒76的一个朋友在北京月入7000的生活</A><SPAN>(81)</SPAN> 
+
+  <LI><A title=谈谈程序员的绩效考核 
+  href="http://blog.csdn.net/kimmking/article/details/9946319">谈谈程序员的绩效考核</A><SPAN>(39)</SPAN> 
+
+  <LI><A title=猫扑：模范中国丈夫与传统日本妻子 
+  href="http://blog.csdn.net/kimmking/article/details/3791248">猫扑：模范中国丈夫与传统日本妻子</A><SPAN>(30)</SPAN> 
+
+  <LI><A title=网页生成pdf文件。（html转pdf）(带效果图) 
+  href="http://blog.csdn.net/kimmking/article/details/2029351">网页生成pdf文件。（html转pdf）(带效果图)</A><SPAN>(21)</SPAN> 
+
+  <LI><A title=使用ActiveMQ+MQTT实现Android点对点消息通知 
+  href="http://blog.csdn.net/kimmking/article/details/17449019">使用ActiveMQ+MQTT实现Android点对点消息通知</A><SPAN>(14)</SPAN> 
+
+  <LI><A title="生成彩色二维码（渐变色、插入图片和文字）2 反锯齿" 
+  href="http://blog.csdn.net/kimmking/article/details/8247222">生成彩色二维码（渐变色、插入图片和文字）2 
+  反锯齿</A><SPAN>(14)</SPAN> 
+  <LI><A title=聊聊什么是创业 
+  href="http://blog.csdn.net/kimmking/article/details/42871017">聊聊什么是创业</A><SPAN>(13)</SPAN> 
+
+  <LI><A title=生成彩色二维码（渐变色、插入图片和文字） 
+  href="http://blog.csdn.net/kimmking/article/details/8245205">生成彩色二维码（渐变色、插入图片和文字）</A><SPAN>(12)</SPAN> 
+
+  <LI><A title=JMS介绍：我对JMS的理解和认识 
+  href="http://blog.csdn.net/kimmking/article/details/6577021">JMS介绍：我对JMS的理解和认识</A><SPAN>(12)</SPAN> 
+
+  <LI><A title=.net实现3D饼图 
+  href="http://blog.csdn.net/kimmking/article/details/1637039">.net实现3D饼图</A><SPAN>(12)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/19127153#comments">ActiveMQ的消息重试机制</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/huey2672">huey2672</A>: 
+  “消息先由broker发送给consumer，consumer调用listener，如果处理失败，本... </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/43197665#comments">聊聊分布式事务</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/dev_test">dev_test</A>: 不错的解决方案！ </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/43910121#comments">windows7下cygwin+vs2013编译webkit源码</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/limj625">limj625</A>: -bash: ./update-webkit: 
+  /usr/bin/perl: 解释器错误: Perm... </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/8351451#comments">ActiveMQ传输文件的几种方式原理与优劣</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/zhanghongjie0302">zhanghongjie0302</A>: 拜读了！ </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/8307382#comments">[开源框架推荐]Icepdf：纯java的pdf文档的提取和转换库</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/tesiaqing">tesiaqing</A>: 
+  pdf中添加、修改或删除批注信息这个功能你是怎么定位文本内容的文字的 </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/8245205#comments">生成彩色二维码（渐变色、插入图片和文字）</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/qq_33412527">qq_33412527</A>: 楼主，能否给下二维码生成软件，谢谢！ 
+  </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/17449019#comments">使用ActiveMQ+MQTT实现Android点对点消息通知</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/flykarry">flykarry</A>: @wang_shuwei:我也在考虑这个问题 </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/50189221#comments">AngularJS实战第一章</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/zhangguofeng123">zhangguofeng123</A>: 
+  写的非常好，条理清晰，环环相扣 </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/50189221#comments">AngularJS实战第一章</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u012944319">u012944319</A>: 已收藏，非常好 </P>
+  <LI><A 
+  href="http://blog.csdn.net/kimmking/article/details/50189221#comments">AngularJS实战第一章</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/qq_32181551">qq_32181551</A>: 攒 
+</P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ集群：网络连接模式(network%20connector)详解%20-%20KimmKing的技术博客%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

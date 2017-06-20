@@ -1,0 +1,1249 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0058)http://blog.csdn.net/redarmy_chen/article/details/12969219 -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>使用Dom4j解析XML - redarmychen的专栏 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<SCRIPT id=allmobilize charset=utf-8 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/allmobilize.min.js"></SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content=为了在你用户界面上添加Android自带的View，你可以在一个XML元素中指定这个View，并通过它相应的元素属性控制该View的外观和行为。写得好的自定义View一样可以通过XML添加和设置样式，为了能够为您的自定义View添加这些行为，你必须：1.&nbsp;资源元素中为你的View自定义属性；2.在你的XML布局中为这个属性指定相应的值；3.在程序运行时取回属性值；4.在你的Vi>
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/redarmy_chen/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/redarmy_chen">redarmychen的专栏</A></H2>
+<H3>国家的竞争力在于人才，而培养人才的根本是教育!</H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/redarmy_chen?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/redarmy_chen?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/redarmy_chen/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "redarmy_chen";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/redarmy_chen";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://edu.csdn.net/app"><FONT color=red>学院APP首次下载，可得50C币！ 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bbs.csdn.net/topics/391876796"><FONT color=blue>欢迎来帮助开源“进步” 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bss.csdn.net/m/topic/cuanke_vote"><FONT color=red>当讲师？爱学习？投票攒课吧 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/atlassian2013/article/details/50291561"><FONT 
+color=blue>认识Atlassian Datacenter产品 </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/blogdevteam/article/details/49758609"><FONT 
+color=red>【获奖公告】有奖试读—增长黑客 </FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/redarmy_chen/article/details/12969219">使用Dom4j解析XML 
+</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_r><SPAN class=link_postdate>2013-10-23 12:06</SPAN> <SPAN 
+class=link_view title=阅读次数>95052人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/redarmy_chen/article/details/12969219#comments">评论</A>(35)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('使用Dom4j解析XML','12969219');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(12969219,2);return false;" 
+href="http://blog.csdn.net/redarmy_chen/article/details/12969219#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('1698661','redarmy_chen','top','12969219');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">XML<EM>（2）</EM></SPAN> 
+<IMG style="DISPLAY: inline" class=arrow-down 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+<IMG style="DISPLAY: none" class=arrow-up 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/redarmy_chen/article/category/1698661">作者同类文章</A><I 
+class=J_close>X</I></DIV>
+<UL id=top_1698661 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class=bog_copyright>
+<P class=copyright_p>版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp;dom4j是一个Java的XML API，类似于jdom，用来读写XML文件的。dom4j是一个非常非常优秀的Java 
+XML API，具有性能优异、功能强大和极端易用使用的特点，同时它也是一个开放源代码的</SPAN><A 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(19,110,194); FONT-SIZE: 14px; TEXT-DECORATION: none" 
+href="http://baike.baidu.com/view/37.htm" target=_blank>软件</A><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">，可以在SourceForge上找到它.</SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp;对主流的Java XML 
+API进行的性能、功能和易用性的评测，dom4j无论在那个方面都是非常出色的。如今你可以看到越来越多的Java</SPAN><A 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(19,110,194); FONT-SIZE: 14px; TEXT-DECORATION: none" 
+href="http://baike.baidu.com/view/37.htm" target=_blank>软件</A><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">都在使用dom4j来读写XML，例如Hibernate，包括sun公司自己的JAXM也用了Dom4j。</SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp;使用Dom4j开发，需下载dom4j相应的jar文件<BR></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp; 1.<SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">官网下载:<SPAN 
+style="LINE-HEIGHT: 25px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">http://www.dom4j.org/dom4j-1.6.1/</SPAN></SPAN></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp; 
+&nbsp;2.dom4j是sourceforge.net上的一个开源项目,因此可以到http://sourceforge.net/projects/dom4j下载其最新版.</SPAN></SPAN></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;对于下载的zip文件进行解压后的效果如下:</SPAN></SPAN></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; &nbsp; &nbsp;&nbsp;<IMG alt="" 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/20131023115737046.jpg"></SPAN></SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">&nbsp;打开dom4j-1.6.1的解压文件</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"><IMG alt="" 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/20131023115916218.jpg"><BR></SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">在这里可以看到有docs帮助的文件夹，也有需要使用dom4j解析xml文件的dom4j-1.6.1.jar文件.我们只需要把dom4j-1.6.1.jar文件构建到我们开发的项目中就可以使用dom4j开发了.</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">下面我以Myeclipse创建Java项目的构建方法为例说明.</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">首先创建一个demo项目，在demo项目中创建一个lib文件，把dom4j-1.6.1.jar文件拷贝到lib中，然后右键dom4j-1.6.1jar文件</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">&nbsp; &nbsp;<IMG alt="" 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/20131023120445796.jpg"></SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">点击Add to Build 
+Path即可构建到项目中去了.</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">备注：如果进行的是web项目开发，我们只需要把它拷贝到web-inf/lib中去即可,会自动构建到web项目中.</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"><BR></SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">在项目开发的过程中可以参考docs文件夹的（帮助文档）,找到index.html打开，点击Quick 
+start可以通过帮助文档进行学习 dom4j进行xml的解析.</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"><IMG alt="" 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/20131023140155093.jpg"><BR></SPAN></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">&nbsp; 
+&nbsp; 下面我对我认为api中重要的方法进行翻译说明如下：</SPAN></SPAN></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">一、DOM4j中，获得Document对象的方式有三种：<BR></SPAN></SPAN></SPAN></P><PRE class=java name="code">	1.读取XML文件,获得document对象            
+                   SAXReader reader = new SAXReader();              
+		   Document   document = reader.read(new File("csdn.xml"));
+	2.解析XML形式的文本,得到document对象.
+                   String text = "&lt;csdn&gt;&lt;/csdn&gt;";            
+                   Document document = DocumentHelper.parseText(text);
+	3.主动创建document对象.
+                  Document document = DocumentHelper.createDocument();             //创建根节点
+                  Element root = document.addElement("csdn");</PRE><BR><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">二、节点对象操作的方法</SPAN> 
+
+<P></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"></SPAN></P><PRE class=java name="code">1.获取文档的根节点.
+      Element root = document.getRootElement();
+    2.取得某个节点的子节点.
+      Element element=node.element(“四大名著");
+    3.取得节点的文字
+        String text=node.getText();
+    4.取得某节点下所有名为“csdn”的子节点，并进行遍历.
+       List nodes = rootElm.elements("csdn"); 
+         for (Iterator it = nodes.iterator(); it.hasNext();) {   
+	  Element elm = (Element) it.next();  
+  	// do something
+ }
+     5.对某节点下的所有子节点进行遍历.    
+      for(Iterator it=root.elementIterator();it.hasNext();){      
+        Element element = (Element) it.next();      
+       // do something 
+ }
+    6.在某节点下添加子节点
+      Element elm = newElm.addElement("朝代");
+    7.设置节点文字.  elm.setText("明朝");
+    8.删除某节点.//childElement是待删除的节点,parentElement是其父节点  parentElement.remove(childElment);
+    9.添加一个CDATA节点.Element contentElm = infoElm.addElement("content");contentElm.addCDATA(“cdata区域”);</PRE><BR><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">三、节点对象的属性方法操作</SPAN> 
+
+<P></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"></SPAN></P><PRE class=java name="code">1.取得某节点下的某属性    Element root=document.getRootElement();        //属性名name
+         Attribute attribute=root.attribute("id");
+    2.取得属性的文字
+	String text=attribute.getText();
+    3.删除某属性 Attribute attribute=root.attribute("size"); root.remove(attribute);
+    4.遍历某节点的所有属性   
+      Element root=document.getRootElement();      
+       for(Iterator it=root.attributeIterator();it.hasNext();){        
+           Attribute attribute = (Attribute) it.next();         
+           String text=attribute.getText();        
+           System.out.println(text);  
+  }
+    5.设置某节点的属性和文字.   newMemberElm.addAttribute("name", "sitinspring");
+    6.设置属性的文字   Attribute attribute=root.attribute("name");   attribute.setText("csdn");</PRE>
+<P></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">四、</SPAN><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">将文档写入XML文件</SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"></SPAN></P><PRE class=java name="code">1.文档中全为英文,不设置编码,直接写入的形式.  
+       XMLWriter writer = new XMLWriter(new  FileWriter("ot.xml")); 
+       writer.write(document);  
+       writer.close();
+    2.文档中含有中文,设置编码格式写入的形式.
+       OutputFormat format = OutputFormat.createPrettyPrint();// 创建文件输出的时候，自动缩进的格式                  
+       format.setEncoding("UTF-8");//设置编码
+       XMLWriter writer = new XMLWriter(newFileWriter("output.xml"),format);
+       writer.write(document);
+       writer.close();</PRE>
+<P></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">五、</SPAN><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px">字符串与XML的转换</SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; TEXT-INDENT: 28px; FONT-FAMILY: arial,宋体,sans-serif; COLOR: rgb(51,51,51); FONT-SIZE: 14px"></SPAN></P><PRE class=java name="code">1.将字符串转化为XML
+      String text = "&lt;csdn&gt; &lt;java&gt;Java班&lt;/java&gt;&lt;/csdn&gt;";
+      Document document = DocumentHelper.parseText(text);
+    2.将文档或节点的XML转化为字符串.
+       SAXReader reader = new SAXReader();
+       Document   document = reader.read(new File("csdn.xml"));            
+       Element root=document.getRootElement();    
+       String docXmlText=document.asXML();
+       String rootXmlText=root.asXML();
+       Element memberElm=root.element("csdn");
+       String memberXmlText=memberElm.asXML();</PRE>六、案例(解析sida.xml文件并对其进行curd的操作) 
+
+<P></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px">1.sida.xml描述四大名著的操作，文件内容如下</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"></SPAN></SPAN></P><PRE class=html name="code">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;四大名著&gt;
+	&lt;西游记 id="x001"&gt;
+		&lt;作者&gt;吴承恩1&lt;/作者&gt;
+		&lt;作者&gt;吴承恩2&lt;/作者&gt;
+		&lt;朝代&gt;明朝&lt;/朝代&gt;
+	&lt;/西游记&gt;
+	&lt;红楼梦 id="x002"&gt;
+		&lt;作者&gt;曹雪芹&lt;/作者&gt;
+	&lt;/红楼梦&gt;
+&lt;/四大名著&gt;</PRE>2.解析类测试操作 
+<P></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"></SPAN></SPAN></P><PRE class=java name="code">package dom4j;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
+import java.util.Iterator;
+import java.util.List;
+
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+
+public class Demo01 {
+
+	@Test
+	public void test() throws Exception {
+
+		// 创建saxReader对象
+		SAXReader reader = new SAXReader();
+		// 通过read方法读取一个文件 转换成Document对象
+		Document document = reader.read(new File("src/dom4j/sida.xml"));
+		//获取根节点元素对象
+		Element node = document.getRootElement();
+		//遍历所有的元素节点
+		listNodes(node);
+
+		// 获取四大名著元素节点中，子节点名称为红楼梦元素节点。
+		Element element = node.element("红楼梦");
+		//获取element的id属性节点对象
+		Attribute attr = element.attribute("id");
+		//删除属性
+		element.remove(attr);
+		//添加新的属性
+		element.addAttribute("name", "作者");
+		// 在红楼梦元素节点中添加朝代元素的节点
+		Element newElement = element.addElement("朝代");
+		newElement.setText("清朝");
+		//获取element中的作者元素节点对象
+		Element author = element.element("作者");
+		//删除元素节点
+		boolean flag = element.remove(author);
+		//返回true代码删除成功，否则失败
+		System.out.println(flag);
+		//添加CDATA区域
+		element.addCDATA("红楼梦，是一部爱情小说.");
+		// 写入到一个新的文件中
+		writer(document);
+
+	}
+
+	/**
+	 * 把document对象写入新的文件
+	 * 
+	 * @param document
+	 * @throws Exception
+	 */
+	public void writer(Document document) throws Exception {
+		// 紧凑的格式
+		// OutputFormat format = OutputFormat.createCompactFormat();
+		// 排版缩进的格式
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		// 设置编码
+		format.setEncoding("UTF-8");
+		// 创建XMLWriter对象,指定了写出文件及编码格式
+		// XMLWriter writer = new XMLWriter(new FileWriter(new
+		// File("src//a.xml")),format);
+		XMLWriter writer = new XMLWriter(new OutputStreamWriter(
+				new FileOutputStream(new File("src//a.xml")), "UTF-8"), format);
+		// 写入
+		writer.write(document);
+		// 立即写入
+		writer.flush();
+		// 关闭操作
+		writer.close();
+	}
+
+	/**
+	 * 遍历当前节点元素下面的所有(元素的)子节点
+	 * 
+	 * @param node
+	 */
+	public void listNodes(Element node) {
+		System.out.println("当前节点的名称：：" + node.getName());
+		// 获取当前节点的所有属性节点
+		List&lt;Attribute&gt; list = node.attributes();
+		// 遍历属性节点
+		for (Attribute attr : list) {
+			System.out.println(attr.getText() + "-----" + attr.getName()
+					+ "---" + attr.getValue());
+		}
+
+		if (!(node.getTextTrim().equals(""))) {
+			System.out.println("文本内容：：：：" + node.getText());
+		}
+
+		// 当前节点下面子节点迭代器
+		Iterator&lt;Element&gt; it = node.elementIterator();
+		// 遍历
+		while (it.hasNext()) {
+			// 获取某个子节点对象
+			Element e = it.next();
+			// 对子节点进行遍历
+			listNodes(e);
+		}
+	}
+
+	/**
+	 * 介绍Element中的element方法和elements方法的使用
+	 * 
+	 * @param node
+	 */
+	public void elementMethod(Element node) {
+		// 获取node节点中，子节点的元素名称为西游记的元素节点。
+		Element e = node.element("西游记");
+		// 获取西游记元素节点中，子节点为作者的元素节点(可以看到只能获取第一个作者元素节点)
+		Element author = e.element("作者");
+
+		System.out.println(e.getName() + "----" + author.getText());
+
+		// 获取西游记这个元素节点 中，所有子节点名称为作者元素的节点 。
+
+		List&lt;Element&gt; authors = e.elements("作者");
+		for (Element aut : authors) {
+			System.out.println(aut.getText());
+		}
+
+		// 获取西游记这个元素节点 所有元素的子节点。
+		List&lt;Element&gt; elements = e.elements();
+
+		for (Element el : elements) {
+			System.out.println(el.getText());
+		}
+
+	}
+
+}</PRE>自己适当注释部分代码观察运行效果,反复练习，希望你对dom4j有进一步的了解.<BR><BR>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"><BR>七、字符串与XML互转换案例</SPAN></SPAN></P>
+<P style="TEXT-INDENT: 28px"><SPAN 
+style="FONT-FAMILY: arial,宋体,sans-serif; COLOR: #333333"><SPAN 
+style="LINE-HEIGHT: 25px; FONT-SIZE: 14px"></SPAN></SPAN></P><PRE class=java name="code">package dom4j;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+
+public class Demo02 {
+
+	@Test
+	public void test() throws Exception {
+
+		// 创建saxreader对象
+		SAXReader reader = new SAXReader();
+		// 读取一个文件，把这个文件转换成Document对象
+		Document document = reader.read(new File("src//c.xml"));
+		// 获取根元素
+		Element root = document.getRootElement();
+		// 把文档转换字符串
+		String docXmlText = document.asXML();
+		System.out.println(docXmlText);
+		System.out.println("---------------------------");
+		// csdn元素标签根转换的内容
+		String rootXmlText = root.asXML();
+		System.out.println(rootXmlText);
+		System.out.println("---------------------------");
+		// 获取java元素标签 内的内容
+		Element e = root.element("java");
+		System.out.println(e.asXML());
+
+	}
+
+	/**
+	 * 创建一个document对象 往document对象中添加节点元素 转存为xml文件
+	 * 
+	 * @throws Exception
+	 */
+	public void test2() throws Exception {
+
+		Document document = DocumentHelper.createDocument();// 创建根节点
+		Element root = document.addElement("csdn");
+		Element java = root.addElement("java");
+		java.setText("java班");
+		Element ios = root.addElement("ios");
+		ios.setText("ios班");
+
+		writer(document);
+	}
+
+	/**
+	 * 把一个文本字符串转换Document对象
+	 * 
+	 * @throws Exception
+	 */
+	public void test1() throws Exception {
+		String text = "&lt;csdn&gt;&lt;java&gt;Java班&lt;/java&gt;&lt;net&gt;Net班&lt;/net&gt;&lt;/csdn&gt;";
+		Document document = DocumentHelper.parseText(text);
+		Element e = document.getRootElement();
+		System.out.println(e.getName());
+		writer(document);
+	}
+
+	/**
+	 * 把document对象写入新的文件
+	 * 
+	 * @param document
+	 * @throws Exception
+	 */
+	public void writer(Document document) throws Exception {
+		// 紧凑的格式
+		// OutputFormat format = OutputFormat.createCompactFormat();
+		// 排版缩进的格式
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		// 设置编码
+		format.setEncoding("UTF-8");
+		// 创建XMLWriter对象,指定了写出文件及编码格式
+		// XMLWriter writer = new XMLWriter(new FileWriter(new
+		// File("src//a.xml")),format);
+		XMLWriter writer = new XMLWriter(new OutputStreamWriter(
+				new FileOutputStream(new File("src//c.xml")), "UTF-8"), format);
+		// 写入
+		writer.write(document);
+		// 立即写入
+		writer.flush();
+		// 关闭操作
+		writer.close();
+	}
+}</PRE>
+<P></P></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more 
+href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/redarmy_chen/article/details/12969219#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.14-->
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/redarmy_chen/article/details/12951649';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12951649">使用JAXP进行SAX解析(XMLReaderFactory、XMLReader 
+  、SAXParserFactory与SAXParser)</A> </LI>
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/redarmy_chen/article/details/14134531';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/14134531">Myeclipse修改Servlet模板类操作</A> 
+  </LI></UL><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="12969219">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>86 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>4 </DD></DL></DIV>
+<DIV style="DISPLAY: none" class=similar_article>
+<H4>我的同类文章</H4>
+<DIV style="MARGIN: 20px 0px 0px" class=similar_c>
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN style="CURSOR: pointer" 
+onclick="GetCategoryArticles('1698661','redarmy_chen','foot','12969219');">XML<EM>（2）</EM></SPAN> 
+</LABEL></DIV>
+<DIV class="similar_wrap tracking-ad" data-mod="popu_141"><A 
+style="DISPLAY: none" href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('1698661', 'redarmy_chen','foot','12969219');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/redarmy_chen/svc/GetSuggestContent/12969219",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "12969219",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = '使用Dom4j解析XML' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '12969219';
+    var commentscount = 35;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/redarmy_chen/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/redarmy_chen" 
+  target=_blank><IMG style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_redarmy_chen.jpg"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/redarmy_chen" 
+  target=_blank>redarmy_chen</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=redarmy_chen','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV 
+  style="WIDTH: 60px; BACKGROUND: url(http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png) no-repeat; HEIGHT: 60px; CURSOR: pointer" 
+  class=ico_expert title=CSDN认证专家 
+  onclick="javascript:location='http://blog.csdn.net/experts/rule.html'"></DIV>
+  <DIV id=bms_box></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>1115034次</SPAN> 
+    <LI>积分：<SPAN>12516</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog7.png"> 
+
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：12516 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>第529名</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>200篇</SPAN> </LI>
+    <LI>转载：<SPAN>76篇</SPAN> </LI>
+    <LI>译文：<SPAN>0篇</SPAN> </LI>
+    <LI>评论：<SPAN>610条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch class=blogsearch 
+  title=请输入关键字></SPAN> <INPUT id=btnSubmit title="search in blog" value=搜索 type=button> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT value=blog type=hidden name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/924784">学生感受</A><SPAN>(41)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/858940">ipad2</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/799643">前端技术课程系列</A><SPAN>(27)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/942531">android课程总结系列</A><SPAN>(36)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/942535">开源框架课程总结系列</A><SPAN>(34)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/948037">java课程总结系列</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/951563">objective-c基础课程</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/1099090">oracle课程系列总结</A><SPAN>(44)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/1133338">webService</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/1195592">记录生活</A><SPAN>(13)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/1275284">JavaWeb课程总结系列</A><SPAN>(23)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/redarmy_chen/article/category/1698661">XML</A><SPAN>(3)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2015/08">2015年08月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2015/05">2015年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2015/01">2015年01月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2014/12">2014年12月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2014/06">2014年06月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2014/05">2014年05月</A><SPAN>(14)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2014/01">2014年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/12">2013年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/11">2013年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/10">2013年10月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/09">2013年09月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/07">2013年07月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/05">2013年05月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/04">2013年04月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2013/03">2013年03月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/12">2012年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/11">2012年11月</A><SPAN>(12)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/08">2012年08月</A><SPAN>(13)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/07">2012年07月</A><SPAN>(28)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/05">2012年05月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/04">2012年04月</A><SPAN>(8)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/03">2012年03月</A><SPAN>(46)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/02">2012年02月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2012/01">2012年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/12">2011年12月</A><SPAN>(23)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/11">2011年11月</A><SPAN>(27)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/08">2011年08月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/05">2011年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/04">2011年04月</A><SPAN>(28)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/03">2011年03月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/02">2011年02月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2011/01">2011年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/month/2010/12">2010年12月</A><SPAN>(9)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=使用Dom4j解析XML 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12969219">使用Dom4j解析XML</A><SPAN>(94691)</SPAN> 
+
+  <LI><A title="oracle 两个时间相减" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7351410">oracle 
+  两个时间相减</A><SPAN>(67101)</SPAN> 
+  <LI><A title=HttpServletRequest应用_李晖晖的个人总结（第五次课） 
+  href="http://blog.csdn.net/redarmy_chen/article/details/8157053">HttpServletRequest应用_李晖晖的个人总结（第五次课）</A><SPAN>(26632)</SPAN> 
+
+  <LI><A 
+  title="jQuery ui 利用 datepicker插件实现开始日期(minDate)和结束日期(maxDate)（10级学员 林常禹总结）" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7400723">jQuery ui 利用 
+  datepicker插件实现开始日期(minDate)和结束日期(maxDate)（10级学员 林常禹总结）</A><SPAN>(25868)</SPAN> 
+
+  <LI><A title=Java算法面试题 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6513541">Java算法面试题</A><SPAN>(20707)</SPAN> 
+
+  <LI><A title=Struts2多个文件上传的分析及源代码说明 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7342247">Struts2多个文件上传的分析及源代码说明</A><SPAN>(20185)</SPAN> 
+
+  <LI><A title=09_android入门_采用android-async-http开源项目的GET方式或POST方式实现登陆案例 
+  href="http://blog.csdn.net/redarmy_chen/article/details/26980613">09_android入门_采用android-async-http开源项目的GET方式或POST方式实现登陆案例</A><SPAN>(19868)</SPAN> 
+
+  <LI><A 
+  title="tomcat启动时报:IOException while loading persisted sessions: java.io.EOFException的解决方案" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/17756725">tomcat启动时报:IOException 
+  while loading persisted sessions: 
+  java.io.EOFException的解决方案</A><SPAN>(18218)</SPAN> 
+  <LI><A title=08_android入门_android-async-http开源项目介绍及使用方法 
+  href="http://blog.csdn.net/redarmy_chen/article/details/26976463">08_android入门_android-async-http开源项目介绍及使用方法</A><SPAN>(17329)</SPAN> 
+
+  <LI><A title=软件实训心得_李阳 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7752297">软件实训心得_李阳</A><SPAN>(14776)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=Java算法面试题 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6513541">Java算法面试题</A><SPAN>(50)</SPAN> 
+
+  <LI><A title="原创： 仿Baidu,Google查询分页技术实现分析之一" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6519282">原创： 
+  仿Baidu,Google查询分页技术实现分析之一</A><SPAN>(49)</SPAN> 
+  <LI><A title=原创深入解析类与类之间的关系 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6514119">原创深入解析类与类之间的关系</A><SPAN>(40)</SPAN> 
+
+  <LI><A title=使用Dom4j解析XML 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12969219">使用Dom4j解析XML</A><SPAN>(35)</SPAN> 
+
+  <LI><A title="原创 深入解析MySQL的学习过程" 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6513934">原创 
+  深入解析MySQL的学习过程</A><SPAN>(26)</SPAN> 
+  <LI><A title=原创：spring入门介绍第一讲 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6522945">原创：spring入门介绍第一讲</A><SPAN>(24)</SPAN> 
+
+  <LI><A title=原创Android中应用界面布局总结 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6513584">原创Android中应用界面布局总结</A><SPAN>(23)</SPAN> 
+
+  <LI><A title=原创：Js解析xml文件并简单实现省市区级联菜单(并解决各浏览器兼容性问题). 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6520693">原创：Js解析xml文件并简单实现省市区级联菜单(并解决各浏览器兼容性问题).</A><SPAN>(20)</SPAN> 
+
+  <LI><A title=原创：仿Baidu,Google查询分页技术JAVA实现 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6519570">原创：仿Baidu,Google查询分页技术JAVA实现</A><SPAN>(18)</SPAN> 
+
+  <LI><A title=原创：Ajax中get与post请求详解 
+  href="http://blog.csdn.net/redarmy_chen/article/details/6521012">原创：Ajax中get与post请求详解</A><SPAN>(17)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A href="http://blog.csdn.net/iispring/article/details/50366021" 
+    target=_blank>*源码解析Android中View的layout布局过程</A> 
+    <LI><A href="http://blog.csdn.net/yinwenjie/article/details/50277289" 
+    target=_blank>*架构设计：系统间通信（17）——服务治理与Dubbo 中篇（分析）</A> 
+    <LI><A href="http://blog.csdn.net/crazy__chen/article/details/50338895" 
+    target=_blank>*一款炫酷Loading动画--加载失败</A> 
+    <LI><A href="http://blog.csdn.net/nomasp/article/details/50349172" 
+    target=_blank>*图解堆算法、链表、栈与队列（多图预警）</A> 
+    <LI><A href="http://blog.csdn.net/u014723529/article/details/50352404" 
+    target=_blank>*Eclipse快捷键 10个最有用的快捷键</A> 
+    <LI><A href="http://blog.csdn.net/baidu_mtc/article/details/50351342" 
+    target=_blank>* 基于fiddler插件开发的移动测试网络监控与分析</A> </LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7506276#comments">通过工具来监控webService请求和返回时的数据(10级学员 
+  韩晓爽课堂总结)</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/GHIBN1024">GHIBN1024</A>: 
+  为什么用第一种方法测试qq，无论输入的qq号是否在线，结果都是Y呢？ </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12951649#comments">使用JAXP进行SAX解析(XMLReaderFactory、XMLReader 
+  、SAXParserFactory与SAXParser)</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/jhp0921">jhp0921</A>: 非常好！请问楼主，saxParser.parse(new 
+  File("src//sax//sida.... </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12969219#comments">使用Dom4j解析XML</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u014319228">u014319228</A>: Element e = 
+  node.element("西游记"); // 获取西游记... </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12969219#comments">使用Dom4j解析XML</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/a1b2c3d4123456">a1b2c3d4123456</A>: 感谢博主分享 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/12969219#comments">使用Dom4j解析XML</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/first_be_love">first_be_love</A>: 顶博主，学习了 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7351410#comments">oracle 
+  两个时间相减</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/ly20846102">ly20846102</A>: 好东西。谢谢老板 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7342247#comments">Struts2多个文件上传的分析及源代码说明</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/cuikes">cuikes</A>: 好 太有用了 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7069285#comments">[Objective-C] 
+  win下搭建Objective-c开发环境</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/a1b2c3d4123456">a1b2c3d4123456</A>: 感谢博主分享 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7069285#comments">使用Dom4j解析XML</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u011458469">u011458469</A>: 很不错，感谢楼主分享 </P>
+  <LI><A 
+  href="http://blog.csdn.net/redarmy_chen/article/details/7069285#comments">使用Dom4j解析XML</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/yangxin_blog">yangxin_blog</A>: 
+  真的很不错，很详细，总结了全部的学习内容 </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="使用Dom4j解析XML%20-%20redarmychen的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

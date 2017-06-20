@@ -1,0 +1,1146 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0044)http://www.cnblogs.com/kgdxpr/p/3381974.html -->
+<HTML lang=zh-cn xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=8.0000" http-equiv="X-UA-Compatible">
+<TITLE>ActiveMQ简介 - 缤纷世界 - 博客园</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/blog-common.css"><LINK id=MainCss 
+rel=stylesheet type=text/css 
+href="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/bundle-iMetro.css"><LINK title=RSS 
+rel=alternate type=application/rss+xml 
+href="http://www.cnblogs.com/kgdxpr/rss"><LINK title=RSD rel=EditURI 
+type=application/rsd+xml href="http://www.cnblogs.com/kgdxpr/rsd.xml"><LINK 
+rel=wlwmanifest type=application/wlwmanifest+xml 
+href="http://www.cnblogs.com/kgdxpr/wlwmanifest.xml">
+<SCRIPT type=text/javascript 
+src="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>var currentBlogApp = 'kgdxpr', cb_enable_mathjax=false;</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/blog-common.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><A name=top></A><!--done-->
+<DIV id=home>
+<DIV id=header>
+<DIV id=blogTitle><A id=lnkBlogLogo href="http://www.cnblogs.com/kgdxpr/"><IMG 
+id=blogLogo alt=返回主页 src="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/logo.gif"></A> <!--done-->
+<H1><A id=Header1_HeaderTitle class=headermaintitle 
+href="http://www.cnblogs.com/kgdxpr/">缤纷世界WB</A></H1>
+<H2></H2></DIV><!--end: blogTitle 博客的标题和副标题 -->
+<DIV id=navigator>
+<UL id=navList>
+  <LI><A id=MyLinks1_HomeLink class=menu 
+  href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI><A id=MyLinks1_MyHomeLink class=menu 
+  href="http://www.cnblogs.com/kgdxpr/">首页</A></LI>
+  <LI><A id=MyLinks1_NewPostLink class=menu 
+  href="http://i.cnblogs.com/EditPosts.aspx?opt=1" rel=nofollow>新随笔</A></LI>
+  <LI><A id=MyLinks1_ContactLink class=menu 
+  href="http://msg.cnblogs.com/send/%E7%BC%A4%E7%BA%B7%E4%B8%96%E7%95%8C" 
+  rel=nofollow>联系</A></LI>
+  <LI><A id=MyLinks1_Syndication class=menu 
+  href="http://www.cnblogs.com/kgdxpr/rss">订阅</A> <!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/kgdxpr/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></LI>
+  <LI><A id=MyLinks1_Admin class=menu href="http://i.cnblogs.com/" 
+  rel=nofollow>管理</A></LI></UL>
+<DIV class=blogStats><!--done-->随笔- 150&nbsp; 文章- 0&nbsp; 评论- 24&nbsp; </DIV><!--end: blogStats --></DIV><!--end: navigator 博客导航栏 --></DIV><!--end: header 头部 -->
+<DIV id=main>
+<DIV id=mainContent>
+<DIV class=forFlow>
+<DIV id=post_detail><!--done-->
+<DIV id=topics>
+<DIV class=post>
+<H1 class=postTitle><A id=cb_post_title_url class=postTitle2 
+href="http://www.cnblogs.com/kgdxpr/p/3381974.html">ActiveMQ简介</A> </H1>
+<DIV class=clear></DIV>
+<DIV class=postBody>
+<DIV id=cnblogs_post_body>
+<P>ActiveMQ简介</P>
+<H2>1.&nbsp; 什么是ActiveMQ</H2>
+<P>ActiveMQ是一种开源的，实现了JMS1.1规范的，面向消息(MOM)的中间件，为应用程序提供高效的、可扩展的、稳定的和安全的企业级消息通信。ActiveMQ使用Apache提供的授权，任何人都可以对其实现代码进行修改。</P>
+<P>ActiveMQ的设计目标是提供标准的，面向消息的，能够跨越多语言和多系统的应用集成消息通信中间件。ActiveMQ实现了JMS标准并提供了很多附加的特性。这些附加的特性包括，JMX管理（java 
+Management 
+Extensions，即java管理扩展），主从管理（master/salve，这是集群模式的一种，主要体现在可靠性方面，当主中介（代理）出现故障，那么从代理会替代主代理的位置，不至于使消息系统瘫痪）、消息组通信（同一组的消息，仅会提交给一个客户进行处理）、有序消息管理（确保消息能够按照发送的次序被接受者接收）。消息优先级（优先级高的消息先被投递和处理）、订阅消息的延迟接收（订阅消息在发布时，如果订阅者没有开启连接，那么当订阅者开启连接时，消息中介将会向其提交之前的，其未处理的消息）、接收者处理过慢（可以使用动态负载平衡，将多数消息提交到处理快的接收者，这主要是对PTP消息所说）、虚拟接收者（降低与中介的连接数目）、成熟的消息持久化技术（部分消息需要持久化到数据库或文件系统中，当中介崩溃时，信息不会丢失）、支持游标操作（可以处理大消息）、支持消息的转换、通过使用Apache的Camel可以支持EIP、使用镜像队列的形式轻松的对消息队列进行监控等。</P>
+<H2>2.&nbsp; ActiveMQ 特性</H2>
+<P>支持JMS规范：ActiveMQ完全实现了JMS1.1规范。</P>
+<P>JMS规范提供了同步消息和异步消息投递方式、有且仅有一次投递语义（指消息的接收者对一条消息必须接收到一次，并且仅有一次）、订阅消息持久接收等。如果仅使用JMS规范，表明无论您使用的是哪家厂商的消息代理，都不会影响到您的程序。</P>
+<P>连接方式的多样化：ActiveMQ提供了广泛的连接模式，包括HTTP/S、JGroups、JXTA、muticast、SSL、TCP、UDP、XMPP等。提供了如此多的连接模式表明了ActiveMQ具有较高的灵活性。</P>
+<P>可插入式的持久化和安全：ActiveMQ提供了多种持久化方案，您可以根据实际需要进行选择。同时，也提供了完整的客户授权模式。</P>
+<P>使用Java创建消息应用程序：最常见的使用ActiveMQ的方式就是使用Java程序来发送和接收消息。</P>
+<P>与其他的Java容器紧密集成：ActiveMQ提供了和其它流行的Java容器的结合，包括Apache Geronimo、Apache 
+Tomcat、JBoss、Jetty等。</P>
+<P>客户端API：ActiveMQ提供了多种客户端可访问的API，包括Java、C/C++，.NET，Perl、PHP、Python、Ruby等。当然，ActiveMQ中介必须运行在Java虚拟机中，但是使用它的客户端可以使用其他的语言来实现。</P>
+<P>中介集群：多个ActiveMQ中介可以一起协同工作，来完成某项复杂的工作，这被称为网络型中介（network of 
+brokers），这种类型的中介将会支持多种拓扑类型。</P>
+<H2>3.&nbsp; 为什么使用ActiveMQ</H2>
+<P>在设计分布式应用程序时，应用程序间的耦合（或称集成）方式很重要。耦合意味着两个或者多个应用程序或系统的相互依赖关系。一种简单的方式是在所有的应用程序中从架构上设计他们与其他应用程序间的交叉实现。这样必然导致，一个应用程序的改变，直接导致另一个应用程序的改变。按照这种方式集成的应用是一种紧耦合的应用。一个应用的改变不会影响到其他应用的集成方式被称为是松耦合的集成方式。简单的说，松耦合应用程序集成能够更容易的处理不可预见的应用变化。</P>
+<P>像COM、CORBA、DCE和EJB等应用技术使用RPC（Remote Procedural 
+Calls，即远程过程调用）属于紧耦合技术。使用RPC，一个应用程序调用另一个应用程序，调用者必须阻塞，直到被调用者执行结束返回结果信息为止。下图给出了这种紧耦合技术的描述：</P>
+<P>&nbsp;<IMG alt="" 
+src="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/18140027-d0fda157b9ba478fbab712b88a181f57.jpg"></P>
+<P>许多系统架构使用RPC，并且获得了巨大的成功，但是，紧耦合的架构有着天生的缺陷。首先，这种架构将会造成系统维护管理上的巨大消费，因为，即使是很小的改动，很可能会波及到整个系统。其次，由于调用者必须阻塞式的等待被调用者返回，如果被调用者处理过程复杂，将会严重影响调用者的执行效率和资源使用率。此外，如果调用失败，整个架构即失败。</P>
+<P>下图给出一种松耦合的方式，进行架构设计：</P>
+<P><IMG alt="" 
+src="ActiveMQ简介%20-%20缤纷世界%20-%20博客园_files/18140048-6556af1c3b3847dcb1d58e76491c64c7.jpg"></P>
+<P>应用程序1向消息中介（MOM）发送一条消息，很可能一段时间之后，应用程序2调用MOM来收取消息。任何一个应用程序都不知道对方是否存在也不需要阻塞等待。这种通信方式大大缩减了维护开销，因为对于一个应用程序的修改，会对其他应用程序影响极小。</P>
+<P>ActiveMQ就是采用了上面提到的松耦合方式，因此，我们经常说应用程序发送消息仅仅是触发后忘却。应用程序将消息发送给ActiveMQ而并不关心什么时间以何种方式消息投递给接收者。同样的，消息接收者也不会关心消息来源于哪里和消息是怎样投递给ActiveMQ的。对于多语言编写的复杂应用环境中，允许客户端使用不同的编程语言甚至不同的消息包装协议。ActiveMQ作为消息的中间件，允许复杂的多语言应用程序以一种一步的方式集成和交互。所以说，ActiveMQ是一种好的，提供松散耦合的，能够为多语言交叉应用提供集成的中间件。</P>
+<H2>4.&nbsp; 什么情况下使用ActiveMQ</H2>
+<P>正如前面提到的，紧耦合应用系统存在许多问题，但是，要将紧耦合系统重构成松耦合系统是一件值得但比较繁琐的事情。使用松耦合的主要优势体现在将同步改为异步。使用异步通信，应用程序将从接收者反馈的等待中解放出来，其他的任务可以得到执行，这样提高了应用程序的效率。</P>
+<P>只要是两个应用程序间需要通信的情况，都可以考虑使用JMS，不论这种通信是在本地的（就是通信的两个应用程序在同一台主机上），还是分布在不同机器上。尽管是在同一个主机上的两个应用程序需要通信也可以使用ActiveMQ。ActiveMQ可以确保消息投递成功并采用异步方式通信。</P>
+<P>多个需要通信的应用程序在同一个机器上的情况下，您可以考虑在执行机上独立运行ActiveMQ或者将ActiveMQ嵌入到Java应用服务中。无论采用哪种方式，都可以确保应用程序能够发送和接收消息。您可以选择订阅模式（pub/sub）或者采用PTP（point 
+to 
+point）模式，这两种模式都无需等待执行反馈信息。每一个应用程序都可以简单的将消息发送给ActiveMQ，然后继续做其他的工作；应用程序无需阻塞式等待消息的返回。</P>
+<P>对于分布在多台主机上的应用程序来说，可以使用多种布置策略。主要包括单一ActiveMQ实例和多ActiveMQ实例。单一ActiveMQ实例是一个简单解决方案。所有的应用程序都向同一个ActiveMQ中介发送和接收消息，这与上面提到的单机多服务雷同。单一的ActiveMQ可以布置到一台单独的主机上，也可以和其中的一些服务布置在一起。重要的是，所有的应用必须能够直接与ActiveMQ中介进行交互，所以，你必须考虑到你的网络设计。</P>
+<P>第二种情况比较复杂，但是有ActiveMQ来负责远程通信，而不是应用程序自身。在这种场景下，每一个应用程序都会实例化一个ActiveMQ（无论是嵌入式的还是独立式的），应用程序从其本地的ActiveMQ发送和接收消息。之后这些ActiveMQ实例将会以一种联合的方式协同工作。消息将会基于每一个应用的要求在多个ActiveMQ中介间传递到远程的处理者。在ActiveMQ中，这种模式被称为netWork 
+of 
+brokers。采用这种模式对于处理大量的ActiveMQ消息是可行的，但是，我们往往需要减轻网络拓扑的复杂性，这样直接将消息投递到远程接收者的ActiveMQ是不可行的。在后一种情况下，不同的协议使用可以使ActiveMQ更轻松的传递消息。</P>
+<H2>5.&nbsp;ActiveMQ传输效率</H2>
+<TABLE style="WIDTH: 568px" border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=284>
+      <P>计算机环境</P></TD>
+    <TD vAlign=top width=284>
+      <P align=left>CPU：Intel(R)&nbsp;Cpu G530&nbsp;@&nbsp;2.40GHz&nbsp;2.40 
+      Memory：2GB HD：希捷&nbsp;ST3500620AS OS：window 
+      xp&nbsp;Service&nbsp;Pack&nbsp;3</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H3>&nbsp;&nbsp; 发送10万条长度为25的消息耗时6~7秒钟， cpu占用量很大。</H3>
+<H3>&nbsp;&nbsp; 如果持续发送不接受的话，服务器承受到30万时容易卡住发送达到26秒之多</H3>
+<H3>&nbsp;&nbsp; 一次性接收所有的消息50万，cpu占用100%占用时间50s左右，可以全部接收。</H3>
+<H3>&nbsp;&nbsp; 接收完成后在继续发送10万消息占用时间6~7s</H3>
+<H3>&nbsp; 在一次性发送50万消息时出现问题</H3>
+<P>INFO | Usage Manager Memory Limit (524288000) reached on queue://FirstQueue. 
+Producers will be throttled to the rate at which messages are removed from this 
+destination to prevent flooding it. See</P>
+<P>http://activemq.apache.org/producer-flow-control.html for more info</P>
+<P>&nbsp;</P>
+<P>在网上找原因说是配置了发送限制，修改xml 运行时间是53s 的样子</P>
+<P>&nbsp;</P>
+<P>继续发送50万，一分50秒</P>
+<P>&nbsp;</P>
+<P>在发送50万</P>
+<P>&nbsp;</P>
+<P>在发送50万2分多钟的样子</P>
+<P>&nbsp;</P>
+<H3>&nbsp;试着接收这200万消息可以成功，但时间很长。</H3>
+<H3>&nbsp; 修改xml后在接受消息的同时发送10万消息，</H3>
+<P>&nbsp;</P>
+<H3>&nbsp;&nbsp;一次发送100万耗时4分左右的样子</H3>
+<P>&nbsp;</P>
+<P>接收方也可以全部接收。</P>
+<H3>&nbsp; 模拟服务器断电，非持久性模式时没有被消费的消息不会继续消费，全部丢失</H3>
+<P>程序会报一个连接关闭异常停止运行，继续启动服务器运行程序，不会接收任何消息。</P>
+<H3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+模拟服务器断电，持久性模式时没有被消费的消息会继续消费</H3>
+<P>定义了消息的持久性模式后，即使关闭了服务器，程序也会报连接关闭异常，但再次启动服务器和程序后，接收方还能继续原来的消息再次接收。</P>
+<H3>总结</H3>
+<P>总体看来，在配置好xml的情况下，activemq对消息传输上还是没有问题的，发送的消息都可以全部接收，发送多少条就接收多少条，准确度上还是有保证的，持久模式支持断电续传功能。虽然功能上没有什么问题但对cpu的占用率就比较大了，发送或接受消息的时候都达到了100%，内存到不会很大。这跟自己使用机子有关系，配置好点的机子可能情况会好些。</P>
+<H2>6.&nbsp;ActiveMQ配置传输连接</H2>
+<P>ActiveMQ提供了广泛的连接模式，包括HTTP/S、JGroups、JXTA、muticast、SSL、TCP、UDP、XMPP等。提供了如此多的连接模式表明了ActiveMQ具有较高的灵活性。</P>
+<P>配置格式如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&nbsp; &lt;transportConnectors&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;!-- DOS protection, limit concurrent connections to 1000 and frame 
+      size to 100MB --&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;transportConnector name="openwire" 
+      uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;transportConnector name="amqp" 
+      uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;transportConnector name="ssl" 
+      uri="ssl://0.0.0.0:61617?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600"/&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&lt;transportConnector name="stomp" 
+      uri="stomp://0.0.0.0:61618?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;transportConnector name="xmpp" 
+      uri="xmpp://0.0.0.0:61619?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600"/&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/transportConnectors&gt;</P></TD></TR></TBODY></TABLE>
+<P>生产者和消费着可以使用不同的传输协议来传输信息。比如生产者用nio协议生产消息，消费者用tcp协议接收消息。</P>
+<H2>7.&nbsp;ActiveMQ配置网络连接</H2>
+<P>当应用到Broker的集群时，Borker与Broker的通信就用到了网络连接。</P>
+<P>配置格式如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;networkConnectors&gt;</P>
+      <P align=left>&lt;!-- 动态连接方式</P>
+      <P align=left>&lt;networkConnector name="default-nc" 
+      uri="multicast://default"</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      dynamicOnly="true" networkTTL="3" prefetchSize="1" 
+      decreaseNetworkConsumerPriority="true"</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&gt; 
+      --&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- 
+      静态连接方式 &lt;networkConnector name="host1 and host2" 
+      uri="static://(tcp://host1:61616,tcp://host2:61616)"/&gt; --&gt;</P>
+      <P align=left>&lt;/networkConnectors&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>8.&nbsp; ActiveMQ持久化存储模式</H2>
+<P>ActiveMq主要实现了如下几种存储：</P>
+<H3>1.4.1.&nbsp;&nbsp; AMQ消息存储—默认的消息存储</H3>
+<P>&nbsp; 它是一种基于文件存储的消息数据库并且不依赖第三方数据库。配置如下</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;amqPersistenceAdapter directory="${activemq.base}/data" 
+      maxFileLength="32mb"/&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H3>1.4.2.&nbsp;&nbsp; KahaDB 消息存储—提供容量的提升和恢复能力</H3>
+<P>&nbsp; 它是一种新的消息存储机制，配置如下</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;kahaDB directory="${activemq.data}/kahadb" 
+/&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H3>1.4.3.&nbsp;&nbsp; JDBC 消息存储—消息基于JDBC存储</H3>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;persistenceAdapter&gt;</P>
+      <P align=left>&lt;jdbcPersistenceAdapter&nbsp; 
+      dataSource="#mysql-ds"/&gt;</P>
+      <P>&lt;/persistenceAdapter&gt;</P>
+      <P>&lt;bean id="mysql-ds" 
+      class="org.apache.commons.dbcp.BasicDataSource"</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      destroy-method="close"&gt; &lt;property name="driverClassName" 
+      value="com.mysql.jdbc.Driver"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;property name="url" 
+      value="jdbc:mysql://localhost/activemq?relaxAutoCommit=true"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;property name="username" value="activemq"/&gt; &lt;property 
+      name="password" value="activemq"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;property name="maxActive" value="200"/&gt; &lt;property 
+      name="poolPreparedStatements"</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      value="true"/&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/bean&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H3>1.4.4.&nbsp;&nbsp; Memory 消息存储—基于内容的消息存储</H3>
+<P>&nbsp; ActiveMQ支持将消息保存到内存中，这种情况没有动态的缓存存在。</P>
+<P>&nbsp; 这种情况的配置很简单，只要将Broker的“prsistent” 属性设置为“false”即可。</P>
+<H1>1.&nbsp;&nbsp; ActiveMQ负载均衡</H1>
+<P>ActiveMQ可以实现多个mq之间进行路由，假设有两个mq，分别为brokerA和brokerB，当有一条消息发送到brokerA的队列test中，有一个客户端连接到brokerB上，并且要求获取test队列的消息时，brokerA中队列test的消息就会路由到brokerB上，反之brokerB的消息也会路由到brokerA。分静态和动态两种配置方法，见《6&nbsp;&nbsp; 
+activemq的网络连接》。下面给出动态配置：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;networkConnectors&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;networkConnector uri="multicast://default" /&gt;</P>
+      <P>&lt;/networkConnectors&gt;</P>
+      <P>&nbsp;&lt;transportConnectors&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;!-- DOS protection, limit concurrent connections to 1000 and frame 
+      size to 100MB --&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;transportConnector name="openwire" uri="tcp://0.0.0.0:61618" 
+      discoveryUri="multicast://default" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/transportConnectors&gt;</P></TD></TR></TBODY></TABLE>
+<H1>2.&nbsp;&nbsp; ActiveMQ主从配置</H1>
+<P>Master-Slave模式分为三类：Pure Master Slave、Shared File System Master Slave和JDBC 
+Master Slave。以上三种方式的集群都不支持负载均衡，但可以解决单点故障的问题，以保证消息服务的可靠性。</P>
+<H2>2.1.&nbsp; PureMaster Slave</H2>
+<P align=left>&nbsp; &nbsp; 
+需要两个Broker，一个作为Master，另一个作为Slave，运行时，Slave通过网络实时从Master处复制数据，同时，如果Slave和Master失去连接，Slave就会自动升级为Master，继续为客户端提供消息服务，这种方式的Slave只能有一个。模型如图所示：</P>
+<P align=left>&nbsp;</P>
+<P>这种方式的主备不需要对Master Broker做特殊的配置，只要在Slave 
+Broker中指定他的Master就可以了，指定Master有两种方式，最简单的配置就是在broker节点中添加masterConnectorURI=”tcp://localhost:61616″即可，还有一种方式就是添加一个services节点，可以指定连接的用户名和密码，配置如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;services&gt;</P>
+      <P align=left>&nbsp; &lt;masterConnector remoteURI= 
+      "tcp://localhost:61616" userName="system" password="manager"/&gt;</P>
+      <P align=left>&lt;/services&gt;</P></TD></TR></TBODY></TABLE>
+<P align=left>&nbsp;</P>
+<H2>2.2.&nbsp; SharedFile System Master Slave</H2>
+<P align=left>&nbsp; &nbsp; &nbsp; &nbsp; SharedFile System Master 
+Slave就是利用共享文件系统做ActiveMQ集群，是基于ActiveMQ的默认数据库kahaDB完成的，kahaDB的底层是文件系统。这种方式的集群，Slave的个数没有限制，哪个ActiveMQ实例先获取共享文件的锁，那个实例就是Master，其它的ActiveMQ实例就是Slave，当当前的Master失效，其它的Slave就会去竞争共享文件锁，谁竞争到了谁就是Master。这种模式的好处就是当Master失效时不用手动去配置，只要有足够多的Slave。如果各个ActiveMQ实例需要运行在不同的机器，就需要用到分布式文件系统了。模式如图所示：</P>
+<P align=left>&nbsp;</P>
+<H2>2.3.&nbsp; JDBCMaster Slave</H2>
+<P align=left>&nbsp; &nbsp; &nbsp; &nbsp; JDBCMaster Slave模式和Shared File Sysytem 
+Master 
+Slave模式的原理是一样的，只是把共享文件系统换成了共享数据库。我们只需在所有的ActiveMQ的主配置文件中添加数据源，所有的数据源都指向同一个数据库，然后修改持久化适配器。这种方式的集群相对Shared 
+File System Master Slave更加简单，更加容易地进行分布式部署，但是如果数据库失效，那么所有的ActiveMQ实例都将失效。</P>
+<H1>3.&nbsp;&nbsp; ActiveMQ拦截器使用</H1>
+<P>在ActiveMQ中使用拦截器和过滤器的使用多采用插件的形式实现，继承BrokerFilter实现BrokerPlugin接口类。BrokerFilter实质一个实现Broker接口的类。</P>
+<H2>3.1.&nbsp; 日志拦截</H2>
+<P>日志拦截器是Broker的一个拦截器，默认的日志级别为INFO。你如你想改变日志的级别。这个日志拦截器支持Commons-log和Log4j两种日志。</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;plugins&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;loggingBrokerPlugin&nbsp;logAll="true"&nbsp;logConnectionEvents="false"/&gt;</P>
+      <P 
+align=left>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugins&gt;</P></TD></TR></TBODY></TABLE>
+<P>部分参数如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>属性名称</P></TD>
+    <TD vAlign=top width=92>
+      <P>默认值</P></TD>
+    <TD vAlign=top width=287>
+      <P>描述</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logAll</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录所有事件的日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logMessageEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录消息事件日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logConnectionEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>True</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录连接事件日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logTransactionEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录消息事务事件日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logConsumerEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录消息消费者事件日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logProducerEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>记录消息生产者事件日志</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>logInternalEvents</P></TD>
+    <TD vAlign=top width=92>
+      <P>false</P></TD>
+    <TD vAlign=top width=287>
+      <P>&nbsp;</P></TD></TR></TBODY></TABLE>
+<H2>3.2.&nbsp; &nbsp;统计拦截器</H2>
+<P 
+align=left>StatisticsPlugin插件被用作检测Broker中统计的插件。注意消息必须包含replyTo的消息头，如果是在JMS那么需要采用jmsReplyTo消息头，否则消息将被统计忽略。ReplyTo消息头包含了你想检查统计的消息。统计消息是一个MapMessage.</P>
+<P 
+align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查Broker的信息，仅仅需要一个名称为ActiveMQ.Statistics.Broker并且有一个replyTo的消息头的Destination。为了检测所有destination，你需要一个名称为ActiveMQ.Statistics.Destination.&lt;destination-name&gt;或者ActiveMQ.Statistics.Destination.&lt;wildcard-expression&gt;并且有一个replyTo的消息头。如果许多Destination匹配相关的模糊匹配表达式，那么统计的消息将被发送到replyTo的Destination.</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;plugins&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;statisticsBrokerPlugin/&gt;</P>
+      <P>&lt;/plugins&gt;</P>
+      <P>&nbsp;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<H1>4.&nbsp;&nbsp; ActiveMQ安全配置</H1>
+<P>ActiveMQ也可以对各个主题和队列设置用户名和密码，配置如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;plugins&gt;</P>
+      <P>&nbsp; &lt;!-- Configure authentication; Username, passwords and groups 
+      --&gt;</P>
+      <P>&nbsp; &lt;simpleAuthenticationPlugin&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;users&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authenticationUser username="system" password="manager" 
+      groups="users,admins"/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authenticationUser username="user" password="password" 
+      groups="users"/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authenticationUser username="guest" password="password" 
+      groups="guests"/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authenticationUser username="testUser" password="123456" 
+      groups="testGroup"/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/users&gt;</P>
+      <P>&nbsp; &lt;/simpleAuthenticationPlugin&gt;</P>
+      <P>&nbsp; &lt;!--&nbsp; Lets configure a destination based authorization 
+      mechanism --&gt;</P>
+      <P>&nbsp; &lt;authorizationPlugin&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;map&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;authorizationMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="queue.group.uum" read="users" write="users" 
+      admin="users" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="&gt;" read="admins" write="admins" 
+      admin="admins" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="USERS.&gt;" read="users" write="users" 
+      admin="users" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="GUEST.&gt;" read="guests" 
+      write="guests,users" admin="guests,users" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="TEST.Q" read="guests" write="guests" 
+      /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry queue="test" read=" testGroup " write=" testGroup " 
+      /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry topic="&gt;" read="admins" write="admins" 
+      admin="admins" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry topic="USERS.&gt;" read="users" write="users" 
+      admin="users" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry topic="GUEST.&gt;" read="guests" 
+      write="guests,users" admin="guests,users" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;authorizationEntry topic="ActiveMQ.Advisory.&gt;" read="guests,users 
+      ,testGroup" write="guests,users ,testGroup " admin="guests,users 
+      ,testGroup "/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/authorizationEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/authorizationMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;/map&gt;</P>
+      <P>&nbsp; &lt;/authorizationPlugin&gt;</P>
+      <P>&lt;/plugins&gt;</P></TD></TR></TBODY></TABLE>
+<H1>5.&nbsp;&nbsp; ActiveMQ中NetWorkConnctor属性</H1>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&nbsp;&nbsp;&nbsp; &lt;networkConnector 
+      name=<EM>"bridge"</EM> uri=<EM>"static://(tcp://host1:61616)"</EM></P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      duplex=<EM>"true"</EM> conduitSubscriptions=<EM>"true"</EM></P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      decreaseNetworkConsumerPriority=<EM>"false"</EM> &gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/networkConnector&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>属性名称</P></TD>
+    <TD vAlign=top width=189>
+      <P>默认值</P></TD>
+    <TD vAlign=top width=189>
+      <P>描述</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>Duplex</P></TD>
+    <TD vAlign=top width=189>
+      <P>True</P></TD>
+    <TD vAlign=top width=189>
+      <P>表示双向可以通信</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>ConduitSubscriptions</P></TD>
+    <TD vAlign=top width=189>
+      <P>False</P></TD>
+    <TD vAlign=top width=189>
+      <P>表示每个Consumer 上都会收到所有的发送的消息</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>DynamicOnly</P></TD>
+    <TD vAlign=top width=189>
+      <P>false</P></TD>
+    <TD vAlign=top width=189>
+      <P>消息将被动态的转接的在其他Broker的consumer上</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>PrefetchSize</P></TD>
+    <TD vAlign=top width=189>
+      <P>1000</P></TD>
+    <TD vAlign=top width=189>
+      <P>指定消息的数量</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>ConduitSubscriptons</P></TD>
+    <TD vAlign=top width=189>
+      <P>true</P></TD>
+    <TD vAlign=top width=189>
+      <P>&nbsp;</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>excludedDestinations</P></TD>
+    <TD vAlign=top width=189>
+      <P>&nbsp;</P></TD>
+    <TD vAlign=top width=189>
+      <P>指定排除的地址</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>DynamiccallyincludedDestinations</P></TD>
+    <TD vAlign=top width=189>
+      <P>&nbsp;</P></TD>
+    <TD vAlign=top width=189>
+      <P>包括的地址</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>StaticcallyincludedDestinations</P></TD>
+    <TD vAlign=top width=189>
+      <P>&nbsp;</P></TD>
+    <TD vAlign=top width=189>
+      <P>静态的包括消息地址</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>DecreaseNetwordConsumerPriority</P></TD>
+    <TD vAlign=top width=189>
+      <P>false</P></TD>
+    <TD vAlign=top width=189>
+      <P>消费者优先权</P></TD></TR>
+  <TR>
+    <TD vAlign=top width=189>
+      <P>NetworkTTl</P></TD>
+    <TD vAlign=top width=189>
+      <P>1</P></TD>
+    <TD vAlign=top width=189>
+      <P>&nbsp;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H1>6.&nbsp;&nbsp; ActiveMQ消息游标</H1>
+<P>当producer 发送的持久化消息到达broker 之后，broker 首先会把它保存在持</P>
+<P>久存储中。接下来，如果发现当前有活跃的 consumer，而且这个consumer 消费消息的速度能跟上producer 
+生产消息的速度，那么ActiveMQ 会直接把消息传递给 broker 内部跟这个consumer关联的 dispatch（派遣、调度） 
+queue；如果当前没有活跃的 consumer或者 consumer 消费消息的速度跟不上producer 生产消息的速度，那么 ActiveMQ 
+会使用Pending Message Cursors 保存对消息的引用。在需要的时候，Pending Message Cursors 
+把消息引用传递给broker 内部跟这个consumer关联的 dispatch queue。以下是两种Pending （未解决）Message 
+Cursors：</P>
+<P>&nbsp;&nbsp;  VM Cursor。在内存中保存消息的引用。</P>
+<P>&nbsp;&nbsp;  File Cursor。首先在内存中保存消息的引用，如果内存使用量达到上限， 那么会把消息引用保存到临时文件中。</P>
+<P>对于 topic，可以使用的pendingSubscriberPolicy 有vmCursor 和 
+fileCursor。可以使用的PendingDurableSubscriberMessageStoragePolicy 有 vmDurableCursor 和 
+fileDurableSubscriberCursor。以下是ActiveMQ 配置文件 的一个例子：</P>
+<P>Xml 代码</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyEntry&nbsp;&nbsp;&nbsp;&nbsp; 
+      topic="org.apache.&gt;"&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;pendingSubscriberPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;vmCursor&nbsp; 
+      /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/pendingSubscriberPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;PendingDurableSubscriberMessageStoragePolicy&gt;</P>
+      <P>&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;vmDurableCursor/&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/PendingDurableSubscriberMessageStoragePolicy&gt;</P>
+      <P>&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<P>&nbsp; 对于 queue，可以使用的pendingQueuePolicy 有vmQueueCursor 和 
+fileQueueCursor。以下是ActiveMQ 配置文件的一个例子：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyEntry&nbsp;&nbsp;&nbsp;&nbsp; 
+      queue="org.apache.&gt;"&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;pendingQueuePolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;vmQueueCursor&nbsp; 
+      /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/pendingQueuePolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<H1>7.&nbsp;&nbsp; ActiveMQ严格调度策略</H1>
+<P>有时候需要保证不同的 topic consumer 以相同的顺序接收消息。通常</P>
+<P>ActiveMQ 会保证 topic consumer 以相同的顺序接收来自同一个producer 的消息。</P>
+<P>然而，由于多线程和异步处理，不同的 topic consumer可能会以不同的顺序接收</P>
+<P>来自不同producer 的消息。例如有两个producer，分别是P 和Q。差不多是同一</P>
+<P>时间内，P 发送了P1、P2 和P3 三个消息；Q 发送了Q1 和Q2 两个消息。两个不同</P>
+<P>的consumer可能会以以下顺序接收到消息：</P>
+<P>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;consumer1: P1 P2 Q1 P3 Q2</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consumer2: P1 Q1 Q2 P2 P3</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Strict order dispatch policy 会保证每个 
+topic consumer会以相同的</P>
+<P>顺序接收消息，代价是性能上的损失。以下是采用了strict order dispatch policy</P>
+<P>后，两个不同的 consumer可能以以下的顺序接收消息：</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consumer1: P1 P2 Q1 P3 Q2</P>
+<P>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer2: P1 P2 Q1 P3 Q2</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以下是ActiveMQ 配置文件的一个例子：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&nbsp; &nbsp;&lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;policyEntry&nbsp;&nbsp; 
+      topic="FOO.&gt;"&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dispatchPolicy&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strictOrderDispatchPolicy&nbsp; 
+      /&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dispatchPolicy&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/policyMap&gt;</P>
+      <P>&nbsp;&nbsp; &lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H1>8.&nbsp;&nbsp; ActiveMQ轮转调度策略</H1>
+<P>介绍过 ActiveMQ 的prefetch（预读取）机制，ActiveMQ 的缺省参数是针对处理大量消息时的高性能和高吞吐量而设置的。所以缺省的 
+prefetch参数比较大，而且缺省</P>
+<P>的dispatch policies 会尝试尽可能快的填满 prefetch缓冲。然而在有些情况下，</P>
+<P>例如只有少量的消息而且单个消息的处理时间比较长，那么在缺省的 prefetch和</P>
+<P>dispatch policies下，这些少量的消息总是倾向于被分发到个别的consumer 上。</P>
+<P>这样就会因为负载的不均衡分配而导致处理时间的增加。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Round robin dispatch policy 
+会尝试平均分发消息，以下是 ActiveMQ配</P>
+<P>置文件的一个例子：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;destinationPolicy&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;policyMap&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;policyEntries&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;policyEntry&nbsp; 
+      topic="FOO.&gt;"&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;dispatchPolicy&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;roundRobinDispatchPolicy&nbsp; /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/dispatchPolicy&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/policyEntry&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/policyEntries&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp; &lt;/policyMap&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>&lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H1>9.&nbsp;&nbsp; ActiveMQ Async Sends &nbsp;</H1>
+<P>Acivemq 支持异步和同步发送消息。在 ActiveMQ4.0 以上，所有的异步或同步对</P>
+<P>于 Consumer 来说是变得可配置了。默认是在 ConnectionFactory、Connection、</P>
+<P>Connection URI等方面配置对于一个基于 Destination&nbsp; 的Consumer来说。</P>
+<P>众所周之，如果你想传递给 Slow Consumer 那么你可能使用异步的消息传递，但是对于 Fast Consumer 
+你可能使用同步发送消息。（这样可以避免同步和上下文切换额外的增加Queue 堵塞花费。如果对于一个 Slow 
+Consumer，你使用同步发送消息可能出现Producer 堵塞等显现。</P>
+<P>ActiveMQ默认设置 dispatcheAsync=true是最好的性能设置。如果你处理的是</P>
+<P>Slow Consumer 则使用 dispatcheAsync=true，反之，那你使用的是 Fast 
+Consumer则使用dispatcheAsync=false。</P>
+<P>用Connection URI 来配置Async如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>ActiveMQConnectionFactory("tcp://locahost:61616?jms.useAsyncSend=true");</P></TD></TR></TBODY></TABLE>
+<P>用ConnectionFactory 配置Async如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>((ActiveMQConnectionFactory)connectionFactory).setUseAsyncSend(true);</P></TD></TR></TBODY></TABLE>
+<P>用Connection 配置Async 如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>((ActiveMQConnection)connection).setUseAsyncSend(true);</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H1>10.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ缺省支持批量确认消息</H1>
+<P>ActiveMQ缺省支持批量确认消息。由于批量确认会提高性能，因此这是缺省的确认方式。如果希望在应用程序中禁止经过优化的确认方式，那么可以采用如下方法：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>cf = new ActiveMQConnectionFactory 
+      ("tcp://locahost:61616?jms.optimizeAcknowledge=false");&nbsp;</P>
+      <P>((ActiveMQConnectionFactory)connectionFactory).setOptimizeAcknowledge(false);&nbsp;&nbsp; 
+      ((ActiveMQConnection)connection).setOptimizeAcknowledge(false);&nbsp;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H1>11.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ消息类型</H1>
+<P>(一)Blob Message</P>
+<P>(二)Advisory Message</P>
+<P>(三)ActiveMQ Stream</P>
+<P>(四)Transformer message</P>
+<P>(五)TextMessage</P>
+<P>(六)MapMessage</P>
+<P>(七)BytesMessage</P>
+<P>(八)StreamMessage</P>
+<P>(九)ObjectMessage</P>
+<P>(十)Message</P>
+<H1>12.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ&nbsp; 
+destination</H1>
+<H2>12.1.&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ的混合发送模式</H2>
+<P>允许一个虚拟的destination代表多个destinations，多个destination之间用“，”分割。</P>
+<P>Java代码：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>Queue queue = new 
+  ActiveMQQueue("USERS.First,USERS.Sconder");</P></TD></TR></TBODY></TABLE>
+<P>如果需要不同类型的destination，需要加上前缀queue:// 或topic://</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>Queue queue = new 
+      ActiveMQQueue("USERS.First,USERS.Sconder,topic://USERS.topic1");</P></TD></TR></TBODY></TABLE>
+<P>配置如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;amq:destinationInterceptors&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:virtualDestinationInterceptor&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:virtualDestinations&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:compositeQueue name=<EM>"MY.QUEUE.A"</EM>&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:forwardTo&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:queue physicalName=<EM>"MY.QUEUE.B"</EM>&gt;&lt;/amq:queue&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:topic physicalName=<EM>"MY.TOPIC.A"</EM>&gt;&lt;/amq:topic&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:forwardTo&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:compositeQueue&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:virtualTopic/&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:virtualDestinations&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:virtualDestinationInterceptor&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:destinationInterceptors&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>12.2.&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ的接收Mirrored模式</H2>
+<P>每个 queue 中的消息只能被一个consumer 消费。然而，有时候你可能希望能</P>
+<P>够监视生产者和消费者之间的消息流。你可以通过使用Virtual Destinations 来</P>
+<P>建立一个virtual queue 来把消息转发到多个 queues 中。但是 为系统中每个</P>
+<P>queue 都进行如此的配置可能会很麻烦。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ 支持Mirrored Queues。Broker 
+会把发送到某个 queue 的所有消</P>
+<P>息转发到一个名称类似的topic，因此监控程序可以订阅这个mirrored queue</P>
+<P>topic。为了启用Mirrored Queues，首先要将BrokerService 的useMirroredQueues</P>
+<P>属性设置成 true，然后可以通过destinationInterceptors 设置其它属性，如</P>
+<P>mirror topic 的前缀，缺省是"VirtualTopic.Mirror."。以下是ActiveMQ 配置文</P>
+<P>件的一个例子：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;broker 
+      xmlns=<EM>"http://activemq.apache.org/schema/core"</EM></P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      brokerName=<EM>"localhost"</EM> 
+      dataDirectory=<EM>"${activemq.data}"</EM></P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      useMirroredQueues=<EM>"true"</EM>&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:destinationInterceptors&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;amq:mirroredQueue copyMessage=<EM>"true"</EM> 
+      postfix=<EM>"Mirror.Topic"</EM>&gt;</P>
+      <P 
+      align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:mirroredQueue&gt;</P>
+      <P align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/amq:destinationInterceptors&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>12.3.&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ的接收Wildcards模式</H2>
+<P>Wildcards 用来支持联合的名字分层体系（federated name hierarchies）。它不是JMS 规范的一部分，而是ActiveMQ 
+的扩展。ActiveMQ 支持以下三种wildcards：</P>
+<P>&nbsp;&nbsp;  "." 用于作为路径上名字间的分隔符。</P>
+<P>&nbsp;&nbsp;  "*" 用于匹配路径上的任何名字。</P>
+<P>&nbsp;&nbsp;  "&gt;" 用于递归地匹配任何以这个名字开始的 destination。</P>
+<H2>12.4.&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ虚拟主题</H2>
+<P>&nbsp;</P>
+<H1>13.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQ 消费者特性</H1>
+<H2>13.1.&nbsp;&nbsp;&nbsp;&nbsp; 独有消费者或者独有队列</H2>
+<P>Queue 中的消息是按照顺序被分发到 consumers 的。然而，当你有多个consumers同时从相同的 
+queue中提取消息时，你将失去这个保证。因为这些消息是被多个线程并发的处理。有的时候，保证消息按照顺序处理是很重要的。Broker会从多个 
+consumers中挑选一个 consumer来处理 queue中所有的消息，从而保证了消息的有序处理。如果这个 consumer失效，那么 
+broker会自动切换到其它的 consumer。 可以通过 Destination Options 来创建一个 Exclusive Consumer：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>queue&nbsp; =&nbsp; new&nbsp; 
+      ActiveMQQueue("TEST.QUEUE?consumer.exclusive=true");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>consumer&nbsp; =&nbsp; 
+session.createConsumer(queue);</P></TD></TR></TBODY></TABLE>
+<P>如果存在 Exclusive Consumer 和普通的Consumer，那么 Broker会首先把消息发送给Exclusive 
+Consumer。除非该独有消费者死亡。</P>
+<H2>13.2.&nbsp;&nbsp;&nbsp;&nbsp; Message Group</H2>
+<P>Message Groups 可以看成是一种并发的 Exclusive Consumer。跟所有的消息都由唯一的 consumer 处理不同，JMS 
+消息属性JMSXGroupID 被用来区分 message group。Message Groups 特性保证所有具有相同JMSXGroupID 
+的消息会被分发到相同的 consumer（只要这个consumer 保持active）。</P>
+<P>在一个消息被分发到 consumer之前，broker首先检查消息JMSXGroupID属性。如果存在，那么 broker 会检查是否有某个 
+consumer拥有这个 message group。如果没有，那么 broker会选择一个consumer，并将它关联到这个 message 
+group。此后，这个 consumer 会接收这个message group 的所有消息，直到：</P>
+<P>&nbsp;Consumer 被关闭；</P>
+<P>&nbsp;Message group 被关闭。通过发送一个消息，并设置这个消息的JMSXGroupSeq 为-1。</P>
+<P>开启Message Group：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>TextMessage message = session.createTextMessage("ActiveMq 
+      发送的消息");</P>
+      <P>message.setStringProperty("JMSXFroupID", 
+  "TEST_GROUP_A");</P></TD></TR></TBODY></TABLE>
+<P>关闭Message Group：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>TextMessage message = session.createTextMessage("ActiveMq 
+      发送的消息");</P>
+      <P align=left>message.setStringProperty("JMSXFroupID", 
+"TEST_GROUP_A");</P>
+      <P>message.setIntProperty("JMSXGroupSeq", -1);</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>13.3.&nbsp;&nbsp;&nbsp;&nbsp; Message Slelectors</H2>
+<P>JMS Selectors 用于在订阅中，基于消息属性和 Xpath 语法对进行消息的过滤。</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>consumer&nbsp; =&nbsp; session.createConsumer(destination,&nbsp; 
+      "JMSType&nbsp; =&nbsp; 'car'&nbsp; AND&nbsp; weight&nbsp; &gt;&nbsp; 
+      2500");</P></TD></TR></TBODY></TABLE>
+<P>在JMS Selectors 表达式中，可以使用 IN、NOT IN、LIKE 等，例如：</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LIKE '12%3' （'123' true，'12993' 
+true，'1234' false）</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LIKE 'l_se' （'lose' true，'loose' 
+false）</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LIKE '\_%' ESCAPE '\' （'_foo' true，'foo' 
+false）</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 需要注意的是，JMS 
+Selectors表达式中的日期和时间需要使用标准的long型毫秒值。另外表达式中的属性不会自动进行类型转换，例如：</P>
+<P>myMessage.setStringProperty("NumberOfOrders",&nbsp; 
+"2");&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>"NumberOfOrders &gt; 1" 求值结果是false。</P>
+<H2>13.4.&nbsp;&nbsp;&nbsp;&nbsp; 消息的重新传递和死信队列</H2>
+<P>ActiveMQ需要重新传递消息需要 Client 有以下几种操作：</P>
+<P>1.&nbsp; Client 用了transactions 和调用了rollback()在session 中。</P>
+<P>2.&nbsp; Client 用了transactiions 和在调用commit()之前关闭。</P>
+<P>3.&nbsp; Client 在 CLIENT_ACKNOWLEDGE 的传递模式下在 session 中调用了</P>
+<P>recover()。</P>
+<P>只有最后一个事物提交后，消息才能发送到 broker 上，事物没有提交前，整</P>
+<P>个传递消息仍处于事物中。一旦回滚，恢复以前情况。在 broker 端不知道消息是</P>
+<P>否处于重新传递状态，这将会造成消息分发开销。</P>
+<P>默认，aciaveMQ 中死队列被声明为“ActivemMQ.DLQ”，所有不能消费的消</P>
+<P>息被传递到该死队列中。你可以在 acivemq.xml中配置individualDeadLetterStrategy属性</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&nbsp;&nbsp; &lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntry queue= 
+      "&gt; " &gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;individualDeadLetterStrategy</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      queuePrefix= "DLQ."&nbsp; useQueueForQueueMessages= "true" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyMap&gt;</P>
+      <P>&lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<P>有时需要直接删除过期的消息而不需要发送到死队列中，xml 可以使用属性</P>
+<P>processExpired=false 来设置</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntry queue= "&gt; 
+      " &gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;sharedDeadLetterStrategy processExpired= "false" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;/policyMap&gt;</P>
+      <P>&nbsp;&nbsp; &lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<P>存放非持久消息到死队列中</P>
+<P>默认情况下，Activemq 不会把非持久的死消息发送到死队列中。</P>
+<P>&nbsp;非持久性如果你想把非持久的消息发送到死队列中，需要设置属性</P>
+<P>processNonPersistent=“true”</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>&lt;destinationPolicy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;policyMap&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;policyEntry queue= "&gt; 
+      " &gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;sharedDeadLetterStrategy processNonPersistent= "true" /&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &lt;/deadLetterStrategy&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyEntry&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/policyEntries&gt;</P>
+      <P>&nbsp;&nbsp;&nbsp; &lt;/policyMap&gt;</P>
+      <P>&nbsp;&nbsp; &lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>13.5.&nbsp;&nbsp;&nbsp;&nbsp; 消息优先级值</H2>
+<P>JMS JMSPriority&nbsp; 定义了十个消息优先级值， 0&nbsp; 是最低的优先级， 9&nbsp; 
+是最高的优先级。另外，客户端应当将0‐4&nbsp; 看作普通优先级，5‐9&nbsp; 看作加急优先级.</P>
+<P>配置如下：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P>queue = new ActiveMQQueue("TEST.QUEUE?consumer.priority=10");</P>
+      <P>consumer = session.createConsumer(queue);</P></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<H2>13.6.&nbsp;&nbsp;&nbsp;&nbsp; 慢消息处理机制</H2>
+<P align=left>目前ActiveMQ 使用 Pending Message Limit 
+Strategy来解决慢消息带来的性能问题。除了prefetch 
+buffer之外，你还要配置缓存消息的上限，超过这个上限后，新消息到来时会丢弃旧消息。通过在配置文件的 destination map 
+中配置PendingMessageLimitStrategy，可以为不用的 topic namespace 配置不同的策略。</P>
+<P align=left>A:Pending Message Limit Strategy（等待消息限制策略）目前有以下两种：</P>
+<OL>
+  <LI>ConstantPendingMessageLimitStrategy</LI></OL>
+<P align=left>Limit 可以设置 0、&gt;0、-1三种方式：</P>
+<P align=left>0表示：不额外的增加其预存大小。</P>
+<P align=left>&gt;0表示：在额外的增加其预存大小。</P>
+<P align=left>-1表示：不增加预存也不丢弃旧的消息。</P>
+<P align=left>这个策略使用常量限制：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;constantPendingMessageLimitStrategy 
+    limit="50"/&gt;</P></TD></TR></TBODY></TABLE>
+<OL>
+  <LI>PrefetchRatePendingMessageLimitStrategy</LI></OL>
+<P align=left>这种策略是利用Consumer 的之前的预存的大小乘以其倍数等于现在的预存大小。</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;prefetchRatePendingMessageLimitStrategy 
+      multiplier="2.5"/&gt;</P></TD></TR></TBODY></TABLE>
+<P align=left>在以上两种方式中，如果设置 0 意味着除了 prefetch 之外不再缓存消息；如果设置-1</P>
+<P align=left>意味着禁止丢弃消息。</P>
+<P align=left>此外，你还可以配置消息的丢弃策略，目前有以下两种：&nbsp;</P>
+<P align=left>oldestMessageEvictionStrategy。这个策略丢弃最旧的消息。&nbsp;</P>
+<P 
+align=left>&nbsp;oldestMessageWithLowestPriorityEvictionStrategy。这个策略丢弃最旧的，</P>
+<P align=left>而且具有最低优先级的消息。&nbsp;</P>
+<P align=left>以下是个ActiveMQ配置文件的例子：</P>
+<TABLE border=1 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=568>
+      <P align=left>&lt;destinationPolicy&gt;&nbsp;</P>
+      <P align=left>&nbsp;&lt;policyMap&gt;&nbsp;</P>
+      <P align=left>&nbsp;&lt;policyEntries&gt;&nbsp;</P>
+      <P align=left>&nbsp;&lt;policyEntry topic="PRICES.&gt;"&gt;&nbsp;</P>
+      <P align=left>&lt;subscriptionRecoveryPolicy&gt;&nbsp;</P>
+      <P align=left>&lt;timedSubscriptionRecoveryPolicy recoverDuration="10000" 
+      /&gt;&nbsp;</P>
+      <P align=left>&lt;/subscriptionRecoveryPolicy&gt;&nbsp;</P>
+      <P align=left>&lt;pendingMessageLimitStrategy&gt;&nbsp;</P>
+      <P align=left>&lt;constantPendingMessageLimitStrategy 
+      limit="10"/&gt;&nbsp;</P>
+      <P align=left>&lt;/pendingMessageLimitStrategy&gt;&nbsp;</P>
+      <P align=left>&nbsp;&lt;/policyEntry&gt;&nbsp;</P>
+      <P align=left>&lt;/policyEntries&gt;&nbsp;</P>
+      <P align=left>&lt;/policyMap&gt;&nbsp;</P>
+      <P align=left>&lt;/destinationPolicy&gt;</P></TD></TR></TBODY></TABLE>
+<P align=left>&nbsp;</P>
+<H2>13.7.&nbsp;&nbsp;&nbsp;&nbsp; 消费者追溯消息</H2>
+<P>ActiveMQ支持6种恢复策略，可以自行选择使用不同的策略</P>
+<P>(一)&nbsp;&nbsp; &lt;fixedCountSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略限制在基于一个静态的计数中对于主题（Topic）消息缓存的数量。</P>
+<P>(二)&nbsp;&nbsp; &lt;fixedSizedSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略限制在内存使用量中对于主题（Topic）消息缓存的数量。这是</P>
+<P>ActiveMQ 的默认持久恢复策略。你可以选择设置 cache的大小来应用与所</P>
+<P>有的主题[Topic]。</P>
+<P>(三)&nbsp;&nbsp; &lt;lastImageSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略仅仅保持发送到主题（Topic）的最后一个消息。</P>
+<P>(四)&nbsp;&nbsp; &lt;noSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略是不保存主题消息，不需要任何配置</P>
+<P>(五)&nbsp;&nbsp; &lt;queryBasedSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略基于一个 JMS属性选择器应用到所有的消息来设置其消息缓存的</P>
+<P>大小</P>
+<P>(六)&nbsp;&nbsp; &lt;timedSubscriptionRecoveryPolicy&gt;</P>
+<P>这种策略是基于应用到每个消息的过期时间来限制其消息缓存数量。提示</P>
+<P>这种消息的生命周期时间来源于消息发送者设置其 timeToLive 参数</P></DIV>
+<DIV id=MySignature></DIV>
+<DIV class=clear></DIV>
+<DIV id=blog_post_info_block>
+<DIV id=BlogPostCategory></DIV>
+<DIV id=EntryTag></DIV>
+<DIV id=blog_post_info></DIV>
+<DIV class=clear></DIV>
+<DIV id=post_next_prev></DIV></DIV></DIV>
+<DIV class=postDesc>posted @ <SPAN id=post-date>2013-10-22 10:32</SPAN> <A 
+href="http://www.cnblogs.com/kgdxpr/">缤纷世界</A> 阅读(<SPAN 
+id=post_view_count>...</SPAN>) 评论(<SPAN id=post_comment_count>...</SPAN>) <A 
+href="http://i.cnblogs.com/EditPosts.aspx?postid=3381974" rel=nofollow>编辑</A> <A 
+onclick="AddToWz(3381974);return false;" 
+href="http://www.cnblogs.com/kgdxpr/p/3381974.html#">收藏</A></DIV></DIV>
+<SCRIPT type=text/javascript>var allowComments=true,isLogined=false,cb_blogId=42306,cb_entryId=3381974,cb_blogApp=currentBlogApp,cb_blogUserGuid='864e420b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/10/22 10:32:00';loadViewCount(cb_entryId);</SCRIPT>
+</DIV><!--end: topics 文章、评论容器--></DIV><A name=!comments></A>
+<DIV id=blog-comments-placeholder></DIV>
+<SCRIPT type=text/javascript>var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+
+<DIV id=comment_form class=commentform><A name=commentform></A>
+<DIV id=divCommentShow></DIV>
+<DIV id=comment_nav><SPAN id=span_refresh_tips></SPAN><A id=lnk_RefreshComments 
+onclick="return RefreshCommentList();" href="javascript:void(0);" 
+clientidmode="Static" runat="server">刷新评论</A><A onclick="return RefreshPage();" 
+href="http://www.cnblogs.com/kgdxpr/p/3381974.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/kgdxpr/p/3381974.html#top">返回顶部</A></DIV>
+<DIV id=comment_form_container></DIV>
+<DIV id=ad_text_under_commentbox class=ad_text_commentbox></DIV>
+<DIV id=ad_t2></DIV>
+<DIV id=opt_under_post></DIV>
+<DIV id=ad_c1 class=c_ad_block></DIV>
+<DIV id=under_post_news></DIV>
+<DIV id=under_post_kb></DIV>
+<DIV id=HistoryToday class=c_ad_block></DIV>
+<SCRIPT type=text/javascript>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</SCRIPT>
+</DIV></DIV><!--end: forFlow --></DIV><!--end: mainContent 主体内容容器-->
+<DIV id=sideBar>
+<DIV id=sideBarMain><!--done-->
+<DIV class=newsItem>
+<H3 class=catListTitle>公告</H3>
+<DIV id=blog-news></DIV>
+<SCRIPT type=text/javascript>loadBlogNews();</SCRIPT>
+</DIV>
+<DIV style="DISPLAY: none" id=blog-calendar></DIV>
+<SCRIPT type=text/javascript>loadBlogDefaultCalendar();</SCRIPT>
+
+<DIV id=leftcontentcontainer>
+<DIV id=blog-sidecolumn></DIV>
+<SCRIPT type=text/javascript>loadBlogSideColumn();</SCRIPT>
+</DIV></DIV><!--end: sideBarMain --></DIV><!--end: sideBar 侧边栏容器 -->
+<DIV class=clear></DIV></DIV><!--end: main -->
+<DIV class=clear></DIV>
+<DIV id=footer><!--done-->Copyright ©2016 缤纷世界 </DIV><!--end: footer --></DIV><!--end: home 自定义的最大容器 --></BODY></HTML>

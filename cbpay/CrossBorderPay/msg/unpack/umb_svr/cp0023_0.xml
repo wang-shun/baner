@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cp0023_1">
+<include>UMB_SVR_1</include>
+	<field name="trancode" >
+	       <format type="s" length="6"  />
+	</field>
+	<include>UMB_SVR_2</include>
+	
+        <field name="body">
+	       <format type="virtual" level="2" />
+	</field>
+        <field name="dataSize">
+               <format type="s" length="10" necessary="true" />
+        </field>
+
+        <compositField name="dataList" sizeRef="dataSize" output="true">
+         <field name="row">
+	        <format type="virtual" level="1" />
+	 </field>
+         <field name="merchantNo">
+                <format type="s" length="32" necessary="true" />
+	 </field>
+	 <field name="totalNum">
+	        <format type="s" length="12" necessary="true" />
+	 </field>
+	 <field name="hashCode">
+		<format type="s" length="500" necessary="true" />
+	 </field>
+         <field name="data">
+                <format type="s" length="5000" necessary="true" />
+         </field>
+	</compositField>
+</formula>

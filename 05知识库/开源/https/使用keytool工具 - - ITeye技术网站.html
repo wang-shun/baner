@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0037)http://czj4451.iteye.com/blog/1487684 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr"><style type="text/css" id="1174037380"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>使用keytool工具 -  - ITeye技术网站</title>
+    <meta name="description" content="J2SDK提供了keytool命令行工具，可以根据指定的参数来创建数字证书。生成的证书或证书库默认保存在命令行当前目录下。 1. 创建数字证书   keytool -genkey -v -alias scent -dname &quot;CN=John,OU=MNG,O=Corp,L=Hangzhou,ST=Zhejiang,C=CN&quot; -keyalg RSA -keysize 2048  ...">
+    <meta name="keywords" content="java, keytool, certificate, sign, jar 使用keytool工具">
+    <link rel="shortcut icon" href="http://czj4451.iteye.com/images/favicon.ico" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://czj4451.iteye.com/open_search.xml" title="ITeye">
+    <link href="http://czj4451.iteye.com/rss" rel="alternate" title="" type="application/rss+xml">
+    <link href="./使用keytool工具 - - ITeye技术网站_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./使用keytool工具 - - ITeye技术网站_files/blue.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="./使用keytool工具 - - ITeye技术网站_files/ga.js"></script><script src="./使用keytool工具 - - ITeye技术网站_files/application.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="./使用keytool工具 - - ITeye技术网站_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="./使用keytool工具 - - ITeye技术网站_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="./使用keytool工具 - - ITeye技术网站_files/hotkey.js" type="text/javascript"></script>
+  <script src="./使用keytool工具 - - ITeye技术网站_files/code_favorites.js" type="text/javascript"></script>
+<script src="./使用keytool工具 - - ITeye技术网站_files/weiboshare.js" type="text/javascript"></script>
+  <style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style><style type="text/css">.dp-default .number { color: #C00000; }</style></head>
+  <body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="http://czj4451.iteye.com/blog/1487684#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display:none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">招聘</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+      <div id="user_nav">
+      <a href="http://czj4451.iteye.com/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="http://czj4451.iteye.com/login">登录</a>
+    <a href="http://czj4451.iteye.com/signup" class="nobg">注册</a>
+  </div>
+
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="http://czj4451.iteye.com/">czj4451</a></h1>
+        </div>
+        <div id="fd"></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class="blog_navbar_for"><a href="http://czj4451.iteye.com/"><strong>博客</strong></a></li>
+            <li><a href="http://czj4451.iteye.com/weibo">微博</a></li>
+            <li><a href="http://czj4451.iteye.com/album">相册</a></li>
+            <li><a href="http://czj4451.iteye.com/link">收藏</a></li>
+            <li><a href="http://czj4451.iteye.com/blog/guest_book">留言</a></li>
+            <li><a href="http://czj4451.iteye.com/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="http://czj4451.iteye.com/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px;width: 110px;" type="text" value="">
+              <input class="submit_search" type="submit" value="">
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="h-entry" style="display:none">
+  <a href="http://czj4451.iteye.com/" class="p-author" target="_blank">czj4451</a>
+</div>
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="./使用keytool工具 - - ITeye技术网站_files/使用keytool工具 - - ITeye技术网站.html">使用keytool工具</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class="blog_categories"><strong>博客分类：</strong> <li><a href="http://czj4451.iteye.com/category/213739">java</a></li> </ul>
+        <div class="news_tag"><a href="http://www.iteye.com/blogs/tag/java">java</a><a href="http://www.iteye.com/blogs/tag/keytool">keytool</a><a href="http://www.iteye.com/blogs/tag/certificate">certificate</a><a href="http://www.iteye.com/blogs/tag/sign">sign</a><a href="http://www.iteye.com/blogs/tag/jar">jar</a>&nbsp;</div>
+  </div>
+
+  <div id="blog_content" class="blog_content">
+    J2SDK提供了keytool命令行工具，可以根据指定的参数来创建数字证书。生成的证书或证书库默认保存在命令行当前目录下。
+<br>
+<br><span style="font-size: small;">1. 创建数字证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-genkey%20-v%20-alias%20scent%20-dname%20%22CN%3DJohn%2COU%3DMNG%2CO%3DCorp%2CL%3DHangzhou%2CST%3DZhejiang%2CC%3DCN%22%20-keyalg%20RSA%20-keysize%202048%20-keypass%20123456%20-keystore%20prospectlib%20-storepass%20123456%20-storetype%20JCEKS%20-validity%20900%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-genkey&nbsp;-v&nbsp;-alias&nbsp;scent&nbsp;-dname&nbsp;</span><span class="string">"CN=John,OU=MNG,O=Corp,L=Hangzhou,ST=Zhejiang,C=CN"</span><span>&nbsp;-keyalg&nbsp;RSA&nbsp;-keysize&nbsp;</span><span class="number">2048</span><span>&nbsp;-keypass&nbsp;</span><span class="number">123456</span><span>&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-storetype&nbsp;JCEKS&nbsp;-validity&nbsp;</span><span class="number">900</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="0" title="使用keytool工具" style="display: none;">keytool -genkey -v -alias scent -dname "CN=John,OU=MNG,O=Corp,L=Hangzhou,ST=Zhejiang,C=CN" -keyalg RSA -keysize 2048 -keypass 123456 -keystore prospectlib -storepass 123456 -storetype JCEKS -validity 900
+</pre>
+<br>注：-genkey可以写成-genkeypair
+<br>
+<br>dname的值详解：
+<br>　　CN(Common Name名字与姓氏)
+<br>　　OU(Organization Unit组织单位名称)
+<br>　　O(Organization组织名称)
+<br>　　L(Locality城市或区域名称)
+<br>　　ST(State州或省份名称)
+<br>　　C(Country国家名称）
+<br>
+<br><span style="font-size: small;">2. 查看证书库中的所有数字证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-list%20-rfc%20-keystore%20prospectlib%20-storepass%20123456%20-storetype%20JCEKS%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-list&nbsp;-rfc&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-storetype&nbsp;JCEKS&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="1" title="使用keytool工具" style="display: none;">keytool -list -rfc -keystore prospectlib -storepass 123456 -storetype JCEKS
+</pre>
+<br>注：如果证书库是非默认storetype，需要明确指定。
+<br>
+<br><span style="font-size: small;">3. 查看证书详细</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-list%20-v%20-alias%20scent%20-keystore%20prospectlib%20-storepass%20123456%20-storetype%20JCEKS%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-list&nbsp;-v&nbsp;-alias&nbsp;scent&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-storetype&nbsp;JCEKS&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="2" title="使用keytool工具" style="display: none;">keytool -list -v -alias scent -keystore prospectlib -storepass 123456 -storetype JCEKS
+</pre>
+<br>注：如果证书是非默认storetype，需要明确指定。
+<br>
+<br><span style="font-size: small;">4. 导入证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-import%20-v%20-trustcacerts%20-alias%20scent%20-file%20scent.cer%20-keypass%20123456%20-keystore%20prospectlib%20-storepass%20123456%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-import&nbsp;-v&nbsp;-trustcacerts&nbsp;-alias&nbsp;scent&nbsp;-file&nbsp;scent.cer&nbsp;-keypass&nbsp;</span><span class="number">123456</span><span>&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="3" title="使用keytool工具" style="display: none;">keytool -import -v -trustcacerts -alias scent -file scent.cer -keypass 123456 -keystore prospectlib -storepass 123456
+</pre>
+<br>注：
+<br>-import可以写成-importcert
+<br>-trustcacerts和-v 可以不写，效果一样
+<br>
+<br><span style="font-size: small;">5. 导出证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-export%20-alias%20scent%20-file%20scent.cer%20-keystore%20prospectlib%20-storepass%20123456%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-export&nbsp;-alias&nbsp;scent&nbsp;-file&nbsp;scent.cer&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="4" title="使用keytool工具" style="display: none;">keytool -export -alias scent -file scent.cer -keystore prospectlib -storepass 123456
+</pre>
+<br>注：-export可以写成-exportcert
+<br>
+<br><span style="font-size: small;">6. 删除证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-delete%20-alias%20scent%20-keystore%20prospectlib%20-storepass%20123456%20-storetype%20JCEKS%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-delete&nbsp;-alias&nbsp;scent&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-storetype&nbsp;JCEKS&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="5" title="使用keytool工具" style="display: none;">keytool -delete -alias scent -keystore prospectlib -storepass 123456 -storetype JCEKS
+</pre>
+<br>注：如果证书是非默认storetype，需要明确指定。
+<br>
+<br><span style="font-size: small;">7. 生成证书签名申请</span>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-certreq%20-alias%20scent%20-sigalg%20%22MD5withRSA%22%20-file%20scent.csr%20-keypass%20123456%20-keystore%20cacerts.jks%20-storepass%20123456%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-certreq&nbsp;-alias&nbsp;scent&nbsp;-sigalg&nbsp;</span><span class="string">"MD5withRSA"</span><span>&nbsp;-file&nbsp;scent.csr&nbsp;-keypass&nbsp;</span><span class="number">123456</span><span>&nbsp;-keystore&nbsp;cacerts.jks&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="6" title="使用keytool工具" style="display: none;">keytool -certreq -alias scent -sigalg "MD5withRSA" -file scent.csr -keypass 123456 -keystore cacerts.jks -storepass 123456
+</pre>
+<br>注：将生成的scent.scr文件发给CA机构来申请签名。
+<br>
+<br><span style="font-size: small;">8. 显示证书</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-printcert%20-v%20-file%20scent.cer%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-printcert&nbsp;-v&nbsp;-file&nbsp;scent.cer&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="7" title="使用keytool工具" style="display: none;">keytool -printcert -v -file scent.cer
+</pre>
+<br>
+<br><span style="font-size: small;">9. 更改证书别名</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-changealias%20-v%20-alias%20scent%20-destalias%20perfume%20-keystore%20prospectlib%20-storepass%20123456%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-changealias&nbsp;-v&nbsp;-alias&nbsp;scent&nbsp;-destalias&nbsp;perfume&nbsp;-keystore&nbsp;prospectlib&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="8" title="使用keytool工具" style="display: none;">keytool -changealias -v -alias scent -destalias perfume -keystore prospectlib -storepass 123456
+</pre>
+<br>
+<br><span style="font-size: small;">10. 导入证书库</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-importkeystore%20-v%20-srckeystore%20prospectlib%20-srcstoretype%20JKS%20-srcstorepass%20123456%20-destkeystore%20intrinsic%20-deststoretype%20JKS%20-deststorepass%20123456%20%20-srcalias%20terrific%20prospect%20-destalias%20terrific%20prospect%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-importkeystore&nbsp;-v&nbsp;-srckeystore&nbsp;prospectlib&nbsp;-srcstoretype&nbsp;JKS&nbsp;-srcstorepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-destkeystore&nbsp;intrinsic&nbsp;-deststoretype&nbsp;JKS&nbsp;-deststorepass&nbsp;</span><span class="number">123456</span><span>&nbsp;&nbsp;-srcalias&nbsp;terrific&nbsp;prospect&nbsp;-destalias&nbsp;terrific&nbsp;prospect&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="9" title="使用keytool工具" style="display: none;">keytool -importkeystore -v -srckeystore prospectlib -srcstoretype JKS -srcstorepass 123456 -destkeystore intrinsic -deststoretype JKS -deststorepass 123456  -srcalias terrific prospect -destalias terrific prospect
+</pre>
+<br>注：如果不提供-srcalias, -destalias，则会将源库的所有证书导入到目标库中。
+<br>
+<br><span style="font-size: small;">11. 修改证书密码</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-keypasswd%20-alias%20brilliant%20-keystore%20range%20-storepass%20123456%20-keypass%20123456%20-new%20654321%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-keypasswd&nbsp;-alias&nbsp;brilliant&nbsp;-keystore&nbsp;range&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-keypass&nbsp;</span><span class="number">123456</span><span>&nbsp;-new&nbsp;</span><span class="number">654321</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="10" title="使用keytool工具" style="display: none;">keytool -keypasswd -alias brilliant -keystore range -storepass 123456 -keypass 123456 -new 654321
+</pre>
+<br>注：如果不提供-keypass，系统会提示你输入新密码。
+<br>
+<br><span style="font-size: small;">12. 修改证书库密码</span>
+<br>
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Command代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=keytool%20-storepasswd%20-v%20-new%20654321%20-keystore%20range%20-storepass%20123456%20-storetype%20JKS%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./使用keytool工具 - - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./使用keytool工具 - - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-default"><li><span><span>keytool&nbsp;-storepasswd&nbsp;-v&nbsp;-new&nbsp;</span><span class="number">654321</span><span>&nbsp;-keystore&nbsp;range&nbsp;-storepass&nbsp;</span><span class="number">123456</span><span>&nbsp;-storetype&nbsp;JKS&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="command" codeable_id="1487684" codeable_type="Blog" source_url="http://czj4451.iteye.com/blog/1487684" pre_index="11" title="使用keytool工具" style="display: none;">keytool -storepasswd -v -new 654321 -keystore range -storepass 123456 -storetype JKS
+</pre>
+<br>
+<br>
+<br><span style="font-size: small;">参数详解：</span>
+<br><span style="color: blue;">-dname</span> <span style="color: violet;">"CN=xx,OU=xx,O=xx,L=xx,ST=xx,C=xx"</span>&nbsp; dn名为"CN=..."
+<br><span style="color: blue;">-alias</span> <span style="color: violet;">scent</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 别名为scent的一个证书
+<br><span style="color: blue;">-keyalg</span> 
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">DSA RSA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSA或RSA算法(当使用-genkeypair参数)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">DES DESede AES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DES或DESede或AES算法(当使用-genseckey参数)
+<br><span style="color: blue;">-keysize</span> 
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">512</span> ~ <span style="color: violet;">1024</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥的长度为512至1024之间(64的倍数)(当使用-genkeypair和-keyalg DSA参数)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &gt; <span style="color: violet;">512</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥的长度大于512 (当使用-genkeypair和-keyalg RSA参数)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥的长度为56 (当使用-genseckey和-keyalg DES 参数)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">112 168</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥长度为112或168(当使用-genseckey和-keyalg DESede 参数)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: violet;">128 192 256</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥长度为128或192或256 (当使用-genseckey和-keyalg AES 参数)
+<br><span style="color: blue;">-keypass</span>&nbsp; <span style="color: violet;">123456</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这个证书的私钥密码为123456
+<br><span style="color: blue;">-keystore</span> <span style="color: violet;">prospectlib</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 证书库的名称为prospectlib
+<br><span style="color: blue;">-storepass</span> <span style="color: violet;">123456</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 证书库的访问密码为123456
+<br><span style="color: blue;">-validity</span>&nbsp; <span style="color: violet;">900</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 证书有效期为900天
+<br><span style="color: blue;">-file</span>&nbsp; <span style="color: violet;">scent.cer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 从scent.cer文件导入证书，或者导出证书到scent.cer文件
+<br><span style="color: blue;">-v</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 显示详细信息
+<br><span style="color: blue;">-rfc</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以Base64的编码格式打印证书
+<br><span style="color: blue;">-storetype</span> <span style="color: violet;">JCEKS</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密钥库的类型为JCEKS。常用的有JKS(默认),JCEKS(推荐),PKCS12,BKS,UBER。每个密钥库只可以是其中一种类型。
+  </div>
+
+  
+
+  
+  
+  <iframe src="./使用keytool工具 - - ITeye技术网站_files/187.html" scrolling="no" width="680" height="90" frameborder="0"></iframe>
+  
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type="sina" href="javascript:;" title="分享到新浪微博"><img src="./使用keytool工具 - - ITeye技术网站_files/sina.jpg"></a>
+      <a data-type="qq" href="javascript:;" title="分享到腾讯微博"><img src="./使用keytool工具 - - ITeye技术网站_files/tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="http://czj4451.iteye.com/blog/1569811" class="next" title="InputStreamReader 源码分析">InputStreamReader 源码分析</a>
+      |
+      <a href="http://czj4451.iteye.com/blog/1547210" class="pre" title="Arrays 的使用">Arrays 的使用</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2012-06-14 15:18</li>
+      <li>浏览 11572</li>
+      <li><a href="http://czj4451.iteye.com/blog/1487684#comments">评论(0)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/language">编程语言</a></li>      
+      <li class="last"><a href="http://www.iteye.com/wiki/blog/1487684" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align:center; margin-top:30px;margin-bottom:0px;"><a href="http://czj4451.iteye.com/login" style="background-color:white;"> <img src="./使用keytool工具 - - ITeye技术网站_files/login_icon.png" style="vertical-align:middle; margin-right: 10px;"></a><a href="http://czj4451.iteye.com/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 1487684;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', '使用keytool工具');
+  });
+
+  fix_image_size($$('div.blog_content img'), 700);
+
+  function processComment() {
+    $$('#main .blog_comment > div').each(function(comment){// comment
+      var post_id = comment.id.substr(2);
+      $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+        var location = window.location;
+        source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+        source_url += "#" + comment.id;
+        pre.writeAttribute('codeable_id', post_id);
+        pre.writeAttribute('codeable_type', "BlogComment");
+        pre.writeAttribute('source_url', source_url);
+        pre.writeAttribute('pre_index', index);
+        pre.writeAttribute('title', '使用keytool工具');
+      });
+    });
+  }
+
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  code_favorites_init();
+  processComment();
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</script>
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href="http://czj4451.iteye.com/"><img alt="czj4451的博客" class="logo" src="./使用keytool工具 - - ITeye技术网站_files/user-logo.gif" title="czj4451的博客: " width=""></a></div>
+  <div id="blog_owner_name">czj4451</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 302059 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="./使用keytool工具 - - ITeye技术网站_files/icon_minigender_1.gif" title="男"></li>
+              <li>来自: 杭州</li>
+              <li><img src="./使用keytool工具 - - ITeye技术网站_files/offline.gif"></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style="font-weight:normal;font-size:12px;padding-left:30px;"><a href="http://czj4451.iteye.com/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://814135360.iteye.com/" target="_blank"><img alt="believe丢丢的博客" class="logo" src="./使用keytool工具 - - ITeye技术网站_files/user-logo-thumb.gif" title="believe丢丢的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://814135360.iteye.com/" target="_blank" title="believe丢丢">believe丢丢</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://1259179760.iteye.com/" target="_blank"><img alt="無爱舞情的博客" class="logo" src="./使用keytool工具 - - ITeye技术网站_files/82b0c8cc-7de1-3161-879f-6dddd31a8ac9-thumb.jpg" title="無爱舞情的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://1259179760.iteye.com/" target="_blank" title="無爱舞情">無爱舞情</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://jing981111.iteye.com/" target="_blank"><img alt="jing981111的博客" class="logo" src="./使用keytool工具 - - ITeye技术网站_files/user-logo-thumb.gif" title="jing981111的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://jing981111.iteye.com/" target="_blank" title="jing981111">jing981111</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://yuanyun2010.iteye.com/" target="_blank"><img alt="yuanyun2010的博客" class="logo" src="./使用keytool工具 - - ITeye技术网站_files/user-logo-thumb.gif" title="yuanyun2010的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://yuanyun2010.iteye.com/" target="_blank" title="yuanyun2010">yuanyun2010</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="http://czj4451.iteye.com/">全部博客 (191)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/211646">ant/maven (6)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/212257">algorithm (5)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/212299">tomcat/weblogic/jboss (6)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/212621">javascript/jquery (13)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/213739">java (33)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/215146">flex/flash (0)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/215805">JPA/Hibernate/myBatis (18)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/216465">java concurrent (7)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/216470">test (2)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/218269">windows/linux (6)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/219007">java collection (7)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/219591">design pattern (2)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/220193">life/health (3)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/220679">database (12)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/221115">IDE (4)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/222480">spring/ejb (20)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/223407">html/css/ckeditor (7)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/224334">jsp/servlet (3)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/225057">java io (13)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/225968">java security (4)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/233893">jni (0)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/252130">svn/git (2)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/254070">english (2)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/262054">java jmx (1)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/264329">xml (1)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/274083">struts/springmvc (9)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/305106">middleware (1)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/305896">cache (1)</a></li>
+                
+                  <li><a href="http://czj4451.iteye.com/category/310288">cglib (3)</a></li>
+                
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="http://czj4451.iteye.com/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="http://czj4451.iteye.com/blog/post">我的论坛</a> (0)
+                </li>
+                <li><a href="http://czj4451.iteye.com/blog/answered_problems">我的问答</a> (0)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="http://czj4451.iteye.com/blog/monthblog/2014-11">2014-11</a> (1)</li>
+                
+                  <li><a href="http://czj4451.iteye.com/blog/monthblog/2014-10">2014-10</a> (1)</li>
+                
+                  <li><a href="http://czj4451.iteye.com/blog/monthblog/2014-09">2014-09</a> (1)</li>
+                
+                <li><a href="http://czj4451.iteye.com/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href="http://plundercolor.iteye.com/" target="_blank" title="PlunderColor">PlunderColor</a>： 
+                  很好的文章 把前一天的log日志压缩的时间是什么时候呢， 第二 ...<br>
+                  <a href="http://czj4451.iteye.com/blog/1975937#bc2382911">logback系列之三：输出日志到文件（滚动）</a>
+                </li>
+                
+                <li>
+                  <a href="http://gary052402.iteye.com/" target="_blank" title="gary052402">gary052402</a>： 
+                  Nice!<br>
+                  <a href="http://czj4451.iteye.com/blog/1989918#bc2372982">超链接target为_blank时的问题</a>
+                </li>
+                
+                <li>
+                  <a href="http://minyunyao123.iteye.com/" target="_blank" title="minyunyao123">minyunyao123</a>： 
+                  按这种方法上传实现了，可是下载却乱码了，求解答下<br>
+                  <a href="http://czj4451.iteye.com/blog/2002932#bc2372560">hessian系列之二：上传文件</a>
+                </li>
+                
+                <li>
+                  <a href="http://2047699523.iteye.com/" target="_blank" title="2047699523">2047699523</a>： 
+                  可以参考最新的文档：如何在eclipse jee中检出项目并转 ...<br>
+                  <a href="http://czj4451.iteye.com/blog/1983889#bc2371793">普通Java工程转换成maven工程</a>
+                </li>
+                
+                <li>
+                  <a href="http://hejw-001.iteye.com/" target="_blank" title="hejw_001">hejw_001</a>： 
+                  2233<br>
+                  <a href="http://czj4451.iteye.com/blog/1629164#bc2369526">Hibernate 集合类型使用</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2016 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</script><img src="./使用keytool工具 - - ITeye技术网站_files/saved_resource" width="0" height="0">
+
+<script src="./使用keytool工具 - - ITeye技术网站_files/tracking.js" type="text/javascript"></script>
+
+    
+    
+  
+
+</body></html>

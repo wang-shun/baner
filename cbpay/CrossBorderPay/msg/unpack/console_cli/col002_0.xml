@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ctb002_0">
+	<include>CONSOLE_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="TradeSn" >
+		<format type="s" length="20"  necessary="true" />
+	</field>
+	<field name="FileName" >
+		<format type="s" length="30"  necessary="true" />
+	</field>
+	<field name="FileDate" >
+		<format type="s" length="8"  necessary="true" />
+	</field>
+</formula>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	
+	<!--基础服务-->
+	<service id="router" type="baseservice" impl="com.ztkx.cbpay.container.service.serviceimp.RouterBaseService"/>
+	<service id="unpackmsg" type="baseservice" impl="com.ztkx.cbpay.container.service.serviceimp.UnpackMsgBaseService"/>
+	<service id="packmsg" type="baseservice" impl="com.ztkx.cbpay.container.service.serviceimp.PackMsgBaseService"/>
+	<service id="decipher" type="baseservice"  impl="com.ztkx.cbpay.container.service.serviceimp.EnAndDecryptBaseService"/>
+	<service id="registermsg" type="baseservice"  impl="com.ztkx.cbpay.container.service.serviceimp.RegisterMsgBaseService"/>
+	<service id="rescodeconvert" type="baseservice"  impl="com.ztkx.cbpay.container.service.serviceimp.ResCodeConvertBaseService"/>
+	<service id="sysspecailhander" type="baseservice"  impl="com.ztkx.cbpay.container.service.serviceimp.SpecialHandlerInvokerBaseService"/>
+	<!-- 交易从服务方返回后，将信息登记入库-->
+  <service id="registertranslog" type="baseservice"  impl="com.ztkx.cbpay.container.service.serviceimp.RegisterTransLogBaseService"/>
+	<service id="defaultProService" type="protocolservice"  impl="com.ztkx.cbpay.container.service.proserviceimp.DefaultProtocolService"/>
+	
+	
+	<!--业务服务-->
+	
+	<service id="registercheckstatusbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.act009.RegisterCheckStatusBuss"/>
+	<service id="pabbuyexgcheckbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.act009.PABBuyExgCheckBuss"/>
+	<service id="updatecheckstatusbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.act009.UpdateCheckStatusBuss"/>
+	<service id="checktradecode" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckTradeCodeService"/>
+	
+	<service id="checkorder" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckOrderBusinessService"/>
+  <!--	<service id="updatesmsinfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.IssuedVerifySMSBusinessService"/> -->
+  <!--	<service id="certifieduser" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UserRegisterBusinessService"/> -->
+	<service id="dealorder" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.DealOrderBusinessService"/>
+	<service id="queryfrgcurrrate" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.QueryFrgCurrRateBusinessService"/>
+	<service id="updatepayprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UpdatePayProgressBusinessService"/>
+	<service id="registertransferaccountprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.RegisterTransferAccountBusinessService"/>
+	<service id="updatetransferaccountprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UpdateTransferAccountBusinessService"/>
+	<service id="registerpayprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.RegisterPayProgressBusinessService"/>
+	<service id="queryvalidcard" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.QueryValidCardBusinessService"/>
+	<service id="chechinfoexist" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckInfoExistBusinessService"/>
+	<service id="queryorderstatus" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.QueryOrderStatusBusinessService"/>
+	<service id="queryorderpack" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.QueryOrderPackBusinessService"/>
+	<service id="checkmerchantinfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckMerchantInfoBusinessService"/>
+	<service id="checkmerchantpermission" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckMerchantPermissionBusinessService"/>
+	<service id="findfrgrate" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.FindFrgRateBusinessService"/>
+	<!--查询支付报文后处理类-->
+	<service id="querypayprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.QueryPayProgressBusinessService"/>
+	<!--实名认证预处理类，如果是支付时进行的实名认证，则从数据库中取出用户信息数据在调用宝易互通接口进行认证--> 
+	 <service id="certifieduserBeforehand" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UserAuthenticationBeforehandBusinessService"/> 
+	 <!--实名认证登记类，如果是用户进行实名认证的交易则将相关信息保存到数据库中-->
+	 <service id="registeruserinfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UserAuthenticationRegisterBusinessService"/> 
+	 <!--实名认证后，更新数据库中用户信息表中的状态-->
+	 <service id="updateuserinfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.UserAuthenticationUpdateBusinessService"/> 
+	 <!--查询账户划转将交易，更新数据库中用户信息表中的状态-->
+	<service id="querytransferaccountprogress" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.QueryTransferAccountBusinessService"/> 
+	<!--支付交易时，从数据库中取出需要的订单信息-->
+   <service id="paymentbeforehand" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.PayProgressBeforehandBusinessService"/> 
+	 
+	 
+	 
+	 <!--查询银行在平安银行开立的商户号-->
+	 <service id="querycustno" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.QueryCustNo"/>
+	 <!--汇率查询  -->
+	 <service id="exchangeratequery" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.ExchangeRateQuery"/>
+	 <!--为FBS002组包准备数据 -->
+	 <service id="prefileuploadnotice" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS002.PreFileUploadNotice"/>	 
+	  <!--加载订单数据并校验订单状态是否可以购汇-->
+	 <service id="loadandcheckorderbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS003.LoadAndCheckOrderBuss"/>
+	 <!--为购汇准备数据-->
+	 <service id="buyfcpreparebuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS003.BuyFCPrepareBuss"/>
+	 <!--发起购汇，登记购汇总控表 登记购汇明细表 更新商户订单表-->
+	 <service id="buyfcbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS003.BuyFCBuss"/>
+	 <!--批量更新订单购汇状态-->
+	 <service id="batchupdatebuyfcinfobuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS003.BatchUpdateBuyFCInfoBuss"/>
+	 <!--单笔更新订单购汇状态-->
+	 <service id="updatebuyfcstatusbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS004.UpdateBuyFCStatusBuss"/> 
+	  <!--加载付汇订单信息 -->
+	 <service id="loadandcheckorder" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS005.LoadAndCheckOrderBuss"/>
+	 <!--生成付汇请求文件 登记文件表 修改订单的付汇状态为状态为生成购汇文件 -->
+	 <service id="generatepaymentfile" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS005.GeneratePaymentFile"/>
+	 <!--登记付汇信息-->
+	 <service id="registerpayexginfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS005.RegisterPayExgInfo"/>
+	 <!--准备付汇组包信息-->
+	 <service id="preparepayexg" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS005.PreparePayExg"/>
+	 <!--批量更新付汇信息-->
+	 <service id="batchupdatepayexginfobuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS005.BatchUpdatePayExgInfoBuss"/>
+	 <!--修改付汇信息-->
+	 <service id="updatepayexgstatusbuss" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FBS006.UpdatePayExgStatusBuss"/>
+	  <!--检查文件状态-->
+	 <service id="checkfilestatus" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FILE01.CheckFileStatus"/>
+	 <!--更新付汇文件状态为开始上传-->
+	 <service id="updatefilestatus" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FILE01.UpdateFileStatus"/>
+	 <!--获取报文头中的响应码 -->
+	 <service id="obtainrescode" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FILE01.ObtainResCode"/>
+   <!--登记文件表 -->
+	 <service id="registerfileinfo" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PAB.FILE03.RegisterFileInfo"/>
+	 
+  
+  <!--账户划转的预处理服务， -->
+  <service id="accounttransferbeforehand" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.TransferAccountbeforehandBusinessService"/>
+  <!--短信下发前登记请求信息 update by tianguangzhao 20160530 废弃，下发验证码不再登记
+  <service id="registersmsrequest" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.UMBpay.RegisterIssuedVerifySMSBusinessService"/> -->
+  <!--交易流水对账预处理服务，组织宝易互通所需的信息 -->
+  <service id="payflowcheckbeforhand" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckingPayFlowBeforhandBusinessService"/>
+  <!--交易流水对账处理服务,进行对账操作 -->
+  <service id="payflowcheck" type="businessservice"  impl="com.ztkx.cbpay.business.serviceimp.PLATFORM.CheckingPayFlowByQueryBusinessService"/> 
+        
+</services>
+

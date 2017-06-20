@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html class="ng-scope" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="TH" lang="en"><head class="ng-scope" ng-controller="DZHeadController">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+<!--
+
+##::::: ##: ########::::::: ###:::: ########:: ########:::: ##:::: ##: ####: ########:: ####: ##::: ##:: ######::
+##: ##: ##: ##.....::::::: ## ##::: ##.... ##: ##.....::::: ##:::: ##:. ##:: ##.... ##:. ##:: ###:: ##: ##... ##:
+##: ##: ##: ##::::::::::: ##:. ##:: ##:::: ##: ##:::::::::: ##:::: ##:: ##:: ##:::: ##:: ##:: ####: ##: ##:::..::
+##: ##: ##: ######:::::: ##:::. ##: ########:: ######:::::: #########:: ##:: ########::: ##:: ## ## ##: ##:: ####
+##: ##: ##: ##...::::::: #########: ##.. ##::: ##...::::::: ##.... ##:: ##:: ##.. ##:::: ##:: ##. ####: ##::: ##:
+##: ##: ##: ##:::::::::: ##.... ##: ##::. ##:: ##:::::::::: ##:::: ##:: ##:: ##::. ##::: ##:: ##:. ###: ##::: ##:
+ ###. ###:: ########:::: ##:::: ##: ##:::. ##: ########:::: ##:::: ##: ####: ##:::. ##: ####: ##::. ##:. ######::
+
+Skills wanted: Java, AngularJS, Spring, Hibernate, UX and Responsive Design
+http://dzone.applytojob.com/apply
+
+-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" ng-attr-content="{{ service.description }}" content="MyBatis is a lightweight persistence framework for Java and .NET. This blog 
+entry addresses the Java side. MyBatis is an alternative positioned 
+somewhere...">
+    <meta name="keywords" ng-attr-content="{{ service.keywords }}" content="">
+
+    <meta property="og:description" ng-attr-content="{{ service.description }}" content="MyBatis is a lightweight persistence framework for Java and .NET. This blog 
+entry addresses the Java side. MyBatis is an alternative positioned 
+somewhere...">
+
+    <meta ng-attr-content="{{ service.noIndex ? 'noindex' : '' }}" ng-attr-name="{{ service.noIndex ? 'robots' : '' }}" name="" content="">
+
+    <meta property="og:site_name" ng-attr-content="{{ service.siteName }}" content="dzone.com">
+    <meta property="og:title" ng-attr-content="{{ service.title }}" content="MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations - DZone Java">
+    <meta property="og:url" ng-attr-content="{{ service.canonical }}" content="https://dzone.com/articles/mybatis-formerly-called-ibatis">
+    <!-- ngIf: service.img --><meta class="ng-scope" ng-if="service.img" ng-attr-content="{{ service.img }}" property="og:image:secure_url" content="dzone.com/themes/dz20/images/ArticleImg_6.jpg"><!-- end ngIf: service.img -->
+    <!-- ngIf: service.type -->
+
+    <meta name="twitter:site" content="@dzone">
+    <!-- ngIf: service.twitterImage -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" ng-attr-content="{{ service.description }}" content="MyBatis is a lightweight persistence framework for Java and .NET. This blog 
+entry addresses the Java side. MyBatis is an alternative positioned 
+somewhere...">
+    <meta name="twitter:title" ng-attr-content="{{ service.title }}" content="MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations - DZone Java">
+
+    <!-- ngIf: service.wordCount -->
+    <meta name="referrer" content="origin">
+
+    <link rel="dns-prefetch" href="https://www.googletagservices.com/">
+    <link rel="dns-prefetch" href="https://pixel-geo.prfct.co/">
+    <link rel="dns-prefetch" href="https://secure.adnxs.com/">
+    <link rel="dns-prefetch" href="https://hn.inspectlet.com/">
+    <link rel="dns-prefetch" href="https://inspectletws.herokuapp.com/">
+    <link rel="dns-prefetch" href="https://tag.perfectaudience.com/">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com/">
+    <link rel="image_src" ng-href="dzone.com/themes/dz20/images/ArticleImg_6.jpg" href="https://dzone.com/articles/dzone.com/themes/dz20/images/ArticleImg_6.jpg"><!--formatted-->
+
+
+    <link rel="canonical" ng-href="https://dzone.com/articles/mybatis-formerly-called-ibatis" href="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/mybatis-formerly-called-ibatis_004.htm">
+    <!-- ngIf: service.prevPage -->
+    <!-- ngIf: service.nextPage -->
+    <link rel="icon" type="image/x-icon" href="https://dzone.com/themes/dz20/images/favicon.ico">
+
+    <title class="ng-binding" ng-bind="service.title">MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations - DZone Java</title>
+
+    <meta name="df-verify" content="df0d76632b4543">
+
+<link rel="stylesheet" type="text/css" href="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/2343302-combined.css" charset="utf-8"><link rel="stylesheet" type="text/css" href="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/2343325-combined.css" charset="utf-8">
+<script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/osd.js"></script><script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/linkid.js" async="" type="text/javascript"></script><script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/514a05817a82440002000406.js" async="" type="text/javascript"></script><script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/analytics.js" async=""></script><script async="" src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/pubads_impl_89.js"></script><link href="https://tpc.googlesyndication.com/safeframe/1-0-4/html/container.html" rel="prefetch"><script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/tagjs" async="" type="text/javascript"></script><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/a_003.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/a_002.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/a.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_005.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_002.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_006.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_003.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_004.gif" border="0" height="1" width="1"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/seg_007.gif" border="0" height="1" width="1"></head>
+<body>
+
+    <div class="container-fluid header" th-element="header" th-element-groups="[]" ng-hide="$root.isHidden('header')" data-th-element-name="header"><div class="row mainHeaderRow" th-element="mainHeaderRow" th-element-groups="['header']" ng-hide="$root.isHidden('mainHeaderRow')" data-th-element-name="mainHeaderRow"><div style="height: 1px; margin-top: 0px;" class="col-md-12 mainHeader headerHeaderV2 oUhbWOfRPSwBoUhM ng-scope" th-element="mainHeader" th-element-groups="['header','mainHeaderRow']" ng-hide="$root.isHidden('mainHeader')" data-th-element-name="mainHeader" data-th-widget="header.headerV2" data-widget-header-header-v2="" ng-controller="mainHeader">
+<script src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/gpt.js" type="text/javascript" async=""></script><script type="text/ng-template" id="like-article.html">
+<div class="dz-like"
+     ng-class='{liked: status.liked}' ng-click='like()'
+
+    <a href="#">
+        <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+            <span>Like ({{ status.score }})</span>
+    </a>
+</div>
+</script>
+
+<script type="text/ng-template" id="refcard-save.html">
+    <button type="button" ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}"
+            ng-click="save()" class="btn btn-save btn-lg"><span class="save-title">SAVE</span><span ng-if="status.saved"
+                                                                                                    class="d-letter">D</span>
+    </button>
+</script>
+
+<div class="header-top">
+    <div class="header-container">
+        <div class="pull-left">
+            <div class="logo">
+                <a class="inner" href="https://dzone.com/"><img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/logo.png" alt="DZone"></a>
+            </div>
+        <div class="active-portal"> / <a href="https://dzone.com/java-jdk-development-tutorials-tools-news">Java Zone</a></div>
+        </div>
+        <div class="pull-right">
+
+
+            
+
+                <div class="dz-intro">Over a million developers have joined DZone.</div>
+                <!-- ngIf: !$root.user.authenticated --><div class="mobile-visible sign-in-join ng-scope" ng-if="!$root.user.authenticated"><a href="#" ng-click="loginForm()">Sign In / Join</a></div><!-- end ngIf: !$root.user.authenticated -->
+
+                <div class="join-icon"><!-- ngIf: !$root.user.authenticated --><i class="icon-user ng-scope" ng-if="!$root.user.authenticated" ng-click="loginForm()"></i><!-- end ngIf: !$root.user.authenticated --></div>
+
+
+                <div class="headerSearch">
+                    <span class="icon-search dropdown-toggle" ng-click="focusSearch()" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li>
+                            <form class="form-wrapper ng-pristine ng-invalid ng-invalid-required">
+                                <input class="ng-pristine ng-untouched ng-invalid ng-invalid-required" id="search" ng-model="searchT" placeholder="Search" required="" type="text">
+                                <input disabled="disabled" value="Search" class="btn btn-action" ng-click="allResults()" ng-disabled="searchT.length &lt; 3" type="button">
+                            </form>
+                        </li>
+                        <div class="results-area">
+                            <div class="col-md-12"><th-loader class="ng-isolate-scope" flag="loading"><div ng-show="flag" class="loading-indicator ng-hide"><i class="icon-spin6 animate-spin"></i></div></th-loader></div>
+                            <!-- ngRepeat: node in nodes -->
+                        </div>
+
+                        <!-- ngIf: totalResults -->
+                        <!-- ngIf: haveResults -->
+
+                    </ul>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="header-bottom">
+
+
+    <ul class="portals header-container">
+
+
+            <li>
+                <a href="https://dzone.com/refcardz" id="header-refcardz"><em>Refcardz</em></a></li>
+            <li>
+                <a href="https://dzone.com/guides" id="header-guides"><em>Guides</em></a></li>
+            <li>
+                <a href="https://dzone.com/portals" id="header-portals"><em>Zones</em></a></li>
+        <li>|</li>
+
+        <li>
+            <a ng-class="{'active-state': isActivePortal(2)}" href="https://dzone.com/agile-methodology-training-tools-news" id="header-2">
+            Agile</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(3)}" href="https://dzone.com/big-data-analytics-tutorials-tools-news" id="header-3">
+            Big Data</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(4)}" href="https://dzone.com/cloud-computing-tutorials-tools-news" id="header-4">
+            Cloud</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(5)}" href="https://dzone.com/database-sql-nosql-tutorials-tools-news" id="header-5">
+            Database</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(6)}" href="https://dzone.com/devops-tutorials-tools-news" id="header-6">
+            DevOps</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(7)}" href="https://dzone.com/enterprise-integration-training-tools-news" id="header-7">
+            Integration</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(8)}" href="https://dzone.com/iot-developer-tutorials-tools-news-reviews" id="header-8">
+            IoT</a>
+        </li>
+        <li>
+            <a class="active-state" ng-class="{'active-state': isActivePortal(1)}" href="https://dzone.com/java-jdk-development-tutorials-tools-news" id="header-1">
+            Java</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(9)}" href="https://dzone.com/mobile-app-developer-tutorials-tools-news" id="header-9">
+            Mobile</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(10)}" href="https://dzone.com/apm-tools-performance-monitoring-optimization" id="header-10">
+            Performance</a>
+        </li>
+        <li>
+            <a ng-class="{'active-state': isActivePortal(11)}" href="https://dzone.com/web-development-programming-tutorials-tools-news" id="header-11">
+            Web Dev</a>
+        </li>
+    </ul>
+</div>
+</div></div></div><div class="container-fluid body withSlider" th-element="body" th-element-groups="[]" ng-hide="$root.isHidden('body')" data-th-element-name="body"><div class="row mainContentRow" th-element="mainContentRow" th-element-groups="['body']" ng-hide="$root.isHidden('mainContentRow')" data-th-element-name="mainContentRow"><div class="col-md-12 articleContent4 articleContent oUhbblYOaqbcblYOaqbcC ng-scope" th-element="articleContent4" th-element-groups="['body','mainContentRow']" ng-hide="$root.isHidden('articleContent4')" data-th-element-name="articleContent4" data-th-widget="article.content" data-widget-article-content="" header-change-trigger="" ng-controller="articleContent4">
+<script type="text/ng-template" id="like-article.html">
+<div class="dz-like"
+     ng-class='{liked: status.liked}' ng-click='like()'
+
+    <a href="#">
+        <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+            <span>Like ({{ status.score }})</span>
+    </a>
+</div>
+</script>
+
+<script type="text/ng-template" id="link-article-save.html">
+<div class="save "
+     ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}" ng-click="save()"><span
+        class="action-label">{{ status.saved ? 'Saved' : 'Save' }}</span></div>
+</script>
+
+<script type="text/ng-template" id="like-article.html">
+    <div class="dz-like" ng-class="{'icon-thumbs-up-alt liked': status.liked, 'icon-thumbs-up': !status.liked}" ng-click="like()"><span class="action-label"><span>Like</span><span ng-if="status.liked" class="d-letter">d</span></span>
+        <a href="#">
+            <span>({{ status.score }})</span>
+        </a>
+    </div>
+</script>
+
+<!-- ngIf: articles[0].id == 474677 --><div class="articles-wrap ng-scope" ng-if="articles[0].id == 474677">
+
+<!-- ngIf: ads.top.show() && articles[0].readyForAd --><div ng-if="ads.top.show() &amp;&amp; articles[0].readyForAd" class="ad-container ng-scope">
+    <div id="div-gpt-ad-1435246566686-0" class="ng-isolate-scope" dc-slot="ads.top.slot()" tags="ads.top.tags(articles[0])" size="ads.top.size()"><div style="border: 0pt none;" id="google_ads_iframe_/2916070/dz2_article_billboard_0__container__"><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2916070/dz2_article_billboard_0" title="3rd party ad content" id="google_ads_iframe_/2916070/dz2_article_billboard_0" frameborder="0" height="250" width="970"></iframe></div><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2916070/dz2_article_billboard_0__hidden__" title="" id="google_ads_iframe_/2916070/dz2_article_billboard_0__hidden__" frameborder="0" height="0" width="0"></iframe></div>
+</div><!-- end ngIf: ads.top.show() && articles[0].readyForAd -->
+
+
+<div><th-if-scroll class="ng-isolate-scope" relative-to="top" from="0" to="50" callback="activateT(articles[0])"></th-if-scroll></div>
+
+<!-- ngIf: articles[0].id == 474677 --><div class="article-stream widget-top-border ng-scope" ng-class="{'widget-top-border': articles[0].published }" itemscope="" itemtype="https://schema.org/Article" ng-if="articles[0].id == 474677">
+    <div class="social-media-icons mobile-only ng-scope" follow-dzone="">
+<p>Let's be friends:</p>
+<ul class="icons-only ng-isolate-scope" ng-class="{open: isOpen}" click-outside="outside()">
+    <li class="rss-icon" id="rss-spotlight-1">
+        <a href="https://dzone.com/pages/feeds"><i class="icon-rss-1"></i></a>
+    </li>
+    <li class="twitter-icon">
+        <a href="https://twitter.com/DZone" target="_blank"><i class="icon-twitter"></i></a>
+    </li>
+    <li class="facebook-icon">
+        <a href="https://www.facebook.com/DZone-259639764711" target="_blank"><i class="icon-facebook-1"></i></a>
+    </li>
+    <li class="google-icon">
+        <a href="https://plus.google.com/+dzone/posts" target="_blank"><i class="icon-gplus"></i></a>
+    </li>
+    <li class="linkedin-icon">
+        <a href="https://www.linkedin.com/company/dzone" target="_blank"><i class="icon-linkedin-1"></i></a>
+    </li>
+
+        <ul class="social-dropdown dropdown-menu">
+            <li class="rss" id="rss-spotlight"><a href="https://dzone.com/pages/feeds"><i class="icon-rss-squared"></i></a></li>
+            <li class="twitter" id="twitter-spotlight">
+                <a href="https://twitter.com/DZone" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @DZone</a>
+            </li>
+            <li class="fb-like" id="fb-spotlight" data-href="https://www.facebook.com/DZone-259639764711/timeline/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></li>
+            <li class="google-plus" id="gplus-spotlight">
+                <div class="g-follow" data-annotation="bubble" data-height="20" data-href="https://plus.google.com/108688665090780146602" data-rel="publisher"></div>
+            </li>
+            <li class="linkedin" id="linkedin-spotlight">
+                <script type="IN/FollowCompany" data-id="114427" data-counter="right"></li></ul></ul></div>
+    <!-- ngIf: !edition || (width > 1024 && edition) --><div style="position: relative;" ng-if="!edition || (width &gt; 1024 &amp;&amp; edition)" class="content-right-images ng-scope ng-isolate-scope" header-affix-element="div.content">
+
+        <!-- ngIf: (articles[0].partner && articles[0].showLogo) || articles[0].partner.isSponsoringArticle --><div class="article-adsponsor ng-scope" ng-if="(articles[0].partner &amp;&amp; articles[0].showLogo) || articles[0].partner.isSponsoringArticle">
+                <div class="adsponsor">
+                <span>Platinum
+                 Partner
+                </span>
+                <a href="https://www.jetbrains.com/">
+                    <img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/1828623-1828766-unknown.png">
+                </a>
+                </div>
+        </div><!-- end ngIf: (articles[0].partner && articles[0].showLogo) || articles[0].partner.isSponsoringArticle -->
+
+        <!-- ngIf: articles[0].readyForAd --><div id="div-gpt-ad-1435246566686-1" class="sidebar-ad ng-scope ng-isolate-scope" ng-if="articles[0].readyForAd" dc-slot="ads.sb1.slot(articles[0], 0)" tags="ads.sb1.tags(articles[0], 0)" size="ads.sb1.size(articles[0], 0)"><div style="border: 0pt none;" id="google_ads_iframe_/2916070/dz2_article_halfpage_0__container__"><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2916070/dz2_article_halfpage_0" title="3rd party ad content" id="google_ads_iframe_/2916070/dz2_article_halfpage_0" frameborder="0" height="600" width="300"></iframe></div><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2916070/dz2_article_halfpage_0__hidden__" title="" id="google_ads_iframe_/2916070/dz2_article_halfpage_0__hidden__" frameborder="0" height="0" width="0"></iframe></div><!-- end ngIf: articles[0].readyForAd -->
+
+        <!-- ngIf: articles[0].readyForAd && 0 > 1 && !articles[0].partner.isSponsoringArticle -->
+
+    </div><!-- end ngIf: !edition || (width > 1024 && edition) -->
+
+    <article>
+        <div itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+            <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="https://dzone.com/themes/dz20/images/logo.png">
+            </div>
+            <meta itemprop="name" content="DZone">
+        </div>
+
+        <div class="content" ng-class="{'content-full': (width &lt;= 1024 &amp;&amp; edition)}">
+            <meta itemprop="datePublished" content="2010-11-02T11:17:02Z">
+            <meta itemprop="author" content="Kai Wähner">
+            <meta itemprop="dateModified" content="2010-11-02T11:17:02Z">
+            <meta itemprop="mainEntityOfPage" content="https://dzone.com/articles/mybatis-formerly-called-ibatis">
+            <div itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                <meta itemprop="image" content="https://dzone.com/themes/dz20/images/ArticleImg_2.jpg">
+
+                <meta itemprop="url" content="https://dzone.com/themes/dz20/images/ArticleImg_2.jpg">
+                <meta itemprop="width" content="370">
+                <meta itemprop="height" content="230">
+
+            </div>
+
+            <div class="header">
+                <div class="header-title">
+                    <div class="title">
+                        <h1 class="article-title" itemprop="headline">
+                            MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations
+                        </h1>
+                    </div>
+
+                    <div class="subhead">
+                        <h3></h3>
+                    </div>
+
+                    <div class="publish-meta">
+<div class="article-author-meta">
+    <a href="https://dzone.com/users/758579/megachucky.html">
+     <img src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/thumbnail.jpg" class="avatar" width="40">
+    </a> by
+
+    <div class="author-info">
+                        <span class="author-name">
+                            <a class="ng-isolate-scope" th-popup="users.profile.mini" popup-data="{user: 758579}" href="https://dzone.com/users/758579/megachucky.html">
+                                Kai Wähner</a>
+                        </span>
+
+    </div>
+        <div class="mvb-award">
+            <i class="icon-mvb-1"></i>
+        </div>
+        <div class="mvb-partner">
+            
+        </div>
+        <div class="zone-leader">
+            
+        </div>
+
+     ·
+</div>
+                        <span class="author-date">Nov. 02, 10</span>
+                        ·
+                            <a href="https://dzone.com/java-jdk-development-tutorials-tools-news" id="portal-name"><span class="portal-name">Java Zone</span></a>
+
+                    </div>
+            </div>
+        </div>
+
+
+
+            <div class="author-n-useraction">
+                <div class="like action"><dz-like class="ng-isolate-scope" template="like-article.html" node="articles[0]">
+    <div class="dz-like icon-thumbs-up" ng-class="{'icon-thumbs-up-alt liked': status.liked, 'icon-thumbs-up': !status.liked}" ng-click="like()"><span class="action-label"><span>Like</span><!-- ngIf: status.liked --></span>
+        <a href="#">
+            <span class="ng-binding">(0)</span>
+        </a>
+    </div>
+</dz-like></div>
+
+                <div class="comment action">
+                    <p class="ng-isolate-scope" ng-show="!articles[0].isLocked" slider-toggle="commentsSlider" slider-data="{parent: articles[0]}" activate-with-url-params="{showComments: articles[0].id}">
+                            <span><i class="icon-comment" tooltip-html-unsafe=""></i></span>
+                        Comment (<span class="comment-after number-of-comments ng-binding" ng-bind="articles[0].nComments">0</span>)
+                    </p>
+                    <p class="ng-hide" ng-show="articles[0].isLocked">
+                        <span><i class="icon-icon-comment comment-disabled" tooltip-html-unsafe="Comments have been disabled for this article"></i></span>
+                    </p>
+                </div>
+
+                <div class="save action">
+                    <dz-save template="link-article-save.html" node="articles[0]" class="save ng-isolate-scope">
+    <div ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}" ng-click="save()" class="save icon-star-empty"><span class="save-title">Save</span><!-- ngIf: status.saved --></div>
+</dz-save>
+                </div>
+
+
+                <div class="tweet action"><a href="#" ng-href="#" ng-click="shareTwitter($event, articles[0].header.title, articles[0].url)" class="title" target="_blank"><span><i class="icon-twitter"></i></span>
+                    <span class="action-label">Tweet</span></a>
+                </div>
+
+                <div class="pull-right">
+
+                    <div class="article-views action ng-binding"><i class="icon-eye"></i> 47.66k <span class="action-label">Views</span></div>
+
+                        <!-- ngIf: canEdit(articles[0]) || canDelete(articles[0]) -->
+                </div>
+            </div>
+
+                <div class="signin-prompt">
+                    <p>Join the DZone community and get the full member experience.</p>
+                    <a id="article-signin-prompt" href="#" ng-click="loginForm()">Join For Free</a>
+                </div>
+                <div class="arrow-down"></div>
+
+
+            <!-- ngIf: articles[0].showLogo && articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id --><div class="article-bumper ng-binding ng-scope" ng-if="articles[0].showLogo &amp;&amp; articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id" ng-bind-html="articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id">Learn more about&nbsp;<a href="https://dzone.com/go?i=123022&amp;u=http%3A%2F%2Fblog.jetbrains.com%2Fkotlin%2F2015%2F11%2Fthe-kotlin-language-1-0-beta-is-here%2F%3Futm_source%3Ddzonejava%26utm_medium%3Dpromo-link%26utm_content%3Dlanguage_matters%26utm_campaign%3Dkotlin" target="_blank" rel="nofollow">Kotlin</a>,
+ a new programming language designed to solve problems that software 
+developers face every day brought to you in partnership with<a href="https://dzone.com/go?i=123022&amp;u=http%3A%2F%2Fblog.jetbrains.com%2Fkotlin%2F2015%2F11%2Fthe-kotlin-language-1-0-beta-is-here%2F%3Futm_source%3Ddzonejava%26utm_medium%3Dpromo-link%26utm_content%3Dlanguage_matters%26utm_campaign%3Dkotlin" target="_blank" rel="nofollow"> JetBrains</a>.</div><!-- end ngIf: articles[0].showLogo && articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id -->
+            <div class="content-html" dz-code-container="" itemprop="articleBody"><p><a href="http://www.mybatis.org/">MyBatis</a> is a lightweight persistence framework for Java and .NET. This blog 
+entry addresses the Java side. MyBatis is an alternative positioned 
+somewhere between plain JDBC and ORM frameworks (e.g. EclipseLink or 
+Hibernate). MyBatis usually uses XML, but it also supports annotations 
+since version 3.</p>
+<p>The <a href="http://mybatis.googlecode.com/svn/trunk/doc/en/MyBatis-3-User-Guide.pdf" target="_blank">documentation</a>
+ is very detailed for XML, but <strong>lacks annotation examples</strong>. Just the 
+Annotations itself are described, but no examples how to use them. I 
+could not find any good and easy examples anywhere, so I will describe 
+some very basic examples for SELECT, INSERT and UPDATE statements by 
+implementing a Data Access Object (DAO) using MyBatis.<br>
+These examples are a good starting point to create more complex MyBatis 
+queries using a DAO. You can find the full source code&nbsp; at the end of 
+this blog.</p><p>&nbsp;</p>
+<h2>A simple SQL-Table</h2>
+<p>I use a very simple table with two attributes. The name of the table 
+is “simple_information”. The primary key is a Integer and may not be 
+null (info_id). The only real data is&nbsp; a character and may also not be 
+null (info_content). That is enough “complexity” to learn the usage of 
+MyBatis annotations.</p>
+<p>The Java class “SimpleInformationEntity” is a POJO which contains these two attributes.</p><p>&nbsp;</p>
+<h2>@SELECT-Statement</h2>
+<p>The @Select annotation is very easy to use, if you want to use 
+exactly one paramter. If you need more than one paramter, use the @Param
+ annotation (which is described below at the update example).<br>
+You do not have to map the found information to a 
+SimpleInformationEntity object, as you would have to do with a JDBC 
+ResultSet. The magic of the framework does this for you.</p>
+<p><em>final String GET_INFO =<br>
+“SELECT * FROM simple_information WHERE info_id = #{info_id}”;</em></p>
+<p><em>@Select(GET_INFO)<br>
+public SimpleInformationEntity getSimpleInformationById(int info_id) throws Exception;</em></p>
+<p><em><br>
+</em></p>
+<h2>@INSERT-Statement</h2>
+<p>You can use the object (which you want to be persist) as parameter. 
+You do not have to use several parameters for each attribute of the 
+object. The magic of the framework does this for you.</p>
+<p><em>final String PERSIST_INFO =<br>
+“INSERT INTO simple_information(info_id, info_content) VALUES (#{infoId}, #{infoContent})”;</em></p>
+<p><em>@Insert(PERSIST_INFO)<br>
+public int persistInformation(SimpleInformationEntity simpleInfo) throws Exception;</em></p>
+<p><em><br>
+</em></p>
+<h2>@UPDATE-Statement</h2>
+<p>You cannot use more than one parameter within a method. If you want 
+to understand why, look at some MyBatis XML examples in the 
+documenation: There you use the attribute “parameterType”, which must be
+ exactly one “parameter”! So you will get a (strange) exception, if you 
+use two or more parameters. Instead you have to use the @Param 
+annotation, if you need more than one parameter.</p>
+<p><em>final String UPDATE_INFO =<br>
+“UPDATE simple_information SET info_content = #{newInfo} WHERE info_id = #{infoId}”;</em></p>
+<p><em>@Update(UPDATE_INFO)<br>
+public int updateInformation(@Param(“infoId”) int info_id, @Param(“newInfo”) String new_content) throws Exception;</em></p>
+<p><em><br>
+</em></p>
+<h2>Configuration</h2>
+<p>You have to add your MyBatis-Interface for the Mapper to the SQLSessionFactory:</p>
+<p><em>sqlSessionFactory.getConfiguration().addMapper(InfoMapper.class);</em></p>
+<p><em><br>
+</em></p>
+<h2>Some Hints for developing with MyBatis</h2>
+<p>The following means helped me a lot to use MyBatis annotations despite the lack of documentation about using annotations:</p><p><br>
+- MyBatis is open source! So add the sources to your build path and <strong>use 
+the debugging function of your IDE to enter the MyBatis source code</strong> 
+while executing some queries. You will see what MyBatis expects as input
+ and how it is processed.</p><p><br>
+- Read the documentation about using MyBatis XML. This does not really 
+make any sense you think? It does! <strong>The processing deep inside MyBatis 
+does not change if you use annotations instead of XML</strong>. It is just 
+another way to develop persistence queries.<br>
+E.g. if you know that a XML select query may just use exactly one 
+parameterType-attribute, then you know that you may just use one 
+parameter in an annotation-based method too! If you need more 
+parameters, you have to use the @Param annotation.</p><p><br>
+- If you get any strange exception that does not make any sense, then 
+clean and re-compile your project. This often helps, because as with 
+other persistence frameworks such as Hibernate, the bytecode enhancement
+ sometimes confuses your IDE.</p><p>&nbsp;</p>
+<h2>Conclusion: @MyBatis-Team: Improve and extend the documentation instead of improving the framework itself!</h2>
+<p>MyBatis is a nice lightweigt persistence framework. But <strong>the 
+documentation is not enough detailed</strong>. Some important information is 
+completely missing. Especially, if you are a newbie to MyBatis / iBatis,
+ it is very tough to develop with MyBatis using annotations instead of 
+XML.<br>
+Besides the usage of annotations, another good example for missing 
+documentation is how to configure transactions in MyBatis by using JNDI 
+and a J2EE / JEE Application server. You have to use google to find out,
+ and if you are lucky you will find a mailing list or blog entry 
+describing your problem. If not, you have to try it out.<br>
+The missing documentation makes MyBatis much more tough than it actually
+ is. So in the next months, <strong>the MyBatis team should improve and extend 
+the documentation instead of improving the framework itself</strong>…</p><p>&nbsp;</p><p><em>Best regards</em>,&nbsp;</p><p>Kai Wähner (Twitter: @Kai Waehner)</p><p>[Content from my Blog: <a href="http://www.kai-waehner.de/blog/2010/10/25/mybatis-formerly-called-ibatis-examples-and-hints-using-select-insert-and-update-annotations/" target="_blank" title="MyBatis (former iBatis) - Lightweight Persistence Framework">MyBatis (formerly iBatis) - Examples and Hints using Select, Insert and Update Annotations - Kai Wähner's IT-Blog</a>] </p><p>&nbsp;</p>
+<h2>Appendix: Source Code</h2>
+<p>Here you see all the necessary source code, also including a MyBatis 
+Connection Factory, which reads the configuration data from a XML file.</p>
+<p>############################################################################</p>
+<p>Connection Factory (using a static initializer)</p>
+<p>############################################################################</p>
+<p>import java.io.FileNotFoundException;<br>
+import java.io.IOException;<br>
+import java.io.InputStream;<br>
+import java.io.InputStreamReader;<br>
+import java.io.Reader;</p>
+<p>import org.apache.ibatis.session.SqlSessionFactory;<br>
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;</p>
+<p>import de.waehner.kai.persistence.InfoDAO.InfoMapper;</p>
+<p>public class MyBatisConnectionFactory {</p>
+<p>private static SqlSessionFactory sqlSessionFactory;</p>
+<p>static {</p>
+<p>Reader reader = null;</p>
+<p>try {</p>
+<p>InputStream in = MyBatisConnectionFactory.class.getResourceAsStream(“myBatisConfiguration.xml”);</p>
+<p>reader = new InputStreamReader(in);</p>
+<p>if (sqlSessionFactory == null) {<br>
+sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);</p>
+<p>sqlSessionFactory.getConfiguration().addMapper(InfoMapper.class);</p>
+<p>}</p>
+<p>in.close();</p>
+<p>}</p>
+<p>catch (FileNotFoundException fileNotFoundException) {<br>
+fileNotFoundException.printStackTrace();<br>
+}</p>
+<p>catch (IOException iOException) {<br>
+iOException.printStackTrace();<br>
+}<br>
+}</p>
+<p>public static SqlSessionFactory getSqlSessionFactory() {</p>
+<p>return sqlSessionFactory;<br>
+}</p>
+<p>}</p>
+<p>############################################################################</p>
+<p>Data Acces Object (including the MyBatis-Mapper as inner Class)</p>
+<p>############################################################################</p>
+<p>import org.apache.ibatis.annotations.Insert;<br>
+import org.apache.ibatis.annotations.Param;<br>
+import org.apache.ibatis.annotations.Select;<br>
+import org.apache.ibatis.annotations.Update;<br>
+import org.apache.ibatis.session.SqlSession;<br>
+import org.apache.ibatis.session.SqlSessionFactory;</p>
+<p>public class InfoDAO {</p>
+<p>public interface InfoMapper {</p>
+<p>final String GET_INFO =<br>
+“SELECT * FROM simple_information WHERE info_id = #{info_id}”;</p>
+<p>@Select(GET_INFO)<br>
+public SimpleInformationEntity getSimpleInformationById(int info_id) throws Exception;</p>
+<p>final String PERSIST_INFO =<br>
+“INSERT INTO simple_information(info_id, info_content) VALUES (#{infoId}, #{infoContent})”;</p>
+<p>@Insert(PERSIST_INFO)<br>
+public int persistInformation(SimpleInformationEntity simpleInfo) throws Exception;</p>
+<p>final String UPDATE_INFO =<br>
+“UPDATE simple_information SET info_content = #{newInfo} WHERE info_id = #{infoId}”;</p>
+<p>@Update(UPDATE_INFO)<br>
+public int updateInformation(@Param(“infoId”) int info_id, @Param(“newInfo”) String new_content) throws Exception;</p>
+<p>}</p>
+<p>public SimpleInformationEntity getSingleAlarm(int info_id) throws Exception {</p>
+<p>SqlSessionFactory sqlSessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();<br>
+SqlSession session = sqlSessionFactory.openSession();</p>
+<p>try {</p>
+<p>InfoMapper mapper = session.getMapper(InfoMapper.class);<br>
+SimpleInformationEntity simpleInfo = mapper.getSimpleInformationById(info_id);</p>
+<p>return simpleInfo;</p>
+<p>} finally {<br>
+session.close();<br>
+}<br>
+}</p>
+<p>public int persistInformation(SimpleInformationEntity simpleInfo) throws Exception {</p>
+<p>SqlSessionFactory sqlSessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();<br>
+SqlSession session = sqlSessionFactory.openSession();</p>
+<p>try {</p>
+<p>InfoMapper mapper = session.getMapper(InfoMapper.class);<br>
+int answer = mapper.persistInformation(simpleInfo);</p>
+<p>return answer;</p>
+<p>} finally {<br>
+session.close();<br>
+}<br>
+}</p>
+<p>public int updateInformation(int info_id, String new_content) throws Exception {</p>
+<p>SqlSessionFactory sqlSessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();<br>
+SqlSession session = sqlSessionFactory.openSession();</p>
+<p>try {</p>
+<p>InfoMapper mapper = session.getMapper(InfoMapper.class);<br>
+int answer = mapper.updateInformation(info_id, new_content);</p>
+<p>return answer;</p>
+<p>} finally {<br>
+session.close();<br>
+}<br>
+}<br>
+}</p>
+<p>############################################################################</p>
+<p>SimpleInformation Entity (a simple POJO)</p>
+<p>############################################################################</p>
+<p>import java.io.Serializable;</p>
+<p>public class SimpleInformationEntity implements Serializable{</p>
+<p>private static final long serialVersionUID = -821826330941829539L;</p>
+<p>private int infoId;</p>
+<p>private String infoContent;</p>
+<p>public int getInfoId() {<br>
+return infoId;<br>
+}</p>
+<p>public void setInfoId(int infoId) {<br>
+this.infoId = infoId;<br>
+}</p>
+<p>public String getInfoContent() {<br>
+return infoContent;<br>
+}</p>
+<p>public void setInfoContent(String infoContent) {<br>
+this.infoContent = infoContent;<br>
+}<br>
+}</p></div>
+            <!-- ngIf: articles[0].showLogo --><div class="article-bumper article-bumper-bottom ng-binding ng-scope" ng-if="articles[0].showLogo" ng-bind-html="articles[0].partner.bottom.text | partnerBumperLinks:articles[0].partner.bottom.id">The Java Zone is brought to you in partnership with <a href="https://dzone.com/go?i=106824&amp;u=https%3A%2F%2Fwww.jetbrains.com%2Fidea%2Fspecials%2Fidea%2Fsmartide.jsp%3Futm_source%3Ddzonejava%26utm_medium%3Dasset%26utm_content%3Da_smart_ide_for_a_creative_you%26utm_campaign%3Didea" target="_blank" rel="nofollow">JetBrains</a>. &nbsp;Discover how&nbsp;<a href="https://dzone.com/go?i=106824&amp;u=https%3A%2F%2Fwww.jetbrains.com%2Fidea%2Fspecials%2Fidea%2Fsmartide.jsp%3Futm_source%3Ddzonejava%26utm_medium%3Dasset%26utm_content%3Da_smart_ide_for_a_creative_you%26utm_campaign%3Didea" target="_blank" rel="nofollow">powerful static code analysis and ergonomic design</a> make development not only productive but also an enjoyable experience.</div><!-- end ngIf: articles[0].showLogo -->
+
+            <div class="article-topics">
+                <div class="topic-label">Topics:</div>
+                <div class="topics">
+                        
+                </div>
+            </div>
+
+        </div>
+
+    </article>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <th-if-scroll class="ng-isolate-scope" relative-to="bottom" from="-20" to="0" callback="activateB(articles[0])"></th-if-scroll>
+    </div>
+
+</div><!-- end ngIf: articles[0].id == 474677 -->
+
+<!-- ngIf: articles[1] && !articles[1].partner.isSponsoringArticle && width >= 768 -->
+
+<!-- ngIf: articles[1] && !articles[1].partner.isSponsoringArticle && width < 768 -->
+
+
+</div><!-- end ngIf: articles[0].id == 474677 -->
+<!-- ngRepeat: article in articles --><!-- ngIf: $index > 0 || article.id != 474677 --><!-- end ngRepeat: article in articles -->
+
+<div style="clear: both;"></div>
+<!-- ngIf: !isPreview --><th-if-scroll class="ng-scope ng-isolate-scope" ng-if="!isPreview" relative-to="bottom" from="-50" to="50" callback="loadMore()"></th-if-scroll><!-- end ngIf: !isPreview -->
+</div></div></div><div class="container-fluid footerOuter" th-element="footerOuter" th-element-groups="[]" ng-hide="$root.isHidden('footerOuter')" data-th-element-name="footerOuter"><div class="row row1" th-element="row1" th-element-groups="['footerOuter']" ng-hide="$root.isHidden('row1')" data-th-element-name="row1"><div class="col-md-12 container2" th-element="container2" th-element-groups="['footerOuter','row1']" ng-hide="$root.isHidden('container2')" data-th-element-name="container2"><div class="container container2" th-element="container2" th-element-groups="['footerOuter','row1','container2']" ng-hide="$root.isHidden('container2')" data-th-element-name="container2"><div class="row footer" th-element="footer" th-element-groups="['footerOuter','row1','container2','container2']" ng-hide="$root.isHidden('footer')" data-th-element-name="footer"></div></div></div></div></div><div style="top: 2px; padding-top: 38px;" class="sidebar sidebarTapBar oUhbkSMadabbWQbVkcC oUhbkSMadabfWVcC ng-scope" th-element="sidebar" th-element-groups="[]" ng-hide="$root.isHidden('sidebar')" data-th-element-name="sidebar" data-th-widget="sidebar.tapBar" data-widget-sidebar-tap-bar="" ng-controller="sidebar"><!-- ngIf: !$root.botInfo.isRenderBot --><div class="content ng-scope" ng-if="!$root.botInfo.isRenderBot" sidebar-list="">
+<div class=" sidebar.content" th-element="sidebar.content" th-element-groups="['sidebar']" ng-hide="$root.isHidden('sidebar.content')" data-th-element-name="sidebar.content"><div class="col-md-12 sidebarContentList7 sidebarContentList oUhbkSMaaqbcdvVkcC ng-scope" th-element="sidebarContentList7" th-element-groups="['sidebar','sidebar.content']" ng-hide="$root.isHidden('sidebarContentList7')" data-th-element-name="sidebarContentList7" data-th-widget="sidebar.content.list" data-widget-sidebar-content-list="" ng-controller="sidebarContentList7"><ul class="nodes-list" dnd-list="display">
+
+    <!-- ngIf: edition -->
+
+
+    <!-- ngRepeat: node in display --><li ng-repeat="node in display" id="474677--0" class="list-entry ng-scope ng-isolate-scope active" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/mybatis-formerly-called-ibatis" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="1" ng-if="node.type != 'ad'" ng-href="/articles/mybatis-formerly-called-ibatis" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1270145--1" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/how-to-make-groovy-as-fast-as-java" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="2" ng-if="node.type != 'ad'" ng-href="/articles/how-to-make-groovy-as-fast-as-java" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">How to Make Groovy as Fast as Java</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269482--2" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/linked-list-from-the-start" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="3" ng-if="node.type != 'ad'" ng-href="/articles/linked-list-from-the-start" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Linked List From the Start</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269987--3" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/add-custom-functionality-to-a-spring-data-reposito" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="4" ng-if="node.type != 'ad'" ng-href="/articles/add-custom-functionality-to-a-spring-data-reposito" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Add Custom Functionality to a Spring Data Repository</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1240655--4" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/exercises-in-kotlin-part-4-control-flows-and-retur" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="5" ng-if="node.type != 'ad'" ng-href="/articles/exercises-in-kotlin-part-4-control-flows-and-retur" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Exercises in Kotlin: Part 4 - Control Flows and Return</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1270157--5" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/encapsulation-i-dont-think-it-means-what-you-think" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="6" ng-if="node.type != 'ad'" ng-href="/articles/encapsulation-i-dont-think-it-means-what-you-think" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Encapsulation: I Don't Think it Means What You Think it Means</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269561--6" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/scala-recursive-functions" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="7" ng-if="node.type != 'ad'" ng-href="/articles/scala-recursive-functions" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Scala: Recursive Functions</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1255470--7" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/groovy-goodness-creating-files-and-directories-wit" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="8" ng-if="node.type != 'ad'" ng-href="/articles/groovy-goodness-creating-files-and-directories-wit" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Groovy Goodness: Creating Files and Directories With a Nice DSL Using FileTreeBuilder</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1266379--8" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/accessing-the-database-from-a-thymeleaf-template" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="9" ng-if="node.type != 'ad'" ng-href="/articles/accessing-the-database-from-a-thymeleaf-template" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Accessing the Database From a Thymeleaf Template</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269409--9" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/how-to-get-started-with-jmeter-part-2-building-scr-1" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="10" ng-if="node.type != 'ad'" ng-href="/articles/how-to-get-started-with-jmeter-part-2-building-scr-1" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">How to Get Started With JMeter: Part 2 — Building Scripts and Running JMeter</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269413--10" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/using-java-8-please-avoid-functional-vomit" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="11" ng-if="node.type != 'ad'" ng-href="/articles/using-java-8-please-avoid-functional-vomit" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Using Java 8? Please Avoid Functional Vomit</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269991--11" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/new-compilers-streamline-optimization-and-enhance" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="12" ng-if="node.type != 'ad'" ng-href="/articles/new-compilers-streamline-optimization-and-enhance" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">New Compilers Streamline Optimization and Enhance Code Conversion</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1270051--12" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/jython-code-examples-to-work-with-barcode-generati" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="13" ng-if="node.type != 'ad'" ng-href="/articles/jython-code-examples-to-work-with-barcode-generati" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Generate and Recognize Barcode Using Aspose.BarCode for Java/Jython</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269406--13" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/add-custom-functionality-to-a-spring-datarepositor" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="14" ng-if="node.type != 'ad'" ng-href="/articles/add-custom-functionality-to-a-spring-datarepositor" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Add Custom Functionality to a Spring Data&nbsp;Repository</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269949--14" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/visualizing-algorithms-before-implementation" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="15" ng-if="node.type != 'ad'" ng-href="/articles/visualizing-algorithms-before-implementation" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Visualizing Algorithms Before Implementation</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269751--15" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/intellij-idea-20162-eap-case-only-renames-in-git-l" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="16" ng-if="node.type != 'ad'" ng-href="/articles/intellij-idea-20162-eap-case-only-renames-in-git-l" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">IntelliJ IDEA 2016.2 EAP: Case-Only Renames in Git, Ligatures, Background Images, and More</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269944--16" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/applying-java-8-idioms-to-existing-code" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="17" ng-if="node.type != 'ad'" ng-href="/articles/applying-java-8-idioms-to-existing-code" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Applying Java 8 Idioms to Existing Code</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269094--17" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/spring-boot-and-spring-data-jpaintegration" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="18" ng-if="node.type != 'ad'" ng-href="/articles/spring-boot-and-spring-data-jpaintegration" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Spring Boot and Spring Data JPA&nbsp;Integration</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268446--18" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/troubleshoot-outofmemoryerror-unable-to-create-new" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="19" ng-if="node.type != 'ad'" ng-href="/articles/troubleshoot-outofmemoryerror-unable-to-create-new" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Troubleshoot OutOfMemoryError: Unable to Create New Native Thread</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1269300--19" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/when-to-use-abstract-class-and-intreface" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="20" ng-if="node.type != 'ad'" ng-href="/articles/when-to-use-abstract-class-and-intreface" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">When to Use Abstract Class and Interface</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268666--20" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/groovy-a-retrospective" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="21" ng-if="node.type != 'ad'" ng-href="/articles/groovy-a-retrospective" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Groovy: A Retrospective</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268299--21" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/coordination-in-akka" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="22" ng-if="node.type != 'ad'" ng-href="/articles/coordination-in-akka" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Coordination in Akka</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268181--22" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/why-single-java-source-file-can-not-have-more-than" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="23" ng-if="node.type != 'ad'" ng-href="/articles/why-single-java-source-file-can-not-have-more-than" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Why a Single Java Source File Can Not Have More Than One Public Class</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1267240--23" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/cacheonix-announces-java-web-cache" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="24" ng-if="node.type != 'ad'" ng-href="/articles/cacheonix-announces-java-web-cache" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Cacheonix Announces Java Web Cache</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1223852--24" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/microservice-architecture-with-spring-cloud-and-do" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="25" ng-if="node.type != 'ad'" ng-href="/articles/microservice-architecture-with-spring-cloud-and-do" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Microservice Architectures With Spring Cloud and Docker</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268101--25" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/ratpacked-using-spring-as-component-registry" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="26" ng-if="node.type != 'ad'" ng-href="/articles/ratpacked-using-spring-as-component-registry" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Ratpacked: Using Spring as Component Registry</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268097--26" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/this-week-in-spring-kotlin-rest-docs-french-spring" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="27" ng-if="node.type != 'ad'" ng-href="/articles/this-week-in-spring-kotlin-rest-docs-french-spring" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">This Week in Spring: Kotlin, REST Docs, French Spring</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268032--27" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/cuba-platform-an-open-source-java-framework-for-ra" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="28" ng-if="node.type != 'ad'" ng-href="/articles/cuba-platform-an-open-source-java-framework-for-ra" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">CUBA Platform: An Open-Source Java Framework for Rapid Application Development</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1267901--28" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/all-programmers-are-polyglot-programmers" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="29" ng-if="node.type != 'ad'" ng-href="/articles/all-programmers-are-polyglot-programmers" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">All Programmers Are Polyglot Programmers</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1268300--29" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/java-quiz-introducing-mathematical-tricks" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="30" ng-if="node.type != 'ad'" ng-href="/articles/java-quiz-introducing-mathematical-tricks" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Java Quiz: Introducing Mathematical Tricks</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1266766--30" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/scala-notes-futures-1" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="31" ng-if="node.type != 'ad'" ng-href="/articles/scala-notes-futures-1" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Scala Notes: Futures, Part 1</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1266554--31" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/design-patterns-in-the-real-world-flyweight" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="32" ng-if="node.type != 'ad'" ng-href="/articles/design-patterns-in-the-real-world-flyweight" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Design Patterns in the Real World: Flyweight</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1266704--32" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/aspect-oriented-programming-with-springboot" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="33" ng-if="node.type != 'ad'" ng-href="/articles/aspect-oriented-programming-with-springboot" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Aspect Oriented Programming With Spring&nbsp;Boot</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265589--33" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/from-anonymous-class-to-single-line-lambda-in-3-st" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="34" ng-if="node.type != 'ad'" ng-href="/articles/from-anonymous-class-to-single-line-lambda-in-3-st" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">From Java Anonymous Class to Single Line Lambda in 3 Steps</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265556--34" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/swift-for-the-java-guy-part-1-getting-started" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="35" ng-if="node.type != 'ad'" ng-href="/articles/swift-for-the-java-guy-part-1-getting-started" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Swift for the Java Guy Part 1: Getting Started</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265256--35" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/back-to-the-completablefuture-java-8-feature-highl" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="36" ng-if="node.type != 'ad'" ng-href="/articles/back-to-the-completablefuture-java-8-feature-highl" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Back to the CompletableFuture: Java 8 Feature Highlight</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265190--36" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/spring-naming-sucks" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="37" ng-if="node.type != 'ad'" ng-href="/articles/spring-naming-sucks" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Spring Naming Sucks</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265857--37" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/build-and-clean-selected-files-in-eclipse-cdt" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="38" ng-if="node.type != 'ad'" ng-href="/articles/build-and-clean-selected-files-in-eclipse-cdt" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Build and Clean Selected Files in Eclipse CDT</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1265794--38" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/how-dependency-injection-di-works-in-spring-java-a" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="39" ng-if="node.type != 'ad'" ng-href="/articles/how-dependency-injection-di-works-in-spring-java-a" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">How Dependency Injection (DI) Works In Spring Java Application Development</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1264908--39" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/go-and-quasar-a-comparison-of-style-and-performanc" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="40" ng-if="node.type != 'ad'" ng-href="/articles/go-and-quasar-a-comparison-of-style-and-performanc" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Go and Quasar: A Comparison of Style and Performance</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display --><li ng-repeat="node in display" id="1264886--40" class="list-entry ng-scope ng-isolate-scope" ng-class="{active: isActive(node)}" sidebar-item="node">
+            <!-- ngIf: node.type != 'article' && node.type != 'ad' -->
+        <div class="sidebar-content ">
+            <!-- ngIf: node.type != 'ad' --><a href="https://dzone.com/articles/read-yaml-in-java-with-jackson" class="ng-scope ng-isolate-scope" ng-class="{badge1: edition}" data-badge="41" ng-if="node.type != 'ad'" ng-href="/articles/read-yaml-in-java-with-jackson" ng-click="tap()" sidebar-click="node">
+                <!-- ngIf: edition -->
+                <div class="ng-binding" ng-class="{'sidebar-node-title' : edition}">Read YAML in Java with Jackson</div>
+            </a><!-- end ngIf: node.type != 'ad' -->
+        </div>
+    </li><!-- end ngRepeat: node in display -->
+    <th-if-scroll class="ng-isolate-scope" relative-to="bottom" from="-100" to="50" callback="loadMore()"></th-if-scroll>
+    <th-loader class="ng-isolate-scope" flag="loading()"><div ng-show="flag" class="loading-indicator ng-hide"><i class="icon-spin6 animate-spin"></i></div></th-loader></ul>
+</div></div></div><!-- end ngIf: !$root.botInfo.isRenderBot -->
+<!-- ngIf: !$root.botInfo.isRenderBot --><span class="tap ng-scope" ng-class="{tapEdition: edition}" ng-click="tap()" ng-if="!$root.botInfo.isRenderBot">
+    <i class="icon-angle-double-left left"></i>
+    <i class="icon-angle-double-right right"></i>
+</span><!-- end ngIf: !$root.botInfo.isRenderBot -->
+</div><div class="componentsSlider5 componentsSlider oUhballbvbdSaoUhM ng-scope" th-element="componentsSlider5" th-element-groups="[]" ng-hide="$root.isHidden('componentsSlider5')" data-th-element-name="componentsSlider5" data-th-widget="components.slider" data-widget-components-slider="" ng-controller="componentsSlider5"><!--<i class="icon-cancel" ng-click="close()"></i>-->
+
+<!-- ngIf: _ready -->
+
+<div class="slider-outer-wrapper" ng-class="{open: _sliderOpen}">
+    
+    <!-- ngIf: _ready -->
+</div>
+
+</div>
+
+    <div class="row">
+        <a style="display: none;" href="#" class="back-to-top"><i class="icon-up-big"></i></a>
+    </div>
+
+
+
+    <script type="text/ng-template" id="/themes/dz20/widgets/header/sections/widget.html">
+<span dropdown is-open="dropdown.open" ng-class="{small: width < 768}">
+    <span dropdown-toggle class="sections"><i class="icon-menu"></i>
+        <span class="menuLabel" ng-if="width < 768"></span></span>
+    <ul class="dropdown-menu ul-first" ng-style="width < 768 ? {'top': headerSize + 0 + 'px', 'padding-top': '15px'} : {}">
+        <li><a href="/links">Links</a></li>
+        <li><a href="/refcardz">Refcardz</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="divider"></li>
+
+        <li class="post-title"><span>Zones</span></li>
+        <li ng-repeat="topic in portals" class="dropdown">
+            <a ng-href="{{ topic.url }}">{{ topic.name }}</a>
+        </li>
+        <li class="divider"></li>
+        <li class="post-title"><span>Post</span></li>
+        <li><a href="/links">Link</a></li>
+        <li><a href="/article/post.html">Article</a></li>
+    </ul>
+</span>
+
+
+    </script>
+
+<script type="text/ng-template" id="dztopicselect.html"><ui-select  ng-if="canAddTopics" ng-model="editing.topics" theme="bootstrap" multiple tagging tagging-label="(add topic)"
+           tagging-tokens=",">
+    <ui-select-match class="input-tags"><div class="topics-tag">{{ $item }}</div></ui-select-match>
+    <ui-select-choices
+            refresh="topicsRefresh($select.search)"
+            refresh-delay="250"
+            repeat="topic in foundTopics | filter: $select.search">
+        <div ng-bind-html="topic | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+<ui-select ng-if="!canAddTopics" ng-model="editing.topics" theme="bootstrap" multiple>
+    <ui-select-match><div class="topics-tag">{{ $item }}</div></ui-select-match>
+    <ui-select-choices
+            refresh="topicsRefresh($select.search)"
+            refresh-delay="250"
+            repeat="topic in foundTopics | filter: $select.search">
+        <div ng-bind-html="topic | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select></script><script type="text/ng-template" id="dzlike.html">
+<div class="dz-like " ng-class="{liked: status.liked}" ng-click="like()">
+    <a href="#">
+        <i class="icon-up-dir"></i>
+        <span>{{ status.score }}</span>
+    </a>
+</div>
+</script><script type="text/ng-template" id="dzphoto.html"><i class="icon-camera-alt photo" type="file" ng-file-drop ng-file-select ng-file-change="upload($files)"></i></script><script type="text/ng-template" id="followus.html">
+<p>Let's be friends:</p>
+<ul class="icons-only" ng-class="{open: isOpen}" click-outside="outside()">
+    <li class="rss-icon" id="rss-spotlight-1">
+        <a href="/pages/feeds"><i class="icon-rss-1"></i></a>
+    </li>
+    <li class="twitter-icon">
+        <a href="https://twitter.com/DZone" target="_blank"><i class="icon-twitter"></i></a>
+    </li>
+    <li class="facebook-icon">
+        <a href="https://www.facebook.com/DZone-259639764711" target="_blank"><i class="icon-facebook-1"></i></a>
+    </li>
+    <li class="google-icon">
+        <a href="https://plus.google.com/+dzone/posts" target="_blank"><i class="icon-gplus"></i></a>
+    </li>
+    <li class="linkedin-icon">
+        <a href="https://www.linkedin.com/company/dzone" target="_blank"><i class="icon-linkedin-1"></i></a>
+    </li>
+
+        <ul class="social-dropdown dropdown-menu">
+            <li class="rss" id="rss-spotlight"><a href="/pages/feeds"><i class="icon-rss-squared"></i></a></li>
+            <li class="twitter" id="twitter-spotlight">
+                <a href="https://twitter.com/DZone" class="twitter-follow-button" data-show-count="true"
+                   data-show-screen-name="false">Follow @DZone</a>
+            </li>
+            <li class="fb-like" id="fb-spotlight" data-href="https://www.facebook.com/DZone-259639764711/timeline/"
+                data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></li>
+            <li class="google-plus" id="gplus-spotlight">
+                <div class="g-follow" data-annotation="bubble" data-height="20"
+                     data-href="https://plus.google.com/108688665090780146602" data-rel="publisher"></div>
+            </li>
+            <li class="linkedin" id="linkedin-spotlight">
+                <script type="IN/FollowCompany" data-id="114427" data-counter="right"></script>
+            
+        
+
+<script type="text/ng-template" id="dzupload.html"><span class="btn btn-upload" >
+    <div ng-bind-html="label"></div>
+    <div class="progress-container" ng-style="{visibility: uploading ? 'visible' : 'hidden'}">
+        <progressbar max="100" value="progress"><span>{{ progress }}</span></progressbar>
+    </div>
+    <input type="file" ng-file-drop ng-file-select ng-file-change="upload($files)" />
+</span></script><script type="text/ng-template" id="dzfollow.html"><button class="btn btn-follow" ng-class="{'btn-success': !status.followed, 'btn-warning': status.followed, 'hidden': followed.id == $root.user.id}" ng-click="follow()"><span ng-if="!status.followed"><i class="icon-plus"></i> Follow</span><span ng-if="status.followed" class="following">Following</span><span ng-if="status.followed" class="hover">Unfollow</span></button></script><script type="text/ng-template" id="dzsave.html"><i class="icon-star-empty" ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}" tooltip-html-unsafe="{{status.saved ? 'Saved' : 'Save'}}" ng-click="save()"></i>
+<!--<span ng-class="{'gold count': status.saved}">{{ status.count }}</span>--></script><script type="text/ng-template" id="inline-editable.html"><div class="inline-editable" ng-if="!status.editing" ng-click="edit()" ng-transclude></div>
+<div class="inline-editor-wrapper" ng-if="status.editing">
+    <textarea class="inline-editor" ng-model="status.editValue" ng-if="type == 'textarea'"></textarea>
+    <input class="inline-editor" ng-model="status.editValue" ng-if="type == 'input'"></textarea>
+    <div class="inline-editor-tools">
+        <button class="btn select-ok" ng-disabled="!status.editValue" ng-click="save()"><i class="icon-check-1"></i></button>
+        <button class="btn select-cancel" ng-disabled="!editable" ng-click="cancel()"><i class="icon-cancel-1"></i></button>
+    </div>
+</div></script><script type="text/ng-template" id="overlay.html"><div class="ngdialog th-overlay">
+    <div class="ngdialog-overlay">
+        <div class="overlay-box">
+            <i class="icon-spin5 animate-spin"></i>
+
+            <p>{{ message }}</p>
+        </div>
+    </div>
+</div></script><script type="text/ng-template" id="dialog.skeleton.html"><div class="dialog-title">
+    <h1 ng-if="$dialog.title">{{ $dialog.title }}</h1>
+</div>
+<div class="dialog-body {{ $dialog.extraClass }}" ng-include="$dialog.template"></div>
+<div class="dialog-footer">
+    <div class="dialog-buttons" ng-if="$dialog.buttons">
+        <button ng-repeat="button in $dialog.buttons" ng-hide="button.hidden" ng-disabled="button.disabled || $dialog.executing"
+                class="btn btn-{{ button.type || 'info' }}" ng-click="$dialog.runAction(button)">
+            <span class="icon-spin6 animate-spin" ng-if="button.executing"></span>{{ button.label || button.name }}</button>
+    </div>
+</div></script><script type="text/ng-template" id="dialog.message.html"><div class="message-icon">
+    <i class="icon-{{ icon }}"></i>
+</div>
+<div class="message-text">
+    <p class="message-title" ng-bind-html="trustAsHtml(title)"></p>
+    <p ng-bind-html="trustAsHtml(message)"></p>
+</div>
+</script><script type="text/ng-template" id="dialog.confirm.html"><p>{{ message }}</p></script>
+<script type="text/javascript">
+
+    var TH_CORE_VARS = {};
+
+    try {
+        TH_CORE_VARS.additional = {};
+
+        TH_CORE_VARS.additional.model = [{"content":{"id":"474677","type":"article","plug":"mybatis-formerly-called-ibatis","creationDate":"2010-11-02 11:17:02.0"},"enableThreadedComments":true,"portal":{"id":1,"code":"java","title":"Java","shortTitle":"java-jdk-development-tutorials-tools-news"},"contentType":"article","metaData":{"title":"MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations - DZone Java","description":"MyBatis is a lightweight persistence framework for Java and .NET. This blog \r\nentry addresses the Java side. MyBatis is an alternative positioned \r\nsomewhere...","keywords":"programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud","siteName":"dzone.com","url":"https://dzone.com","img":"https://dzone.com/themes/dz20/images/ArticleImg_6.jpg","imgprop":"og:image:secure_url","twitterImage":null,"type":"","wordCount":1027,"canonical":"https://dzone.com/articles/mybatis-formerly-called-ibatis","noIndex":false,"noFollow":false,"prevPage":null,"nextPage":null,"useEscapedFragment":false,"robots":false,"robotsTag":""},"articleType":"article/"}];
+        TH_CORE_VARS.additional.loadedStyles = [["/lib/bootstrap/bootstrap.less","/lib/fontello/css/fontello.css","/lib/fontello/css/animation.css","/lib/angular-ui/select.css","/lib/ngDialog/css/ngDialog.css","/less/ngDialog-theme.less","/less/container.less","/lib/bootstrap-switch/bootstrap-switch.css","/less/dzone20.less","/less/fonts.less","/less/directives.less","/lib/sb/sb.css","/lib/bootstrap-slider/bootstrap-slider.css","/less/layout.less","/widgets/article/content/article-content.less","/widgets/components/slider/widget.less","/widgets/content/commentsSlider/widget.less","/widgets/header/headerV2/widget.less","/widgets/sidebar/content/list/list.less","/widgets/sidebar/tapBar/sidebar-list.less","/widgets/sidebar/tapBar/widget.less"]];
+        TH_CORE_VARS.additional.loadedScripts = [["/lib/jquery/jquery.js","/lib/lodash/lodash.js","/lib/moment/moment.js","/scripts/utils.js","/lib/angular/angular.js","/lib/angular/angular-sanitize.js","/lib/local-storage/angular-local-storage.js","/lib/bootstrap/dropdown.js","/lib/angular-ui/bootstrap.js","/lib/angular-ui/select.js","/lib/bootstrap-switch/bootstrap-switch.js","/lib/ngDialog/js/ngDialog.js","/lib/angular-moment/angular-moment.js","/scripts/app.js","/scripts/socket.js","/scripts/services.js","/scripts/ui-services.js","/scripts/directives.js","/scripts/filters.js","/lib/angular/angular-cookies.js","/lib/angulartics/angulartics.js","/lib/angulartics/angulartics-ga.js","/lib/angular-touch/angular-touch.min.js","/lib/elastic/elastic.js","/lib/ng-file-upload/angular-file-upload-all.js","/scripts/dzone.js","/scripts/ads.js","/scripts/social-media.js","/scripts/head.js","/scripts/links.js","/scripts/utilities/directives.js","/scripts/utilities/services.js","/scripts/utilities/editor.js","/lib/bootstrap-slider/bootstrap-slider.js","/lib/bootstrap-slider/directive.js","/lib/sb/sb.js","/lib/angular-draganddrop/draganddrop.js","/lib/flexmenu/flexmenu.min.js","/widgets/article/content/utils.js","/widgets/components/slider/service.js","/widgets/header/headerV2/resize.js","/widgets/sidebar/content/list/service.js","/widgets/sidebar/tapBar/directive.js","/widgets/sidebar/tapBar/service.js"]];
+        TH_CORE_VARS.additional.botInfo = [{"isRenderBot":false}];
+        TH_CORE_VARS.additional.TH_CSRF = "-1847075454811436767";
+        TH_CORE_VARS.additional.request = [{"site":{"id":7,"title":"DZone: Programming & DevOps news, tutorials & tools","keywords":"programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud","description":"Programming, Web Development, and DevOps news, tutorials and tools for beginners to experts. Hundreds of free publications, over 1M members, totally free.","name":"DZone.com"},"dev":false,"cdn":["dz2cdn1.dzone.com","dz2cdn2.dzone.com","dz2cdn3.dzone.com","dz2cdn4.dzone.com"],"theme":"dz20","context":"","user":{"id":2500002,"authenticated":false,"name":"Anonymous","realName":null,"avatar":"https://secure.gravatar.com/avatar/?d=identicon&r=PG","profile":"/users/2500002/anon-user.html"}}];
+        TH_CORE_VARS.additional.portals = [[{"topic":8,"id":2,"shortTitle":"agile-methodology-training-tools-news","color":"red","name":"Agile","code":"agile","url":"/agile-methodology-training-tools-news"},{"topic":6129,"id":3,"shortTitle":"big-data-analytics-tutorials-tools-news","color":"green","name":"Big Data","code":"big-data","url":"/big-data-analytics-tutorials-tools-news"},{"topic":30,"id":4,"shortTitle":"cloud-computing-tutorials-tools-news","color":"orange","name":"Cloud","code":"cloud","url":"/cloud-computing-tutorials-tools-news"},{"topic":59,"id":5,"shortTitle":"database-sql-nosql-tutorials-tools-news","color":"purple","name":"Database","code":"database","url":"/database-sql-nosql-tutorials-tools-news"},{"topic":31,"id":6,"shortTitle":"devops-tutorials-tools-news","color":"yellow","name":"DevOps","code":"devops","url":"/devops-tutorials-tools-news"},{"topic":1138,"id":7,"shortTitle":"enterprise-integration-training-tools-news","color":"green","name":"Integration","code":"integration","url":"/enterprise-integration-training-tools-news"},{"topic":48,"id":8,"shortTitle":"iot-developer-tutorials-tools-news-reviews","color":"orange","name":"IoT","code":"iot","url":"/iot-developer-tutorials-tools-news-reviews"},{"topic":1,"id":1,"shortTitle":"java-jdk-development-tutorials-tools-news","color":"purple","name":"Java","code":"java","url":"/java-jdk-development-tutorials-tools-news"},{"topic":29,"id":9,"shortTitle":"mobile-app-developer-tutorials-tools-news","color":"yellow","name":"Mobile","code":"mobile","url":"/mobile-app-developer-tutorials-tools-news"},{"topic":653,"id":10,"shortTitle":"apm-tools-performance-monitoring-optimization","color":"red","name":"Performance","code":"performance","url":"/apm-tools-performance-monitoring-optimization"},{"topic":35,"id":11,"shortTitle":"web-development-programming-tutorials-tools-news","color":"orange","name":"Web Dev","code":"webdev","url":"/web-development-programming-tutorials-tools-news"}]];
+        TH_CORE_VARS.additional.matchedUrl = {"name":"dzone:articles:view","mapping":"/articles/**","mappingPatterns":{}};
+        TH_CORE_VARS.additional.requiresModule = ["dndLists","generalDirectives","monospaced.elastic","angularFileUpload","ui.bootstrap-slider","angulartics","angulartics.google.analytics","ngCookies","ngSanitize","ui.select","ui.bootstrap","angularMoment","ngTouch","ngDialog","LocalStorageModule"];
+            } catch (e) {
+        console.error(e);
+    }
+</script>
+
+<script type="text/javascript">
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+<script type="text/javascript" src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/2343307-combined.js" charset="utf-8"></script><script type="text/javascript" src="MyBatis%20%28formerly%20iBatis%29%20%E2%80%93%20Examples%20and%20Hints%20using%20SELECT,%20INSERT%20and%20UPDATE%20Annotations%20-%20DZone%20Java_files/2343331-combined.js" charset="utf-8"></script><script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-410289-1', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('set', 'siteSpeedSampleRate', 25);
+    //ga('send', 'pageview');
+</script>
+
+
+<script type="text/javascript">
+    (function () {
+        window._pa = window._pa || {};
+        var pa = document.createElement('script');
+        pa.type = 'text/javascript';
+        pa.async = true;
+        pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/514a05817a82440002000406.js";
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(pa, s);
+    })();
+</script>
+
+
+<script type="text/javascript">
+    (function() {
+            function controller($scope, TH$Dialog, $location, $rootScope, $timeout, TH$SharedVars, $service, TH$LocalStorage) {
+    {
+        $scope.location = $location.path();
+    }
+
+    $scope.searchT ='';
+
+    TH$SharedVars.bind($scope, 'searchT', 'searchTerm', true)
+
+    $scope.loginForm = function () {
+
+        TH$Dialog.open({
+            loadWidget: 'users.loginFormV2',
+            size: 'loginForm'
+        });
+    };
+
+    $timeout(function() {
+        $(".portals").flexMenu();
+    }, 0);
+
+
+    $scope.isActivePortal = function (portalId) {
+        return $rootScope.model.portal && $rootScope.model.portal.id == portalId;
+    };
+
+    $scope.allResults = function() {
+        window.location='/search';
+    }
+
+    $("#search").keyup(function (e) {
+        var length = ($scope.searchT) ? $scope.searchT.length : 0;
+        $scope.searchT = ($scope.searchT) ? $scope.searchT : '';
+
+        if(e.keyCode == 13 && length > 2) {
+            $scope.allResults();
+        }else {
+            $scope.search();
+        }
+    });
+
+    $scope.focusSearch = function(){
+        $timeout(function(){$("#search").focus();},100)
+    }
+
+    $scope.search = function(){
+        var length = ($scope.searchT) ? $scope.searchT.length : 0;
+        $scope.loading = (length > 2);
+        if(length < 3){
+            if($scope.nodes || $scope.nodes == [] ){
+                $timeout(function(){
+                    $scope.nodes = [];
+                    $scope.cType = [];
+                    $scope.related = [];
+                    $scope.pager = [];
+                    $scope.searchParam = [];
+                    $scope.totalResults = null;
+
+                },100)
+            }
+            return false;
+        }
+
+        var term = $scope.searchT;
+        if ($scope.prevTerm == term) {return;}
+        $scope.prevTerm = term;
+
+
+        TH$LocalStorage.value('searchValue', term);
+        term = (term) ? term : '';
+        $service.nextPage({term: term, pageSize: 7}, null, true).then(function (data) {
+            $scope.loading = false;
+            var curPage = 1;
+            $scope.nodes = data.pages.newest[curPage];
+            $scope.haveResults = ($scope.nodes) ? true : false;
+            $scope.totalResults = data.totalItems;
+        })
+    }
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.applyFades = true;
+        WMODEL_DATA.isAdmin = false;
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.user = {"jobRole":null,"website":null,"about":null,"job":null,"avatar":"https://secure.gravatar.com/avatar/?d=identicon&r=PG","country":null,"city":null,"id":2500002,"karma":10,"company":null,"realName":"$$ANON_USER$$","websiteUrl":"","tagline":null};
+        WMODEL_DATA.OPTIONS = {};
+        WMODEL_DATA.getPortals = null;
+        TH.installWidgetController('header.headerV2', 'mainHeader', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'nextPage', data: false}], ' oUhbWOfRPSwBoUhM', null);
+        })();
+        (function() {
+            function controller($scope, $sce, $analytics, $service, SideBarService, TH$Dialog,$rootScope, TH$Location, $q, $window,
+                    /**infoBarService,*/ DZtopicsString, shareThis, $location, TH$Service, DZHeadService, $timeout, ArticleAdsService) {
+
+    var current = ($scope.articles && $scope.articles.length) ? $scope.articles[0] : null;
+    var loading = null;
+    var lastLoaded = current;
+    var cache = {};
+
+
+    $scope.width = $(window).width();
+
+    $scope.voted = null;
+
+    $scope.canDelete = function(article) {
+        return article.canDelete;
+    };
+
+    $scope.canEdit = function(article) {
+        return article.canEdit;
+    };
+
+    $scope.canPublish = function (article) {
+        return article.canPublish;
+    };
+
+    $scope.loginForm = function () {
+
+        TH$Dialog.open({
+            loadWidget: 'users.loginFormV2',
+            size: 'loginForm'
+        });
+    };
+
+    $scope.delete= function(article) {
+        TH$Dialog.confirm("Are you sure you want to permanently delete this article?").then(function() {
+            TH$Service.action('delete', {type: 'node', id: article.id}).then(function() {
+                TH$Dialog.success('Article deleted');
+                    newArticle(article.type);
+            });
+        });
+    };
+
+    $scope.publish = function(article) {
+        TH$Dialog.confirm("Are you sure you want to publish this article?").then(function () {
+            TH$Service.action('nodes.publish', {type: 'node', id: article.id}, {}, true)
+                .then(function () {
+                    TH$Dialog.success('Article Published', 'Your article was successfully published');
+                    article.published = true;
+                }, function () {
+                    TH$Dialog.error('Article not Published', 'There was an error publishing teh article');
+                });
+        });
+    };
+
+        $scope.shareTwitter = function($event, title, url){
+            $event.preventDefault();
+            $event.stopPropagation();
+            var twitter = 'https://twitter.com/intent/tweet';
+            var link = $location.protocol() + '://' + location.host + url;
+            var ref = location.host;
+            var params = '?text='+title+'&url='+link+'&ref=dzone.com&via=DZone';
+            var win = window.open(twitter+params, '_blank');
+            win.focus();
+        }
+
+
+
+    function newArticle(type) {
+        current.article = {
+            body: '',
+            title: '',
+            image: null,
+            topics: [],
+            sources: [],
+            notes: '',
+            published: false,
+            canDelete: false
+        };
+
+        current.bodyImages = [];
+        setEditUrl(null, type);
+    };
+
+    function setEditUrl(id, type) {
+        TH$Location.apply(function ($location) {
+
+            var url;
+
+            if (id) {
+                if (type == 'article') {
+                    url = '/content/' + id + '/edit.html';
+                } else {
+                    url = '/dzone/staff/' + type + (type == 'refcard' ? 'z' : 's') + '/' + id + '/edit.html';
+                }
+            } else {
+                if (type == 'article') {
+                    url = '/content/article/post.html';
+                } else if (type == 'refcard'){
+                    url = '/dzone/staff/' + type + 'z' + '/add.html';
+                }else{
+                    url = '/content/article/post.html'
+                }
+            }
+            $timeout(function(){
+                $location.path(url);
+            },1000);
+        });
+    };
+
+    function setCurrentInSidebar(article) {
+        var title = (article.header) ? article.header.title : article.title;
+        var titleEll = (article.header) ? article.header.titleEll : article.title;
+        SideBarService.active = article.title ? article : {
+            id: article.id,
+            type: 'article',
+            title:  $scope.edition ? titleEll : title,
+            url: article.url,
+            imageUrl: article.articleImage
+        }
+    }
+
+    if (current) {
+        loadPartner(current);
+        loadRichSnippetData(current);
+
+        setCurrentInSidebar(current);
+        //infoBarService.setTitle(current.header.title);
+        //infoBarService.setArticle(current);
+
+//        cache[current.id] = current;
+        setMeta(current);
+        current.fullHtml = $sce.trustAsHtml(current.articleContent);
+    }
+
+    function setMeta(current){
+        var portal = (current.portal) ? current.portal.name : '';
+        var keywords = (current.articleTags) ? current.articleTags.toString() : portal;
+        var title = current.header ? current.header.title : current.title;
+
+        if(!title){
+            return;
+        }
+
+        DZHeadService.title = title+' - DZone '+portal;
+        DZHeadService.description = current.metaDescription;
+        DZHeadService.keywords = keywords;
+        DZHeadService.url = $location.absUrl();
+        DZHeadService.canonical = $location.protocol() + '://' + $location.host() + current.url;
+        var imageLink = current.header ? current.header.imageLink : current.imageLink;
+        var imgUrl = $location.host() + imageLink;
+
+        DZHeadService.img = imgUrl;
+        DZHeadService.type = current.articleType;
+        DZHeadService.wordCount = (current.articleContent) ? current.articleContent.split(/\s+/).length : 0;
+    }
+
+    function getArticle(id) {
+
+        if (cache[id]) {
+            return $q.when(cache[id]);
+        } else {
+            var promise =  $service({article: id});
+
+            promise.then(function(article) {
+                article.fullHtml = $sce.trustAsHtml(article.articleContent);
+            });
+
+            return promise;
+        }
+    }
+
+    function loadArticleInList(id) {
+        loading = id;
+
+        if (cache[id]) {
+            $scope.articles.push(cache[id]);
+            lastLoaded = cache[id];
+            loading = null;
+        } else {
+            $scope.articles.push({type: 'loader'});
+
+            getArticle(id)
+                .then(function(article) {
+                    $scope.articles.pop();
+                    $scope.articles.push(article);
+                    lastLoaded = article;
+                    loading = null;
+                    cache[article.id] = article;
+
+                    loadPartner(article);
+                    loadRichSnippetData(current);
+                });
+        }
+    }
+
+    $scope.imageUrlBase = $location.protocol() + "://" + $location.host();
+
+    function loadRichSnippetData(article) {
+
+        var rs = {
+            bodyProp: 'articleBody',
+            date: moment(article.articleDate).format()
+        };
+
+        switch (article.articleType) {
+
+            case 'news':
+                rs.type = 'https://schema.org/NewsArticle';
+                break;
+            case 'snippet':
+                rs.type = 'https://schema.org/Code';
+                rs.bodyProp = '';
+                break;
+            case 'review':
+                rs.type = 'https://schema.org/Review';
+                rs.bodyProp = 'reviewBody';
+                break;
+            case 'tutorial':
+            case 'analysis':
+                rs.type = 'https://schema.org/TechArticle';
+                break;
+            case 'opinion':
+                rs.type = 'https://schema.org/BlogPosting';
+                break;
+            default:
+                rs.type = 'https://schema.org/Article';
+                break;
+        }
+
+        article.rs = rs;
+    }
+
+    var articleNumber = 1;
+
+    function attachPartner(article, partners) {
+
+        article.showLogo = true;
+
+        if (!_.isNumber(partners.lastUsed)) {
+            //partners.lastUsed = 0;
+            toUse = partners.lastUsed
+        }else{
+            toUse = partners.lastUsed + 1;
+        }
+
+        if (toUse >= partners.length || !toUse) {
+            toUse = 0;
+        }
+
+        if(partners){
+            article.showLogo = (partners.length < 2 && articleNumber % 2) ? false : article.showLogo;
+        }else{
+            article.showLogo = false;
+        }
+
+        if(!articleNumber || article.partner){
+            return;
+        }
+
+        article.readyForAd = true;
+        article.partner = partners[toUse];
+        $scope.partners.lastUsed = toUse;
+        articleNumber++;
+    }
+
+
+    function loadPartner(article) {
+
+        var partners = $scope.partners;
+
+        if (!article.portalId) {
+            if ($scope.portal) {
+                article.portal = _.findWhere($scope.portals, {id: $scope.portal.id});
+            } else {
+                //_.each(article.articleTagIds, function (id) {
+                //    var portal = _.findWhere($scope.portals, {topic: id});
+                //
+                //    if (portal) {
+                //        article.portal = portal;
+                //    }
+                //});
+            }
+        } else {
+            article.portal = _.findWhere($scope.portals, {id: article.portalId});
+        }
+        if (article.portal) {
+            if (partners[article.portal.id]) {
+                var _partners = partners[article.portal.id];
+                _partners.lastUsed = $scope.partners.lastUsed;
+                attachPartner(article, _partners);
+            } else {
+                $service.partners({portal: article.portal.id}).then(function(_partners) {
+                    partners[article.portal.id] = _partners;
+                    attachPartner(article, _partners);
+                });
+            }
+        }
+
+        if (article.readyForAd || article.partner) {
+            article.readyForAd = true;
+            return;
+        }
+
+    }
+
+    $scope.loadMore = function() {
+
+        if (loading) {
+            return;
+        }
+
+        var next = SideBarService.findNext(lastLoaded ? lastLoaded.id : null);
+
+        if (next) {
+            loadArticleInList(next);
+        }
+
+
+    };
+
+    $scope.activate = function(article) {
+
+        if(article.type == 'loader'){
+            return;
+        }
+
+        $rootScope.model.portal = article.portal
+        $scope.addShareCount(article);
+
+        //infoBarService.setnComments(article.nComments);
+        //infoBarService.setArticle(article);
+
+        if (current && article.id == current.id) {
+            return;
+        }
+
+        current = article;
+        setCurrentInSidebar(article);
+
+        TH$Location.apply(function($location) {
+            $location.path(article.url);
+        });
+
+        var title = article.header ? article.header.title : article.title;
+
+        //infoBarService.setTitle(title);
+        //infoBarService.setArticle(article);
+        setMeta(article);
+            $timeout(function(){
+                if (!article.viewTracked) {
+                    TH$Service.action('nodes.trackView', {type: 'node', id: article.id}, {}, true);
+                    article.views++;
+                    article.viewTracked = true;
+
+                    if (window.ga) {
+                        window.ga('set', 'dimension2', article.articleType ? ('article/' + article.articleType) : 'article');
+                        window.ga('set', 'dimension3', moment(article.articleDate).format('YYYY-MM-DD'));
+                        window.ga('set', 'dimension4', _.indexOf($scope.articles, article));
+                        window.ga('set', 'dimension5', article.zonetop || 'undefined');
+                        window.ga('set', 'dimension6', article.pubPlug || 'undefined');
+                    }
+
+                    $analytics.pageTrack(article.url);
+                }
+            },0);
+    };
+
+    $scope.toggleComments = function(article) {
+        if(!article.isLocked) {
+            TH$Service.action('articles.lockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = true;
+                    TH$Dialog.success('You have disabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }else {
+            TH$Service.action('articles.unlockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = false;
+                    TH$Dialog.success('You have enabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.toggleLimitComments = function (article) {
+        if (!article.isLimited) {
+            TH$Service.action('articles.limitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = true;
+                    TH$Dialog.success('You have limited comments for this Article. Now all comments will go through moderation.');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        } else {
+            TH$Service.action('articles.unlimitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = false;
+                    TH$Dialog.success('You removed the limits for comments on this Article');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.activateT = function(article) {
+        $scope.activate(article);
+    };
+
+    $scope.activateB = function(article) {
+        $scope.activate(article);
+    };
+
+    SideBarService.fn.onSelected = function(node) {
+        $scope.articles = [];
+
+        loadArticleInList(node.id);
+
+        $scope.activate(node);
+        $($window).scrollTop(0);
+    };
+
+    $scope.upvoteArticle = function () {
+
+// disabled till we decide how the vote system will work
+
+//        if (!$scope.voted) {
+//            $scope.articles[0].upvote_count += 1;
+//            $scope.voted = 1;
+//        }else {
+//            $scope.articles[0].upvote_count -= 1;
+//            $scope.voted = null;
+//        }
+    };
+
+    $scope.addShareCount = function(article){
+//        var socials = ['linkedin', 'reddit', 'twitter'];
+//        var url = $location.protocol()+'://'+$location.host()+':'+$location.port()+article.url;
+//
+//        socials.map( function(item) {
+//
+//            if(article[item] == undefined){
+//
+//                article[item] = shareThis.countThis(item,url, 'content').then(function(result){
+//                    article[item] = result;
+//                })
+//            }
+//        })
+
+
+    };
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, $location.protocol()+'://'+$location.host()+':'+$location.port()+url, title);
+    };
+
+    Object.size = function(obj) {
+        var size = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    };
+
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, $location.protocol()+'://'+$location.host()+':'+$location.port()+url, title);
+    };
+
+    $scope.mailShareLink = function(article) {
+        var title = article.header ? article.header.title : article.title;
+        var link = article.header ? article.header.link : article.link;
+        return 'mailto:?subject=' + encodeURIComponent(title) +  '&body=Article: ' + encodeURIComponent('https://dzone.com/' + link);
+    };
+
+    $scope.ads = ArticleAdsService($scope.edition, $scope.width);
+
+};
+
+
+            var WMODEL_DATA = {};
+            WMODEL_DATA.edition = null;
+        WMODEL_DATA.articles = [{"articleImage":"/themes/dz20/images/ArticleImg_2.jpg","saveStatus":{"canSave":false,"count":0,"saved":false},"portalId":1,"viewTracked":true,"canDelete":false,"bodyProp":"articleBody","pubPlug":null,"canEdit":false,"publisher":{"logo":"https://dzone.com/themes/dz20/images/logo.png","name":"DZone"},"id":474677,"authors":[{"id":758579,"name":"megachucky","realName":"Kai Wähner","avatar":2015339,"isMVB":true,"url":"/users/758579/megachucky.html","tagline":null,"aboutAuthor":"Kai W&auml;hner works as Technical Evangelist at TIBCO. Kai’s main area of expertise lies within the fields of Big Data, Analytics, Machine Learning, Integration, SOA, Microservices, BPM, Cloud, Java EE and Enterprise Architecture Management. He is regular speaker at international IT conferences such as JavaOne, ApacheCon or OOP, writes articles for professional journals, and shares his experiences with new technologies on his blog (www.kai-waehner.de/blog). Contact: kontakt@kai-waehner.de or Twitter: @KaiWaehner. Find more details and references (presentations, articles, blog posts) on his website: www.kai-waehner.de"}],"articleDate":1288696622000,"partner":{"details":{"logo":"//dz2cdn4.dzone.com/storage/partner-logo/1828623-1828766-unknown.png","level":2,"name":"JetBrains","partnerUrl":"https://www.jetbrains.com/","leveldesc":"Platinum","code":"jetbrains"},"bottom":{"id":106824,"text":"<p>The Java Zone is brought to you in partnership with <a href=\"https://www.jetbrains.com/idea/specials/idea/smartide.jsp?utm_source=dzonejava&amp;utm_medium=asset&amp;utm_content=a_smart_ide_for_a_creative_you&amp;utm_campaign=idea\" target=\"_blank\" rel=\"nofollow\">JetBrains</a>. &nbsp;Discover how&nbsp;<a href=\"https://www.jetbrains.com/idea/specials/idea/smartide.jsp?utm_source=dzonejava&amp;utm_medium=asset&amp;utm_content=a_smart_ide_for_a_creative_you&amp;utm_campaign=idea\" target=\"_blank\" rel=\"nofollow\">powerful static code analysis and ergonomic design</a> make development not only productive but also an enjoyable experience.</p>"},"campaign":28313,"top":{"id":123022,"text":"<p>Learn more about&nbsp;<a href=\"http://blog.jetbrains.com/kotlin/2015/11/the-kotlin-language-1-0-beta-is-here/?utm_source=dzonejava&amp;utm_medium=promo-link&amp;utm_content=language_matters&amp;utm_campaign=kotlin\" target=\"_blank\" rel=\"nofollow\">Kotlin</a>, a new programming language designed to solve problems that software developers face every day brought to you in partnership with<a href=\"http://blog.jetbrains.com/kotlin/2015/11/the-kotlin-language-1-0-beta-is-here/?utm_source=dzonejava&amp;utm_medium=promo-link&amp;utm_content=language_matters&amp;utm_campaign=kotlin\" target=\"_blank\" rel=\"nofollow\"> JetBrains</a>.</p>"}},"nComments":0,"published":true,"canonical":"https://dzone.com/articles/mybatis-formerly-called-ibatis","articleTypePre":"https://schema.org/Article","readyForAd":true,"metaDescription":"MyBatis is a lightweight persistence framework for Java and .NET. This blog \r\nentry addresses the Java side. MyBatis is an alternative positioned \r\nsomewhere...","image":"https://dzone.com/themes/dz20/images/ArticleImg_2.jpg","canPublish":false,"deleted":false,"likeStatus":{"liked":false,"score":0,"canLike":false},"zonetop":"","articleTags":[],"header":{"id":474677,"title":"MyBatis (formerly iBatis) – Examples and Hints using SELECT, INSERT and UPDATE Annotations","imageUrl":"/themes/dz20/images/ArticleImg_8.jpg","link":"/articles/mybatis-formerly-called-ibatis","imageLink":"/themes/dz20/images/ArticleImg_6.jpg","titleEll":"MyBatis (formerly iBatis) – Examples and Hints...","type":"article"},"url":"/articles/mybatis-formerly-called-ibatis","isLocked":false,"draft":false,"articleContent":"","source":null,"modDate":1288696622000,"views":47660,"isLimited":false,"tldr":null,"originalSource":"","articleType":""}];
+        WMODEL_DATA.perms = {"canDecidePick":false,"canPublish":false};
+        WMODEL_DATA.partners = {"1":[{"details":{"logo":"//dz2cdn4.dzone.com/storage/partner-logo/41767-zeroturnaroundlogo.png","level":2,"name":"ZeroTurnaround","partnerUrl":"http://zeroturnaround.com/","leveldesc":"Platinum","code":"zeroturnaround"},"bottom":{"id":97821,"text":"<p>The Java Zone is brought to you in partnership with&nbsp;<a href=\"http://pages.zeroturnaround.com/Rocket-Powered-White-Paper_Rocket-Powered-White-Paper.html?utm_source=dzone&amp;utm_medium=sponsored_link&amp;utm_campaign=rocketpowered\" rel=\"nofollow\" target=\"_blank\">ZeroTurnaround</a>.&nbsp;Check out this&nbsp;<a href=\"http://pages.zeroturnaround.com/Rocket-Powered-White-Paper_Rocket-Powered-White-Paper.html?utm_source=dzone&amp;utm_medium=sponsored_link&amp;utm_campaign=rocketpowered\" rel=\"nofollow\" target=\"_blank\">8-step guide</a>&nbsp;to see how you can increase your productivity by skipping slow application redeploys and by implementing application profiling, as you code!</p>"},"campaign":2,"top":{"id":124041,"text":"<p>Check out this&nbsp;<a href=\"http://pages.zeroturnaround.com/Rocket-Powered-White-Paper_Rocket-Powered-White-Paper.html?utm_source=dzone&amp;utm_medium=sponsored_link&amp;utm_campaign=rocketpowered\" rel=\"nofollow\" target=\"_blank\">8-step guide</a>&nbsp;to see how you can increase your productivity by skipping slow application redeploys and by implementing application profiling, as you code! Brought to you in partnership with <a href=\"http://pages.zeroturnaround.com/Rocket-Powered-White-Paper_Rocket-Powered-White-Paper.html?utm_source=dzone&amp;utm_medium=sponsored_link&amp;utm_campaign=rocketpowered\" target=\"_blank\" rel=\"nofollow\">ZeroTurnaround</a>.</p>"}},{"details":{"logo":"//dz2cdn4.dzone.com/storage/partner-logo/1828623-1828766-unknown.png","level":2,"name":"JetBrains","partnerUrl":"https://www.jetbrains.com/","leveldesc":"Platinum","code":"jetbrains"},"bottom":{"id":106824,"text":"<p>The Java Zone is brought to you in partnership with <a href=\"https://www.jetbrains.com/idea/specials/idea/smartide.jsp?utm_source=dzonejava&amp;utm_medium=asset&amp;utm_content=a_smart_ide_for_a_creative_you&amp;utm_campaign=idea\" target=\"_blank\" rel=\"nofollow\">JetBrains</a>. &nbsp;Discover how&nbsp;<a href=\"https://www.jetbrains.com/idea/specials/idea/smartide.jsp?utm_source=dzonejava&amp;utm_medium=asset&amp;utm_content=a_smart_ide_for_a_creative_you&amp;utm_campaign=idea\" target=\"_blank\" rel=\"nofollow\">powerful static code analysis and ergonomic design</a> make development not only productive but also an enjoyable experience.</p>"},"campaign":28313,"top":{"id":123022,"text":"<p>Learn more about&nbsp;<a href=\"http://blog.jetbrains.com/kotlin/2015/11/the-kotlin-language-1-0-beta-is-here/?utm_source=dzonejava&amp;utm_medium=promo-link&amp;utm_content=language_matters&amp;utm_campaign=kotlin\" target=\"_blank\" rel=\"nofollow\">Kotlin</a>, a new programming language designed to solve problems that software developers face every day brought to you in partnership with<a href=\"http://blog.jetbrains.com/kotlin/2015/11/the-kotlin-language-1-0-beta-is-here/?utm_source=dzonejava&amp;utm_medium=promo-link&amp;utm_content=language_matters&amp;utm_campaign=kotlin\" target=\"_blank\" rel=\"nofollow\"> JetBrains</a>.</p>"}},{"details":{"logo":"//dz2cdn4.dzone.com/storage/partner-logo/41751-appdynamics_logo.png","level":2,"name":"AppDynamics","partnerUrl":"https://www.appdynamics.com/","leveldesc":"Platinum","code":"appdynamics"},"bottom":{"id":91824,"text":"<p>The Java Zone is brought to you in partnership with <a href=\"http://www.appdynamics.com/free?utm_source=dzone&amp;utm_medium=sponsorship&amp;utm_campaign=dzone%20java%20zone&amp;utm_content=post-rol&amp;utm_term=sstrial\" target=\"_blank\" rel=\"nofollow\">AppDynamics</a>. AppDynamics helps you gain the fundamentals behind application performance, and implement best practices so you can proactively analyze and act on performance problems as they arise, and more specifically with your Java applications. <a href=\"http://www.appdynamics.com/free?utm_source=dzone&amp;utm_medium=sponsorship&amp;utm_campaign=dzone%20java%20zone&amp;utm_content=post-rol&amp;utm_term=sstrial\" target=\"_blank\" rel=\"nofollow\">Start a Free Trial</a>.</p>"},"campaign":35411,"top":{"id":124023,"text":"<p>Discover how AppDynamics steps in to upgrade your performance game and prevent your enterprise from these top&nbsp;<a href=\"https://www.appdynamics.com/lp/ebook-top-10-java-performance-problems/?utm_source=dzone&amp;utm_medium=sponsorship&amp;utm_campaign=dzone%20java%20zone&amp;utm_content=top%2010%20java%20performance%20problems&amp;utm_term=dev%7Cengagement\" target=\"_blank\" rel=\"nofollow\">10 Java performance problems</a>, brought to you in partnership with <a href=\"https://www.appdynamics.com/lp/ebook-top-10-java-performance-problems/?utm_source=dzone&amp;utm_medium=sponsorship&amp;utm_campaign=dzone%20java%20zone&amp;utm_content=top%2010%20java%20performance%20problems&amp;utm_term=dev%7Cengagement\" target=\"_blank\" rel=\"nofollow\">AppDynamics</a>.</p>"}}],"lastUsed":1};
+        WMODEL_DATA.firstArticleContent = null;
+        WMODEL_DATA.isPreview = false;
+        WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('article.content', 'articleContent4', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'partners', data: true},{name: 'DEFAULT', data: true}], ' oUhbblYOaqbcblYOaqbcC', null);
+        })();
+        (function() {
+            function controller($scope, $service, $location, SideBarService, $timeout) {
+
+    if ($scope.edition) {
+        $scope.date = moment($scope.editionDate).utc().format('MMM DD, YYYY');
+    }
+
+    SideBarService.ctx.pageSize = $scope.pageSize;
+    SideBarService.ctx.isPreview = $scope.isPreview;
+    SideBarService.ctx.mode = $scope.mode;
+
+    SideBarService.fn.loader = $service;
+
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        $scope.width = windowsize;
+    }
+    // Execute on load
+    checkWidth()
+    // Bind event listener
+    $(window).resize(checkWidth);
+
+
+    if ($scope.edition) {
+        SideBarService.ctx.edition = $scope.edition;
+    }
+
+    SideBarService.fn.scrollCheck = function() {
+        $scope.$emit('thIfScrollCheck');
+    };
+
+    var currentFilter;
+
+    $scope.$on('$locationChangeSuccess', function() {
+
+        if (!$location.search().filter) {
+            $scope.filter = 'latest';
+        } else {
+            $scope.filter = $location.search().filter;
+
+            if ($scope.filter == 'latest') {
+                $location.search('filter', null);
+            }
+        }
+
+        if (currentFilter == $scope.filter) {
+            return;
+        }
+
+        currentFilter = $scope.filter;
+
+        SideBarService.ctx.filter = $scope.filter;
+    });
+
+    $scope.display = SideBarService.getList();
+
+    $scope.$watchCollection(function() {
+        return SideBarService.getList();
+    }, function (n) {
+        $scope.display = n;
+    });
+
+    $scope.isActive = SideBarService.isActive;
+
+    $scope.isExcluded = SideBarService.isExcluded;
+
+    $scope.loadMore = SideBarService.load;
+
+    $scope.loading = function() {
+        return SideBarService.ctx.loading;
+    };
+
+    TH.on('TapBarStatusChange', function(expanded) {
+        if (expanded) {
+            SideBarService.unblock();
+        }
+    })
+
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.edition = null;
+        WMODEL_DATA.editionName = "";
+        WMODEL_DATA.pageSize = 20;
+        WMODEL_DATA.isPreview = false;
+        WMODEL_DATA.editionDate = null;
+        WMODEL_DATA.OPTIONS = {};
+        WMODEL_DATA.mode = null;
+        TH.installWidgetController('sidebar.content.list', 'sidebarContentList7', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'DEFAULT', data: true}], ' oUhbkSMaaqbcdvVkcC', null);
+        })();
+        (function() {
+            function controller($scope) {
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        var $element = $('div.sidebar.sidebarTapBar');
+        $scope.width = windowsize;
+        if(windowsize <= 1024 && $scope.edition){
+            $('.fixContentRight').removeClass('fixContentRight');
+            $('.tap').show();
+        }else if($scope.edition){
+            $('.tap').hide();
+            $('.mainContentRow').addClass('fixContentRight');
+            $element.removeClass('tapNotExpanded');
+            $element.addClass('expanded');
+        }
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.edition = null;
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('sidebar.tapBar', 'sidebar', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhbkSMadabfWVcC oUhbkSMadabbWQbVkcC', null);
+        })();
+        (function() {
+            function controller($scope,  shareThis, TH$Dialog, TH$Service, $location) {
+    $scope.getEditUrl = function(id, type) {
+        if (!type || type == 'article') {
+            return '/content/' + id + '/edit.html';
+        } else {
+            return '/dzone/staff/' + type + (type == 'refcard' ? 'z' : 's') + '/' + id + '/edit.html';
+        }
+    };
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, url, title);
+    };
+
+//    $scope.mailShareLink = function(article) {
+//        return 'mailto:?subject=' + encodeURIComponent(article.header.title) +  '&body=Article: ' + encodeURIComponent('https://dzone.com/' + article.header.link);
+//    };
+
+    $scope.canDelete = function(article) {
+        return article.canDelete;
+    };
+
+    $scope.canPublish = function(article) {
+        return article.canPublish;
+    };
+
+    $scope.canEdit = function(article) {
+        return article.canEdit;
+    };
+
+    $scope.toggleComments = function(article) {
+        if(!article.isLocked) {
+            TH$Service.action('articles.lockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = true;
+                    TH$Dialog.success('You have disabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }else {
+            TH$Service.action('articles.unlockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = false;
+                    TH$Dialog.success('You have enabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.toggleLimitComments = function (article) {
+        if (!article.isLimited) {
+            TH$Service.action('articles.limitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = true;
+                    TH$Dialog.success('You have limited comments for this Article. Now all comments will go through moderation.');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        } else {
+            TH$Service.action('articles.unlimitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = false;
+                    TH$Dialog.success('You removed the limits for comments on this Article');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.shareTwitter = function($event, title, url){
+
+        $event.preventDefault();
+        $event.stopPropagation();
+        var twitter = 'https://twitter.com/intent/tweet';
+        var link = $location.protocol() + '://' + location.host + url;
+        var ref = location.host;
+        var params = '?text='+title+'&url='+link+'&ref=dzone.com&via=DZone';
+        var win = window.open(twitter+params, '_blank');
+        win.focus();
+    };
+
+    $scope.edit = function(link) {
+        TH$Dialog.open({
+            loadWidget: 'links.postPreview',
+            widgetArgs: {
+                edit: link.id
+            },
+            size: 'xbig'
+        }).then(function (result) {
+            $scope.link.title = result.title;
+            $scope.link.linkDescription = result.content;
+            $scope.link.thumb = result.thumb;
+            $scope.link.tags = result.topics;
+        });
+    };
+
+    $scope.deleteLink = function(article) {
+        var title = article.title;
+        var type = 'link';
+        if(article.header){
+            title = (article.header.type == 'article') ? article.header.title : article.title;
+            type = (article.header.type == 'article') ? 'article' : 'link';
+        }
+        TH$Dialog.confirm('Do you want to delete "' + title + '"?').then(function() {
+            return TH$Service.action('delete', {type: type, id: article.id});
+        }).then(function() {
+            article.deleted = true;
+        });
+    };
+}
+
+
+            var WMODEL_DATA = {};
+            WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('content.commentsSlider', 'contentCommentsSlider6', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhbaqbcaibvnWffWVcC', null);
+        })();
+        (function() {
+            
+            var WMODEL_DATA = {};
+            WMODEL_DATA.name = "commentsSlider";
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.OPTIONS = {"name":"commentsSlider"};
+        TH.installWidgetController('components.slider', 'componentsSlider5', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhballbvbdSaoUhM', null);
+        })();
+        </script>
+    <script type="text/javascript">
+
+        TH.installWidgetDirective('portalSponsor', 'portalSponsor', {"service":{"portal":"="},"extra":null}, 'widget.html', '/widgets/portalSponsor/widget.js', [{name: 'DEFAULT', data: true}], ' oUhbnuWrlqanuWrlqaC', null, ['portalsponsor.less']);
+        
+        TH.installWidgetDirective('links.sources.mini', 'linksSourcesMini', {"service":{"link":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbdhbqvRbefWfSC', null, ['mini.less']);
+        
+        TH.installWidgetDirective('manage.revisions', 'manageRevisions', {"service":{"node":"=","body":"=","masterTemplate":"=","format":"=","mode":"="},"extra":null}, 'widget.html', '/widgets/manage/revisions/widget.js', [{name: 'revision', data: true},{name: 'DEFAULT', data: true}], ' oUhbXYVajkgpfWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('header.zonesDropdown', 'headerZonesDropdown', {"service":{"portal":"="},"extra":{"hover":"="}}, 'widget.html', '/widgets/header/zonesDropdown/widget.js', [{name: 'DEFAULT', data: true}], '', null, null);
+        
+        TH.installWidgetDirective('manage.customNotifications.preview', 'manageCustomNotificationsPreview', {"service":null,"extra":null}, 'widget.html', '/widgets/manage/customNotifications/preview/widget.js', null, ' oUhbXYVMwrjrYVdgpZfnkZfnkM dLgZWBLPpWkKeXB', null, ['preview.less','/lib/froala-2/css/froala_style.min.css']);
+        
+        TH.installWidgetDirective('assets.mini', 'assetsMini', {"service":{"asset":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbcgvWfSoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('users.profile.mini', 'usersProfileMini', {"service":{"user":"="},"extra":null}, 'widget.html', '/widgets/users/profile/mini/widget.js', [{name: 'DEFAULT', data: true}], ' oUhbwfbqddOeffWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('links.postV2', 'linksPostV2', {"service":null,"extra":null}, 'widget.html', '/widgets/links/postV2/widget.js', null, ' oUhbdhbnvXZqyBC', null, ['postV2.less']);
+        
+        TH.installWidgetDirective('links.listV2', 'linksListV2', {"service":null,"extra":null}, 'widget.ftl', '/widgets/links/listV2/widget.js', [{name: 'linkData', data: true},{name: 'list', data: true},{name: 'parseLink', data: true}], ' oUhbdhbdvXVkyBC', ['filters.js','directives.js'], ['listV2.less']);
+        
+        TH.installWidgetDirective('users.uiPrefs', 'usersUiPrefs', {"service":null,"extra":null}, 'widget.html', '/widgets/users/uiPrefs/widget.js', null, '', null, null);
+        
+        TH.installWidgetDirective('links.postPreview', 'linksPostPreview', {"service":{"url":"=","edit":"="},"extra":null}, 'widget.html', '/widgets/links/postPreview/widget.js', [{name: 'topics', data: true},{name: 'DEFAULT', data: true}], ' oUhbdhbnvqjXfoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('manage.customNotifications.test', 'manageCustomNotificationsTest', {"service":{"customNotification":"="},"extra":null}, 'widget.html', '/widgets/manage/customNotifications/test/widget.js', [{name: 'searchGroups', data: true},{name: 'searchUsers', data: true},{name: 'DEFAULT', data: true}], ' oUhbXYVMwrjrYVdgpcgcoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('header.sections', 'headerSections', {"service":null,"extra":null}, 'widget.html', '/widgets/header/sections/widget.js', null, ' oUhbWOfbRllbgfgpM', null, ['sections.less']);
+        
+        TH.installWidgetDirective('article.listV2', 'articleListV2', {"service":null,"extra":null}, 'widget.html', '/widgets/article/listV2/widget.js', [{name: 'list', data: true},{name: 'sortCount', data: true}], ' oUhbblYOdvXKuV_VkcC', ['directives.js'], ['article-list.less']);
+        
+        TH.installWidgetDirective('content.commentBox', 'contentCommentBox', {"service":{"parent":"="},"extra":{"count":"=","limited":"="}}, 'widget.html', '/widgets/content/commentBox/widget.js', [{name: 'post', data: false},{name: 'edit', data: false},{name: 'DEFAULT', data: true}], ' oUhbaqbcaibevMkaqbC', null, ['comments.less']);
+        
+        TH.installWidgetDirective('users.loginFormV2', 'usersLoginFormV2', {"service":null,"extra":null}, 'widget.html', '/widgets/users/loginFormV2/widget.js', null, ' oUhbwfbjZcprBjZcprBC', null, ['loginFormV2.less']);
+        
+        TH.installWidgetDirective('refcardz.mini', 'refcardzMini', {"service":{"asset":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbfSbmWfSoUhM', null, ['widget.less']);
+            </script>
+
+
+
+
+<iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_1840111792778"></iframe></body></html>

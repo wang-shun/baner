@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="col007_0">
+	<include>CONSOLE_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="totalCount" >
+		<format type="s" length="3"  necessary="true" />
+	</field>
+	<field name="SEQ_NO" >
+		<format type="s" length="16"  necessary="true" />
+	</field>
+	<field name="BUYDATE" >
+		<format type="s" length="8"  necessary="true" />
+	</field>
+</formula>

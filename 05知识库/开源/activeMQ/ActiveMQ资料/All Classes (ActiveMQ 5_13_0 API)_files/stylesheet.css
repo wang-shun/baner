@@ -1,0 +1,594 @@
+BODY {
+	BACKGROUND-COLOR: #ffffff; MARGIN: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #353833; FONT-SIZE: 76%
+}
+A:link {
+	COLOR: #4c6b87; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #4c6b87; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #bb7a2a; TEXT-DECORATION: none
+}
+A:focus {
+	COLOR: #bb7a2a; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #4c6b87; TEXT-DECORATION: none
+}
+A[name] {
+	COLOR: #353833
+}
+A[name]:hover {
+	COLOR: #353833; TEXT-DECORATION: none
+}
+PRE {
+	FONT-SIZE: 1.3em
+}
+H1 {
+	FONT-SIZE: 1.8em
+}
+H2 {
+	FONT-SIZE: 1.5em
+}
+H3 {
+	FONT-SIZE: 1.4em
+}
+H4 {
+	FONT-SIZE: 1.3em
+}
+H5 {
+	FONT-SIZE: 1.2em
+}
+H6 {
+	FONT-SIZE: 1.1em
+}
+UL {
+	LIST-STYLE-TYPE: disc
+}
+CODE {
+	FONT-SIZE: 1.2em
+}
+TT {
+	FONT-SIZE: 1.2em
+}
+DT CODE {
+	FONT-SIZE: 1.2em
+}
+TABLE TR TD DT CODE {
+	FONT-SIZE: 1.2em; VERTICAL-ALIGN: top
+}
+SUP {
+	FONT-SIZE: 0.6em
+}
+.clear {
+	HEIGHT: 0px; CLEAR: both; OVERFLOW: hidden
+}
+.aboutLanguage {
+	Z-INDEX: 200; PADDING-BOTTOM: 0px; MARGIN-TOP: -7px; PADDING-LEFT: 21px; PADDING-RIGHT: 21px; FLOAT: right; FONT-SIZE: 0.8em; PADDING-TOP: 0px
+}
+.legalCopy {
+	MARGIN-LEFT: 0.5em
+}
+.bar A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bar A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bar A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bar A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bar A:hover {
+	COLOR: #bb7a2a
+}
+.bar A:focus {
+	COLOR: #bb7a2a
+}
+.tab {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #0066ff; PADDING-LEFT: 8px; WIDTH: 5em; PADDING-RIGHT: 8px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; COLOR: #ffffff; FONT-WEIGHT: bold; PADDING-TOP: 8px
+}
+.bar {
+	BACKGROUND-IMAGE: url(resources/background.gif); PADDING-BOTTOM: 0.4em; MARGIN: 0px; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.5em; BACKGROUND-REPEAT: repeat-x; HEIGHT: auto; COLOR: #ffffff; FONT-SIZE: 1em; PADDING-TOP: 0.8em
+}
+.topNav {
+	BACKGROUND-IMAGE: url(resources/background.gif); PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: repeat-x; FLOAT: left; HEIGHT: 2.8em; COLOR: #ffffff; CLEAR: right; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.bottomNav {
+	BACKGROUND-IMAGE: url(resources/background.gif); PADDING-BOTTOM: 0px; MARGIN-TOP: 10px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: repeat-x; FLOAT: left; HEIGHT: 2.8em; COLOR: #ffffff; CLEAR: right; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.subNav {
+	BORDER-BOTTOM: #9eadc0 1px solid; BACKGROUND-COLOR: #dee3e9; WIDTH: 100%; FLOAT: left; OVERFLOW: hidden
+}
+.subNav DIV {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; FLOAT: left; CLEAR: left; PADDING-TOP: 0px
+}
+UL.navList {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 25px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+UL.subNavList {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 25px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+UL.navList LI {
+	PADDING-BOTTOM: 3px; LIST-STYLE-TYPE: none; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; FLOAT: left; PADDING-TOP: 3px
+}
+UL.subNavList LI {
+	LIST-STYLE-TYPE: none; FLOAT: left; FONT-SIZE: 90%
+}
+.topNav A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.topNav A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.topNav A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bottomNav A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bottomNav A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bottomNav A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.topNav A:hover {
+	COLOR: #bb7a2a; TEXT-DECORATION: none
+}
+.bottomNav A:hover {
+	COLOR: #bb7a2a; TEXT-DECORATION: none
+}
+.navBarCell1Rev {
+	BACKGROUND-IMAGE: url(resources/tab.gif); BORDER-BOTTOM: #c9aa44 1px solid; BORDER-LEFT: #c9aa44 1px solid; BACKGROUND-COLOR: #a88834; MARGIN: auto 5px; COLOR: #ffffff; BORDER-TOP: #c9aa44 1px solid; BORDER-RIGHT: #c9aa44 1px solid
+}
+.header {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 5px
+}
+.footer {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 5px
+}
+.indexHeader {
+	POSITION: relative; MARGIN: 10px
+}
+.indexHeader H1 {
+	FONT-SIZE: 1.3em
+}
+.title {
+	MARGIN: 10px 0px; COLOR: #2c4557
+}
+.subTitle {
+	MARGIN: 5px 0px 0px
+}
+.header UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.footer UL {
+	MARGIN: 20px 0px 5px
+}
+.header UL LI {
+	LIST-STYLE-TYPE: none; FONT-SIZE: 1.2em
+}
+.footer UL LI {
+	LIST-STYLE-TYPE: none; FONT-SIZE: 1.2em
+}
+DIV.details UL.blockList UL.blockList UL.blockList LI.blockList H4 {
+	BORDER-BOTTOM: #9eadc0 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #dee3e9; MARGIN: 0px 0px 6px -8px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 2px
+}
+DIV.details UL.blockList UL.blockList UL.blockListLast LI.blockList H4 {
+	BORDER-BOTTOM: #9eadc0 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #dee3e9; MARGIN: 0px 0px 6px -8px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 2px
+}
+UL.blockList UL.blockList UL.blockList LI.blockList H3 {
+	BORDER-BOTTOM: #9eadc0 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #dee3e9; MARGIN: 0px 0px 6px -8px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 2px
+}
+UL.blockList UL.blockList LI.blockList H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 15px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL.blockList LI.blockList H2 {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.contentContainer {
+	POSITION: relative; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; PADDING-TOP: 10px
+}
+.sourceContainer {
+	POSITION: relative; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; PADDING-TOP: 10px
+}
+.classUseContainer {
+	POSITION: relative; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; PADDING-TOP: 10px
+}
+.serializedFormContainer {
+	POSITION: relative; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; PADDING-TOP: 10px
+}
+.constantValuesContainer {
+	POSITION: relative; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; PADDING-TOP: 10px
+}
+.indexContainer {
+	POSITION: relative; MARGIN: 10px; FONT-SIZE: 1em
+}
+.indexContainer H2 {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 1.1em; PADDING-TOP: 0px
+}
+.indexContainer UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.indexContainer UL LI {
+	LIST-STYLE-TYPE: none
+}
+.contentContainer .description DL DT {
+	MARGIN: 10px 0px 0px; COLOR: #4e4e4e; FONT-SIZE: 1.1em; FONT-WEIGHT: bold
+}
+.contentContainer .details DL DT {
+	MARGIN: 10px 0px 0px; COLOR: #4e4e4e; FONT-SIZE: 1.1em; FONT-WEIGHT: bold
+}
+.serializedFormContainer DL DT {
+	MARGIN: 10px 0px 0px; COLOR: #4e4e4e; FONT-SIZE: 1.1em; FONT-WEIGHT: bold
+}
+.contentContainer .description DL DD {
+	MARGIN: 10px 0px 10px 20px
+}
+.contentContainer .details DL DD {
+	MARGIN: 10px 0px 10px 20px
+}
+.serializedFormContainer DL DD {
+	MARGIN: 10px 0px 10px 20px
+}
+.serializedFormContainer DL.nameValue DT {
+	DISPLAY: inline; MARGIN-LEFT: 1px; FONT-SIZE: 1.1em; FONT-WEIGHT: bold
+}
+.serializedFormContainer DL.nameValue DD {
+	MARGIN: 0px 0px 0px 1px; DISPLAY: inline; FONT-SIZE: 1.1em
+}
+UL.horizontal LI {
+	DISPLAY: inline; FONT-SIZE: 0.9em
+}
+UL.inheritance {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL.inheritance LI {
+	LIST-STYLE-TYPE: none; DISPLAY: inline
+}
+UL.inheritance LI UL.inheritance {
+	PADDING-LEFT: 15px; MARGIN-LEFT: 15px; PADDING-TOP: 1px
+}
+UL.blockList {
+	PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL.blockListLast {
+	PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL.blockList LI.blockList {
+	LIST-STYLE-TYPE: none; MARGIN-BOTTOM: 25px
+}
+UL.blockListLast LI.blockList {
+	LIST-STYLE-TYPE: none; MARGIN-BOTTOM: 25px
+}
+UL.blockList UL.blockList LI.blockList {
+	BORDER-BOTTOM: #9eadc0 1px solid; BORDER-LEFT: #9eadc0 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f9f9f9; PADDING-LEFT: 10px; PADDING-RIGHT: 20px; BORDER-TOP: #9eadc0 1px solid; BORDER-RIGHT: #9eadc0 1px solid; PADDING-TOP: 0px
+}
+UL.blockList UL.blockListLast LI.blockList {
+	BORDER-BOTTOM: #9eadc0 1px solid; BORDER-LEFT: #9eadc0 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f9f9f9; PADDING-LEFT: 10px; PADDING-RIGHT: 20px; BORDER-TOP: #9eadc0 1px solid; BORDER-RIGHT: #9eadc0 1px solid; PADDING-TOP: 0px
+}
+UL.blockList UL.blockList UL.blockList LI.blockList {
+	BORDER-BOTTOM: #9eadc0 1px solid; BORDER-LEFT: #9eadc0 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 8px; PADDING-RIGHT: 0px; BORDER-TOP: #9eadc0 1px; BORDER-RIGHT: #9eadc0 1px solid; PADDING-TOP: 0px
+}
+UL.blockList UL.blockList UL.blockListLast LI.blockList {
+	BORDER-BOTTOM: #9eadc0 1px solid; BORDER-LEFT: #9eadc0 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 8px; PADDING-RIGHT: 0px; BORDER-TOP: #9eadc0 1px; BORDER-RIGHT: #9eadc0 1px solid; PADDING-TOP: 0px
+}
+UL.blockList UL.blockList UL.blockList UL.blockList LI.blockList {
+	BORDER-BOTTOM: #9eadc0 1px solid; PADDING-BOTTOM: 15px; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 0px; BORDER-TOP-STYLE: none; MARGIN-LEFT: 0px; BORDER-LEFT-STYLE: none
+}
+UL.blockList UL.blockList UL.blockList UL.blockList LI.blockListLast {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none
+}
+TABLE TR TD DL {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 1px
+}
+TABLE TR TD DL DT {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 1px
+}
+TABLE TR TD DL DD {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 1px
+}
+.contentContainer TABLE {
+	BORDER-BOTTOM: #9eadc0 1px solid; WIDTH: 100%
+}
+.classUseContainer TABLE {
+	BORDER-BOTTOM: #9eadc0 1px solid; WIDTH: 100%
+}
+.constantValuesContainer TABLE {
+	BORDER-BOTTOM: #9eadc0 1px solid; WIDTH: 100%
+}
+.contentContainer UL LI TABLE {
+	WIDTH: 100%
+}
+.classUseContainer UL LI TABLE {
+	WIDTH: 100%
+}
+.constantValuesContainer UL LI TABLE {
+	WIDTH: 100%
+}
+.contentContainer .description TABLE {
+	BORDER-BOTTOM-STYLE: none
+}
+.contentContainer .details TABLE {
+	BORDER-BOTTOM-STYLE: none
+}
+.contentContainer UL LI TABLE TH.colOne {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TH.colFirst {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TH.colLast {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.classUseContainer UL LI TABLE TH {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.constantValuesContainer UL LI TABLE TH {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TD.colOne {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TD.colFirst {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TD.colLast {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.classUseContainer UL LI TABLE TD {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.constantValuesContainer UL LI TABLE TD {
+	PADDING-RIGHT: 20px; VERTICAL-ALIGN: top
+}
+.contentContainer UL LI TABLE TH.colLast {
+	PADDING-RIGHT: 3px
+}
+.classUseContainer UL LI TABLE TH.colLast {
+	PADDING-RIGHT: 3px
+}
+.constantValuesContainer UL LI TABLE TH.colLast {
+	PADDING-RIGHT: 3px
+}
+.contentContainer UL LI TABLE TD.colLast {
+	PADDING-RIGHT: 3px
+}
+.classUseContainer UL LI TABLE TD.colLast {
+	PADDING-RIGHT: 3px
+}
+.constantValuesContainer UL LI TABLE TD.colLast {
+	PADDING-RIGHT: 3px
+}
+.contentContainer UL LI TABLE TH.colOne {
+	PADDING-RIGHT: 3px
+}
+.classUseContainer UL LI TABLE TH.colOne {
+	PADDING-RIGHT: 3px
+}
+.contentContainer UL LI TABLE TD.colOne {
+	PADDING-RIGHT: 3px
+}
+.classUseContainer UL LI TABLE TD.colOne {
+	PADDING-RIGHT: 3px
+}
+.overviewSummary CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.packageSummary CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.contentContainer UL.blockList LI.blockList CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.summary CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.classUseContainer CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.constantValuesContainer CAPTION {
+	POSITION: relative; TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; COLOR: #ffffff; CLEAR: none; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+CAPTION A:link {
+	COLOR: #ffffff
+}
+CAPTION A:hover {
+	COLOR: #ffffff
+}
+CAPTION A:active {
+	COLOR: #ffffff
+}
+CAPTION A:visited {
+	COLOR: #ffffff
+}
+.overviewSummary CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.packageSummary CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.contentContainer UL.blockList LI.blockList CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.summary CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.classUseContainer CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.constantValuesContainer CAPTION SPAN {
+	BACKGROUND-IMAGE: url(resources/titlebar.gif); PADDING-LEFT: 8px; DISPLAY: block; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 18px; PADDING-TOP: 8px
+}
+.overviewSummary .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+.packageSummary .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+.contentContainer UL.blockList LI.blockList .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+.summary .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+.classUseContainer .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+.constantValuesContainer .tabEnd {
+	BACKGROUND-IMAGE: url(resources/titlebar_end.gif); POSITION: relative; WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; FLOAT: left
+}
+UL.blockList UL.blockList LI.blockList TABLE {
+	MARGIN: 0px 0px 12px; WIDTH: 100%
+}
+.tableSubHeadingColor {
+	BACKGROUND-COLOR: #eeeeff
+}
+.altColor {
+	BACKGROUND-COLOR: #eeeeef
+}
+.rowColor {
+	BACKGROUND-COLOR: #ffffff
+}
+.overviewSummary TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.packageSummary TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.contentContainer UL.blockList LI.blockList TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.summary TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.classUseContainer TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.constantValuesContainer TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+TH.colFirst {
+	BORDER-BOTTOM: #9eadc0 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; BACKGROUND: #dee3e9; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 3px
+}
+TH.colLast {
+	BORDER-BOTTOM: #9eadc0 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; BACKGROUND: #dee3e9; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 3px
+}
+TH.colOne {
+	BORDER-BOTTOM: #9eadc0 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; BACKGROUND: #dee3e9; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 3px
+}
+.constantValuesContainer TH {
+	BORDER-BOTTOM: #9eadc0 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 3px; PADDING-LEFT: 7px; PADDING-RIGHT: 3px; BACKGROUND: #dee3e9; BORDER-TOP: #9eadc0 1px solid; PADDING-TOP: 3px
+}
+TD.colOne A:link {
+	FONT-WEIGHT: bold
+}
+TD.colOne A:active {
+	FONT-WEIGHT: bold
+}
+TD.colOne A:visited {
+	FONT-WEIGHT: bold
+}
+TD.colOne A:hover {
+	FONT-WEIGHT: bold
+}
+TD.colFirst A:link {
+	FONT-WEIGHT: bold
+}
+TD.colFirst A:active {
+	FONT-WEIGHT: bold
+}
+TD.colFirst A:visited {
+	FONT-WEIGHT: bold
+}
+TD.colFirst A:hover {
+	FONT-WEIGHT: bold
+}
+TD.colLast A:link {
+	FONT-WEIGHT: bold
+}
+TD.colLast A:active {
+	FONT-WEIGHT: bold
+}
+TD.colLast A:visited {
+	FONT-WEIGHT: bold
+}
+TD.colLast A:hover {
+	FONT-WEIGHT: bold
+}
+.constantValuesContainer TD A:link {
+	FONT-WEIGHT: bold
+}
+.constantValuesContainer TD A:active {
+	FONT-WEIGHT: bold
+}
+.constantValuesContainer TD A:visited {
+	FONT-WEIGHT: bold
+}
+.constantValuesContainer TD A:hover {
+	FONT-WEIGHT: bold
+}
+TD.colFirst {
+	BORDER-LEFT: #9eadc0 1px solid; WHITE-SPACE: nowrap
+}
+TH.colFirst {
+	BORDER-LEFT: #9eadc0 1px solid; WHITE-SPACE: nowrap
+}
+TD.colLast {
+	BORDER-RIGHT: #9eadc0 1px solid
+}
+TH.colLast {
+	BORDER-RIGHT: #9eadc0 1px solid
+}
+TD.colOne {
+	BORDER-LEFT: #9eadc0 1px solid; BORDER-RIGHT: #9eadc0 1px solid
+}
+TH.colOne {
+	BORDER-LEFT: #9eadc0 1px solid; BORDER-RIGHT: #9eadc0 1px solid
+}
+TABLE.overviewSummary {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; MARGIN-LEFT: 0px; PADDING-TOP: 0px
+}
+TABLE.overviewSummary TD.colFirst {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+TABLE.overviewSummary TH.colFirst {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+TABLE.overviewSummary TD.colOne {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+TABLE.overviewSummary TH.colOne {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+TABLE.packageSummary TD.colFirst {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+TABLE.overviewSummary TH.colFirst {
+	WIDTH: 25%; VERTICAL-ALIGN: middle
+}
+.description PRE {
+	MARGIN-TOP: 0px
+}
+.deprecatedContent {
+	PADDING-BOTTOM: 10px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+.docSummary {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.sourceLineNo {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 30px; COLOR: green; PADDING-TOP: 0px
+}
+H1.hidden {
+	VISIBILITY: hidden; FONT-SIZE: 0.9em; OVERFLOW: hidden
+}
+.block {
+	MARGIN: 3px 0px 0px; DISPLAY: block
+}
+.strong {
+	FONT-WEIGHT: bold
+}

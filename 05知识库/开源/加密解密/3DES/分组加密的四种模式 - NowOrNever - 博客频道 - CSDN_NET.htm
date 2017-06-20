@@ -1,0 +1,871 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0051)http://blog.csdn.net/fw0124/article/details/8472560 -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>分组加密的四种模式 - NowOrNever - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="AChartEngine&nbsp;是一个安卓系统上制作图表的框架,目前它支持如下的图表类型:line chart (折线图)area chart (面积图；分区图，对比图)scatter chart (&nbsp;散点图)time chart (时间图；进度表)bar chart (条形图;柱状图)pie chart (&nbsp;饼图)bubb">
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/fw0124/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/fw0124">NowOrNever</A></H2>
+<H3>Power Cloaked in Simplicity</H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/fw0124?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/fw0124?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/fw0124/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "fw0124";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/fw0124";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://huiyi.csdn.net/activity/product/goods_list?project_id=2741"><FONT 
+color=red>2016软考项目经理实战班 </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://edu.csdn.net/yearPromotion"><FONT color=blue>学院周年礼-顶尖课程钜惠呈现 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://huiyi.csdn.net/activity/product/goods_list?project_id=2792"><FONT 
+color=red>Hadoop英雄会—暨Hadoop 10周年生日大趴</FONT> &nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/dba_huangzj/article/details/50469185"><FONT 
+color=blue>【博客专家】有奖试读—Windows PowerShell实战指南 </FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/fw0124/article/details/8472560">分组加密的四种模式 
+</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_r><SPAN class=link_postdate>2013-01-06 14:52</SPAN> <SPAN 
+class=link_view title=阅读次数>9280人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/fw0124/article/details/8472560#comments">评论</A>(0)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('分组加密的四种模式','8472560');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(8472560,2);return false;" 
+href="http://blog.csdn.net/fw0124/article/details/8472560#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('851713','fw0124','top','8472560');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">数据加密<EM>（12）</EM></SPAN> 
+<IMG style="DISPLAY: inline" class=arrow-down 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+<IMG style="DISPLAY: none" class=arrow-up 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/fw0124/article/category/851713">作者同类文章</A><I 
+class=J_close>X</I></DIV>
+<UL id=top_851713 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class=bog_copyright>
+<P class=copyright_p>版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content>
+<P>(以下内容整理自网络文章)<BR>加密一般分为对称加密(Symmetric Key Encryption)和非对称加密(Asymmetric Key 
+Encryption)。<BR><BR>对称加密又分为分组加密和序列密码。<BR>分组密码，也叫块加密(block 
+cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组。<BR>序列密码，也叫流加密(stream 
+cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过某种复杂的运算（密码算法）产生大量的伪随机位流，用于对明文位流的加密。<BR>解密是指用同样的密钥和密码算法及与加密相同的伪随机位流，用以还原明文位流。<BR><BR>在分组加密算法中，有ECB,CBC,CFB,OFB这几种算法模式。</P>
+<H4>1)ECB(Electronic Code Book)/电码本模式</H4>
+<P><IMG alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357454993_6190.JPG"><BR><IMG 
+alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357455020_5754.JPG"><BR>1.简单，有利于并行计算，误差不会被传送；<BR>2.不能隐藏明文的模式；<BR>repetitions 
+in message may show in cipher text/在密文中出现明文消息的重复 
+<BR>3.可能对明文进行主动攻击；<BR>加密消息块相互独立成为被攻击的弱点/weakness due to encrypted message blocks 
+being independent </P>
+<H4>2)CBC(Cipher Block Chaining)</H4>
+<P><IMG alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357455052_6375.JPG"><BR><IMG 
+alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357455071_3061.JPG"><BR>这个词在分组密码中经常会用到，它是指一个明文分组在被加密之前要与前一个的密文分组进行异或运算。当加密算法用于此模式的时候除密钥外，还需协商一个初始化向量（IV），这个IV没有实际意义，只是在第一次计算的时候需要用到而已。采用这种模式的话安全性会有所提高。<BR>1. 
+不容易主动攻击,安全性好于ECB,适合传输长度长的报文,是SSL、IPSec的标准。<BR>each ciphertext block depends on 
+all message blocks/每个密文块依赖于所有的信息块<BR>thus a change in the message affects all 
+ciphertext blocks/明文消息中一个改变会影响所有密文块<BR>2. need Initial Vector (IV) known to 
+sender &amp; receiver/发送方和接收方都需要知道初始化向量 
+<BR>3.加密过程是串行的，无法被并行化(在解密时，从两个邻接的密文块中即可得到一个平文块。因此，解密过程可以被并行化)；误差传递</P>
+<H4>3)Cipher Feedback (CFB)</H4>
+<P><IMG alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357455144_8338.JPG"><BR>密文反馈（CFB，Cipher 
+feedback）模式类似于CBC，可以将块密码变为自同步的流密码；工作过程亦非常相似，CFB的解密过程几乎就是颠倒的CBC的加密过程：<BR>需要使用一个与块的大小相同的移位寄存器，并用IV将寄存器初始化。然后，将寄存器内容使用块密码加密，然后将结果的最高x位与平文的x进行异或，以产生密文的x位。下一步将生成的x位密文移入寄存器中，并对下面的x位平文重复这一过程。解密过程与加密过程相似，以IV开始，对寄存器加密，将结果的高x与密文异或，产生x位平文，再将密文的下面x位移入寄存器。<BR>与CBC相似，平文的改变会影响接下来所有的密文，因此加密过程不能并行化；而同样的，与CBC类似，解密过程是可以并行化的。</P>
+<H4>4)Output Feedback (OFB)</H4>
+<P><SPAN style="COLOR: black"><SPAN style="COLOR: black"><IMG alt="" 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1357455437_3181.JPG"><BR>输出反馈模式（Output 
+feedback, 
+OFB）可以将块密码变成同步的流密码。它产生密钥流的块，然后将其与平文块进行异或，得到密文。与其它流密码一样，密文中一个位的翻转会使平文中同样位置的位也产生翻转。这种特性使得许多错误校正码，例如奇偶校验位，即使在加密前计算而在加密后进行校验也可以得出正确结果。<BR></SPAN></SPAN><SPAN 
+style="COLOR: black">每个使用OFB的输出块与其前面所有的输出块相关，因此不能并行化处理。然而，由于平文和密文只在最终的异或过程中使用，因此可以事先对IV进行加密，最后并行的将平文或密文进行并行的异或处理。<BR>可以利用输入全0的CBC模式产生OFB模式的密钥流。这种方法十分实用，因为可以利用快速的CBC硬件实现来加速OFB模式的加密过程。<BR><BR></SPAN></P><BR></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/fw0124/article/details/8472560#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.12--><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="8472560">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>1 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>0 </DD></DL></DIV>
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/fw0124/article/details/8462373';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/fw0124/article/details/8462373">DH密钥交换算法</A> </LI>
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/fw0124/article/details/8470940';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/fw0124/article/details/8470940">SSL/TLS/WTLS原理</A> 
+  </LI></UL>
+<DIV style="HEIGHT: 10px; CLEAR: both"></DIV>
+<DIV style="DISPLAY: none" class=similar_article>
+<H4>我的同类文章</H4>
+<DIV style="MARGIN: 20px 0px 0px" class=similar_c>
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN style="CURSOR: pointer" 
+onclick="GetCategoryArticles('851713','fw0124','foot','8472560');">数据加密<EM>（12）</EM></SPAN> 
+</LABEL></DIV>
+<DIV style="MAX-HEIGHT: 195px" class="similar_wrap tracking-ad" 
+data-mod="popu_141"><A style="DISPLAY: none" 
+href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('851713', 'fw0124','foot','8472560');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/fw0124/svc/GetSuggestContent/8472560",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8472560",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = '分组加密的四种模式' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '8472560';
+    var commentscount = 0;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/fw0124/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/fw0124" target=_blank><IMG 
+  style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/1_fw0124.jpg"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/fw0124" 
+  target=_blank>fw0124</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=fw0124','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV id=bms_box><A target=_blank><IMG onmouseover=m_over_m(this,4) 
+  onmouseout=m_out_m() alt=2 
+  src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/chizhiyiheng.png"> 
+  </A></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>573780次</SPAN> 
+    <LI>积分：<SPAN>6589</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/blog6.png"> 
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：6589 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>第1892名</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>116篇</SPAN> </LI>
+    <LI>转载：<SPAN>95篇</SPAN> </LI>
+    <LI>译文：<SPAN>1篇</SPAN> </LI>
+    <LI>评论：<SPAN>103条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch class=blogsearch 
+  title=请输入关键字></SPAN> <INPUT id=btnSubmit title="search in blog" value=搜索 type=button> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT value=blog type=hidden name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/853138">Java</A><SPAN>(44)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5793721">Spring</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/852379">Oracle</A><SPAN>(68)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/851713">数据加密</A><SPAN>(13)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5929645">网络安全</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/2841497">算法</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/3074215">设计模式</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5839371">软件工程</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/853146">Unix/Linux</A><SPAN>(16)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/852381">C++</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5799273">Web开发</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5799181">SCM</A><SPAN>(9)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/5807161">Maven</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/853134">数据库</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/2721381">通信技术</A><SPAN>(13)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/2721369">SNMP</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/852769">CORBA</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/fw0124/article/category/852380">Windows</A><SPAN>(13)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/12">2015年12月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/11">2015年11月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/10">2015年10月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/09">2015年09月</A><SPAN>(19)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/04">2015年04月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/03">2015年03月</A><SPAN>(13)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2015/01">2015年01月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2014/12">2014年12月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2014/11">2014年11月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2014/10">2014年10月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2013/07">2013年07月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2013/04">2013年04月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2013/02">2013年02月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2013/01">2013年01月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/12">2012年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/11">2012年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/10">2012年10月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/09">2012年09月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/08">2012年08月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/07">2012年07月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/06">2012年06月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/04">2012年04月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/03">2012年03月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/02">2012年02月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2012/01">2012年01月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/11">2011年11月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/10">2011年10月</A><SPAN>(40)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/09">2011年09月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/08">2011年08月</A><SPAN>(8)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/07">2011年07月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/05">2011年05月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/04">2011年04月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/03">2011年03月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/02">2011年02月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2011/01">2011年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2010/10">2010年10月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2010/08">2010年08月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/month/2010/06">2010年06月</A><SPAN>(2)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=Java中的ReentrantLock和synchronized两种锁定机制的对比 
+  href="http://blog.csdn.net/fw0124/article/details/6672522">Java中的ReentrantLock和synchronized两种锁定机制的对比</A><SPAN>(80809)</SPAN> 
+
+  <LI><A title="802.1ag CFM/802.3ah EFM OAM/Y.1731 ETH OAM学习笔记" 
+  href="http://blog.csdn.net/fw0124/article/details/5831096">802.1ag CFM/802.3ah 
+  EFM OAM/Y.1731 ETH OAM学习笔记</A><SPAN>(23297)</SPAN> 
+  <LI><A title=Oracle中的NULL 
+  href="http://blog.csdn.net/fw0124/article/details/6210730">Oracle中的NULL</A><SPAN>(13184)</SPAN> 
+
+  <LI><A title="Oracle Cursor的使用" 
+  href="http://blog.csdn.net/fw0124/article/details/6626370">Oracle 
+  Cursor的使用</A><SPAN>(13150)</SPAN> 
+  <LI><A title=DH密钥交换算法 
+  href="http://blog.csdn.net/fw0124/article/details/8462373">DH密钥交换算法</A><SPAN>(12543)</SPAN> 
+
+  <LI><A title=QoS学习笔记 
+  href="http://blog.csdn.net/fw0124/article/details/5837839">QoS学习笔记</A><SPAN>(12028)</SPAN> 
+
+  <LI><A title=使用Java进行SNMP编程-SNMP4J-SNMPv1/v2-代码实例 
+  href="http://blog.csdn.net/fw0124/article/details/8559564">使用Java进行SNMP编程-SNMP4J-SNMPv1/v2-代码实例</A><SPAN>(11906)</SPAN> 
+
+  <LI><A title=Oracle的行列转换 
+  href="http://blog.csdn.net/fw0124/article/details/7943965">Oracle的行列转换</A><SPAN>(10923)</SPAN> 
+
+  <LI><A title=TCP协议三次握手连接四次握手断开和DOS攻击 
+  href="http://blog.csdn.net/fw0124/article/details/7452695">TCP协议三次握手连接四次握手断开和DOS攻击</A><SPAN>(10504)</SPAN> 
+
+  <LI><A title="802.1ad Provider Bridges 学习笔记" 
+  href="http://blog.csdn.net/fw0124/article/details/5831061">802.1ad Provider 
+  Bridges 学习笔记</A><SPAN>(9595)</SPAN> </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=Java中的ReentrantLock和synchronized两种锁定机制的对比 
+  href="http://blog.csdn.net/fw0124/article/details/6672522">Java中的ReentrantLock和synchronized两种锁定机制的对比</A><SPAN>(31)</SPAN> 
+
+  <LI><A title=使用Java进行SNMP编程-SNMP4J-SNMPv1/v2-代码实例 
+  href="http://blog.csdn.net/fw0124/article/details/8559564">使用Java进行SNMP编程-SNMP4J-SNMPv1/v2-代码实例</A><SPAN>(10)</SPAN> 
+
+  <LI><A title=使用Java进行CORBA编程-JacORB-入门 
+  href="http://blog.csdn.net/fw0124/article/details/7188844">使用Java进行CORBA编程-JacORB-入门</A><SPAN>(8)</SPAN> 
+
+  <LI><A title=Oracle中的NULL 
+  href="http://blog.csdn.net/fw0124/article/details/6210730">Oracle中的NULL</A><SPAN>(4)</SPAN> 
+
+  <LI><A title=Java-JSSE-SSL/TLS编程代码实例-双向认证 
+  href="http://blog.csdn.net/fw0124/article/details/41013333">Java-JSSE-SSL/TLS编程代码实例-双向认证</A><SPAN>(4)</SPAN> 
+
+  <LI><A title=exp/imp与expdp/impdp对比及使用优化 
+  href="http://blog.csdn.net/fw0124/article/details/7285689">exp/imp与expdp/impdp对比及使用优化</A><SPAN>(4)</SPAN> 
+
+  <LI><A title="802.1ag CFM/802.3ah EFM OAM/Y.1731 ETH OAM学习笔记" 
+  href="http://blog.csdn.net/fw0124/article/details/5831096">802.1ag CFM/802.3ah 
+  EFM OAM/Y.1731 ETH OAM学习笔记</A><SPAN>(4)</SPAN> 
+  <LI><A title=QoS学习笔记 
+  href="http://blog.csdn.net/fw0124/article/details/5837839">QoS学习笔记</A><SPAN>(3)</SPAN> 
+
+  <LI><A title=﻿﻿Java中Socket上的Read操作阻塞问题 
+  href="http://blog.csdn.net/fw0124/article/details/41227543">﻿﻿Java中Socket上的Read操作阻塞问题</A><SPAN>(3)</SPAN> 
+
+  <LI><A title=《Oracle编程艺术》学习笔记(6)-Oracle中的文件-参数文件 
+  href="http://blog.csdn.net/fw0124/article/details/6898760">《Oracle编程艺术》学习笔记(6)-Oracle中的文件-参数文件</A><SPAN>(2)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A href="http://blog.csdn.net/geeknews/article/details/50556499" 
+    target=_blank>*极客头条功能简介</A> 
+    <LI><A href="http://blog.csdn.net/Pwiling/article/details/50573650" 
+    target=_blank>*21行python代码实现拼写检查器</A> 
+    <LI><A href="http://blog.csdn.net/u011225629/article/details/50492403" 
+    target=_blank>*数据库性能优化之SQL语句优化</A> 
+    <LI><A href="http://blog.csdn.net/bluecloudmatrix/article/details/50525225" 
+    target=_blank>*拉开大变革序幕（下）：分布式计算框架与大数据</A> 
+    <LI><A href="http://blog.csdn.net/luoshengyang/article/details/50527574" 
+    target=_blank>*Chromium网页URL加载过程分析</A> 
+    <LI><A 
+    href="http://blog.csdn.net/androidlushangderen/article/details/50571584" 
+    target=_blank>*Hadoop中止下线操作后大量剩余复制块的解决方案</A> </LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/49305855#comments">SVN的Trunk，Branch和Tag</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/likun_power">likun_power</A>: </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/42737707#comments">ORACLE的临时表(CREATE 
+  GLOBAL TEMPORARY TABLE)以及和SQLServer的不同点</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/wangqingbo0829">wangqingbo0829</A>: 好文，感谢分享！ </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/6672522#comments">Java中的ReentrantLock和synchronized两种锁定机制的对比</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u012112250">u012112250</A>: 写的真好,感谢 </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/41013333#comments">Java-JSSE-SSL/TLS编程代码实例-双向认证</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/fw0124">fw0124</A>: 
+  @strongbug:如果是双向认证，是需要把客户端证书加入到服务端的truststore中的。需不... </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/41013333#comments">Java-JSSE-SSL/TLS编程代码实例-双向认证</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/fw0124">fw0124</A>: 
+  @strongbug:如果是双向认证,客户端证书必须加入服务端的truststore中的。需不需要重... </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/41013333#comments">Java-JSSE-SSL/TLS编程代码实例-双向认证</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/strongbug">strongbug</A>: 
+  服务端的truststore需要加入客户端的证书吗？这样有新的客户端加入的话，还需要重新加载trus... </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/41013333#comments">Java中的ReentrantLock和synchronized两种锁定机制的对比</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/xiaoyun0925">xiaoyun0925</A>: 这篇文章读了两遍，加深了理解。 </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/42737671#comments">Oracle 
+  ROWNUM用法和分页查询总结</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/zhuiwenwen">zhuiwenwen</A>: 多谢，涨姿势了。 </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/42737671#comments">Java中的ReentrantLock和synchronized两种锁定机制的对比</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/tsimgsong">tsimgsong</A>: 原文在这， 
+  http://www.ibm.com/developerworks/library/j-... </P>
+  <LI><A 
+  href="http://blog.csdn.net/fw0124/article/details/42737671#comments">Java中的ReentrantLock和synchronized两种锁定机制的对比</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/softmanfly">softmanfly</A>: 
+  @adyuebanwan:玛德，看楼主写的那么多，看的稀里糊涂，不如看你这三言两语直接了当！赞 </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="分组加密的四种模式%20-%20NowOrNever%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

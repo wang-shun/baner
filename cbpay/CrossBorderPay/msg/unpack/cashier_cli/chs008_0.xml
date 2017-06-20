@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="chs008_0">
+	<include>CASHIER_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  />
+        </field>
+	<field name="accountNo">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+        <field name="phoneVerCode">
+                <format type="s" length="10" necessary="true" frommsg="true" />
+        </field>
+        <field name="phoneToken">
+               <format type="s" length="50"  frommsg="true" />
+        </field>
+
+	<field name="purchaserId">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+</formula>
+  

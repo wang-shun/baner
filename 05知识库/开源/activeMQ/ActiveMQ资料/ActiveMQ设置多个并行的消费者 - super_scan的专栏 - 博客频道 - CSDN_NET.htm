@@ -1,0 +1,937 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0056)http://blog.csdn.net/super_scan/article/details/39839145 -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ActiveMQ:设置多个并行的消费者 - super_scan的专栏 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<SCRIPT id=allmobilize charset=utf-8 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/allmobilize.min.js"></SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="EtherCAT配置器是一个工具,用于配置EtherCAT总线。工具管理一个或多个EtherCAT主设备和连接到该主站的EtherCAT从站。配置的设备可以脱机或可以通过扫描EtherCAT现场总线。EtherCAT配置器只支持EtherCAT现场总线。开始使用select 'start' -> 'Programs' ->'EtherCAT Configurator' -> ' E">
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/super_scan/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/super_scan">super_scan的专栏</A></H2>
+<H3>互联网技术博客</H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/super_scan?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/super_scan?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/super_scan/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "super_scan";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/super_scan";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://edu.csdn.net/app"><FONT color=red>学院APP首次下载，可得50C币！ 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bbs.csdn.net/topics/391876796"><FONT color=blue>欢迎来帮助开源“进步” 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bss.csdn.net/m/topic/cuanke_vote"><FONT color=red>当讲师？爱学习？投票攒课吧 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/atlassian2013/article/details/50291561"><FONT 
+color=blue>认识Atlassian Datacenter产品 </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/blogdevteam/article/details/49758609"><FONT 
+color=red>【获奖公告】有奖试读—增长黑客 </FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Repost"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/super_scan/article/details/39839145">ActiveMQ:设置多个并行的消费者 
+</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_l><SPAN class=link_categories>标签： <A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/activemq%20%20%20%e5%b9%b6%e8%a1%8c%e6%b6%88%e8%b4%b9" 
+target=_blank>activemq 并行消费</A> </SPAN></DIV>
+<DIV class=article_r><SPAN class=link_postdate>2014-10-07 00:30</SPAN> <SPAN 
+class=link_view title=阅读次数>3407人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/super_scan/article/details/39839145#comments">评论</A>(0)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('ActiveMQ:设置多个并行的消费者','39839145');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(39839145,2);return false;" 
+href="http://blog.csdn.net/super_scan/article/details/39839145#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('2615877','super_scan','top','39839145');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">jms 
+activemq<EM>（3）</EM></SPAN> <IMG style="DISPLAY: inline" class=arrow-down 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+<IMG style="DISPLAY: none" class=arrow-up 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/super_scan/article/category/2615877">作者同类文章</A><I 
+class=J_close>X</I></DIV>
+<UL id=top_2615877 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV id=article_content class=article_content>
+<P>消息队列本来就是一种经典的生产者与消费者模式。生产者向消息队列中发送消息，消费者从消息队列中获取消息来消费。</P>
+<P></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px"><IMG 
+alt="" 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/19521a035-0.png"></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">消息的传送一般由一个代理来实现的，那就是Message 
+broker（即消息代理）。Message 
+broker有两大职责，一是消息路由，二是数据转换。这就好比A给B寄信，如果不使用邮局的话，就要自己想办法送达，费时费力，而通过邮局的话，只要B的地址在邮局中注册过，那么天涯海角也能送达。这里的邮局扮演的角色就像消息系统中的Message 
+broker。</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px"><IMG 
+alt="" 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/19521a135-1.png"></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">众所周知，消息队列是典型的’send 
+and 
+forget’原则的体现，生产者只管发送，不管消息的后续处理。为了最大效率的完成对消息队列中的消息的消费，一般可以同时起多个一模一样的消费者，以并行的方式来拉取消息队列中的消息。这样的好处有多个：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 0px 0px 1.5em; PADDING-LEFT: 50px; PADDING-RIGHT: 0px; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: decimal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 10px auto; PADDING-TOP: 0px">加快处理消息队列中的消息。</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: decimal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 10px auto; PADDING-TOP: 0px">增强稳定性，如果一个消费者出现问题，不会影响对消息队列中消息的处理。</P></LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px"><IMG 
+alt="" 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/19521a959-2.png"></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">使用Spring 
+JMS来配置多个Listener实例其实也相当简单，只需要配置下MessageListenerContainer就行。</P>
+<P></P>
+<P></P>
+<DIV 
+style="BORDER-BOTTOM: rgb(5,35,43) 1px solid; BORDER-LEFT: rgb(5,35,43) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,43,54); MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: rgb(5,35,43) 1px solid; BORDER-RIGHT: rgb(5,35,43) 1px solid; PADDING-TOP: 0px" 
+class=highlight>
+<TABLE 
+style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 0px">
+  <TBODY 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <TR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=gutter><PRE class=line-numbers><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>1</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>2</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>3</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>4</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>5</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>6</SPAN>
+</PRE></TD>
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; WIDTH: 793px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=code><PRE><CODE style="PADDING-BOTTOM: 0.8em; LINE-HEIGHT: 1.45em; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 0px; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.8em; DISPLAY: block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace !important; PADDING-TOP: 0.8em" class=xml><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;bean</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>class=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"org.springframework.jms.listener.SimpleMessageListenerContainer"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"connectionFactory"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>ref=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"connectionFactory"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"destinationName"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>value=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"${jms.queue.name}"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"messageListener"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>ref=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"messageReceiver"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"concurrentConsumers"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>value=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"4"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;/bean&gt;</SPAN>
+</SPAN></CODE></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>&nbsp;</P>
+<DIV style="MARGIN-TOP: 0px; FLOAT: left; MARGIN-RIGHT: 0px"><INS 
+style="POSITION: relative; BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 336px; PADDING-RIGHT: 0px; DISPLAY: inline-table; BORDER-TOP-STYLE: none; HEIGHT: 280px; VISIBILITY: visible; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px" 
+id=aswift_1_expand></INS><INS 
+style="POSITION: relative; BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 336px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP-STYLE: none; HEIGHT: 280px; VISIBILITY: visible; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px" 
+id=aswift_1_anchor></INS></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">多配置一个属性<CODE 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: -1px 0px; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; DISPLAY: inline-block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace; COLOR: rgb(85,85,85); FONT-SIZE: 0.8em; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px">concurrentConsumers</CODE>，设置值为4，就是同时启动4个Listener实例来消费消息。</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">使用MessageSender来发送100条消息，可以检查消息处理的顺序会发生变化。</P>
+<P></P>
+<P></P>
+<DIV 
+style="BORDER-BOTTOM: rgb(5,35,43) 1px solid; BORDER-LEFT: rgb(5,35,43) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,43,54); MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: rgb(5,35,43) 1px solid; BORDER-RIGHT: rgb(5,35,43) 1px solid; PADDING-TOP: 0px" 
+class=highlight>
+<TABLE 
+style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 0px">
+  <TBODY 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <TR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=gutter><PRE class=line-numbers><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>1</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>2</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>3</SPAN>
+</PRE></TD>
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; WIDTH: 793px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=code><PRE><CODE style="PADDING-BOTTOM: 0.8em; LINE-HEIGHT: 1.45em; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 0px; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.8em; DISPLAY: block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace !important; PADDING-TOP: 0.8em" class=java><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(203,75,22) !important; PADDING-TOP: 0px" class=k>for</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>(</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=kt>int</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>i</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>=</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=mi>0</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>;</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>i</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>&lt;</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=mi>100</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>;</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>i</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>++)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>{</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>        <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>messageSender</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>.</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>send</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>(</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>String</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>.</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>format</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>(</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"message %d"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>,</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=n>i</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>));</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=o>}</SPAN>
+</SPAN></CODE></PRE></TD></TR></TBODY></TABLE></DIV>
+<P></P>
+<P></P>
+<DIV 
+style="BORDER-BOTTOM: rgb(5,35,43) 1px solid; BORDER-LEFT: rgb(5,35,43) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,43,54); MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: rgb(5,35,43) 1px solid; BORDER-RIGHT: rgb(5,35,43) 1px solid; PADDING-TOP: 0px" 
+class=highlight>
+<TABLE 
+style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 0px">
+  <TBODY 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <TR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=gutter><PRE class=line-numbers><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>1</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>2</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>3</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>4</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>5</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>6</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>7</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>8</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>9</SPAN>
+</PRE></TD>
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; WIDTH: 793px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=code><PRE><CODE style="PADDING-BOTTOM: 0.8em; LINE-HEIGHT: 1.45em; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 0px; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.8em; DISPLAY: block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace !important; PADDING-TOP: 0.8em" class=text><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>...
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 4
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 7
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 6
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 5
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 8
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 10
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>Received: message 9
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>…
+</SPAN></CODE></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">除了设置一个固定的Listener数量，也可以设置一个Listener区间，这样MessageListenerContainer可以根据消息队列中的消息规模自动调整并行数量。</P>
+<P></P>
+<P></P>
+<DIV 
+style="BORDER-BOTTOM: rgb(5,35,43) 1px solid; BORDER-LEFT: rgb(5,35,43) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,43,54); MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: rgb(5,35,43) 1px solid; BORDER-RIGHT: rgb(5,35,43) 1px solid; PADDING-TOP: 0px" 
+class=highlight>
+<TABLE 
+style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 0px">
+  <TBODY 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <TR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=gutter><PRE class=line-numbers><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>1</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>2</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>3</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>4</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>5</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(88,110,117) !important; PADDING-TOP: 0px" class=line-number>6</SPAN>
+</PRE></TD>
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; WIDTH: 793px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    class=code><PRE><CODE style="PADDING-BOTTOM: 0.8em; LINE-HEIGHT: 1.45em; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 0px; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.8em; DISPLAY: block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace !important; PADDING-TOP: 0.8em" class=xml><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;bean</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>class=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"org.springframework.jms.listener.SimpleMessageListenerContainer"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>        <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"connectionFactory"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>ref=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"connectionFactory"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>        <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"destinationName"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>value=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"${jms.queue.name}"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>        <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"messageListener"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>ref=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"messageReceiver"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>        <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;property</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>name=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"concurrency"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; PADDING-TOP: 0px" class=na>value=</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(42,161,152) !important; PADDING-TOP: 0px" class=s>"4-8"</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>/&gt;</SPAN>
+</SPAN><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class=line>    <SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(38,139,210) !important; FONT-WEIGHT: bold !important; PADDING-TOP: 0px" class=nt>&lt;/bean&gt;</SPAN>
+</SPAN></CODE></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; WIDOWS: 2; MARGIN: 10px auto; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; ORPHANS: 2; COLOR: rgb(51,51,51); FONT-SIZE: 14px; PADDING-TOP: 0px">这次使用的是<CODE 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: -1px 0px; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; DISPLAY: inline-block; FONT-FAMILY: Menlo,Monaco,'Andale Mono','lucida console','Courier New',monospace; COLOR: rgb(85,85,85); FONT-SIZE: 0.8em; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px">concurrency</CODE>属性，4-8表示最小并发数是4，最大并发数为8，当然也可以给一个固定值，比如5，这样就相当于concurrentConsumers属性了。</P><BR></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/super_scan/article/details/39839145#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.14-->
+<UL class=article_next_prev></UL><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="39839145">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>0 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>0 </DD></DL></DIV>
+<DIV style="DISPLAY: none" class=similar_article>
+<H4>我的同类文章</H4>
+<DIV style="MARGIN: 20px 0px 0px" class=similar_c>
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN style="CURSOR: pointer" 
+onclick="GetCategoryArticles('2615877','super_scan','foot','39839145');">jms 
+activemq<EM>（3）</EM></SPAN> </LABEL></DIV>
+<DIV class="similar_wrap tracking-ad" data-mod="popu_141"><A 
+style="DISPLAY: none" href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('2615877', 'super_scan','foot','39839145');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/super_scan/svc/GetSuggestContent/39839145",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "39839145",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'ActiveMQ:设置多个并行的消费者' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '39839145';
+    var commentscount = 0;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/super_scan/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/super_scan" 
+  target=_blank><IMG style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_super_scan.jpg"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/super_scan" 
+  target=_blank>super_scan</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=super_scan','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV id=bms_box></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>50582次</SPAN> 
+    <LI>积分：<SPAN>680</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog3.png"> 
+
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：680 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>千里之外</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>3篇</SPAN> </LI>
+    <LI>转载：<SPAN>93篇</SPAN> </LI>
+    <LI>译文：<SPAN>0篇</SPAN> </LI>
+    <LI>评论：<SPAN>1条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch class=blogsearch 
+  title=请输入关键字></SPAN> <INPUT id=btnSubmit title="search in blog" value=搜索 type=button> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT value=blog type=hidden name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468183">web前端</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468185">java</A><SPAN>(14)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468187">nginx</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468191">tomcat</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468193">resin</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468195">memcached</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468197">weblogic</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468199">erp</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468201">oracle</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468203">设计</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2468205">saas</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2483675">android</A><SPAN>(10)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2517279">struts spring 
+  hibernate</A><SPAN>(9)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2530103">开发工具</A><SPAN>(7)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2534305">struts spring 
+  hibernate</A><SPAN>(5)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2547301">PHP</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2547347">mysql</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2561003">web 
+  service</A><SPAN>(1)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2561007">jta</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2567443">linux</A><SPAN>(7)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2575729">J2EE服务器</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2581815">Atomikos</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2612707">jvm</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2615561">jms</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2615877">jms 
+  activemq</A><SPAN>(4)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2655357">redis</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2669717">性能测试</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2688787">discuz论坛</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/2899491">lvs</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/3159785">postgres</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/3213497">log</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/5193791">svn</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/5584131">大型网站设计</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/super_scan/article/category/5971155">通信安全</A><SPAN>(0)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="nginx keepalive_timeout 设置策略" 
+  href="http://blog.csdn.net/super_scan/article/details/41451203">nginx 
+  keepalive_timeout 设置策略</A><SPAN>(9540)</SPAN> 
+  <LI><A title="Spring  aop:pointcut--expression--多个execution连接方法" 
+  href="http://blog.csdn.net/super_scan/article/details/39005071">Spring 
+  aop:pointcut--expression--多个execution连接方法</A><SPAN>(4095)</SPAN> 
+  <LI><A title=Jedis使用示例 
+  href="http://blog.csdn.net/super_scan/article/details/40399355">Jedis使用示例</A><SPAN>(3589)</SPAN> 
+
+  <LI><A title=ActiveMQ:设置多个并行的消费者 
+  href="http://blog.csdn.net/super_scan/article/details/39839145">ActiveMQ:设置多个并行的消费者</A><SPAN>(3401)</SPAN> 
+
+  <LI><A title=关于web开发中静态资源缓存机制的总结 
+  href="http://blog.csdn.net/super_scan/article/details/38460229">关于web开发中静态资源缓存机制的总结</A><SPAN>(2297)</SPAN> 
+
+  <LI><A title=Android向服务器传接和接收数据的方法汇总 
+  href="http://blog.csdn.net/super_scan/article/details/38639941">Android向服务器传接和接收数据的方法汇总</A><SPAN>(2291)</SPAN> 
+
+  <LI><A title="Spring + Atomikos配置多个数据源，并且管理事务" 
+  href="http://blog.csdn.net/super_scan/article/details/39013419">Spring + 
+  Atomikos配置多个数据源，并且管理事务</A><SPAN>(1657)</SPAN> 
+  <LI><A title=JTA事务总结 
+  href="http://blog.csdn.net/super_scan/article/details/39433311">JTA事务总结</A><SPAN>(1542)</SPAN> 
+
+  <LI><A 
+  title="com.atomikos.icatch.SysException: Error in init(): Log already in use" 
+  href="http://blog.csdn.net/super_scan/article/details/39778527">com.atomikos.icatch.SysException: 
+  Error in init(): Log already in use</A><SPAN>(1405)</SPAN> 
+  <LI><A title=struts2+spring3.2.9+hibernate4.2.0+atomikos3.8实现分布式事务JTA 
+  href="http://blog.csdn.net/super_scan/article/details/39474947">struts2+spring3.2.9+hibernate4.2.0+atomikos3.8实现分布式事务JTA</A><SPAN>(1340)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=深入Java事务的原理与应用 
+  href="http://blog.csdn.net/super_scan/article/details/39433365">深入Java事务的原理与应用</A><SPAN>(1)</SPAN> 
+
+  <LI><A title=Android开发之列表控件 
+  href="http://blog.csdn.net/super_scan/article/details/38538885">Android开发之列表控件</A><SPAN>(0)</SPAN> 
+
+  <LI><A title="Android 弹出对话框Dialog" 
+  href="http://blog.csdn.net/super_scan/article/details/38537983">Android 
+  弹出对话框Dialog</A><SPAN>(0)</SPAN> 
+  <LI><A title=Android的按钮单击事件及监听器的实现方式 
+  href="http://blog.csdn.net/super_scan/article/details/38537485">Android的按钮单击事件及监听器的实现方式</A><SPAN>(0)</SPAN> 
+
+  <LI><A title="你应该了解的 一些web缓存相关的概念." 
+  href="http://blog.csdn.net/super_scan/article/details/38460667">你应该了解的 
+  一些web缓存相关的概念.</A><SPAN>(0)</SPAN> 
+  <LI><A title=关于web开发中静态资源缓存机制的总结 
+  href="http://blog.csdn.net/super_scan/article/details/38460229">关于web开发中静态资源缓存机制的总结</A><SPAN>(0)</SPAN> 
+
+  <LI><A title="CSS字体中英文名称对照表 CSS常用中文字体英文名称对照表" 
+  href="http://blog.csdn.net/super_scan/article/details/38418593">CSS字体中英文名称对照表 
+  CSS常用中文字体英文名称对照表</A><SPAN>(0)</SPAN> 
+  <LI><A title=Js获取当前日期时间及其它操作 
+  href="http://blog.csdn.net/super_scan/article/details/38417751">Js获取当前日期时间及其它操作</A><SPAN>(0)</SPAN> 
+
+  <LI><A title="java线程安全问题之静态变量、实例变量、局部变量 ." 
+  href="http://blog.csdn.net/super_scan/article/details/38414755">java线程安全问题之静态变量、实例变量、局部变量 
+  .</A><SPAN>(0)</SPAN> 
+  <LI><A title=利用Access-Control-Allow-Origin响应头解决跨域请求 
+  href="http://blog.csdn.net/super_scan/article/details/50086159">利用Access-Control-Allow-Origin响应头解决跨域请求</A><SPAN>(0)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A href="http://blog.csdn.net/iispring/article/details/50366021" 
+    target=_blank>*源码解析Android中View的layout布局过程</A> 
+    <LI><A href="http://blog.csdn.net/yinwenjie/article/details/50277289" 
+    target=_blank>*架构设计：系统间通信（17）——服务治理与Dubbo 中篇（分析）</A> 
+    <LI><A href="http://blog.csdn.net/crazy__chen/article/details/50338895" 
+    target=_blank>*一款炫酷Loading动画--加载失败</A> 
+    <LI><A href="http://blog.csdn.net/nomasp/article/details/50349172" 
+    target=_blank>*图解堆算法、链表、栈与队列（多图预警）</A> 
+    <LI><A href="http://blog.csdn.net/u014723529/article/details/50352404" 
+    target=_blank>*Eclipse快捷键 10个最有用的快捷键</A> 
+    <LI><A href="http://blog.csdn.net/baidu_mtc/article/details/50351342" 
+    target=_blank>* 基于fiddler插件开发的移动测试网络监控与分析</A> </LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/super_scan/article/details/39433365#comments">深入Java事务的原理与应用</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/hjhandxjl">hjhandxjl</A>: 
+  请问您翻译了http://jroller.com/pyrasun/category/XA这篇文章吗？ </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="ActiveMQ设置多个并行的消费者%20-%20super_scan的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

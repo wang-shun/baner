@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ceexrate_0">
+	<include></include>
+	<field name="head">
+		<format type="virtual"  />
+	</field>
+	<field name="version">
+		<format type="s" length="2" necessary="true" frommsg="true" />
+	</field>
+	<field name="tranCode">
+		<format type="s" length="7" necessary="true" frommsg="true" />
+	</field>
+	<field name="merchantId">
+		<format type="s" length="7" necessary="true" frommsg="true" />
+	</field>
+	<field name="mount">
+	      <format type="s" length="6" necessary="true" frommsg="true" />
+	 </field>
+	<field name="body">
+		<format type="virtual"  />
+	</field>
+	<field name="userName">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+</formula>

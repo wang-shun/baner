@@ -1,0 +1,12 @@
+.qqFace {
+	BORDER-BOTTOM: #dfe6f6 1px solid; BORDER-LEFT: #dfe6f6 1px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND: #fff; BORDER-TOP: #dfe6f6 1px solid; BORDER-RIGHT: #dfe6f6 1px solid; PADDING-TOP: 8px
+}
+.qqFace TABLE TD {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+}
+.qqFace TABLE TD IMG {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; BORDER-TOP: #fff 1px solid; CURSOR: pointer; BORDER-RIGHT: #fff 1px solid
+}
+.qqFace TABLE TD IMG:hover {
+	BORDER-BOTTOM: #0066cc 1px solid; BORDER-LEFT: #0066cc 1px solid; BORDER-TOP: #0066cc 1px solid; BORDER-RIGHT: #0066cc 1px solid
+}

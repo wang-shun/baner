@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="FBS006_0">
+	<field name="Result" >
+			<format type="virtual" level="1" />
+	</field>	
+</formula>

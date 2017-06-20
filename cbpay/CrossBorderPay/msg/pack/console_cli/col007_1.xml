@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="col007_1">
+	<include>CONSOLE_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="PROCESS_STATUS">
+		<format type="s" length="8" necessary="true" />
+	</field>
+</formula>

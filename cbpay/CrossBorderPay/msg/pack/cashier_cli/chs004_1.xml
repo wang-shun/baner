@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="chs004_1">
+	<include>CASHIER_CLI_1</include>
+
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="tranState"  >
+		<format type="s" length="254"  />
+	</field>
+</formula>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="chs005_1">
+	<include>CASHIER_CLI_1</include>
+
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="verJnlNo"  >
+		<format type="s" length="20"  necessary="false"/>
+	</field>
+	<field name="phoneToken"  >
+		<format type="s" length="50"  />
+	</field>
+</formula>

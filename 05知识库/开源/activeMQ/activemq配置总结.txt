@@ -1,0 +1,54 @@
+1.日志的配置:
+	ACTIVEMQ_HOME\conf\log4j.properties   和普通log4j的配置一样，可以修改日志路径、日志级别、日志名称
+
+2.队列配置
+	ACTIVEMQ_HOME\conf\activemq.xml
+	<destinations>
+			      <queue physicalName="FOO.1"  />
+	</destinations>
+
+3.console控制台用户名密码修改
+	ACTIVEMQ_HOME\conf\jetty-realm.properties
+
+
+4.传输协议配置
+	ACTIVEMQ_HOME\conf\activemq.xml
+	默认链接端口为61616    最大连接数为1000   最大容量为100m（目前最大容量不知道是干什么的）
+	<transportConnector name="openwire" uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+	
+5.配置是否持久化
+	ACTIVEMQ_HOME\conf\activemq.xml 中的broker标签中新增persistent="false"属性
+	<broker xmlns="http://activemq.apache.org/schema/core" brokerName="localhost" persistent="true"  dataDirectory="${activemq.data}">
+	
+6.设置activemq服务端内存
+	linux在ACTIVEMQ_HOME\bin\env文件中的ACTIVEMQ_OPTS_MEMORY="-Xms64M -Xmx1G"
+	windows在ACTIVEMQ_HOME\bin\win64\wrapper.conf   下面的wrapper.java.maxmemory=1024这一行
+	ACTIVEMQ_HOME\conf\activemq.xml 文件中的memoryUsage 是所有队列使用内存限制
+			<systemUsage>
+		    <systemUsage>
+		        <memoryUsage>
+		            <memoryUsage percentOfJvmHeap="70" />
+		        </memoryUsage>
+		        <storeUsage>
+		            <storeUsage limit="100 gb"/>
+		        </storeUsage>
+		        <tempUsage>
+		            <tempUsage limit="50 gb"/>
+		        </tempUsage>
+		    </systemUsage>
+		</systemUsage>
+		
+7.用户配置
+
+
+8,配置Web console的端口
+在配置文件中，可以通过修改nioConnector的port属性来修改Web console的缺省端口：
+   Xml代码
+       <jetty xmlns="http://mortbay.com/schemas/jetty/1.0">
+           <connectors>
+                <nioConnector port="8161" />
+           </connectors>
+            ...
+       </jetty>
+       
+9,配置queue具体属性

@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><script src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/piwik.js" defer="defer" async="" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sonatype Nexus 搭建Maven 私服 - 孤剑 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-arrow.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/AloneSword/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/AloneSword/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/AloneSword/wlwmanifest.xml">
+<script src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'AloneSword', cb_enable_mathjax=false;</script>
+<script src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/AloneSword/">孤剑之家</a><br>
+		宝剑锋从磨砺出，梅花香自苦寒来。我欲仗剑走天涯。
+	</div>
+</div>
+
+</div>
+<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/AloneSword/">首页</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%89%91">联系</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/AloneSword/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/AloneSword/rss"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/xml.gif" alt="订阅"></a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a>
+</div>
+<div id="mytopmenu">
+	
+		
+<div class="blogStats">随笔 - 853&nbsp;
+文章 - 11&nbsp;评论 - 157&nbsp;trackbacks - 0
+</div>
+	
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2016/03/01');return false;">&lt;</a></td><td align="center">2016年4月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2016/05/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalTodayDay" align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script><br>
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news"><p><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/042235565843431.png" alt=""><span style="line-height: 1.5;">&nbsp;</span></p><p>微信：远安家</p><p>微信号：yuananjia&nbsp;</p><p>【身在外，心系远安家】&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+
+
+<noscript><p><img src="http://trace.w3pc.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/AloneSword/">孤剑</a><br>园龄：<a href="http://home.cnblogs.com/u/AloneSword/" title="入园时间：2004-08-11">11年7个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/AloneSword/followers/">111</a><br>关注：<a href="http://home.cnblogs.com/u/AloneSword/followees/">5</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('7f85310b-63cf-dd11-9e4d-001cf0cd104b')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/AloneSword/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/AloneSword/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/AloneSword/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/AloneSword/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/AloneSword/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/AloneSword/tag/cas/">cas</a>(3)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/sso/">sso</a>(3)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/jenkins%20slave/">jenkins slave</a>(2)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/%E5%AE%89%E8%A3%85/">安装</a>(2)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/net%20use/">net use</a>(2)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">自动部署</a>(2)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/%E8%87%AA%E5%8A%A8%E5%88%86%E6%9E%90/">自动分析</a>(1)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BC%B0%20%E9%A1%B9%E7%9B%AE%E6%B4%BB%E5%8A%A8%E7%BB%9F%E8%AE%A1%20%E5%BC%80%E6%BA%90/">自动构建 代码质量评估 项目活动统计 开源</a>(1)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/.net/">.net</a>(1)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/auto%20deploy/">auto deploy</a>(1)</li><li><a href="http://www.cnblogs.com/AloneSword/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332867.html">ASP &amp; .NET(14)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332868.html">C++ 、C#(16)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332869.html">English Article(16)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332870.html">Exploit(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/AloneSword/category/472381.html">Java(64)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_5" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332871.html">JavaScript(10)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_6" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332872.html">PHP(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_7" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332873.html">Security Focus(15)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_8" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332874.html">Songs</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_9" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332875.html">Unix/Linux(18)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_10" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332876.html">Web Design(14)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_11" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332882.html">编程交流(98)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_12" class="listitem" href="http://www.cnblogs.com/AloneSword/category/507785.html">分布式(35)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_13" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332879.html">感悟(42)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_14" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332880.html">技术文章(117)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_15" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332881.html">理财(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_16" class="listitem" href="http://www.cnblogs.com/AloneSword/category/466143.html">企业架构(67)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_17" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332877.html">事业(11)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_18" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332883.html">随笔(39)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_19" class="listitem" href="http://www.cnblogs.com/AloneSword/category/332878.html">图像设计(13)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">友情连接</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_0" class="listitem" href="http://www.ibm.com/developerworks/cn/linux/l-roadmap/index1.html" rel="nofollow">Windows 到 Linux 之旅</a></li>
+			<li class="c_b_p_link_desc">您已经开始从 Windows 转向 
+Linux，这可能是您自己的决定，也可能是“不得已而为之”。无论出于何种原因，您原来非常熟悉的工作方式和工具可能都将变得完全不同。不但如此，您可
+能还需要培训别人如何去轻松地管理 
+Linux。管理绝不是循规蹈矩，成功地管理计算环境是一项创造性的工作。实现这一转变就如同一个熟练的油画家转而去从事雕塑一样。</li>
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_1" class="listitem" href="http://program-think.blogspot.com/" rel="nofollow" target="_blank">编程随想的博客</a></li>
+			<li class="c_b_p_link_desc">编程随想的博客</li>
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_2" class="listitem" href="http://blog.csdn.net/alonesword/" rel="nofollow" target="_blank">孤剑之家</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_3" class="listitem" href="http://www.hackerxfiles.net/" rel="nofollow">黑客x档案</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_4" class="listitem" href="http://www.hiadmin.com/" rel="nofollow">架构研究室</a></li>
+			<li class="c_b_p_link_desc">架构研究室</li>
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_5" class="listitem" href="http://www.cnblogs.com/tugenhua0707/" rel="nofollow">涂根华--前端攻城师</a></li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/AloneSword/p/3469219.html#3403412">1. Re:JAVA和C# 3DES加密解密</a></li>
+    <li class="recent_comment_body">这是我的代码 C# /// /// 加密 /// public string EncyptString(string data) { try ......</li>
+    <li class="recent_comment_author">--末日之花</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/AloneSword/p/3469219.html#3402503">2. Re:JAVA和C# 3DES加密解密</a></li>
+    <li class="recent_comment_body">@末日之花引用C# 加密结果比 Java 多一个“=” 哪里的原因？1、瞅瞅字符串最后是否有多余的不可见字符，例如 回车换行2、注意c# 与 java 的加密方式中的 PKCS7Padding 内容，......</li>
+    <li class="recent_comment_author">--孤剑</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/AloneSword/p/3469219.html#3402419">3. Re:JAVA和C# 3DES加密解密</a></li>
+    <li class="recent_comment_body">C# 加密结果比 Java 多一个“=” 哪里的原因？</li>
+    <li class="recent_comment_author">--末日之花</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/AloneSword/p/3809002.html#3367653">4. Re:使用OpenSSL生成证书</a></li>
+    <li class="recent_comment_body">支付宝接入的时候，所需的cacert.pem也可以通过这种方式自己生成ca证书吗？</li>
+    <li class="recent_comment_author">--格先生</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/AloneSword/archive/2010/12/06/2237509.html#3361457">5. Re:Oracle存储过程中使用临时表</a></li>
+    <li class="recent_comment_body">还是没能理解这个过程临时表的深层含义，楼主能否有空讲解下，谢谢。</li>
+    <li class="recent_comment_author">--吾日三思</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/AloneSword/p/4145267.html">1. VMware 11.0 简体中文版|附永久密钥(68225)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3673829.html">2. Nginx配置proxy_pass转发的/路径问题(23536)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3244434.html">3. 解决PKIX：unable to find valid certification path to requested target 的问题(22017)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3809002.html">4. 使用OpenSSL生成证书(21185)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/4109407.html">5. Java单元测试(Junit+Mock+代码覆盖率)(18823)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/AloneSword/archive/2012/06/19/2554219.html">1. IP地址库解析(14)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3838655.html">2. 诡异的 "密码取回" 邮件问题(10)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/4145267.html">3. VMware 11.0 简体中文版|附永久密钥(10)</a></li><li><a href="http://www.cnblogs.com/AloneSword/archive/2012/02/04/2338640.html">4. 初识memcached(8)</a></li><li><a href="http://www.cnblogs.com/AloneSword/archive/2010/07/19/1780408.html">5. 介绍一款超实用的演讲必备工具 ZoomIt(5)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/AloneSword/p/4145267.html">1. VMware 11.0 简体中文版|附永久密钥(8)</a></li><li><a href="http://www.cnblogs.com/AloneSword/archive/2012/04/05/2433944.html">2. 6步确保 windbg 成功调试 .net(6)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3207697.html">3. mysql 性能优化方向(5)</a></li><li><a href="http://www.cnblogs.com/AloneSword/p/3517463.html">4. Web 通信 之 长连接、长轮询（long polling）(4)</a></li><li><a href="http://www.cnblogs.com/AloneSword/archive/2011/12/10/2283483.html">5. nginx 全局变量(3)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script></div>		
+	
+</div>
+<div id="centercontent">
+	
+<div id="post_detail">
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<h1><a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/AloneSword/p/3507056.html">Sonatype Nexus 搭建Maven 私服</a></h1>
+	</div>
+	<div id="cnblogs_post_body"><p align="left">国内私募机构九鼎控股打造APP，来就送&nbsp;20元现金领取地址：<a href="http://jdb.jiudingcapital.com/phone.html">http://jdb.jiudingcapital.com/phone.html</a><br>
+内部邀请码：<span style="color: #ff0000;"><strong>C8E245J&nbsp;</strong></span><strong>（不写邀请码，没有现金送）</strong><br>
+<strong>国内私募机构九鼎控股打造，九鼎投资是在全国股份转让系统挂牌的公众公司，股票代码为</strong><strong>430719</strong><strong>，为</strong><strong>“</strong><strong>中国</strong><strong>PE</strong><strong>第一股</strong><strong>”</strong><strong>，市值超</strong><strong>1000</strong><strong>亿元。</strong><strong>&nbsp;</strong></p>
+<p align="left">------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p align="left">&nbsp;</p>
+<p><strong>1、 为什么使用Nexus</strong></p>
+<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+如果没有私服，我们所需的所有构件都需要通过maven的中央仓库和第三方的Maven仓库下载到本地，而一个团队中的所有人都重复的从maven仓库下
+载构件无疑加大了仓库的负载和浪费了外网带宽，如果网速慢的话，还会影响项目的进程。很多情况下项目的开发都是在内网进行的，连接不到maven仓库怎么
+办呢？开发的公共构件怎么让其它项目使用？这个时候我们不得不为自己的团队搭建属于自己的maven私服，这样既节省了网络带宽也会加速项目搭建的进程，
+当然前提条件就是你的私服中拥有项目所需的所有构件。</p>
+<p>&nbsp;</p>
+<p><strong>2、Nexus下载</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下载地址：<a href="http://www.sonatype.org/nexus/go">http://www.sonatype.org/nexus/go</a></p>
+<p>&nbsp;</p>
+<p><strong>3、Nexus启动</strong></p>
+<p><span style="line-height: 1.5;">&nbsp; &nbsp; &nbsp; 
+&nbsp;我下载的是zip包，解压后进入\nexus-2.1.2-bundle\nexus-2.1.2\bin\jsw\，根据操作系统类型选择
+文件夹，我选的是windows-x86-32文件夹，进入后可看到如下所示bat文件。</span></p>
+<div><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348368614_3786.png" alt=""></div>
+<div>图（1）</div>
+<div>双击console-nexus.bat运行。游览器中输入http://127.0.0.1:8081/nexus/，出现图（2）所示就代表nexus已经启动成功。</div>
+<div>
+<div><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348368725_5387.png" alt="" height="409" width="800"></div>
+</div>
+<div>图（2）</div>
+<div>&nbsp;</div>
+<div>
+<p>8081为默认的端口号，要修改端口号可进入nexus-2.1.2-bundle\nexus-2.1.2\conf\打开nexus.properties文件，修改application-port属性值就可以了。</p>
+</div>
+<p>默认的用户名和密码：admin/admin123，登录后看到图（3）所示：</p>
+<div><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348368807_8475.png" alt="" height="418" width="800"></div>
+<div>图（3）</div>
+<p>&nbsp;</p>
+<p><br><strong>4、Nexus仓库</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; nexus的仓库类型分为以下四种：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; group: 仓库组</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hosted：宿主</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy：代理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtual：虚拟</p>
+<p>&nbsp;　　<span style="line-height: 1.5;">首次登陆nexus后可以看到以下一个仓库组和多个仓库。</span></p>
+<p><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348368921_7113.png" alt=""></p>
+<p>图（4）</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Public Repositories:&nbsp; 仓库组</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 3rd party: 无法从公共仓库获得的第三方发布版本的构件仓库</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Apache Snapshots: 用了代理ApacheMaven仓库快照版本的构件仓库</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Central: 用来代理maven中央仓库中发布版本构件的仓库</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Central M1 shadow: 用于提供中央仓库中M1格式的发布版本的构件镜像仓库</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Codehaus Snapshots: 用来代理CodehausMaven 仓库的快照版本构件的仓库</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Releases: 用来部署管理内部的发布版本构件的宿主类型仓库</p>
+<h4><a name="t0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Snapshots:用来部署管理内部的快照版本构件的宿主类型仓库</h4>
+<h4><a name="t1"></a>5、配置nexus</h4>
+<h2><a name="t2"></a>5.1、开启远程索引</h2>
+<p>新搭建的neuxs环境只是一个空的仓库，需要手动和远程中心库进行同步，nexus默认是关闭远程索引下载，最重要的一件事情就是开启远程索引下载。登陆nexus系统，默认用户名密码为admin/admin123。</p>
+<p>点击左边Administration菜单下面的Repositories，找到右边仓库列表中的三个仓库Apache 
+Snapshots，Codehaus Snapshots和Maven 
+Central，然后再没有仓库的configuration下把Download Remote Indexes修改为true。如下图</p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1357640498_9184.png" alt=""></p>
+<div align="left">&nbsp;&nbsp;</div>
+<p>然后在Apache Snapshots，Codehaus Snapshots和Maven Central这三个仓库上分别右键，选择Repari Index，这样Nexus就会去下载远程的索引文件。&nbsp;</p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1357640592_5391.png" alt=""></p>
+<div align="left">&nbsp;</div>
+<p>&nbsp;这样设置以后, Nexus会自动从远程中央仓库下载索引文件, 为了检验索引文件自动下载是否生效,可以却换到Browse Index</p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1357640717_4330.png" alt=""></p>
+<div align="left">&nbsp;</div>
+<p>在左边菜单栏里面有个Artifact Search, 在输入框里面输入你想要搜索的构件名字,比如:maven, 那么查询结果如下：</p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1357640846_5730.png" alt=""></p>
+<div align="left"><strong>&nbsp;<span style="font-size: 1.5em; line-height: 1.5;">5.2建立宿主仓库</span></strong></div>
+<p>新 建公司的内部仓库，步骤为Repositories –&gt; Add –&gt; Hosted Repository，在页面的下半部分输入框中填入Repository ID和Repository Name即可，比如分别填入</p>
+<p>zfy 和 zfy repostiory，另外把Deployment Policy设置为Allow Redeploy，点击save就创建完成了。</p>
+<p>这里我点击添加宿主类型的仓库，在仓库列表的下方会出现新增仓库的配置，如下所示：</p>
+<div><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348369115_2062.png" alt="" height="451" width="800"></div>
+<div>图（6）&nbsp;</div>
+<div>
+<p>点击save按钮后就会在仓库列表中看到刚才新增的仓库。</p>
+
+
+</div>
+<p>&nbsp;</p>
+<p><strong>5.3、<strong>创建Nexus仓库组</strong></strong></p>
+<p>Nexus 
+中仓库组的概念是Maven没有的，在Maven看来，不管你是hosted也好，proxy也好，或者group也好，对我都是一样的，我只管根据 
+groupId，artifactId，version等信息向你要构件。为了方便Maven的配置，Nexus能够将多个仓库，hosted或者 
+proxy合并成一个group，这样，Maven只需要依赖于一个group，便能使用所有该group包含的仓库的内容。</p>
+<p>neuxs- 1.9.2.3中默认自带了一个名为“Public 
+Repositories”组，点击该组可以对他保护的仓库进行调整，把刚才建立的公司内部仓库zfy 
+repostiory加入其中，这样就不需要再在maven中明确指定内部仓库 的地址了。同时创建一个Group 
+ID为public-snapshots、Group Name为Public Snapshots Repositories的组，把Apache 
+Snapshots、Codehaus Snapshots、Snapshots和zfy repostiory加入其中。</p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348369076_7320.png" alt=""><span style="line-height: 1.5;">&nbsp;</span></p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348369271_7107.png" alt="" height="456" width="800"><span style="line-height: 1.5;">&nbsp;</span></p>
+<p align="center"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1357785143_9263.png" alt=""></p>
+<p>&nbsp;到这里neuxs的安装配置就完成了，下面介绍如何在maven中使用自己的私服。</p>
+<p>&nbsp;</p>
+<div>
+<div><strong>5.4、创建Nexus代理仓库</strong>&nbsp;</div>
+
+
+
+
+</div>
+<p>点击菜单栏上的Add按钮后选择Proxy Repository，看到如下所示配置界面：</p>
+<div><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1348369208_5442.png" alt="" height="752" width="800"></div>
+<div>图（7）</div>
+<div><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以上本人分别创建 了&nbsp; hosted和group ，没有创建proxy，经maven测试通过。</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div><strong>6、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; settings.xml的配置</strong>
+<div class="dp-highlighter bg_html">
+<div class="bar">
+<div class="tools"><strong>[html]</strong>&nbsp;<a class="ViewSource" title="view plain" href="http://blog.csdn.net/xuke6677/article/details/8482472">view plain</a><a class="CopyToClipboard" title="copy" href="http://blog.csdn.net/xuke6677/article/details/8482472">copy</a><a class="PrintSource" title="print" href="http://blog.csdn.net/xuke6677/article/details/8482472">print</a><a class="About" title="?" href="http://blog.csdn.net/xuke6677/article/details/8482472">?</a>
+<div>&nbsp;</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<ol class="dp-xml" start="1">
+<li class="alt"><span><span class="tag">&lt;?</span><span class="tag-name">xml</span><span>&nbsp;</span><span class="attribute">version</span><span>=</span><span class="attribute-value">"1.0"</span><span>&nbsp;</span><span class="attribute">encoding</span><span>=</span><span class="attribute-value">"UTF-8"</span><span class="tag">?&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span><span class="tag">&lt;</span><span class="tag-name">settings</span><span>&nbsp;</span><span class="attribute">xmlns</span><span>=</span><span class="attribute-value">"http://maven.apache.org/SETTINGS/1.0.0"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">xmlns:xsi</span><span>=</span><span class="attribute-value">"http://www.w3.org/2001/XMLSchema-instance"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">xsi:schemaLocation</span><span>=</span><span class="attribute-value">"http://maven.apache.org/SETTINGS/1.0.0&nbsp;http://maven.apache.org/xsd/settings-1.0.0.xsd"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">pluginGroups</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">pluginGroups</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">proxies</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">proxies</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">servers</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">server</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">username</span><span class="tag">&gt;</span><span>admin</span><span class="tag">&lt;/</span><span class="tag-name">username</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">password</span><span class="tag">&gt;</span><span>admin123</span><span class="tag">&lt;/</span><span class="tag-name">password</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">server</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">server</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">username</span><span class="tag">&gt;</span><span>admin</span><span class="tag">&lt;/</span><span class="tag-name">username</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">password</span><span class="tag">&gt;</span><span>admin123</span><span class="tag">&lt;/</span><span class="tag-name">password</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">server</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">servers</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">mirrors</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">mirror</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">mirrorOf</span><span class="tag">&gt;</span><span>*</span><span class="tag">&lt;/</span><span class="tag-name">mirrorOf</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://localhost:8081/nexus/content/groups/public</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">mirror</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">mirror</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">mirrorOf</span><span class="tag">&gt;</span><span>*</span><span class="tag">&lt;/</span><span class="tag-name">mirrorOf</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://localhost:8081/nexus/content/groups/public-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">mirror</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">mirrors</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;</span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">profiles</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">profile</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">repositories</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">repositories</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">pluginRepositories</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">pluginRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">pluginRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">pluginRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">releases</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span>true</span><span class="tag">&lt;/</span><span class="tag-name">enabled</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">snapshots</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">pluginRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">pluginRepositories</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">profile</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">profiles</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">activeProfiles</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">activeProfile</span><span class="tag">&gt;</span><span>nexus</span><span class="tag">&lt;/</span><span class="tag-name">activeProfile</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">activeProfiles</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;</span></li>
+<li class="alt"><span><span class="tag">&lt;/</span><span class="tag-name">settings</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+
+
+
+
+</ol></div>
+<div class="dp-highlighter bg_html">
+<div class="bar">
+<div class="tools"><strong>[html]</strong>&nbsp;<a class="ViewSource" title="view plain" href="http://blog.csdn.net/xuke6677/article/details/8482472">view plain</a><a class="CopyToClipboard" title="copy" href="http://blog.csdn.net/xuke6677/article/details/8482472">copy</a><a class="PrintSource" title="print" href="http://blog.csdn.net/xuke6677/article/details/8482472">print</a><a class="About" title="?" href="http://blog.csdn.net/xuke6677/article/details/8482472">?</a>
+<div>&nbsp;</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<ol class="dp-xml" start="1">
+<li class="alt"><span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+
+
+
+
+</ol></div>
+<div class="dp-highlighter bg_html">
+<div class="bar">
+<div class="tools"><strong>[html]</strong>&nbsp;<a class="ViewSource" title="view plain" href="http://blog.csdn.net/xuke6677/article/details/8482472">view plain</a><a class="CopyToClipboard" title="copy" href="http://blog.csdn.net/xuke6677/article/details/8482472">copy</a><a class="PrintSource" title="print" href="http://blog.csdn.net/xuke6677/article/details/8482472">print</a><a class="About" title="?" href="http://blog.csdn.net/xuke6677/article/details/8482472">?</a>
+<div>&nbsp;</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<ol class="dp-xml" start="1">
+<li class="alt"><span><span>7、&nbsp;maven&nbsp;项目&nbsp;的pom.xml配置&nbsp;&nbsp;</span></span></li>
+
+
+
+
+</ol></div>
+<div class="dp-highlighter bg_html">
+<div class="bar">
+<div class="tools"><strong>[html]</strong>&nbsp;<a class="ViewSource" title="view plain" href="http://blog.csdn.net/xuke6677/article/details/8482472">view plain</a><a class="CopyToClipboard" title="copy" href="http://blog.csdn.net/xuke6677/article/details/8482472">copy</a><a class="PrintSource" title="print" href="http://blog.csdn.net/xuke6677/article/details/8482472">print</a><a class="About" title="?" href="http://blog.csdn.net/xuke6677/article/details/8482472">?</a>
+<div>&nbsp;</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<ol class="dp-xml" start="1">
+<li class="alt"><span><span>&nbsp;&nbsp;&nbsp;</span></span></li>
+
+
+
+
+</ol></div>
+<div class="dp-highlighter bg_html">
+<div class="bar">
+<div class="tools"><strong>[html]</strong>&nbsp;<a class="ViewSource" title="view plain" href="http://blog.csdn.net/xuke6677/article/details/8482472">view plain</a><a class="CopyToClipboard" title="copy" href="http://blog.csdn.net/xuke6677/article/details/8482472">copy</a><a class="PrintSource" title="print" href="http://blog.csdn.net/xuke6677/article/details/8482472">print</a><a class="About" title="?" href="http://blog.csdn.net/xuke6677/article/details/8482472">?</a>
+<div>&nbsp;</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<ol class="dp-xml" start="1">
+<li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">pre</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"html"</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"code"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="tag">&lt;</span><span class="tag-name">distributionManagement</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;两个ID必须与&nbsp;setting.xml中的&lt;server&gt;&lt;id&gt;nexus-releases&lt;/id&gt;&lt;/server&gt;保持一致--&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-releases</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">name</span><span class="tag">&gt;</span><span>Nexus&nbsp;Release&nbsp;Repository</span><span class="tag">&lt;/</span><span class="tag-name">name</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://localhost:8081/nexus/content/repositories/releases</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">repository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">snapshotRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>nexus-snapshots</span><span class="tag">&lt;/</span><span class="tag-name">id</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">name</span><span class="tag">&gt;</span><span>Nexus&nbsp;Snapshot&nbsp;Repository</span><span class="tag">&lt;/</span><span class="tag-name">name</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>http://localhost:8081/nexus/content/repositories/snapshots</span><span class="tag">&lt;/</span><span class="tag-name">url</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">snapshotRepository</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">distributionManagement</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">pre</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"html"</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"code"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">pre</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"html"</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"code"</span><span class="tag">&gt;</span><span>8、mvn:deploy命令上传包，会发现下载路径必不是中央库的路径，而是nexus里面的仓库组路径。这个说明配置环境成功。</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">pre</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"html"</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"code"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">img</span><span>&nbsp;</span><span class="attribute">alt</span><span>=</span><span class="attribute-value">""</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"http://img.my.csdn.net/uploads/201301/10/1357787083_3866.png"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">img</span><span>&nbsp;</span><span class="attribute">alt</span><span>=</span><span class="attribute-value">""</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"http://img.my.csdn.net/uploads/201301/10/1357787109_8992.png"</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">pre</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"html"</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"code"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span><span class="tag">&lt;</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+<li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">pre</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li>
+
+
+
+
+</ol></div>
+
+
+
+
+</div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3507056,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%89%91" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/AloneSword/" target="_blank"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u2188.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/AloneSword/">孤剑</a><br>
+<a href="http://home.cnblogs.com/u/AloneSword/followees">关注 - 5</a><br>
+<a href="http://home.cnblogs.com/u/AloneSword/followers">粉丝 - 111</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3507056,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+	<div class="buryit" onclick="votePost(3507056,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/AloneSword/p/3506335.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/AloneSword/p/3506335.html" title="发布于2014-01-05 21:45">curl: (60) SSL certificate problem: unable to get local issuer certificate</a><br><a href="http://www.cnblogs.com/AloneSword/p/3507163.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/AloneSword/p/3507163.html" title="发布于2014-01-06 14:40">OAuth 2.0</a><br></div>
+</div>
+
+
+	<div class="postDesc">posted on <span id="post-date">2014-01-06 13:47</span> <a href="http://www.cnblogs.com/AloneSword/">孤剑</a> 阅读(<span id="post_view_count">3806</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3507056" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(3507056);return false;">收藏</a></div>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=5043,cb_entryId=3507056,cb_blogApp=currentBlogApp,cb_blogUserGuid='7f85310b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2014/1/6 13:47:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://wijmo.gcpowertools.com.cn/microsoft-dynamics-adds-mobile-controls-powered-by-wijmo-5/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=wijmo&amp;utm_campaign=community" target="_blank"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160331135236051-2045919446.jpg" alt="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/542880/" target="_blank">新技术使量子叠加时长增千倍 量子计算机将成真</a><br> ·  <a href="http://news.cnblogs.com/n/542879/" target="_blank">今年VR设备将创造8.95亿美元营收 这三家公司拿走77%</a><br> ·  <a href="http://news.cnblogs.com/n/542878/" target="_blank">传蚂蚁金服最新融资额度已提升至35亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/542877/" target="_blank">Model 3没卖就引发吐槽：马斯克承诺解决最大设计缺陷</a><br> ·  <a href="http://news.cnblogs.com/n/542876/" target="_blank">无论是e租宝还是中晋系崩盘 背后都有个炫富女</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img src="Sonatype%20Nexus%20%E6%90%AD%E5%BB%BAMaven%20%E7%A7%81%E6%9C%8D%20-%20%E5%AD%A4%E5%89%91%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160307140747632-1210035054.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/542462/" target="_blank">我是一个线程</a><br> ·  <a href="http://kb.cnblogs.com/page/541862/" target="_blank">为什么未来是全栈工程师的世界？</a><br> ·  <a href="http://kb.cnblogs.com/page/541805/" target="_blank">程序bug导致了天大的损失，要枪毙程序猿吗？</a><br> ·  <a href="http://kb.cnblogs.com/page/541230/" target="_blank">如何运维千台以上游戏云服务器</a><br> ·  <a href="http://kb.cnblogs.com/page/539160/" target="_blank">架构漫谈（一）：什么是架构？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"><b>历史上的今天:</b><br>2009-01-06 <a href="http://www.cnblogs.com/AloneSword/archive/2009/01/06/2237527.html">【翻译 windbg-2】Getting started with windbg - part I （第二部分 ）</a><br></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2016 孤剑 Powered by: <a href="http://www.cnblogs.com/" class="footerlink">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/" class="footerlink">沪江博客</a><br>
+</div>
+</div>
+
+
+
+
+
+</body></html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="FBS005_1">
+	<field name="Result" >
+			<format type="virtual" level="1" />
+	</field>	
+	<field name="BECIF">
+		<format type="s" length="20" necessary="false"  />
+	</field>
+	
+	<field name="SEQ_NO">
+		<format type="s" length="16" necessary="true" />
+	</field>
+	
+	<field name="REMIT_CCY">
+		<format type="s" length="3" necessary="true" />
+	</field>
+	
+	<field name="REMIT_AMT">
+		<format type="s" length="17" necessary="true" />
+	</field>
+	
+	<field name="COST_TYPE">
+		<format type="s" length="3" necessary="true" default_value="OUR" />
+	</field>
+	
+	<field name="PAYEE_ACCT_NO">
+		<format type="s" length="34" necessary="true"  />
+	</field>
+	
+	<field name="PAYEE_CLIENT_NAME">
+		<format type="s" length="120" necessary="true" />
+	</field>
+	
+	<field name="PAYEE_ADDRESS">
+		<format type="s" length="120" necessary="true" />
+	</field>
+	
+	<field name="PAYEE_ADDRESS">
+		<format type="s" length="120" necessary="true" />
+	</field>
+	<field name="PAYER_ACCT_NO">
+		<format type="s" length="34" necessary="true" />
+	</field>
+	<field name="REMITTER_NAME">
+		<format type="s" length="120" necessary="true" />
+	</field>
+	<field name="PAYER_ADDRESS">
+		<format type="s" length="120" necessary="true" />
+	</field>	
+	<field name="PAYEE_ACCT_OPEN_BRANCH_ID">
+		<format type="s" length="14" necessary="true" />
+	</field>
+	<field name="REMARK">
+		<format type="s" length="120" necessary="false" />
+	</field>
+	<field name="CLEAR_BANK_BIC">
+		<format type="s" length="120" necessary="false" />
+	</field>
+</formula>

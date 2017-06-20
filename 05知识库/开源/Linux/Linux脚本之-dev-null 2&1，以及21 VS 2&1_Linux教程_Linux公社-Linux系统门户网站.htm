@@ -1,0 +1,427 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0047)http://www.linuxidc.com/Linux/2011-06/37033.htm -->
+<HTML lang=zh xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Linux脚本之>/dev/null 2>&1，以及2>1 VS 2>&1_Linux教程_Linux公社-Linux系统门户网站</TITLE>
+<META content=text/html;charset=utf-8 http-equiv=content-type><LINK rel=icon 
+type=image/x-icon href="../../favicon.ico"><LINK rel="shortcut icon" 
+type=image/x-icon href="../../favicon.ico">
+<META name=description 
+content="1. 标准输入stdin文件描述符为0，标准输出stdout文件描述符为1，标准错误stderr文件描述符为22. /dev/null 空设备，相当于垃圾桶">
+<META name=keywords 
+content="Linux脚本,Linux脚本之>/dev/null 2>&amp;1，以及2>1 VS 2>&amp;1,Linux,Linux教程,Linux系统,Linux安装,Ubuntu,Fedora,RedHat,SUSE,CentOS,红旗Linux"><LINK 
+rel=canonical href="http://www.linuxidc.com/Linux/2011-06/37033.htm">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622">
+<META name=generator content=Linux><LINK rel=stylesheet type=text/css 
+href="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/style.css">
+<META name=generator content=专业的Linux网站>
+<SCRIPT type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/iwms.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>iwms.urlPrefix="../../";</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/show.js"></SCRIPT>
+</HEAD>
+<BODY>
+<DIV class=topBar>
+<DIV class=twidth>
+<DIV style="FLOAT: right">
+<SCRIPT type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/language.js"></SCRIPT>
+</DIV>
+<DIV id=topUser>你好，游客 <A onclick=iwms.logPop() 
+href="http://www.linuxidc.com/Linux/2011-06/37033.htm#">登录</A> <A 
+href="http://www.linuxidc.com/memberreg.aspx" rel=nofollow>注册</A> <A 
+href="http://www.linuxidc.com/search.aspx" rel=nofollow>搜索</A> 
+</DIV></DIV></DIV>
+<DIV class=twidth>
+<DIV id=sitehead>
+<DIV class=l></DIV>
+<DIV class=r></DIV>
+<DIV class=m>
+<TABLE width="100%">
+  <TBODY>
+  <TR align=middle>
+    <TD width=160><A href="http://www.linuxidc.com/"><IMG 
+      style="FILTER: chroma(color=#FFFFFF)" border=0 alt=Linux公社 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/logo.jpg" 
+      width=155 height=53></A> </TD>
+    <TD>
+      <DIV align=center>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux.js"></SCRIPT>
+      </DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV id=navbar>
+<DIV class=l></DIV>
+<DIV class=r></DIV>
+<DIV class=m><A class=first href="http://www.linuxidc.com/index.htm">首页</A><A 
+href="http://www.linuxidc.com/it/">Linux新闻</A><A class=thisclass 
+href="http://www.linuxidc.com/Linuxit/">Linux教程</A><A 
+href="http://www.linuxidc.com/MySql/">数据库技术</A><A 
+href="http://www.linuxidc.com/RedLinux/">Linux编程</A><A 
+href="http://www.linuxidc.com/Apache/">服务器应用</A><A 
+href="http://www.linuxidc.com/Unix/">Linux安全</A><A 
+href="http://www.linuxidc.com/download/">Linux下载</A><A 
+href="http://www.linuxidc.com/Linuxrz/">Linux认证</A><A 
+href="http://www.linuxidc.com/theme/">Linux主题</A><A 
+href="http://www.linuxidc.com/Linuxwallpaper/">Linux壁纸</A><A 
+href="http://www.linuxidc.com/linuxsoft/">Linux软件</A><A 
+href="http://www.linuxidc.com/digi/">数码</A><A 
+href="http://www.linuxidc.com/mobile/">手机</A><A 
+href="http://www.linuxidc.com/diannao/">电脑</A> </DIV></DIV>
+<DIV id=navsub>
+<DIV class=l></DIV>
+<DIV class=r></DIV>
+<DIV class=m><A href="http://www.linuxidc.com/index.htm">首页</A> → <A 
+href="http://www.linuxidc.com/Linuxit/">Linux教程</A> </DIV></DIV>
+<DIV class=linuxe1>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxe1.htm"></SCRIPT>
+</DIV>
+<DIV class=linux1>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux1.htm"></SCRIPT>
+</DIV>
+<DIV class=linuxa>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxa.htm"></SCRIPT>
+</DIV>
+<DIV class=linuxa1>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxa1.htm"></SCRIPT>
+</DIV>
+<TABLE style="TABLE-LAYOUT: fixed" id=middle cellSpacing=0 cellPadding=0 
+width="100%">
+  <TBODY>
+  <TR vAlign=top>
+    <TD>
+      <DIV class="mframe mR">
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm>
+      <DIV class=moreR>背景：
+      <SCRIPT type=text/javascript>WriteBg()</SCRIPT>
+       </DIV><SPAN class=tt>阅读新闻</SPAN> </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV id=bodyTd class=mm>
+      <DIV style="WORD-BREAK: break-all" id=printBody>
+      <DIV style="TEXT-ALIGN: center">
+      <H1 class=aTitle>Linux脚本之&gt;/dev/null 2&gt;&amp;1，以及2&gt;1 VS 
+      2&gt;&amp;1</H1></DIV>
+      <TABLE width="97%" align=center>
+        <TBODY>
+        <TR>
+          <TD width=140>[日期：2011-06-08]</TD>
+          <TD align=middle>来源：Linux社区&nbsp; 作者：Linux</TD>
+          <TD width=160 align=right>[字体：<A 
+            href="javascript:ContentSize(16)">大</A> <A 
+            href="javascript:ContentSize(0)">中</A> <A 
+            href="javascript:ContentSize(12)">小</A>] </TD></TR></TBODY></TABLE>
+      <DIV id=li_all>
+      <DIV id=li_1>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux201.htm"></SCRIPT>
+      </DIV>
+      <DIV id=li_2>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux2.js"></SCRIPT>
+      </DIV></DIV>
+      <DIV id=content>
+      <DIV class=linux19>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux19.htm"></SCRIPT>
+      </DIV>
+      <P>1. 标准输入stdin文件描述符为0，标准输出stdout文件描述符为1，标准错误stderr文件描述符为2</P>
+      <P>2. /dev/null 空设备，相当于垃圾桶</P>
+      <P>3. 重定向符号：&gt;</P>
+      <P>3. 2&gt;1 与 2&gt;&amp;1 的区别<BR>&nbsp;&nbsp; 2&gt;1, 
+      把标准错误stderr重定向到文件1中<BR>&nbsp;&nbsp; 
+      2&gt;&amp;1,把标准错误stderr重定向到标准输出stdout</P>
+      <P>4. 举例:<BR>&nbsp;&nbsp; 
+      假设有脚本test.sh，内容如下，t是一个不存在的命令，执行脚本进行下面测试。<BR>&nbsp;&nbsp; # cat 
+      test.sh<BR>&nbsp;&nbsp;&nbsp;&nbsp; t<BR>&nbsp;&nbsp;&nbsp;&nbsp; date</P>
+      <P>&nbsp;&nbsp; 标准输出重定向到log，错误信息输出到终端上，如下：<BR>&nbsp;&nbsp; # ./test.sh 
+      &gt; log<BR>&nbsp;&nbsp;&nbsp;&nbsp; ./test.sh: line 1: t: command not 
+      found<BR>&nbsp;&nbsp; # cat log<BR>&nbsp;&nbsp;&nbsp;&nbsp; Thu Oct 23 
+      22:53:02 CST 2008<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+      删除log文件，重新执行，这次是把标准输出定向到log，错误信息定向到文件1<BR>&nbsp;&nbsp; # ./test.sh &gt; 
+      log 2&gt;1<BR>&nbsp;&nbsp; #<BR>&nbsp;&nbsp; # cat log<BR>&nbsp;&nbsp; Thu 
+      Oct 23 22:56:20 CST 2008<BR>&nbsp;&nbsp; # cat 1<BR>&nbsp;&nbsp; 
+      ./test.sh: line 1: t: command not found<BR>&nbsp;&nbsp; #</P>
+      <P>&nbsp;&nbsp; 把标准输出重定向到log文件，把标准错误重定向到标准输出<BR>&nbsp;&nbsp; # ./test.sh 
+      &gt; log 2&gt;&amp;1<BR>&nbsp;&nbsp; #<BR>&nbsp;&nbsp; # cat 
+      log<BR>&nbsp;&nbsp; ./test.sh: line 1: t: command not 
+      found<BR>&nbsp;&nbsp; Thu Oct 23 22:58:54 CST 2008<BR>&nbsp;&nbsp; #</P>
+      <P>&nbsp;&nbsp; 把错误信息重定向到空设备<BR>&nbsp;&nbsp; # ./test.sh 
+      2&gt;/dev/null<BR>&nbsp;&nbsp; Thu Oct 23 23:01:07 CST 
+      2008<BR>&nbsp;&nbsp; #<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+      把标准输出重定向到空设备<BR>&nbsp;&nbsp; # ./test.sh 
+      &gt;/dev/null<BR>&nbsp;&nbsp;&nbsp;&nbsp; ./test.sh: line 1: t: command 
+      not found</P>
+      <P><BR>&nbsp;&nbsp; 把标准输出和标准错误全重定向到空设备<BR>&nbsp;&nbsp; #./test.sh 
+      &gt;/dev/null 2&gt;&amp;1<BR>&nbsp;&nbsp; #</P>
+      <P>&nbsp;&nbsp; 把标准输出和标准错误全重定向到空设备<BR>&nbsp;&nbsp; #./test.sh 
+      &gt;/dev/null 2&gt;&amp;1</P><A href="http://www.linuxidc.com/" 
+      target=_blank><IMG alt=linux 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/logo.gif" 
+      width=15 height=17></DIV>
+      <DIV class=linux301>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux301.htm"></SCRIPT>
+      </DIV>
+      <DIV class=linux3>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux3.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux302>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux302.htm"></SCRIPT>
+      </DIV></DIV>
+      <DIV 
+      style="PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 0px">
+      <UL id=digg class=digg>
+        <LI class=digg1>0</LI>
+        <LI class=digg2><A onclick=iwms.diggIt(this,iwms.aId) 
+        href="http://www.linuxidc.com/Linux/2011-06/37033.htm###">顶一下</A></LI></UL></DIV>
+      <DIV class=linuxfx>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/fx.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux8>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux8.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux801>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux801.js"></SCRIPT>
+      </DIV>
+      <DIV class=nearNews>
+      <DIV class=prevNews><A 
+      href="http://www.linuxidc.com/Linux/2011-06/37031.htm">迈入Linux内核学习的神圣殿堂</A></DIV>
+      <DIV class=nextNews><A 
+      href="http://www.linuxidc.com/Linux/2011-06/37035.htm">Firefox 
+      4在MeeGo上成功安装</A></DIV></DIV></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV>
+      <DIV class="mframe mR">
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm><SPAN class=tt>相关资讯</SPAN> &nbsp; &nbsp; &nbsp; <A 
+      href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=1783" 
+      target=_blank>Linux脚本</A>&nbsp; </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV class=mm>
+      <TABLE width="100%">
+        <TBODY>
+        <TR>
+          <TD vAlign=top width="50%">
+            <UL class=nl>
+              <LI><A title=Linux定时任务中用脚本代替可执行程序的一个好处 
+              href="http://www.linuxidc.com/Linux/2015-06/118470.htm" 
+              target=_blank>Linux定时任务中用脚本代替可执行</A>&nbsp; <SPAN class=gray>(<SPAN 
+              class=time>今 06:37</SPAN>)</SPAN></LI>
+              <LI><A href="http://www.linuxidc.com/Linux/2014-05/102021.htm" 
+              target=_blank>Linux下的flashback脚本</A>&nbsp; <SPAN 
+              class=gray>(05/21/2014 08:25:05)</SPAN></LI>
+              <LI><A href="http://www.linuxidc.com/Linux/2013-07/88026.htm" 
+              target=_blank>Linux下记录所有用户操作的脚本</A>&nbsp; <SPAN 
+              class=gray>(07/29/2013 08:33:39)</SPAN></LI></UL></TD>
+          <TD vAlign=top width="50%">
+            <UL class=nl>
+              <LI><A href="http://www.linuxidc.com/Linux/2015-03/114493.htm" 
+              target=_blank>Linux 批量拷贝数据脚本</A>&nbsp; <SPAN 
+              class=gray>(03月05日)</SPAN></LI>
+              <LI><A href="http://www.linuxidc.com/Linux/2013-11/92542.htm" 
+              target=_blank>简单的Linux脚本程序</A>&nbsp; <SPAN class=gray>(11/10/2013 
+              08:45:07)</SPAN></LI>
+              <LI><A title=Linux主机如何实现无需输入密码的远程登录或脚本远程执行 
+              href="http://www.linuxidc.com/Linux/2013-06/85220.htm" 
+              target=_blank>Linux主机如何实现无需输入密码的</A>&nbsp; <SPAN 
+              class=gray>(06/01/2013 
+      07:54:40)</SPAN></LI></UL></TD></TR></TBODY></TABLE></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV>
+      <DIV class="mframe mR">
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm><SPAN class=tt>图片资讯</SPAN> &nbsp; &nbsp; &nbsp; </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV class=mm></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV>
+      <DIV class="mframe mR">
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm><SPAN class=tt>本文评论</SPAN> 　　<A 
+      href="http://www.linuxidc.com/remark.aspx?id=37033" 
+      target=_blank>查看全部评论</A> <SPAN class=gray>(0)</SPAN> </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV class=mm>
+      <TABLE style="MARGIN: 6px" width="100%">
+        <TBODY>
+        <TR>
+          <TD width="100%">
+            <FORM onsubmit="return remark.post(this);" name=fmRemarkSt 
+            action=""><INPUT value=1 type=hidden name=face> 表情： <IMG 
+            style="VERTICAL-ALIGN: middle; CURSOR: pointer" class=face1 
+            onmouseout=remark.hideFace() onclick=remark.dispFace(this) alt=表情 
+            src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/b.gif"> 
+            姓名： <INPUT style="WIDTH: 60px" class=inputbg maxLength=15 type=text 
+            name=username> <INPUT id=rmAnonymitySt onclick=remark.anony(this) 
+            type=checkbox><LABEL for=rmAnonymitySt>匿名</LABEL> 字数 <INPUT 
+            style="BORDER-RIGHT-WIDTH: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT-WIDTH: 0px" 
+            id=bodyLen value=0 readOnly size=3 type=text> <BR><TEXTAREA style="OVERFLOW-Y: auto; MARGIN: 3px 0px; WIDTH: 40em; HEIGHT: 100px" onkeydown=remark.dispLen(this) onkeyup=remark.handle(event,this);remark.dispLen(this) rows=4 cols=40 name=body></TEXTAREA> 
+            <BR>　　　<INPUT id=rmAgreeSt CHECKED type=checkbox><LABEL 
+            for=rmAgreeSt>同意评论声明</LABEL> 　　　<BUTTON style="WIDTH: 50px" 
+            type=submit>发表</BUTTON> </FORM></TD></TR>
+        <TR>
+          <TD width="100%">评论声明 
+            <UL 
+            style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: square; MARGIN: 5px 0px 0px 1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+              <LI>尊重网上道德，遵守中华人民共和国的各项有关法律法规</LI>
+              <LI>承担一切因您的行为而直接或间接导致的民事或刑事法律责任</LI>
+              <LI>本站管理人员有权保留或删除其管辖留言中的任意内容</LI>
+              <LI>本站有权在网站内转载或引用您的评论</LI>
+              <LI>参与本评论即表明您已经阅读并接受上述条款</LI></UL></TD></TR></TBODY></TABLE>
+      <SCRIPT type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/remark.js"></SCRIPT>
+
+      <SCRIPT type=text/javascript>
+			remark.maxSize=500;
+			remark.minSize=2;
+			remark.sourceEle=$(document.fmRemarkSt).find("button").get(0);
+			iwms.vCode="D2BDA41E";
+			iwms.user.name.length==0 ? $i("rmAnonymitySt").click() : $i("rmAnonymitySt").form.username.value=iwms.user.name;
+		</SCRIPT>
+
+      <DIV id=reContainer class=reCont></DIV></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV></TD>
+    <TD vAlign=top width=300>
+      <DIV class=linux901>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux901.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux902>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux902.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux903>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux903.js"></SCRIPT>
+      </DIV>
+      <DIV class=linux905>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux905.js"></SCRIPT>
+      </DIV>
+      <DIV class=lframe>
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm><SPAN class=tt>最新资讯</SPAN> </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV class=mm>
+      <UL class=nl>
+        <LI><A title=Linux定时任务中用脚本代替可执行程序的一个好处 
+        href="http://www.linuxidc.com/Linux/2015-06/118470.htm" 
+        target=_blank>Linux定时任务中用脚本代替可执行程序的一个好</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118469.htm" 
+        target=_blank>Oracle中临时表空间的清理</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118468.htm" 
+        target=_blank>Java Servlet关键点详解</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118467.htm" 
+        target=_blank>查看远程Redis服务器的版本</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118466.htm" 
+        target=_blank>MHA 日常管理</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118465.htm" 
+        target=_blank>HDFS副本放置策略及机架感知</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118464.htm" 
+        target=_blank>Hadoop常见重要命令行操作及命令作用</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118463.htm" 
+        target=_blank>Hadoop的压缩算法实例及压缩算法选取</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118462.htm" 
+        target=_blank>HDFS数据完整性</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2015-06/118461.htm" 
+        target=_blank>SpringMVC详细示例实战教程</A></LI></UL></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV>
+      <DIV class=lframe>
+      <DIV class=tl></DIV>
+      <DIV class=tr></DIV>
+      <DIV class=tm><SPAN class=tt>本周热门</SPAN> </DIV>
+      <DIV class=wrapper>
+      <DIV class=ml></DIV>
+      <DIV class=mr></DIV>
+      <DIV class=mm>
+      <UL class=nl>
+        <LI><A class=highlight 
+        href="http://www.linuxidc.com/Linux/2014-04/100369.htm" 
+        target=_blank>Windows 7下硬盘安装Ubuntu 14.04图文教程</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2011-08/40437.htm" 
+        target=_blank>Linux常用命令大全</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2014-10/108430.htm" 
+        target=_blank>Windows 7下硬盘安装Ubuntu 14.10图文教程</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2013-05/84014.htm" 
+        target=_blank>Android 手机上安装并运行 Ubuntu 12.04</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2012-05/59663.htm" 
+        target=_blank>Ubuntu 12.04和Windows 7双系统安装图解</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2014-09/107092.htm" 
+        target=_blank>VMware安装RedHat6.4过程全程图解</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2014-04/100645.htm" 
+        target=_blank>Ubuntu 14.04 LTS下安装Google Chrome浏览器</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2012-04/58438.htm" 
+        target=_blank>VMware下安装CentOS 6图文安装教程</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2010-04/25573.htm" 
+        target=_blank>Virtualbox虚拟机安装Ubuntu图文教程</A></LI>
+        <LI><A href="http://www.linuxidc.com/Linux/2014-04/100411.htm" 
+        target=_blank>安装完Ubuntu 14.04要做的九件事</A></LI></UL></DIV></DIV>
+      <DIV class=bl></DIV>
+      <DIV class=br></DIV>
+      <DIV class=bm></DIV></DIV>
+      <DIV class=linuxy9>
+      <SCRIPT language=javaScript type=text/javascript 
+      src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/y9.js"></SCRIPT>
+      </DIV></TD></TR></TBODY></TABLE>
+<DIV class=linux906>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linux906.htm"></SCRIPT>
+</DIV>
+<DIV id=footer><A href="http://www.linuxidc.com/aboutus.htm">Linux公社简介</A> - <A 
+href="http://www.linuxidc.com/adsense.htm">广告服务</A> - <A 
+href="http://www.linuxidc.com/sitemap.aspx">网站地图</A> - <A 
+href="http://www.linuxidc.com/help.htm">帮助信息</A> - <A 
+href="http://www.linuxidc.com/contactus.htm">联系我们</A><BR>本站（LinuxIDC）所刊载文章不代表同意其说法或描述，仅为提供更多信息，也不构成任何建议。<BR>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/qq.js"></SCRIPT>
+<BR>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/foot.js"></SCRIPT>
+<BR>Copyright © 2006-2015　<A href="http://www.linuxidc.com/">Linux公社</A>　All 
+rights reserved 沪ICP备15008072号-1号
+<SCRIPT type=text/javascript>iwms.aId=37033;$(function(){iwms.imgCont=$i('content');iwms.imgResize();InitContStyle();iwms.getVars();})</SCRIPT>
+ </DIV></DIV>
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxren1.js"></SCRIPT>
+
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxren2.htm"></SCRIPT>
+
+<SCRIPT language=javaScript type=text/javascript 
+src="Linux脚本之-dev-null%202&amp;1，以及21%20VS%202&amp;1_Linux教程_Linux公社-Linux系统门户网站_files/linuxren3.js"></SCRIPT>
+</BODY></HTML>

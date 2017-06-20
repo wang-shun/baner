@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cp0035_1">
+<include>UMB_SVR_1</include>
+	<field name="trancode" >
+			<format type="s" length="6" default_value="cp0035" />
+	</field>
+	<include>UMB_SVR_2</include>
+	
+<field name="body">
+	<format type="virtual" level="2" />
+	</field>
+	
+	<field name="merPlatAcctAlias">
+		<format type="s" length="30"  frommsg="true" />
+	</field>
+	<field name="protocolNo">
+		<format type="s" length="30"  frommsg="true" />
+	</field>
+	<field name="bankName">
+		<format type="s" length="60"  frommsg="true" />
+	</field>
+	<field name="accountNo">
+		<format type="s" length="32"  frommsg="true" />
+	</field>
+	<field name="accountName">
+		<format type="s" length="60"  frommsg="true" />
+	</field>
+	<field name="accountType">
+		<format type="s" length="2"  frommsg="true" default_value="00" />
+	</field>
+	<field name="openProvince">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+	<field name="openCity">
+		<format type="s" length="30"  frommsg="true" />
+	</field>
+	<field name="openName">
+		<format type="s" length="60"  frommsg="true" />
+	</field>
+	<field name="tranAmt">
+		<format type="s" length="19"  frommsg="true" />
+	</field>
+	<field name="curType">
+		<format type="s" length="3"  frommsg="true" />
+	</field>
+	<field name="bsnType">
+		<format type="s" length="5"  frommsg="true" default_value="00"/>
+	</field>
+	<field name="certType">
+		<format type="s" length="2"  frommsg="true" default_value="01"  />
+	</field>
+	<field name="certNo">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+	<field name="mobileNo">
+		<format type="s" length="13"  frommsg="true" />
+	</field>
+	<field name="prodInfo">
+		<format type="s" length="100"  frommsg="true" />
+	</field>
+	<field name="msgExt">
+		<format type="s" length="100"  frommsg="true" />
+	</field>
+	
+</formula>

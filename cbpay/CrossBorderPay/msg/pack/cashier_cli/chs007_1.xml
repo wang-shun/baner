@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="chs007_1">
+	<include>CASHIER_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<field name="tranCode">
+		<format type="s" length="7" necessary="true" />
+	</field>
+</formula>

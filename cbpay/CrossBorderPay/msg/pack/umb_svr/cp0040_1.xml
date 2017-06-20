@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cp0040_1">
+<include>UMB_SVR_1</include>
+	<field name="trancode" >
+			<format type="s" length="6" default_value="CP0040" />
+	</field>
+	<include>UMB_SVR_2</include>
+	
+        <field name="body">
+	    <format type="virtual" level="2" />
+	</field>
+	
+	<field name="merOrderId">
+		<format type="s" length="32" necessary="true" frommsg="true" />
+	</field>
+	
+</formula>

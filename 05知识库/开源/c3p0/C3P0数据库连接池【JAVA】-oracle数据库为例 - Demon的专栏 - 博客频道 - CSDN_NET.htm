@@ -1,0 +1,883 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0122)mhtml:file://E:\cbpay\05知识库\开源\c3p0\C3P0数据库连接池【JAVA】-oracle数据库为例 - Demon的专栏 - 博客频道 - CSDN_NET.mht -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>C3P0数据库连接池【JAVA】-oracle数据库为例 - Demon的专栏 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<SCRIPT id=allmobilize charset=utf-8 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/allmobilize.min.js"></SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="使用JavaScript可以很容易的在页面上显示出本地时间，但如果想在页面上显示出不同时区的时间，是否可以做到呢？答案是肯定的！我们只需要做一些简单的日期计算就可以得到不同时区的时间了，下面就详细讲解一下。利用Date对象得到本地时间d = new Date();localTime = d.getTime(); //通过调用Data()对象的getTime()方法，即可显示1970">
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="http://c.csdnimg.cn/public/common/toolbar/css/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="http://static.blog.csdn.net/skin/skin-yellow/css/style.css?v=1.1"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/willability/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default_relax.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+fixed="true" prod="blog" skin="black"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/vv_demon">Demon的专栏</A></H2>
+<H3>空杯心态~</H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/vv_demon?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD7CD(1).tmp">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/vv_demon?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD83D(1).tmp">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/vv_demon/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD84F(1).tmp">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "willability";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/vv_demon";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://edu.csdn.net/app"><FONT color=red>学院APP首次下载，可得50C币！ 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bbs.csdn.net/topics/391876796"><FONT color=blue>欢迎来帮助开源“进步” 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bss.csdn.net/m/topic/cuanke_vote"><FONT color=red>当讲师？爱学习？投票攒课吧 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A href="http://vote.blog.csdn.net/"><FONT 
+color=blue>CSDN 2015博客之星评选 感恩分享 </FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="http://static.blog.csdn.net/css/comment1.css"><LINK rel=stylesheet 
+type=text/css href="http://static.blog.csdn.net/css/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0"><LINK 
+rel=stylesheet href="http://static.blog.csdn.net/css/category.css?v=1.0">
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class=link_title><A 
+href="mhtml:file://E:\cbpay\05知识库\开源\c3p0\C3P0数据库连接池【JAVA】-oracle数据库为例 - Demon的专栏 - 博客频道 - CSDN_NET.mht!http://blog.csdn.net/vv_demon/article/details/8467515">C3P0数据库连接池【JAVA】-oracle数据库为例 
+</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_r><SPAN class=link_postdate>2013-01-05 10:57</SPAN> <SPAN 
+class=link_view title=阅读次数>8051人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">评论</A>(6)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('C3P0数据库连接池【JAVA】-oracle数据库为例','8467515');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(8467515,2);return false;" 
+href="http://blog.csdn.net/vv_demon/article/details/8467515#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD862(1).tmp"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('2724277','willability','top','8467515');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">java<EM>（2）</EM></SPAN> 
+<IMG style="DISPLAY: inline" class=arrow-down 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD894(1).tmp"> 
+<IMG style="DISPLAY: none" class=arrow-up 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD897(1).tmp"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/willability/article/category/2724277">作者同类文章</A><I 
+class=J_close>X</I></DIV>
+<UL id=top_2724277 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class=bog_copyright>
+<P class=copyright_p>版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content>
+<P><SPAN style="WHITE-SPACE: pre"><SPAN 
+style="FONT-SIZE: 18px"></SPAN></SPAN><SPAN 
+style="FONT-SIZE: 18px">java项目中数据库的连接池选用了C3P0,个人感觉还是挺好用的，目前没有发现什么问题，主要是配置上的结合，今天总结一下如何使用及通用配置解析。</SPAN></P>
+<P></P>
+<P><SPAN style="FONT-SIZE: 18px"><SPAN style="WHITE-SPACE: pre"></SPAN>1.第三方jar 
+我使用的是&nbsp;c3p0-0.9.2-pre4.jar</SPAN></P>
+<P><SPAN style="FONT-SIZE: 18px"><SPAN style="WHITE-SPACE: pre"></SPAN>2. 
+刚开始使用这个的时候，由于项目比较紧张，我采用的是set方式来进行配置，其实后来一了解，繁琐了很多，当初的方式如下：</SPAN></P>
+<P><SPAN style="FONT-SIZE: 18px"><SPAN 
+style="WHITE-SPACE: pre"></SPAN></SPAN></P><PRE class=java name="code">//数据库连接池 使用C3P0数据库连接池
+private static ComboPooledDataSource _ds = new ComboPooledDataSource();
+	
+/** 
+ * 数据库连接池初始化 
+*/  
+static {  
+    try {     	
+        DbEntity db = ConfigCenter.GetDbEntity();   //DbEntity存储数据库连接中的各种信息
+        _ds.setJdbcUrl(db.get_url());  
+        _ds.setUser(db.get_username());  
+        _ds.setPassword(db.get_password()); 
+        _ds.setMaxStatements(0);   
+        //TODO 连接池各种优化配置 按需添加
+        _ds.setDriverClass(db.get_driver());
+        } catch (PropertyVetoException e) {
+            ...
+        }          
+} 
+	
+/**
+* 获取数据库连接
+* @return
+*/
+private static Connection getConnection() {  
+    Connection conn = null;  
+    try {  
+        conn = _ds.getConnection();  
+    } catch (Exception e) {  
+        ...
+    }  
+    return conn;  
+}  </PRE><SPAN style="WHITE-SPACE: pre"></SPAN>3. 
+上面这种配置连接池的方法是最繁琐的，之后我使用了配置文件配置，将配置文件c3p0-config.xml放在类加载路径下或自己定义的目录下，我个人喜欢将配置文件放入我指定的目录下，故我使用此种方式进行指定： 
+
+<P></P>
+<P><SPAN style="FONT-SIZE: 18px"><SPAN 
+style="WHITE-SPACE: pre"></SPAN></SPAN></P><PRE class=java name="code">//加载c3p0连接池配置
+System.setProperty("com.mchange.v2.c3p0.cfg.xml","configs/c3p0-config.xml");</PRE><SPAN 
+style="WHITE-SPACE: pre"></SPAN>4. 我之所以没有采用property文件，是因为我要用到多个数据库源，我的配置如下： 
+<P></P>
+<P></P><PRE style="FONT-SIZE: 18px" class=html name="code">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;c3p0-config&gt;
+    &lt;named-config name="data1"&gt;
+        &lt;property name="user"&gt;root&lt;/property&gt;
+        &lt;property name="password"&gt;root&lt;/property&gt;
+        &lt;property name="driverClass"&gt;oracle.jdbc.driver.OracleDriver&lt;/property&gt;
+        &lt;property name="jdbcUrl"&gt;jdbc:oracle:oci8:@dataname&lt;/property&gt;
+        &lt;!-- 连接池初始化时建立的连接数 默认值是3 --&gt;
+        &lt;property name="initialPoolSize"&gt;3&lt;/property&gt;
+        &lt;!-- 连接的最大空闲时间  单位秒 默认是0-代表永远不会断开连接  超过设定时间的空闲连接将会断开 --&gt;
+        &lt;property name="maxIdleTime"&gt;30&lt;/property&gt;
+        &lt;!-- 连接池中拥有的最大连接数 默认值为15个 --&gt;
+        &lt;property name="maxPoolSize"&gt;20&lt;/property&gt;
+        &lt;!-- 连接池中保持的最小连接数  默认值为3个--&gt;
+        &lt;property name="minPoolSize"&gt;3&lt;/property&gt;
+        &lt;!-- 将连接池的连接数保持在minpoolsize 必须小于maxIdleTime设置  默认值为0代表不处理  单位秒 --&gt;
+        &lt;property name="maxIdleTimeExcessConnections"&gt;15&lt;/property&gt;
+    &lt;/named-config&gt;	
+&lt;/c3p0-config&gt;</PRE><SPAN 
+style="WHITE-SPACE: pre; FONT-SIZE: 18px"></SPAN><SPAN 
+style="FONT-SIZE: 18px">XML配置文件</SPAN><SPAN 
+style="FONT-FAMILY: 微软雅黑, Verdana, sans-serif, 宋体"><SPAN 
+style="FONT-SIZE: 18px">可以为多个数据源服务，提供default-config和named-config两种配置方式，如果你只用一个数据源，大可使用default-config配置，与named-config的却别是初始化的时候无参 
+or有参，default-config配置如下</SPAN></SPAN> 
+<P></P>
+<P><SPAN style="FONT-FAMILY: 微软雅黑, Verdana, sans-serif, 宋体"></SPAN></P><PRE class=html name="code">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;c3p0-config&gt;
+    &lt;default-config&gt;
+        &lt;property name="user"&gt;root&lt;/property&gt;
+        &lt;property name="password"&gt;root&lt;/property&gt;
+        &lt;property name="driverClass"&gt;oracle.jdbc.driver.OracleDriver&lt;/property&gt;
+        &lt;property name="jdbcUrl"&gt;jdbc:oracle:oci8:@dataname&lt;/property&gt;
+        &lt;!-- 连接池初始化时建立的连接数 默认值是3 --&gt;
+        &lt;property name="initialPoolSize"&gt;3&lt;/property&gt;
+        &lt;!-- 连接的最大空闲时间  单位秒 默认是0-代表永远不会断开连接  超过设定时间的空闲连接将会断开 --&gt;
+        &lt;property name="maxIdleTime"&gt;30&lt;/property&gt;
+        &lt;!-- 连接池中拥有的最大连接数 默认值为15个 --&gt;
+        &lt;property name="maxPoolSize"&gt;20&lt;/property&gt;
+        &lt;!-- 连接池中保持的最小连接数  默认值为3个--&gt;
+        &lt;property name="minPoolSize"&gt;3&lt;/property&gt;
+        &lt;!-- 将连接池的连接数保持在minpoolsize 必须小于maxIdleTime设置  默认值为0代表不处理  单位秒 --&gt;
+        &lt;property name="maxIdleTimeExcessConnections"&gt;15&lt;/property&gt;	
+    &lt;/default-config&gt;
+&lt;/c3p0-config&gt;
+</PRE>
+<P><SPAN style="WHITE-SPACE: pre"></SPAN><SPAN 
+style="FONT-SIZE: 18px">5.前序工作都做完了，现在该看看我们如何初始化了</SPAN></P>
+<P><SPAN style="FONT-SIZE: 18px"></SPAN></P><PRE class=java name="code">//数据库连接池 使用C3P0数据库连接池 使用named-config模式 则通过有参构造函数初始化  带上name
+private static ComboPooledDataSource _ds = new ComboPooledDataSource("data1");
+//采用default-config模式  则使用无参构造函数即可
+//private static ComboPooledDataSource _ds = new ComboPooledDataSource();
+	
+/**
+ * 获取数据库连接
+ * @return
+ */
+private static Connection getConnection() {  
+    Connection conn = null;  
+    try {  
+        conn = _ds.getConnection();  
+    } catch (Exception e) {  
+        ...
+    }  
+    return conn;  
+}</PRE><BR>&nbsp; 
+&nbsp;通过简单的配置即可实现多数据源的数据库连接池，在一个C3P0-config.xml配置文件中可以既有default-config 
+又有named-config，只是初始化的时候指明即可（无参 or 有参） 
+<P></P>
+<P><SPAN style="FONT-SIZE: 18px">&nbsp; 
+&nbsp;突然想到，既然总结了oracle数据库连接池的初始化，下一次把对各种语句or存储过程or函数的执行调度也总结下吧，敬请期待...</SPAN></P>
+<P><BR></P>
+<P><SPAN 
+style="FONT-FAMILY: 微软雅黑, Verdana, sans-serif, 宋体; FONT-SIZE: 18px">&nbsp; 
+&nbsp; &nbsp; &nbsp;&nbsp;<BR></SPAN><BR></P>
+<P></P><PRE></PRE><PRE></PRE></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/vv_demon/article/details/8467515#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="http://static.blog.csdn.net/css/blog_detail.css"><!--172.16.140.13-->
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/vv_demon/article/details/7676415';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/vv_demon/article/details/7676415">redis学习心得之三-【java操作redis】</A> 
+
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/vv_demon/article/details/8659137';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/vv_demon/article/details/8659137">Linux系统学习篇【suse 
+  10】之一[网络配置篇]</A> </LI></UL><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="8467515">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 </DT>
+  <DD>0 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 </DT>
+  <DD>0 </DD></DL></DIV>
+<DIV style="DISPLAY: none" class=similar_article>
+<H4>我的同类文章</H4>
+<DIV style="MARGIN: 20px 0px 0px" class=similar_c>
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN style="CURSOR: pointer" 
+onclick="GetCategoryArticles('2724277','willability','foot','8467515');">java<EM>（2）</EM></SPAN> 
+</LABEL></DIV>
+<DIV class="similar_wrap tracking-ad" data-mod="popu_141"><A 
+style="DISPLAY: none" href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('2724277', 'willability','foot','8467515');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/willability/svc/GetSuggestContent/8467515",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8467515",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'C3P0数据库连接池【JAVA】-oracle数据库为例' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '8467515';
+    var commentscount = 6;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD8B9(1).tmp"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD8BC(1).tmp"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/willability/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/willability" 
+  target=_blank><IMG style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD8CF(1).tmp"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/willability" 
+  target=_blank>willability</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=willability','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV id=bms_box></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>44958次</SPAN> 
+    <LI>积分：<SPAN>652</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/mhtD8E1(1).tmp"> 
+
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：652 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>千里之外</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>20篇</SPAN> </LI>
+    <LI>转载：<SPAN>2篇</SPAN> </LI>
+    <LI>译文：<SPAN>0篇</SPAN> </LI>
+    <LI>评论：<SPAN>15条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch class=blogsearch 
+  title=请输入关键字></SPAN> <INPUT id=btnSubmit title="search in blog" value=搜索 type=button> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT value=blog type=hidden name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/1513239">GOOGLE 
+  GLOG</A><SPAN>(1)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/1553027">Linux</A><SPAN>(16)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/1553029">C++</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/2724277">java</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/2724279">mysql</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/2724281">redis</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/2724285">php</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/willability/article/category/5612015">gcc</A><SPAN>(1)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2015/08">2015年08月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2015/06">2015年06月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2014/11">2014年11月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2014/09">2014年09月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2014/07">2014年07月</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2014/02">2014年02月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2013/08">2013年08月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2013/07">2013年07月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2013/03">2013年03月</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2013/01">2013年01月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2012/06">2012年06月</A><SPAN>(8)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2012/04">2012年04月</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  href="http://blog.csdn.net/willability/article/month/2012/03">2012年03月</A><SPAN>(1)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=redis学习心得之三-【java操作redis】 
+  href="http://blog.csdn.net/vv_demon/article/details/7676415">redis学习心得之三-【java操作redis】</A><SPAN>(12683)</SPAN> 
+
+  <LI><A title=C3P0数据库连接池【JAVA】-oracle数据库为例 
+  href="mhtml:file://E:\cbpay\05知识库\开源\c3p0\C3P0数据库连接池【JAVA】-oracle数据库为例 - Demon的专栏 - 博客频道 - CSDN_NET.mht!http://blog.csdn.net/vv_demon/article/details/8467515">C3P0数据库连接池【JAVA】-oracle数据库为例</A><SPAN>(8033)</SPAN> 
+
+  <LI><A title="GOOGLE GLOG 日志使用心得" 
+  href="http://blog.csdn.net/vv_demon/article/details/9378915">GOOGLE GLOG 
+  日志使用心得</A><SPAN>(4936)</SPAN> 
+  <LI><A title=mysql学习足迹之一【linux环境下源码安装mysql-5.5.25版本数据库】 
+  href="http://blog.csdn.net/vv_demon/article/details/7658547">mysql学习足迹之一【linux环境下源码安装mysql-5.5.25版本数据库】</A><SPAN>(4343)</SPAN> 
+
+  <LI><A title=redis配置文件redis.conf的详细说明 
+  href="http://blog.csdn.net/vv_demon/article/details/7676384">redis配置文件redis.conf的详细说明</A><SPAN>(3058)</SPAN> 
+
+  <LI><A title=redis学习心得之一【安装redis初体验】 
+  href="http://blog.csdn.net/vv_demon/article/details/7675333">redis学习心得之一【安装redis初体验】</A><SPAN>(2283)</SPAN> 
+
+  <LI><A title=redis学习心得之二【redis主从配置】 
+  href="http://blog.csdn.net/vv_demon/article/details/7676087">redis学习心得之二【redis主从配置】</A><SPAN>(1832)</SPAN> 
+
+  <LI><A title="Linux系统学习篇【suse 10】之一[网络配置篇]" 
+  href="http://blog.csdn.net/vv_demon/article/details/8659137">Linux系统学习篇【suse 
+  10】之一[网络配置篇]</A><SPAN>(1058)</SPAN> 
+  <LI><A title=mysql学习足迹之二【mysql启动多实例步骤讲解】 
+  href="http://blog.csdn.net/vv_demon/article/details/7666514">mysql学习足迹之二【mysql启动多实例步骤讲解】</A><SPAN>(700)</SPAN> 
+
+  <LI><A title=Linux下GDB调试工具使用命令详解 
+  href="http://blog.csdn.net/vv_demon/article/details/9799789">Linux下GDB调试工具使用命令详解</A><SPAN>(556)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=C3P0数据库连接池【JAVA】-oracle数据库为例 
+  href="mhtml:file://E:\cbpay\05知识库\开源\c3p0\C3P0数据库连接池【JAVA】-oracle数据库为例 - Demon的专栏 - 博客频道 - CSDN_NET.mht!http://blog.csdn.net/vv_demon/article/details/8467515">C3P0数据库连接池【JAVA】-oracle数据库为例</A><SPAN>(6)</SPAN> 
+
+  <LI><A title=全排列算法【java实现】 
+  href="http://blog.csdn.net/vv_demon/article/details/7325423">全排列算法【java实现】</A><SPAN>(2)</SPAN> 
+
+  <LI><A title=redis学习心得之二【redis主从配置】 
+  href="http://blog.csdn.net/vv_demon/article/details/7676087">redis学习心得之二【redis主从配置】</A><SPAN>(2)</SPAN> 
+
+  <LI><A title="GOOGLE GLOG 日志使用心得" 
+  href="http://blog.csdn.net/vv_demon/article/details/9378915">GOOGLE GLOG 
+  日志使用心得</A><SPAN>(2)</SPAN> 
+  <LI><A title=mysql学习足迹之一【linux环境下源码安装mysql-5.5.25版本数据库】 
+  href="http://blog.csdn.net/vv_demon/article/details/7658547">mysql学习足迹之一【linux环境下源码安装mysql-5.5.25版本数据库】</A><SPAN>(2)</SPAN> 
+
+  <LI><A title=redis学习心得之一【安装redis初体验】 
+  href="http://blog.csdn.net/vv_demon/article/details/7675333">redis学习心得之一【安装redis初体验】</A><SPAN>(1)</SPAN> 
+
+  <LI><A title=TinyXml源码解析之解决XML中&amp;符号过滤的问题 
+  href="http://blog.csdn.net/vv_demon/article/details/38976895">TinyXml源码解析之解决XML中&amp;符号过滤的问题</A><SPAN>(0)</SPAN> 
+
+  <LI><A title=【分享】Linux平台服务读取文件时诡异现象 
+  href="http://blog.csdn.net/vv_demon/article/details/37934731">【分享】Linux平台服务读取文件时诡异现象</A><SPAN>(0)</SPAN> 
+
+  <LI><A title=【实例】C++调用webservice接口 
+  href="http://blog.csdn.net/vv_demon/article/details/41282285">【实例】C++调用webservice接口</A><SPAN>(0)</SPAN> 
+
+  <LI><A title=【分享】文件句柄数递增问题排查--引申出SOCKET泄露 
+  href="http://blog.csdn.net/vv_demon/article/details/25151749">【分享】文件句柄数递增问题排查--引申出SOCKET泄露</A><SPAN>(0)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A 
+    href="http://blog.csdn.net/androidlushangderen/article/details/50195481" 
+    target=_blank>*Hadoop节点"慢磁盘"监控</A> 
+    <LI><A href="http://blog.csdn.net/foruok/article/details/50201563" 
+    target=_blank>*假如你想成为全栈工程师…</A> 
+    <LI><A href="http://blog.csdn.net/wangshubo1989/article/details/50001805" 
+    target=_blank>*没有躲过的坑--正则表达式截取字符串</A> 
+    <LI><A 
+    href="http://blog.csdn.net/developer_jiangqq/article/details/50000733" 
+    target=_blank>*CardView完全解析与RecyclerView结合使用(三十二)</A> 
+    <LI><A href="http://blog.csdn.net/lyhhj/article/details/50002005" 
+    target=_blank>*And roid 高仿微信发朋友圈浏览图片效果</A> 
+    <LI><A href="http://blog.csdn.net/gisshixisheng/article/details/49922677" 
+    target=_blank>*通过Ajax的方式执行GP服务</A> </LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/qq_29273563">qq_29273563</A>: 同问 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/qq_20039347">qq_20039347</A>: //加载c3p0连接池配置 
+  System.setProperty("com.mchange.v2.... </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/jcy2sls">jcy2sls</A>: 我qq547089094 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/jcy2sls">jcy2sls</A>: 这位大牛 可以交流一下吗？ 我一点都不会啊 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/8467515#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/lx_Napoleon">lx_Napoleon</A>: 学习了 解决了我的疑惑 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/9378915#comments">GOOGLE 
+  GLOG 日志使用心得</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/willability">willability</A>: @huxianlin86:能帮到你就好~ 
+  </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/9378915#comments">GOOGLE 
+  GLOG 日志使用心得</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/huxianlin86">huxianlin86</A>: 感谢！ 
+  之前我的glog设置不能实时打印的问题困扰了我好久， 终于解决了 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/9378915#comments">C3P0数据库连接池【JAVA】-oracle数据库为例</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/EchoSunxx">EchoSunxx</A>: 学习了，小伙不错哦 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/7676087#comments">redis学习心得之二【redis主从配置】</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/yhc13429826359">yhc13429826359</A>: OK,谢谢楼主共享 </P>
+  <LI><A 
+  href="http://blog.csdn.net/vv_demon/article/details/7676087#comments">redis学习心得之二【redis主从配置】</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/yhc13429826359">yhc13429826359</A>: 
+  我按照你的配置,不能同步,中间是否少了步骤啊 </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+btnId="header_notice_num" wrapId="note1" count="5" subCount="5"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="C3P0数据库连接池【JAVA】-oracle数据库为例%20-%20Demon的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

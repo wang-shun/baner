@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+	<module id="UMB_SVR_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		<field name="version" >
+			<format type="s" length="5"  default_value="1.0.0"/>
+		</field>
+		<field name="msgtype" >
+			<format type="s" length="4"  />
+		</field>
+		<field name="channelno" >
+			<format type="s" length="2" default_value="99" />
+		</field>
+		<field name="merchantno" >
+			<format type="s" length="12"  />
+		</field>
+		<field name="trandate" >
+			<format type="s" length="8"  />
+		</field>
+		<field name="trantime" >
+			<format type="s" length="8" />
+		</field>
+		<field name="bussflowno" >
+			<format type="s" length="32" necessary="false" />
+		</field>
+	</module>
+	
+	<module id="UMB_SVR_2">
+		<field name="respcode" >
+			<format type="s" length="10" necessary="false" />
+		</field>
+		<field name="respmsg" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+	</module>
+	
+	<module id="CASHIER_CLI_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		
+		<field name="tranCode" >
+			<format type="s" length="16" />
+		</field>
+		<field name="merchantNo" >
+			<format type="s" length="12" />
+		</field>
+		<field name="orderId">
+			<format type="s" length="64"  necessary="false"/>
+		</field>
+		<field name="tranDate" >
+			<format type="s" length="8"  />
+		</field>
+		<field name="tranTime" >
+			<format type="s" length="8"  necessary="false" />
+		</field>
+		<field name="bussFlowNo" >
+			<format type="s" length="32" necessary="false" />
+		</field>
+		<field name="respCode" >
+			<format type="s" length="10" necessary="false" />
+		</field>
+		<field name="respMsg" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+	</module>
+	<module id="MERCHANT_CLI_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		
+		<field name="msgType" >
+			<format type="s" length="4" />
+		</field>
+		<field name="chanId" >
+			<format type="s" length="3"  />
+		</field>
+		<field name="merchantNo" >
+			<format type="s" length="20" />
+		</field>
+		<field name="clientTime" >
+			<format type="s" length="14" />
+		</field>
+		<field name="serverTime" >
+			<format type="s" length="14"  necessary="false"/>
+		</field>
+		<field name="tranFlow" >
+			<format type="s" length="30" />
+		</field>
+		<field name="tranCode" >
+			<format type="s" length="6" />
+		</field>
+		<field name="clientIP" >
+			<format type="s" length="15"  necessary="false"/>
+		</field>
+		<field name="accdt" >
+			<format type="s" length="8"  necessary="false"/>
+		</field>
+		<field name="respCode" >
+			<format type="s" length="10"  necessary="false"/>
+		</field>
+		<field name="respMsg" >
+			<format type="s" length="40"  necessary="false"/>
+		</field>
+	</module>
+	
+	<module id="PLATFORM_CLI_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		<field name="tranCode" >
+			<format type="s" length="12" />
+		</field>
+		<field name="merchantno" >
+			<format type="s" length="12" />
+		</field>
+		<field name="trandate" >
+			<format type="s" length="8"  />
+		</field>
+		<field name="trantime" >
+			<format type="s" length="8" />
+		</field>
+		<field name="bussflowno" >
+			<format type="s" length="32" necessary="false"/>
+		</field>
+		<field name="respcode" >
+			<format type="s" length="10" necessary="false" />
+		</field>
+		<field name="respmsg" >
+			<format type="s" length="40"  necessary="false" />
+		</field>
+	</module>
+	<module id="CRONTAB_CLI_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		<field name="tranCode" >
+			<format type="s" length="16" />
+		</field>
+		<field name="trandate" >
+			<format type="s" length="8"  />
+		</field>
+		<field name="trantime" >
+			<format type="s" length="8"  necessary="true" />
+		</field>
+		<field name="respcode" >
+			<format type="s" length="10" necessary="false" />
+		</field>
+		<field name="respmsg" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+		<field name="flowno" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+	</module>
+	<module id="CONSOLE_CLI_1">
+		<field name="message">
+			<format type="virtual" level="1" />
+		</field>
+		<field name="head">
+			<format type="virtual"  level="2" />
+		</field>
+		<field name="tranCode" >
+			<format type="s" length="16" />
+		</field>
+		<field name="trandate" >
+			<format type="s" length="8"  />
+		</field>
+		<field name="trantime" >
+			<format type="s" length="8"  necessary="true" />
+		</field>
+		<field name="respcode" >
+			<format type="s" length="10" necessary="false" />
+		</field>
+		<field name="respmsg" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+		<field name="flowno" >
+			<format type="s" length="40" necessary="false" />
+		</field>
+	</module>
+</modules>

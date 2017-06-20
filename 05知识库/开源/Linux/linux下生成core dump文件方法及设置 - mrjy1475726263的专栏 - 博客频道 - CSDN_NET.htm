@@ -1,0 +1,1132 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0060)http://blog.csdn.net/mrjy1475726263/article/details/44116289 -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>linux下生成core dump文件方法及设置 - mrjy1475726263的专栏 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<SCRIPT id=allmobilize charset=utf-8 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/allmobilize.min.js"></SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description content=测试结果:>
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><LINK 
+rel=Stylesheet type=text/css 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/mrjy1475726263/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/green2_black.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/mrjy1475726263">mrjy1475726263的专栏</A></H2>
+<H3></H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/mrjy1475726263?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A 
+  href="http://blog.csdn.net/mrjy1475726263?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/mrjy1475726263/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "mrjy1475726263";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/mrjy1475726263";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://edu.csdn.net/app"><FONT color=red>学院APP首次下载，可得50C币！ 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bbs.csdn.net/topics/391876796"><FONT color=blue>欢迎来帮助开源“进步” 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bss.csdn.net/m/topic/cuanke_vote"><FONT color=red>当讲师？爱学习？投票攒课吧 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://blog.csdn.net/atlassian2013/article/details/50291561"><FONT 
+color=blue>认识Atlassian Datacenter产品 </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://bbs.csdn.net/topics/391880332"><FONT color=red>深圳小伙伴的福利来啦 
+</FONT></A></DIV></DIV><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/AllyesDeliver.min.js" 
+ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie"></SCRIPT>
+<!--AdForward End--><LINK rel=stylesheet type=text/css 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Repost"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289">linux下生成core 
+dump文件方法及设置 </A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_r><SPAN class=link_postdate>2015-03-07 14:27</SPAN> <SPAN 
+class=link_view title=阅读次数>2839人阅读</SPAN> <SPAN class=link_comments 
+title=评论次数><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#comments">评论</A>(0)</SPAN> 
+<SPAN class=link_collect><A title=收藏 
+onclick="javascript:collectArticle('linux下生成core dump文件方法及设置','44116289');return false;" 
+href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A title=举报 
+onclick="javascript:report(44116289,2);return false;" 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#report">举报</A></SPAN> 
+</DIV></DIV>
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV id=article_content class=article_content>
+<DIV style="TOP: 0px">﻿﻿</DIV>
+<P><SPAN>源自：<A href="http://andyniu.iteye.com/blog/1965571" 
+target=_blank>http://andyniu.iteye.com/blog/1965571</A></SPAN></P>
+<P><SPAN>core dump的概念：</SPAN></P>
+<P><SPAN style="FONT-SIZE: 12px">A<SPAN>&nbsp;</SPAN><STRONG>core 
+dump</STRONG><SPAN>&nbsp;</SPAN>is the recorded state of the working memory of a 
+computer program at a specific time, generally when the program has terminated 
+abnormally (crashed). In practice, other key pieces of program state are usually 
+dumped at the same time, including the processor registers, which may include 
+the program counter and stack pointer, memory management information, and other 
+processor and operating system flags and information. The name comes from the 
+once-standard memory technology core memory. Core dumps are often used to 
+diagnose or debug errors in computer programs.</SPAN></P>
+<P><SPAN style="FONT-SIZE: 12px">On many operating systems, a fatal error in a 
+program automatically triggers a core dump, and by extension the phrase "to dump 
+core" has come to mean, in many cases, any fatal error, regardless of whether a 
+record of the program memory is created.</SPAN></P>
+<P><BR><SPAN>在linux平台下，设置core dump文件生成的方法：</SPAN><BR><BR></P>
+<DIV>linux coredump调试</DIV>
+<DIV>&nbsp;</DIV>
+<DIV>1 ）如何生成 coredump 文件 ?</DIV>
+<DIV>登陆 LINUX 服务器，任意位置键入</DIV>
+<DIV>&nbsp; &nbsp; &nbsp; &nbsp;echo "ulimit -c 1024" &gt;&gt; 
+/etc/profile</DIV>
+<DIV>退出 LINUX 重新登陆 LINUX</DIV>
+<DIV>键入 ulimit -c</DIV>
+<DIV>如果显示 1024 那么说明 coredump 已经被开启。</DIV>
+<DIV>1024 限制产生的 core 文件的大小不能超过 1024kb，可以使用参数unlimited，取消该限制</DIV>
+<DIV>ulimit -c unlimited</DIV>
+<DIV>2 ） . core 文件的简单介绍</DIV>
+<DIV>在一个程序崩溃时，它一般会在指定目录下生成一个 core 文件。 core 文件仅仅是一个内存映象 ( 同时加上调试信息 ) 
+，主要是用来调试的。</DIV>
+<DIV>3 ） . 开启或关闭 core 文件的生成</DIV>
+<DIV>用以下命令来阻止系统生成 core 文件 :</DIV>
+<DIV>ulimit -c 0</DIV>
+<DIV>下面的命令可以检查生成 core 文件的选项是否打开 :</DIV>
+<DIV>ulimit -a</DIV>
+<DIV>该命令将显示所有的用户定制，其中选项 -a 代表“ all ”。</DIV>
+<DIV>也可以修改系统文件来调整 core 选项</DIV>
+<DIV>在 /etc/profile 通常会有这样一句话来禁止产生 core 文件，通常这种设置是合理的 :</DIV>
+<DIV># No core files by default</DIV>
+<DIV>ulimit -S -c 0 &gt; /dev/null 2&gt;&amp;1</DIV>
+<DIV>但是在开发过程中有时为了调试问题，还是需要在特定的用户环境下打开 core 文件产生的设置。</DIV>
+<DIV>在用户的 ~/.bash_profile 里加上 ulimit -c unlimited 来让特定的用户可以产生 core 文件。</DIV>
+<DIV>如果 ulimit -c 0 则也是禁止产生 core 文件，而 ulimit -c 1024 则限制产生的 core 文件的大小不能超过 
+1024kb</DIV>
+<DIV>4 ） . 设置 Core Dump 的核心转储文件目录和命名规则</DIV>
+<DIV>/proc/sys/kernel/core_uses_pid 可以控制产生的 core 文件的文件名中是否添加 pid 作为扩展 
+，如果添加则文件内容为 1 ，否则为 0</DIV>
+<DIV>proc/sys/kernel/core_pattern 可以设置格式化的 core 文件保存位置或文件名 ，比如原来文件内容是 
+core-%e</DIV>
+<DIV>可以这样修改 :</DIV>
+<DIV>echo "/corefile/core-%e-%p-%t" &gt; core_pattern</DIV>
+<DIV>将会控制所产生的 core 文件会存放到 /corefile 目录下，产生的文件名为 core- 命令名 -pid- 时间戳</DIV>
+<DIV>以下是参数列表 :</DIV>
+<DIV>&nbsp; &nbsp; %p - insert pid into filename 添加 pid</DIV>
+<DIV>&nbsp; &nbsp; %u - insert current uid into filename 添加当前 uid</DIV>
+<DIV>&nbsp; &nbsp; %g - insert current gid into filename 添加当前 gid</DIV>
+<DIV>&nbsp; &nbsp; %s - insert signal that caused the coredump into the filename 
+添加导致产生 core 的信号</DIV>
+<DIV>&nbsp; &nbsp; %t - insert UNIX time that the coredump occurred into 
+filename 添加 core 文件生成时的 unix 时间</DIV>
+<DIV>&nbsp; &nbsp; %h - insert hostname where the coredump happened into 
+filename 添加主机名</DIV>
+<DIV>&nbsp; &nbsp; %e - insert coredumping executable name into filename 
+添加命令名</DIV>
+<DIV>
+<DIV>6 ） . 一个小方法来测试产生 core 文件</DIV>
+<DIV>直接输入指令 :</DIV>
+<DIV>kill -s SIGSEGV $$</DIV>
+<DIV>
+<H2>如何产生Core Dump</H2>
+<P>发生doredump一般都是在进程收到某个信号的时候，Linux上现在大概有60多个信号，可以使用 kill -l 命令全部列出来。</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=bash>sagi<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">@</SPAN>sagi-laptop:~$ <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">kill</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(102,0,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">-l</SPAN>
+     <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">1</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGHUP   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">2</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGINT   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">3</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGQUIT  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">4</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGILL   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">5</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGTRAP
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">6</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGABRT     <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">7</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGBUS   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGFPE   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">9</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGKILL <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">10</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGUSR1
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">11</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGSEGV   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">12</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGUSR2 <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">13</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGPIPE <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">14</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGALRM <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">15</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGTERM
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">16</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGSTKFLT <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">17</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGCHLD <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">18</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGCONT <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">19</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGSTOP <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">20</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGTSTP
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">21</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGTTIN   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">22</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGTTOU <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">23</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGURG  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">24</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGXCPU <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">25</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGXFSZ
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">26</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGVTALRM <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">27</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGPROF <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">28</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGWINCH    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">29</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGIO   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">30</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGPWR
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">31</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGSYS    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">34</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">35</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">1</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">36</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">2</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">37</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">3</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">38</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">4</SPAN>    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">39</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">5</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">40</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">6</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">41</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">7</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">42</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">43</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">9</SPAN>    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">44</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">10</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">45</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">11</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">46</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">12</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">47</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">13</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">48</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">14</SPAN>   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">49</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMIN+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">15</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">50</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">14</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">51</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">13</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">52</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">12</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">53</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">11</SPAN>   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">54</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">10</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">55</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">9</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">56</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">57</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">7</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">58</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">6</SPAN>    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">59</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">5</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">60</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">4</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">61</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">3</SPAN>  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">62</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">2</SPAN>
+      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">63</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX-<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">1</SPAN>    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">64</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> SIGRTMAX</PRE></DIV></DIV>
+<P>针对特定的信号，应用程序可以写对应的信号处理函数。如果不指定，则采取默认的处理方式, 默认处理是coredump的信号如下：</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=bash><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">3</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGQUIT   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">4</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGILL    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">6</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGABRT   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGFPE    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">11</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGSEGV    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">7</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGBUS    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">31</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGSYS
+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">5</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGTRAP   <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">24</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGXCPU  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">25</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGXFSZ  <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">29</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN>SIGIOT</PRE></DIV></DIV>
+<P>我们看到SIGSEGV在其中，一般数组越界或是访问空指针都会产生这个信号。另外虽然默认是这样的，但是你也可以写自己的信号处理函数改变默认行为，更多信号相关可以看参考链接3<SUP 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 0px; FONT-SIZE: 10px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px"><SMALL 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">3</SMALL></SUP>。</P>
+<P>上述内容只是产生coredump的必要条件，而非充分条件。要产生core文件还依赖于程序运行的shell，可以通过ulimit 
+-a命令查看，输出内容大致如下：</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=bash>sagi<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">@</SPAN>sagi-laptop:~$ <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">ulimit</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(102,0,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">-a</SPAN>
+    core <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">file</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>          <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>blocks, -c<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">0</SPAN>
+    data seg <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>           <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>kbytes, -d<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    scheduling priority             <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-e<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">20</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">file</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>               <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>blocks, -f<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    pending signals                 <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-i<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">16382</SPAN>
+    max locked memory       <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>kbytes, -l<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">64</SPAN>
+    max memory <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>         <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>kbytes, -m<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    open files                      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-n<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">1024</SPAN>
+    pipe <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>            <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">512</SPAN> bytes, -p<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8</SPAN>
+    POSIX message queues     <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>bytes, -q<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">819200</SPAN>
+    real-time priority              <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-r<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">0</SPAN>
+    stack <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">size</SPAN>              <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>kbytes, -s<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">8192</SPAN>
+    cpu <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">time</SPAN>               <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>seconds, -t<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    max user processes              <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-u<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    virtual memory          <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>kbytes, -v<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">file</SPAN> locks                      <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">(</SPAN>-x<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(122,8,116); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">)</SPAN> unlimited</PRE></DIV></DIV>
+<P>看到第一行了吧，core file 
+size，这个值用来限制产生的core文件大小，超过这个值就不会保存了。我这里输出是0，也就是不会保存core文件，即使产生了，也保存不下来==! 
+要改变这个设置，可以使用ulimit -c unlimited。</P>
+<P>OK, 现在万事具备，只缺一个能产生Core的程序了，介个对C程序员来说太容易了。</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=c><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">#include &lt;stdio.h&gt;;</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">#include &lt;stdlib.h&gt;;</SPAN>
+&nbsp;
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(153,51,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">int</SPAN> crash<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">)</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">{</SPAN>
+            <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(153,51,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">char</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">*</SPAN>xxx <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">=</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(255,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">"crash!!"</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">;</SPAN>
+            xxx<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">[</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,221); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">1</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">]</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">=</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(255,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">'D'</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">;</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(102,102,102); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">// 写只读存储区!</SPAN>
+            <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(177,177,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">return</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,221); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">2</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">;</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">}</SPAN>
+&nbsp;
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(153,51,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">int</SPAN> foo<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">)</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">{</SPAN>
+            <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(177,177,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">return</SPAN> crash<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">)</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">;</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">}</SPAN>
+&nbsp;
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(153,51,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">int</SPAN> main<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">)</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">{</SPAN>
+            <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(177,177,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">return</SPAN> foo<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">(</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">)</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(51,153,51); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">;</SPAN>
+    <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,153,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">}</SPAN></PRE></DIV></DIV>
+<H2>上手调试</H2>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255)">测试如下代码</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV>
+<DIV>
+<DIV 
+style="BACKGROUND-COLOR: white; MARGIN: 1em 0px; WIDTH: 450px; FONT-SIZE: 1em !important; OVERFLOW: auto !important" 
+class="syntaxhighlighter  cpp">
+<DIV 
+style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: rgb(108,226,108); FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: 11px !important; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: 11px !important; COLOR: white !important; FONT-SIZE: 10px !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+class=toolbar><SPAN><A 
+style="TEXT-ALIGN: center !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: auto !important; PADDING-RIGHT: 0px !important; DISPLAY: block !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; COLOR: white !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; TEXT-DECORATION: none !important; PADDING-TOP: 1px !important" 
+class="toolbar_item command_help help" 
+href="http://lazycat.is-programmer.com/posts/31925.html" 
+target=_blank>?</A></SPAN></DIV>
+<TABLE 
+style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: 450px; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR 
+  style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: auto !important; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important">
+    <TD 
+    style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: auto !important; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; COLOR: rgb(175,175,175) !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+    class=gutter>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number1 index0 alt2">1</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number2 index1 alt1">2</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number3 index2 alt2">3</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number4 index3 alt1">4</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number5 index4 alt2">5</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number6 index5 alt1">6</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number7 index6 alt2">7</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number8 index7 alt1">8</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number9 index8 alt2">9</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number10 index9 alt1">10</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number11 index10 alt2">11</DIV>
+      <DIV 
+      style="TEXT-ALIGN: right !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 0.5em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; BORDER-TOP-WIDTH: 0px !important; BORDER-BOTTOM-WIDTH: 0px !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; BORDER-LEFT-WIDTH: 0px !important; FONT-WEIGHT: normal !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; PADDING-TOP: 0px !important" 
+      class="line number12 index11 alt1">12</DIV></TD>
+    <TD 
+    style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: 414px; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+    class=code>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 0px !important; WIDTH: auto !important; PADDING-RIGHT: 0px !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class=container>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number1 index0 alt2"><CODE class="cpp preprocessor">#include 
+      &lt;stdio.h&gt;</CODE></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number2 index1 alt1">&nbsp;</DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number3 index2 alt2"><BR><CODE 
+      class="cpp color1 bold">int</CODE> <CODE 
+      class="cpp plain">func(</CODE><CODE class="cpp color1 bold">int</CODE> 
+      <CODE class="cpp plain">*p)</CODE><BR></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number4 index3 alt1"><CODE class="cpp plain">{</CODE></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number5 index4 alt2"><BR><CODE 
+      class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="cpp plain">*p = 0;</CODE><BR></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number6 index5 alt1"><CODE class="cpp plain">}</CODE></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number7 index6 alt2">&nbsp;</DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number8 index7 alt1"><BR><CODE 
+      class="cpp color1 bold">int</CODE> <CODE 
+      class="cpp plain">main()</CODE><BR></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number9 index8 alt2"><CODE class="cpp plain">{</CODE></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number10 index9 alt1"><BR><CODE 
+      class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="cpp plain">func(NULL);</CODE><BR></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number11 index10 alt2"><BR><CODE 
+      class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="cpp keyword bold">return</CODE> <CODE 
+      class="cpp plain">0;</CODE><BR></DIV>
+      <DIV 
+      style="TEXT-ALIGN: left !important; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 1.1em !important; BACKGROUND-COLOR: white; FONT-STYLE: normal !important; MARGIN: 0px; PADDING-LEFT: 1em !important; WIDTH: auto !important; PADDING-RIGHT: 1em !important; FONT-FAMILY: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace !important; WHITE-SPACE: pre !important; FLOAT: none !important; HEIGHT: auto !important; FONT-SIZE: 1em !important; VERTICAL-ALIGN: baseline !important; OVERFLOW: visible !important; FONT-WEIGHT: normal !important; PADDING-TOP: 0px !important" 
+      class="line number12 index11 alt1"><CODE 
+      class="cpp plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255)">生成可执行文件并运行</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN style="BACKGROUND-COLOR: rgb(255,255,255)">gcc 
+-o main a.c</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255)">root@ubuntu:~# ./main<BR>Segmentation 
+fault (core dumped)&nbsp;</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255)">&lt;-----这里出现段错误并生成core文件了。</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255)">在/tmp目录下发现文件</SPAN></SPAN>core-main-10815&nbsp;</SPAN></SPAN></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><STRONG><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">如何查看进程挂在哪里了?</SPAN></STRONG></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">我们可以用</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">gdb main 
+/tmp/core-main-10815&nbsp;</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">查看信息，发现能定位到函数了</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">Program terminated with 
+signal 11, Segmentation fault.<BR>#0&nbsp; 0x080483ba in func 
+()</SPAN></SPAN></DIV>
+<DIV>&nbsp;</DIV>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">如何定位到行?</SPAN></STRONG></SPAN></P>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">在编译的时候开启-g调试开关就可以了</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px">gcc -o main&nbsp;<SPAN 
+style="COLOR: rgb(173,0,0)">-g</SPAN>&nbsp;a.c</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="LINE-HEIGHT: normal; BORDER-SPACING: 0px; BORDER-COLLAPSE: separate">gdb 
+main /tmp/core-main-10815&nbsp;</SPAN></SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px">最终看到的结果如下，好棒。</SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px">Program terminated with signal 11, Segmentation 
+fault.<BR>#0&nbsp; 0x080483ba in func (p=0x0) at 
+a.c:5<BR>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *p = 
+0;</SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="LINE-HEIGHT: 19px">总结一下，需要定位进程挂在哪一行我们只需要4个操作，</SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="COLOR: rgb(173,0,0)"><SPAN style="LINE-HEIGHT: 19px"><SPAN 
+style="LINE-HEIGHT: normal; BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px">ulimit -c 
+unlimited</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace"><SPAN 
+style="COLOR: rgb(173,0,0)"><SPAN style="LINE-HEIGHT: 19px"><SPAN 
+style="LINE-HEIGHT: normal; BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN 
+style="LINE-HEIGHT: normal; BORDER-SPACING: 0px; BORDER-COLLAPSE: separate"><SPAN 
+style="LINE-HEIGHT: 19px"><SPAN style="BACKGROUND-COLOR: rgb(255,255,255)">echo 
+"/tmp/core-%e-%p" &gt;&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 19px">/proc/sys/kernel/core_pattern</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="LINE-HEIGHT: 19px; FONT-FAMILY: 'courier new',courier,monospace; COLOR: rgb(173,0,0)">gcc 
+-o main&nbsp;-g&nbsp;a.c</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace; COLOR: rgb(173,0,0)">gdb 
+main /tmp/core-main-10815&nbsp;</SPAN></SPAN></DIV>
+<DIV><SPAN style="FONT-SIZE: 14px"><SPAN 
+style="FONT-FAMILY: 'courier new',courier,monospace">就可以啦。</SPAN></SPAN></DIV>
+<P>&nbsp;</P>
+<P>上边的程序编译的时候有一点需要注意，需要带上参数-g, 这样生成的可执行程序中会带上足够的调试信息。编译运行之后你就应该能看见期待已久的“Segment 
+Fault(core dumped)”或是“段错误 
+(核心已转储)”之类的字眼了。看看当前目录下是不是有个core或是core.xxx的文件。祭出linux下经典的调试器GDB，首先带着core文件载入程序：gdb 
+exefile core，这里需要注意的这个core文件必须是exefile产生的，否则符号表会对不上。载入之后大概是这个样子的：</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=bash>sagi<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">@</SPAN>sagi-laptop:~$ <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">gdb</SPAN> coredump core
+Core was generated by .<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">/</SPAN>coredump<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(255,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">'.
+    Program terminated with signal 11, Segmentation fault.
+#0  0x080483a7 in crash () at coredump.c:8
+    8       xxx[1] = '</SPAN>D<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(255,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">';
+(gdb)</SPAN></PRE></DIV></DIV>
+<P>我们看到已经能直接定位到出core的地方了，在第8行写了一个只读的内存区域导致触发Segment 
+Fault信号。在载入core的时候有个小技巧，如果你事先不知道这个core文件是由哪个程序产生的，你可以先随便找个代替一下，比如/usr/bin/w就是不错的选择。比如我们采用这种方法载入上边产生的core，gdb会有类似的输出：</P>
+<DIV class=wp_syntax>
+<DIV 
+style="PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; VERTICAL-ALIGN: top; PADDING-TOP: 2px" 
+class=code><PRE class=bash>sagi<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">@</SPAN>sagi-laptop:~$ <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">gdb</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">/</SPAN>usr<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">/</SPAN>bin<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">/</SPAN><SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(194,12,185); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">w</SPAN> core
+Core was generated by .<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); VERTICAL-ALIGN: baseline; FONT-WEIGHT: bold; PADDING-TOP: 0px">/</SPAN>coredump<SPAN style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(255,0,0); VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">'.
+    Program terminated with signal 11, Segmentation fault.
+#0  0x080483a7 in ?? ()
+    (gdb)</SPAN></PRE></DIV></DIV>
+<P>可以看到GDB已经提示你了，这个core是由哪个程序产生的。</P>
+<H2>GDB 常用操作</H2>
+<P>上边的程序比较简单，不需要另外的操作就能直接找到问题所在。现实却不是这样的，常常需要进行单步跟踪，设置断点之类的操作才能顺利定位问题。下边列出了GDB一些常用的操作。</P>
+<UL>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">启动程序：run 
+
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">设置断点：b 
+  行号|函数名 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">删除断点：delete 
+  断点编号 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">禁用断点：disable 
+  断点编号 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">启用断点：enable 
+  断点编号 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">单步跟踪：next 
+  也可以简写 n 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">单步跟踪：step 
+  也可以简写 s 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">打印变量：print 
+  变量名字 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">设置变量：set 
+  var=value 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">查看变量类型：ptype 
+  var 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">顺序执行到结束：cont 
+
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">顺序执行到某一行： 
+  util lineno 
+  <P 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">&nbsp;</P>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: baseline; PADDING-TOP: 0px">打印堆栈信息：bt</LI></UL></DIV></DIV></DIV><!-- Baidu Button BEGIN -->
+<DIV style="FLOAT: right" class=bdsharebuttonbox><A 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important; BACKGROUND-POSITION: 0px 0px" 
+class=bds_more 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="more"></A><A style="BACKGROUND-POSITION: 0px -52px" class=bds_qzone 
+title=分享到QQ空间 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="qzone"></A><A style="BACKGROUND-POSITION: 0px -104px" class=bds_tsina 
+title=分享到新浪微博 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="tsina"></A><A style="BACKGROUND-POSITION: 0px -260px" class=bds_tqq 
+title=分享到腾讯微博 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="tqq"></A><A style="BACKGROUND-POSITION: 0px -208px" class=bds_renren 
+title=分享到人人网 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="renren"></A><A style="BACKGROUND-POSITION: 0px -1612px" 
+class=bds_weixin title=分享到微信 
+href="http://blog.csdn.net/mrjy1475726263/article/details/44116289#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.11-->
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/mrjy1475726263/article/details/44113801';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/44113801">qnx 下 ftp 
+  传输文件</A> </LI>
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/mrjy1475726263/article/details/44651069';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/44651069">Linux下添加lib库文件</A> 
+  </LI></UL><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="44116289">
+<DL id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>0 </DD></DL>
+<DL id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>0 </DD></DL></DIV></DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/mrjy1475726263/svc/GetSuggestContent/44116289",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 30px 0px 0px; PADDING-LEFT: 10px; WIDTH: 99%; PADDING-RIGHT: 0px; FONT: 12px/23px "SimSun"; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; HEIGHT: 23px; COLOR: #369; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+</STYLE>
+
+<DL id=res-relatived class=blog-ass-articl>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV style="WIDTH: 42%; FLOAT: left" id=adCollege>
+  <SCRIPT type=text/javascript 
+  src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "44116289",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" id=res 
+  class=tracking-ad data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'linux下生成core dump文件方法及设置' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!--AdForward Begin:-->
+<SCRIPT type=text/javascript charset=gbk 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/s"></SCRIPT>
+<!--AdForward End--></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '44116289';
+    var commentscount = 0;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV style="BOTTOM: 60px" id=d-top><A style="DISPLAY: none" id=quick-reply 
+class="btn btn-top q-reply" title=快速回复><IMG alt=快速回复 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A style="DISPLAY: none" id=d-top-a class="btn btn-top backtop" title=返回顶部 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt=TOP 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	LIST-STYLE: none none outside; BORDER-BOTTOM: #d7cbc1 1px solid; BORDER-LEFT: #d7cbc1 1px solid; PADDING-BOTTOM: 1px; LINE-HEIGHT: 20px; MARGIN: 10px 2% 0px 1%; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #ffffff 0px 0px; COLOR: #000000; FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; PADDING-TOP: 1px
+}
+.tag_list H5 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e0dbd3 0px 0px; HEIGHT: 24px; COLOR: #47381c; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; MARGIN: 10px 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV style="DISPLAY: none" class=tag_list></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/mrjy1475726263/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV 
+style="Z-INDEX: 10000; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; BORDER-LEFT: rgb(220,220,220) 1px solid; DISPLAY: none; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-TOP: rgb(220,220,220) 1px solid; TOP: 222px; BORDER-RIGHT: rgb(220,220,220) 1px solid; LEFT: 630px; opacity: 1" 
+id=pop_win></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	Z-INDEX: 9999; POSITION: absolute; FILTER: alpha(opacity=30); WIDTH: 100%; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/mrjy1475726263" 
+  target=_blank><IMG style="MAX-WIDTH: 90%" title=访问我的空间 
+  src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_mrjy1475726263.gif"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/mrjy1475726263" 
+  target=_blank>mrjy1475726263</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow class=attent title=[加关注] 
+  href="javascript:void(0);"></A><A class=letter title=[发私信] 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=mrjy1475726263','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV id=bms_box></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>101701次</SPAN> 
+    <LI>积分：<SPAN>1517</SPAN> 
+    <LI>等级： <SPAN 
+    style="Z-INDEX: 1; POSITION: relative; DISPLAY: inline-block"><IMG 
+    style="VERTICAL-ALIGN: middle" id=leveImg alt="" 
+    src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog4.png"> 
+
+    <DIV 
+    style="Z-INDEX: 999; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #dddddd 2px solid; LINE-HEIGHT: 32px; BACKGROUND-COLOR: #fff; WIDTH: 101px; DISPLAY: none; HEIGHT: 32px; BORDER-TOP: #dddddd 2px solid; TOP: 25px; BORDER-RIGHT: #dddddd 2px solid; LEFT: -24px; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)" 
+    id=smallTittle>
+    <DIV 
+    style="BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; BORDER-LEFT: transparent 10px solid; WIDTH: 0px; HEIGHT: 0px; TOP: -8px; BORDER-RIGHT: transparent 10px solid; LEFT: 42%"></DIV>积分：1517 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>第15899名</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>29篇</SPAN> </LI>
+    <LI>转载：<SPAN>113篇</SPAN> </LI>
+    <LI>译文：<SPAN>0篇</SPAN> </LI>
+    <LI>评论：<SPAN>5条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch class=blogsearch 
+  title=请输入关键字></SPAN> <INPUT id=btnSubmit title="search in blog" value=搜索 type=button> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT value=blog type=hidden name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/1192482">linux</A><SPAN>(6)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/1422220">mini2440 
+  内核移植</A><SPAN>(11)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/1423437">电路设计</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/1430778">QT</A><SPAN>(9)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/2408367">破问题集</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/mrjy1475726263/article/category/2860655">qnx</A><SPAN>(2)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2015/03">2015年03月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2015/01">2015年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2014/11">2014年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2014/10">2014年10月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2014/09">2014年09月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2014/07">2014年07月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2014/06">2014年06月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2013/05">2013年05月</A><SPAN>(28)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2013/04">2013年04月</A><SPAN>(11)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2013/03">2013年03月</A><SPAN>(34)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2013/01">2013年01月</A><SPAN>(24)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2012/11">2012年11月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2012/08">2012年08月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/month/2012/07">2012年07月</A><SPAN>(15)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title=播布客里小布老师的全部视频收集 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7828534">播布客里小布老师的全部视频收集</A><SPAN>(12014)</SPAN> 
+
+  <LI><A title="移植USB无线网卡到 mini2440" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8886925">移植USB无线网卡到 
+  mini2440</A><SPAN>(3678)</SPAN> 
+  <LI><A title="linux下生成core dump文件方法及设置" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/44116289">linux下生成core 
+  dump文件方法及设置</A><SPAN>(2803)</SPAN> 
+  <LI><A title="openJTag烧写u-boot.bin 到NorFlash、NandFlash 杂记  mini2440" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7779724">openJTag烧写u-boot.bin 
+  到NorFlash、NandFlash 杂记 mini2440</A><SPAN>(2473)</SPAN> 
+  <LI><A title="insmod 加载模块过程、modprobe 与 insmod的区别 、lsmod命令" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8507744">insmod 
+  加载模块过程、modprobe 与 insmod的区别 、lsmod命令</A><SPAN>(2206)</SPAN> 
+  <LI><A title=VMware的“桥接”、“NAT”、“Host-only”上网方式的区别 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7772372">VMware的“桥接”、“NAT”、“Host-only”上网方式的区别</A><SPAN>(2152)</SPAN> 
+
+  <LI><A title=MINI2440启动配置文件/etc/init.d/rcS文件分析 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8688456">MINI2440启动配置文件/etc/init.d/rcS文件分析</A><SPAN>(2114)</SPAN> 
+
+  <LI><A title="VMware下，主机和虚拟机ping通IP设定问题  单向ping" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8505692">VMware下，主机和虚拟机ping通IP设定问题 
+  单向ping</A><SPAN>(2044)</SPAN> 
+  <LI><A title=linux下普通文件和目录文件区别 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/34436769">linux下普通文件和目录文件区别</A><SPAN>(1904)</SPAN> 
+
+  <LI><A title=使用Filezilla在主机和虚拟机中传输文件 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8688779">使用Filezilla在主机和虚拟机中传输文件</A><SPAN>(1801)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="移植USB无线网卡到 mini2440" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8886925">移植USB无线网卡到 
+  mini2440</A><SPAN>(2)</SPAN> 
+  <LI><A title=u-boot中几个主要文件及作用 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8537215">u-boot中几个主要文件及作用</A><SPAN>(1)</SPAN> 
+
+  <LI><A title=STM32的串口通信 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8830059">STM32的串口通信</A><SPAN>(1)</SPAN> 
+
+  <LI><A title="linux2.6.32.2 mini2440平台移植-- 串口驱动移植、I2C-EEPROM 驱动移植、看门狗驱动移植" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8937031">linux2.6.32.2 
+  mini2440平台移植-- 串口驱动移植、I2C-EEPROM 驱动移植、看门狗驱动移植</A><SPAN>(1)</SPAN> 
+  <LI><A title="嵌入式 友善之臂ARM2440烧写程序注释" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7786479">嵌入式 
+  友善之臂ARM2440烧写程序注释</A><SPAN>(0)</SPAN> 
+  <LI><A title=Linux下添加lib库文件 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/44651069">Linux下添加lib库文件</A><SPAN>(0)</SPAN> 
+
+  <LI><A title="secureCRT 用串口连接 Mini2440方法" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7773281">secureCRT 
+  用串口连接 Mini2440方法</A><SPAN>(0)</SPAN> 
+  <LI><A title="SecureCRT 配置方法" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7773018">SecureCRT 
+  配置方法</A><SPAN>(0)</SPAN> 
+  <LI><A title="SecureCRT：Linux远程管理 技巧" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7772983">SecureCRT：Linux远程管理 
+  技巧</A><SPAN>(0)</SPAN> 
+  <LI><A title="linux下 /根目录下面的子目录介绍" 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/7772775">linux下 
+  /根目录下面的子目录介绍</A><SPAN>(0)</SPAN> </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A href="http://blog.csdn.net/jspandasp/article/details/49339451" 
+    target=_blank>*App竞品技术分析 （6）热修复</A> 
+    <LI><A href="http://blog.csdn.net/yinwenjie/article/details/50277289" 
+    target=_blank>*架构设计：系统间通信（17）——服务治理与Dubbo 中篇（分析）</A> 
+    <LI><A href="http://blog.csdn.net/crazy__chen/article/details/50338895" 
+    target=_blank>*一款炫酷Loading动画--加载失败</A> 
+    <LI><A href="http://blog.csdn.net/nomasp/article/details/50349172" 
+    target=_blank>*图解堆算法、链表、栈与队列（多图预警）</A> 
+    <LI><A href="http://blog.csdn.net/zjngogo/article/details/50407619" 
+    target=_blank>*【android】仿360手机卫士的简易设计思路及源码</A> 
+    <LI><A href="http://blog.csdn.net/oshunz/article/details/50372968" 
+    target=_blank>*Android平台Camera实时滤镜实现方法探讨(九)--磨皮算法探讨(一)</A> </LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8830059#comments">STM32的串口通信</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u013030441">u013030441</A>: 
+  中断发生后必须清除中断位，否则会出现死循环不断发生这个中断。学习了！ </P>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8537215#comments">u-boot中几个主要文件及作用</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/SnackWOLF">SnackWOLF</A>: 很通俗易懂 </P>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8886925#comments">移植USB无线网卡到 
+  mini2440</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/dearlywu">dearlywu</A>: 你好我的移植好后 ifconfig 可以正常配置 
+  ifconfig -alo ... </P>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8886925#comments">移植USB无线网卡到 
+  mini2440</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u013172071">u013172071</A>: 
+  你好！我按你的步骤做的，但是出现了问题。插入USB无线网卡后，出现代码如下：usb 1-1: new... </P>
+  <LI><A 
+  href="http://blog.csdn.net/mrjy1475726263/article/details/8937031#comments">linux2.6.32.2 
+  mini2440平台移植-- 串口驱动移植、I2C-EEPROM 驱动移植、看门狗驱动移植</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/moonskyline">moonskyline</A>: 
+  请问看门狗的默认时间，在安装好的系统中有没有配置参数可以修改，或者有相关接口可以修改呢？谢谢！ </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="linux下生成core%20dump文件方法及设置%20-%20mrjy1475726263的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://www.cnblogs.com/qkhh/p/4683626.html -->
+<HTML lang=zh-cn><HEAD><META content="IE=8.0000" http-equiv="X-UA-Compatible">
+<TITLE>关于DES加密中的 DESede/CBC/PKCS5Padding - 黑米 - 博客园</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css 
+href="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/blog-common.css"><LINK 
+id=MainCss rel=stylesheet type=text/css 
+href="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/bundle-Cogitation.css"><LINK 
+title=RSS rel=alternate type=application/rss+xml 
+href="http://www.cnblogs.com/qkhh/rss"><LINK title=RSD rel=EditURI 
+type=application/rsd+xml href="http://www.cnblogs.com/qkhh/rsd.xml"><LINK 
+rel=wlwmanifest type=application/wlwmanifest+xml 
+href="http://www.cnblogs.com/qkhh/wlwmanifest.xml">
+<SCRIPT type=text/javascript 
+src="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>var currentBlogApp = 'qkhh', cb_enable_mathjax=false;</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/blog-common.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY><A name=top></A>
+<DIV id=top>
+<DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=HeaderTitles>
+      <H1 class=HeaderTitle><A id=Header1_HeaderTitle class=HeaderMainTitle 
+      href="http://www.cnblogs.com/qkhh/"></A></H1>
+      <P id=tagline></P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=HeaderBar>
+<TABLE id=HeaderBar class=HeaderBar cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD class=HeaderBarTab noWrap>&nbsp; <A id=Header1_MyLinks1_HomeLink 
+      href="http://www.cnblogs.com/">博客园</A> :: <A 
+      id=Header1_MyLinks1_MyHomeLink href="http://www.cnblogs.com/qkhh/">首页</A> 
+      :: <A class=menu href="http://q.cnblogs.com/">博问</A> :: <A class=menu 
+      href="http://home.cnblogs.com/ing/">闪存</A> :: <A 
+      id=Header1_MyLinks1_NewPostLink 
+      href="http://i.cnblogs.com/EditPosts.aspx?opt=1" rel=nofollow>新随笔</A> :: 
+      <A accessKey=9 id=Header1_MyLinks1_ContactLink 
+      href="http://msg.cnblogs.com/send/%E9%BB%91%E7%B1%B3" rel=nofollow>联系</A> 
+      :: <A id=Header1_MyLinks1_Syndication 
+      href="http://www.cnblogs.com/qkhh/rss">订阅</A> <A 
+      id=Header1_MyLinks1_XMLLink class=XMLLink 
+      href="http://www.cnblogs.com/qkhh/rss"><IMG alt=订阅 
+      src="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/xml.gif"></A> 
+      :: <A id=Header1_MyLinks1_Admin href="http://i.cnblogs.com/" 
+      rel=nofollow>管理</A> :: </TD>
+    <TD><IMG id=Header1_BlueTab align=absMiddle 
+      src="关于DES加密中的%20DESede-CBC-PKCS5Padding%20-%20黑米%20-%20博客园_files/BlueTabRight.gif"></TD>
+    <TD class=HeaderBarTabBack width="100%" noWrap>
+      <DIV class=BlogStatsBar>
+      <TABLE class=BlogStatsBar>
+        <TBODY>
+        <TR>
+          <TD width="100%"></TD>
+          <TD class=BlogStatsBar noWrap>&nbsp; 121 随笔&nbsp;:: 4 文章 :: 59 评论 :: 
+            2 引用 </TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV id=leftmenu>
+<DIV style="DISPLAY: none" id=blog-calendar></DIV>
+<SCRIPT type=text/javascript>loadBlogDefaultCalendar();</SCRIPT>
+
+<H3>公告</H3>
+<DIV class=News>
+<DIV id=blog-news></DIV>
+<SCRIPT type=text/javascript>loadBlogNews();</SCRIPT>
+</DIV>
+<DIV id=blog-sidecolumn></DIV>
+<SCRIPT type=text/javascript>loadBlogSideColumn();</SCRIPT>
+</DIV>
+<DIV id=main>
+<DIV id=post_detail>
+<DIV class=post>
+<DIV class=postTitle><A id=cb_post_title_url 
+href="http://www.cnblogs.com/qkhh/p/4683626.html">关于DES加密中的 
+DESede/CBC/PKCS5Padding</A> </DIV>
+<DIV class=postText>
+<DIV id=cnblogs_post_body>
+<P>今天看到一段3DES加密算法的代码，用的参数是DESede/CBC/PKCS5Padding，感觉比较陌生，于是学习了一下。</P>
+<P>&nbsp;</P>
+<P>遇到的java代码如下：</P>
+<P>Cipher cipher=Cipher.getInstance("DESede/CBC/PKCS5Padding");</P>
+<P>&nbsp;</P>
+<P>以前写的代码，给的参数都是DES或DESede。实际上DESede是简写，它与DESede/ECB/PKCS5Padding等价。这个参数分为三段。</P>
+<P>- 第一段是加密算法的名称，如DESede实际上是3-DES。这一段还可以放其它的对称加密算法，如Blowfish等。</P>
+<P>&nbsp;</P>
+<P>- 
+第二段是分组加密的模式，除了CBC和ECB之外，还可以是NONE/CFB/QFB等。最常用的就是CBC和ECB了。DES采用分组加密的方式，将明文按8字节（64位）分组分别加密。如果每个组独立处理，则是ECB。CBC的处理方式是先用初始向量IV对第一组加密，再用第一组的密文作为密钥对第二组加密，然后依次完成整个加密操作。如果明文中有两个分组的内容相同，ECB会得到完全一样的密文，但CBC则不会。</P>
+<P>&nbsp;</P>
+<P>- 
+第三段是指最后一个分组的填充方式。大部分情况下，明文并非刚好64位的倍数。对于最后一个分组，如果长度小于64位，则需要用数据填充至64位。PKCS5Padding是常用的填充方式，如果没有指定，默认的方式就是它。</P>
+<P>&nbsp;</P>
+<P>补充一点，虽然DES的有效密钥长度是56位，但要求密钥长度是64位（8字节）。3DES则要求24字节。</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>C#</P>
+<P>有时候java加密的内容用C#解密不了，一般原因都是设定的参数不正确。C#获取的TripleDES对象必需设定Mode和Padding两个属性。Mode和Padding是枚举类型。Mode有对应的ECB和CBC对应的枚举值，但Padding的PKCS5Padding需要对应PKCS7。</P>
+<P>&nbsp;</P>
+<P>示例代码 </P>
+<P>TripleDES d = TripleDES.Create();</P>
+<P>d.Mode = CipherMode.CBC;</P>
+<P>d.Padding = PaddingMode.PKCS7;</P>
+<P>&nbsp;</P></DIV>
+<DIV id=MySignature></DIV>
+<DIV class=clear></DIV>
+<DIV id=blog_post_info_block>
+<DIV id=BlogPostCategory></DIV>
+<DIV id=EntryTag></DIV>
+<DIV id=blog_post_info></DIV>
+<DIV class=clear></DIV>
+<DIV id=post_next_prev></DIV></DIV></DIV>
+<DIV class=postfoot>posted on <SPAN id=post-date>2015-07-28 17:47</SPAN> <A 
+href="http://www.cnblogs.com/qkhh/">黑米</A> 阅读(<SPAN 
+id=post_view_count>...</SPAN>) 评论(<SPAN id=post_comment_count>...</SPAN>) <A 
+href="http://i.cnblogs.com/EditPosts.aspx?postid=4683626" rel=nofollow>编辑</A> <A 
+onclick="AddToWz(4683626);return false;" 
+href="http://www.cnblogs.com/qkhh/p/4683626.html#">收藏</A> </DIV></DIV>
+<SCRIPT type=text/javascript>var allowComments=true,isLogined=false,cb_blogId=19348,cb_entryId=4683626,cb_blogApp=currentBlogApp,cb_blogUserGuid='db57360b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2015/7/28 17:47:00';loadViewCount(cb_entryId);</SCRIPT>
+</DIV><A name=!comments></A>
+<DIV id=blog-comments-placeholder></DIV>
+<SCRIPT type=text/javascript>var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+
+<DIV id=comment_form class=commentform><A name=commentform></A>
+<DIV id=divCommentShow></DIV>
+<DIV id=comment_nav><SPAN id=span_refresh_tips></SPAN><A id=lnk_RefreshComments 
+onclick="return RefreshCommentList();" href="javascript:void(0);" 
+clientidmode="Static" runat="server">刷新评论</A><A onclick="return RefreshPage();" 
+href="http://www.cnblogs.com/qkhh/p/4683626.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/qkhh/p/4683626.html#top">返回顶部</A></DIV>
+<DIV id=comment_form_container></DIV>
+<DIV id=ad_text_under_commentbox class=ad_text_commentbox></DIV>
+<DIV id=ad_t2></DIV>
+<DIV id=opt_under_post></DIV>
+<DIV id=ad_c1 class=c_ad_block></DIV>
+<DIV id=under_post_news></DIV>
+<DIV id=under_post_kb></DIV>
+<DIV id=HistoryToday class=c_ad_block></DIV>
+<SCRIPT type=text/javascript>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</SCRIPT>
+</DIV></DIV>
+<DIV class=footer>
+<P id=footer>Powered by: <BR><A style="FONT-FAMILY: Verdana; FONT-SIZE: 12px" 
+id=Footer1_Hyperlink3 href="http://www.cnblogs.com/" name=Hyperlink1>博客园</A> 
+<BR>Copyright © 黑米 </P></DIV></BODY></HTML>

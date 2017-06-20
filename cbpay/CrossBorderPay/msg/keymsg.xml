@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tranfroms>
+	<system id="merchant" from="msg" type="channel" format="xml" encoding="ISO8859-1" >
+		<keyfield>
+			<field name="bankName">
+				<format type="x" length="20" offset="90" />
+			</field>
+		</keyfield>
+	</system>
+	
+	<system id="CBEC_CLI" from="url" type="channel" format="xml" encoding="GBK" >
+		<keyfield>
+			<field name="tranCode">
+				<format type="x" length="20" offset="90" />
+			</field>
+		</keyfield>
+		<identify>CBECIdentifier</identify>
+	</system>
+
+	<system id="CASHIER_CLI" from="msg" type="channel" format="xml" encoding="GBK" >
+                <keyfield>
+			<field name="tranCode">
+				<format type="x" length="20" offset="90" />
+			</field>
+		</keyfield>
+	</system>
+
+	<system id="PLATFORM_SVR" from="msg" type="channel" format="xml" encoding="GBK" >
+		<keyfield>
+			<field name="tranCode">
+				<format type="x" length="20" offset="90" />
+			</field>
+		 </keyfield>
+	</system>
+    <system id="MERCHANT" from="msg" type="channel" format="xml" encoding="UTF-8" >
+      <keyfield>
+       <field name="tranCode">
+          <format type="x" length="20" offset="90" />
+       </field>
+      </keyfield>
+    </system>
+
+    <system id="MERCHANT_CLI" from="msg" type="channel" format="xml" encoding="GBK" >
+      <keyfield>
+         <field name="tranCode">
+             <format type="x" length="20" offset="90" />
+         </field>
+      </keyfield>
+    </system>
+
+    <system id="CBEC_SVR" from="msg" type="server" format="xml" encoding="GBK" >
+      <keyfield>
+        <field name="tranCode">
+           <format type="x" length="20" offset="90" />
+        </field>
+      </keyfield>
+    </system>
+
+
+   <system id="UMB_SVR" from="msg" type="server" format="xml" encoding="UTF-8" >
+     <keyfield>
+        <field name="tranCode">
+           <format type="x" length="20" offset="90" />
+         </field>
+      </keyfield>
+    </system>
+    
+		<system id="PAB_SVR" from="msg" type="server" format="xml" encoding="GBK" >
+       <keyfield>
+         <field name="tranCode">
+           <format type="x" length="20" offset="90" />
+         </field>
+       </keyfield>
+		</system>    
+
+   <system id="PLATFORM_CLI" from="msg" type="server" format="xml" encoding="GBK" >
+     <keyfield>
+	      <field name="tranCode">
+	         <format type="x" length="20" offset="90" />
+	      </field>
+     </keyfield>
+    </system>        
+	
+	<system id="CRONTAB_CLI" from="msg" type="server" format="xml" encoding="GBK" >
+     <keyfield>
+	      <field name="tranCode">
+	         <format type="x" length="20" offset="90" />
+	      </field>
+     </keyfield>
+    </system>
+    
+   <system id="CONSOLE_CLI" from="msg" type="server" format="xml" encoding="GBK" >
+     <keyfield>
+	      <field name="tranCode">
+	         <format type="x" length="20" offset="90" />
+	      </field>
+     </keyfield>
+    </system>
+    <system id="PAB_CLI" from="msg" type="channel" format="xml" encoding="GBK" >
+     <keyfield>
+	      <field name="tranCode">
+	         <format type="x" length="20" offset="90" />
+	      </field>
+     </keyfield>
+     <identify>PABIdentifier</identify>
+    </system>
+</tranfroms>

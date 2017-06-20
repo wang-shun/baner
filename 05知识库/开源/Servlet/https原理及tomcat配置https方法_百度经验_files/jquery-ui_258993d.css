@@ -1,0 +1,1110 @@
+.ui-helper-hidden {
+	DISPLAY: none
+}
+.ui-helper-hidden-accessible {
+	CLIP: rect(0px 0px 0px 0px); BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: -1px; PADDING-LEFT: 0px; WIDTH: 1px; PADDING-RIGHT: 0px; HEIGHT: 1px; OVERFLOW: hidden; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ui-helper-reset {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.3; LIST-STYLE-TYPE: none; MARGIN: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 100%; BORDER-TOP: 0px; LIST-STYLE-IMAGE: none; BORDER-RIGHT: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+.ui-helper-clearfix:before {
+	DISPLAY: table; BORDER-COLLAPSE: collapse; CONTENT: ""
+}
+.ui-helper-clearfix:after {
+	DISPLAY: table; BORDER-COLLAPSE: collapse; CONTENT: ""
+}
+.ui-helper-clearfix:after {
+	CLEAR: both
+}
+.ui-helper-clearfix {
+	MIN-HEIGHT: 0px
+}
+.ui-helper-zfix {
+	POSITION: absolute; FILTER: alpha(opacity=0); WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0
+}
+.ui-front {
+	Z-INDEX: 1001
+}
+.ui-state-disabled {
+	CURSOR: default !important
+}
+.ui-icon {
+	TEXT-INDENT: -99999px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; OVERFLOW: hidden
+}
+.ui-widget-overlay {
+	POSITION: fixed; WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px
+}
+.ui-accordion .ui-accordion-header {
+	POSITION: relative; PADDING-BOTTOM: 0.5em; MARGIN-TOP: 2px; MIN-HEIGHT: 0px; PADDING-LEFT: 0.7em; PADDING-RIGHT: 0.5em; DISPLAY: block; CURSOR: pointer; PADDING-TOP: 0.5em
+}
+.ui-accordion .ui-accordion-icons {
+	PADDING-LEFT: 2.2em
+}
+.ui-accordion .ui-accordion-noicons {
+	PADDING-LEFT: 0.7em
+}
+.ui-accordion .ui-accordion-icons .ui-accordion-icons {
+	PADDING-LEFT: 2.2em
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%; LEFT: 0.5em
+}
+.ui-accordion .ui-accordion-content {
+	PADDING-BOTTOM: 1em; PADDING-LEFT: 2.2em; PADDING-RIGHT: 2.2em; OVERFLOW: auto; BORDER-TOP: 0px; PADDING-TOP: 1em
+}
+.ui-autocomplete {
+	POSITION: absolute; TOP: 0px; CURSOR: default; LEFT: 0px
+}
+.ui-button {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: normal; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; DISPLAY: inline-block; VERTICAL-ALIGN: middle; OVERFLOW: visible; CURSOR: pointer; MARGIN-RIGHT: 0.1em; PADDING-TOP: 0px
+}
+.ui-button {
+	TEXT-DECORATION: none
+}
+.ui-button:link {
+	TEXT-DECORATION: none
+}
+.ui-button:visited {
+	TEXT-DECORATION: none
+}
+.ui-button:hover {
+	TEXT-DECORATION: none
+}
+.ui-button:active {
+	TEXT-DECORATION: none
+}
+.ui-button-icon-only {
+	WIDTH: 2.2em
+}
+BUTTON.ui-button-icon-only {
+	WIDTH: 2.4em
+}
+.ui-button-icons-only {
+	WIDTH: 3.4em
+}
+BUTTON.ui-button-icons-only {
+	WIDTH: 3.7em
+}
+.ui-button .ui-button-text {
+	LINE-HEIGHT: normal; DISPLAY: block
+}
+.ui-button-text-only .ui-button-text {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; PADDING-TOP: 0.4em
+}
+.ui-button-icon-only .ui-button-text {
+	PADDING-BOTTOM: 0.4em; TEXT-INDENT: -1342177.28px; PADDING-LEFT: 0.4em; PADDING-RIGHT: 0.4em; PADDING-TOP: 0.4em
+}
+.ui-button-icons-only .ui-button-text {
+	PADDING-BOTTOM: 0.4em; TEXT-INDENT: -1342177.28px; PADDING-LEFT: 0.4em; PADDING-RIGHT: 0.4em; PADDING-TOP: 0.4em
+}
+.ui-button-text-icon-primary .ui-button-text {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 2.1em; PADDING-RIGHT: 1em; PADDING-TOP: 0.4em
+}
+.ui-button-text-icons .ui-button-text {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 2.1em; PADDING-RIGHT: 1em; PADDING-TOP: 0.4em
+}
+.ui-button-text-icon-secondary .ui-button-text {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 1em; PADDING-RIGHT: 2.1em; PADDING-TOP: 0.4em
+}
+.ui-button-text-icons .ui-button-text {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 1em; PADDING-RIGHT: 2.1em; PADDING-TOP: 0.4em
+}
+.ui-button-text-icons .ui-button-text {
+	PADDING-LEFT: 2.1em; PADDING-RIGHT: 2.1em
+}
+INPUT.ui-button {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; PADDING-TOP: 0.4em
+}
+.ui-button-icon-only .ui-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%
+}
+.ui-button-text-icon-primary .ui-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%
+}
+.ui-button-text-icon-secondary .ui-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%
+}
+.ui-button-text-icons .ui-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%
+}
+.ui-button-icons-only .ui-icon {
+	POSITION: absolute; MARGIN-TOP: -8px; TOP: 50%
+}
+.ui-button-icon-only .ui-icon {
+	MARGIN-LEFT: -8px; LEFT: 50%
+}
+.ui-button-text-icon-primary .ui-button-icon-primary {
+	LEFT: 0.5em
+}
+.ui-button-text-icons .ui-button-icon-primary {
+	LEFT: 0.5em
+}
+.ui-button-icons-only .ui-button-icon-primary {
+	LEFT: 0.5em
+}
+.ui-button-text-icon-secondary .ui-button-icon-secondary {
+	RIGHT: 0.5em
+}
+.ui-button-text-icons .ui-button-icon-secondary {
+	RIGHT: 0.5em
+}
+.ui-button-icons-only .ui-button-icon-secondary {
+	RIGHT: 0.5em
+}
+.ui-buttonset {
+	MARGIN-RIGHT: 7px
+}
+.ui-buttonset .ui-button {
+	MARGIN-LEFT: 0px; MARGIN-RIGHT: -0.3em
+}
+.ui-dialog {
+	POSITION: absolute; PADDING-BOTTOM: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; TOP: 0px; PADDING-TOP: 0px; LEFT: 0px
+}
+.ui-dialog .ui-dialog-titlebar {
+	POSITION: relative; PADDING-LEFT: 10px; HEIGHT: 36px
+}
+.ui-dialog .ui-dialog-title {
+	LINE-HEIGHT: 35px; WIDTH: 90%; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 35px; FONT-SIZE: 14px; OVERFLOW: hidden; FONT-WEIGHT: 700
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; BACKGROUND-COLOR: transparent; MARGIN: -7px 0px 0px; WIDTH: 14px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 13px; BORDER-TOP: 0px; TOP: 50%; RIGHT: 10px; BORDER-RIGHT: 0px
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	WIDTH: 16px; HEIGHT: 16px; OVERFLOW: hidden
+}
+ui-dialog .ui-button-icon-primary {
+	WIDTH: 16px; HEIGHT: 16px; OVERFLOW: hidden
+}
+.ui-dialog .ui-dialog-titlebar .ui-state-hover {
+	BACKGROUND-REPEAT: no-repeat
+}
+.ui-dialog .ui-dialog-content {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: 0px 0px; OVERFLOW: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 5px
+}
+.ui-dialog .ui-dialog-buttonpane {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: 0px; TEXT-ALIGN: left; BORDER-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 10px
+}
+.ui-dialog .ui-dialog-buttonpane BUTTON {
+	BORDER-BOTTOM: #45ad00 1px solid; BORDER-LEFT: #45ad00 1px solid; MARGIN: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; FONT-FAMILY: "Microsoft Yahei"; BACKGROUND: #45ad00; HEIGHT: 32px; COLOR: #fff; BORDER-TOP: #45ad00 1px solid; CURSOR: pointer; BORDER-RIGHT: #45ad00 1px solid; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.ui-dialog .ui-dialog-buttonpane BUTTON.ui-state-hover {
+	BORDER-BOTTOM-COLOR: #45a500; BACKGROUND-COLOR: #4ab200; BORDER-TOP-COLOR: #45a500; BACKGROUND-REPEAT: repeat-x; BORDER-RIGHT-COLOR: #45a500; BORDER-LEFT-COLOR: #45a500
+}
+.ui-dialog .ui-dialog-buttonpane .ui-button-text {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT-SIZE: 15px; PADDING-TOP: 0px
+}
+.ui-dialog .ui-resizable-se {
+	WIDTH: 12px; BOTTOM: -5px; BACKGROUND-POSITION: 16px 16px; HEIGHT: 12px; RIGHT: -5px
+}
+.ui-draggable .ui-dialog-titlebar {
+	CURSOR: move
+}
+.ui-tooltip {
+	Z-INDEX: 1000; POSITION: absolute
+}
+.ui-widget {
+	FONT-FAMILY: Helvetica, Arial, sans-serif; FONT-SIZE: 14px
+}
+.ui-widget .ui-widget {
+	FONT-SIZE: 14px
+}
+.ui-widget INPUT {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.ui-widget SELECT {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.ui-widget TEXTAREA {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.ui-widget BUTTON {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.ui-widget-content {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: #fff; COLOR: #444; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.ui-widget-header {
+	BORDER-BOTTOM: #f2f2f2 1px solid; BACKGROUND: #fcfcfc; COLOR: #333; FONT-WEIGHT: 700
+}
+.ui-widget-header A {
+	COLOR: #444
+}
+.ui-state-default A {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; TEXT-DECORATION: none
+}
+.ui-state-default A:link {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; TEXT-DECORATION: none
+}
+.ui-state-default A:visited {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; TEXT-DECORATION: none
+}
+.ui-state-hover A {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.ui-state-hover A:hover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.ui-state-hover A:link {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.ui-state-hover A:visited {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.ui-state-active A {
+	COLOR: #ff0084; TEXT-DECORATION: none
+}
+.ui-state-active A:link {
+	COLOR: #ff0084; TEXT-DECORATION: none
+}
+.ui-state-active A:visited {
+	COLOR: #ff0084; TEXT-DECORATION: none
+}
+.ui-state-highlight {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; COLOR: #444; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.ui-widget-content .ui-state-highlight {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; COLOR: #444; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.ui-widget-header .ui-state-highlight {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; COLOR: #444; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.ui-state-highlight A {
+	COLOR: #444
+}
+.ui-widget-content .ui-state-highlight A {
+	COLOR: #444
+}
+.ui-widget-header .ui-state-highlight A {
+	COLOR: #444
+}
+.ui-state-error {
+	BORDER-BOTTOM: #ff0084 1px solid; BORDER-LEFT: #ff0084 1px solid; BACKGROUND: #fff; COLOR: #222; BORDER-TOP: #ff0084 1px solid; BORDER-RIGHT: #ff0084 1px solid
+}
+.ui-widget-content .ui-state-error {
+	BORDER-BOTTOM: #ff0084 1px solid; BORDER-LEFT: #ff0084 1px solid; BACKGROUND: #fff; COLOR: #222; BORDER-TOP: #ff0084 1px solid; BORDER-RIGHT: #ff0084 1px solid
+}
+.ui-widget-header .ui-state-error {
+	BORDER-BOTTOM: #ff0084 1px solid; BORDER-LEFT: #ff0084 1px solid; BACKGROUND: #fff; COLOR: #222; BORDER-TOP: #ff0084 1px solid; BORDER-RIGHT: #ff0084 1px solid
+}
+.ui-state-error A {
+	COLOR: #222
+}
+.ui-widget-content .ui-state-error A {
+	COLOR: #222
+}
+.ui-widget-header .ui-state-error A {
+	COLOR: #222
+}
+.ui-state-error-text {
+	COLOR: #222
+}
+.ui-widget-content .ui-state-error-text {
+	COLOR: #222
+}
+.ui-widget-header .ui-state-error-text {
+	COLOR: #222
+}
+.ui-priority-primary {
+	FONT-WEIGHT: 700
+}
+.ui-widget-content .ui-priority-primary {
+	FONT-WEIGHT: 700
+}
+.ui-widget-header .ui-priority-primary {
+	FONT-WEIGHT: 700
+}
+.ui-priority-secondary {
+	FILTER: alpha(opacity=70); FONT-WEIGHT: 400; opacity: .7
+}
+.ui-widget-content .ui-priority-secondary {
+	FILTER: alpha(opacity=70); FONT-WEIGHT: 400; opacity: .7
+}
+.ui-widget-header .ui-priority-secondary {
+	FILTER: alpha(opacity=70); FONT-WEIGHT: 400; opacity: .7
+}
+.ui-state-disabled {
+	BACKGROUND-IMAGE: none; FILTER: alpha(opacity=35); opacity: .35
+}
+.ui-widget-content .ui-state-disabled {
+	BACKGROUND-IMAGE: none; FILTER: alpha(opacity=35); opacity: .35
+}
+.ui-widget-header .ui-state-disabled {
+	BACKGROUND-IMAGE: none; FILTER: alpha(opacity=35); opacity: .35
+}
+.ui-state-disabled .ui-icon {
+	FILTER: alpha(opacity=35)
+}
+.ui-icon {
+	WIDTH: 16px; HEIGHT: 16px
+}
+.ui-widget-overlay {
+	FILTER: alpha(opacity=25); BACKGROUND: #000; opacity: .25
+}
+.ui-widget-shadow {
+	FILTER: alpha(opacity=60); PADDING-BOTTOM: 4px; BACKGROUND-COLOR: #aaa; MARGIN: -4px 0px 0px -4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 4px; opacity: .6; border-radius: 0
+}
+.ui-autocomplete {
+	BORDER-BOTTOM: #817f82 1px solid; BORDER-LEFT: #817f82 1px solid; BACKGROUND: #fff; BORDER-TOP: 0px; BORDER-RIGHT: #817f82 1px solid
+}
+.ui-autocomplete .ui-menu-item A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: block; HEIGHT: 26px; COLOR: #000; FONT-WEIGHT: 700; PADDING-TOP: 0px
+}
+.ui-autocomplete .ui-menu-item EM {
+	COLOR: #000; FONT-WEIGHT: 400
+}
+.ui-autocomplete .ui-state-focus {
+	BACKGROUND: #ebebeb; TEXT-DECORATION: none
+}
+.ui-datepicker {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 14px; PADDING-LEFT: 0.2em; WIDTH: 17em; PADDING-RIGHT: 0.2em; DISPLAY: none; FONT-SIZE: 12px; PADDING-TOP: 0.2em
+}
+.ui-datepicker .ui-datepicker-header {
+	POSITION: relative; PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0.2em
+}
+.ui-datepicker .ui-datepicker-prev {
+	POSITION: absolute; WIDTH: 1.8em; HEIGHT: 1.8em; TOP: 2px
+}
+.ui-datepicker .ui-datepicker-next {
+	POSITION: absolute; WIDTH: 1.8em; HEIGHT: 1.8em; TOP: 2px
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	TOP: 1px
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	TOP: 1px
+}
+.ui-datepicker .ui-datepicker-prev {
+	LEFT: 2px
+}
+.ui-datepicker .ui-datepicker-next {
+	RIGHT: 2px
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	LEFT: 1px
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	RIGHT: 1px
+}
+.ui-datepicker .ui-datepicker-prev SPAN {
+	POSITION: absolute; MARGIN-TOP: -8px; DISPLAY: block; MARGIN-LEFT: -8px; TOP: 50%; LEFT: 50%
+}
+.ui-datepicker .ui-datepicker-next SPAN {
+	POSITION: absolute; MARGIN-TOP: -8px; DISPLAY: block; MARGIN-LEFT: -8px; TOP: 50%; LEFT: 50%
+}
+.ui-datepicker .ui-datepicker-title {
+	TEXT-ALIGN: center; LINE-HEIGHT: 1.8em; MARGIN: 0px 2.3em
+}
+.ui-datepicker .ui-datepicker-title SELECT {
+	MARGIN: 1px 0px; FONT-SIZE: 1em
+}
+.ui-datepicker SELECT.ui-datepicker-month-year {
+	WIDTH: 100%
+}
+.ui-datepicker SELECT.ui-datepicker-month {
+	WIDTH: 49%
+}
+.ui-datepicker SELECT.ui-datepicker-year {
+	WIDTH: 49%
+}
+.ui-datepicker TABLE {
+	MARGIN: 0px 0px 0.4em; WIDTH: 100%; BORDER-COLLAPSE: collapse; FONT-SIZE: 0.9em
+}
+.ui-datepicker TH {
+	BORDER-BOTTOM: 0px; TEXT-ALIGN: center; BORDER-LEFT: 0px; PADDING-BOTTOM: 0.7em; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; BORDER-TOP: 0px; FONT-WEIGHT: 700; BORDER-RIGHT: 0px; PADDING-TOP: 0.7em
+}
+.ui-datepicker TD {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 1px
+}
+.ui-datepicker TD SPAN {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; DISPLAY: block; TEXT-DECORATION: none; PADDING-TOP: 0.2em
+}
+.ui-datepicker TD A {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; DISPLAY: block; TEXT-DECORATION: none; PADDING-TOP: 0.2em
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0.7em 0px 0px; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ui-datepicker .ui-datepicker-buttonpane BUTTON {
+	PADDING-BOTTOM: 0.3em; MARGIN: 0.5em 0.2em 0.4em; PADDING-LEFT: 0.6em; WIDTH: auto; PADDING-RIGHT: 0.6em; FLOAT: right; OVERFLOW: visible; CURSOR: pointer; PADDING-TOP: 0.2em
+}
+.ui-datepicker .ui-datepicker-buttonpane BUTTON.ui-datepicker-current {
+	FLOAT: left
+}
+.ui-menu LI {
+	FLOAT: none
+}
+.ui-tabs {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; FONT-FAMILY: inherit; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.ui-tabs .ui-tabs-nav {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: #e3e3e3 1px solid
+}
+.ui-tabs .ui-tabs-nav:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; OVERFLOW: hidden; CONTENT: "\0020"
+}
+.ui-tabs .ui-tabs-nav LI {
+	FLOAT: left
+}
+.ui-tabs .ui-tabs-nav LI A {
+	BORDER-BOTTOM: #e3e3e3 1px solid; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; BACKGROUND: #f8f7f7; HEIGHT: 25px; COLOR: #2d64b3; FONT-SIZE: 12px; BORDER-TOP: #e3e3e3 1px solid; FONT-WEIGHT: 400; BORDER-RIGHT: #e3e3e3 1px solid; PADDING-TOP: 0px
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-active A {
+	BORDER-BOTTOM-COLOR: #fdfdfd; BACKGROUND: #fdfdfd; COLOR: #666
+}
+.ui-tabs .ui-tabs-panel {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; COLOR: #666; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.tip-radius {
+	border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.tip-shadow {
+	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .07); -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .07); box-shadow: 1px 1px 1px rgba(0, 0, 0, .07); -khtml-box-shadow: 1px 1px 1px rgba(0, 0, 0, .07)
+}
+.ui-tooltip {
+	BORDER-BOTTOM: #e8cca1 1px solid; BORDER-LEFT: #e8cca1 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #fefded; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; COLOR: #666; FONT-SIZE: 12px; BORDER-TOP: #e8cca1 1px solid; BORDER-RIGHT: #e8cca1 1px solid; PADDING-TOP: 5px
+}
+.ui-tooltip A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.ui-tooltip A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.ui-tooltip A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.ui-tooltip A.tip-close:hover {
+	COLOR: #e8cca1; TEXT-DECORATION: none
+}
+.ui-tooltip .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.ui-tooltip .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.ui-tooltip .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.ui-tooltip .tip-arrow-bottom EM {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-top EM {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-left EM {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-right EM {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-bottom B {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-top B {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-left B {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-right B {
+	_border-color: tomato
+}
+.ui-tooltip .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.ui-tooltip .tip-arrow-top EM {
+	BORDER-BOTTOM: #e8cca1 6px solid; TOP: -1px
+}
+.ui-tooltip .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #fefded 6px solid; TOP: 0px
+}
+.ui-tooltip .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.ui-tooltip .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #e8cca1 6px solid
+}
+.ui-tooltip .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #fefded 6px solid
+}
+.ui-tooltip .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.ui-tooltip .tip-arrow-right EM {
+	BORDER-LEFT: #e8cca1 6px solid; RIGHT: -1px
+}
+.ui-tooltip .tip-arrow-right SPAN {
+	BORDER-LEFT: #fefded 6px solid; RIGHT: 0px
+}
+.ui-tooltip .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.ui-tooltip .tip-arrow-left EM {
+	BORDER-RIGHT: #e8cca1 6px solid; LEFT: -1px
+}
+.ui-tooltip .tip-arrow-left SPAN {
+	BORDER-RIGHT: #fefded 6px solid; LEFT: 0px
+}
+.tip-has-close.ui-tooltip {
+	PADDING-RIGHT: 24px
+}
+.tip-black {
+	BORDER-BOTTOM: #505759 1px solid; BORDER-LEFT: #505759 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #505759; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; COLOR: #fff; FONT-SIZE: 12px; BORDER-TOP: #505759 1px solid; BORDER-RIGHT: #505759 1px solid; PADDING-TOP: 0px
+}
+.tip-black A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-black A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-black A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-black A.tip-close:hover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.tip-black .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-black .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-black .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-black .tip-arrow-bottom EM {
+	_border-color: #000
+}
+.tip-black .tip-arrow-top EM {
+	_border-color: #000
+}
+.tip-black .tip-arrow-left EM {
+	_border-color: #000
+}
+.tip-black .tip-arrow-right EM {
+	_border-color: #000
+}
+.tip-black .tip-arrow-bottom B {
+	_border-color: #000
+}
+.tip-black .tip-arrow-top B {
+	_border-color: #000
+}
+.tip-black .tip-arrow-left B {
+	_border-color: #000
+}
+.tip-black .tip-arrow-right B {
+	_border-color: #000
+}
+.tip-black .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-black .tip-arrow-top EM {
+	BORDER-BOTTOM: #505759 6px solid; TOP: -1px
+}
+.tip-black .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #505759 6px solid; TOP: 0px
+}
+.tip-black .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-black .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #505759 6px solid
+}
+.tip-black .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #505759 6px solid
+}
+.tip-black .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-black .tip-arrow-right EM {
+	BORDER-LEFT: #505759 6px solid; RIGHT: -1px
+}
+.tip-black .tip-arrow-right SPAN {
+	BORDER-LEFT: #505759 6px solid; RIGHT: 0px
+}
+.tip-black .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-black .tip-arrow-left EM {
+	BORDER-RIGHT: #505759 6px solid; LEFT: -1px
+}
+.tip-black .tip-arrow-left SPAN {
+	BORDER-RIGHT: #505759 6px solid; LEFT: 0px
+}
+.tip-green {
+	BORDER-BOTTOM: #4cbe00 1px solid; BORDER-LEFT: #4cbe00 1px solid; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #fff; BORDER-TOP: #4cbe00 1px solid; BORDER-RIGHT: #4cbe00 1px solid
+}
+.tip-green A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-green A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-green A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-green A.tip-close:hover {
+	COLOR: #4cbe00; TEXT-DECORATION: none
+}
+.tip-green .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-green .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-green .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-green .tip-arrow-bottom EM {
+	_border-color: green
+}
+.tip-green .tip-arrow-top EM {
+	_border-color: green
+}
+.tip-green .tip-arrow-left EM {
+	_border-color: green
+}
+.tip-green .tip-arrow-right EM {
+	_border-color: green
+}
+.tip-green .tip-arrow-bottom B {
+	_border-color: green
+}
+.tip-green .tip-arrow-top B {
+	_border-color: green
+}
+.tip-green .tip-arrow-left B {
+	_border-color: green
+}
+.tip-green .tip-arrow-right B {
+	_border-color: green
+}
+.tip-green .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-green .tip-arrow-top EM {
+	BORDER-BOTTOM: #4cbe00 6px solid; TOP: -1px
+}
+.tip-green .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #fff 6px solid; TOP: 0px
+}
+.tip-green .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-green .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #4cbe00 6px solid
+}
+.tip-green .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #fff 6px solid
+}
+.tip-green .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-green .tip-arrow-right EM {
+	BORDER-LEFT: #4cbe00 6px solid; RIGHT: -1px
+}
+.tip-green .tip-arrow-right SPAN {
+	BORDER-LEFT: #fff 6px solid; RIGHT: 0px
+}
+.tip-green .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-green .tip-arrow-left EM {
+	BORDER-RIGHT: #4cbe00 6px solid; LEFT: -1px
+}
+.tip-green .tip-arrow-left SPAN {
+	BORDER-RIGHT: #fff 6px solid; LEFT: 0px
+}
+.tip-green1 {
+	BORDER-BOTTOM: #b2de99 1px solid; BORDER-LEFT: #b2de99 1px solid; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #f7fff3; COLOR: #64b02c; FONT-SIZE: 12px; BORDER-TOP: #b2de99 1px solid; BORDER-RIGHT: #b2de99 1px solid
+}
+.tip-green1 A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-green1 A.tip-close:link {
+	COLOR: #999; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-green1 A.tip-close:visited {
+	COLOR: #999; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-green1 A.tip-close:hover {
+	COLOR: #999; TEXT-DECORATION: none
+}
+.tip-green1 .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-green1 .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-green1 .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-green1 .tip-arrow-bottom EM {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-top EM {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-left EM {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-right EM {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-bottom B {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-top B {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-left B {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-right B {
+	_border-color: green
+}
+.tip-green1 .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-green1 .tip-arrow-top EM {
+	BORDER-BOTTOM: #b2de99 6px solid; TOP: -1px
+}
+.tip-green1 .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #f7fff3 6px solid; TOP: 0px
+}
+.tip-green1 .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-green1 .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #b2de99 6px solid
+}
+.tip-green1 .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #f7fff3 6px solid
+}
+.tip-green1 .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-green1 .tip-arrow-right EM {
+	BORDER-LEFT: #b2de99 6px solid; RIGHT: -1px
+}
+.tip-green1 .tip-arrow-right SPAN {
+	BORDER-LEFT: #f7fff3 6px solid; RIGHT: 0px
+}
+.tip-green1 .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-green1 .tip-arrow-left EM {
+	BORDER-RIGHT: #b2de99 6px solid; LEFT: -1px
+}
+.tip-green1 .tip-arrow-left SPAN {
+	BORDER-RIGHT: #f7fff3 6px solid; LEFT: 0px
+}
+.tip-white {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #fff; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.tip-white A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-white A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-white A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-white A.tip-close:hover {
+	COLOR: #ccc; TEXT-DECORATION: none
+}
+.tip-white .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-white .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-white .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-white .tip-arrow-bottom EM {
+	_border-color: gray
+}
+.tip-white .tip-arrow-top EM {
+	_border-color: gray
+}
+.tip-white .tip-arrow-left EM {
+	_border-color: gray
+}
+.tip-white .tip-arrow-right EM {
+	_border-color: gray
+}
+.tip-white .tip-arrow-bottom B {
+	_border-color: gray
+}
+.tip-white .tip-arrow-top B {
+	_border-color: gray
+}
+.tip-white .tip-arrow-left B {
+	_border-color: gray
+}
+.tip-white .tip-arrow-right B {
+	_border-color: gray
+}
+.tip-white .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-white .tip-arrow-top EM {
+	BORDER-BOTTOM: #ccc 6px solid; TOP: -1px
+}
+.tip-white .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #fff 6px solid; TOP: 0px
+}
+.tip-white .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-white .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #ccc 6px solid
+}
+.tip-white .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #fff 6px solid
+}
+.tip-white .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-white .tip-arrow-right EM {
+	BORDER-LEFT: #ccc 6px solid; RIGHT: -1px
+}
+.tip-white .tip-arrow-right SPAN {
+	BORDER-LEFT: #fff 6px solid; RIGHT: 0px
+}
+.tip-white .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-white .tip-arrow-left EM {
+	BORDER-RIGHT: #ccc 6px solid; LEFT: -1px
+}
+.tip-white .tip-arrow-left SPAN {
+	BORDER-RIGHT: #fff 6px solid; LEFT: 0px
+}
+.tip-gray {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #fdfdfd; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.tip-gray A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-gray A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-gray A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-gray A.tip-close:hover {
+	COLOR: #ddd; TEXT-DECORATION: none
+}
+.tip-gray .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-gray .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-gray .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-gray .tip-arrow-bottom EM {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-top EM {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-left EM {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-right EM {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-bottom B {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-top B {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-left B {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-right B {
+	_border-color: gray
+}
+.tip-gray .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-gray .tip-arrow-top EM {
+	BORDER-BOTTOM: #ddd 6px solid; TOP: -1px
+}
+.tip-gray .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #fdfdfd 6px solid; TOP: 0px
+}
+.tip-gray .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-gray .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #ddd 6px solid
+}
+.tip-gray .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #fdfdfd 6px solid
+}
+.tip-gray .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-gray .tip-arrow-right EM {
+	BORDER-LEFT: #ddd 6px solid; RIGHT: -1px
+}
+.tip-gray .tip-arrow-right SPAN {
+	BORDER-LEFT: #fdfdfd 6px solid; RIGHT: 0px
+}
+.tip-gray .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-gray .tip-arrow-left EM {
+	BORDER-RIGHT: #ddd 6px solid; LEFT: -1px
+}
+.tip-gray .tip-arrow-left SPAN {
+	BORDER-RIGHT: #fdfdfd 6px solid; LEFT: 0px
+}
+.tip-orange {
+	BORDER-BOTTOM: #e6a302 1px solid; BORDER-LEFT: #e6a302 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #fbb50d; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND-REPEAT: repeat-x; COLOR: #fff; BORDER-TOP: #e6a302 1px solid; BORDER-RIGHT: #e6a302 1px solid; PADDING-TOP: 0px
+}
+.tip-orange A.tip-close {
+	Z-INDEX: 1002; POSITION: absolute; LINE-HEIGHT: 100%; FONT-SIZE: 18px; TOP: 8px; RIGHT: 8px; TEXT-DECORATION: none
+}
+.tip-orange A.tip-close:link {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-orange A.tip-close:visited {
+	COLOR: #ccc; FONT-WEIGHT: 700; TEXT-DECORATION: none
+}
+.tip-orange A.tip-close:hover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.tip-orange .tip-arrow {
+	Z-INDEX: 1001; POSITION: absolute
+}
+.tip-orange .tip-arrow EM {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-orange .tip-arrow SPAN {
+	BORDER-BOTTOM: transparent 6px solid; POSITION: absolute; BORDER-LEFT: transparent 6px solid; LINE-HEIGHT: 0; WIDTH: 0px; HEIGHT: 0px; FONT-SIZE: 0px; BORDER-TOP: transparent 6px solid; BORDER-RIGHT: transparent 6px solid
+}
+.tip-orange .tip-arrow-bottom EM {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-top EM {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-left EM {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-right EM {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-bottom B {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-top B {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-left B {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-right B {
+	_border-color: orange
+}
+.tip-orange .tip-arrow-top {
+	TOP: -11px; LEFT: 20px
+}
+.tip-orange .tip-arrow-top EM {
+	BORDER-BOTTOM: #e6a302 6px solid; TOP: -1px
+}
+.tip-orange .tip-arrow-top SPAN {
+	BORDER-BOTTOM: #f1ab03 6px solid; TOP: 0px
+}
+.tip-orange .tip-arrow-bottom {
+	BOTTOM: -11px; LEFT: 20px
+}
+.tip-orange .tip-arrow-bottom EM {
+	BOTTOM: -1px; BORDER-TOP: #e6a302 6px solid
+}
+.tip-orange .tip-arrow-bottom SPAN {
+	BOTTOM: 0px; BORDER-TOP: #f1ab03 6px solid
+}
+.tip-orange .tip-arrow-right {
+	TOP: 15px; RIGHT: -11px
+}
+.tip-orange .tip-arrow-right EM {
+	BORDER-LEFT: #e6a302 6px solid; RIGHT: -1px
+}
+.tip-orange .tip-arrow-right SPAN {
+	BORDER-LEFT: #f1ab03 6px solid; RIGHT: 0px
+}
+.tip-orange .tip-arrow-left {
+	TOP: 15px; LEFT: -11px
+}
+.tip-orange .tip-arrow-left EM {
+	BORDER-RIGHT: #e6a302 6px solid; LEFT: -1px
+}
+.tip-orange .tip-arrow-left SPAN {
+	BORDER-RIGHT: #f1ab03 6px solid; LEFT: 0px
+}
+.dialog-iframe .ui-dialog-content {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.dialog-iframe .ui-dialog-content-iframe {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 100%; HEIGHT: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.dialog-notice {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px
+}
+.dialog-notice .ui-widget-header {
+	DISPLAY: none; HEIGHT: 0px
+}
+.dialog-notice .ui-dialog-content {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 100px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ui-autocomplete {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; FONT-FAMILY: arial, tahoma, "Microsoft YaHei", "ËÎÌו"; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.ui-autocomplete .ui-menu-item-close {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 3px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BORDER-TOP: #ebebeb 1px solid; PADDING-TOP: 3px
+}
+.ui-autocomplete .ui-menu-item-close A {
+	LINE-HEIGHT: 13px; COLOR: #888; FONT-SIZE: 12px; TEXT-DECORATION: underline
+}
+.sug-tag {
+	PADDING-BOTTOM: 6px; PADDING-LEFT: 8px; PADDING-RIGHT: 0px; HEIGHT: 62px; BORDER-TOP: #ebebeb 1px solid; PADDING-TOP: 6px
+}
+.sug-tag IMG {
+	BORDER-BOTTOM: #e1e1e1 1px solid; BORDER-LEFT: #e1e1e1 1px solid; WIDTH: 80px; HEIGHT: 60px; BORDER-TOP: #e1e1e1 1px solid; BORDER-RIGHT: #e1e1e1 1px solid
+}
+.sug-tag EM {
+	COLOR: #999; FONT-SIZE: 12px
+}
+.sug-tag .sug-content {
+	MARGIN-TOP: -63px; MARGIN-LEFT: 90px; _margin-top: -58px
+}
+.sug-tag .sug-content H2 {
+	LINE-HEIGHT: 18px; HEIGHT: 18px; VERTICAL-ALIGN: middle
+}
+.sug-tag .sug-content STRONG {
+	COLOR: #999; FONT-SIZE: 12px; FONT-WEIGHT: 400
+}
+.sug-close {
+	TEXT-ALIGN: right; LINE-HEIGHT: 22px; PADDING-RIGHT: 8px; DISPLAY: block; HEIGHT: 22px; COLOR: #888; BORDER-TOP: #ebebeb 1px solid; CURSOR: pointer; TEXT-DECORATION: underline
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	BACKGROUND-POSITION: 0px 0px
+}
+.ui-dialog .ui-dialog-titlebar .ui-state-hover {
+	BACKGROUND-POSITION: -17px 0px
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/jquery-ui_z_d8214de.png)
+}
+.ui-dialog .ui-dialog-titlebar .ui-state-hover {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/jquery-ui_z_d8214de.png)
+}

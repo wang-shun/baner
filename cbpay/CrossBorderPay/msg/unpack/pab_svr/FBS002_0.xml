@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="FBS002_0">
+	<field name="Result" >
+			<format type="virtual" level="1" />
+	</field>
+
+	<field name="SeqBatchNo">
+		<format type="s" length="20" necessary="true"  />
+	</field>
+	
+	<field name="FileType">
+		<format type="s" length="1" necessary="true"  />
+	</field>
+	<field name="Count">
+		<format type="s" length="5" necessary="false"  />
+	</field>
+	<field name="FileName">
+		<format type="s" length="100" necessary="true"  />
+	</field>
+	<field name="RandomPwd">
+		<format type="s" length="100" necessary="true"  />
+	</field>
+	<field name="HashData">
+		<format type="s" length="200" necessary="true"  />
+	</field>
+	<field name="SignData">
+		<format type="s" length="5000" necessary="true"  />
+	</field>
+</formula>

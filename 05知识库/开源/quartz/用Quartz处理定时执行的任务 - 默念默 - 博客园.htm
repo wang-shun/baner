@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<title>用Quartz处理定时执行的任务 - 默念默 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=8Yuy7W_tI3O6o4UEBN4x0XYlHvPbn1mccK1Vrh_8boU1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/Minyx2_Lite/bundle-Minyx2_Lite.css?v=box8Dmmj5G0VFMZyypCbLIqNJsuu5lz6TpJ4OOK0WkE1"/>
+<link type="text/css" rel="stylesheet" href="/blog/customcss/77090.css?v=TboZ4%2fbItXgaJ16VnjDvcILaVtQ%3d"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/monian/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/monian/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/monian/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'monian', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=8WnRAk-jFluauorFSb16Af-FpfuF-CNB88I52InzvIs1" type="text/javascript"></script>
+<script src="/skins/Minyx2_Lite/bundle-Minyx2_Lite.js?v=dAK2Rw4GyogXqBvhMZEW0IkYD2kjtuL3y_BKRj-vp4g1" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 56, 
+Articles - 0, 
+Comments - 27
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/monian/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/monian/p/3822980.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/monian/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/%e9%bb%98%e5%bf%b5%e9%bb%98">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/monian/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/monian/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/monian/">默念默</a>
+            <!-- 子标题 -->
+            <small>
+                低调的做每一件事情！厚积薄发！</small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+<div id="post_detail">
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="http://www.cnblogs.com/monian/p/3822980.html">用Quartz处理定时执行的任务</a></h2>
+    <small>2014-07-03 18:21 by 默念默, <span id="post_view_count">...</span> 阅读, <span id="post_comment_count">...</span> 评论, <a href="#" onclick="AddToWz(3822980);return false;">收藏</a>,  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=3822980" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p><span style="font-size: 12px;"><span style="font-size: 12px;">这次做的项目中，有一部分功能需要实现定时执行。呃，这样说可能有点笼统，打个比方吧。例如用户在登录的时候，连续输错3次密码后，系统会将该用户冻结，不再允许该用户登录系统，等到了晚上零晨时分，再为所有被冻结的用户解冻，这样，用户在第二天又可以正常登录系统了。这样做是为了用户帐号安全，可有效防止暴力破解密码。。。呃，好像跑题了，咱还是回到正题来。在这里我们只关心怎么能实现每天晚上零晨准时执行为用户解冻的程序。</span></span></p>
+<p><span style="font-size: 12px;">　　第一时间，我想到了JDK自带的Timer和TimerTask类，可经过测试，要想做到精准的定时，还是比较困难的。于是另寻其它解决方案，就找到了Quartz，至于Quartz是什么，我想百度会告诉大家的。二话不说，下载了Quartz包，下载的是官方最新版2.1.7。然后兴致勃勃的百度起来，关于Quartz的用法，文章还是挺多的，但是，Copy进来后，总是报错。无奈，最新版的用法，网上又很难找到。怎么办呢？自己E文又不好！哎，E文是我永远的痛啊，谁叫俺爱国呢。翻了一下下载的Quartz包，发现里面有好多例子，然后挨个挨个跑例子。哈，功夫不负有心人啊，第三个例子刚好能解决我现在的问题，再仔细推敲一下，发现Quartz原来如此好用。为了方便日后重复利用，也为了其他没用过Quartz而且E文也不怎么好的朋友不再受折磨，就决定把这次的使用心德记录下来。</span></p>
+<p><span style="font-size: 12px;">　　第一步：引包</span></p>
+<p><span style="font-size: 12px;">　　要使用Quartz，必须要引入以下这几个包：</span></p>
+<p><span style="font-size: 12px;">　　1、log4j-1.2.16</span></p>
+<p><span style="font-size: 12px;">　　2、quartz-2.1.7</span></p>
+<p><span style="font-size: 12px;">　　3、slf4j-api-1.6.1.jar</span></p>
+<p><span style="font-size: 12px;">　　4、slf4j-log4j12-1.6.1.jar</span></p>
+<p><span style="font-size: 12px;"> 　　这些包都在下载的Quartz包里面包含着，因此没有必要为寻找这几个包而头疼。</span></p>
+<p><span style="font-size: 12px;">　　第二步：创建要被定执行的任务类</span></p>
+<p><span style="font-size: 12px;">　　这一步也很简单，只需要创建一个实现了org.quartz.Job接口的类，并实现这个接口的唯一一个方法execute(JobExecutionContext arg0) throws JobExecutionException即可。如：</span></p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="#"><img src="http://www.cnblogs.com/images/icon_copy.gif" alt="复制代码" /></a> <a title="收藏这段代码" href="javascript:void()"><img class="star" src="http://www.cnblogs.com/images/icon_star.png" alt="收藏代码" /><img class="spinner" style="display: none;" src="http://www.cnblogs.com/images/spinner.gif" alt="" /></a></div>
+</div>
+<ol class="dp-j">
+<li><span class="keyword">import java.text.SimpleDateFormat;&nbsp; </span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">import java.util.Date;&nbsp; </span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">import org.quartz.Job;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.JobExecutionContext;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.JobExecutionException;&nbsp; </span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">public <span class="keyword">class myJob <span class="keyword">implements Job {&nbsp; </span></span></span></li>
+<li>&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp; <span class="annotation">@Override&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp; <span class="keyword">public <span class="keyword">void execute(JobExecutionContext arg0) <span class="keyword">throws JobExecutionException {&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SimpleDateFormat sdf = <span class="keyword">new SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss SSS");&nbsp; </span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(sdf.format(<span class="keyword">new Date()));&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp; }&nbsp;</li>
+<li>&nbsp;</li>
+<li>}&nbsp;</li>
+</ol></div>
+<pre name="code" class="java">import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+
+public class myJob implements Job {
+
+	@Override
+	public void execute(JobExecutionContext arg0) throws JobExecutionException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
+		System.out.println(sdf.format(new Date()));
+	}
+
+}</pre>
+<p>　　<span style="font-size: 12px;">这个例子很简单，就不用解说了。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 12px;">　　第三步：创建任务调度，并执行</span></p>
+<p><span style="font-size: 12px;">　　这一步应该算是最难的一步的，但其实是非常简单的，直接上代码</span></p>
+<p>&nbsp;</p>
+<p>　　</p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="#"><img src="http://www.cnblogs.com/images/icon_copy.gif" alt="复制代码" /></a> <a title="收藏这段代码" href="javascript:void()"><img class="star" src="http://www.cnblogs.com/images/icon_star.png" alt="收藏代码" /><img class="spinner" style="display: none;" src="http://www.cnblogs.com/images/spinner.gif" alt="" /></a></div>
+</div>
+<ol class="dp-j">
+<li><span class="keyword">import <span class="keyword">static org.quartz.CronScheduleBuilder.cronSchedule;&nbsp; </span></span></li>
+<li><span class="keyword">import <span class="keyword">static org.quartz.JobBuilder.newJob;&nbsp; </span></span></li>
+<li><span class="keyword">import <span class="keyword">static org.quartz.TriggerBuilder.newTrigger;&nbsp; </span></span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">import java.text.SimpleDateFormat;&nbsp; </span></li>
+<li><span class="keyword">import java.util.Date;&nbsp; </span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">import org.quartz.CronTrigger;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.JobDetail;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.Scheduler;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.SchedulerFactory;&nbsp; </span></li>
+<li><span class="keyword">import org.quartz.impl.StdSchedulerFactory;&nbsp; </span></li>
+<li>&nbsp;</li>
+<li><span class="keyword">public <span class="keyword">class Test {&nbsp; </span></span></li>
+<li>&nbsp;&nbsp;&nbsp; <span class="keyword">public <span class="keyword">void go() <span class="keyword">throws Exception {&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 首先，必需要取得一个Scheduler的引用&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SchedulerFactory sf = <span class="keyword">new StdSchedulerFactory();&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scheduler sched = sf.getScheduler();&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">//jobs可以在scheduled的sched.start()方法前被调用&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">//job 1将每隔20秒执行一次&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JobDetail job = newJob(myJob.<span class="keyword">class).withIdentity(<span class="string">"job1", <span class="string">"group1").build();&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CronTrigger trigger = newTrigger().withIdentity(<span class="string">"trigger1", <span class="string">"group1").withSchedule(cronSchedule(<span class="string">"0/20 * * * * ?")).build();&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date ft = sched.scheduleJob(job, trigger);&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SimpleDateFormat sdf = <span class="keyword">new SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss SSS");&nbsp; </span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(job.getKey() + <span class="string">" 已被安排执行于: " + sdf.format(ft) + <span class="string">"，并且以如下重复规则重复执行: " + trigger.getCronExpression());&nbsp; </span></span></li>
+<li>&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// job 2将每2分钟执行一次（在该分钟的第15秒)&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; job = newJob(myJob.<span class="keyword">class).withIdentity(<span class="string">"job2", <span class="string">"group1").build();&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trigger = newTrigger().withIdentity(<span class="string">"trigger2", <span class="string">"group1").withSchedule(cronSchedule(<span class="string">"15 0/2 * * * ?")).build();&nbsp; </span></span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ft = sched.scheduleJob(job, trigger);&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(job.getKey() + <span class="string">" 已被安排执行于: " + sdf.format(ft) + <span class="string">"，并且以如下重复规则重复执行: "+ trigger.getCronExpression());&nbsp; </span></span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">// 开始执行，start()方法被调用后，计时器就开始工作，计时调度中允许放入N个Job&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sched.start();&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">try {&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">//主线程等待一分钟&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thread.sleep(60L * 1000L);&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <span class="keyword">catch (Exception e) {}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment">//关闭定时调度，定时器不再工作&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sched.shutdown(<span class="keyword">true);&nbsp; </span></li>
+<li>}&nbsp;</li>
+<li>&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp; <span class="keyword">public <span class="keyword">static <span class="keyword">void main(String[] args) <span class="keyword">throws Exception {&nbsp; </span></span></span></span></li>
+<li>&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Test test = <span class="keyword">new Test();&nbsp; </span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test.go();&nbsp;</li>
+<li>&nbsp;&nbsp;&nbsp; }&nbsp;</li>
+<li>&nbsp;</li>
+<li>}&nbsp;</li>
+</ol></div>
+<pre name="code" class="java">import static org.quartz.CronScheduleBuilder.cronSchedule;
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.TriggerBuilder.newTrigger;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.quartz.CronTrigger;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerFactory;
+import org.quartz.impl.StdSchedulerFactory;
+
+public class Test {
+    public void go() throws Exception {
+        // 首先，必需要取得一个Scheduler的引用
+      SchedulerFactory sf = new StdSchedulerFactory();
+        Scheduler sched = sf.getScheduler();
+        //jobs可以在scheduled的sched.start()方法前被调用
+        
+        //job 1将每隔20秒执行一次
+        JobDetail job = newJob(myJob.class).withIdentity("job1", "group1").build();
+        CronTrigger trigger = newTrigger().withIdentity("trigger1", "group1").withSchedule(cronSchedule("0/20 * * * * ?")).build();
+        Date ft = sched.scheduleJob(job, trigger);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
+        System.out.println(job.getKey() + " 已被安排执行于: " + sdf.format(ft) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
+
+        // job 2将每2分钟执行一次（在该分钟的第15秒)
+        job = newJob(myJob.class).withIdentity("job2", "group1").build();
+        trigger = newTrigger().withIdentity("trigger2", "group1").withSchedule(cronSchedule("15 0/2 * * * ?")).build();
+        ft = sched.scheduleJob(job, trigger);
+       System.out.println(job.getKey() + " 已被安排执行于: " + sdf.format(ft) + "，并且以如下重复规则重复执行: "+ trigger.getCronExpression());
+       
+        // 开始执行，start()方法被调用后，计时器就开始工作，计时调度中允许放入N个Job
+      sched.start();
+        try {
+            //主线程等待一分钟
+            Thread.sleep(60L * 1000L);
+        } catch (Exception e) {}	
+       //关闭定时调度，定时器不再工作
+       sched.shutdown(true);
+}
+
+    public static void main(String[] args) throws Exception {
+
+        Test test = new Test();
+        test.go();
+    }
+
+}</pre>
+<p>　　OK了，Job1和Job2就会被安排为定时执行了。此时程序是可以执行的了，但是可能会输出WARN级别日志，这是因为没有加log4j的配置文件，加上配置文件，就OK了。这里需要说明的地方只有一个，其它的可以直接Copy到您的项目里面。看代码：</p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="#"><img src="http://www.cnblogs.com/images/icon_copy.gif" alt="复制代码" /></a> <a title="收藏这段代码" href="javascript:void()"><img class="star" src="http://www.cnblogs.com/images/icon_star.png" alt="收藏代码" /><img class="spinner" style="display: none;" src="http://www.cnblogs.com/images/spinner.gif" alt="" /></a></div>
+</div>
+<ol class="dp-j">
+<li>CronTrigger trigger = newTrigger().withIdentity(<span class="string">"trigger1", <span class="string">"group1").withSchedule(cronSchedule(<span class="string">"0/20 * * * * ?")).build();&nbsp; </span></span></span></li>
+</ol></div>
+<pre name="code" class="java">CronTrigger trigger = newTrigger().withIdentity("trigger1", "group1").withSchedule(cronSchedule("0/20 * * * * ?")).build();</pre>
+<p><span style="font-size: 12px;">　　"0/20 * * * * ?"代表什么？这是关键，搞明白这个，Quartz就能帮助你解决大部分的定时执行任务的功能。详细解释请看下面转载见容</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #ff0000; font-size: 12px;">以上内容属&ldquo;世纪魔面&rdquo;原创，以下内容转载自<a href="http://www.blogjava.net/xmatthew/archive/2009/02/15/253864.html"><span style="color: #ff0000;">http://www.blogjava.net/xmatthew/archive/2009/02/15/253864.html</span></a></span></strong></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 12px;">CronTrigger配置格式:<br /><span style="font-size: 12px;">格式: [秒] [分] [小时] [日] [月] [周] [年]</span></span></p>
+<table style="margin: 2px; width: 500px; height: 111px;" border="0" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td><span style="font-size: 12px;"> 序号</span></td>
+<td><span style="font-size: 12px;">说明 </span></td>
+<td><span style="font-size: 12px;"> 是否必填</span></td>
+<td><span style="font-size: 12px;"> 允许填写的值</span></td>
+<td><span style="font-size: 12px;">允许的通配符 </span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 1</span></td>
+<td><span style="font-size: 12px;"> 秒</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 0-59 </span></td>
+<td><span style="font-size: 12px;"> , - * /</span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 2</span></td>
+<td><span style="font-size: 12px;"> 分</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 0-59 </span></td>
+<td><span style="font-size: 12px;"> , - * /</span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 3</span></td>
+<td><span style="font-size: 12px;">小时</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 0-23</span></td>
+<td><span style="font-size: 12px;"> , - * /</span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 4</span></td>
+<td><span style="font-size: 12px;"> 日</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 1-31</span></td>
+<td><span style="font-size: 12px;"> , - * ? / L W</span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 5</span></td>
+<td><span style="font-size: 12px;"> 月</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 1-12 or JAN-DEC</span></td>
+<td><span style="font-size: 12px;"> , - * /</span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 6</span></td>
+<td><span style="font-size: 12px;"> 周</span></td>
+<td><span style="font-size: 12px;"> 是</span></td>
+<td><span style="font-size: 12px;"> 1-7 or SUN-SAT</span></td>
+<td><span style="font-size: 12px;"> , - * ? / L # </span></td>
+
+</tr>
+<tr>
+<td><span style="font-size: 12px;"> 7</span></td>
+<td><span style="font-size: 12px;"> 年</span></td>
+<td><span style="font-size: 12px;"> 否</span></td>
+<td><span style="font-size: 12px;"> empty 或 1970-2099</span></td>
+<td><span style="font-size: 12px;"> , - * / </span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+<p><span style="font-size: 12px;">通配符说明: <span style="font-size: 12px;"><tt><strong><span style="color: red;"><tt><strong><tt><strong>*</strong></tt></strong></tt> </span></strong></tt>表示所有值. 例如:在分的字段上设置 "*",表示每一分钟都会触发。 <span style="font-size: 12px;"><tt><strong><span style="color: red;"><tt><strong>?</strong></tt></span></strong></tt> 表示不指定值。使用的场景为不需要关心当前设置这个字段的值。例如:要在每月的10号触发一个操作，但不关心是周几，所以需要周位置的那个字段设置为"?" 具体设置为 0 0 0 10 <span style="color: red;"><span style="color: red;">* ? <span style="font-size: 12px;"><tt><strong><span style="color: red;"><tt><strong><span style="color: red;">-</span></strong></tt></span></strong></tt> 表示区间。例如 在小时上设置 "10-12",表示 10,11,12点都会触发。 <span style="font-size: 12px;"><tt><strong><span style="color: red;">,</span></strong></tt> 表示指定多个值，例如在周字段上设置 "MON,WED,FRI" 表示周一，周三和周五触发 <span style="font-size: 12px;"><tt><strong><span style="color: red;"><tt><strong><tt><strong>/</strong></tt></strong></tt> </span></strong></tt>用于递增触发。如在秒上面设置"5/15" 表示从5秒开始，每增15秒触发(5,20,35,50)。 在月字段上设置'1/3'所示每月1号开始，每隔三天触发一次。 <span style="font-size: 12px;"><tt><strong><span style="color: red;">L</span></strong></tt> 表示最后的意思。在日字段设置上，表示当月的最后一天(依据当前月份，如果是二月还会依据是否是润年[leap]), 在周字段上表示星期六，相当于"7"或"SAT"。如果在"L"前加上数字，则表示该数据的最后一个。例如在周字段上设置"6L"这样的格式,则表示&ldquo;本月最后一个星期五"  <span style="font-size: 12px;"><tt><strong><span style="color: red;"><tt><strong>W</strong></tt></span></strong></tt> 表示离指定日期的最近那个工作日(周一至周五). 例如在日字段上设置"15W"，表示离每月15号最近的那个工作日触发。如果15号正好是周六，则找最近的周五(14号)触发, 如果15号是周未，则找最近的下周一(16号)触发.如果15号正好在工作日(周一至周五)，则就在该天触发。如果指定格式为 "1W",它则表示每月1号往后最近的工作日触发。如果1号正是周六，则将在3号下周一触发。(注，"W"前只能设置具体的数字,不允许区间"-").</span></span></span></span></span></span></span></span></span></span></p>
+<table class="tipMacro" style="width: 85%;" border="0" cellspacing="8" cellpadding="5">
+<tbody>
+<tr>
+<td><span style="font-size: 12px;">小提示</span></td>
+<td>
+<p><span style="font-size: 12px;">'L'和 'W'可以一组合使用。如果在日字段上设置"LW",则表示在本月的最后一个工作日触发(一般指发工资<img src="http://www.blogjava.net/CuteSoft_Client/CuteEditor/images/emteeth.gif" alt="" border="0" /> ) </span></p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+<p><span style="font-size: 12px;"><tt><strong><span style="color: red;">#</span></strong></tt> 序号(表示每月的第几个周几)，例如在周字段上设置"6#3"表示在每月的第三个周六.注意如果指定"#5",正好第五周没有周六，则不会触发该配置(用在母亲节和父亲节再合适不过了) </span></p>
+<table class="infoMacro" style="width: 85%;" border="0" cellspacing="8" cellpadding="5">
+<tbody>
+<tr>
+<td><span style="font-size: 12px;">小提示</span></td>
+<td>
+<p><span style="font-size: 12px;">周字段的设置，若使用英文字母是不区分大小写的 <tt>MON</tt> <tt>与mon相同</tt>.</span></p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+<p><span style="font-size: 12px;">常用示例:</span></p>
+<table class="confluenceTable">
+<tbody>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 0 12 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天12点触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 ? * *</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天10点15分触发 </span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 * * ? *</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天10点15分触发 </span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 * * ? 2005</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">2005年每天10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 * 14 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天下午的 2点到2点59分每分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 0/5 14 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天下午的 2点到2点59分(整点开始，每隔5分触发) </span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 0/5 14,18 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天下午的 2点到2点59分(整点开始，每隔5分触发) <span style="font-size: 12px;">每天下午的 18点到18点59分(整点开始，每隔5分触发)</span></span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 0-5 14 * * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每天下午的 2点到2点05分每分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 10,44 14 ? 3 WED</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">3月分每周三下午的 2点10分和2点44分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 ? * MON-FRI</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">从周一到周五每天上午的10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 15 * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每月15号上午10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 L * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每月最后一天的10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 ? * 6L</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每月最后一周的星期五的10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 ? * 6L 2002-2005</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">从2002年到2005年每月最后一周的星期五的10点15分触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 15 10 ? * 6#3</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每月的第三周的星期五开始触发</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 0 12 1/5 * ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每月的第一个中午开始每隔5天触发一次</span></td>
+
+</tr>
+<tr>
+<td class="confluenceTd"><span style="font-size: 12px;"><tt>0 11 11 11 11 ?</tt> </span></td>
+<td class="confluenceTd"><span style="font-size: 12px;">每年的11月11号 11点11分触发(光棍节)</span></td>
+
+</tr>
+
+</tbody>
+
+</table></div><div id="MySignature"></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info">
+        </div>
+        <div class="clear"></div>
+        <div id="post_next_prev"></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory"></li>
+        <li class="icon_bullet" id="EntryTag"></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=77090,cb_entryId=3822980,cb_blogApp=currentBlogApp,cb_blogUserGuid='ecd9c2bc-68c1-df11-ac81-842b2b196315',cb_entryCreatedDate='2014/7/3 18:21:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="/skins/Minyx2_Lite/images/btnsearch.gif" id="btnZzk"  class="submit" onclick="zzk_go();return false;"/>
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword" /></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            </div>
+            <div id="sideRight">
+            </div>
+            <div id="sideLeft">
+            </div>
+            
+                <div id="sideContainer">
+                </div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright &copy;2016 默念默
+</p>
+<p>
+<a href="http://www.cnblogs.com">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+</body>
+</html>

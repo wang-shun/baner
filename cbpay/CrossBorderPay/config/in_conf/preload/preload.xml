@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preloads>
+	<preload id="KeyMsgConfPreloader" type="preload" impl="com.ztkx.cbpay.container.preload.KeyMsgConfPreloader" sequence="1"/>
+	<preload id="ModulesConfPreloader" type="preload" impl="com.ztkx.cbpay.container.preload.ModulesConfPreloader" sequence="2"/>
+	<preload id="XmlFilePreloader" type="preload" impl="com.ztkx.cbpay.container.preload.XmlFilePreloader" sequence="3"/>
+</preloads>

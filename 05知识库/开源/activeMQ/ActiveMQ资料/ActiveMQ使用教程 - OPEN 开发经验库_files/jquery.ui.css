@@ -1,0 +1,189 @@
+.ui-helper-hidden {
+	DISPLAY: none
+}
+.ui-helper-hidden-accessible {
+	POSITION: absolute; LEFT: -1342177.28px
+}
+.ui-helper-reset {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.3; LIST-STYLE-TYPE: none; MARGIN: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 100%; BORDER-TOP: 0px; LIST-STYLE-IMAGE: none; BORDER-RIGHT: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+.ui-helper-clearfix:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; CONTENT: "."
+}
+.ui-helper-clearfix {
+	DISPLAY: inline-block
+}
+* HTML .ui-helper-clearfix {
+	HEIGHT: 1%
+}
+.ui-helper-clearfix {
+	DISPLAY: block
+}
+.ui-helper-zfix {
+	POSITION: absolute; FILTER: alpha(opacity=0); WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px; opacity: 0
+}
+.ui-state-disabled {
+	CURSOR: default !important
+}
+.ui-icon {
+	TEXT-INDENT: -99999px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; OVERFLOW: hidden
+}
+.ui-widget-overlay {
+	POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px
+}
+.ui-widget {
+	FONT-FAMILY: trebuchet ms, tahoma, verdana, arial, sans-serif; FONT-SIZE: 1.1em
+}
+.ui-widget .ui-widget {
+	FONT-SIZE: 1em
+}
+.ui-widget INPUT {
+	FONT-FAMILY: trebuchet ms, tahoma, verdana, arial, sans-serif; FONT-SIZE: 1em
+}
+.ui-widget SELECT {
+	FONT-FAMILY: trebuchet ms, tahoma, verdana, arial, sans-serif; FONT-SIZE: 1em
+}
+.ui-widget TEXTAREA {
+	FONT-FAMILY: trebuchet ms, tahoma, verdana, arial, sans-serif; FONT-SIZE: 1em
+}
+.ui-widget BUTTON {
+	FONT-FAMILY: trebuchet ms, tahoma, verdana, arial, sans-serif; FONT-SIZE: 1em
+}
+.ui-widget-content A {
+	COLOR: #333333
+}
+.ui-widget-header A {
+	COLOR: #ffffff
+}
+.ui-state-default A {
+	COLOR: #1c94c4; TEXT-DECORATION: none
+}
+.ui-state-default A:link {
+	COLOR: #1c94c4; TEXT-DECORATION: none
+}
+.ui-state-default A:visited {
+	COLOR: #1c94c4; TEXT-DECORATION: none
+}
+.ui-state-hover A {
+	COLOR: #c77405; TEXT-DECORATION: none
+}
+.ui-state-hover A:hover {
+	COLOR: #c77405; TEXT-DECORATION: none
+}
+.ui-state-active A {
+	COLOR: #eb8f00; TEXT-DECORATION: none
+}
+.ui-state-active A:link {
+	COLOR: #eb8f00; TEXT-DECORATION: none
+}
+.ui-state-active A:visited {
+	COLOR: #eb8f00; TEXT-DECORATION: none
+}
+.ui-widget :active {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: medium
+}
+.ui-state-highlight A {
+	COLOR: #363636
+}
+.ui-widget-content .ui-state-highlight A {
+	COLOR: #363636
+}
+.ui-state-error A {
+	COLOR: #ffffff
+}
+.ui-widget-content .ui-state-error A {
+	COLOR: #ffffff
+}
+.ui-state-error-text {
+	COLOR: #ffffff
+}
+.ui-widget-content .ui-state-error-text {
+	COLOR: #ffffff
+}
+.ui-priority-primary {
+	FONT-WEIGHT: bold
+}
+.ui-widget-content .ui-priority-primary {
+	FONT-WEIGHT: bold
+}
+.ui-priority-secondary {
+	FILTER: alpha(opacity=70); FONT-WEIGHT: normal; opacity: .7
+}
+.ui-widget-content .ui-priority-secondary {
+	FILTER: alpha(opacity=70); FONT-WEIGHT: normal; opacity: .7
+}
+.ui-state-disabled {
+	BACKGROUND-IMAGE: none; FILTER: alpha(opacity=35); opacity: .35
+}
+.ui-widget-content .ui-state-disabled {
+	BACKGROUND-IMAGE: none; FILTER: alpha(opacity=35); opacity: .35
+}
+.ui-corner-tl {
+	-moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px
+}
+.ui-corner-tr {
+	-moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px
+}
+.ui-corner-bl {
+	-moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px
+}
+.ui-corner-br {
+	-moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px
+}
+.ui-corner-top {
+	-moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px
+}
+.ui-corner-bottom {
+	-moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px
+}
+.ui-corner-right {
+	-moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px
+}
+.ui-corner-left {
+	-moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px
+}
+.ui-corner-all {
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px
+}
+.ui-widget-overlay {
+	FILTER: alpha(opacity=50); BACKGROUND: url(/images/ui/ui-bg_diagonals-thick_20_666666_40x40.png) #666666 50% 50%; opacity: .50
+}
+.ui-widget-shadow {
+	FILTER: alpha(opacity=20); PADDING-BOTTOM: 5px; MARGIN: -5px 0px 0px -5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: url(/images/ui/ui-bg_flat_10_000000_40x100.png) #000000 repeat-x 50% 50%; PADDING-TOP: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; opacity: .20
+}
+.ui-dialog {
+	BORDER-BOTTOM: #bde2ff 1px solid; POSITION: absolute; BORDER-LEFT: #bde2ff 1px solid; PADDING-BOTTOM: 0.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 0.2em; WIDTH: 300px; PADDING-RIGHT: 0.2em; OVERFLOW: hidden; BORDER-TOP: #bde2ff 1px solid; BORDER-RIGHT: #bde2ff 1px solid; PADDING-TOP: 0.2em
+}
+.ui-dialog .ui-dialog-titlebar {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #bde2ff; MARGIN: -3px; PADDING-LEFT: 1em; COLOR: #000; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0.5em
+}
+.ui-dialog .ui-dialog-title {
+	MARGIN: 0.1em 16px 0.2em 0px; FLOAT: left
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	POSITION: absolute; PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #bde2ff; MARGIN: -10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 19px; PADDING-RIGHT: 1px; HEIGHT: 18px; TOP: 50%; RIGHT: 0.3em; PADDING-TOP: 1px
+}
+.ui-dialog .ui-dialog-titlebar-close SPAN {
+	MARGIN: 1px; DISPLAY: block; COLOR: #ffffff
+}
+.ui-dialog .ui-dialog-titlebar-close:hover {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ui-dialog .ui-dialog-titlebar-close:focus {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ui-dialog .ui-dialog-content {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 0.5em; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; ZOOM: 1; BACKGROUND: none transparent scroll repeat 0% 0%; OVERFLOW: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0.5em
+}
+.ui-dialog .ui-dialog-buttonpane {
+	BACKGROUND-IMAGE: none; TEXT-ALIGN: left; PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: #ffffff; MARGIN: 0.5em 0px 0px; PADDING-LEFT: 0.4em; PADDING-RIGHT: 1em; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.3em
+}
+.ui-dialog .ui-dialog-buttonpane BUTTON {
+	PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.4em; MARGIN: 0.5em 0.4em 0.5em 0px; PADDING-LEFT: 0.6em; WIDTH: auto; PADDING-RIGHT: 0.6em; FLOAT: right; OVERFLOW: visible; CURSOR: pointer; PADDING-TOP: 0.2em
+}
+.ui-dialog .ui-resizable-se {
+	WIDTH: 14px; BOTTOM: 3px; HEIGHT: 14px; RIGHT: 3px
+}
+.ui-draggable .ui-dialog-titlebar {
+	CURSOR: move
+}

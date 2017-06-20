@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="UMB_SVR">
+	<include>UMB_SVR_1</include>
+	<field name="trancode" >
+		<format type="s" length="6"  />
+	</field>
+	<include>UMB_SVR_2</include>
+</formula>

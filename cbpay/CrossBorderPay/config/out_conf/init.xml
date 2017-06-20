@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<initial_obj>
+	<!--平台基础数据-->
+	<type id="dataInit" classes="com.ztkx.cbpay.container.initdata.DataInitFactory">
+		<initial id="ConfOprationData" type="init" impl="com.ztkx.cbpay.container.initdata.ConfOprationData"/>
+		<initial id="BTradeParamData" type="init" impl="com.ztkx.cbpay.business.initdata.BTradeParamData"/>
+		<initial id="ConfXmlFormateData" type="init" impl="com.ztkx.cbpay.container.initdata.ConfXmlFormateData"/>
+		<initial id="ServerInfoData" type="init" impl="com.ztkx.cbpay.container.initdata.ServerInfoData"/>
+		<initial id="ServicesAdapterData" type="init" impl="com.ztkx.cbpay.container.initdata.ServicesAdapterData"/>
+		<initial id="ProtocolData" type="init" impl="com.ztkx.cbpay.container.initdata.ProtocolData"/>
+		<initial id="ProtocolTypeData" type="init" impl="com.ztkx.cbpay.container.initdata.ProtocolTypeData"/>
+		<initial id="TranFromInfoData" type="init" impl="com.ztkx.cbpay.container.initdata.TranFromInfoData"/>
+		<initial id="ServerResCodeData" type="init" impl="com.ztkx.cbpay.container.initdata.ServerResCodeData"/>
+		<initial id="PlatDateParamData" type="init" impl="com.ztkx.cbpay.container.initdata.PlatDateParamData"/>
+		<initial id="PlatParamsData" type="init" impl="com.ztkx.cbpay.container.initdata.PlatParamsData"/>
+		<initial id="BServerParamData" type="init" impl="com.ztkx.cbpay.business.initdata.BServerParamData"/>
+		<initial id="PlatrescodedescData" type="init" impl="com.ztkx.cbpay.container.initdata.PlatrescodedescData"/>
+	</type>
+	<!--系统特殊处理-->
+	<type id="sysHandler" classes="com.ztkx.cbpay.container.system.SystemHandlerFactory">
+			<initial id="CBEC_SVR"  impl="com.ztkx.cbpay.business.system.handler.CBECSpecialHandler"/>
+			<initial id="UMB_SVR"  impl="com.ztkx.cbpay.business.system.handler.UMBSpecialHandler"/>
+			<initial id="PAB_SVR"  impl="com.ztkx.cbpay.business.system.handler.PABSpecialHandler"/>
+	</type>
+	<!--交易码特殊处理-->
+	<!--
+		<type id="identifyHandler" classes="com.ztkx.cbpay.container.msg.MessageIdentifyFactory">
+			<initial id="CBECIdentifier"  impl="com.ztkx.cbpay.business.identifyimp.CBECIdentifier"/>
+		</type>
+	-->
+	<!--加解密工具-->
+	<type id="enAndDecryptionTools" classes="com.ztkx.cbpay.container.enanddecryption.EnAndDecryptionFactory">
+		<initial id="CBEC_SVR"  impl="com.ztkx.cbpay.business.enanddecryption.handler.CBECEnAndDecryptHandler"/>
+	</type>
+</initial_obj>

@@ -1,0 +1,595 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://www.tuicool.com/articles/fMJ32eJ -->
+<!--
+ ______________ 
+< TUICOOL.COM >
+ -------------- 
+        \   ^__^
+         \  (**)\__$__$__
+            (__)\       )\/\
+             U  ||------|
+                ||     ||
+--><HTML><HEAD><META 
+content="IE=8.0000" http-equiv="X-UA-Compatible">
+<TITLE>ActiveMq生产者流量控制（Producer Flow Control）_驯咆贸祷_新浪博客 - 推酷</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=viewport content="width=device-width, initial-scale=1.0">
+<META name=csrf-param content=authenticity_token>
+<META name=csrf-token content=LrsquUhO7CwxitczgFtIC2G5hcdHv2LWoKJja2IYlFQ=>
+<META name=description 
+content=ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客><LINK 
+rel="shortcut icon" type=image/x-icon 
+href="http://static0.tuicool.com/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/application-f45ecdb2b2d75ba2b151c44458980876.css" 
+media=screen><LINK rel=stylesheet 
+href="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/font-awesome.min.css">
+<SCRIPT type=text/javascript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/application-8629c2105229c8b87cdabc146cce0272.js"></SCRIPT>
+<!--[if IE 7]>
+  <link rel="stylesheet" href="http://assets.tuicool.com/assets/font-awesome-ie7.min.css">
+  <![endif]-->
+<SCRIPT type=text/javascript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/tip.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/m.js"></SCRIPT>
+
+<SCRIPT 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/ds.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/spin.min.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/github.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<DIV id=header class=navbar-fixed-top>
+<DIV class=container>
+<DIV class=navbar>
+<DIV class=navbar-inner><A class="btn btn-navbar" data-target=".nav-collapse" 
+data-toggle="collapse"><SPAN class=icon-bar></SPAN><SPAN 
+class=icon-bar></SPAN><SPAN class=icon-bar></SPAN><SPAN 
+class=icon-bar></SPAN></A><A class=brand href="http://www.tuicool.com/">推酷</A> 
+<NAV class="nav-collapse collapse">
+<UL class="nav navbar primary-nav">
+  <LI class=active><A href="http://www.tuicool.com/ah">文章 </A></LI>
+  <LI><A href="http://www.tuicool.com/sites/hot">站点 </A></LI>
+  <LI><A href="http://www.tuicool.com/topics">主题 </A></LI>
+  <LI><A href="http://course.tuicool.com/">公开课 </A></LI>
+  <LI><A href="http://huodong.tuicool.com/">活动 </A></LI>
+  <LI><A href="http://www.tuicool.com/mobile">客户端 <SUP 
+  style="COLOR: #16a085; FONT-SIZE: 0.8em">荐</SUP> </A></LI>
+  <LI class="dropdown  "><A class=dropdown-toggle 
+  href="http://www.tuicool.com/articles/fMJ32eJ#" data-toggle="dropdown">周刊 <B 
+  class=caret></B></A>
+  <UL class=dropdown-menu>
+    <LI><A href="http://www.tuicool.com/mags">编程狂人</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/design">设计匠艺</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/startup">创业周刊</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/tech">科技周刊</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/guru">Guru Weekly</A></LI>
+    <LI><A 
+href="http://www.tuicool.com/articles/weekly">一周拾遗</A></LI></UL></LI></UL>
+<FORM class="navbar-search pull-left" 
+action=http://www.tuicool.com/search><INPUT class="search-query span2" type=text 
+name=kw placeholder="搜索"> </FORM>
+<UL class="nav pull-right">
+  <LI><A 
+href="http://www.tuicool.com/login">登录</A></LI></UL></NAV></DIV></DIV></DIV></DIV>
+<DIV id=flash_container class=noPrint></DIV>
+<DIV class=container-fluid>
+<DIV class="row-fluid article_row_fluid">
+<DIV class="span8 contant article_detail_bg">
+<H1>ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客</H1>
+<DIV class=article_meta>
+<DIV style="MARGIN-BOTTOM: 5px"><SPAN class=timestamp>时间&nbsp;2014-08-11 
+09:59:08 </SPAN><SPAN class=from><I class=icon-globe></I><A 
+class="cut cut28 from" href="http://www.tuicool.com/sites/6r6zya" 
+target=_blank>IT瘾 </A></SPAN></DIV>
+<DIV class=source><I style="FLOAT: left">原文</I>&nbsp; <A 
+style="DISPLAY: inline-block" class="cut cut70" 
+href="http://blog.sina.com.cn/s/blog_9238169201013cqy.html?utm_source=tuicool&amp;utm_medium=referral">http://blog.sina.com.cn/s/blog_9238169201013cqy.html?utm_source=tuicool&amp;utm_medium=referral</A> 
+</DIV>
+<DIV><SPAN>主题</SPAN> <A href="http://www.tuicool.com/topics/11070022" 
+target=_blank><SPAN class=new-label>ActiveMQ</SPAN> </A><A 
+href="http://www.tuicool.com/topics/11000065" target=_blank><SPAN 
+class=new-label>Nosql</SPAN> </A></DIV></DIV>
+<DIV id=nei class=article_body>
+<DIV>
+<P><SPAN>最近学习ActiveMq，昨日查看其配置文件activemq.xml的时候，被一行注释引到了http://activemq.apache.org/producer-flow-control.html页面，感觉挺有用，遂翻译之保存成文。作为自己的第一篇译作，必有诸多不妥之处，故附上原文作对照，欢迎拍砖。</SPAN> 
+</P>
+<H2>Producer Flow Control <STRONG><SPAN>生产者流量控制</SPAN> </STRONG></H2>
+<P>In ActiveMQ 4.x flow control was implemented using TCP flow control. The 
+underlying network connection of throttled consumers was suspended to enforce 
+flow control limits. This strategy is very efficient but can lead to deadlocks 
+if there are multiple producers and consumers sharing the same connection.</P>
+<P><SPAN><SPAN>在ActiveMQ 
+4.x版本中，流量控制是用TCP流量控制实现的。受节制的消费者底层的网络连接被挂起，以强制进行流量控制限制。这个策略非常高效，但是如果有多个生产者和消费者共享同一个连接的时候，可能会导致死锁。</SPAN> 
+</SPAN></P>
+<P>As of ActiveMQ 5.0, we can now individually flow control each producer on a 
+shared connection without having to suspend the entire connection. By 'flow 
+control' we mean that if the broker detects that the memory limit for the 
+destination, or the temp- or file-store limits for the broker, have been 
+exceeded, then the flow of messages can be slowed down. The producer will be 
+either blocked until resources are available <EM>or</EM> &nbsp; will receive a 
+JMSException: this behaviour is configurable and described in the section below 
+on&nbsp; <TT>&lt;systemUsage&gt;</TT> . </P>
+<P><SPAN><SPAN>&nbsp;在ActiveMQ5.0版本中，我们可以分别对一个共享连接上的各个生产者进行流量控制，而不需要挂起整个连接。“流量控制”意味着当代理(broker)检测到目标(destination)的内存，或temp-或file-store超过了限制，消息的流量可以被减慢。生产者将会被阻塞直至资源可用，或者收到一个JMSException异常：这种行为是可配置的，下面的</SPAN> 
+<SPAN>&lt;systemUsage&gt;</SPAN> <SPAN>章节会描述到。</SPAN> </SPAN></P>
+<P>It's worth noting that the default <TT>&lt;systemUsage&gt;</TT> &nbsp; 
+settings will cause the producer to&nbsp; <EM>block</EM> &nbsp; when the&nbsp; 
+<TT>memoryLimit</TT> &nbsp; or&nbsp; <TT>&lt;systemUsage&gt;</TT> &nbsp; limits 
+are reached: this blocking behaviour is sometimes misinterpreted as a 'hung 
+producer', when in fact the producer is simply diligently waiting until space is 
+available. </P>
+<DIV>
+<P><SPAN>值得注意的是，当内存限制或&lt;systemUsage&gt;限制达到的时候，&lt;systemUsage&gt;默认的设置会引起生产值阻塞：这种阻塞行为有时会被误解为“挂起的生产者”，而事实是生产者只是勤奋地等着空间可用。</SPAN> 
+</P></DIV>
+<UL>
+  <LI>Messages that are sent synchronously will automatically use per producer 
+  flow control; this applies generally to persistent messages which are sent 
+  synchronously&nbsp; <EM>unless</EM> &nbsp; you enable the&nbsp; 
+  <TT>useAsyncSend</TT> &nbsp; flag. </LI>
+  <LI><SPAN><SPAN>同步发送的消息将会自动</SPAN> <SPAN>对每一个</SPAN> 
+  <SPAN>生产者使用流量控制；除非你使能了useAsyncSend标志，否则这将对同步发送的持久化消息都适用。</SPAN> 
+  </SPAN><BR></LI></UL>
+<UL>
+  <LI>Producers that use&nbsp; Async Sends&nbsp; - generally speaking, producers 
+  of non-persistent messages - don't bother waiting for any acknowledgement from 
+  the broker; so, if a memory limit has been exceeded, you will&nbsp; 
+  <EM>not</EM> &nbsp; get notfied. If you do want to be aware of broker limits 
+  being exceeded, you will need to configure the ProducerWindowSize connection 
+  option so that even async messages are flow controlled per producer. </LI>
+  <LI><SPAN><SPAN>使用异步发送的生产者 ——&nbsp;一般来说，就是发送非持久化消息的生产者 —— 
+  不需要等候来自代理的任何确认消息；所以，如果内存限制被超过了，你不会被通知。如果你真的想什么时候代理的限制被超过了，你需要配置ProducerWindowSize这一连接选项，这样就算是异步消息也会对每一个生产者进行流量控制。</SPAN> 
+  </SPAN><BR></LI></UL>
+<DIV><PRE class=prettyprint>ActiveMQConnectionFactor<WBR>y connctionFactory = ...connctionFactory.setProducerWindowSize(1024000);</PRE></DIV>
+<P>The ProducerWindowSize is the maximum number of bytes of data that a producer 
+will transmit to a broker before waiting for acknowledgment messages from the 
+broker that it has accepted the previously sent messages.</P>
+<P><SPAN><SPAN>ProducerWindowSize是一个生产者在等到确认消息之前，可以发送给代理的数据的最大byte数，这个确认消息用来告诉生产者，代理已经收到先前发送的消息了。</SPAN> 
+</SPAN></P>
+<P>Alternatively, if you're sending non-persisted messages (which are by default 
+sent async), and want to be informed if the queue or topic's memory limit has 
+been breached, then you can simply configure the connection factory to 
+'alwaysSyncSend'. While this is going to be slower, it will ensure that your 
+message producer is informed immediately of memory issues.</P>
+<P><SPAN><SPAN>或者，如果你要发送非持久化的消息（该消息默认是异步发送的），并且想要得到队列或者主题的内存限制是否达到，你只需将连接工厂配置为“alwaysSyncSend”。虽然这样会变得稍微慢一点，但是这将保证当出现内存问题时，你的消息生产者能够及时得到通知。</SPAN> 
+</SPAN></P>
+<P>If you like, you can disable flow control for specific JMS queues and topics 
+on the broker by setting the <TT>producerFlowControl</TT> &nbsp; flag to false 
+on the appropriate destination policy in the Broker configuration - e.g. </P>
+<P><SPAN><SPAN>如果你喜欢，你可以通过在代理的配置中，将适当的目的地（destination）的策略（policy）中的producerFlowControl标志设置为false，使代理上特定的JMS队列和主题无效，例如：</SPAN> 
+</SPAN></P>
+<DIV><PRE class=prettyprint><SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;destinationPolicy&gt;</SPAN>  <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;policyMap&gt;</SPAN>    <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;policyEntries&gt;</SPAN>      <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;policyEntry topic=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"FOO.&gt;</SPAN>"</SPAN> producerFlowControl=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"false"</SPAN>/&gt;    <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;/policyEntries&gt;</SPAN>  <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;/policyMap&gt;</SPAN><SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;/destinationPolicy&gt;</SPAN></PRE></DIV>
+<P>seeBroker Configuration.</P>
+<DIV>
+<P><STRONG><SPAN>详情请看&nbsp;</SPAN> <SPAN>代理设置</SPAN> <SPAN>&nbsp;部分。</SPAN> 
+</STRONG></P></DIV>
+<P>Note that, since the introduction of the new file cursor in ActiveMQ 5.x, 
+non-persisted messages are shunted into the temporary file store to reduce the 
+amount of memory used for non-persistent messaging. As a result, you may find 
+that a queue's memoryLimit is never reached, as the cursor doesn't use very much 
+memory. If you really do want to keep all your non-persistent messages in 
+memory, and stop producers when the limit is reached, you should configure the 
+<TT>&lt;vmQueueCursor&gt;</TT> . </P>
+<P><SPAN><SPAN>注意，自从ActiveMQ 
+5.x中引入新的文件游标之后，非持久化消息被分流到了临时文件存储中，以此来减少非持久化消息传送使用的内存总量。结果就是，你可能会发现一个队列的内存限制永远达不到，因为游标不需要使用太多的内存。如果你真的想把所有的非持久化消息存放在内存中，并在达到内存限制的时候停掉生产者，你需要配置&lt;vmQueueCursor&gt;。</SPAN> 
+</SPAN></P>
+<DIV><PRE class=prettyprint><SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;policyEntry queue=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"&gt;</SPAN>"</SPAN> producerFlowControl=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"true"</SPAN> memoryLimit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"1mb"</SPAN>&gt;      <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;pendingQueuePolicy&gt;</SPAN>    <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;vmQueueCursor/&gt;</SPAN>  <SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;/pendingQueuePolicy&gt;</SPAN><SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">&lt;/policyEntry&gt;</SPAN></PRE></DIV>
+<P>The fragment above will ensure that all non-persistent queue messages are 
+kept in memory, with each queue having a limit of 1Mb.</P>
+<P><SPAN><STRONG>上面的片段可以保证所有的非持久化队列消息都保存在内存中，每一个队列的内存限制为1Mb。</STRONG> 
+</SPAN></P>
+<H3>How Producer Flow Control works生产者流量控制是如何工作的</H3>
+<P>If you are sending a persistent message (so that a response of 
+theOpenWire&nbsp;Message is expected then the broker will send the producer 
+aProducerAck&nbsp;message. This informs the producer that the previous sending 
+window has been processed, so that it can now send another window. Its kinda 
+like consumer acks but in reverse.</P>
+<P><SPAN><SPAN>如果你发送一条持久化消息（这样就会有一个对&nbsp;</SPAN> OpenWire <SPAN>&nbsp;</SPAN> 
+<SPAN>响应消息的期望），代理将会给生产者发送一个应答消息。该消息会通知生产者其先前的发送窗口已经被处理了，所以它现在可以发送另外的窗口了。这有点像消费者应答，不过是反向的。</SPAN> 
+</SPAN></P>
+<H4>Advantage 优势</H4>
+<P>So a nice producer might wait for a producer ack before sending more data, to 
+avoid flooding the broker (and forcing the broker to block the entire connection 
+if a slow consumer occurs). To see how this works in source code, check out 
+theActiveMQMessageProducer&nbsp;code.</P>
+<P><SPAN><SPAN>所以，一个友好的生产者可以再发送更多的数据之前，等待生产者应答，以此来避免对代理的冲击（并且如果出现了一个比较慢的消费者，强制代理阻塞整个连接）。如果你想知道这部分的源代码是怎么实现的，可以看一下</SPAN> 
+<SPAN>&nbsp;</SPAN> ActiveMQMessageProducer <SPAN>&nbsp;的代码。</SPAN> </SPAN></P>
+<P>Though a client can ignore the producer ACKs altogether and the broker should 
+just stall the transport if it has to for slow consumer handling; though this 
+does mean it'll stall the entire connection.</P>
+<P><SPAN><SPAN>然而一个客户端可以完全忽略生产者的应答消息，并且处理慢消费者的时候，代理可以在需要的时候拖延传送；虽然这意味着它将拖延整个连接。</SPAN> 
+</SPAN></P>
+<H3>Configure Client-Side Exceptions配置客户端的异常</H3>
+<P>An alternative to the indefinite blocking of the <TT>send()</TT> &nbsp; 
+operation when no space is free on the broker is to instead configure that an 
+exception to be thrown on the client-side. By configuring the&nbsp; 
+<TT>sendFailIfNoSpace</TT> &nbsp; property to&nbsp; <TT>true</TT> , the broker 
+will cause the&nbsp; <TT>send()</TT> &nbsp; operation to fail with a 
+<TT>javax.jms.ResourceAllocationException</TT> , which will propagate to the 
+client. Below is an example of this configuration: </P>
+<P><SPAN><SPAN>应对代理空间不足，而导致</SPAN> <SPAN>不确定的阻塞 send()操作的一种替代方案，</SPAN> 
+<SPAN>就是将其配置成客户端抛出的一个异常。通过将sendFailIfNoSpace属性设置为true，代理将会引起send()方法失败，并抛出</SPAN> 
+<SPAN>javax.jms.ResourceAllocationException异常，传播到客户端。</SPAN> 
+<SPAN>下面是一个配置的示例：</SPAN> </SPAN></P>
+<DIV><PRE class=prettyprint>&lt;systemUsage&gt; &lt;systemUsage sendFailIfNoSpace=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,0,145)">true</SPAN>"</SPAN>&gt;   &lt;memoryUsage&gt;     &lt;memoryUsage limit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"20 mb"</SPAN>/&gt;   &lt;/memoryUsage&gt; &lt;/systemUsage&gt;&lt;/systemUsage&gt;</PRE></DIV>
+<P>The advantage of this property is that the client can catch the 
+<TT>javax.jms.ResourceAllocationException</TT> , wait a bit and retry the&nbsp; 
+<TT>send()</TT> &nbsp; operation instead of just hanging indefinitely. </P>
+<P><SPAN><SPAN>这个属性的好处是，客户端可以捕获</SPAN> 
+<SPAN>javax.jms.ResourceAllocationException异常，稍等一下，并重试send()操作，而不是无限期地傻等下去。</SPAN> 
+</SPAN></P>
+<P>Starting in version 5.3.1 the <TT>sendFailIfNoSpaceAfterTimeout</TT> &nbsp; 
+property has been added. This property causes the&nbsp; <TT>send()</TT> &nbsp; 
+operation to fail with an exception on the client-side, but only after waiting 
+the given amount of time. If space on the broker is still not freed after the 
+configured amount of time, only then does the&nbsp; <TT>send()</TT> &nbsp; 
+operation fail with an exception to the client-side. Below is an example: </P>
+<P><SPAN><SPAN>&nbsp;从5.3.1版本之后，</SPAN> <TT>sendFailIfNoSpaceAfterTimeout</TT> 
+<SPAN>&nbsp;属性被加了进来。</SPAN> 
+<SPAN>这个属性同样导致send()方法失败，并在客户端抛出异常，但仅当等待了指定时间之后才触发。如果在配置的等待时间过去之后，代理上的空间仍然没有被释放，仅当这个时候send()方法才会失败，并且在客户端抛出异常。下面是一个示例：</SPAN> 
+</SPAN></P>
+<DIV><PRE class=prettyprint>&lt;systemUsage&gt; &lt;systemUsage sendFailIfNoSpaceAfterTi<WBR>meout=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"3000"</SPAN>&gt;   &lt;memoryUsage&gt;     &lt;memoryUsage limit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"20 mb"</SPAN>/&gt;   &lt;/memoryUsage&gt; &lt;/systemUsage&gt;&lt;/systemUsage&gt;</PRE></DIV>
+<P>The timeout is defined in milliseconds so the example above waits for three 
+seconds before failing the <TT>send()</TT> &nbsp; operation with an exception to 
+the client-side. The advantage of this property is that it will block for the 
+configured amount of time instead of failing immediately or blocking 
+indefinitely. This property offers not only an improvement on the broker-side, 
+but also an improvement for the client so it can catch the exception, wait a bit 
+and retry the&nbsp; <TT>send()</TT> &nbsp; operation. </P>
+<P><SPAN><SPAN>定义超时的单位是毫秒，所以上面的例子将会在使send()方法失败并对客户端抛出异常之前，等待三秒。这个属性的优点是，它仅仅阻塞配置指定的时间，而不是立即另发送失败，或者无限期阻塞。这个属性不仅在代理端提供了一个改进，还对客户端提供了一个改进，使得客户端能捕获异常，等待一下并重试send()操作。</SPAN> 
+</SPAN></P>
+<H2>Disabling Flow Control使流量控制无效</H2>
+<P>A common requirement is to disable flow control so that message dispatching 
+continues until all available disk is used up by pending messages (whether 
+persistent or non persistent messaging is configured). To do this enableMessage 
+Cursors.</P>
+<P><SPAN><SPAN>一个普遍的需求是使流量控制无效，使得消息分发能够持续，直到所有可用的磁盘被挂起(pending)的消息耗尽（无论是持久化的还是配置了非持久化的）。要这样做，你可以使用消息游标（</SPAN> 
+Message Cursors <SPAN>）。</SPAN> </SPAN></P>
+<H2>System usage系统占用</H2>
+<P>You can also slow down producers via some attributes on the 
+<TT>&lt;systemUsage&gt;</TT> &nbsp; element. Take a look at the following 
+example: </P>
+<DIV>
+<P><STRONG>你还可以通过&lt;systemUsage&gt;元素的一些属性来减慢生产者。来看一眼下面的例子：</STRONG> </P></DIV>
+<DIV><PRE class=prettyprint>&lt;systemUsage&gt;  &lt;systemUsage&gt;    &lt;memoryUsage&gt;      &lt;memoryUsage limit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"64 mb"</SPAN> /&gt;    &lt;/memoryUsage&gt;    &lt;storeUsage&gt;      &lt;storeUsage limit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"100 gb"</SPAN> /&gt;    &lt;/storeUsage&gt;    &lt;tempUsage&gt;      &lt;tempUsage limit=<SPAN style="BACKGROUND-COLOR: inherit; COLOR: rgb(0,145,0)">"10 gb"</SPAN> /&gt;    &lt;/tempUsage&gt;  &lt;/systemUsage&gt;&lt;/systemUsage&gt;</PRE></DIV>
+<P>You can set limits of memory for <TT>NON_PERSISTENT</TT> &nbsp; messages, 
+disk storage for&nbsp; <TT>PERSITENT</TT> &nbsp; messages and total usage for 
+temporary messages, the broker will use before it slowdown producers.&nbsp; 
+<EM>Using the default settings shown above, the broker will block the&nbsp; 
+<TT>send()</TT> &nbsp; call until some messages are consumed and space becomes 
+available on the broker. </EM>&nbsp; The default values are shown above, you 
+will probably need to increase these values for your environment. </P>
+<P><SPAN><SPAN>你可以为非持久化的消息（</SPAN> <TT>NON_PERSISTENT</TT> <SPAN>&nbsp; 
+messages）设置内存限制，为持久化消息（ <TT>PERSISTENT</TT> &nbsp; 
+messages）设置磁盘空间，以及为临时消息设置总的空间，代理将在减慢生产者之前使用这些空间。使用上述的默认设置，代理将会一直阻塞sen()方法的调用，直至一些消息被消费，并且代理有了可用空间。默认值如上例所述，你可能需要根据你的环境增加这些值。 
+</SPAN></SPAN></P>
+<P><A href="http://azlxa2m.blog.sohu.com/216857128.html" rel=nofollow,noindex 
+target=_blank>C#设置DataGridView控件的标题行的高度并且居中显示</A> </P></DIV></DIV>
+<DIV class=article_social>
+<DIV class=article_like>
+<DIV id=my_zan class="circle circle-like" data_id="fMJ32eJ"></DIV></DIV>
+<DIV id=share_weixin_image><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/qrcode.png" 
+width=100 height=100> </DIV>
+<DIV class=article_share_fav>
+<DIV id=ckepop class=share><SPAN>分享</SPAN><BUTTON id=share_weibo_id 
+class=share_weibo title=分享到新浪微博 type=submit></BUTTON><BUTTON id=share_qq_id 
+class=share_qq title=分享到QQ空间 type=submit></BUTTON><BUTTON id=share_weixin_id 
+class=share_weixin type=submit></BUTTON> </DIV>
+<DIV class=fav_correct><BUTTON id=my_fav type=submit data_id="fMJ32eJ"><I 
+class="icon icon-star-empty"></I><SPAN id=fav_tip>收藏</SPAN></BUTTON><BUTTON 
+id=article-correct type=submit data_id="fMJ32eJ"><I 
+class="icon icon-warning-sign"></I><SPAN>纠错</SPAN></BUTTON> </DIV></DIV>
+<SCRIPT type=text/javascript>
+$("#share_weibo_id").click( function() {
+   window.open("http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=http://www.tuicool.com/articles/fMJ32eJ&title=ActiveMq%E7%94%9F%E4%BA%A7%E8%80%85%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%EF%BC%88Producer%C2%A0Flow%C2%A0Control%EF%BC%89_%E9%A9%AF%E5%92%86%E8%B4%B8%E7%A5%B7_%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2++%28%E5%88%86%E4%BA%AB%E8%87%AA+%40%E6%8E%A8%E9%85%B7%E7%BD%91%29&key=3113829255");
+});
+$("#share_qq_id").click( function() {
+   window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.tuicool.com/articles/fMJ32eJ&title=ActiveMq%E7%94%9F%E4%BA%A7%E8%80%85%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%EF%BC%88Producer%C2%A0Flow%C2%A0Control%EF%BC%89_%E9%A9%AF%E5%92%86%E8%B4%B8%E7%A5%B7_%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2&desc=&summary=&site=");
+});
+$("#share_weixin_id").click( function() {
+  $("#share_weixin_image").toggle();
+});
+</SCRIPT>
+
+<DIV class="bottom_ad huodong-detail-ad-banner clearfix">
+<SCRIPT type=text/javascript>
+    var cpro_id = "u1665123";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/c.js"></SCRIPT>
+</DIV></DIV>
+<DIV style="CLEAR: both" id=site_articles>
+<DIV class=article-part-title><SPAN>推荐文章</SPAN> </DIV>
+<UL class=side_article_list>
+  <LI class=side_article_list_item>1.<A title="ElasticSearch 运维" 
+  href="http://www.tuicool.com/articles/maQBFb" target=_blank> ElasticSearch 运维 
+  </A></LI>
+  <LI class=side_article_list_item>2.<A title=AWS系列：Dynamodb深度体验（1） 
+  href="http://www.tuicool.com/articles/Rb226rY" target=_blank> 
+  AWS系列：Dynamodb深度体验（1） </A></LI>
+  <LI class=side_article_list_item>3.<A 
+  title="HBase RegionServer无法正常启动，META元数据信息无法分配，导致整个集群无法使用【断电重启后】" 
+  href="http://www.tuicool.com/articles/E7FFNfa" target=_blank> HBase 
+  RegionServer无法正常启动，META元数据信息无法分配，导致整.. </A></LI>
+  <LI class=side_article_list_item>4.<A title="每日一博｜tns cluster 简介" 
+  href="http://www.tuicool.com/articles/VJZfIr2" target=_blank> 每日一博｜tns cluster 
+  简介 </A></LI>
+  <LI class=side_article_list_item>5.<A title=关于淘点点面试中碰到的架构问题​ 
+  href="http://www.tuicool.com/articles/JjyyInJ" target=_blank> 关于淘点点面试中碰到的架构问题​ 
+  </A></LI>
+  <LI class=side_article_list_item>6.<A title=大数据：可扩展实时数据系统原理与最佳实践——1.6全增量架构的问题 
+  href="http://www.tuicool.com/articles/a6bqAfz" target=_blank> 
+  大数据：可扩展实时数据系统原理与最佳实践——1.6全增量架构的问题 </A></LI></UL></DIV>
+<DIV id=kan_articles></DIV>
+<DIV style="DISPLAY: none" id=article_weibo>
+<DIV class=article-part-title><SPAN>相关微博</SPAN> <SUB><A 
+href="http://www.tuicool.com/articles/weibo_list/fMJ32eJ" target=_blank>(<I 
+id=weibo_num></I>)</A> </SUB></DIV>
+<DIV class=related-weibo-list></DIV></DIV>
+<DIV class=comments>
+<DIV class=comments-area>
+<DIV class=comments-header>
+<H5>我来评几句</H5>
+<DIV style="DISPLAY: none" class="alert comment-alert alert-error">错误 </DIV><TEXTAREA style="resize: none" id=comment-body rows=5 cols=60 placeholder="请输入评论内容..."></TEXTAREA> 
+<SPAN id=comment-submit class="btn btn-medium btn-submit">登录后评论</SPAN> 
+<P style="MARGIN-TOP: 5px; MARGIN-LEFT: 10px">已发表评论数(<SPAN 
+class=comment_cnt></SPAN>) </P></DIV>
+<DIV class=comments-list>
+<DIV style="DISPLAY: none" class="empty-cmts alert alert-success">没有更多评论了^^ 
+</DIV></DIV>
+<DIV style="DISPLAY: none" class=more-comments><A 
+href="http://www.tuicool.com/articles/">更多评论</A> </DIV>
+<DIV style="DISPLAY: none" class=load-fail>评论加载失败，<A 
+href="javascript:reload_comments('fMJ32eJ',1,0,-1);">重新加载</A> 
+</DIV></DIV></DIV></DIV>
+<DIV class="span4 article_right_side">
+<DIV class=right_top>
+<DIV class="article_related_site article_detail_bg">
+<H4 class=article-part-title>相关站点</H4>
+<DIV class="article_related_site_body clearfix">
+<DIV class=logo><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/6r6zya.png"> 
+</DIV>
+<DIV class=name>
+<DIV><A href="http://www.tuicool.com/sites/6r6zya" target=_blank>IT瘾</A> </DIV>
+<DIV><INPUT id=my_follow class="btn btn-success right_site_follow" value=+&nbsp;订阅 type=button data_id="6r6zya"> 
+</DIV></DIV></DIV></DIV>
+<DIV class=right-ad><A href="http://home.leangoo.com/?f=tc" target=_blank><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/leangoo300.jpg"></A> 
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad><A 
+href="http://yacebao.com/?utm_source=web&amp;utm_medium=banner&amp;utm_campaign=tuicool" 
+target=_blank><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/yunzhihui300.jpg"></A> 
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad><A 
+href="https://www.teambition.com/?utm_source=tuicool&amp;utm_medium=banner01" 
+target=_blank><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/teambition300.jpg"></A> 
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad><A 
+href="http://click.aliyun.com/m/3403/" target=_blank><IMG 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/aliyun300.jpg"></A> 
+</DIV>
+<DIV id=right_site_articles class=article_detail_bg>
+<DIV class=article-part-title><SPAN>热门文章</SPAN> </DIV>
+<UL class=side_article_list>
+  <LI class=side_article_list_item>1.<A title="ElasticSearch 运维" 
+  href="http://www.tuicool.com/articles/maQBFb" target=_blank> ElasticSearch 运维 
+  </A></LI>
+  <LI class=side_article_list_item>2.<A title=AWS系列：Dynamodb深度体验（1） 
+  href="http://www.tuicool.com/articles/Rb226rY" target=_blank> 
+  AWS系列：Dynamodb深度体验（1） </A></LI>
+  <LI class=side_article_list_item>3.<A 
+  title="HBase RegionServer无法正常启动，META元数据信息无法分配，导致整个集群无法使用【断电重启后】" 
+  href="http://www.tuicool.com/articles/E7FFNfa" target=_blank> HBase 
+  RegionServer无法正常启动，META元数据信息无法分配，导致整个集群无法.. </A></LI>
+  <LI class=side_article_list_item>4.<A title="每日一博｜tns cluster 简介" 
+  href="http://www.tuicool.com/articles/VJZfIr2" target=_blank> 每日一博｜tns cluster 
+  简介 </A></LI>
+  <LI class=side_article_list_item>5.<A title=关于淘点点面试中碰到的架构问题​ 
+  href="http://www.tuicool.com/articles/JjyyInJ" target=_blank> 关于淘点点面试中碰到的架构问题​ 
+  </A></LI>
+  <LI class=side_article_list_item>6.<A title="Mongodb 教程" 
+  href="http://www.tuicool.com/articles/nA3qIbF" target=_blank> Mongodb 教程 
+  </A></LI></UL></DIV></DIV>
+<DIV class=operate_zone>
+<DIV class="container-body share-body">
+<DIV class=article-part-title><SPAN>分享本文</SPAN> </DIV>
+<DIV class=share_zone>
+<DIV class=bdsharebuttonbox><A class=bds_tsina title=分享到新浪微博 
+href="http://www.tuicool.com/articles/fMJ32eJ#" data-cmd="tsina"></A><A 
+class=bds_qzone title=分享到QQ空间 href="http://www.tuicool.com/articles/fMJ32eJ#" 
+data-cmd="qzone"></A><A class=bds_tqq title=分享到腾讯微博 
+href="http://www.tuicool.com/articles/fMJ32eJ#" data-cmd="tqq"></A><A 
+class=bds_renren title=分享到人人网 href="http://www.tuicool.com/articles/fMJ32eJ#" 
+data-cmd="renren"></A><A class=bds_weixin title=分享到微信 
+href="http://www.tuicool.com/articles/fMJ32eJ#" data-cmd="weixin"></A><A 
+class=bds_more href="http://www.tuicool.com/articles/fMJ32eJ#" 
+data-cmd="more"></A></DIV>
+<SCRIPT>
+        window._bd_share_config = {
+            "common" : {
+                "bdSnsKey" : {
+                    "tsina" : "3113829255",
+                    "tqq" : "801536792"
+                },
+                "bdText" : "ActiveMq生产者流量控制（Producer Flow Control）_驯咆贸祷_新浪博客 (分享自 @推酷网)",
+                "bdMini" : "2",
+                "bdMiniList" : false,
+                "bdPic" : "",
+                "bdStyle" : "1",
+                "bdSize" : "24"
+            },
+            "share" : {}
+        };
+        with (document)
+        0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </SCRIPT>
+</DIV></DIV>
+<DIV class=frd_pos>
+<SCRIPT 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/f.txt" 
+async></SCRIPT>
+<INS style="WIDTH: 300px; DISPLAY: inline-block; HEIGHT: 250px" 
+class=adsbygoogle data-ad-slot="5705695566" 
+data-ad-client="ca-pub-7054762349007490"></INS>
+<SCRIPT>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</SCRIPT>
+</DIV></DIV></DIV></DIV>
+<DIV class=read-later-alert></DIV>
+<DIV><A style="DISPLAY: none" id=add-article-to-kan-btn class=btn 
+href="http://www.tuicool.com/articles/fMJ32eJ#add-article-to-kan" 
+data-toggle="modal">添加到推刊</A> <!-- add_article to kan -->
+<DIV aria-hidden=true id=add-article-to-kan class="modal hide fade" role=dialog 
+tabIndex=-1 aria-labelledby=myModalLabel>
+<DIV class=modal-header><SPAN class=add-title>收藏到推刊</SPAN> <A 
+class="btn pull-right" href="http://www.tuicool.com/articles/fMJ32eJ#new-kan" 
+data-toggle="modal">创建推刊</A> <I class=clearfix></I></DIV>
+<DIV class=modal-body>
+<UL id=add-kan-list></UL></DIV>
+<DIV class=modal-footer><INPUT class=article-id value=fMJ32eJ 
+type=hidden><BUTTON class="btn btn-primary pull-left add-to-btn" type=submit>收 
+藏</BUTTON><BUTTON aria-hidden=true class=btn type=submit 
+data-dismiss="modal">取消</BUTTON> </DIV></DIV>
+<DIV class=add-article-to-kan-alert>已收藏到推刊！ </DIV>
+<DIV aria-hidden=true id=new-kan class="modal hide fade" role=dialog tabIndex=-1 
+aria-labelledby=myModalLabel>
+<DIV class=modal-body><INPUT id=new-kan-name type=text name=name 
+placeholder="推刊名(必填)" data-validation-required-message="请填写推刊名" required> <SPAN 
+class=new-ness-name>请填写推刊名</SPAN> <BR><TEXTAREA id=desc rows=6 name=desc placeholder="推刊描述"></TEXTAREA> <SPAN 
+class=new-ness-desc>描述不能大于100个字符!</SPAN> <BR>权限设置：<INPUT value=1 CHECKED 
+type=radio name=type> 公开 <INPUT value=0 type=radio name=type> 仅自己可见 </DIV>
+<DIV class=modal-footer><BUTTON class="btn btn-primary pull-left create-kan-btn" 
+disabled type=submit>创建</BUTTON><BUTTON aria-hidden=true 
+class="btn dismiss-new-kan" type=submit data-dismiss="modal">取消</BUTTON> 
+</DIV></DIV></DIV>
+<DIV aria-hidden=false id=article-correct-modal class="modal hide fade in" 
+role=dialog tabIndex=-1 aria-labelledby=myModalLabel>
+<DIV class=modal-header><BUTTON aria-hidden=true class=close type=button 
+data-dismiss="modal">×</BUTTON> 
+<H3>文章纠错</H3></DIV>
+<DIV class=modal-body><INPUT id=article-correct-source value=fMJ32eJ 
+type=hidden> 
+<DIV><LABEL for=article-correct-email>邮箱地址 </LABEL><INPUT 
+id=article-correct-email class=input-large type=email> </DIV>
+<DIV><LABEL for=article-correct-select>错误类型 </LABEL><SELECT 
+id=article-correct-select> <OPTION selected value=正文不准确>正文不准确</OPTION> <OPTION 
+  value=排版有问题>排版有问题</OPTION> <OPTION value=没有分页内容>没有分页内容</OPTION> <OPTION 
+  value=视频无法显示>视频无法显示</OPTION> <OPTION value=图片无法显示>图片无法显示</OPTION></SELECT> 
+</DIV>
+<DIV><LABEL for=article-correct-other>补充信息 </LABEL><TEXTAREA id=article-correct-other class=span6></TEXTAREA> </DIV></DIV>
+<DIV class=modal-footer><BUTTON id=article-correct-submit 
+class="btn btn-primary pull-right huodong_correct_submit" 
+type=submit>&nbsp;&nbsp;提交&nbsp;&nbsp;</BUTTON> </DIV></DIV>
+<STYLE type=text/css>.btn-large {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.load-fail {
+	DISPLAY: none
+}
+</STYLE>
+
+<SCRIPT 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/highlight.pack.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $('table').each(function(i) {
+        var size = $(this).children().size();
+        if (size > 1) {
+            $(this).attr('class',"table table-bordered");
+        } else if (size == 1) {
+            var e11 = $(this).children(":first");
+            var e1 = e11[0];
+            var name = e1.nodeName.toLowerCase();
+            if ("tbody" == name) {
+                if (e11.children().size() > 1) {
+                     $(this).attr('class',"table table-bordered");
+                }
+            }
+        }
+    });
+        window.page = 0;
+        window.last = 0;    
+        window.first = true;
+        resize_article_image('#nei', 550);
+                load_comments("fMJ32eJ",1,0,-1);
+                window.uid = -1;
+        open_add_article_to_kan("false");
+        async_do_zan_article(); 
+        $('pre').each(function(i, e) {
+            hljs.highlightBlock(e, "<span class='indent'>  </span>", false)
+        });
+       
+          
+       handle_follow_site("#my_follow","已订阅","+ 订阅");
+</SCRIPT>
+</DIV>
+<DIV class=footer>
+<DIV class=footer-inner>
+<DL class="about-link site-link">
+  <DT>网站相关 </DT>
+  <DD><A href="http://www.tuicool.com/about" target=_blank>关于我们</A> </DD>
+  <DD><A href="http://www.tuicool.com/mobile" target=_blank>移动应用</A> </DD>
+  <DD><A href="http://www.tuicool.com/bbs/go/issues" target=_blank>建议反馈</A> 
+</DD></DL>
+<DL class="site-link follow-link">
+  <DT>关注我们 </DT>
+  <DD><A href="http://e.weibo.com/tuicool2012" target=_blank><IMG 
+  src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/weibo-32.png">推酷网</A> 
+  </DD>
+  <DD><IMG 
+  src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/weixin-32.png">tuicool2012 
+  </DD></DL>
+<DL class="site-link links">
+  <DT>友情链接 </DT>
+  <DD><A title=人人都是产品经理 href="http://www.woshipm.com/" 
+  target=_blank>人人都是产品经理</A> <A title=魔部网 href="http://www.moobuu.com/" 
+  target=_blank>魔部网</A> <A title=PM256 href="http://www.pm265.com/" 
+  target=_blank>PM256</A> <A title=品途网 href="http://www.pintu360.com/" 
+  target=_blank>品途网</A> <A title=移动信息化 href="http://www.yidonghua.com/" 
+  target=_blank>移动信息化</A> <A title=行晓网 href="http://www.snsiu.com/" 
+  target=_blank>行晓网</A> <A title=Code4App href="http://code4app.com/" 
+  target=_blank>Code4App</A> <A title=智城外包网 href="http://www.taskcity.com/" 
+  target=_blank>智城外包网</A> <A title=LAMP人 href="http://blog.lamper.cn/" 
+  target=_blank>LAMP人</A> <A title=安卓航班网 href="http://www.apkway.com/forum.php" 
+  target=_blank>安卓航班网</A> <A title=虎嗅 href="http://www.huxiu.com/" 
+  target=_blank>虎嗅</A> <A title=缘创派 href="http://www.ycpai.com/" 
+  target=_blank>缘创派</A> <A title=IT耳朵 href="http://www.iterduo.com/" 
+  target=_blank>IT耳朵</A> <A title=艾瑞网 href="http://www.iresearch.cn/" 
+  target=_blank>艾瑞网</A> <A title=创媒工场 href="http://mediaworks.caixin.com/" 
+  target=_blank>创媒工场</A> <A title=雷锋网 href="http://www.leiphone.com/" 
+  target=_blank>雷锋网</A> <A title=经理人分享 href="http://www.managershare.com/" 
+  target=_blank>经理人分享</A> <A title=市场部网 href="http://www.shichangbu.com/" 
+  target=_blank>市场部网</A> <A title=砍柴网 href="http://www.ikanchai.com/" 
+  target=_blank>砍柴网</A> <A title=CocoaChina href="http://www.cocoachina.com/" 
+  target=_blank>CocoaChina</A> <A title=北风网 href="http://www.ibeifeng.com/" 
+  target=_blank>北风网</A> <A title=云智慧 href="http://www.jiankongbao.com/" 
+  target=_blank>云智慧</A> <A title=我赢职场 href="http://www.wyzc.com/" 
+  target=_blank>我赢职场</A> <A title=大数据时代 href="http://www.thebigdata.cn/" 
+  target=_blank>大数据时代</A> <A title=奇笛网 href="http://www.qidic.com/" 
+  target=_blank>奇笛网</A> <A title=咕噜网 href="http://www.cngulu.com/" 
+  target=_blank>咕噜网</A> <A title=红联linux href="http://www.linuxdiyf.com/" 
+  target=_blank>红联linux</A> <A title=Win10之家 href="http://win10.ithome.com/" 
+  target=_blank>Win10之家</A> <A title=鸟哥笔记 href="http://www.niaogebiji.com/" 
+  target=_blank>鸟哥笔记</A> <A title=爱游戏 href="http://www.play.cn/" 
+  target=_blank>爱游戏</A> <A title=投资潮 href="http://www.investide.cn/" 
+  target=_blank>投资潮</A> <A title=31会议网 href="http://www.31huiyi.com/" 
+  target=_blank>31会议网</A> <A title=极光推送 href="https://www.jpush.cn/" 
+  target=_blank>极光推送</A> <A title=Teambition href="https://www.teambition.com/" 
+  target=_blank>Teambition</A> <A title=Cocos引擎中文官网 
+  href="http://cn.cocos2d-x.org/" target=_blank>Cocos引擎中文官网</A> <A title=硅谷网 
+  href="http://www.guigu.org/" target=_blank>硅谷网</A> <A title=leangoo 
+  href="https://home.leangoo.com/" target=_blank>leangoo</A> <A 
+  href="http://www.tuicool.com/links">更多链接&gt;&gt;</A>&nbsp;&nbsp; </DD></DL>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV style="DISPLAY: none">
+<SCRIPT language=JavaScript 
+src="ActiveMq生产者流量控制（Producer&nbsp;Flow&nbsp;Control）_驯咆贸祷_新浪博客%20-%20推酷_files/stat.php"></SCRIPT>
+</DIV></BODY></HTML>

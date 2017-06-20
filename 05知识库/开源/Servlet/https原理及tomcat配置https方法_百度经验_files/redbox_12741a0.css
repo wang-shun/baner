@@ -1,0 +1,24 @@
+.redbox-dialog {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: 0px 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.redbox-dialog-title {
+	DISPLAY: none
+}
+.redbox-dialog-content {
+	BACKGROUND: 0px 0px
+}
+.redbox-dialog-content .redbox-close {
+	Z-INDEX: 101; POSITION: absolute; WIDTH: 19px; DISPLAY: block; BACKGROUND: url(http://exp.bdstatic.com/static/activity/widget/ui/redbox/img/close-btn_b6c81c9.png) no-repeat; HEIGHT: 19px; TOP: 6px; RIGHT: 50px
+}
+.redbox-dialog-content .redbox-div-bg {
+	Z-INDEX: 1; BORDER-BOTTOM: #d8d8d8 1px solid; POSITION: absolute; BORDER-LEFT: #d8d8d8 1px solid; WIDTH: 400px; BACKGROUND: #ededed; HEIGHT: 350px; BORDER-TOP: #d8d8d8 1px solid; TOP: 0px; BORDER-RIGHT: #d8d8d8 1px solid
+}
+.redbox-dialog-content .redbox-title {
+	Z-INDEX: 100; POSITION: absolute; TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 18px; TOP: 20px; LEFT: 100px
+}
+.redbox-dialog-content .redbox-img-bg {
+	Z-INDEX: 100; POSITION: absolute; WIDTH: 380px; BACKGROUND: url(http://exp.bdstatic.com/static/activity/widget/ui/redbox/img/redbox_05728a2.png) no-repeat center 50%; HEIGHT: 223px; TOP: 80px; LEFT: 35px; _background: 0 0
+}
+.redbox-dialog-content .draw-redbox {
+	Z-INDEX: 100; POSITION: absolute; WIDTH: 130px; HEIGHT: 43px; TOP: 205px; LEFT: 147px
+}

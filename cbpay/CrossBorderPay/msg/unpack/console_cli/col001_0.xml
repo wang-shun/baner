@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="col001_0">
+	<include>CONSOLE_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	
+	<field name="merchantId">
+    <format type="s" length="16" necessary="true" />
+  </field>
+  <field name="supplierId">
+    <format type="s" length="16" necessary="false" />
+  </field>
+	<field name="listSize">
+			<format type="s" length="3"  necessary="true"/>
+	</field>
+	<!--交易附言-->
+	<field name="REMARK" >
+		<format type="s" length="120"  necessary="false" />
+	</field>
+	<compositField name="payBatList" sizeRef="listSize">
+	   <field name="orderId">
+	      <format type="s" length="64" necessary="true" />
+	   </field>
+	   
+	   <field name="orderDate">
+	      <format type="s" length="30" necessary="true" />
+	    </field>
+  </compositField>
+  <!--
+	<field name="merchantid" >
+		<format type="s" length="16"  necessary="true" />
+	</field>
+	-->
+	<!--开始业务时间-->
+	<!--
+	<field name="startdate" >
+		<format type="s" length="8"  necessary="true" />
+	</field>
+	-->
+	<!--结束业务时间-->
+	<!--
+	<field name="enddate" >
+		<format type="s" length="8"  necessary="true" />
+	</field>
+	-->
+</formula>

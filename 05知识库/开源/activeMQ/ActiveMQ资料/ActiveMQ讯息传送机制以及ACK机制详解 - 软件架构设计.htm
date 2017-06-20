@@ -1,0 +1,911 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0067)http://www.myexception.cn/software-architecture-design/1576380.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ActiveMQ讯息传送机制以及ACK机制详解 - 软件架构设计</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META 
+content="format=html5; url=http://m.myexception.cn/software-architecture-design/1576380.html" 
+http-equiv=mobile-agent>
+<META 
+content="format=xhtml; url=http://m.myexception.cn/software-architecture-design/1576380.html" 
+http-equiv=mobile-agent>
+<META name=keywords content=ActiveMQ消息传送机制以及ACK机制详解>
+<META name=description 
+content="ActiveMQ消息传送机制以及ACK机制详解 &nbsp; &nbsp; AcitveMQ是作为一种消息存储和分发组件，涉及到client与broker端数据交互的方方面面，它不仅要担保消息的存储安全性，还要提供额外的手段来确保消息的分发是可靠的。 &nbsp; 一. ActiveMQ消息传送"><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/co_it.css"><LINK 
+rel="shortcut icon" type=image/x-icon 
+href="/r/cms/www/red/img/favicon.ico"><LINK rel=icon type=image/x-icon 
+href="/r/cms/www/red/img/favicon.ico">
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/co.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<DIV class=h_a>
+<SCRIPT language=javascript>h_a();</SCRIPT>
+</DIV>
+<DIV class=t>
+<DIV class=t_c>
+<DIV class=l><A href="http://www.myexception.cn/" target=_blank><IMG 
+alt="MyException - 我的异常网" 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/exception-logo.jpg"></A></DIV>
+<DIV class=sd>
+<DIV class=st><SPAN class=st_s><A href="http://www.myexception.cn/" 
+target=_blank>首页</A></SPAN>
+<UL>
+  <LI><A href="http://www.myexception.cn/web-develop/" 
+  target=_blank>Web开发</A></LI>
+  <LI><A href="http://www.myexception.cn/android/" 
+target=_blank>Android</A></LI>
+  <LI><A href="http://www.myexception.cn/j2ee/" target=_blank>J2EE</A></LI>
+  <LI><A href="http://www.myexception.cn/php/" target=_blank>PHP</A></LI>
+  <LI><A href="http://www.myexception.cn/linux-unix/" 
+  target=_blank>Linux/Unix</A></LI>
+  <LI><A href="http://www.myexception.cn/mysql/" target=_blank>MySql</A></LI>
+  <LI><A href="http://www.myexception.cn/c-sharp/" target=_blank>C#</A></LI>
+  <LI><A href="http://www.myexception.cn/sitemap.html">更多...</A></LI></UL></DIV>
+<DIV class=s>
+<FORM class=s_f name=formsearch 
+action=http://www.myexception.cn/search.jspx><INPUT 
+onblur="if(this.value=='')this.value='在216万个软件开发解决方案中搜索'" class=s_q 
+onfocus="if(this.value=='在216万个软件开发解决方案中搜索')this.value=''" 
+value=在216万个软件开发解决方案中搜索 maxLength=255 type=text name=q autocomplete="off"><INPUT id=btnSearch class=s_s value=我的异常网-搜索 type=submit name=submit></FORM></DIV></DIV></DIV></DIV>
+<DIV class=m>
+<DIV class=m_a>
+<SCRIPT language=javascript>m_a();</SCRIPT>
+</DIV>
+<DIV class=c>
+<DIV class=le>
+<DIV class=c_l>当前位置:<A href="http://www.myexception.cn/" 
+target=_blank>我的异常网</A>» <A 
+href="http://www.myexception.cn/software-architecture-design/" 
+target=_blank>软件架构设计</A>&nbsp;»&nbsp;ActiveMQ讯息传送机制以及ACK机制详解</DIV>
+<DIV class=c_t>
+<H1>ActiveMQ讯息传送机制以及ACK机制详解</H1></DIV>
+<DIV class=c_a_1>
+<SCRIPT language=javascript>c_a_1();</SCRIPT>
+</DIV>
+<DIV class=c_t_b>
+<DIV 
+class=c_au>www.MyException.Cn&nbsp;&nbsp;网友分享于：2014-03-01&nbsp;&nbsp;浏览：159次</DIV>
+<DIV class=c_a_0>
+<SCRIPT language=javascript>c_a_0();</SCRIPT>
+</DIV></DIV>
+<DIV class=c_a_2>
+<SCRIPT language=javascript>c_a_2();</SCRIPT>
+</DIV>
+<DIV class=c_a_2_a>
+<SCRIPT language=javascript>c_a_2_a();</SCRIPT>
+</DIV>
+<DIV class=c_txt>
+<DIV class=c_a_3>
+<SCRIPT language=javascript>c_a_3();</SCRIPT>
+</DIV>ActiveMQ消息传送机制以及ACK机制详解<BR>
+<DIV class=iteye-blog-content-contain>
+<DIV>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+<STRONG>AcitveMQ</STRONG>是作为一种消息存储和分发组件，涉及到client与broker端数据交互的方方面面，它不仅要担保消息的存储安全性，还要提供额外的手段来确保消息的分发是可靠的。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px"><STRONG>一. ActiveMQ消息传送机制</STRONG></P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; Producer客户端使用来发送消息的， 
+Consumer客户端用来消费消息；它们的协同中心就是ActiveMQ 
+broker,broker也是让producer和consumer调用过程解耦的工具，最终实现了异步RPC/数据交换的功能。随着ActiveMQ的不断发展，支持了越来越多的特性，也解决开发者在各种场景下使用ActiveMQ的需求。比如producer支持异步调用；使用flow 
+control机制让broker协同consumer的消费速率；consumer端可以使用prefetchACK来最大化消息消费的速率；提供"重发策略"等来提高消息的安全性等。在此我们不详细介绍。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp;&nbsp;一条消息的生命周期如下:</P>
+<P style="TEXT-ALIGN: center; FONT-SIZE: 14px"><BR><IMG alt="" 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/12092394.jpg"><BR>&nbsp;&nbsp;</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+&nbsp;图片中简单的描述了一条消息的生命周期,不过在不同的架构环境中,message的流动行可能更加复杂.将在稍后有关broker的架构中详解..一条消息从producer端发出之后，一旦被broker正确保存，那么它将会被consumer消费，然后ACK，broker端才会删除；不过当消息过期或者存储设备溢出时，也会终结它。</P>
+<P style="TEXT-ALIGN: center; FONT-SIZE: 14px"><BR><IMG alt="" 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/12092395.jpg"><BR>&nbsp;</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+&nbsp;这是一张很复杂，而且有些凌乱的图片；这张图片中简单的描述了:1)producer端如何发送消息 2) consumer端如何消费消息 3) 
+broker端如何调度。如果用文字来描述图示中的概念，恐怕一言难尽。图示中，提及到prefetchAck，以及消息同步、异步发送的基本逻辑；这对你了解下文中的ACK机制将有很大的帮助。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px"><STRONG>二. optimizeACK</STRONG></P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+"可优化的ACK"，这是ActiveMQ对于consumer在消息消费时，对消息ACK的优化选项，也是consumer端最重要的优化参数之一，你可以通过如下方式开启:</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) 
+在brokerUrl中增加如下查询字符串：&nbsp;</SPAN></P>
+<P>&nbsp;</P><PRE class=java name="code">String brokerUrl = "tcp://localhost:61616?" + 
+                   "jms.optimizeAcknowledge=true" + 
+                   "&amp;jms.optimizeAcknowledgeTimeOut=30000" + 
+                   "&amp;jms.redeliveryPolicy.maximumRedeliveries=6";
+ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(brokerUrl);</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2) 
+在destinationUri中，增加如下查询字符串：</SPAN></P>
+<P>&nbsp;</P><PRE class=java name="code">String queueName = "test-queue?customer.prefetchSize";
+Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+Destination queue = session.createQueue(queueName);</PRE>
+<P>&nbsp; &nbsp; &nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+我们需要在brokerUrl指定optimizeACK选项，在destinationUri中指定prefetchSize(预获取)选项，其中brokerUrl参数选项是全局的，即当前factory下所有的connection/session/consumer都会默认使用这些值；而destinationUri中的选项，只会在使用此destination的consumer实例中有效；如果同时指定，brokerUrl中的参数选项值将会被覆盖。optimizeAck表示是否开启“优化ACK”，只有在为true的情况下，prefetchSize(下文中将会简写成prefetch)以及optimizeAcknowledgeTimeout参数才会有意义。此处需要注意"optimizeAcknowledgeTimeout"选项只能在brokerUrl中配置。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+prefetch值建议在destinationUri中指定，因为在brokerUrl中指定比较繁琐；在brokerUrl中，queuePrefetchSize和topicPrefetchSize都需要单独设定："&amp;jms.prefetchPolicy.queuePrefetch=12&amp;jms.prefetchPolicy.topicPrefetch=12"等来逐个指定。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+如果prefetchACK为true，那么prefetch必须大于0；当prefetchACK为false时，你可以指定prefetch为0以及任意大小的正数。不过，当prefetch=0是，表示consumer将使用PULL(拉取)的方式从broker端获取消息，broker端将不会主动push消息给client端，直到client端发送PullCommand时；当prefetch&gt;0时，就开启了broker 
+push模式，此后只要当client端消费且ACK了一定的消息之后，会立即push给client端多条消息。</SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+当consumer端使用receive()方法同步获取消息时，prefetch可以为0和任意正值；当prefetch=0时，那么receive()方法将会首先发送一个PULL指令并阻塞，直到broker端返回消息为止，这也意味着消息只能逐个获取(类似于Request&lt;-&gt;Response)，这也是Activemq中PULL消息模式；当prefetch 
+&gt; 0时，broker端将会批量push给client 一定数量的消息(&lt;= 
+prefetch),client端会把这些消息(unconsumedMessage)放入到本地的队列中，只要此队列有消息，那么receive方法将会立即返回，当一定量的消息ACK之后，broker端会继续批量push消息给client端。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+当consumer端使用MessageListener异步获取消息时，这就需要开发设定的prefetch值必须 
+&gt;=1,即至少为1；在异步消费消息模式中，设定prefetch=0,是相悖的，也将获得一个Exception。</SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+此外，我们还可以brokerUrl中配置“redelivery”策略，比如当一条消息处理异常时，broker端可以重发的最大次数；和下文中提到REDELIVERED_ACK_TYPE互相协同。当消息需要broker端重发时，consumer会首先在本地的“deliveredMessage队列”(Consumer已经接收但还未确认的消息队列)删除它，然后向broker发送“REDELIVERED_ACK_TYPE”类型的确认指令，broker将会把指令中指定的消息重新添加到pendingQueue(亟待发送给consumer的消息队列)中，直到合适的时机，再次push给client。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+到目前为止，或许你知道了optimizeACK和prefeth的大概意义，不过我们可能还会有些疑惑！！optimizeACK和prefetch配合，将会达成一个高效的消息消费模型：<STRONG>批量获取消息，并“延迟”确认(ACK)</STRONG>。<STRONG>prefetch表达了“批量获取”消息的语义</STRONG>，broker端主动的批量push多条消息给client端，总比client多次发送PULL指令然后broker返回一条消息的方式要优秀很多，它不仅减少了client端在获取消息时阻塞的次数和阻塞的时间，还能够大大的减少网络开支。<STRONG>optimizeACK表达了“延迟确认”的语义(ACK时机)</STRONG>，client端在消费消息后暂且不发送ACK，而是把它缓存下来(pendingACK)，等到这些消息的条数达到一定阀值时，只需要通过一个ACK指令把它们全部确认；这比对每条消息都逐个确认，在性能上要提高很多。由此可见，prefetch优化了消息传送的性能，optimizeACK优化了消息确认的性能。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+当consumer端消息消费的速率很高(相对于producer生产消息)，而且消息的数量也很大时(比如消息源源不断的生产)，我们使用optimizeACK + 
+prefetch将会极大的提升consumer的性能。不过反过来：</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) 
+如果consumer端消费速度很慢(对消息的处理是耗时的)，过大的prefetchSize，并不能有效的提升性能，反而不利于consumer端的负载均衡(只针对queue)；按照良好的设计准则，当consumer消费速度很慢时，我们通常会部署多个consumer客户端，并使用较小的prefetch，同时关闭optimizeACK，可以让消息在多个consumer间“负载均衡”(即均匀的发送给每个consumer)；如果较大的prefetchSize，将会导致broker一次性push给client大量的消息，但是这些消息需要很久才能ACK(消息积压)，而且在client故障时，还会导致这些消息的重发。</SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2) 
+如果consumer端消费速度很快，但是producer端生成消息的速率较慢，比如生产者10秒钟生成10条消息，但是consumer一秒就能消费完毕，而且我们还部署了多个consumer！！这种场景下，建议开启optimizeACK，但是需要设置较小的prefetchSize；这样可以保证每个consumer都能有"活干"，否则将会出现一个consumer非常忙碌，但是其他consumer几乎收不到消息。</SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 3) 
+如果消息很重要，特别是不原因接收到”redelivery“的消息，那么我们需要将optimizeACK=false，prefetchSize=1</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+既然optimizeACK是”延迟“确认，那么就引入一种潜在的风险：在消息被消费之后还没有来得及确认时，client端发生故障，那么这些消息就有可能会被重新发送给其他consumer，那么这种风险就需要client端能够容忍“重复”消息。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+prefetch值默认为1000，当然这个值可能在很多场景下是偏大的；我们暂且不考虑ACK_MODE(参见下文)，通常情况下，我们只需要简单的统计出单个consumer每秒的最大消费消息数即可，比如一个consumer每秒可以处理100个消息，我们期望consumer端每2秒确认一次，那么我们的prefetchSize可以设置为100 
+* 2 /0.65大概为300。无论如何设定此值，client持有的消息条数最大为：prefetch + 
+“DELIVERED_ACK_TYPE消息条数”(DELIVERED_ACK_TYPE参见下文)</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>&nbsp; &nbsp; 
+&nbsp;即使当optimizeACK为true，也只会当session的ACK_MODE为AUTO_ACKNOWLEDGE时才会生效</STRONG>，即在其他类型的ACK_MODE时consumer端仍然不会“延迟确认”，即:</SPAN></P><PRE class=java name="code">consumer.optimizeAck = connection.optimizeACK &amp;&amp; session.isAutoAcknowledge()</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+当consumer.optimizeACK有效时，如果客户端已经消费但尚未确认的消息(deliveredMessage)达到prefetch * 
+0.65，consumer端将会自动进行ACK；同时如果离上一次ACK的时间间隔，已经超过"optimizeAcknowledgeTimout"毫秒，也会导致自动进行ACK。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+此外简单的补充一下，批量确认消息时，只需要在ACK指令中指明“firstMessageId”和“lastMessageId”即可，即消息区间，那么broker端就知道此consumer(根据consumerId识别)需要确认哪些消息。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN><BR><SPAN 
+style="FONT-SIZE: 16px"><STRONG>三. ACK模式与类型介绍</STRONG></SPAN></P>
+<P style="FONT-SIZE: 14px"><BR>&nbsp; &nbsp; JMS 
+API中约定了Client端可以使用四种ACK_MODE,在javax.jms.Session接口中:</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<UL style="FONT-SIZE: 14px">
+  <LI><EM>AUTO_ACKNOWLEDGE</EM> = 1 &nbsp; &nbsp;自动确认</LI>
+  <LI><EM>CLIENT_ACKNOWLEDGE</EM> = 2 &nbsp; &nbsp;客户端手动确认 &nbsp;&nbsp;</LI>
+  <LI><EM>DUPS_OK_ACKNOWLEDGE</EM> = 3 &nbsp; &nbsp;自动批量确认</LI>
+  <LI><EM>SESSION_TRANSACTED</EM> = 0 &nbsp; &nbsp;事务提交并确认</LI></UL>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 此外AcitveMQ补充了一个自定义的ACK_MODE:</P>
+<UL style="FONT-SIZE: 14px">
+  <LI><EM>INDIVIDUAL_ACKNOWLEDGE</EM> = 4 &nbsp; &nbsp;单条消息确认</LI></UL></DIV>
+<DIV style="FONT-SIZE: 14px">
+<P>&nbsp; &nbsp; 
+我们在开发JMS应用程序的时候,会经常使用到上述ACK_MODE,其中"INDIVIDUAL_ACKNOWLEDGE&nbsp;"只有ActiveMQ支持,当然开发者也可以使用它. 
+ACK_MODE描述了Consumer与broker确认消息的方式(时机),比如当消息被Consumer接收之后,Consumer将在何时确认消息。对于broker而言，只有接收到ACK指令,才会认为消息被正确的接收或者处理成功了,通过ACK，可以在consumer与Broker之间建立一种简单的“担保”机制.&nbsp;</P>
+<P>&nbsp; &nbsp;</P>
+<P>&nbsp; &nbsp; 
+Client端指定了ACK_MODE,但是在Client与broker在交换ACK指令的时候,还需要告知ACK_TYPE,ACK_TYPE表示此确认指令的类型，不同的ACK_TYPE将传递着消息的状态，broker可以根据不同的ACK_TYPE对消息进行不同的操作。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+比如Consumer消费消息时出现异常,就需要向broker发送ACK指令,ACK_TYPE为"REDELIVERED_ACK_TYPE",那么broker就会重新发送此消息。在JMS 
+API中并没有定义ACT_TYPE,因为它通常是一种内部机制,并不会面向开发者。ActiveMQ中定义了如下几种ACK_TYPE(参看MessageAck类):</P>
+<P>&nbsp;</P>
+<UL>
+  <LI><EM>DELIVERED_ACK_TYPE</EM> = 0 &nbsp; &nbsp;消息"已接收"，但尚未处理结束</LI>
+  <LI><EM>STANDARD_ACK_TYPE</EM> = 2 &nbsp; 
+  &nbsp;"标准"类型,通常表示为消息"处理成功"，broker端可以删除消息了</LI>
+  <LI><EM>POSION_ACK_TYPE</EM> = 1 &nbsp; 
+  &nbsp;消息"错误",通常表示"抛弃"此消息，比如消息重发多次后，都无法正确处理时，消息将会被删除或者DLQ(死信队列)</LI>
+  <LI><EM>REDELIVERED_ACK_TYPE</EM> = 3 &nbsp; 
+  &nbsp;消息需"重发"，比如consumer处理消息时抛出了异常，broker稍后会重新发送此消息</LI>
+  <LI><EM>INDIVIDUAL_ACK_TYPE</EM> = 4 &nbsp; &nbsp;表示只确认"单条消息",无论在任何ACK_MODE下 
+  &nbsp; &nbsp;</LI>
+  <LI><EM>UNMATCHED_ACK_TYPE</EM> = 5 &nbsp; 
+&nbsp;BROKER间转发消息时,接收端"拒绝"消息</LI></UL>
+<P>&nbsp; &nbsp; 到目前为止,我们已经清楚了大概的原理: 
+Client端在不同的ACK_MODE时,将意味着在不同的时机发送ACK指令,每个ACK 
+Command中会包含ACK_TYPE,那么broker端就可以根据ACK_TYPE来决定此消息的后续操作. 
+接下来,我们详细的分析ACK_MODE与ACK_TYPE.</P><PRE class=java name="code">Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE); </PRE>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+我们需要在创建Session时指定ACK_MODE,由此可见,ACK_MODE将是session共享的,意味着一个session下所有的 
+consumer都使用同一种ACK_MODE。在创建Session时,开发者不能指定除ACK_MODE列表之外的其他值.如果此session为事务类型,用户指定的ACK_MODE将被忽略,而强制使用"SESSION_TRANSACTED"类型;如果session非事务类型时,也将不能将 
+ACK_MODE设定为"SESSION_TRANSACTED",毕竟这是相悖的.&nbsp; &nbsp;</P>
+<P style="TEXT-ALIGN: center"><BR><IMG alt="" 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/12092396.jpg"><BR>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; Consumer消费消息的风格有2种: 
+同步/异步..使用consumer.receive()就是同步，使用messageListener就是异步；在同一个consumer中，我们不能使用使用这2种风格，比如在使用listener的情况下，当调用receive()方法将会获得一个Exception。两种风格下，消息确认时机有所不同。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;<STRONG><EM>"同步"伪代码：</EM></STRONG></P>
+<P>&nbsp;</P><PRE class=java name="code">//receive伪代码---过程
+Message message = sessionMessageQueue.dequeue();
+if(message != null){
+    ack(message);
+}
+return message</PRE>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+同步调用时，在消息从receive方法返回之前，就已经调用了ACK；因此如果Client端没有处理成功，此消息将丢失(可能重发，与ACK_MODE有关)。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;<EM><STRONG>"异步"伪代码：</STRONG></EM></P>
+<P>&nbsp;</P><PRE class=java name="code">//基于listener
+Session session = connection.getSession(consumerId);
+sessionQueueBuffer.enqueue(message);
+Runnable runnable = new Ruannale(){
+    run(){
+        Consumer consumer = session.getConsumer(consumerId);
+        Message md = sessionQueueBuffer.dequeue();
+        try{
+            consumer.messageListener.onMessage(md);
+            ack(md);//
+        }catch(Exception e){
+            redelivery();//sometime，not all the time;
+    }
+}
+//session中将采取线程池的方式，分发异步消息
+//因此同一个session中多个consumer可以并行消费
+threadPool.execute(runnable);</PRE>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 基于异步调用时，消息的确认是在onMessage方法返回之后，如果onMessage方法异常，会导致消息重发。</P>
+<P>&nbsp;</P>
+<P><STRONG>四. ACK_MODE详解</STRONG></P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp;&nbsp;<STRONG>AUTO_ACKNOWLEDGE :</STRONG> 
+自动确认,这就意味着消息的确认时机将有consumer择机确认."择机确认"似乎充满了不确定性,这也意味着,开发者必须明确知道"择机确认"的具体时机,否则将有可能导致消息的丢失,或者消息的重复接受.那么在ActiveMQ中,AUTO_ACKNOWLEDGE是如何运作的呢?</P>
+<P>&nbsp;&nbsp;&nbsp; 1) 对于consumer而言，optimizeAcknowledge属性只会在AUTO_ACK模式下有效。</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; 2) 其中DUPS_ACKNOWLEGE也是一种潜在的AUTO_ACK,只是确认消息的条数和时间上有所不同。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 3) 
+在“同步”(receive)方法返回message之前,会检测optimizeACK选项是否开启，如果没有开启，此单条消息将立即确认，所以在这种情况下，message返回之后，如果开发者在处理message过程中出现异常，会导致此消息也不会redelivery,即"潜在的消息丢失"；如果开启了optimizeACK，则会在unAck数量达到prefetch 
+* 0.65时确认，当然我们可以指定prefetchSize = 1来实现逐条消息确认。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 4) 
+在"异步"(messageListener)方式中,将会首先调用listener.onMessage(message),此后再ACK,如果onMessage方法异常,将导致client端补充发送一个ACK_TYPE为REDELIVERED_ACK_TYPE确认指令；如果onMessage方法正常,消息将会正常确认(STANDARD_ACK_TYPE)。此外需要注意，消息的重发次数是有限制的，每条消息中都会包含“redeliveryCounter”计数器，用来表示此消息已经被重发的次数，如果重发次数达到阀值，将会导致发送一个ACK_TYPE为POSION_ACK_TYPE确认指令,这就导致broker端认为此消息无法消费,此消息将会被删除或者迁移到"dead 
+letter"通道中。</P>
+<P>&nbsp; &nbsp;&nbsp;</P>
+<P>&nbsp; &nbsp; 
+因此当我们使用messageListener方式消费消息时，通常建议在onMessage方法中使用try-catch,这样可以在处理消息出错时记录一些信息，而不是让consumer不断去重发消息；如果你没有使用try-catch,就有可能会因为异常而导致消息重复接收的问题,需要注意你的onMessage方法中逻辑是否能够兼容对重复消息的判断。</P>
+<P>&nbsp;</P>
+<P style="TEXT-ALIGN: center"><BR><IMG alt="" 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/12092397.jpg"><BR>&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>&nbsp;</P></DIV>
+<DIV style="FONT-SIZE: 14px">
+<P>&nbsp; &nbsp; <STRONG>CLIENT_ACKNOWLEDGE 
+:</STRONG>&nbsp;客户端手动确认，这就意味着AcitveMQ将不会“自作主张”的为你ACK任何消息，开发者需要自己择机确认。在此模式下，开发者需要需要关注几个方法：1) 
+message.acknowledge()，2) ActiveMQMessageConsumer.acknowledege()，3) 
+ActiveMQSession.acknowledge()；其1)和3)是等效的，将当前session中所有consumer中尚未ACK的消息都一起确认，2)只会对当前consumer中那些尚未确认的消息进行确认。开发者可以在合适的时机必须调用一次上述方法。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+我们通常会在基于Group(消息分组)情况下会使用CLIENT_ACKNOWLEDGE，我们将在一个group的消息序列接受完毕之后确认消息(组)；不过当你认为消息很重要，只有当消息被正确处理之后才能确认时，也很可以使用此ACK_MODE。</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+如果开发者忘记调用acknowledge方法，将会导致当consumer重启后，会接受到重复消息，因为对于broker而言，那些尚未真正ACK的消息被视为“未消费”。</P>
+<P>&nbsp;&nbsp;&nbsp; 
+开发者可以在当前消息处理成功之后，立即调用message.acknowledge()方法来"逐个"确认消息，这样可以尽可能的减少因网络故障而导致消息重发的个数；当然也可以处理多条消息之后，间歇性的调用acknowledge方法来一次确认多条消息，减少ack的次数来提升consumer的效率，不过这仍然是一个利弊权衡的问题。</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+除了message.acknowledge()方法之外，ActiveMQMessageConumser.acknowledge()和ActiveMQSession.acknowledge()也可以确认消息，只不过前者只会确认当前consumer中的消息。其中sesson.acknowledge()和message.acknowledge()是等效的。</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+无论是“同步”/“异步”，ActiveMQ都不会发送STANDARD_ACK_TYPE，直到message.acknowledge()调用。如果在client端未确认的消息个数达到prefetchSize 
+* 
+0.5时，会补充发送一个ACK_TYPE为DELIVERED_ACK_TYPE的确认指令，这会触发broker端可以继续push消息到client端。(参看PrefetchSubscription.acknwoledge方法)</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+在broker端，针对每个Consumer，都会保存一个因为"DELIVERED_ACK_TYPE"而“拖延”的消息个数，这个参数为prefetchExtension，事实上这个值不会大于prefetchSize 
+* 
+0.5,因为Consumer端会严格控制DELIVERED_ACK_TYPE指令发送的时机(参见ActiveMQMessageConsumer.ackLater方法)，broker端通过“prefetchExtension”与prefetchSize互相配合，来决定即将push给client端的消息个数，count 
+= prefetchExtension + prefetchSize - 
+dispatched.size()，其中dispatched表示已经发送给client端但是还没有“STANDARD_ACK_TYPE”的消息总量；由此可见，在CLIENT_ACK模式下，足够快速的调用acknowledge()方法是决定consumer端消费消息的速率；如果client端因为某种原因导致acknowledge方法未被执行，将导致大量消息不能被确认，broker端将不会push消息，事实上client端将处于“假死”状态，而无法继续消费消息。我们要求client端在消费1.5*prefetchSize个消息之前，必须acknowledge()一次；通常我们总是每消费一个消息调用一次，这是一种良好的设计。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+此外需要额外的补充一下：所有ACK指令都是依次发送给broker端，在CLIET_ACK模式下，消息在交付给listener之前，都会首先创建一个DELIVERED_ACK_TYPE的ACK指令，直到client端未确认的消息达到"prefetchSize 
+* 
+0.5"时才会发送此ACK指令，如果在此之前，开发者调用了acknowledge()方法，会导致消息直接被确认(STANDARD_ACK_TYPE)。broker端通常会认为“DELIVERED_ACK_TYPE”确认指令是一种“slow 
+consumer”信号，如果consumer不能及时的对消息进行acknowledge而导致broker端阻塞，那么此consumer将会被标记为“slow”，此后queue中的消息将会转发给其他Consumer。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp;&nbsp;<STRONG>DUPS_OK_ACKNOWLEDGE 
+:</STRONG>&nbsp;"消息可重复"确认，意思是此模式下，可能会出现重复消息，并不是一条消息需要发送多次ACK才行。它是一种潜在的"AUTO_ACK"确认机制，为批量确认而生，而且具有“延迟”确认的特点。对于开发者而言，这种模式下的代码结构和AUTO_ACKNOWLEDGE一样，不需要像CLIENT_ACKNOWLEDGE那样调用acknowledge()方法来确认消息。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 1) 
+在ActiveMQ中，如果在Destination是Queue通道，我们真的可以认为DUPS_OK_ACK就是“AUTO_ACK + optimizeACK + 
+(prefetch &gt; 0)”这种情况，在确认时机上几乎完全一致；此外在此模式下，如果prefetchSize =1 
+或者没有开启optimizeACK，也会导致消息逐条确认，从而失去批量确认的特性。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 2) 
+如果Destination为Topic，DUPS_OK_ACKNOWLEDGE才会产生JMS规范中诠释的意义，即无论optimizeACK是否开启，都会在消费的消息个数&gt;=prefetch 
+* 
+0.5时，批量确认(STANDARD_ACK_TYPE),在此过程中，不会发送DELIVERED_ACK_TYPE的确认指令,这是1)和AUTO_ACK的最大的区别。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 这也意味着，当consumer故障重启后，那些尚未ACK的消息会重新发送过来。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; <STRONG>SESSION_TRANSACTED 
+:</STRONG>&nbsp;当session使用事务时，就是使用此模式。在事务开启之后，和session.commit()之前，所有消费的消息，要么全部正常确认，要么全部redelivery。这种严谨性，通常在基于GROUP(消息分组)或者其他场景下特别适合。在SESSION_TRANSACTED模式下，optimizeACK并不能发挥任何效果,因为在此模式下，optimizeACK会被强制设定为false，不过prefetch仍然可以决定DELIVERED_ACK_TYPE的发送时机。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+因为Session非线程安全，那么当前session下所有的consumer都会共享同一个transactionContext；同时建议，一个事务类型的Session中只有一个Consumer，已避免rollback()或者commit()方法被多个consumer调用而造成的消息混乱。</P>
+<P>&nbsp; &nbsp;&nbsp;</P>
+<P>&nbsp; &nbsp; 
+当consumer接受到消息之后，首先检测TransactionContext是否已经开启，如果没有，就会开启并生成新的transactionId，并把信息发送给broker；此后将检测事务中已经消费的消息个数是否 
+&gt;= prefetch * 
+0.5,如果大于则补充发送一个“DELIVERED_ACK_TYPE”的确认指令；这时就开始调用onMessage()方法，如果是同步(receive),那么即返回message。上述过程，和其他确认模式没有任何特殊的地方。</P>
+<P>&nbsp; &nbsp;</P>
+<P>&nbsp; &nbsp; 
+当开发者决定事务可以提交时，必须调用session.commit()方法，commit方法将会导致当前session的事务中所有消息立即被确认；事务的确认过程中，首先把本地的deliveredMessage队列中尚未确认的消息全部确认(STANDARD_ACK_TYPE)；此后向broker发送transaction提交指令并等待broker反馈，如果broker端事务操作成功，那么将会把本地deliveredMessage队列清空，新的事务开始；如果broker端事务操作失败(此时broker已经rollback)，那么对于session而言，将执行inner-rollback，这个rollback所做的事情，就是将当前事务中的消息清空并要求broker重发(REDELIVERED_ACK_TYPE),同时commit方法将抛出异常。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+当session.commit方法异常时，对于开发者而言通常是调用session.rollback()回滚事务(事实上开发者不调用也没有问题)，当然你可以在事务开始之后的任何时机调用rollback(),rollback意味着当前事务的结束，事务中所有的消息都将被重发。需要注意，无论是inner-rollback还是调用session.rollback()而导致消息重发，都会导致message.redeliveryCounter计数器增加，最终都会受限于brokerUrl中配置的"jms.redeliveryPolicy.maximumRedeliveries",如果rollback的次数过多，而达到重发次数的上限时，消息将会被DLQ(dead 
+letter)。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp;&nbsp;<STRONG>INDIVIDUAL_ACKNOWLEDGE 
+:</STRONG>&nbsp;单条消息确认，这种确认模式，我们很少使用，它的确认时机和CLIENT_ACKNOWLEDGE几乎一样，当消息消费成功之后，需要调用message.acknowledege来确认此消息(单条)，而CLIENT_ACKNOWLEDGE模式先message.acknowledge()方法将导致整个session中所有消息被确认(批量确认)。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 
+<STRONG>结语：</STRONG>到目前为止，我们已经已经简单的了解了ActiveMQ中消息传送机制，还有JMS中ACK策略，重点分析了optimizeACK的策略，希望开发者能够在使用activeMQ中避免一些不必要的错误。本文如有疏漏和错误之处，请各位不吝赐教，特此感谢。</P>
+<P>&nbsp;</P>
+<P>&nbsp; &nbsp; 源码参考类：</P>
+<P>&nbsp; &nbsp; 1) 
+ActiveMQConnectionFactory,ActiveMQMessageConsumer,ActiveMQSession,MessageAck等</P>
+<P>&nbsp; &nbsp; 2) 
+Queue,PrefetchSubscription,TransactionContext,TransactionStore</P></DIV></DIV></DIV>
+<DIV class=c_a_4>
+<SCRIPT language=javascript>c_a_4();</SCRIPT>
+</DIV>
+<DIV class=c_a_4_a>
+<SCRIPT language=javascript>c_a_4_a();</SCRIPT>
+</DIV>
+<DIV class=c_a_5_1>
+<SCRIPT language=javascript>c_a_5_1();</SCRIPT>
+</DIV>
+<DIV class=c_a_6>
+<SCRIPT language=javascript>c_a_6();</SCRIPT>
+</DIV>
+<DIV class=c_a_7>
+<SCRIPT language=javascript>c_a_7();</SCRIPT>
+</DIV>
+<DIV class=c_a_8>
+<SCRIPT language=javascript>c_a_8();</SCRIPT>
+</DIV>
+<DIV class=wk1>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391138.html" target=_blank><IMG 
+  alt=如何区分一个程序员是“老手“还是“新手“？ 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30174432zj19.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391138.html" 
+  target=_blank>如何区分一个程序员是“老手“还是“新手“？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391150.html" target=_blank><IMG 
+  alt=程序员眼里IE浏览器是什么样的 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/041141005hoi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391150.html" 
+  target=_blank>程序员眼里IE浏览器是什么样的</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391149.html" target=_blank><IMG 
+  alt=那些争议最大的编程观点 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30192258kguy.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391149.html" 
+  target=_blank>那些争议最大的编程观点</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748600.html" target=_blank><IMG 
+  alt=不懂技术不要对懂技术的人说这很容易实现 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/01172838t8rj.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748600.html" 
+  target=_blank>不懂技术不要对懂技术的人说这很容易实现</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391133.html" target=_blank><IMG 
+  alt=一个程序员的时间管理 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/2923550661n3.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391133.html" 
+  target=_blank>一个程序员的时间管理</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391134.html" target=_blank><IMG 
+  alt=60个开发者不容错过的免费资源库 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30083121nqcj.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391134.html" 
+  target=_blank>60个开发者不容错过的免费资源库</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391140.html" target=_blank><IMG 
+  alt=科技史上最臭名昭著的13大罪犯 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30175719yzq1.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391140.html" 
+  target=_blank>科技史上最臭名昭著的13大罪犯</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748599.html" target=_blank><IMG 
+  alt=旅行，写作，编程 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/01163735u61p.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748599.html" 
+  target=_blank>旅行，写作，编程</A></DT></DL></DIV>
+<DIV class=c_a_9>
+<SCRIPT language=javascript>c_a_9();</SCRIPT>
+</DIV>
+<DIV class=col>
+<DIV class=col_m><A id=s1 class=on onmouseover=col_m(1) 
+href="javascript:void(0)">软件架构设计-热门</A><A id=s2 onmouseover=col_m(2) 
+href="javascript:void(0)">软件架构设计-最新</A><A id=s3 onmouseover=col_m(3) 
+href="javascript:void(0)">软件架构设计-其它</A></DIV>
+<DIV style="DISPLAY: block" id=e1 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846696.html" 
+  target=_blank>基于maven的ssh框架一步一步筹建</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847192.html" 
+  target=_blank>Top 十 Uses of a Message Queue</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846297.html" 
+  target=_blank>maven基础知识（2）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847194.html" 
+  target=_blank>“函数式”和“面向对象式”在权限引擎中是怎么融为一体的</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846629.html" 
+  target=_blank>Spring疑义</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846706.html" 
+  target=_blank>spring事物诠注</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846669.html" 
+  target=_blank>关于并发的思忖</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI></UL></DIV>
+<DIV style="DISPLAY: none" id=e2 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1844367.html" 
+  target=_blank>DevOps(七)Spark Deployment on VM with Kafka</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1844714.html" 
+  target=_blank>分布式系统翻阅笔记（二十二）-时钟和时钟同步</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1845786.html" 
+  target=_blank>Nginx+tomcat实现集群跟负载均衡</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1845789.html" 
+  target=_blank>JDK增添和删除数字证书</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846274.html" 
+  target=_blank>WCF学习——掀开您的盖头来</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846279.html" 
+  target=_blank>《Java Bug方式》读书笔记</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846280.html" 
+  target=_blank>Maven基础知识（3）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846297.html" 
+  target=_blank>maven基础知识（2）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI></UL></DIV>
+<DIV style="DISPLAY: none" id=e3 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846696.html" 
+  target=_blank>基于maven的ssh框架一步一步筹建</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846669.html" 
+  target=_blank>关于并发的思忖</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847192.html" 
+  target=_blank>Top 十 Uses of a Message Queue</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846706.html" 
+  target=_blank>spring事物诠注</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846629.html" 
+  target=_blank>Spring疑义</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847194.html" 
+  target=_blank>“函数式”和“面向对象式”在权限引擎中是怎么融为一体的</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846297.html" 
+  target=_blank>maven基础知识（2）</A></SPAN></LI></UL></DIV></DIV>
+<DIV class=c_a_10>
+<SCRIPT language=javascript>c_a_10();</SCRIPT>
+</DIV>
+<DIV class=c_a_11>
+<SCRIPT language=javascript>c_a_11();</SCRIPT>
+</DIV>
+<DIV class=c_p_o>
+<UL>
+  <LI>上一篇：<A 
+  href="http://www.myexception.cn/software-architecture-design/1576385.html" 
+  target=_blank>銆愮涓€绔犮€?Spring姒傝堪 鈥斺€旇窡鎴戝Spring3 .零</A></LI>
+  <LI>下一篇：<A 
+  href="http://www.myexception.cn/software-architecture-design/1576378.html" 
+  target=_blank>Structs2中配置文件详解-不仅仅要会用更要理解</A></LI></UL></DIV>
+<DIV class=c_p_c>
+<H2>文章评论</H2>
+<DIV class=c_p_c_l>
+<DIV class=ds-thread 
+data-url="http://www.myexception.cn/software-architecture-design/1576380.html" 
+data-title="ActiveMQ讯息传送机制以及ACK机制详解" 
+data-thread-key="1576380"></DIV></DIV></DIV>
+<DIV class=c_a_12>
+<SCRIPT language=javascript>c_a_12();</SCRIPT>
+</DIV></DIV>
+<DIV class=r>
+<DIV class="c_r_a c_r_1_a">
+<SCRIPT language=javascript>c_r_1_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r">
+<DIV class=c_r_t><SPAN class=c_r_t_s>相关解决方案</SPAN></DIV>
+<DIV class=c_r_c>
+<UL>
+  <LI class=c_r_c_li><SPAN class="n_t n">1</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1714411.html" 
+  target=_blank><FONT color=red>ActiveMQ</FONT>的<FONT color=red>讯息</FONT>重发<FONT 
+  color=red>机制</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_t n">2</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/industry/1470326.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>中的<FONT color=red>讯息</FONT>反馈<FONT 
+  color=red>机制</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_t n">3</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/windows/491830.html" target=_blank>Windows 
+  <FONT color=red>讯息</FONT><FONT color=red>机制</FONT><FONT 
+  color=red>详解</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">4</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1273964.html" 
+  target=_blank><FONT color=red>讯息</FONT>中间件必须提供<FONT 
+  color=red>ack</FONT>()<FONT color=red>机制</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">5</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/industry/1724939.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT><FONT color=red>讯息</FONT>的可靠性<FONT 
+  color=red>机制</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">6</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/open-source/1299489.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT><FONT color=red>讯息</FONT>持久化<FONT 
+  color=red>机制</FONT>配置注意事项</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">7</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/program/679263.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>中<FONT color=red>讯息</FONT>游标</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">8</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/internet/669936.html" target=_blank><FONT 
+  color=red>activeMq</FONT>收不到<FONT color=red>讯息</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">9</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/industry/829864.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>接收<FONT color=red>讯息</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li_last><SPAN class="n_n n">10</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1100750.html" 
+  target=_blank><FONT color=red>ActiveMQ</FONT>支持的<FONT 
+  color=red>讯息</FONT>属性</A></SPAN></LI></UL></DIV></DIV>
+<DIV class="c_r_a c_r_2_a">
+<SCRIPT language=javascript>c_r_2_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_3_a">
+<SCRIPT language=javascript>c_r_3_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_4_a">
+<SCRIPT language=javascript>c_r_4_a();</SCRIPT>
+</DIV>
+<DIV class=wk2>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825526.html" target=_blank><IMG 
+  alt=程序员周末都喜欢做什么？ 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/1811513264wz.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825526.html" 
+  target=_blank>程序员周末都喜欢做什么？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825522.html" target=_blank><IMG 
+  alt=程序员应该关注的一些事儿 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/181109356wok.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825522.html" 
+  target=_blank>程序员应该关注的一些事儿</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825525.html" target=_blank><IMG 
+  alt=总结2014中国互联网十大段子 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18114731tpvz.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825525.html" 
+  target=_blank>总结2014中国互联网十大段子</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1472010.html" target=_blank><IMG 
+  alt=亲爱的项目经理，我恨你 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/07101353z1cs.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1472010.html" 
+  target=_blank>亲爱的项目经理，我恨你</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825521.html" target=_blank><IMG 
+  alt=“懒”出效率是程序员的美德 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18110120m9t7.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825521.html" 
+  target=_blank>“懒”出效率是程序员的美德</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825517.html" target=_blank><IMG 
+  alt=10个帮程序员减压放松的网站 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18102904jims.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825517.html" 
+  target=_blank>10个帮程序员减压放松的网站</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391137.html" target=_blank><IMG 
+  alt="程序员最害怕的5件事 你中招了吗?" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30170859ohzi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391137.html" 
+  target=_blank>程序员最害怕的5件事 你中招了吗?</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825524.html" target=_blank><IMG 
+  alt=如何成为一名黑客 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18112522bcd1.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825524.html" 
+  target=_blank>如何成为一名黑客</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825515.html" target=_blank><IMG 
+  alt=做程序猿的老婆应该注意的一些事情 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/181008252thc.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825515.html" 
+  target=_blank>做程序猿的老婆应该注意的一些事情</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1405462.html" target=_blank><IMG 
+  alt=程序员都该阅读的书 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/16172759vsns.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1405462.html" 
+  target=_blank>程序员都该阅读的书</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1439096.html" target=_blank><IMG 
+  alt=当下全球最炙手可热的八位少年创业者 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/27165246buuq.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1439096.html" 
+  target=_blank>当下全球最炙手可热的八位少年创业者</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1768786.html" target=_blank><IMG 
+  alt="写给自己也写给你 自己到底该何去何从" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/28124232qcxf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1768786.html" 
+  target=_blank>写给自己也写给你 自己到底该何去何从</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748601.html" target=_blank><IMG 
+  alt=老程序员的下场 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/01173735230p.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748601.html" 
+  target=_blank>老程序员的下场</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1768787.html" target=_blank><IMG 
+  alt=编程语言是女人 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/28130140xowe.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1768787.html" 
+  target=_blank>编程语言是女人</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825496.html" target=_blank><IMG 
+  alt=我跳槽是因为他们的显示器更大 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18095008lyi5.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825496.html" 
+  target=_blank>我跳槽是因为他们的显示器更大</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391151.html" target=_blank><IMG 
+  alt=漫画:程序员的工作 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/041159338pn9.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391151.html" 
+  target=_blank>漫画:程序员的工作</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391143.html" target=_blank><IMG 
+  alt="Java 与 .NET 的平台发展之争" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30183243clzi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391143.html" target=_blank>Java 
+  与 .NET 的平台发展之争</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391135.html" target=_blank><IMG 
+  alt=中美印日四国程序员比较 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/301646321krk.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391135.html" 
+  target=_blank>中美印日四国程序员比较</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825520.html" target=_blank><IMG 
+  alt=团队中“技术大拿”并非越多越好 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18105831ry6r.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825520.html" 
+  target=_blank>团队中“技术大拿”并非越多越好</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1682883.html" target=_blank><IMG 
+  alt=我是如何打败拖延症的 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/12161558wia0.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1682883.html" 
+  target=_blank>我是如何打败拖延症的</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825041.html" target=_blank><IMG 
+  alt=鲜为人知的编程真相 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/17181352pjju.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825041.html" 
+  target=_blank>鲜为人知的编程真相</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391142.html" target=_blank><IMG 
+  alt=Web开发人员为什么越来越懒了？ 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30181315ltwp.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391142.html" 
+  target=_blank>Web开发人员为什么越来越懒了？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1755343.html" target=_blank><IMG 
+  alt=老美怎么看待阿里赴美上市 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/032315351vco.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1755343.html" 
+  target=_blank>老美怎么看待阿里赴美上市</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748604.html" target=_blank><IMG 
+  alt=每天工作4小时的程序员 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/01182623ucjy.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748604.html" 
+  target=_blank>每天工作4小时的程序员</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825516.html" target=_blank><IMG 
+  alt=要嫁就嫁程序猿—钱多话少死的早 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18101759fz83.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825516.html" 
+  target=_blank>要嫁就嫁程序猿—钱多话少死的早</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825523.html" target=_blank><IMG 
+  alt=十大编程算法助程序员走上高手之路 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18111556vg02.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825523.html" 
+  target=_blank>十大编程算法助程序员走上高手之路</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391136.html" target=_blank><IMG 
+  alt=“肮脏的”IT工作排行榜 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/301651102kpd.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391136.html" 
+  target=_blank>“肮脏的”IT工作排行榜</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825042.html" target=_blank><IMG 
+  alt=为什么程序员都是夜猫子 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/17181938hc7q.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825042.html" 
+  target=_blank>为什么程序员都是夜猫子</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391146.html" target=_blank><IMG 
+  alt=看13位CEO、创始人和高管如何提高工作效率 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/301851230zkl.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391146.html" 
+  target=_blank>看13位CEO、创始人和高管如何提高工作效率</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391139.html" target=_blank><IMG 
+  alt=程序员和编码员之间的区别 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30175057pag2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391139.html" 
+  target=_blank>程序员和编码员之间的区别</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391148.html" target=_blank><IMG 
+  alt="初级 vs 高级开发者 哪个性价比更高？" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/3019180458hf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391148.html" target=_blank>初级 vs 
+  高级开发者 哪个性价比更高？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391132.html" target=_blank><IMG 
+  alt=Java程序员必看电影 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/29234119wl1y.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391132.html" 
+  target=_blank>Java程序员必看电影</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825040.html" target=_blank><IMG 
+  alt=我的丈夫是个程序员 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/171755349kcq.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825040.html" 
+  target=_blank>我的丈夫是个程序员</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1516312.html" target=_blank><IMG 
+  alt=代码女神横空出世 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/26170527fkt2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1516312.html" 
+  target=_blank>代码女神横空出世</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825519.html" target=_blank><IMG 
+  alt=聊聊HTTPS和SSL/TLS协议 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18105239a3lc.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825519.html" 
+  target=_blank>聊聊HTTPS和SSL/TLS协议</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1499484.html" target=_blank><IMG 
+  alt=程序员必看的十大电影 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/242351564ckv.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1499484.html" 
+  target=_blank>程序员必看的十大电影</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748603.html" target=_blank><IMG 
+  alt=" 程序员的样子" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/01175651yuem.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748603.html" 
+  target=_blank>程序员的样子</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825529.html" target=_blank><IMG 
+  alt=什么才是优秀的用户界面设计 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18120758kqo9.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825529.html" 
+  target=_blank>什么才是优秀的用户界面设计</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391147.html" target=_blank><IMG 
+  alt="程序猿的崛起——Growth Hacker" 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/301912315rh2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391147.html" 
+  target=_blank>程序猿的崛起——Growth Hacker</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391144.html" target=_blank><IMG 
+  alt=程序员的一天：一寸光阴一寸金 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30183714w4nf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391144.html" 
+  target=_blank>程序员的一天：一寸光阴一寸金</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391141.html" target=_blank><IMG 
+  alt=Web开发者需具备的8个好习惯 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/30180725jtow.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391141.html" 
+  target=_blank>Web开发者需具备的8个好习惯</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825528.html" target=_blank><IMG 
+  alt=为啥Android手机总会越用越慢？ 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18120332wzzb.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825528.html" 
+  target=_blank>为啥Android手机总会越用越慢？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825527.html" target=_blank><IMG 
+  alt=5款最佳正则表达式编辑调试器 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18115453rc0l.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825527.html" 
+  target=_blank>5款最佳正则表达式编辑调试器</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391145.html" target=_blank><IMG 
+  alt=10个调试和排错的小建议 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/301842015861.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391145.html" 
+  target=_blank>10个调试和排错的小建议</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825518.html" target=_blank><IMG 
+  alt=程序员的鄙视链 
+  src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/18104729aael.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825518.html" 
+  target=_blank>程序员的鄙视链</A></DT></DL></DIV>
+<DIV class="c_r_a c_r_5_a">
+<SCRIPT language=javascript>c_r_5_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_6_a">
+<SCRIPT language=javascript>c_r_6_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_7_a">
+<SCRIPT language=javascript>c_r_7_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_8_a">
+<SCRIPT language=javascript>c_r_8_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_9_a">
+<SCRIPT language=javascript>c_r_9_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_10_a">
+<SCRIPT language=javascript>c_r_10_a();</SCRIPT>
+</DIV></DIV></DIV></DIV>
+<DIV class=f><A href="http://www.myexception.cn/" target=_blank>软件开发</A><A 
+href="http://www.myexception.cn/" target=_blank>程序错误</A><A 
+href="http://www.myexception.cn/" target=_blank>异常</A><A 
+href="http://www.myexception.cn/" target=_blank>Exception</A>Copyright © 
+2009-2015&nbsp;<A href="http://www.myexception.cn/" 
+target=_blank>MyException</A>&nbsp;版权所有</DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息传送机制以及ACK机制详解%20-%20软件架构设计_files/co_f.js"></SCRIPT>
+
+<SCRIPT 
+type=text/javascript>$(function() { Cms.viewCount("", "1576380"); });</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cbp002_0">
+	<include>MERCHANT_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  />
+	</field>
+	<field name="currency">
+		<format type="s" length="4" necessary="true" frommsg="true" />
+	</field>
+	<field name="exQuoteDate">
+		<format type="s" length="8" necessary="true" frommsg="true" />
+	</field>
+</formula>

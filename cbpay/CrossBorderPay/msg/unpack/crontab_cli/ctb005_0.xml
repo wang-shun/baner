@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ctb005_0">
+ <include>CRONTAB_CLI_1</include>
+	 <field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+        <field name="jobdate">
+                <format type="s" length="10" necessary="true" />
+        </field>
+        <field name="merchantNo">
+                <format type="s" length="12" necessary="false" default_value="AAAAAAAAAAAA" />
+        </field>
+</formula>

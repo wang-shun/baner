@@ -1,0 +1,168 @@
+#exp-msgbox-wrapper {
+	Z-INDEX: 2099; POSITION: absolute; WIDTH: 180px; TOP: 30px; RIGHT: 75px
+}
+.exp-msgbox {
+	POSITION: relative; PADDING-BOTTOM: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; ZOOM: 1; HEIGHT: auto; PADDING-TOP: 8px
+}
+.msg-item-box {
+	DISPLAY: none
+}
+.exp-msgbox-hover .msg-item-box {
+	DISPLAY: block
+}
+.arrow {
+	Z-INDEX: 2101; POSITION: absolute; TOP: -10px; LEFT: 19px
+}
+.arrow EM {
+	POSITION: absolute; LINE-HEIGHT: 21px; WIDTH: 17px; FONT-FAMILY: Simsun; HEIGHT: 19px; FONT-SIZE: 16px; OVERFLOW: hidden
+}
+.arrow SPAN {
+	POSITION: absolute; LINE-HEIGHT: 21px; WIDTH: 17px; FONT-FAMILY: Simsun; HEIGHT: 19px; FONT-SIZE: 16px; OVERFLOW: hidden
+}
+.arrow EM {
+	FONT-STYLE: normal; COLOR: #e8cca1
+}
+.arrow SPAN {
+	COLOR: #fefded; TOP: 2px
+}
+.exp-msgbox {
+	BORDER-BOTTOM: #e8cca1 1px solid; BORDER-LEFT: #e8cca1 1px solid; BACKGROUND: #fefded; BORDER-TOP: #e8cca1 1px solid; BORDER-RIGHT: #e8cca1 1px solid; border-radius: 2px; -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, .15); -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, .15); box-shadow: 2px 2px 4px rgba(0, 0, 0, .15); -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.exp-msgbox A {
+	COLOR: #2d64b3
+}
+.exp-msgbox A:visited {
+	COLOR: #2d64b3
+}
+.exp-msgbox .n-title {
+	BORDER-BOTTOM: #f8f0db 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 3px
+}
+.exp-msgbox .n-title .notice-close {
+	WIDTH: 14px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/notice-icon.png) no-repeat 0px -40px; FLOAT: right; HEIGHT: 14px; CURSOR: pointer
+}
+.exp-msgbox .n-item {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 10px; PADDING-RIGHT: 13px; HEIGHT: 18px; PADDING-TOP: 4px
+}
+.exp-msgbox .n-item A {
+	FLOAT: left
+}
+.exp-msgbox .n-item A:hover {
+	TEXT-DECORATION: none
+}
+.exp-msgbox .n-item B {
+	PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #ff7800; FONT-SIZE: 12px; CURSOR: pointer
+}
+.exp-msgbox .n-item SPAN {
+	WIDTH: 19px; FLOAT: right; HEIGHT: 18px
+}
+.exp-msgbox .n-cms-in {
+	POSITION: relative; HEIGHT: auto; BORDER-TOP: #f8f0db 1px solid
+}
+.exp-msgbox .n-cms-in SPAN {
+	POSITION: absolute; TOP: 4px; RIGHT: 6px
+}
+.exp-msgbox .n-cms {
+	POSITION: relative; HEIGHT: auto
+}
+.exp-msgbox .n-cms SPAN {
+	POSITION: absolute; TOP: 4px; RIGHT: 6px
+}
+.exp-msgbox .n-cms-first {
+	BORDER-TOP: #f8f0db 1px solid
+}
+.exp-msgbox .first {
+	BORDER-TOP: 0px
+}
+.exp-msgbox-close {
+	FLOAT: right; CURSOR: pointer
+}
+.itemhover {
+	BACKGROUND-COLOR: #fbf8df
+}
+.itemhover SPAN {
+	LINE-HEIGHT: 18; WIDTH: 19px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/close_icon.gif) no-repeat 0px 0px; HEIGHT: 18px; CURSOR: pointer; MARGIN-RIGHT: -5px
+}
+.exp-msgbox-tip {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; COLOR: #2d64b3; PADDING-TOP: 0px
+}
+.exp-msgbox-tip B {
+	COLOR: #ff7800
+}
+.exp-msgbox-content {
+	DISPLAY: none
+}
+.msg-mouse-over .exp-msgbox-tip {
+	DISPLAY: none
+}
+.msg-mouse-over .exp-msgbox-content {
+	DISPLAY: block
+}
+.que-rol-pop {
+	MARGIN: 25px 20px 0px; FONT-FAMILY: "Microsoft Yahei", "Î¢ÈíÑÅºÚ", arial, "ËÎÌå", sans-serif
+}
+.que-rol-pop H3 {
+	PADDING-LEFT: 30px; MARGIN-BOTTOM: 15px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -225px -313px; COLOR: #333; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.que-rol-pop P {
+	PADDING-LEFT: 3px; COLOR: #333; FONT-SIZE: 14px
+}
+.tangram-suggestion {
+	Z-INDEX: 3000; BORDER-BOTTOM: #b8b8b8 1px solid; BORDER-LEFT: #b8b8b8 1px solid; BACKGROUND: #fff; BORDER-TOP: #b8b8b8 1px solid; BORDER-RIGHT: #b8b8b8 1px solid
+}
+.tangram-suggestion TD.tangram-suggestion-current {
+	BACKGROUND-COLOR: #ebebeb
+}
+.tangram-suggestion TABLE {
+	WIDTH: 100%
+}
+.tangram-suggestion TD {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; FONT: 700 14px/26px arial; COLOR: #000; CURSOR: pointer; PADDING-TOP: 0px
+}
+.tangram-suggestion B {
+	FONT-WEIGHT: 400
+}
+.sug-content {
+	MARGIN-TOP: -63px; MARGIN-LEFT: 90px; _margin-top: -58px
+}
+.sug-content H2 {
+	LINE-HEIGHT: 18px; HEIGHT: 18px; VERTICAL-ALIGN: middle
+}
+.sug-content STRONG {
+	COLOR: #999; FONT-SIZE: 12px; FONT-WEIGHT: 400
+}
+.sug-tag {
+	PADDING-BOTTOM: 6px; MARGIN: 0px -8px; PADDING-LEFT: 8px; WIDTH: 432px; PADDING-RIGHT: 0px; HEIGHT: 62px; BORDER-TOP: #ebebeb 1px solid; PADDING-TOP: 6px
+}
+.sug-tag IMG {
+	BORDER-BOTTOM: #e1e1e1 1px solid; BORDER-LEFT: #e1e1e1 1px solid; WIDTH: 80px; HEIGHT: 60px; BORDER-TOP: #e1e1e1 1px solid; BORDER-RIGHT: #e1e1e1 1px solid
+}
+.sug-tag EM {
+	COLOR: #999; FONT-SIZE: 12px
+}
+.sug-close {
+	TEXT-ALIGN: right; LINE-HEIGHT: 22px; PADDING-RIGHT: 8px; DISPLAY: block; HEIGHT: 22px; COLOR: #888; BORDER-TOP: #ebebeb 1px solid; CURSOR: pointer; TEXT-DECORATION: underline
+}
+.intro-self {
+	MARGIN: 10px
+}
+.intro-self TEXTAREA {
+	BORDER-BOTTOM: #95d28c 1px solid; BORDER-LEFT: #95d28c 1px solid; PADDING-BOTTOM: 7px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 7px; OUTLINE-WIDTH: 0px; WIDTH: 468px; PADDING-RIGHT: 7px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/bg.gif) no-repeat 0px 0px; HEIGHT: 100px; COLOR: #999; FONT-SIZE: 12px; OVERFLOW: auto; BORDER-TOP: #95d28c 1px solid; BORDER-RIGHT: #95d28c 1px solid; PADDING-TOP: 7px; resize: none
+}
+.intro-self .self-prompt {
+	COLOR: red; FONT-SIZE: 12px
+}
+.intro-success {
+	TEXT-ALIGN: center; MARGIN-TOP: 50px
+}
+#resume-area {
+	BORDER-BOTTOM: #95d28c 1px solid; BORDER-LEFT: #95d28c 1px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: #fff; PADDING-LEFT: 10px; WIDTH: 527px; PADDING-RIGHT: 10px; HEIGHT: 128px; COLOR: #999; FONT-SIZE: 14px; BORDER-TOP: #95d28c 1px solid; BORDER-RIGHT: #95d28c 1px solid; PADDING-TOP: 10px
+}
+#resume-area {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/bg.gif) no-repeat 0px 0px
+}
+#img-input-e {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/bg.gif) no-repeat 0px 0px
+}
+.self-prompt {
+	COLOR: red; FONT-SIZE: 12px
+}

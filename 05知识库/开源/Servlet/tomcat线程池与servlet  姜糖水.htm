@@ -1,0 +1,204 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0036)http://www.cnphp6.com/archives/66505 -->
+<HTML lang=zh-CN><HEAD><TITLE>tomcat线程池与servlet | 姜糖水</TITLE>
+<META charset=UTF-8>
+<META name=viewport content="width=device-width, initial-scale=1"><LINK 
+rel=profile href="http://gmpg.org/xfn/11"><LINK rel=pingback 
+href="http://www.cnphp6.com/xmlrpc.php"><LINK rel=stylesheet type=text/css 
+href="tomcat线程池与servlet%20%20姜糖水_files/style.css" media=all><LINK 
+title="姜糖水 » Feed" rel=alternate type=application/rss+xml 
+href="http://www.cnphp6.com/feed"><LINK title="姜糖水 » 评论Feed" rel=alternate 
+type=application/rss+xml href="http://www.cnphp6.com/comments/feed"><LINK 
+title="姜糖水 » tomcat线程池与servlet评论Feed" rel=alternate type=application/rss+xml 
+href="http://www.cnphp6.com/archives/66505/feed"><LINK id=contango-css-960-css 
+rel=stylesheet type=text/css href="tomcat线程池与servlet%20%20姜糖水_files/960.css" 
+media=all>
+<SCRIPT type=text/javascript 
+src="tomcat线程池与servlet%20%20姜糖水_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="tomcat线程池与servlet%20%20姜糖水_files/jquery-migrate.min.js"></SCRIPT>
+<LINK title=RSD rel=EditURI type=application/rsd+xml 
+href="http://www.cnphp6.com/xmlrpc.php?rsd"><LINK rel=wlwmanifest 
+type=application/wlwmanifest+xml 
+href="http://www.cnphp6.com/wp-includes/wlwmanifest.xml"><LINK title=模板引擎-beetl 
+rel=prev href="http://www.cnphp6.com/archives/66504"><LINK title=Java虚拟机运行时数据区结构 
+rel=next href="http://www.cnphp6.com/archives/66506">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"><LINK rel=shortlink 
+href="http://www.cnphp6.com/?p=66505"><!-- All in One SEO Pack 2.2.3.1 by Michael Torbert of Semper Fi Web Designob_start_detected [-1,-1] -->
+<META name=description 
+content="①客户端向服务器端发出请求； ②这个过程比较重要，这时候Tomcat会创建两个对象：HttpServletResponse和HttpServletRequest。并将它们的引用（注意：是引用！）传给刚分配的线程中； ③线程开始着手接洽servlet；" 
+itemprop="description"><LINK rel=canonical 
+href="http://www.cnphp6.com/archives/66505"><!-- /all in one seo pack -->
+<STYLE id=custom-background-css type=text/css>BODY.custom-background {
+	BACKGROUND-IMAGE: url(http://www.cnphp6.com/wp-content/themes/contango/images/bg-pattern.png); BACKGROUND-ATTACHMENT: scroll; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: left top
+}
+</STYLE>
+</HEAD>
+<BODY 
+class="single single-post postid-66505 single-format-standard custom-background">
+<DIV id=page class="wrapper hfeed site"><HEADER id=masthead class=site-header 
+role=banner>
+<DIV class="container_16 clearfix">
+<DIV class=grid_16>
+<DIV id=headimg>
+<DIV id=logo-text><SPAN class=site-name><A title=姜糖水 
+href="http://www.cnphp6.com/" rel=home>姜糖水</A></SPAN> <SPAN 
+class=site-description>又一个码农站点</SPAN> 
+</DIV><!-- end of #logo --></DIV></DIV></DIV></HEADER><!-- #masthead -->
+<DIV class="container_16 clearfix"><NAV id=site-navigation 
+class="grid_16 main-navigation" role=navigation>
+<DIV class="menu clearfix">
+<UL id=menu-%e8%8f%9c%e5%8d%951 class=sf-menu>
+  <LI id=menu-item-52813 
+  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-52813"><A 
+  href="http://www.cnphp6.com/">主页</A></LI>
+  <LI id=menu-item-52806 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52806"><A 
+  href="http://www.cnphp6.com/archives/category/web%e5%bc%80%e5%8f%91">web开发</A></LI>
+  <LI id=menu-item-52812 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52812"><A 
+  href="http://www.cnphp6.com/archives/category/%e7%a7%bb%e5%8a%a8%e5%bc%80%e5%8f%91">移动开发</A></LI>
+  <LI id=menu-item-52808 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52808"><A 
+  href="http://www.cnphp6.com/archives/category/%e5%bc%80%e5%8f%91%e8%af%ad%e8%a8%80">开发语言</A></LI>
+  <LI id=menu-item-52810 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52810"><A 
+  href="http://www.cnphp6.com/archives/category/%e6%95%b0%e6%8d%ae%e5%ba%93">数据库</A></LI>
+  <LI id=menu-item-52811 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-52811"><A 
+  href="http://www.cnphp6.com/archives/category/%e6%9c%8d%e5%8a%a1%e5%99%a8">服务器</A></LI>
+  <LI id=menu-item-52805 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52805"><A 
+  href="http://www.cnphp6.com/archives/category/linux">linux</A></LI>
+  <LI id=menu-item-52807 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52807"><A 
+  href="http://www.cnphp6.com/archives/category/windows">windows</A></LI>
+  <LI id=menu-item-52809 
+  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52809"><A 
+  href="http://www.cnphp6.com/archives/category/%e5%bc%80%e6%ba%90%e4%b8%8e%e5%b7%a5%e5%85%b7">开源与工具</A></LI></UL></DIV></NAV><!-- #site-navigation --></DIV>
+<DIV id=content class="site-content clearfix">
+<DIV class="container_16 clearfix">
+<DIV class=grid_11>
+<DIV id=primary class=content-area><MAIN id=main class=site-main 
+role=main><ARTICLE id=post-66505 
+class="post-66505 post type-post status-publish format-standard hentry category-6">
+<DIV class="entry-meta-group clearfix">
+<DIV class="grid_2 alpha"><TIME class="entry-date entry-time updated" 
+datetime="2014-12-09T17:32:02+00:00"><A title="2014年12月9日 下午5:32" 
+href="http://www.cnphp6.com/archives/66505" rel=bookmark><SPAN 
+class=entry-date-day>09</SPAN><SPAN class=entry-date-month-year>十二 
+2014</SPAN></A></TIME> </DIV>
+<DIV class="grid_8 omega">
+<H1 class="entry-title entry-title-single">tomcat线程池与servlet</H1>
+<DIV class=entry-meta><SPAN class="entry-author author vcard">by <A 
+title="by root" href="http://www.cnphp6.com/archives/author/root" 
+rel=author><SPAN class="entry-author-name fn">root</SPAN></A></SPAN><SPAN 
+class=entry-meta-sep> ⋅ </SPAN><SPAN class=comments-link><A 
+href="http://www.cnphp6.com/archives/66505#comments">Leave a Comment</A></SPAN> 
+</DIV><!-- .entry-meta --></DIV></DIV>
+<DIV class="entry-content clearfix">
+<P><IMG src="tomcat线程池与servlet%20%20姜糖水_files/1.png"></P>
+<P><SPAN style="FONT-SIZE: 14px">①客户端向服务器端发出请求；</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">②这个过程比较重要，这时候Tomcat会创建两个对象：HttpServletResponse和HttpServletRequest。并将它们的引用（注意：是引用！）传给刚分配的线程中；</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">③线程开始着手接洽servlet；</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">④servlet根据传来的是GET和POST，分别调用doGet()和doPost()方法进行处理；</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">⑤和⑥servlet将处理后的结果通过线程传回Tomcat，并在之后将这个线程销毁或者送还线程池；</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">⑦Tomcat将处理后的结果变成一个HTTP响应发送回客户端，这样，客户端就可以接受到处理后的结果了。</SPAN></P>
+<HR>
+
+<P><IMG src="tomcat线程池与servlet%20%20姜糖水_files/2.jpg"></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">在服务器里，有一个servlet，当客户端第一次访问服务器时，tomcat会帮我们建一个servlet的对象出来，（注意： 
+tomcat里面可能部署了10个Servlet,如果某一个Servlet从未有客户端调用过，那我们new它的实例，企不是没有意义，所以new实例出来，是客户端第一次访问的时候。）然后帮忙高用init(ServletConfig)方法，这个方法可以做一些初始化的工作，而且这个方法也只调用一次，接着以多经程的方式，处理客户端的请求，例如一个请求过来了，tomcat帮忙调用service()方法，service()方法又调用了受保护的service()方法，这个受保护的service()方法，又帮忙调用了doGet()或是doPost()方法。</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">多线程是怎么回事呢？tomcat内部有一个线程池，如果这个servlet的访问量很大，一下子有100个人，全部过来了，tomcat 
+不会帮我们new出100个HelloWorldServlet的对象出来的，自始至终，这个对象只有一个，这个对象会提前准备出若干个线程，但是让一个线程跑起来，是有开销的，有时开销我们都会感觉出来的，因为线程比较耗时，所以，让线程提前跑起来，这些跑起来的线程组成一个线程池。</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">客户端的请求，比如，第一个请求过来了，tomcat会从线程池，分配一个空闲的线程，处理这个请求，如果同时有第二个客户端的请求过来了，tomcat从线程池里分配另外一个闲着的线程，处理第二个请求，也就是说，以是这种并发的方式进行处理的，多线程的方式处理的。</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 14px">每一个线程，都是访问同一个servlet对象，都是通过这一个对象的引用，调用service()方法。</SPAN></P>
+<P></P>
+<P></P>
+<P></P>
+<P><SPAN style="COLOR: rgb(255,0,0)"><STRONG>单实例多线程</STRONG></SPAN></P></DIV><!-- end .entry-content -->
+<DIV class=entry-meta-bottom><SPAN class=cat-links><SPAN 
+class="entry-utility-prep entry-utility-prep-cat-links">Posted in:</SPAN> <A 
+href="http://www.cnphp6.com/archives/category/%e6%9c%8d%e5%8a%a1%e5%99%a8" 
+rel="category tag">服务器</A></SPAN> </DIV><!-- .entry-meta --></ARTICLE><!-- end #post-66505 .post_class -->
+<DIV id=comments class=grid_inside>
+<DIV id=respond class=comment-respond>
+<H3 id=reply-title class=comment-reply-title>发表评论 <SMALL><A 
+style="DISPLAY: none" id=cancel-comment-reply-link 
+href="http://www.cnphp6.com/archives/66505#respond" 
+rel=nofollow>取消回复</A></SMALL></H3>
+<P class=must-log-in>要发表评论，您必须先<A 
+href="http://www.cnphp6.com/wp-login.php?redirect_to=http%3A%2F%2Fwww.cnphp6.com%2Farchives%2F66505">登录</A>。</P></DIV><!-- #respond --></DIV><!-- #comments -->
+<DIV id=loop-nav-singlular-post class=clearfix>
+<H3 class=assistive-text>Post Navigation</H3>
+<DIV class="loop-nav-previous grid_5 alpha"><A 
+href="http://www.cnphp6.com/archives/66504" rel=prev><SPAN 
+class=meta-nav>←</SPAN> Previous Post</A> </DIV>
+<DIV class="loop-nav-next grid_5 omega"><A 
+href="http://www.cnphp6.com/archives/66506" rel=next>Next Post <SPAN 
+class=meta-nav>→</SPAN></A> 
+</DIV></DIV><!-- end #loop-nav-singular-post --></MAIN><!-- #main --></DIV><!-- #primary --></DIV><!-- end .grid_11 -->
+<DIV id=secondary class="grid_5 widget-area" role=complementary>
+<DIV id=sidebar><ASIDE id=recent-posts-2 
+class="widget widget_recent_entries widget-widget_recent_entries clearfix">
+<DIV class="widget-wrap widget-inside">
+<H3 class=widget-title>近期文章</H3>
+<UL>
+  <LI><A href="http://www.cnphp6.com/archives/130153">javascript如何阻止点击回车提交表单</A> 
+  </LI>
+  <LI><A href="http://www.cnphp6.com/archives/130152">jQuery如何动态添加具有删除按钮的行</A> 
+  </LI>
+  <LI><A href="http://www.cnphp6.com/archives/130151">div垂直水平居中实例代码</A> </LI>
+  <LI><A href="http://www.cnphp6.com/archives/130150">Js运算符优先级</A> </LI>
+  <LI><A href="http://www.cnphp6.com/archives/130149">js手机短信按钮倒计时</A> 
+</LI></UL></DIV></ASIDE><ASIDE 
+class="widget widget_search widget-widget_search">
+<DIV class="widget-wrap widget-inside">
+<SCRIPT type=text/javascript>
+    var cpro_id = "u1880026";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="tomcat线程池与servlet%20%20姜糖水_files/c.js"></SCRIPT>
+</DIV></ASIDE><ASIDE class="widget widget_search widget-widget_search">
+<DIV class="widget-wrap widget-inside">
+<SCRIPT type=text/javascript>
+    /*cnphp6 �ұߴ�2*/
+    var cpro_id = "u1747457";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="tomcat线程池与servlet%20%20姜糖水_files/c.js"></SCRIPT>
+</DIV></ASIDE></DIV><!-- end #sidebar --></DIV><!-- end .grid_5 --></DIV><!-- end .container_16 --></DIV><!-- #content -->
+<DIV class="container_16 containter_footer"><FOOTER id=colophon 
+class="grid_16 site-footer" role=contentinfo>
+<DIV class="copyright clearfix">
+<DIV class=copyright_inside>© Copyright 2015 - <A 
+href="http://www.cnphp6.com/">姜糖水</A> </DIV></DIV>
+<DIV class="credit clearfix">
+<DIV class=credit_inside><A title="Contango Theme" 
+href="http://designorbital.com/contango/">Contango Theme</A> ⋅ Powered by <A 
+title=WordPress href="http://wordpress.org/">WordPress</A> 
+</DIV></DIV></FOOTER></DIV></DIV><!-- end .wrapper -->
+<SCRIPT type=text/javascript>
+    /*���� ������ 2015-11-23*/
+var cpro_id = "u2414629";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="tomcat线程池与servlet%20%20姜糖水_files/f.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc31cca9bf3009a0863453e7ecd652ce5' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+<!-- Dynamic page generated in 2.775 seconds. --><!-- Cached page generated by WP-Super-Cache on 2015-12-31 13:14:18 --><!-- super cache --></BODY></HTML>

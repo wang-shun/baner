@@ -1,0 +1,879 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0038)http://maosheng.iteye.com/blog/2174247 -->
+<HTML dir=ltr xml:lang="zh-CN" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ActiveMQ 集群配置 - 茂盛博客 - ITeye技术网站</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=description 
+content="构建高可用的ActiveMQ系统在生产环境中是非常重要的，单点的ActiveMQ作为企业应用无法满足高可用和集群的需求，所以ActiveMQ提供了master-slave、broker cluster� ...">
+<META name=keywords content="activemq ActiveMQ 集群配置"><LINK rel="shortcut icon" 
+type=image/x-icon href="/images/favicon.ico"><LINK title=ITeye rel=search 
+type=application/opensearchdescription+xml href="/open_search.xml"><LINK 
+title=茂盛博客 rel=alternate type=application/rss+xml href="/rss"><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/blog.css" 
+media=screen><LINK rel=stylesheet type=text/css 
+href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/blue.css" media=screen>
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/application.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+<LINK rel=stylesheet type=text/css 
+href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/SyntaxHighlighter.css" 
+media=screen>
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/shCoreCommon.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/hotkey.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/code_favorites.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/weiboshare.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<DIV id=header>
+<DIV id=blog_site_nav><A class=homepage href="http://www.iteye.com/">首页</A> <A 
+href="http://www.iteye.com/news">资讯</A> <A 
+href="http://www.iteye.com/magazines">精华</A> <A 
+href="http://www.iteye.com/forums">论坛</A> <A 
+href="http://www.iteye.com/ask">问答</A> <A 
+href="http://www.iteye.com/blogs">博客</A> <A 
+href="http://www.iteye.com/blogs/subjects">专栏</A> <A 
+href="http://www.iteye.com/groups">群组</A> <A id=msna onclick="return false;" 
+href="http://maosheng.iteye.com/blog/2174247#"><U>更多</U> <SMALL>▼</SMALL></A> 
+<DIV style="DISPLAY: none" class=quick_menu><A href="http://job.iteye.com/iteye" 
+target=_blank>招聘</A> <A href="http://www.iteye.com/search">搜索</A> </DIV></DIV>
+<DIV id=user_nav><A class=welcome title=登录 
+href="http://maosheng.iteye.com/login">您还未登录 !</A> <A 
+href="http://maosheng.iteye.com/login">登录</A> <A class=nobg 
+href="http://maosheng.iteye.com/signup">注册</A> </DIV></DIV>
+<DIV id=page>
+<DIV id=branding class=clearfix>
+<DIV id=blog_name>
+<H1><A href="http://maosheng.iteye.com/">茂盛博客</A></H1></DIV>
+<DIV id=fd></DIV>
+<DIV id=blog_navbar>
+<UL>
+  <LI class=blog_navbar_for><A 
+  href="http://maosheng.iteye.com/"><STRONG>博客</STRONG></A></LI>
+  <LI><A href="http://maosheng.iteye.com/weibo">微博</A></LI>
+  <LI><A href="http://maosheng.iteye.com/album">相册</A></LI>
+  <LI><A href="http://maosheng.iteye.com/link">收藏</A></LI>
+  <LI><A href="http://maosheng.iteye.com/blog/guest_book">留言</A></LI>
+  <LI><A href="http://maosheng.iteye.com/blog/profile">关于我</A></LI></UL>
+<DIV class=search>
+<FORM method=get action=/blog/search><INPUT 
+style="WIDTH: 110px; MARGIN-LEFT: 10px" id=query class=search_text type=text 
+name=query> <INPUT class=submit_search type=submit> </FORM></DIV>
+<DIV id=fd></DIV></DIV></DIV>
+<DIV id=content class=clearfix>
+<DIV id=main>
+<DIV style="DISPLAY: none" class=h-entry><A class=p-author 
+href="http://maosheng.iteye.com/" target=_blank>maosheng</A> </DIV>
+<DIV class=blog_main>
+<DIV class=blog_title>
+<H3><A href="http://maosheng.iteye.com/blog/2174247">ActiveMQ 集群配置</A> <EM 
+class=actions></EM></H3>
+<UL class=blog_categories><STRONG>博客分类：</STRONG> 
+  <LI><A href="http://maosheng.iteye.com/category/203354">Apache</A></LI></UL>
+<DIV class=news_tag><A 
+href="http://www.iteye.com/blogs/tag/activemq">activemq</A>&nbsp;</DIV></DIV>
+<DIV id=blog_content 
+class=blog_content>构建高可用的ActiveMQ系统在生产环境中是非常重要的，单点的ActiveMQ作为企业应用无法满足高可用和集群的需求，所以ActiveMQ提供了master-slave、broker 
+cluster等多种部署方式，但通过分析多种部署方式之后我认为需要将两种部署方式相结合才能满足我们公司分布式和高可用的需求，所以后面就重点将解如何将两种部署方式相结合。 
+<BR><BR>自从activemq5.9.0开始，activemq的集群实现方式取消了传统的Pure Master 
+Slave方式，增加了基于zookeeper+leveldb的实现方式，其他两种方式：目录共享和数据库共享依然存在。 
+<BR><BR><STRONG>1、Master-Slave部署方式</STRONG> <BR>1)、Shared Filesystem 
+Master-Slave方式 <BR>2)、Shared Database Master-Slave方式 <BR>3)、Replicated LevelDB 
+Store方式 <BR><BR>第一种方案同样支持N个AMQ实例组网，但由于他是基于kahadb存储策略，亦可以部署在分布式文件系统上，应用灵活、高效且安全。 
+<BR><BR>第二种方案与shared 
+filesystem方式类似，只是共享的存储介质由文件系统改成了数据库而已，支持N个AMQ实例组网，但他的性能会受限于数据库；&nbsp; 
+<BR><BR>第三种方案是ActiveMQ5.9以后才新增的特性，使用ZooKeeper协调选择一个node作为master。被选择的master 
+broker node开启并接受客户端连接。 
+<BR>其他node转入slave模式，连接master并同步他们的存储状态。slave不接受客户端连接。所有的存储操作都将被复制到连接至Master的slaves。 
+<BR>如果master死了，得到了最新更新的slave被允许成为master。fialed node能够重新加入到网络中并连接master进入slave 
+mode。所有需要同步的disk的消息操作都将等待存储状态被复制到其他法定节点的操作完成才能完成。所以，如果你配置了replicas=3，那么法定大小是(3/2)+1=2. 
+Master将会存储并更新然后等待 
+(2-1)=1个slave存储和更新完成，才汇报success。至于为什么是2-1，熟悉Zookeeper的应该知道，有一个node要作为观擦者存在。 
+<BR>单一个新的master被选中，你需要至少保障一个法定node在线以能够找到拥有最新状态的node。这个node将会成为新的master。因此，推荐运行至少3个replica 
+nodes，以防止一个node失败了，服务中断。 <BR><BR><STRONG>Shared Filesystem 
+Master-Slave方式</STRONG> <BR><BR>shared filesystem 
+Master-Slave部署方式主要是通过共享存储目录来实现master和slave的热备，所有的ActiveMQ应用都在不断地获取共享目录的控制权，哪个应用抢到了控制权，它就成为master。 
+<BR><BR>多个共享存储目录的应用，谁先启动，谁就可以最早取得共享目录的控制权成为master，其他的应用就只能作为slave。 
+<BR><BR><BR><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/30ea73e2-5359-30eb-95c8-df2bb3d8be2f.png"> 
+<BR><BR><BR>Apache ActiveMQ单点基本配置的原配置内容： <BR><BR>&lt;persistenceAdapter&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;kahaDB directory="${activemq.data}/kahadb"/&gt; 
+<BR>&lt;/persistenceAdapter&gt; <BR><BR>SharedFile System Master Slave 修改为： 
+<BR><BR>&lt;persistenceAdapter&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;kahaDB directory="D:\\ActiveMQ Cluster\\shareBrokerData" 
+enableIndexWriteAsync="true"&nbsp; enableJournalDiskSyncs="false"/&gt; 
+<BR>&lt;/persistenceAdapter&gt; <BR><BR>在D:\\ActiveMQ 
+Cluster目录先创建shareBrokerData文件夹。 <BR><BR>注意： 
+<BR><BR>1.前面提到如果在一台设备上部署多个AMQ，需要修改对应端口号，如AMQ对外的监听端口61616和jetty的监听端口8161等。 
+<BR>2.如果多套AMQ部署在不同的设备上，这里的directory应该指向一个远程的系统目录（分布式文件系统） 
+<BR>3.客户端通过failover方式进行连接，多个AMQ实例地址使用英文逗号隔开，当某个实例断开时会自动重连，但如果所有实例都失效，failover默认情况下会无限期的等待下去，不会有任何提示。 
+<BR><BR>下面为在一台设备上部署两个AMQ示例： <BR>ActiveMQ A <BR>1.activemq.xml修改监听端口: 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- 
+DOS protection, limit concurrent connections to 1000 and frame size to 100MB 
+--&gt; <BR>&lt;!-- add &amp;amp;wireFormat.maxInactivityDuration=0 --&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnector name="openwire" 
+uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600&amp;amp;wireFormat.maxInactivityDuration=0" 
+discoveryUri="multicast://default"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnector name="amqp" 
+uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600&amp;amp;wireFormat.maxInactivityDuration=0"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>2.jetty.xml修改监听端口: 
+<BR><BR>&lt;property name="connectors"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;list&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;bean id="Connector" 
+class="org.eclipse.jetty.server.nio.SelectChannelConnector"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="port" value="8166" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/bean&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Enable this connector if you wish to use https with web console 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;bean id="SecureConnector" 
+class="org.eclipse.jetty.server.ssl.SslSelectChannelConnector"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="port" value="8162" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="keystore" value="file:${activemq.conf}/broker.ks" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="password" value="password" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/bean&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/list&gt; <BR>&lt;/property&gt; <BR><BR>ActiveMQ B <BR>1.activemq.xml修改监听端口: 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- 
+DOS protection, limit concurrent connections to 1000 and frame size to 100MB 
+--&gt; <BR>&lt;!-- add &amp;amp;wireFormat.maxInactivityDuration=0 --&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnector name="openwire" 
+uri="tcp://0.0.0.0:61617?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600&amp;amp;wireFormat.maxInactivityDuration=0" 
+discoveryUri="multicast://default"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnector name="amqp" 
+uri="amqp://0.0.0.0:5673?maximumConnections=1000&amp;amp;wireformat.maxFrameSize=104857600&amp;amp;wireFormat.maxInactivityDuration=0"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>2.jetty.xml修改监听端口: 
+<BR><BR>&lt;property name="connectors"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;list&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;bean id="Connector" 
+class="org.eclipse.jetty.server.nio.SelectChannelConnector"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="port" value="8167" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/bean&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Enable this connector if you wish to use https with web console 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;bean id="SecureConnector" 
+class="org.eclipse.jetty.server.ssl.SslSelectChannelConnector"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="port" value="8162" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="keystore" value="file:${activemq.conf}/broker.ks" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;property name="password" value="password" /&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/bean&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/list&gt; <BR>&lt;/property&gt; <BR><BR><BR>Java测试程序代码： <BR>1.Producer: 
+<BR><BR>import javax.jms.Connection; <BR>import javax.jms.DeliveryMode; 
+<BR>import javax.jms.Destination; <BR>import javax.jms.JMSException; <BR>import 
+javax.jms.MessageProducer; <BR>import javax.jms.Session; <BR>import 
+javax.jms.TextMessage; <BR><BR>import 
+org.apache.activemq.ActiveMQConnectionFactory; <BR>&nbsp;&nbsp; <BR>public class 
+ProducerTool { <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private String subject = 
+"TOOL.DEFAULT";&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+private Destination destination = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; private Connection connection = null;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private Session session = 
+null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+MessageProducer producer = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 初始化 <BR>&nbsp;&nbsp;&nbsp; private void initialize() 
+throws JMSException, Exception {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQConnectionFactory 
+connectionFactory = new 
+ActiveMQConnectionFactory("failover:(tcp://172.16.30.11:61616?wireFormat.maxInactivityDuration=0,tcp://172.16.30.11:61617?wireFormat.maxInactivityDuration=0)");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connection = 
+connectionFactory.createConnection();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; session = 
+connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; destination = 
+session.createQueue(subject);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; producer = 
+session.createProducer(destination);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+}&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; // 
+发送消息&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; public void produceMessage(String 
+message) throws JMSException, Exception {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; initialize();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextMessage msg = 
+session.createTextMessage(message);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.start();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Producer:-&gt;Sending message: " + 
+message);&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+producer.send(msg);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Producer:-&gt;Message sent complete!");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 关闭连接&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+public void close() throws JMSException {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Producer:-&gt;Closing connection");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (producer != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+producer.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (session != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+session.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (connection != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.close();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>}&nbsp; <BR><BR><BR>import javax.jms.Connection; <BR>import 
+javax.jms.Destination; <BR>import javax.jms.JMSException; <BR>import 
+javax.jms.Message; <BR>import javax.jms.MessageConsumer; <BR>import 
+javax.jms.MessageListener; <BR>import javax.jms.Session; <BR>import 
+javax.jms.TextMessage; <BR><BR>import 
+org.apache.activemq.ActiveMQConnectionFactory; <BR>&nbsp;&nbsp; <BR>public class 
+ConsumerTool implements MessageListener {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private String subject = 
+"TOOL.DEFAULT";&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+private Destination destination = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; private Connection connection = null;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private Session session = 
+null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+MessageConsumer consumer = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 初始化&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+void initialize() throws JMSException, Exception {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQConnectionFactory 
+connectionFactory = new 
+ActiveMQConnectionFactory("failover:(tcp://172.16.30.11:61616,tcp://172.16.30.11:61617)"); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connection = 
+connectionFactory.createConnection();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; session = 
+connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; destination = 
+session.createQueue(subject);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consumer = 
+session.createConsumer(destination);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 消费消息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; public void consumeMessage() throws JMSException, 
+Exception {&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+initialize();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.start();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Begin listening...");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.setMessageListener(this);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Message message = 
+consumer.receive();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; // 关闭连接&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; public void close() throws JMSException 
+{&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Closing connection");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (consumer != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (session != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+session.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (connection != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.close();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; // 消息处理函数&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+public void onMessage(Message message) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(message instanceof TextMessage) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TextMessage txtMsg = (TextMessage) message;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+String msg = txtMsg.getText();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Received: " + msg);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else 
+{&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Received: " + message);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch 
+(JMSException e) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TODO 
+Auto-generated catch block&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+e.printStackTrace();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>}&nbsp; <BR><BR><BR>2.Consumer: 
+<BR><BR>import javax.jms.Connection; <BR>import javax.jms.Destination; 
+<BR>import javax.jms.JMSException; <BR>import javax.jms.Message; <BR>import 
+javax.jms.MessageConsumer; <BR>import javax.jms.MessageListener; <BR>import 
+javax.jms.Session; <BR>import javax.jms.TextMessage; <BR><BR>import 
+org.apache.activemq.ActiveMQConnectionFactory; <BR>&nbsp;&nbsp; <BR>public class 
+ConsumerTool implements MessageListener {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private String subject = 
+"TOOL.DEFAULT";&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+private Destination destination = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; private Connection connection = null;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private Session session = 
+null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+MessageConsumer consumer = null;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 初始化&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+void initialize() throws JMSException, Exception {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ActiveMQConnectionFactory 
+connectionFactory = new 
+ActiveMQConnectionFactory("failover:(tcp://172.16.30.11:61616,tcp://172.16.30.11:61617)"); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connection = 
+connectionFactory.createConnection();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; session = 
+connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; destination = 
+session.createQueue(subject);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consumer = 
+session.createConsumer(destination);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; // 消费消息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; public void consumeMessage() throws JMSException, 
+Exception {&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+initialize();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.start();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Begin listening...");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.setMessageListener(this);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Message message = 
+consumer.receive();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; // 关闭连接&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; public void close() throws JMSException 
+{&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Closing connection");&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (consumer != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (session != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+session.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (connection != 
+null)&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+connection.close();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; // 消息处理函数&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+public void onMessage(Message message) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(message instanceof TextMessage) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TextMessage txtMsg = (TextMessage) message;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+String msg = txtMsg.getText();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Received: " + msg);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else 
+{&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println("Consumer:-&gt;Received: " + message);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch 
+(JMSException e) {&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TODO 
+Auto-generated catch block&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+e.printStackTrace();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>}&nbsp; <BR><BR>3.Main 
+<BR><BR>import javax.jms.JMSException; <BR>&nbsp;&nbsp; <BR>public class Test 
+{&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; /**&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; * @param args&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; */&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; public static 
+void main(String[] args) throws JMSException, Exception { <BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ConsumerTool consumer = new 
+ConsumerTool();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ProducerTool producer = new ProducerTool();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 开始监听&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.consumeMessage();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+延时500毫秒之后发送消息&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Thread.sleep(500);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; producer.produceMessage("Hello, 
+world!");&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+producer.close();&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+延时500毫秒之后停止接受消息&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Thread.sleep(500);&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+consumer.close();&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <BR>}&nbsp; <BR><BR><BR>ActiveMQ A 
+启动界面： <BR><BR><BR><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/64735873-781d-3065-8377-275b8076b987.png"> 
+<BR><BR><BR>ActiveMQ B 启动界面： <BR><BR><BR><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/d68fc618-9ce1-37ae-a784-e965bc626fd3.png"> 
+<BR><BR><BR>AMQ A先启动，先锁文件，当AMQ B启动是，不能锁文件，但会不断的监听等待。 <BR><BR><BR>运行Java 
+Test程序日志： <BR><BR>10:22:43.745 INFO&nbsp; [] 
+org.apache.activemq.transport.failover.FailoverTransport - Successfully 
+connected to tcp://172.16.30.11:61616 <BR>Consumer:-&gt;Begin listening... 
+<BR>10:22:45.623 INFO&nbsp; [] 
+org.apache.activemq.transport.failover.FailoverTransport - Successfully 
+connected to tcp://172.16.30.11:61616?wireFormat.maxInactivityDuration=0 
+<BR>Producer:-&gt;Sending message: Hello, world! <BR>Producer:-&gt;Message sent 
+complete! <BR>Producer:-&gt;Closing connection <BR>Consumer:-&gt;Received: 
+Hello, world! <BR>Consumer:-&gt;Closing connection <BR><BR><BR>ActiveMQ A 管理界面： 
+<BR><BR><BR><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/b6caf50a-22d8-35e9-979a-cb4439dadf4b.png"> 
+<BR><BR>异常处理： <BR><BR>配置好ActiveMQ后，前几次都启动成功。有一天启动时发现启动不成功，查看报错日志发现出现如下提示： 
+<BR>Failed to start Apache ActiveMQ (localhost, ID:*-PC-*-*-0:1). Reason: 
+java.io.IOException: Transport Connector could not be registered in JMX: Failed 
+to bind to server socket: 
+tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireformat.maxFrameSize=104857600 
+due to: java.net.BindException: Address already in use: JVM_Bind。 
+<BR><BR>1.先去查看是不是端口被占用，用netstat -ano命令查看端口使用情况，发现没有端口被占用。 
+<BR>2.在控制面板的服务里把正在运行的Internet Connection Sharing 
+(ICS)为家庭和小型办公网络提供网络地址转换、寻址、名称解析和/或入侵保护服务关了，他占用着端口。 <BR>3.把此服务关了后再启动ActvieMQ成功了。 
+<BR><BR><BR><STRONG>2、Broker-Cluster部署方式</STRONG> <BR><BR>&nbsp;&nbsp;&nbsp; 
+前面的Master-Slave的方式虽然能解决多服务热备的高可用问题，但无法解决负载均衡和分布式的问题。Broker-Cluster的部署方式就可以解决负载均衡的问题。 
+<BR><BR>&nbsp;&nbsp;&nbsp; 
+Broker-Cluster部署方式中，各个broker通过网络互相连接，并共享queue。当broker-A上面指定的queue-A中接收到一个message处于pending状态，而此时没有consumer连接broker-A时。如果cluster中的broker-B上面由一个consumer在消费queue-A的消息，那么broker-B会先通过内部网络获取到broker-A上面的message，并通知自己的consumer来消费。 
+<BR><BR><STRONG>1）static Broker-Cluster部署</STRONG> <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp; 在activemq.xml文件中静态指定Broker需要建立桥连接的其他Broker： 
+<BR><BR>&nbsp;&nbsp; 1、首先在Broker-A节点中添加networkConnector节点： 
+<BR><BR>&lt;networkConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnector&nbsp;&nbsp; uri="static:(tcp:// 
+0.0.0.0:61617)"duplex="false"/&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp; 2、修改Broker-A节点中的服务提供端口为61616： 
+<BR><BR>&lt;transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;amp;wireFormat.maxFrameSize=104857600"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+3、在Broker-B节点中添加networkConnector节点： <BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;networkConnector&nbsp;&nbsp; 
+uri="static:(tcp:// 0.0.0.0:61616)"duplex="false"/&gt; 
+<BR><BR>&lt;/networkConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、修改Broker-A节点中的服务提供端口为61617： <BR><BR>&lt;transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61617?maximumConnections=1000&amp;amp;wireFormat.maxFrameSize=104857600"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、分别启动Broker-A和Broker-B。 <BR><BR><STRONG>2）Dynamic Broker-Cluster部署</STRONG> 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在activemq.xml文件中不直接指定Broker需要建立桥连接的其他Broker，由activemq在启动后动态查找： 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、首先在Broker-A节点中添加networkConnector节点： 
+<BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnectoruri="multicast://default" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dynamicOnly="true" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+networkTTL="3" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+prefetchSize="1" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+decreaseNetworkConsumerPriority="true" /&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 2、修改Broker-A节点中的服务提供端口为61616： 
+<BR><BR>&lt;transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61616? " 
+discoveryUri="multicast://default"/&gt; <BR><BR>&lt;/transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 3、在Broker-B节点中添加networkConnector节点： 
+<BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnectoruri="multicast://default" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dynamicOnly="true" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+networkTTL="3" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+prefetchSize="1" 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+decreaseNetworkConsumerPriority="true" /&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 4、修改Broker-B节点中的服务提供端口为61617： 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61617" 
+discoveryUri="multicast://default"/&gt; <BR><BR>&lt;/transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; 5、启动Broker-A和Broker-B 
+<BR><BR><STRONG>3、Master-Slave与Broker-Cluster相结合的部署方式</STRONG> <BR>&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; 
+可以看到Master-Slave的部署方式虽然解决了高可用的问题，但不支持负载均衡，Broker-Cluster解决了负载均衡，但当其中一个Broker突然宕掉的话，那么存在于该Broker上处于Pending状态的message将会丢失，无法达到高可用的目的。 
+<BR><BR>&nbsp;&nbsp;&nbsp; 
+由于目前ActiveMQ官网上并没有一个明确的将两种部署方式相结合的部署方案，所以我尝试者把两者结合起来部署： 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/f2db2632-036d-3ecf-8967-a8db9a7f0e18.png"> 
+<BR><BR><BR><STRONG>部署的配置修改</STRONG> 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这里以Broker-A + 
+Broker-B建立cluster，Broker-C作为Broker-B的slave为例： <BR><BR>&nbsp;&nbsp;&nbsp; 
+1）首先在Broker-A节点中添加networkConnector节点： <BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnector&nbsp;&nbsp; uri="masterslave:(tcp://0.0.0.0:61617,tcp:// 
+0.0.0.0:61618)" duplex="false"/&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp; 2）修改Broker-A节点中的服务提供端口为61616： 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;amp;wireFormat.maxFrameSize=104857600"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp; 
+3）在Broker-B节点中添加networkConnector节点： <BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnector&nbsp;&nbsp; uri="static:(tcp:// 
+0.0.0.0:61616)"duplex="false"/&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp; 4）修改Broker-B节点中的服务提供端口为61617： 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61617?maximumConnections=1000&amp;amp;wireFormat.maxFrameSize=104857600"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp; 
+5）修改Broker-B节点中的持久化方式： <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;persistenceAdapter&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;kahaDB 
+directory="/localhost/kahadb"/&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/persistenceAdapter&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp; 6）在Broker-C节点中添加networkConnector节点： 
+<BR><BR>&lt;networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;networkConnector&nbsp;&nbsp; uri="static:(tcp:// 
+0.0.0.0:61616)"duplex="false"/&gt; <BR><BR>&lt;/networkConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp; 7）修改Broker-C节点中的服务提供端口为61618： 
+<BR><BR>&lt;transportConnectors&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;transportConnectorname="openwire"uri="tcp://0.0.0.0:61618?maximumConnections=1000&amp;amp;wireFormat.maxFrameSize=104857600"/&gt; 
+<BR><BR>&lt;/transportConnectors&gt; <BR><BR>&nbsp;&nbsp;&nbsp; 
+8）修改Broker-B节点中的持久化方式： <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;persistenceAdapter&gt; 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;kahaDB 
+directory="/localhost/kahadb"/&gt; <BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/persistenceAdapter&gt; <BR><BR>&nbsp;&nbsp;&nbsp; 
+9）分别启动broker-A、broker-B、broker-C，因为是broker-B先启动，所以“/localhost/kahadb”目录被lock住，broker-C将一直处于挂起状态，当人为停掉broker-B之后，broker-C将获取目录“/localhost/kahadb”的控制权，重新与broker-A组成cluster提供服务。 
+<BR><BR><BR><BR><BR><BR><BR><BR><BR></DIV>
+<DIV class=attachments>
+<UL style="DISPLAY: none">
+  <LI><A 
+  href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/64735873-781d-3065-8377-275b8076b987.png" 
+  target=_blank><IMG class=magplus title=点击查看原始大小图片 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/64735873-781d-3065-8377-275b8076b987-thumb.png"></A></LI>
+  <LI>大小: 61.1 KB</LI></UL>
+<UL style="DISPLAY: none">
+  <LI><A 
+  href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/d68fc618-9ce1-37ae-a784-e965bc626fd3.png" 
+  target=_blank><IMG class=magplus title=点击查看原始大小图片 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/d68fc618-9ce1-37ae-a784-e965bc626fd3-thumb.png"></A></LI>
+  <LI>大小: 68.6 KB</LI></UL>
+<UL style="DISPLAY: none">
+  <LI><A 
+  href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/b6caf50a-22d8-35e9-979a-cb4439dadf4b.png" 
+  target=_blank><IMG class=magplus title=点击查看原始大小图片 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/b6caf50a-22d8-35e9-979a-cb4439dadf4b-thumb.png"></A></LI>
+  <LI>大小: 29.4 KB</LI></UL>
+<UL style="DISPLAY: none">
+  <LI><A 
+  href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/30ea73e2-5359-30eb-95c8-df2bb3d8be2f.png" 
+  target=_blank><IMG class=magplus title=点击查看原始大小图片 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/30ea73e2-5359-30eb-95c8-df2bb3d8be2f-thumb.png"></A></LI>
+  <LI>大小: 9.3 KB</LI></UL>
+<UL style="DISPLAY: none">
+  <LI><A 
+  href="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/f2db2632-036d-3ecf-8967-a8db9a7f0e18.png" 
+  target=_blank><IMG class=magplus title=点击查看原始大小图片 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/f2db2632-036d-3ecf-8967-a8db9a7f0e18-thumb.png"></A></LI>
+  <LI>大小: 31.7 KB</LI></UL>
+<UL>
+  <LI><A 
+  onclick="$$('div.attachments ul').invoke('show');$(this).up(1).hide();return false;" 
+  href="http://maosheng.iteye.com/blog/2174247#">查看图片附件</A></LI></UL></DIV><IFRAME 
+height=60 src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/187.htm" 
+frameBorder=0 width=468 scrolling=no></IFRAME>
+<DIV id=bottoms class=clearfix>
+<DIV id=share_weibo>分享到： <A title=分享到新浪微博 href="javascript:;" 
+data-type="sina"><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/sina.jpg"></A> <A 
+title=分享到腾讯微博 href="javascript:;" data-type="qq"><IMG 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/tec.jpg"></A> </DIV></DIV>
+<DIV class=blog_nav>
+<DIV class=pre_next><A class=next title=大型网站架构演化发展历程 
+href="http://maosheng.iteye.com/blog/2178013">大型网站架构演化发展历程</A> | <A class=pre 
+title=介绍两本不错的书 href="http://maosheng.iteye.com/blog/2135899">介绍两本不错的书</A> 
+</DIV></DIV>
+<DIV class=blog_bottom>
+<UL>
+  <LI>2015-01-09 10:55</LI>
+  <LI>浏览 1692</LI>
+  <LI><A href="http://maosheng.iteye.com/blog/2174247#comments">评论(2)</A></LI>
+  <LI>分类:<A href="http://www.iteye.com/blogs/category/opensource">开源软件</A></LI>
+  <LI class=last><A class=more href="http://www.iteye.com/wiki/blog/2174247" 
+  target=_blank>相关推荐</A></LI></UL></DIV>
+<DIV class=blog_comment>
+<H5>评论</H5><A id=comments name=comments></A>
+<DIV id=bc2378020>
+<DIV class=comment_title>2 楼 <A title=maosheng href="http://maosheng.iteye.com/" 
+target=_blank>maosheng</A> 2015-09-15&nbsp;&nbsp; </DIV>
+<DIV class=comment_content>
+<DIV class=quote_title>longshao_feng 写道</DIV>
+<DIV class=quote_div>楼主使用 文件共享 
+模式的master-slave，producer设置为非持久化，如果master上面有未被consumer消费掉的消息，然后master宕掉，slave貌似不会把master未消费掉的消息转移过来吧？</DIV><BR><BR>这种case还真没测试过<BR></DIV></DIV>
+<DIV id=bc2377877>
+<DIV class=comment_title>1 楼 <A title=longshao_feng 
+href="http://longshao-feng.iteye.com/" target=_blank>longshao_feng</A> 
+2015-09-11&nbsp;&nbsp; </DIV>
+<DIV class=comment_content>楼主使用 文件共享 
+模式的master-slave，producer设置为非持久化，如果master上面有未被consumer消费掉的消息，然后master宕掉，slave貌似不会把master未消费掉的消息转移过来吧？</DIV></DIV></DIV>
+<DIV class=blog_comment>
+<H5>发表评论</H5>
+<P style="TEXT-ALIGN: center; MARGIN-TOP: 30px; MARGIN-BOTTOM: 0px"><A 
+style="BACKGROUND-COLOR: white" href="http://maosheng.iteye.com/login"><IMG 
+style="VERTICAL-ALIGN: middle; MARGIN-RIGHT: 10px" 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/login_icon.png"></A><A 
+href="http://maosheng.iteye.com/login"> 您还没有登录,请您登录后再发表评论 </A></P></DIV></DIV>
+<SCRIPT type=text/javascript>
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 2174247;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', 'ActiveMQ 集群配置');
+  });
+
+  fix_image_size($$('div.blog_content img'), 700);
+
+  function processComment() {
+    $$('#main .blog_comment > div').each(function(comment){// comment
+      var post_id = comment.id.substr(2);
+      $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+        var location = window.location;
+        source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+        source_url += "#" + comment.id;
+        pre.writeAttribute('codeable_id', post_id);
+        pre.writeAttribute('codeable_type', "BlogComment");
+        pre.writeAttribute('source_url', source_url);
+        pre.writeAttribute('pre_index', index);
+        pre.writeAttribute('title', 'ActiveMQ 集群配置');
+      });
+    });
+  }
+
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  code_favorites_init();
+  processComment();
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</SCRIPT>
+</DIV>
+<DIV id=local>
+<DIV class=local_top></DIV>
+<DIV id=blog_owner>
+<DIV id=blog_owner_logo><A href="http://maosheng.iteye.com/"><IMG class=logo 
+title="maosheng的博客: 茂盛博客" alt=maosheng的博客 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/c96fee7d-cfb5-3126-8335-b5c90905ee89.jpg" 
+width=1></A></DIV>
+<DIV id=blog_owner_name>maosheng</DIV></DIV>
+<DIV id=blog_actions>
+<UL>
+  <LI>浏览: 68689 次</LI>
+  <LI>性别: <IMG title=男 alt=Icon_minigender_1 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/icon_minigender_1.gif"></LI>
+  <LI>来自: 天津</LI>
+  <LI><IMG 
+  src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/offline.gif"></LI></UL></DIV>
+<DIV id=user_visits class=clearfix>
+<H5>最近访客 <SPAN 
+style="PADDING-LEFT: 30px; FONT-SIZE: 12px; FONT-WEIGHT: normal"><A 
+href="http://maosheng.iteye.com/blog/user_visits">更多访客&gt;&gt;</A></SPAN></H5>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://litainiu.iteye.com/" target=_blank><IMG 
+class=logo title="litainiu的博客: " alt=litainiu的博客 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/user-logo-thumb.gif" 
+width=48></A></DIV>
+<DIV class=left><A title=litainiu href="http://litainiu.iteye.com/" 
+target=_blank>litainiu</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://xunux.iteye.com/" target=_blank><IMG class=logo 
+title="xunux的博客: " alt=xunux的博客 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/user-logo-thumb.gif" 
+width=48></A></DIV>
+<DIV class=left><A title=xunux href="http://xunux.iteye.com/" 
+target=_blank>xunux</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://nuhaikuanglan.iteye.com/" target=_blank><IMG 
+class=logo title="nuhaikuanglan的博客: nuhaikuanglan" alt=nuhaikuanglan的博客 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/user-logo-thumb.gif" 
+width=48></A></DIV>
+<DIV class=left><A title=nuhaikuanglan href="http://nuhaikuanglan.iteye.com/" 
+target=_blank>nuhaikuanglan</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://evis.iteye.com/" target=_blank><IMG class=logo 
+title="evis的博客: evis" alt=evis的博客 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/user-logo-thumb.gif" 
+width=48></A></DIV>
+<DIV class=left><A title=evis href="http://evis.iteye.com/" 
+target=_blank>evis</A></DIV></DIV></DIV>
+<DIV id=blog_menu>
+<H5>文章分类</H5>
+<UL>
+  <LI><A href="http://maosheng.iteye.com/">全部博客 (173)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/197411">感想 (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/197412">随笔 (4)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/197445">Spring (7)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/199473">IT 时事 (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/199704">Java (46)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/199723">HTTP (3)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/200157">Windows (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/200186">CI(Continuous 
+  Integration) (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/201626">Dozer (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/203354">Apache (6)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/203365">DB (9)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/225209">JDBC (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/225347">PL SQL (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/225427">Architecture 
+  (4)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/227599">SQL (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/236219">Design Patterns 
+  (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/259688">Ant (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/264110">Test (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/272854">Agile (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/272859">OOD (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/286354">ORM (3)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/287379">PMP (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/289791">ESB (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/292039">Maven (4)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/301568">IDE (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/302513">Camel (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/303154">Webservice 
+(3)</A></LI>
+  <LI class=selected><A href="http://maosheng.iteye.com/category/307236">MySQL 
+  (2)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/324880">book (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/339277">CentOS (12)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/339319">Linux (8)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/339325">Web Server 
+(4)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/340409">BI (3)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/341052">RPC (1)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/342081">Cluster (9)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/342307">NoSQL (3)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/347619">Oracle (25)</A></LI>
+  <LI><A href="http://maosheng.iteye.com/category/349231">Loadbalance 
+  (3)</A></LI></UL></DIV>
+<DIV id=month_blogs>
+<H5>社区版块</H5>
+<UL>
+  <LI><A href="http://maosheng.iteye.com/blog/news">我的资讯</A> (0)</LI>
+  <LI><A href="http://maosheng.iteye.com/blog/post">我的论坛</A> (0) </LI>
+  <LI><A href="http://maosheng.iteye.com/blog/answered_problems">我的问答</A> 
+  (0)</LI></UL></DIV>
+<DIV id=month_blogs>
+<H5>存档分类</H5>
+<UL>
+  <LI><A href="http://maosheng.iteye.com/blog/monthblog/2015-12">2015-12</A> 
+  (8)</LI>
+  <LI><A href="http://maosheng.iteye.com/blog/monthblog/2015-11">2015-11</A> 
+  (8)</LI>
+  <LI><A href="http://maosheng.iteye.com/blog/monthblog/2015-10">2015-10</A> 
+  (6)</LI>
+  <LI><A 
+href="http://maosheng.iteye.com/blog/monthblog_more">更多存档...</A></LI></UL></DIV>
+<DIV id=comments_top>
+<H5>评论排行榜</H5>
+<UL>
+  <LI><A title="ActiveMQ 集群配置" 
+  href="http://maosheng.iteye.com/blog/2174247">ActiveMQ 集群配置</A></LI></UL></DIV>
+<DIV id=guest_books>
+<H5>最新评论</H5>
+<UL>
+  <LI><A title=maosheng href="http://maosheng.iteye.com/" 
+  target=_blank>maosheng</A>： longshao_feng 写道楼主使用 文件共享 模式的ma ...<BR><A 
+  href="http://maosheng.iteye.com/blog/2174247#bc2378020">ActiveMQ 集群配置</A> 
+</LI>
+  <LI><A title=longshao_feng href="http://longshao-feng.iteye.com/" 
+  target=_blank>longshao_feng</A>： 楼主使用 文件共享 模式的master-slave，produ ...<BR><A 
+  href="http://maosheng.iteye.com/blog/2174247#bc2377877">ActiveMQ 集群配置</A> 
+</LI>
+  <LI><A title=tanglanwen href="http://tanglanwen.iteye.com/" 
+  target=_blank>tanglanwen</A>： 感触很深，必定谨记！<BR><A 
+  href="http://maosheng.iteye.com/blog/2001282#bc2336890">少走弯路的十条忠告</A> </LI>
+  <LI><A title=zxlmmmm href="http://zxlmmmm.iteye.com/" 
+  target=_blank>zxlmmmm</A>： ...<BR><A 
+  href="http://maosheng.iteye.com/blog/1895534#bc2317563">Java HTTPS SSL介绍</A> 
+  </LI></UL></DIV>
+<DIV class=local_bottom></DIV></DIV></DIV>
+<DIV id=footer class=clearfix>
+<DIV id=copyright>
+<HR>
+声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<BR>© 2003-2015 
+ITeye.com. All rights reserved. [ 京ICP证110151号 京公网安备110105010620 ] 
+</DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ%20集群配置%20-%20茂盛博客%20-%20ITeye技术网站_files/tracking.js"></SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,434 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://www.tuicool.com/articles/iuu6bqF -->
+<!--
+ ______________ 
+< TUICOOL.COM >
+ -------------- 
+        \   ^__^
+         \  (**)\__$__$__
+            (__)\       )\/\
+             U  ||------|
+                ||     ||
+--><HTML><HEAD><META 
+content="IE=8.0000" http-equiv="X-UA-Compatible">
+<TITLE>配置Tomcat时server.xml和content.xml自动还原问题 - 推酷</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=viewport content="width=device-width, initial-scale=1.0">
+<META name=csrf-param content=authenticity_token>
+<META name=csrf-token content=LrsquUhO7CwxitczgFtIC2G5hcdHv2LWoKJja2IYlFQ=>
+<META name=description content=配置Tomcat时server.xml和content.xml自动还原问题><LINK 
+rel="shortcut icon" type=image/x-icon 
+href="http://static0.tuicool.com/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/application-bc9f103ffac633f3e0506001890d1135.css" 
+media=screen><LINK rel=stylesheet 
+href="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/font-awesome.min.css">
+<SCRIPT type=text/javascript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/application-9d8e2864bc094ddf228d2147120a4b1f.js"></SCRIPT>
+<!--[if IE 7]>
+  <link rel="stylesheet" href="http://assets.tuicool.com/assets/font-awesome-ie7.min.css">
+  <![endif]-->
+<SCRIPT type=text/javascript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/tip.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/m.js"></SCRIPT>
+
+<SCRIPT 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/ds.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/spin.min.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/github.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<DIV id=header class=navbar-fixed-top>
+<DIV class=container>
+<DIV class=navbar>
+<DIV class=navbar-inner><A class="btn btn-navbar" data-target=".nav-collapse" 
+data-toggle="collapse"><SPAN class=icon-bar></SPAN><SPAN 
+class=icon-bar></SPAN><SPAN class=icon-bar></SPAN><SPAN 
+class=icon-bar></SPAN></A><A class=brand href="http://www.tuicool.com/">推酷</A> 
+<NAV class="nav-collapse collapse">
+<UL class="nav navbar primary-nav">
+  <LI class=active><A href="http://www.tuicool.com/ah">文章 </A></LI>
+  <LI><A href="http://www.tuicool.com/sites/hot">站点 </A></LI>
+  <LI><A href="http://www.tuicool.com/topics">主题 </A></LI>
+  <LI><A href="http://course.tuicool.com/">公开课 </A></LI>
+  <LI><A href="http://huodong.tuicool.com/">活动 </A></LI>
+  <LI><A href="http://www.tuicool.com/mobile">客户端 <SUP 
+  style="COLOR: #16a085; FONT-SIZE: 0.8em">荐</SUP> </A></LI>
+  <LI class="dropdown  "><A class=dropdown-toggle 
+  href="http://www.tuicool.com/articles/iuu6bqF#" data-toggle="dropdown">周刊 <B 
+  class=caret></B></A>
+  <UL class=dropdown-menu>
+    <LI><A href="http://www.tuicool.com/mags">编程狂人</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/design">设计匠艺</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/startup">创业周刊</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/tech">科技周刊</A></LI>
+    <LI><A href="http://www.tuicool.com/mags/guru">Guru Weekly</A></LI>
+    <LI><A 
+href="http://www.tuicool.com/articles/weekly">一周拾遗</A></LI></UL></LI></UL>
+<FORM class="navbar-search pull-left" 
+action=http://www.tuicool.com/search><INPUT class="search-query span2" type=text 
+name=kw placeholder="搜索"> </FORM>
+<UL class="nav pull-right">
+  <LI><A 
+href="http://www.tuicool.com/login">登录</A></LI></UL></NAV></DIV></DIV></DIV></DIV>
+<DIV id=flash_container class=noPrint></DIV>
+<DIV class=container-fluid>
+<DIV class="row-fluid article_row_fluid">
+<DIV class="span8 contant article_detail_bg">
+<H1>配置Tomcat时server.xml和content.xml自动还原问题</H1>
+<DIV class=article_meta>
+<DIV style="MARGIN-BOTTOM: 5px"><SPAN class=timestamp>时间&nbsp;2015-03-16 
+16:35:00 </SPAN><SPAN class=from><I class=icon-globe></I><A 
+class="cut cut28 from" href="http://www.tuicool.com/sites/6RvAjm" 
+target=_blank>博客园-Java </A></SPAN></DIV>
+<DIV class=source><I style="FLOAT: left">原文</I>&nbsp; <A 
+style="DISPLAY: inline-block" class="cut cut70" 
+href="http://www.cnblogs.com/zuosl/p/4342190.html?utm_source=tuicool&amp;utm_medium=referral">http://www.cnblogs.com/zuosl/p/4342190.html?utm_source=tuicool&amp;utm_medium=referral</A> 
+</DIV>
+<DIV><SPAN>主题</SPAN> <A href="http://www.tuicool.com/topics/11070011" 
+target=_blank><SPAN class=new-label>Tomcat</SPAN> </A></DIV></DIV>
+<DIV id=nei class=article_body>
+<DIV>
+<P>当我们在处理中文乱码或是配置数据源时，我们要修改Tomcat下的server.xml和content.xml文件。</P>
+<P>但是当我们修改完后重启Tomcat服务器时发现xml文件又被还原了，修改无效果。</P>
+<P>为什么会还原？</P>
+<P>Tomcat服务器在Eclipse中启动时，会自动发布Eclipse中部署的项目，但是我的项目是自己手动在外面部署的，Eclipse只认得在它里面部署的项目，因此它会创建一个新的server.xml文件覆盖原来的文件，里面只有Eclipse中部署的项目。</P>
+<P>解决方法一：</P>
+<P>设置Ecplise，取消掉自动发布功能。</P>
+<P>依次选择 Window-Preferences-Server-Launching,取消Automatically publish wen starting 
+servers，点击OK，搞定。</P>
+<P><IMG class=alignCenter 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/uYN7Nv.png"> </P>
+<P>解决方法二：</P>
+<P>Ecplise项目中有一个Server项目，有一个Tomcat v7.0 Server at localhost-config,</P>
+<P>里面也有server.xml和content.xml，替换成你修改后的文件。Tomcat重新发布时会用这里的配置文件覆盖Tomcat下的conf下的文件。</P>
+<P><IMG class=alignCenter 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/Fj2Evy.png"> 
+</P></DIV></DIV>
+<DIV class=article_social>
+<DIV class=article_like>
+<DIV id=my_zan class="circle circle-like" data_id="iuu6bqF"></DIV></DIV>
+<DIV id=share_weixin_image><IMG 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/qrcode.png" width=100 
+height=100> </DIV>
+<DIV class=article_share_fav>
+<DIV id=ckepop class=share><SPAN>分享</SPAN><BUTTON id=share_weibo_id 
+class=share_weibo title=分享到新浪微博 type=submit></BUTTON><BUTTON id=share_qq_id 
+class=share_qq title=分享到QQ空间 type=submit></BUTTON><BUTTON id=share_weixin_id 
+class=share_weixin type=submit></BUTTON> </DIV>
+<DIV class=fav_correct><BUTTON id=my_fav type=submit data_id="iuu6bqF"><I 
+class="icon icon-star-empty"></I><SPAN id=fav_tip>收藏</SPAN></BUTTON><BUTTON 
+id=article-correct type=submit data_id="iuu6bqF"><I 
+class="icon icon-warning-sign"></I><SPAN>纠错</SPAN></BUTTON> </DIV></DIV>
+<SCRIPT type=text/javascript>
+$("#share_weibo_id").click( function() {
+   window.open("http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=http://www.tuicool.com/articles/iuu6bqF&title=%E9%85%8D%E7%BD%AETomcat%E6%97%B6server.xml%E5%92%8Ccontent.xml%E8%87%AA%E5%8A%A8%E8%BF%98%E5%8E%9F%E9%97%AE%E9%A2%98++%28%E5%88%86%E4%BA%AB%E8%87%AA+%40%E6%8E%A8%E9%85%B7%E7%BD%91%29&key=3113829255");
+});
+$("#share_qq_id").click( function() {
+   window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.tuicool.com/articles/iuu6bqF&title=%E9%85%8D%E7%BD%AETomcat%E6%97%B6server.xml%E5%92%8Ccontent.xml%E8%87%AA%E5%8A%A8%E8%BF%98%E5%8E%9F%E9%97%AE%E9%A2%98&desc=&summary=&site=");
+});
+$("#share_weixin_id").click( function() {
+  $("#share_weixin_image").toggle();
+});
+</SCRIPT>
+
+<DIV class="bottom_ad huodong-detail-ad-banner clearfix">
+<SCRIPT type=text/javascript>
+    var cpro_id = "u1665123";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/c.js"></SCRIPT>
+</DIV></DIV>
+<DIV style="CLEAR: both" id=site_articles>
+<DIV class=article-part-title><SPAN>推荐文章</SPAN> </DIV>
+<UL class=side_article_list>
+  <LI class=side_article_list_item>1.<A title=Android网络框架源码分析二---Retrofit 
+  href="http://www.tuicool.com/articles/bQbm2uJ" target=_blank> 
+  Android网络框架源码分析二---Retrofit </A></LI>
+  <LI class=side_article_list_item>2.<A title=Mac环境下用Java(Sikuli+Robot)实现页游自动化 
+  href="http://www.tuicool.com/articles/EjEB7vI" target=_blank> 
+  Mac环境下用Java(Sikuli+Robot)实现页游自动化 </A></LI>
+  <LI class=side_article_list_item>3.<A title=JAVA字符编码测试 
+  href="http://www.tuicool.com/articles/aUnARnq" target=_blank> JAVA字符编码测试 
+  </A></LI>
+  <LI class=side_article_list_item>4.<A title="Servlet 和 JSP 概述" 
+  href="http://www.tuicool.com/articles/RzQFZz" target=_blank> Servlet 和 JSP 概述 
+  </A></LI>
+  <LI class=side_article_list_item>5.<A 
+  title="【Eclipse】错误之Failed to create the java virtual machine" 
+  href="http://www.tuicool.com/articles/yuyaIjA" target=_blank> 
+  【Eclipse】错误之Failed to create the java virtual machine </A></LI>
+  <LI class=side_article_list_item>6.<A title="java布局学习 （二）" 
+  href="http://www.tuicool.com/articles/uQneYjv" target=_blank> java布局学习 （二） 
+  </A></LI></UL></DIV>
+<DIV id=kan_articles></DIV>
+<DIV style="DISPLAY: none" id=article_weibo>
+<DIV class=article-part-title><SPAN>相关微博</SPAN> <SUB><A 
+href="http://www.tuicool.com/articles/weibo_list/iuu6bqF" target=_blank>(<I 
+id=weibo_num></I>)</A> </SUB></DIV>
+<DIV class=related-weibo-list></DIV></DIV>
+<DIV class=comments>
+<DIV class=comments-area>
+<DIV class=comments-header>
+<H5>我来评几句</H5>
+<DIV style="DISPLAY: none" class="alert comment-alert alert-error">错误 </DIV><TEXTAREA style="resize: none" id=comment-body rows=5 cols=60 placeholder="请输入评论内容..."></TEXTAREA> 
+<SPAN id=comment-submit class="btn btn-medium btn-submit">登录后评论</SPAN> 
+<P style="MARGIN-TOP: 5px; MARGIN-LEFT: 10px">已发表评论数(<SPAN 
+class=comment_cnt></SPAN>) </P></DIV>
+<DIV class=comments-list>
+<DIV style="DISPLAY: none" class="empty-cmts alert alert-success">没有更多评论了^^ 
+</DIV></DIV>
+<DIV style="DISPLAY: none" class=more-comments><A 
+href="http://www.tuicool.com/articles/">更多评论</A> </DIV>
+<DIV style="DISPLAY: none" class=load-fail>评论加载失败，<A 
+href="javascript:reload_comments('iuu6bqF',1,0,-1);">重新加载</A> 
+</DIV></DIV></DIV></DIV>
+<DIV class="span4 article_right_side">
+<DIV class=right_top>
+<DIV class="article_related_site article_detail_bg">
+<H4 class=article-part-title>相关站点</H4>
+<DIV class="article_related_site_body clearfix">
+<DIV class=logo><IMG 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/6RvAjm.png"> </DIV>
+<DIV class=name>
+<DIV><A href="http://www.tuicool.com/sites/6RvAjm" target=_blank>博客园-Java</A> 
+</DIV>
+<DIV><INPUT id=my_follow class="btn btn-success right_site_follow" value=+&nbsp;订阅 type=button data_id="6RvAjm"> 
+</DIV></DIV></DIV></DIV>
+<DIV class=right-ad>
+<SCRIPT type=text/javascript>BAIDU_CLB_fillSlot("1171216");</SCRIPT>
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad><A 
+href="http://yacebao.com/?utm_source=web&amp;utm_medium=banner&amp;utm_campaign=tuicool" 
+target=_blank><IMG 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/yunzhihui300.jpg"></A> 
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad><A 
+href="https://www.teambition.com/?utm_source=tuicool&amp;utm_medium=banner01" 
+target=_blank><IMG 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/teambition300.jpg"></A> 
+</DIV>
+<DIV style="MARGIN-TOP: 8px" class=right-ad>
+<SCRIPT type=text/javascript>BAIDU_CLB_fillSlot("1161131");</SCRIPT>
+</DIV>
+<DIV id=right_site_articles class=article_detail_bg>
+<DIV class=article-part-title><SPAN>热门文章</SPAN> </DIV>
+<UL class=side_article_list>
+  <LI class=side_article_list_item>1.<A title=Android网络框架源码分析二---Retrofit 
+  href="http://www.tuicool.com/articles/bQbm2uJ" target=_blank> 
+  Android网络框架源码分析二---Retrofit </A></LI>
+  <LI class=side_article_list_item>2.<A title=Mac环境下用Java(Sikuli+Robot)实现页游自动化 
+  href="http://www.tuicool.com/articles/EjEB7vI" target=_blank> 
+  Mac环境下用Java(Sikuli+Robot)实现页游自动化 </A></LI>
+  <LI class=side_article_list_item>3.<A title=JAVA字符编码测试 
+  href="http://www.tuicool.com/articles/aUnARnq" target=_blank> JAVA字符编码测试 
+  </A></LI>
+  <LI class=side_article_list_item>4.<A title="Servlet 和 JSP 概述" 
+  href="http://www.tuicool.com/articles/RzQFZz" target=_blank> Servlet 和 JSP 概述 
+  </A></LI>
+  <LI class=side_article_list_item>5.<A 
+  title="【Eclipse】错误之Failed to create the java virtual machine" 
+  href="http://www.tuicool.com/articles/yuyaIjA" target=_blank> 
+  【Eclipse】错误之Failed to create the java virtual machine </A></LI>
+  <LI class=side_article_list_item>6.<A title="java布局学习 （二）" 
+  href="http://www.tuicool.com/articles/uQneYjv" target=_blank> java布局学习 （二） 
+  </A></LI></UL></DIV></DIV>
+<DIV class=operate_zone>
+<DIV class="container-body share-body">
+<DIV class=article-part-title><SPAN>分享本文</SPAN> </DIV>
+<DIV class=share_zone>
+<DIV class=bdsharebuttonbox><A class=bds_tsina title=分享到新浪微博 
+href="http://www.tuicool.com/articles/iuu6bqF#" data-cmd="tsina"></A><A 
+class=bds_qzone title=分享到QQ空间 href="http://www.tuicool.com/articles/iuu6bqF#" 
+data-cmd="qzone"></A><A class=bds_tqq title=分享到腾讯微博 
+href="http://www.tuicool.com/articles/iuu6bqF#" data-cmd="tqq"></A><A 
+class=bds_renren title=分享到人人网 href="http://www.tuicool.com/articles/iuu6bqF#" 
+data-cmd="renren"></A><A class=bds_weixin title=分享到微信 
+href="http://www.tuicool.com/articles/iuu6bqF#" data-cmd="weixin"></A><A 
+class=bds_more href="http://www.tuicool.com/articles/iuu6bqF#" 
+data-cmd="more"></A></DIV>
+<SCRIPT>
+        window._bd_share_config = {
+            "common" : {
+                "bdSnsKey" : {
+                    "tsina" : "3113829255",
+                    "tqq" : "801536792"
+                },
+                "bdText" : "配置Tomcat时server.xml和content.xml自动还原问题 (分享自 @推酷网)",
+                "bdMini" : "2",
+                "bdMiniList" : false,
+                "bdPic" : "http://aimg2.tuicool.com/aYbmMf.png",
+                "bdStyle" : "1",
+                "bdSize" : "24"
+            },
+            "share" : {}
+        };
+        with (document)
+        0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </SCRIPT>
+</DIV></DIV>
+<DIV class=frd_pos>
+<SCRIPT src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/f.txt" 
+async></SCRIPT>
+<INS style="WIDTH: 300px; DISPLAY: inline-block; HEIGHT: 250px" 
+class=adsbygoogle data-ad-slot="5705695566" 
+data-ad-client="ca-pub-7054762349007490"></INS>
+<SCRIPT>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</SCRIPT>
+</DIV></DIV></DIV></DIV>
+<DIV class=read-later-alert></DIV>
+<DIV><A style="DISPLAY: none" id=add-article-to-kan-btn class=btn 
+href="http://www.tuicool.com/articles/iuu6bqF#add-article-to-kan" 
+data-toggle="modal">添加到推刊</A> <!-- add_article to kan -->
+<DIV aria-hidden=true id=add-article-to-kan class="modal hide fade" role=dialog 
+tabIndex=-1 aria-labelledby=myModalLabel>
+<DIV class=modal-header><SPAN class=add-title>收藏到推刊</SPAN> <A 
+class="btn pull-right" href="http://www.tuicool.com/articles/iuu6bqF#new-kan" 
+data-toggle="modal">创建推刊</A> <I class=clearfix></I></DIV>
+<DIV class=modal-body>
+<UL id=add-kan-list></UL></DIV>
+<DIV class=modal-footer><INPUT class=article-id value=iuu6bqF 
+type=hidden><BUTTON class="btn btn-primary pull-left add-to-btn" type=submit>收 
+藏</BUTTON><BUTTON aria-hidden=true class=btn type=submit 
+data-dismiss="modal">取消</BUTTON> </DIV></DIV>
+<DIV class=add-article-to-kan-alert>已收藏到推刊！ </DIV>
+<DIV aria-hidden=true id=new-kan class="modal hide fade" role=dialog tabIndex=-1 
+aria-labelledby=myModalLabel>
+<DIV class=modal-body><INPUT id=new-kan-name type=text name=name 
+placeholder="推刊名(必填)" data-validation-required-message="请填写推刊名" required> <SPAN 
+class=new-ness-name>请填写推刊名</SPAN> <BR><TEXTAREA id=desc rows=6 name=desc placeholder="推刊描述"></TEXTAREA> <SPAN 
+class=new-ness-desc>描述不能大于100个字符!</SPAN> <BR>权限设置：<INPUT value=1 CHECKED 
+type=radio name=type> 公开 <INPUT value=0 type=radio name=type> 仅自己可见 </DIV>
+<DIV class=modal-footer><BUTTON class="btn btn-primary pull-left create-kan-btn" 
+disabled type=submit>创建</BUTTON><BUTTON aria-hidden=true 
+class="btn dismiss-new-kan" type=submit data-dismiss="modal">取消</BUTTON> 
+</DIV></DIV></DIV>
+<DIV aria-hidden=false id=article-correct-modal class="modal hide fade in" 
+role=dialog tabIndex=-1 aria-labelledby=myModalLabel>
+<DIV class=modal-header><BUTTON aria-hidden=true class=close type=button 
+data-dismiss="modal">×</BUTTON> 
+<H3>文章纠错</H3></DIV>
+<DIV class=modal-body><INPUT id=article-correct-source value=iuu6bqF 
+type=hidden> 
+<DIV><LABEL for=article-correct-email>邮箱地址 </LABEL><INPUT 
+id=article-correct-email class=input-large type=email> </DIV>
+<DIV><LABEL for=article-correct-select>错误类型 </LABEL><SELECT 
+id=article-correct-select> <OPTION selected value=正文不准确>正文不准确</OPTION> <OPTION 
+  value=排版有问题>排版有问题</OPTION> <OPTION value=没有分页内容>没有分页内容</OPTION> <OPTION 
+  value=视频无法显示>视频无法显示</OPTION> <OPTION value=图片无法显示>图片无法显示</OPTION></SELECT> 
+</DIV>
+<DIV><LABEL for=article-correct-other>补充信息 </LABEL><TEXTAREA id=article-correct-other class=span6></TEXTAREA> </DIV></DIV>
+<DIV class=modal-footer><BUTTON id=article-correct-submit 
+class="btn btn-primary pull-right huodong_correct_submit" 
+type=submit>&nbsp;&nbsp;提交&nbsp;&nbsp;</BUTTON> </DIV></DIV>
+<STYLE type=text/css>.btn-large {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.load-fail {
+	DISPLAY: none
+}
+</STYLE>
+
+<SCRIPT 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/highlight.pack.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $('table').each(function(i) {
+        var size = $(this).children().size();
+        if (size > 1) {
+            $(this).attr('class',"table table-bordered");
+        } else if (size == 1) {
+            var e11 = $(this).children(":first");
+            var e1 = e11[0];
+            var name = e1.nodeName.toLowerCase();
+            if ("tbody" == name) {
+                if (e11.children().size() > 1) {
+                     $(this).attr('class',"table table-bordered");
+                }
+            }
+        }
+    });
+        window.page = 0;
+        window.last = 0;    
+        window.first = true;
+        resize_article_image('#nei', 550);
+                load_comments("iuu6bqF",1,0,-1);
+                window.uid = -1;
+        open_add_article_to_kan("false");
+        async_do_zan_article(); 
+        $('pre').each(function(i, e) {
+            hljs.highlightBlock(e, "<span class='indent'>  </span>", false)
+        });
+       
+          
+       handle_follow_site("#my_follow","已订阅","+ 订阅");
+</SCRIPT>
+</DIV>
+<DIV class=footer>
+<DIV class=footer-inner>
+<DL class="about-link site-link">
+  <DT>网站相关 </DT>
+  <DD><A href="http://www.tuicool.com/about" target=_blank>关于我们</A> </DD>
+  <DD><A href="http://www.tuicool.com/mobile" target=_blank>移动应用</A> </DD>
+  <DD><A href="http://www.tuicool.com/bbs/go/issues" target=_blank>建议反馈</A> 
+</DD></DL>
+<DL class="site-link follow-link">
+  <DT>关注我们 </DT>
+  <DD><A href="http://e.weibo.com/tuicool2012" target=_blank><IMG 
+  src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/weibo-32.png">推酷网</A> 
+  </DD>
+  <DD><IMG 
+  src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/weixin-32.png">tuicool2012 
+  </DD></DL>
+<DL class="site-link links">
+  <DT>友情链接 </DT>
+  <DD><A title=人人都是产品经理 href="http://www.woshipm.com/" 
+  target=_blank>人人都是产品经理</A> <A title=魔部网 href="http://www.moobuu.com/" 
+  target=_blank>魔部网</A> <A title=PM256 href="http://www.pm265.com/" 
+  target=_blank>PM256</A> <A title=品途网 href="http://www.pintu360.com/" 
+  target=_blank>品途网</A> <A title=移动信息化 href="http://www.yidonghua.com/" 
+  target=_blank>移动信息化</A> <A title=行晓网 href="http://www.snsiu.com/" 
+  target=_blank>行晓网</A> <A title=Code4App href="http://code4app.com/" 
+  target=_blank>Code4App</A> <A title=智城外包网 href="http://www.taskcity.com/" 
+  target=_blank>智城外包网</A> <A title=LAMP人 href="http://blog.lamper.cn/" 
+  target=_blank>LAMP人</A> <A title=安卓航班网 href="http://www.apkway.com/forum.php" 
+  target=_blank>安卓航班网</A> <A title=虎嗅 href="http://www.huxiu.com/" 
+  target=_blank>虎嗅</A> <A title=缘创派 href="http://www.ycpai.com/" 
+  target=_blank>缘创派</A> <A title=IT耳朵 href="http://www.iterduo.com/" 
+  target=_blank>IT耳朵</A> <A title=艾瑞网 href="http://www.iresearch.cn/" 
+  target=_blank>艾瑞网</A> <A title=创媒工场 href="http://mediaworks.caixin.com/" 
+  target=_blank>创媒工场</A> <A title=雷锋网 href="http://www.leiphone.com/" 
+  target=_blank>雷锋网</A> <A title=经理人分享 href="http://www.managershare.com/" 
+  target=_blank>经理人分享</A> <A title=市场部网 href="http://www.shichangbu.com/" 
+  target=_blank>市场部网</A> <A title=砍柴网 href="http://www.ikanchai.com/" 
+  target=_blank>砍柴网</A> <A title=CocoaChina href="http://www.cocoachina.com/" 
+  target=_blank>CocoaChina</A> <A title=北风网 href="http://www.ibeifeng.com/" 
+  target=_blank>北风网</A> <A title=云智慧 href="http://www.jiankongbao.com/" 
+  target=_blank>云智慧</A> <A title=我赢职场 href="http://www.wyzc.com/" 
+  target=_blank>我赢职场</A> <A title=大数据时代 href="http://www.thebigdata.cn/" 
+  target=_blank>大数据时代</A> <A title=奇笛网 href="http://www.qidic.com/" 
+  target=_blank>奇笛网</A> <A title=咕噜网 href="http://www.cngulu.com/" 
+  target=_blank>咕噜网</A> <A title=红联linux href="http://www.linuxdiyf.com/" 
+  target=_blank>红联linux</A> <A title=Win10之家 href="http://win10.ithome.com/" 
+  target=_blank>Win10之家</A> <A title=鸟哥笔记 href="http://www.niaogebiji.com/" 
+  target=_blank>鸟哥笔记</A> <A title=爱游戏 href="http://www.play.cn/" 
+  target=_blank>爱游戏</A> <A title=投资潮 href="http://www.investide.cn/" 
+  target=_blank>投资潮</A> <A title=31会议网 href="http://www.31huiyi.com/" 
+  target=_blank>31会议网</A> <A title=极光推送 href="https://www.jpush.cn/" 
+  target=_blank>极光推送</A> <A title=Teambition href="https://www.teambition.com/" 
+  target=_blank>Teambition</A> <A title=Cocos引擎中文官网 
+  href="http://cn.cocos2d-x.org/" target=_blank>Cocos引擎中文官网</A> <A title=硅谷网 
+  href="http://www.guigu.org/" target=_blank>硅谷网</A> <A title=leangoo 
+  href="https://home.leangoo.com/" target=_blank>leangoo</A> <A 
+  href="http://www.tuicool.com/links">更多链接&gt;&gt;</A>&nbsp;&nbsp; </DD></DL>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV style="DISPLAY: none">
+<SCRIPT language=JavaScript 
+src="配置Tomcat时server_xml和content_xml自动还原问题%20-%20推酷_files/stat.php"></SCRIPT>
+</DIV></BODY></HTML>

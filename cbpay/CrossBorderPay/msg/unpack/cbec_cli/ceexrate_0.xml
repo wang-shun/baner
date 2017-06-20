@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ceexrate_0">
+	<include></include>
+	<field name="stream">
+		<format type="virtual"  />
+	</field>
+	<field name="bankName">
+		<format type="s" length="100" necessary="true" frommsg="true" />
+	</field>
+	<field name="e3rdPayNo">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+	<field name="transTime">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+	<field name="exQuoteDate">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+	<field name="exQuoteTime">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+	<field name="exQuoteListNum">
+		<format type="s" length="6" necessary="true" frommsg="true" />
+	</field>
+	
+	<compositField name="exQuoteList" sizeRef="exQuoteListNum">
+		<field name="row">
+			<format type="virtual" />
+		</field>
+		<field name="currencyID">
+			<format type="s" length="3" necessary="true" />
+		</field>
+		<field name="cashBuyPrice">
+			<format type="n" length="12"  necessary="false" />
+		</field>
+		<field name="exBuyPrice">
+			<format type="n" length="12"  necessary="true" />
+		</field>
+		<field name="cashSellPrice">
+			<format type="n" length="12"  necessary="false" />
+		</field>
+		<field name="exSellPrice">
+			<format type="n" length="12"  necessary="false" />
+		</field>
+	</compositField>
+</formula>

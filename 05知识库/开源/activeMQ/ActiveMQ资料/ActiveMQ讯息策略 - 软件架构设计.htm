@@ -1,0 +1,802 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0067)http://www.myexception.cn/software-architecture-design/1653408.html -->
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ActiveMQ讯息策略 - 软件架构设计</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META 
+content="format=html5; url=http://m.myexception.cn/software-architecture-design/1653408.html" 
+http-equiv=mobile-agent>
+<META 
+content="format=xhtml; url=http://m.myexception.cn/software-architecture-design/1653408.html" 
+http-equiv=mobile-agent>
+<META name=keywords content=ActiveMQ消息策略>
+<META name=description 
+content="ActiveMQ消息策略 &nbsp; &nbsp; ActiveMQ中提供了众多的“策略”(policy),它们可以在broker端为每个通道“定制”消息的管理方式。本文将简单描述主要的几种Policy。 &nbsp; 一. DispatchPolcicy: 转发策略(Top"><LINK 
+rel=stylesheet type=text/css 
+href="ActiveMQ讯息策略%20-%20软件架构设计_files/co_it.css"><LINK rel="shortcut icon" 
+type=image/x-icon href="/r/cms/www/red/img/favicon.ico"><LINK rel=icon 
+type=image/x-icon href="/r/cms/www/red/img/favicon.ico">
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/co.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<DIV class=h_a>
+<SCRIPT language=javascript>h_a();</SCRIPT>
+</DIV>
+<DIV class=t>
+<DIV class=t_c>
+<DIV class=l><A href="http://www.myexception.cn/" target=_blank><IMG 
+alt="MyException - 我的异常网" 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/exception-logo.jpg"></A></DIV>
+<DIV class=sd>
+<DIV class=st><SPAN class=st_s><A href="http://www.myexception.cn/" 
+target=_blank>首页</A></SPAN>
+<UL>
+  <LI><A href="http://www.myexception.cn/web-develop/" 
+  target=_blank>Web开发</A></LI>
+  <LI><A href="http://www.myexception.cn/android/" 
+target=_blank>Android</A></LI>
+  <LI><A href="http://www.myexception.cn/j2ee/" target=_blank>J2EE</A></LI>
+  <LI><A href="http://www.myexception.cn/php/" target=_blank>PHP</A></LI>
+  <LI><A href="http://www.myexception.cn/linux-unix/" 
+  target=_blank>Linux/Unix</A></LI>
+  <LI><A href="http://www.myexception.cn/mysql/" target=_blank>MySql</A></LI>
+  <LI><A href="http://www.myexception.cn/c-sharp/" target=_blank>C#</A></LI>
+  <LI><A href="http://www.myexception.cn/sitemap.html">更多...</A></LI></UL></DIV>
+<DIV class=s>
+<FORM class=s_f name=formsearch 
+action=http://www.myexception.cn/search.jspx><INPUT 
+onblur="if(this.value=='')this.value='在216万个软件开发解决方案中搜索'" class=s_q 
+onfocus="if(this.value=='在216万个软件开发解决方案中搜索')this.value=''" 
+value=在216万个软件开发解决方案中搜索 maxLength=255 type=text name=q autocomplete="off"><INPUT id=btnSearch class=s_s value=我的异常网-搜索 type=submit name=submit></FORM></DIV></DIV></DIV></DIV>
+<DIV class=m>
+<DIV class=m_a>
+<SCRIPT language=javascript>m_a();</SCRIPT>
+</DIV>
+<DIV class=c>
+<DIV class=le>
+<DIV class=c_l>当前位置:<A href="http://www.myexception.cn/" 
+target=_blank>我的异常网</A>» <A 
+href="http://www.myexception.cn/software-architecture-design/" 
+target=_blank>软件架构设计</A>&nbsp;»&nbsp;ActiveMQ讯息策略</DIV>
+<DIV class=c_t>
+<H1>ActiveMQ讯息策略</H1></DIV>
+<DIV class=c_a_1>
+<SCRIPT language=javascript>c_a_1();</SCRIPT>
+</DIV>
+<DIV class=c_t_b>
+<DIV 
+class=c_au>www.MyException.Cn&nbsp;&nbsp;网友分享于：2014-05-14&nbsp;&nbsp;浏览：24次</DIV>
+<DIV class=c_a_0>
+<SCRIPT language=javascript>c_a_0();</SCRIPT>
+</DIV></DIV>
+<DIV class=c_a_2>
+<SCRIPT language=javascript>c_a_2();</SCRIPT>
+</DIV>
+<DIV class=c_a_2_a>
+<SCRIPT language=javascript>c_a_2_a();</SCRIPT>
+</DIV>
+<DIV class=c_txt>
+<DIV class=c_a_3>
+<SCRIPT language=javascript>c_a_3();</SCRIPT>
+</DIV>ActiveMQ消息策略<BR>
+<DIV class=iteye-blog-content-contain>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+ActiveMQ中提供了众多的“策略”(policy),它们可以在broker端为每个通道“定制”消息的管理方式。本文将简单描述主要的几种Policy。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px"><STRONG>一. DispatchPolcicy: 转发策略(Topic)</STRONG></P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+此策略表明broker端消息转发给多个Consumer时，消息被发送的顺序性，这个顺序通常指Consumer的顺序，只对Topic有效，它有3种常用的类型：</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) RoundRobinDispatchPolicy: 
+“轮询”，消息将依次发送给每个“订阅者”。“订阅者”列表默认按照订阅的先后顺序排列，在转发消息时，对于匹配消息的第一个订阅者，将会被移动到“订阅者”列表的尾部，这也意味着“下一条”消息，将会较晚的转发给它。</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 2)&nbsp;StrictOrderDispatchPolicy: 
+严格有序，消息依次发送给每个订阅者，按照“订阅者”订阅的时间先后。它和RoundRobin最大的区别是，没有移动“订阅者”顺序的操作。</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 3)&nbsp;PriorityDispatchPolicy: 
+基于“property”权重对“订阅者”排序。它要求开发者首先需要对每个订阅者指定priority，默认每个consumer的权重都一样。</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; 4)&nbsp;SimpleDispatchPolicy: 
+默认值，按照当前“订阅者”列表的顺序。其中PriorityDispatchPolicy是其子类。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P>
+<P style="FONT-SIZE: 14px">&nbsp; &nbsp; "轮询"是比较常用的策略。</P>
+<P style="FONT-SIZE: 14px">&nbsp;</P><PRE class=java name="code">&lt;policyEntry topic="&gt;"&gt;               
+  &lt;dispatchPolicy&gt;  
+   &lt;roundRobinDispatchPolicy/&gt;
+  &lt;/dispatchPolicy&gt;
+&lt;/policyEntry&gt;</PRE>&nbsp; 
+<P>&nbsp;</P>
+<P style="FONT-SIZE: 14px"><STRONG>二.SubscriptionRecoveryPolicy: 
+恢复策略(Topic)</STRONG></P>
+<P>&nbsp;<SPAN style="FONT-SIZE: 14px"> &nbsp; 
+在非耐久订阅者“失效”期间或一个新的Topic，broker可以保留的可追溯的消息量。前提是Topic必须是“retroactive”，我们可以在distination地址中指定此属性,例如："order.topic?consumer.retroactive=true"。默认情况下，订阅者只能获取“订阅”开始之后的消息，如果Retroactive=true，那么订阅者就可以获取其创建之前的消息列表。此Policy就是用来控制“retroactive”的消息量。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+1)&nbsp;FixedSizedSubscriptionRecoveryPolicy: 
+保存一定size的消息，broker将为此Topic开辟定额的RAM用来保存最新的消息。</SPAN></P><PRE class=java name="code">&lt;!-- 1K --&gt;
+&lt;fixedSizedSubscriptionRecoveryPolicy maximumSize="1024"/&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2) 
+FixedCountSubscriptionRecoveryPolicy: 保存一定条数的消息。</SPAN></P><PRE class=java name="code">&lt;!-- 100条 --&gt;
+&lt;fixedCountSubscriptionRecoveryPolicy maximumSize="100"/&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 3) 
+LastImageSubscriptionRecoveryPolicy: 只保留最新的一条数据</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 4) 
+QueryBasedSubscriptionRecoveryPolicy: 
+符合置顶selector的消息都将被保存，具体能够“恢复”多少消息，由底层存储机制决定；比如对于非持久化消息，只要内存中还存在，则都可以恢复。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 5) 
+TimedSubscriptionRecoveryPolicy: 保留最近一段时间的消息。</SPAN></P><PRE class=java name="code">&lt;!-- 可追溯最近1分钟的消息--&gt;
+&lt;timedSubscriptionRecoveryPolicy recoverDuration="60000" /&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 6) NoSubscriptionRecoveryPolicy: 
+关闭“恢复机制”。默认值。</SPAN></P><PRE class=java name="code">&lt;policyEntry topic="&gt;"&gt;               
+  &lt;subscriptionRecoveryPolicy&gt;  
+   &lt;fixedCountSubscriptionRecoveryPolicy maximumSize="100"/&gt;
+  &lt;/subscriptionRecoveryPolicy&gt;
+&lt;/policyEntry</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>三. DeadLetterStrategy: 
+“死信”策略</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+Broker将如何管理“死信”。当消息过期后，或者“重发”几次之后仍然不能被正常消息，那么此消息将会被移除到DeadLetter队列中。此后，我们可以通过侦听死信队列，来获取相关通知或者对消息做额外的操作。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) 
+&nbsp;IndividualDeadLetterStrategy: 
+把DeadLetter放入各自的死信通道中，对于Queue而言，死信通道的前缀默认为“ActiveMQ.DLQ.Queue.”，Topic为“ActiveMQ.DLQ.Topic.”；比如队列Order，那么它对应的死信通道为“ActiveMQ.DLQ.Queue.Order”。我们使用“queuePrefix”“topicPrefix”来指定上述前缀。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+默认情况下，无论是Topic还是Queue，broker将使用Queue来保存DeadLeader，即死信通道通常为Queue；不过开发者也可以指定为Topic。</SPAN></P>
+<P>&nbsp;</P><PRE class=java name="code">&lt;policyEntry queue="order"&gt;
+  &lt;deadLetterStrategy&gt;
+	&lt;individualDeadLetterStrategy
+	  queuePrefix="DLQ." useQueueForQueueMessages="false" /&gt;
+  &lt;/deadLetterStrategy&gt;
+&lt;/policyEntry&gt;</PRE>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+上述将队列Order中出现的DeadLetter保存在DLQ.Order中，不过此时DLQ.Order为Topic。individualDeadLetterStrategy还有一个属性为“useQueueForTopicMessages”，此值表示是否将Topic的DeadLetter保存在Queue中，默认为true。&nbsp;</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2)&nbsp;SharedDeadLetterStrategy: 
+将所有的DeadLetter保存在一个共享的队列中，这是ActiveMQ 
+broker端默认的策略。共享队列默认为“ActiveMQ.DLQ”，可以通过“deadLetterQueue”属性来设定。</SPAN></P><PRE class=java name="code">&lt;deadLetterStrategy&gt;
+	&lt;sharedDeadLetterStrategy deadLetterQueue="DLQ-QUEUE"/&gt;
+  &lt;/deadLetterStrategy&gt;</PRE>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 3) DiscardingDeadLetterStrategy: 
+broker将直接抛弃DeadLeatter。如果开发者不需要关心DeadLetter，可以使用此策略。AcitveMQ提供了一个便捷的插件：DiscardingDLQBrokerPlugin，来抛弃DeadLetter。</SPAN></P><PRE class=java name="code">&lt;broker&gt;
+    &lt;plugins&gt;
+      &lt;discardingDLQBrokerPlugin dropAll="true" dropTemporaryTopics="true" dropTemporaryQueues="true" /&gt;
+    &lt;/plugins&gt;
+&lt;/broker&gt;</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;<SPAN style="FONT-SIZE: 14px"> &nbsp; 
+对于上述三种策略，还有2个很重要的可选参数，“processExpired”表示是否将过期消息放入死信队列，默认为true；“processNonPersistent”表示是否将“非持久化”消息放入死信队列，默认为false。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>四.&nbsp;PendingMessageLimitStrategy: 
+消息限制策略(面向Slow Consumer)</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+此策略只对Topic有效，当通道中有大量的消息积压时，broker可以保留的消息量。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+1)&nbsp;ConstantPendingMessageLimitStrategy: 
+保留固定条数的消息，如果消息量超过limit，将使用“MessageEvictionStrategy”移除消息。</SPAN></P><PRE class=java name="code">&lt;policyEntry topic="PRICES.&gt;"&gt;
+	&lt;!-- lets force old messages to be discarded for slow consumers --&gt;
+	&lt;pendingMessageLimitStrategy&gt;
+		&lt;constantPendingMessageLimitStrategy limit="50"/&gt;
+	&lt;/pendingMessageLimitStrategy&gt;
+&lt;/policyEntry&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+2)&nbsp;PrefetchRatePendingMessageLimitStrategy: 保留prefetchSize倍数条消息。</SPAN></P><PRE class=java name="code">&lt;!-- 如果prefetchSize为100，则保留2.5 * 100条消息 --&gt;
+&lt;prefetchRatePendingMessageLimitStrategy multiplier="2.5"/&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>五.&nbsp;MessageEvictionStrategy: 
+消息剔除策略(面向Slow Consumer)</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+配合PendingMessageLimitStrategy，只对Topic有效。当PendingMessage的数量超过限制时，broker该如何剔除多余的消息。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+1)&nbsp;OldestMessageEvictionStrategy: 移除旧消息，默认策略。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+2)&nbsp;OldestMessageWithLowestPriorityEvictionStrategy: 
+旧数据中权重较低的消息，将会被移除。(message.getPriority())</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+3)&nbsp;UniquePropertyMessageEvictionStrategy: 
+移除具有指定property的旧消息。开发者可以指定property的名称。</SPAN></P><PRE class=java name="code">&lt;policyEntry topic="SKU.PRICE.&gt;"&gt;
+	&lt;!-- lets force old messages to be discarded for slow consumers --&gt;
+	&lt;pendingMessageLimitStrategy&gt;
+		&lt;constantPendingMessageLimitStrategy limit="10000"/&gt;
+	&lt;/pendingMessageLimitStrategy&gt;
+	&lt;messageEvictionStrategy&gt;
+		&lt;uniquePropertyMessageEvictionStrategy propertyName="PRICE" /&gt;
+	&lt;/messageEvictionStrategy&gt;
+&lt;/policyEntry&gt;</PRE>
+<P>&nbsp;<SPAN style="FONT-SIZE: 14px"> &nbsp; 
+上述配置，针对SKU.PRICE通道中，只保留10000个最新的消息，如果有新消息继续加入，将会移除具有PRICE属性的旧消息。在每条消息中，封装多个商品的价格列表，我们可以实现“最新商品价格”的功能。&nbsp;</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>六. SlowConsumerStrategy: 
+慢速消费者策略</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+Broker将如何处理慢消费者。Broker将会启动一个后台线程用来检测所有的慢速消费者，并定期关闭关闭它们。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) AbortSlowConsumerStrategy: 
+中断慢速消费者，慢速消费将会被关闭。</SPAN></P><PRE class=java name="code">&lt;slowConsumerStrategy&gt;  
+    &lt;abortSlowConsumerStrategy abortConnection="false"/&gt;&lt;!-- 不关闭底层链接 --&gt;  
+&lt;/slowConsumerStrategy&gt;</PRE>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2) AbortSlowConsumerStrategy: 
+如果慢速消费者最后一个ACK距离现在的时间间隔超过阀值，则中断慢速消费者。</SPAN></P>
+<P>&nbsp;</P><PRE class=java name="code">&lt;slowConsumerStrategy&gt;  
+    &lt;abortSlowConsumerStrategy  maxTimeSinceLastAck="30000"/&gt;&lt;!-- 30秒滞后 --&gt;  
+&lt;/slowConsumerStrategy&gt;</PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>七. PendingQueueMessageStoragePolicy: 
+待消息消息转存策略</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+当Queue中有大量的“NON_PERSISTENT”消息时，将会消耗JVM内存，直到OOM或者达到Broker端设定的systemUsage。为了避免这些问题，我们需要将这些消息“转存”到特定的存储器中。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 1) vmQueueCursor: 将消息转存到基于内存(JVM 
+linkeList)的存储结构中。默认设置。有OOM风险。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 2) storeCursor: 
+将消息转存到storeEngine中，如果broker使用kahadb/LevelDB,那么消息将会被转存到相应的存储引擎中。这是强烈推荐的策略，也是效率最好的策略。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 3) fileQueueCursor: 
+将消息转存到临时文件中。&nbsp;</SPAN></P><PRE class=java name="code">&lt;!-- 内存限制为512M，如果超过阀值，则转存 --&gt;
+&lt;policyEntry queue="&gt;" producerFlowControl="true" memoryLimit="512mb"&gt;               
+	&lt;pendingQueuePolicy&gt;  
+		&lt;storeCursor /&gt;  
+	&lt;/pendingQueuePolicy&gt;  
+&lt;/policyEntry&gt; </PRE>
+<P>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>八. 
+PendingSubscriberMessageStoragePolicy:(Topic)</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+针对“非耐久”订阅者。概念和(七)一样，支持三种策略：storeCursor, vmCursor和fileCursor。</SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px"></SPAN>&nbsp;</P>
+<P><SPAN style="FONT-SIZE: 14px"><STRONG>九. 
+PendingDurableSubscriberMessageStoragePolicy: (Topic)</STRONG></SPAN></P>
+<P><SPAN style="FONT-SIZE: 14px">&nbsp; &nbsp; 
+针对“耐久”订阅者，支持三种策略：storeDurableSubscriberCursor, vmDurableCursor和 
+fileDurableSubscriberCursor。</SPAN></P><PRE class=java name="code">&lt;policyEntry topic="&gt;" producerFlowControl="false" memoryLimit="10mb"&gt;  
+    &lt;pendingSubscriberPolicy&gt;  
+        &lt;!-- 对于非耐久的订阅者，非持久化消息: vmCursor,fileCursor --&gt;  
+         &lt;fileCursor/&gt;  
+    &lt;/pendingSubscriberPolicy&gt;  
+    &lt;pendingDurableSubscriberPolicy&gt;  
+        &lt;!-- 对于耐久的订阅者，非持久化消息 --&gt;  
+        &lt;!-- storeDurableSubscriberCursor --&gt;  
+        &lt;!-- vmDurableCursor --&gt;  
+        &lt;!-- fileDurableSubscriberCursor --&gt;  
+        &lt;storeDurableSubscriberCursor/&gt;  
+    &lt;/pendingDurableSubscriberPolicy&gt;  
+&lt;/policyEntry&gt;</PRE></DIV></DIV>
+<DIV class=c_a_4>
+<SCRIPT language=javascript>c_a_4();</SCRIPT>
+</DIV>
+<DIV class=c_a_4_a>
+<SCRIPT language=javascript>c_a_4_a();</SCRIPT>
+</DIV>
+<DIV class=c_a_5_1>
+<SCRIPT language=javascript>c_a_5_1();</SCRIPT>
+</DIV>
+<DIV class=c_a_6>
+<SCRIPT language=javascript>c_a_6();</SCRIPT>
+</DIV>
+<DIV class=c_a_7>
+<SCRIPT language=javascript>c_a_7();</SCRIPT>
+</DIV>
+<DIV class=c_a_8>
+<SCRIPT language=javascript>c_a_8();</SCRIPT>
+</DIV>
+<DIV class=wk1>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825527.html" target=_blank><IMG 
+  alt=5款最佳正则表达式编辑调试器 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18115453rc0l.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825527.html" 
+  target=_blank>5款最佳正则表达式编辑调试器</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391139.html" target=_blank><IMG 
+  alt=程序员和编码员之间的区别 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30175057pag2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391139.html" 
+  target=_blank>程序员和编码员之间的区别</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825528.html" target=_blank><IMG 
+  alt=为啥Android手机总会越用越慢？ 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18120332wzzb.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825528.html" 
+  target=_blank>为啥Android手机总会越用越慢？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1768786.html" target=_blank><IMG 
+  alt="写给自己也写给你 自己到底该何去何从" 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/28124232qcxf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1768786.html" 
+  target=_blank>写给自己也写给你 自己到底该何去何从</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391151.html" target=_blank><IMG 
+  alt=漫画:程序员的工作 src="ActiveMQ讯息策略%20-%20软件架构设计_files/041159338pn9.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391151.html" 
+  target=_blank>漫画:程序员的工作</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391137.html" target=_blank><IMG 
+  alt="程序员最害怕的5件事 你中招了吗?" 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30170859ohzi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391137.html" 
+  target=_blank>程序员最害怕的5件事 你中招了吗?</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748603.html" target=_blank><IMG 
+  alt=" 程序员的样子" src="ActiveMQ讯息策略%20-%20软件架构设计_files/01175651yuem.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748603.html" 
+  target=_blank>程序员的样子</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825525.html" target=_blank><IMG 
+  alt=总结2014中国互联网十大段子 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18114731tpvz.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825525.html" 
+  target=_blank>总结2014中国互联网十大段子</A></DT></DL></DIV>
+<DIV class=c_a_9>
+<SCRIPT language=javascript>c_a_9();</SCRIPT>
+</DIV>
+<DIV class=col>
+<DIV class=col_m><A id=s1 class=on onmouseover=col_m(1) 
+href="javascript:void(0)">软件架构设计-热门</A><A id=s2 onmouseover=col_m(2) 
+href="javascript:void(0)">软件架构设计-最新</A><A id=s3 onmouseover=col_m(3) 
+href="javascript:void(0)">软件架构设计-其它</A></DIV>
+<DIV style="DISPLAY: block" id=e1 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846669.html" 
+  target=_blank>关于并发的思忖</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846696.html" 
+  target=_blank>基于maven的ssh框架一步一步筹建</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846629.html" 
+  target=_blank>Spring疑义</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846706.html" 
+  target=_blank>spring事物诠注</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847194.html" 
+  target=_blank>“函数式”和“面向对象式”在权限引擎中是怎么融为一体的</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847192.html" 
+  target=_blank>Top 十 Uses of a Message Queue</A></SPAN></LI></UL></DIV>
+<DIV style="DISPLAY: none" id=e2 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1844367.html" 
+  target=_blank>DevOps(七)Spark Deployment on VM with Kafka</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1844714.html" 
+  target=_blank>分布式系统翻阅笔记（二十二）-时钟和时钟同步</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1845786.html" 
+  target=_blank>Nginx+tomcat实现集群跟负载均衡</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1845789.html" 
+  target=_blank>JDK增添和删除数字证书</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846274.html" 
+  target=_blank>WCF学习——掀开您的盖头来</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846279.html" 
+  target=_blank>《Java Bug方式》读书笔记</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846280.html" 
+  target=_blank>Maven基础知识（3）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846297.html" 
+  target=_blank>maven基础知识（2）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI></UL></DIV>
+<DIV style="DISPLAY: none" id=e3 class=col_c>
+<UL>
+  <LI><SPAN class="col_n_t n">1</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846669.html" 
+  target=_blank>关于并发的思忖</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">2</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="col_n_t n">3</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846317.html" 
+  target=_blank>Tomcat 架构 (1)</A></SPAN></LI>
+  <LI><SPAN class="n_n n">4</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846696.html" 
+  target=_blank>基于maven的ssh框架一步一步筹建</A></SPAN></LI>
+  <LI><SPAN class="n_n n">5</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847194.html" 
+  target=_blank>“函数式”和“面向对象式”在权限引擎中是怎么融为一体的</A></SPAN></LI>
+  <LI><SPAN class="n_n n">6</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1847192.html" 
+  target=_blank>Top 十 Uses of a Message Queue</A></SPAN></LI>
+  <LI><SPAN class="n_n n">7</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846290.html" 
+  target=_blank>maven基础知识（1）</A></SPAN></LI>
+  <LI><SPAN class="n_n n">8</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846629.html" 
+  target=_blank>Spring疑义</A></SPAN></LI>
+  <LI><SPAN class="n_n n">9</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846706.html" 
+  target=_blank>spring事物诠注</A></SPAN></LI>
+  <LI><SPAN class="n_n n">10</SPAN><SPAN class=col_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1846308.html" 
+  target=_blank>glibc 2.21 公布，安全修复和性能提升</A></SPAN></LI></UL></DIV></DIV>
+<DIV class=c_a_10>
+<SCRIPT language=javascript>c_a_10();</SCRIPT>
+</DIV>
+<DIV class=c_a_11>
+<SCRIPT language=javascript>c_a_11();</SCRIPT>
+</DIV>
+<DIV class=c_p_o>
+<UL>
+  <LI>上一篇：<A 
+  href="http://www.myexception.cn/software-architecture-design/1653414.html" 
+  target=_blank>CXF的一个很怪异的有关问题</A></LI>
+  <LI>下一篇：<A 
+  href="http://www.myexception.cn/software-architecture-design/1653406.html" 
+  target=_blank>Golang(九)File Management</A></LI></UL></DIV>
+<DIV class=c_p_c>
+<H2>文章评论</H2>
+<DIV class=c_p_c_l>
+<DIV class=ds-thread 
+data-url="http://www.myexception.cn/software-architecture-design/1653408.html" 
+data-title="ActiveMQ讯息策略" data-thread-key="1653408"></DIV></DIV></DIV>
+<DIV class=c_a_12>
+<SCRIPT language=javascript>c_a_12();</SCRIPT>
+</DIV></DIV>
+<DIV class=r>
+<DIV class="c_r_a c_r_1_a">
+<SCRIPT language=javascript>c_r_1_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r">
+<DIV class=c_r_t><SPAN class=c_r_t_s>相关解决方案</SPAN></DIV>
+<DIV class=c_r_c>
+<UL>
+  <LI class=c_r_c_li><SPAN class="n_t n">1</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/open-source/451430.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>中<FONT color=red>讯息</FONT>权限<FONT 
+  color=red>策略</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_t n">2</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/open-source/1494886.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>的<FONT color=red>讯息</FONT>重发<FONT 
+  color=red>策略</FONT>和DLQ处理</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_t n">3</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/internet/1252460.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT> Redelivery Policy（<FONT color=red>讯息</FONT>重发<FONT 
+  color=red>策略</FONT>）</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">4</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/program/679263.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>中<FONT color=red>讯息</FONT>游标</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">5</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/internet/669936.html" target=_blank><FONT 
+  color=red>activeMq</FONT>收不到<FONT color=red>讯息</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">6</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/industry/829864.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT>接收<FONT color=red>讯息</FONT></A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">7</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1100750.html" 
+  target=_blank><FONT color=red>ActiveMQ</FONT>支持的<FONT 
+  color=red>讯息</FONT>属性</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">8</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/cloud/1601062.html" target=_blank><FONT 
+  color=red>ActiveMQ</FONT><FONT color=red>讯息</FONT>主体</A></SPAN></LI>
+  <LI class=c_r_c_li><SPAN class="n_n n">9</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/1714411.html" 
+  target=_blank><FONT color=red>ActiveMQ</FONT>的<FONT 
+  color=red>讯息</FONT>重发机制</A></SPAN></LI>
+  <LI class=c_r_c_li_last><SPAN class="n_n n">10</SPAN><SPAN class=c_r_c_s><A 
+  href="http://www.myexception.cn/software-architecture-design/780932.html" 
+  target=_blank>jms<FONT color=red>讯息</FONT>服务之<FONT 
+  color=red>ActiveMQ</FONT></A></SPAN></LI></UL></DIV></DIV>
+<DIV class="c_r_a c_r_2_a">
+<SCRIPT language=javascript>c_r_2_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_3_a">
+<SCRIPT language=javascript>c_r_3_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_4_a">
+<SCRIPT language=javascript>c_r_4_a();</SCRIPT>
+</DIV>
+<DIV class=wk2>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825523.html" target=_blank><IMG 
+  alt=十大编程算法助程序员走上高手之路 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18111556vg02.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825523.html" 
+  target=_blank>十大编程算法助程序员走上高手之路</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391144.html" target=_blank><IMG 
+  alt=程序员的一天：一寸光阴一寸金 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30183714w4nf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391144.html" 
+  target=_blank>程序员的一天：一寸光阴一寸金</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825042.html" target=_blank><IMG 
+  alt=为什么程序员都是夜猫子 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/17181938hc7q.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825042.html" 
+  target=_blank>为什么程序员都是夜猫子</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391140.html" target=_blank><IMG 
+  alt=科技史上最臭名昭著的13大罪犯 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30175719yzq1.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391140.html" 
+  target=_blank>科技史上最臭名昭著的13大罪犯</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391145.html" target=_blank><IMG 
+  alt=10个调试和排错的小建议 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/301842015861.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391145.html" 
+  target=_blank>10个调试和排错的小建议</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391133.html" target=_blank><IMG 
+  alt=一个程序员的时间管理 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/2923550661n3.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391133.html" 
+  target=_blank>一个程序员的时间管理</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391138.html" target=_blank><IMG 
+  alt=如何区分一个程序员是“老手“还是“新手“？ 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30174432zj19.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391138.html" 
+  target=_blank>如何区分一个程序员是“老手“还是“新手“？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825515.html" target=_blank><IMG 
+  alt=做程序猿的老婆应该注意的一些事情 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/181008252thc.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825515.html" 
+  target=_blank>做程序猿的老婆应该注意的一些事情</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1755343.html" target=_blank><IMG 
+  alt=老美怎么看待阿里赴美上市 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/032315351vco.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1755343.html" 
+  target=_blank>老美怎么看待阿里赴美上市</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391148.html" target=_blank><IMG 
+  alt="初级 vs 高级开发者 哪个性价比更高？" 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/3019180458hf.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391148.html" target=_blank>初级 vs 
+  高级开发者 哪个性价比更高？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825526.html" target=_blank><IMG 
+  alt=程序员周末都喜欢做什么？ 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/1811513264wz.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825526.html" 
+  target=_blank>程序员周末都喜欢做什么？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391142.html" target=_blank><IMG 
+  alt=Web开发人员为什么越来越懒了？ 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30181315ltwp.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391142.html" 
+  target=_blank>Web开发人员为什么越来越懒了？</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1682883.html" target=_blank><IMG 
+  alt=我是如何打败拖延症的 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/12161558wia0.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1682883.html" 
+  target=_blank>我是如何打败拖延症的</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825524.html" target=_blank><IMG 
+  alt=如何成为一名黑客 src="ActiveMQ讯息策略%20-%20软件架构设计_files/18112522bcd1.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825524.html" 
+  target=_blank>如何成为一名黑客</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391132.html" target=_blank><IMG 
+  alt=Java程序员必看电影 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/29234119wl1y.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391132.html" 
+  target=_blank>Java程序员必看电影</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391150.html" target=_blank><IMG 
+  alt=程序员眼里IE浏览器是什么样的 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/041141005hoi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391150.html" 
+  target=_blank>程序员眼里IE浏览器是什么样的</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825529.html" target=_blank><IMG 
+  alt=什么才是优秀的用户界面设计 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18120758kqo9.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825529.html" 
+  target=_blank>什么才是优秀的用户界面设计</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748599.html" target=_blank><IMG 
+  alt=旅行，写作，编程 src="ActiveMQ讯息策略%20-%20软件架构设计_files/01163735u61p.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748599.html" 
+  target=_blank>旅行，写作，编程</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391135.html" target=_blank><IMG 
+  alt=中美印日四国程序员比较 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/301646321krk.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391135.html" 
+  target=_blank>中美印日四国程序员比较</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825496.html" target=_blank><IMG 
+  alt=我跳槽是因为他们的显示器更大 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18095008lyi5.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825496.html" 
+  target=_blank>我跳槽是因为他们的显示器更大</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748601.html" target=_blank><IMG 
+  alt=老程序员的下场 src="ActiveMQ讯息策略%20-%20软件架构设计_files/01173735230p.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748601.html" 
+  target=_blank>老程序员的下场</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391143.html" target=_blank><IMG 
+  alt="Java 与 .NET 的平台发展之争" 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30183243clzi.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391143.html" target=_blank>Java 
+  与 .NET 的平台发展之争</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391136.html" target=_blank><IMG 
+  alt=“肮脏的”IT工作排行榜 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/301651102kpd.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391136.html" 
+  target=_blank>“肮脏的”IT工作排行榜</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1516312.html" target=_blank><IMG 
+  alt=代码女神横空出世 src="ActiveMQ讯息策略%20-%20软件架构设计_files/26170527fkt2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1516312.html" 
+  target=_blank>代码女神横空出世</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1499484.html" target=_blank><IMG 
+  alt=程序员必看的十大电影 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/242351564ckv.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1499484.html" 
+  target=_blank>程序员必看的十大电影</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391134.html" target=_blank><IMG 
+  alt=60个开发者不容错过的免费资源库 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30083121nqcj.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391134.html" 
+  target=_blank>60个开发者不容错过的免费资源库</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825521.html" target=_blank><IMG 
+  alt=“懒”出效率是程序员的美德 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18110120m9t7.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825521.html" 
+  target=_blank>“懒”出效率是程序员的美德</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1768787.html" target=_blank><IMG 
+  alt=编程语言是女人 src="ActiveMQ讯息策略%20-%20软件架构设计_files/28130140xowe.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1768787.html" 
+  target=_blank>编程语言是女人</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391149.html" target=_blank><IMG 
+  alt=那些争议最大的编程观点 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30192258kguy.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391149.html" 
+  target=_blank>那些争议最大的编程观点</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748604.html" target=_blank><IMG 
+  alt=每天工作4小时的程序员 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/01182623ucjy.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748604.html" 
+  target=_blank>每天工作4小时的程序员</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825517.html" target=_blank><IMG 
+  alt=10个帮程序员减压放松的网站 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18102904jims.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825517.html" 
+  target=_blank>10个帮程序员减压放松的网站</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1472010.html" target=_blank><IMG 
+  alt=亲爱的项目经理，我恨你 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/07101353z1cs.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1472010.html" 
+  target=_blank>亲爱的项目经理，我恨你</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825516.html" target=_blank><IMG 
+  alt=要嫁就嫁程序猿—钱多话少死的早 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18101759fz83.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825516.html" 
+  target=_blank>要嫁就嫁程序猿—钱多话少死的早</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825519.html" target=_blank><IMG 
+  alt=聊聊HTTPS和SSL/TLS协议 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18105239a3lc.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825519.html" 
+  target=_blank>聊聊HTTPS和SSL/TLS协议</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391141.html" target=_blank><IMG 
+  alt=Web开发者需具备的8个好习惯 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/30180725jtow.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391141.html" 
+  target=_blank>Web开发者需具备的8个好习惯</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825522.html" target=_blank><IMG 
+  alt=程序员应该关注的一些事儿 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/181109356wok.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825522.html" 
+  target=_blank>程序员应该关注的一些事儿</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1439096.html" target=_blank><IMG 
+  alt=当下全球最炙手可热的八位少年创业者 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/27165246buuq.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1439096.html" 
+  target=_blank>当下全球最炙手可热的八位少年创业者</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391146.html" target=_blank><IMG 
+  alt=看13位CEO、创始人和高管如何提高工作效率 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/301851230zkl.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391146.html" 
+  target=_blank>看13位CEO、创始人和高管如何提高工作效率</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1391147.html" target=_blank><IMG 
+  alt="程序猿的崛起——Growth Hacker" 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/301912315rh2.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1391147.html" 
+  target=_blank>程序猿的崛起——Growth Hacker</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825518.html" target=_blank><IMG 
+  alt=程序员的鄙视链 src="ActiveMQ讯息策略%20-%20软件架构设计_files/18104729aael.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825518.html" 
+  target=_blank>程序员的鄙视链</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825041.html" target=_blank><IMG 
+  alt=鲜为人知的编程真相 src="ActiveMQ讯息策略%20-%20软件架构设计_files/17181352pjju.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825041.html" 
+  target=_blank>鲜为人知的编程真相</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1405462.html" target=_blank><IMG 
+  alt=程序员都该阅读的书 src="ActiveMQ讯息策略%20-%20软件架构设计_files/16172759vsns.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1405462.html" 
+  target=_blank>程序员都该阅读的书</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1748600.html" target=_blank><IMG 
+  alt=不懂技术不要对懂技术的人说这很容易实现 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/01172838t8rj.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1748600.html" 
+  target=_blank>不懂技术不要对懂技术的人说这很容易实现</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825520.html" target=_blank><IMG 
+  alt=团队中“技术大拿”并非越多越好 
+  src="ActiveMQ讯息策略%20-%20软件架构设计_files/18105831ry6r.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825520.html" 
+  target=_blank>团队中“技术大拿”并非越多越好</A></DT></DL>
+<DL>
+  <DD><A href="http://www.myexception.cn/other/1825040.html" target=_blank><IMG 
+  alt=我的丈夫是个程序员 src="ActiveMQ讯息策略%20-%20软件架构设计_files/171755349kcq.jpg"></A></DD>
+  <DT><A href="http://www.myexception.cn/other/1825040.html" 
+  target=_blank>我的丈夫是个程序员</A></DT></DL></DIV>
+<DIV class="c_r_a c_r_5_a">
+<SCRIPT language=javascript>c_r_5_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_6_a">
+<SCRIPT language=javascript>c_r_6_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_7_a">
+<SCRIPT language=javascript>c_r_7_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_8_a">
+<SCRIPT language=javascript>c_r_8_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_9_a">
+<SCRIPT language=javascript>c_r_9_a();</SCRIPT>
+</DIV>
+<DIV class="c_r_a c_r_10_a">
+<SCRIPT language=javascript>c_r_10_a();</SCRIPT>
+</DIV></DIV></DIV></DIV>
+<DIV class=f><A href="http://www.myexception.cn/" target=_blank>软件开发</A><A 
+href="http://www.myexception.cn/" target=_blank>程序错误</A><A 
+href="http://www.myexception.cn/" target=_blank>异常</A><A 
+href="http://www.myexception.cn/" target=_blank>Exception</A>Copyright © 
+2009-2015&nbsp;<A href="http://www.myexception.cn/" 
+target=_blank>MyException</A>&nbsp;版权所有</DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ讯息策略%20-%20软件架构设计_files/co_f.js"></SCRIPT>
+
+<SCRIPT 
+type=text/javascript>$(function() { Cms.viewCount("", "1653408"); });</SCRIPT>
+</BODY></HTML>

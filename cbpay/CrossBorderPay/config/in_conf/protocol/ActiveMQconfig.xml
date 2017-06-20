@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe>
+	<inboxs>
+		<inbox>
+			<service name="discenter_in">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://127.0.0.1:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/discenter_in.queue</queueName>
+				<overTime>60000</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>false</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</inbox>
+		<inbox>
+			<service name="out_in">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://127.0.0.1:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/out_in.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</inbox>
+		<inbox>
+			<service name="console_in">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://127.0.0.1:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/console_in.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>false</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</inbox>
+		<inbox>
+			<service name="console_other">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://172.30.12.33:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/console_other.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>1</sessionCounts>
+				<messageListener>com.ztkx.cbpay.invoker.msglistener.InvokerMsgListener</messageListener>
+				<selector>containid='{cluster}_{CONTAINER_NAME}'</selector>
+			</service>
+		</inbox>
+	</inboxs>
+	<outboxs>
+		<outbox>
+			<service name="in_out">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://127.0.0.1:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/in_out.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</outbox>
+		<outbox>
+			<service name="in_discenter">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://127.0.0.1:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/in_discenter.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>5</sessionCounts>
+				<messageListener></messageListener>
+			</service>
+		</outbox>
+		<outbox>
+			<service name="console_other">
+				<INITIAL_CONTEXT_FACTORY>org.apache.activemq.jndi.ActiveMQInitialContextFactory</INITIAL_CONTEXT_FACTORY>
+				<PROVIDER_URL>tcp://172.30.12.33:61616</PROVIDER_URL>
+				<queueName>dynamicQueues/console_other.queue</queueName>
+				<overTime>0</overTime>
+				<isTransaction>false</isTransaction>
+				<autoAcknowledge>true</autoAcknowledge>
+				<sessionCounts>1</sessionCounts>
+				<messageListener></messageListener>
+				<selector></selector>
+			</service>
+		</outbox>
+	</outboxs>
+</recipe>

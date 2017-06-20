@@ -1,0 +1,8 @@
+home_dir[/home/oracle/cbpay/dayend]
+mainrun loadjar is begin
+lib_dir[/home/oracle/cbpay/dayend/lib]
+/home/oracle/cbpay/dayend/lib/activemq-all-5.11.1.jar
+/home/oracle/cbpay/dayend/lib/log4j-1.2.17.jar
+/home/oracle/cbpay/dayend/lib/run.jar
+/home/oracle/cbpay/dayend/lib/dayend.jar
+jar load end

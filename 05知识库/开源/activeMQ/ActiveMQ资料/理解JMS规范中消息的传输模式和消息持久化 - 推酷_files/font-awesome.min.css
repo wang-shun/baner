@@ -1,0 +1,1315 @@
+@font-face {
+	font-family: FontAwesome;
+	src:url(http://static0.tuicool.com/font/fontawesome-webfont.eot?#iefix&v=4.0.3) format("embedded-opentype"), url(http://static0.tuicool.com/font/fontawesome-webfont.woff?v=4.0.3) format("woff"), url(http://static0.tuicool.com/font/fontawesome-webfont.ttf?v=4.0.3) format("truetype"), url(http://static0.tuicool.com/font/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular) format("svg");
+}
+.fa {
+	LINE-HEIGHT: 1; FONT-STYLE: normal; DISPLAY: inline-block; FONT-FAMILY: FontAwesome; FONT-WEIGHT: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale
+}
+.fa-lg {
+	LINE-HEIGHT: 0.75em; FONT-SIZE: 1.33em; VERTICAL-ALIGN: -15%
+}
+.fa-2x {
+	FONT-SIZE: 2em
+}
+.fa-3x {
+	FONT-SIZE: 3em
+}
+.fa-4x {
+	FONT-SIZE: 4em
+}
+.fa-5x {
+	FONT-SIZE: 5em
+}
+.fa-fw {
+	TEXT-ALIGN: center; WIDTH: 1.28em
+}
+.fa-ul {
+	LIST-STYLE-TYPE: none; PADDING-LEFT: 0px; MARGIN-LEFT: 2.14em
+}
+.fa-ul > LI {
+	POSITION: relative
+}
+.fa-li {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 2.14em; TOP: 0.14em; LEFT: -2.14em
+}
+.fa-lg.fa-li {
+	LEFT: -1.85em
+}
+.fa-border {
+	BORDER-BOTTOM: #eee 0.08em solid; BORDER-LEFT: #eee 0.08em solid; PADDING-BOTTOM: 0.15em; PADDING-LEFT: 0.25em; PADDING-RIGHT: 0.25em; BORDER-TOP: #eee 0.08em solid; BORDER-RIGHT: #eee 0.08em solid; PADDING-TOP: 0.2em; border-radius: .1em
+}
+.pull-right {
+	FLOAT: right
+}
+.pull-left {
+	FLOAT: left
+}
+.pull-left.fa {
+	MARGIN-RIGHT: 0.3em
+}
+.pull-right.fa {
+	MARGIN-LEFT: 0.3em
+}
+.fa-spin {
+	-moz-animation: spin 2s infinite linear; -o-animation: spin 2s infinite linear; -webkit-animation: spin 2s infinite linear; animation: spin 2s infinite linear
+}
+.fa-rotate-90 {
+	FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg)
+}
+.fa-rotate-180 {
+	FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg)
+}
+.fa-rotate-270 {
+	FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -ms-transform: rotate(270deg); -o-transform: rotate(270deg); transform: rotate(270deg)
+}
+.fa-flip-horizontal {
+	FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=0,mirror=1); -webkit-transform: scale(-1, 1); -moz-transform: scale(-1, 1); -ms-transform: scale(-1, 1); -o-transform: scale(-1, 1); transform: scale(-1, 1)
+}
+.fa-flip-vertical {
+	FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2,mirror=1); -webkit-transform: scale(1, -1); -moz-transform: scale(1, -1); -ms-transform: scale(1, -1); -o-transform: scale(1, -1); transform: scale(1, -1)
+}
+.fa-stack {
+	POSITION: relative; LINE-HEIGHT: 2em; WIDTH: 2em; DISPLAY: inline-block; HEIGHT: 2em; VERTICAL-ALIGN: middle
+}
+.fa-stack-1x {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 100%; LEFT: 0px
+}
+.fa-stack-2x {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 100%; LEFT: 0px
+}
+.fa-stack-1x {
+	LINE-HEIGHT: inherit
+}
+.fa-stack-2x {
+	FONT-SIZE: 2em
+}
+.fa-inverse {
+	COLOR: #fff
+}
+.fa-glass:before {
+	CONTENT: "\f000"
+}
+.fa-music:before {
+	CONTENT: "\f001"
+}
+.fa-search:before {
+	CONTENT: "\f002"
+}
+.fa-envelope-o:before {
+	CONTENT: "\f003"
+}
+.fa-heart:before {
+	CONTENT: "\f004"
+}
+.fa-star:before {
+	CONTENT: "\f005"
+}
+.fa-star-o:before {
+	CONTENT: "\f006"
+}
+.fa-user:before {
+	CONTENT: "\f007"
+}
+.fa-film:before {
+	CONTENT: "\f008"
+}
+.fa-th-large:before {
+	CONTENT: "\f009"
+}
+.fa-th:before {
+	CONTENT: "\f00a"
+}
+.fa-th-list:before {
+	CONTENT: "\f00b"
+}
+.fa-check:before {
+	CONTENT: "\f00c"
+}
+.fa-times:before {
+	CONTENT: "\f00d"
+}
+.fa-search-plus:before {
+	CONTENT: "\f00e"
+}
+.fa-search-minus:before {
+	CONTENT: "\f010"
+}
+.fa-power-off:before {
+	CONTENT: "\f011"
+}
+.fa-signal:before {
+	CONTENT: "\f012"
+}
+.fa-gear:before {
+	CONTENT: "\f013"
+}
+.fa-cog:before {
+	CONTENT: "\f013"
+}
+.fa-trash-o:before {
+	CONTENT: "\f014"
+}
+.fa-home:before {
+	CONTENT: "\f015"
+}
+.fa-file-o:before {
+	CONTENT: "\f016"
+}
+.fa-clock-o:before {
+	CONTENT: "\f017"
+}
+.fa-road:before {
+	CONTENT: "\f018"
+}
+.fa-download:before {
+	CONTENT: "\f019"
+}
+.fa-arrow-circle-o-down:before {
+	CONTENT: "\f01a"
+}
+.fa-arrow-circle-o-up:before {
+	CONTENT: "\f01b"
+}
+.fa-inbox:before {
+	CONTENT: "\f01c"
+}
+.fa-play-circle-o:before {
+	CONTENT: "\f01d"
+}
+.fa-rotate-right:before {
+	CONTENT: "\f01e"
+}
+.fa-repeat:before {
+	CONTENT: "\f01e"
+}
+.fa-refresh:before {
+	CONTENT: "\f021"
+}
+.fa-list-alt:before {
+	CONTENT: "\f022"
+}
+.fa-lock:before {
+	CONTENT: "\f023"
+}
+.fa-flag:before {
+	CONTENT: "\f024"
+}
+.fa-headphones:before {
+	CONTENT: "\f025"
+}
+.fa-volume-off:before {
+	CONTENT: "\f026"
+}
+.fa-volume-down:before {
+	CONTENT: "\f027"
+}
+.fa-volume-up:before {
+	CONTENT: "\f028"
+}
+.fa-qrcode:before {
+	CONTENT: "\f029"
+}
+.fa-barcode:before {
+	CONTENT: "\f02a"
+}
+.fa-tag:before {
+	CONTENT: "\f02b"
+}
+.fa-tags:before {
+	CONTENT: "\f02c"
+}
+.fa-book:before {
+	CONTENT: "\f02d"
+}
+.fa-bookmark:before {
+	CONTENT: "\f02e"
+}
+.fa-print:before {
+	CONTENT: "\f02f"
+}
+.fa-camera:before {
+	CONTENT: "\f030"
+}
+.fa-font:before {
+	CONTENT: "\f031"
+}
+.fa-bold:before {
+	CONTENT: "\f032"
+}
+.fa-italic:before {
+	CONTENT: "\f033"
+}
+.fa-text-height:before {
+	CONTENT: "\f034"
+}
+.fa-text-width:before {
+	CONTENT: "\f035"
+}
+.fa-align-left:before {
+	CONTENT: "\f036"
+}
+.fa-align-center:before {
+	CONTENT: "\f037"
+}
+.fa-align-right:before {
+	CONTENT: "\f038"
+}
+.fa-align-justify:before {
+	CONTENT: "\f039"
+}
+.fa-list:before {
+	CONTENT: "\f03a"
+}
+.fa-dedent:before {
+	CONTENT: "\f03b"
+}
+.fa-outdent:before {
+	CONTENT: "\f03b"
+}
+.fa-indent:before {
+	CONTENT: "\f03c"
+}
+.fa-video-camera:before {
+	CONTENT: "\f03d"
+}
+.fa-picture-o:before {
+	CONTENT: "\f03e"
+}
+.fa-pencil:before {
+	CONTENT: "\f040"
+}
+.fa-map-marker:before {
+	CONTENT: "\f041"
+}
+.fa-adjust:before {
+	CONTENT: "\f042"
+}
+.fa-tint:before {
+	CONTENT: "\f043"
+}
+.fa-edit:before {
+	CONTENT: "\f044"
+}
+.fa-pencil-square-o:before {
+	CONTENT: "\f044"
+}
+.fa-share-square-o:before {
+	CONTENT: "\f045"
+}
+.fa-check-square-o:before {
+	CONTENT: "\f046"
+}
+.fa-arrows:before {
+	CONTENT: "\f047"
+}
+.fa-step-backward:before {
+	CONTENT: "\f048"
+}
+.fa-fast-backward:before {
+	CONTENT: "\f049"
+}
+.fa-backward:before {
+	CONTENT: "\f04a"
+}
+.fa-play:before {
+	CONTENT: "\f04b"
+}
+.fa-pause:before {
+	CONTENT: "\f04c"
+}
+.fa-stop:before {
+	CONTENT: "\f04d"
+}
+.fa-forward:before {
+	CONTENT: "\f04e"
+}
+.fa-fast-forward:before {
+	CONTENT: "\f050"
+}
+.fa-step-forward:before {
+	CONTENT: "\f051"
+}
+.fa-eject:before {
+	CONTENT: "\f052"
+}
+.fa-chevron-left:before {
+	CONTENT: "\f053"
+}
+.fa-chevron-right:before {
+	CONTENT: "\f054"
+}
+.fa-plus-circle:before {
+	CONTENT: "\f055"
+}
+.fa-minus-circle:before {
+	CONTENT: "\f056"
+}
+.fa-times-circle:before {
+	CONTENT: "\f057"
+}
+.fa-check-circle:before {
+	CONTENT: "\f058"
+}
+.fa-question-circle:before {
+	CONTENT: "\f059"
+}
+.fa-info-circle:before {
+	CONTENT: "\f05a"
+}
+.fa-crosshairs:before {
+	CONTENT: "\f05b"
+}
+.fa-times-circle-o:before {
+	CONTENT: "\f05c"
+}
+.fa-check-circle-o:before {
+	CONTENT: "\f05d"
+}
+.fa-ban:before {
+	CONTENT: "\f05e"
+}
+.fa-arrow-left:before {
+	CONTENT: "\f060"
+}
+.fa-arrow-right:before {
+	CONTENT: "\f061"
+}
+.fa-arrow-up:before {
+	CONTENT: "\f062"
+}
+.fa-arrow-down:before {
+	CONTENT: "\f063"
+}
+.fa-mail-forward:before {
+	CONTENT: "\f064"
+}
+.fa-share:before {
+	CONTENT: "\f064"
+}
+.fa-expand:before {
+	CONTENT: "\f065"
+}
+.fa-compress:before {
+	CONTENT: "\f066"
+}
+.fa-plus:before {
+	CONTENT: "\f067"
+}
+.fa-minus:before {
+	CONTENT: "\f068"
+}
+.fa-asterisk:before {
+	CONTENT: "\f069"
+}
+.fa-exclamation-circle:before {
+	CONTENT: "\f06a"
+}
+.fa-gift:before {
+	CONTENT: "\f06b"
+}
+.fa-leaf:before {
+	CONTENT: "\f06c"
+}
+.fa-fire:before {
+	CONTENT: "\f06d"
+}
+.fa-eye:before {
+	CONTENT: "\f06e"
+}
+.fa-eye-slash:before {
+	CONTENT: "\f070"
+}
+.fa-warning:before {
+	CONTENT: "\f071"
+}
+.fa-exclamation-triangle:before {
+	CONTENT: "\f071"
+}
+.fa-plane:before {
+	CONTENT: "\f072"
+}
+.fa-calendar:before {
+	CONTENT: "\f073"
+}
+.fa-random:before {
+	CONTENT: "\f074"
+}
+.fa-comment:before {
+	CONTENT: "\f075"
+}
+.fa-magnet:before {
+	CONTENT: "\f076"
+}
+.fa-chevron-up:before {
+	CONTENT: "\f077"
+}
+.fa-chevron-down:before {
+	CONTENT: "\f078"
+}
+.fa-retweet:before {
+	CONTENT: "\f079"
+}
+.fa-shopping-cart:before {
+	CONTENT: "\f07a"
+}
+.fa-folder:before {
+	CONTENT: "\f07b"
+}
+.fa-folder-open:before {
+	CONTENT: "\f07c"
+}
+.fa-arrows-v:before {
+	CONTENT: "\f07d"
+}
+.fa-arrows-h:before {
+	CONTENT: "\f07e"
+}
+.fa-bar-chart-o:before {
+	CONTENT: "\f080"
+}
+.fa-twitter-square:before {
+	CONTENT: "\f081"
+}
+.fa-facebook-square:before {
+	CONTENT: "\f082"
+}
+.fa-camera-retro:before {
+	CONTENT: "\f083"
+}
+.fa-key:before {
+	CONTENT: "\f084"
+}
+.fa-gears:before {
+	CONTENT: "\f085"
+}
+.fa-cogs:before {
+	CONTENT: "\f085"
+}
+.fa-comments:before {
+	CONTENT: "\f086"
+}
+.fa-thumbs-o-up:before {
+	CONTENT: "\f087"
+}
+.fa-thumbs-o-down:before {
+	CONTENT: "\f088"
+}
+.fa-star-half:before {
+	CONTENT: "\f089"
+}
+.fa-heart-o:before {
+	CONTENT: "\f08a"
+}
+.fa-sign-out:before {
+	CONTENT: "\f08b"
+}
+.fa-linkedin-square:before {
+	CONTENT: "\f08c"
+}
+.fa-thumb-tack:before {
+	CONTENT: "\f08d"
+}
+.fa-external-link:before {
+	CONTENT: "\f08e"
+}
+.fa-sign-in:before {
+	CONTENT: "\f090"
+}
+.fa-trophy:before {
+	CONTENT: "\f091"
+}
+.fa-github-square:before {
+	CONTENT: "\f092"
+}
+.fa-upload:before {
+	CONTENT: "\f093"
+}
+.fa-lemon-o:before {
+	CONTENT: "\f094"
+}
+.fa-phone:before {
+	CONTENT: "\f095"
+}
+.fa-square-o:before {
+	CONTENT: "\f096"
+}
+.fa-bookmark-o:before {
+	CONTENT: "\f097"
+}
+.fa-phone-square:before {
+	CONTENT: "\f098"
+}
+.fa-twitter:before {
+	CONTENT: "\f099"
+}
+.fa-facebook:before {
+	CONTENT: "\f09a"
+}
+.fa-github:before {
+	CONTENT: "\f09b"
+}
+.fa-unlock:before {
+	CONTENT: "\f09c"
+}
+.fa-credit-card:before {
+	CONTENT: "\f09d"
+}
+.fa-rss:before {
+	CONTENT: "\f09e"
+}
+.fa-hdd-o:before {
+	CONTENT: "\f0a0"
+}
+.fa-bullhorn:before {
+	CONTENT: "\f0a1"
+}
+.fa-bell:before {
+	CONTENT: "\f0f3"
+}
+.fa-certificate:before {
+	CONTENT: "\f0a3"
+}
+.fa-hand-o-right:before {
+	CONTENT: "\f0a4"
+}
+.fa-hand-o-left:before {
+	CONTENT: "\f0a5"
+}
+.fa-hand-o-up:before {
+	CONTENT: "\f0a6"
+}
+.fa-hand-o-down:before {
+	CONTENT: "\f0a7"
+}
+.fa-arrow-circle-left:before {
+	CONTENT: "\f0a8"
+}
+.fa-arrow-circle-right:before {
+	CONTENT: "\f0a9"
+}
+.fa-arrow-circle-up:before {
+	CONTENT: "\f0aa"
+}
+.fa-arrow-circle-down:before {
+	CONTENT: "\f0ab"
+}
+.fa-globe:before {
+	CONTENT: "\f0ac"
+}
+.fa-wrench:before {
+	CONTENT: "\f0ad"
+}
+.fa-tasks:before {
+	CONTENT: "\f0ae"
+}
+.fa-filter:before {
+	CONTENT: "\f0b0"
+}
+.fa-briefcase:before {
+	CONTENT: "\f0b1"
+}
+.fa-arrows-alt:before {
+	CONTENT: "\f0b2"
+}
+.fa-group:before {
+	CONTENT: "\f0c0"
+}
+.fa-users:before {
+	CONTENT: "\f0c0"
+}
+.fa-chain:before {
+	CONTENT: "\f0c1"
+}
+.fa-link:before {
+	CONTENT: "\f0c1"
+}
+.fa-cloud:before {
+	CONTENT: "\f0c2"
+}
+.fa-flask:before {
+	CONTENT: "\f0c3"
+}
+.fa-cut:before {
+	CONTENT: "\f0c4"
+}
+.fa-scissors:before {
+	CONTENT: "\f0c4"
+}
+.fa-copy:before {
+	CONTENT: "\f0c5"
+}
+.fa-files-o:before {
+	CONTENT: "\f0c5"
+}
+.fa-paperclip:before {
+	CONTENT: "\f0c6"
+}
+.fa-save:before {
+	CONTENT: "\f0c7"
+}
+.fa-floppy-o:before {
+	CONTENT: "\f0c7"
+}
+.fa-square:before {
+	CONTENT: "\f0c8"
+}
+.fa-bars:before {
+	CONTENT: "\f0c9"
+}
+.fa-list-ul:before {
+	CONTENT: "\f0ca"
+}
+.fa-list-ol:before {
+	CONTENT: "\f0cb"
+}
+.fa-strikethrough:before {
+	CONTENT: "\f0cc"
+}
+.fa-underline:before {
+	CONTENT: "\f0cd"
+}
+.fa-table:before {
+	CONTENT: "\f0ce"
+}
+.fa-magic:before {
+	CONTENT: "\f0d0"
+}
+.fa-truck:before {
+	CONTENT: "\f0d1"
+}
+.fa-pinterest:before {
+	CONTENT: "\f0d2"
+}
+.fa-pinterest-square:before {
+	CONTENT: "\f0d3"
+}
+.fa-google-plus-square:before {
+	CONTENT: "\f0d4"
+}
+.fa-google-plus:before {
+	CONTENT: "\f0d5"
+}
+.fa-money:before {
+	CONTENT: "\f0d6"
+}
+.fa-caret-down:before {
+	CONTENT: "\f0d7"
+}
+.fa-caret-up:before {
+	CONTENT: "\f0d8"
+}
+.fa-caret-left:before {
+	CONTENT: "\f0d9"
+}
+.fa-caret-right:before {
+	CONTENT: "\f0da"
+}
+.fa-columns:before {
+	CONTENT: "\f0db"
+}
+.fa-unsorted:before {
+	CONTENT: "\f0dc"
+}
+.fa-sort:before {
+	CONTENT: "\f0dc"
+}
+.fa-sort-down:before {
+	CONTENT: "\f0dd"
+}
+.fa-sort-asc:before {
+	CONTENT: "\f0dd"
+}
+.fa-sort-up:before {
+	CONTENT: "\f0de"
+}
+.fa-sort-desc:before {
+	CONTENT: "\f0de"
+}
+.fa-envelope:before {
+	CONTENT: "\f0e0"
+}
+.fa-linkedin:before {
+	CONTENT: "\f0e1"
+}
+.fa-rotate-left:before {
+	CONTENT: "\f0e2"
+}
+.fa-undo:before {
+	CONTENT: "\f0e2"
+}
+.fa-legal:before {
+	CONTENT: "\f0e3"
+}
+.fa-gavel:before {
+	CONTENT: "\f0e3"
+}
+.fa-dashboard:before {
+	CONTENT: "\f0e4"
+}
+.fa-tachometer:before {
+	CONTENT: "\f0e4"
+}
+.fa-comment-o:before {
+	CONTENT: "\f0e5"
+}
+.fa-comments-o:before {
+	CONTENT: "\f0e6"
+}
+.fa-flash:before {
+	CONTENT: "\f0e7"
+}
+.fa-bolt:before {
+	CONTENT: "\f0e7"
+}
+.fa-sitemap:before {
+	CONTENT: "\f0e8"
+}
+.fa-umbrella:before {
+	CONTENT: "\f0e9"
+}
+.fa-paste:before {
+	CONTENT: "\f0ea"
+}
+.fa-clipboard:before {
+	CONTENT: "\f0ea"
+}
+.fa-lightbulb-o:before {
+	CONTENT: "\f0eb"
+}
+.fa-exchange:before {
+	CONTENT: "\f0ec"
+}
+.fa-cloud-download:before {
+	CONTENT: "\f0ed"
+}
+.fa-cloud-upload:before {
+	CONTENT: "\f0ee"
+}
+.fa-user-md:before {
+	CONTENT: "\f0f0"
+}
+.fa-stethoscope:before {
+	CONTENT: "\f0f1"
+}
+.fa-suitcase:before {
+	CONTENT: "\f0f2"
+}
+.fa-bell-o:before {
+	CONTENT: "\f0a2"
+}
+.fa-coffee:before {
+	CONTENT: "\f0f4"
+}
+.fa-cutlery:before {
+	CONTENT: "\f0f5"
+}
+.fa-file-text-o:before {
+	CONTENT: "\f0f6"
+}
+.fa-building-o:before {
+	CONTENT: "\f0f7"
+}
+.fa-hospital-o:before {
+	CONTENT: "\f0f8"
+}
+.fa-ambulance:before {
+	CONTENT: "\f0f9"
+}
+.fa-medkit:before {
+	CONTENT: "\f0fa"
+}
+.fa-fighter-jet:before {
+	CONTENT: "\f0fb"
+}
+.fa-beer:before {
+	CONTENT: "\f0fc"
+}
+.fa-h-square:before {
+	CONTENT: "\f0fd"
+}
+.fa-plus-square:before {
+	CONTENT: "\f0fe"
+}
+.fa-angle-double-left:before {
+	CONTENT: "\f100"
+}
+.fa-angle-double-right:before {
+	CONTENT: "\f101"
+}
+.fa-angle-double-up:before {
+	CONTENT: "\f102"
+}
+.fa-angle-double-down:before {
+	CONTENT: "\f103"
+}
+.fa-angle-left:before {
+	CONTENT: "\f104"
+}
+.fa-angle-right:before {
+	CONTENT: "\f105"
+}
+.fa-angle-up:before {
+	CONTENT: "\f106"
+}
+.fa-angle-down:before {
+	CONTENT: "\f107"
+}
+.fa-desktop:before {
+	CONTENT: "\f108"
+}
+.fa-laptop:before {
+	CONTENT: "\f109"
+}
+.fa-tablet:before {
+	CONTENT: "\f10a"
+}
+.fa-mobile-phone:before {
+	CONTENT: "\f10b"
+}
+.fa-mobile:before {
+	CONTENT: "\f10b"
+}
+.fa-circle-o:before {
+	CONTENT: "\f10c"
+}
+.fa-quote-left:before {
+	CONTENT: "\f10d"
+}
+.fa-quote-right:before {
+	CONTENT: "\f10e"
+}
+.fa-spinner:before {
+	CONTENT: "\f110"
+}
+.fa-circle:before {
+	CONTENT: "\f111"
+}
+.fa-mail-reply:before {
+	CONTENT: "\f112"
+}
+.fa-reply:before {
+	CONTENT: "\f112"
+}
+.fa-github-alt:before {
+	CONTENT: "\f113"
+}
+.fa-folder-o:before {
+	CONTENT: "\f114"
+}
+.fa-folder-open-o:before {
+	CONTENT: "\f115"
+}
+.fa-smile-o:before {
+	CONTENT: "\f118"
+}
+.fa-frown-o:before {
+	CONTENT: "\f119"
+}
+.fa-meh-o:before {
+	CONTENT: "\f11a"
+}
+.fa-gamepad:before {
+	CONTENT: "\f11b"
+}
+.fa-keyboard-o:before {
+	CONTENT: "\f11c"
+}
+.fa-flag-o:before {
+	CONTENT: "\f11d"
+}
+.fa-flag-checkered:before {
+	CONTENT: "\f11e"
+}
+.fa-terminal:before {
+	CONTENT: "\f120"
+}
+.fa-code:before {
+	CONTENT: "\f121"
+}
+.fa-reply-all:before {
+	CONTENT: "\f122"
+}
+.fa-mail-reply-all:before {
+	CONTENT: "\f122"
+}
+.fa-star-half-empty:before {
+	CONTENT: "\f123"
+}
+.fa-star-half-full:before {
+	CONTENT: "\f123"
+}
+.fa-star-half-o:before {
+	CONTENT: "\f123"
+}
+.fa-location-arrow:before {
+	CONTENT: "\f124"
+}
+.fa-crop:before {
+	CONTENT: "\f125"
+}
+.fa-code-fork:before {
+	CONTENT: "\f126"
+}
+.fa-unlink:before {
+	CONTENT: "\f127"
+}
+.fa-chain-broken:before {
+	CONTENT: "\f127"
+}
+.fa-question:before {
+	CONTENT: "\f128"
+}
+.fa-info:before {
+	CONTENT: "\f129"
+}
+.fa-exclamation:before {
+	CONTENT: "\f12a"
+}
+.fa-superscript:before {
+	CONTENT: "\f12b"
+}
+.fa-subscript:before {
+	CONTENT: "\f12c"
+}
+.fa-eraser:before {
+	CONTENT: "\f12d"
+}
+.fa-puzzle-piece:before {
+	CONTENT: "\f12e"
+}
+.fa-microphone:before {
+	CONTENT: "\f130"
+}
+.fa-microphone-slash:before {
+	CONTENT: "\f131"
+}
+.fa-shield:before {
+	CONTENT: "\f132"
+}
+.fa-calendar-o:before {
+	CONTENT: "\f133"
+}
+.fa-fire-extinguisher:before {
+	CONTENT: "\f134"
+}
+.fa-rocket:before {
+	CONTENT: "\f135"
+}
+.fa-maxcdn:before {
+	CONTENT: "\f136"
+}
+.fa-chevron-circle-left:before {
+	CONTENT: "\f137"
+}
+.fa-chevron-circle-right:before {
+	CONTENT: "\f138"
+}
+.fa-chevron-circle-up:before {
+	CONTENT: "\f139"
+}
+.fa-chevron-circle-down:before {
+	CONTENT: "\f13a"
+}
+.fa-html5:before {
+	CONTENT: "\f13b"
+}
+.fa-css3:before {
+	CONTENT: "\f13c"
+}
+.fa-anchor:before {
+	CONTENT: "\f13d"
+}
+.fa-unlock-alt:before {
+	CONTENT: "\f13e"
+}
+.fa-bullseye:before {
+	CONTENT: "\f140"
+}
+.fa-ellipsis-h:before {
+	CONTENT: "\f141"
+}
+.fa-ellipsis-v:before {
+	CONTENT: "\f142"
+}
+.fa-rss-square:before {
+	CONTENT: "\f143"
+}
+.fa-play-circle:before {
+	CONTENT: "\f144"
+}
+.fa-ticket:before {
+	CONTENT: "\f145"
+}
+.fa-minus-square:before {
+	CONTENT: "\f146"
+}
+.fa-minus-square-o:before {
+	CONTENT: "\f147"
+}
+.fa-level-up:before {
+	CONTENT: "\f148"
+}
+.fa-level-down:before {
+	CONTENT: "\f149"
+}
+.fa-check-square:before {
+	CONTENT: "\f14a"
+}
+.fa-pencil-square:before {
+	CONTENT: "\f14b"
+}
+.fa-external-link-square:before {
+	CONTENT: "\f14c"
+}
+.fa-share-square:before {
+	CONTENT: "\f14d"
+}
+.fa-compass:before {
+	CONTENT: "\f14e"
+}
+.fa-toggle-down:before {
+	CONTENT: "\f150"
+}
+.fa-caret-square-o-down:before {
+	CONTENT: "\f150"
+}
+.fa-toggle-up:before {
+	CONTENT: "\f151"
+}
+.fa-caret-square-o-up:before {
+	CONTENT: "\f151"
+}
+.fa-toggle-right:before {
+	CONTENT: "\f152"
+}
+.fa-caret-square-o-right:before {
+	CONTENT: "\f152"
+}
+.fa-euro:before {
+	CONTENT: "\f153"
+}
+.fa-eur:before {
+	CONTENT: "\f153"
+}
+.fa-gbp:before {
+	CONTENT: "\f154"
+}
+.fa-dollar:before {
+	CONTENT: "\f155"
+}
+.fa-usd:before {
+	CONTENT: "\f155"
+}
+.fa-rupee:before {
+	CONTENT: "\f156"
+}
+.fa-inr:before {
+	CONTENT: "\f156"
+}
+.fa-cny:before {
+	CONTENT: "\f157"
+}
+.fa-rmb:before {
+	CONTENT: "\f157"
+}
+.fa-yen:before {
+	CONTENT: "\f157"
+}
+.fa-jpy:before {
+	CONTENT: "\f157"
+}
+.fa-ruble:before {
+	CONTENT: "\f158"
+}
+.fa-rouble:before {
+	CONTENT: "\f158"
+}
+.fa-rub:before {
+	CONTENT: "\f158"
+}
+.fa-won:before {
+	CONTENT: "\f159"
+}
+.fa-krw:before {
+	CONTENT: "\f159"
+}
+.fa-bitcoin:before {
+	CONTENT: "\f15a"
+}
+.fa-btc:before {
+	CONTENT: "\f15a"
+}
+.fa-file:before {
+	CONTENT: "\f15b"
+}
+.fa-file-text:before {
+	CONTENT: "\f15c"
+}
+.fa-sort-alpha-asc:before {
+	CONTENT: "\f15d"
+}
+.fa-sort-alpha-desc:before {
+	CONTENT: "\f15e"
+}
+.fa-sort-amount-asc:before {
+	CONTENT: "\f160"
+}
+.fa-sort-amount-desc:before {
+	CONTENT: "\f161"
+}
+.fa-sort-numeric-asc:before {
+	CONTENT: "\f162"
+}
+.fa-sort-numeric-desc:before {
+	CONTENT: "\f163"
+}
+.fa-thumbs-up:before {
+	CONTENT: "\f164"
+}
+.fa-thumbs-down:before {
+	CONTENT: "\f165"
+}
+.fa-youtube-square:before {
+	CONTENT: "\f166"
+}
+.fa-youtube:before {
+	CONTENT: "\f167"
+}
+.fa-xing:before {
+	CONTENT: "\f168"
+}
+.fa-xing-square:before {
+	CONTENT: "\f169"
+}
+.fa-youtube-play:before {
+	CONTENT: "\f16a"
+}
+.fa-dropbox:before {
+	CONTENT: "\f16b"
+}
+.fa-stack-overflow:before {
+	CONTENT: "\f16c"
+}
+.fa-instagram:before {
+	CONTENT: "\f16d"
+}
+.fa-flickr:before {
+	CONTENT: "\f16e"
+}
+.fa-adn:before {
+	CONTENT: "\f170"
+}
+.fa-bitbucket:before {
+	CONTENT: "\f171"
+}
+.fa-bitbucket-square:before {
+	CONTENT: "\f172"
+}
+.fa-tumblr:before {
+	CONTENT: "\f173"
+}
+.fa-tumblr-square:before {
+	CONTENT: "\f174"
+}
+.fa-long-arrow-down:before {
+	CONTENT: "\f175"
+}
+.fa-long-arrow-up:before {
+	CONTENT: "\f176"
+}
+.fa-long-arrow-left:before {
+	CONTENT: "\f177"
+}
+.fa-long-arrow-right:before {
+	CONTENT: "\f178"
+}
+.fa-apple:before {
+	CONTENT: "\f179"
+}
+.fa-windows:before {
+	CONTENT: "\f17a"
+}
+.fa-android:before {
+	CONTENT: "\f17b"
+}
+.fa-linux:before {
+	CONTENT: "\f17c"
+}
+.fa-dribbble:before {
+	CONTENT: "\f17d"
+}
+.fa-skype:before {
+	CONTENT: "\f17e"
+}
+.fa-foursquare:before {
+	CONTENT: "\f180"
+}
+.fa-trello:before {
+	CONTENT: "\f181"
+}
+.fa-female:before {
+	CONTENT: "\f182"
+}
+.fa-male:before {
+	CONTENT: "\f183"
+}
+.fa-gittip:before {
+	CONTENT: "\f184"
+}
+.fa-sun-o:before {
+	CONTENT: "\f185"
+}
+.fa-moon-o:before {
+	CONTENT: "\f186"
+}
+.fa-archive:before {
+	CONTENT: "\f187"
+}
+.fa-bug:before {
+	CONTENT: "\f188"
+}
+.fa-vk:before {
+	CONTENT: "\f189"
+}
+.fa-weibo:before {
+	CONTENT: "\f18a"
+}
+.fa-renren:before {
+	CONTENT: "\f18b"
+}
+.fa-pagelines:before {
+	CONTENT: "\f18c"
+}
+.fa-stack-exchange:before {
+	CONTENT: "\f18d"
+}
+.fa-arrow-circle-o-right:before {
+	CONTENT: "\f18e"
+}
+.fa-arrow-circle-o-left:before {
+	CONTENT: "\f190"
+}
+.fa-toggle-left:before {
+	CONTENT: "\f191"
+}
+.fa-caret-square-o-left:before {
+	CONTENT: "\f191"
+}
+.fa-dot-circle-o:before {
+	CONTENT: "\f192"
+}
+.fa-wheelchair:before {
+	CONTENT: "\f193"
+}
+.fa-vimeo-square:before {
+	CONTENT: "\f194"
+}
+.fa-turkish-lira:before {
+	CONTENT: "\f195"
+}
+.fa-try:before {
+	CONTENT: "\f195"
+}
+.fa-plus-square-o:before {
+	CONTENT: "\f196"
+}

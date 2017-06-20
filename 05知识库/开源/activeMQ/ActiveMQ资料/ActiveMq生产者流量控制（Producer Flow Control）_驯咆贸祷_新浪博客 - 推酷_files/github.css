@@ -1,0 +1,171 @@
+PRE CODE {
+	PADDING-BOTTOM: 0.3em; OVERFLOW-Y: auto; BACKGROUND-COLOR: #f6f6f6; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; DISPLAY: block; COLOR: #333; FONT-SIZE: 12px; PADDING-TOP: 0.3em
+}
+PRE {
+	PADDING-BOTTOM: 0.3em; OVERFLOW-Y: auto; BACKGROUND-COLOR: #f6f6f6; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; DISPLAY: block; COLOR: #333; FONT-SIZE: 12px; PADDING-TOP: 0.3em
+}
+PRE .comment {
+	FONT-STYLE: italic; COLOR: #998
+}
+PRE .template_comment {
+	FONT-STYLE: italic; COLOR: #998
+}
+PRE .diff .header {
+	FONT-STYLE: italic; COLOR: #998
+}
+PRE .javadoc {
+	FONT-STYLE: italic; COLOR: #998
+}
+PRE .keyword {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .css .rule .keyword {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .winutils {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .javascript .title {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .nginx .title {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .subst {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .request {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .status {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+PRE .number {
+	COLOR: #099
+}
+PRE .hexcolor {
+	COLOR: #099
+}
+PRE .ruby .constant {
+	COLOR: #099
+}
+PRE .string {
+	COLOR: #d14
+}
+PRE .tag .value {
+	COLOR: #d14
+}
+PRE .phpdoc {
+	COLOR: #d14
+}
+PRE .tex .formula {
+	COLOR: #d14
+}
+PRE .title {
+	COLOR: #900; FONT-WEIGHT: bold
+}
+PRE .id {
+	COLOR: #900; FONT-WEIGHT: bold
+}
+PRE .javascript .title {
+	FONT-WEIGHT: normal
+}
+PRE .lisp .title {
+	FONT-WEIGHT: normal
+}
+PRE .clojure .title {
+	FONT-WEIGHT: normal
+}
+PRE .subst {
+	FONT-WEIGHT: normal
+}
+PRE .class .title {
+	COLOR: #458; FONT-WEIGHT: bold
+}
+PRE .haskell .type {
+	COLOR: #458; FONT-WEIGHT: bold
+}
+PRE .vhdl .literal {
+	COLOR: #458; FONT-WEIGHT: bold
+}
+PRE .tex .command {
+	COLOR: #458; FONT-WEIGHT: bold
+}
+PRE .tag {
+	COLOR: #000080; FONT-WEIGHT: normal
+}
+PRE .tag .title {
+	COLOR: #000080; FONT-WEIGHT: normal
+}
+PRE .rules .property {
+	COLOR: #000080; FONT-WEIGHT: normal
+}
+PRE .django .tag .keyword {
+	COLOR: #000080; FONT-WEIGHT: normal
+}
+PRE .attribute {
+	COLOR: #008080
+}
+PRE .variable {
+	COLOR: #008080
+}
+PRE .lisp .body {
+	COLOR: #008080
+}
+PRE .regexp {
+	COLOR: #009926
+}
+PRE .class {
+	COLOR: #458; FONT-WEIGHT: bold
+}
+PRE .symbol {
+	COLOR: #990073
+}
+PRE .ruby .symbol .string {
+	COLOR: #990073
+}
+PRE .lisp .keyword {
+	COLOR: #990073
+}
+PRE .tex .special {
+	COLOR: #990073
+}
+PRE .prompt {
+	COLOR: #990073
+}
+PRE .built_in {
+	COLOR: #0086b3
+}
+PRE .lisp .title {
+	COLOR: #0086b3
+}
+PRE .clojure .built_in {
+	COLOR: #0086b3
+}
+PRE .preprocessor {
+	COLOR: #999; FONT-WEIGHT: bold
+}
+PRE .pi {
+	COLOR: #999; FONT-WEIGHT: bold
+}
+PRE .doctype {
+	COLOR: #999; FONT-WEIGHT: bold
+}
+PRE .shebang {
+	COLOR: #999; FONT-WEIGHT: bold
+}
+PRE .cdata {
+	COLOR: #999; FONT-WEIGHT: bold
+}
+PRE .deletion {
+	BACKGROUND: #fdd
+}
+PRE .addition {
+	BACKGROUND: #dfd
+}
+PRE .diff .change {
+	BACKGROUND: #0086b3
+}
+PRE .chunk {
+	COLOR: #aaa
+}

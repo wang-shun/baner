@@ -1,0 +1,129 @@
+.crayon-theme-classic {
+	BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; BACKGROUND: #fdfdfd; BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid; text-shadow: none
+}
+.crayon-theme-classic-inline {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: #fafafa; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.crayon-theme-classic .crayon-table .crayon-nums {
+	BACKGROUND: #dfefff; COLOR: #5499de !important
+}
+.crayon-theme-classic .crayon-striped-line {
+	BACKGROUND: #f7f7f7
+}
+.crayon-theme-classic .crayon-striped-num {
+	BACKGROUND: #c8e1fa; COLOR: #317cc5 !important
+}
+.crayon-theme-classic .crayon-marked-line {
+	BORDER-BOTTOM-COLOR: #e9e579 !important; BORDER-RIGHT-WIDTH: 1px !important; BORDER-TOP-COLOR: #e9e579 !important; BACKGROUND: #fffee2; BORDER-TOP-WIDTH: 1px !important; BORDER-BOTTOM-WIDTH: 1px !important; BORDER-RIGHT-COLOR: #e9e579 !important; BORDER-LEFT-COLOR: #e9e579 !important; BORDER-LEFT-WIDTH: 1px !important
+}
+.crayon-theme-classic .crayon-marked-num {
+	BORDER-BOTTOM-COLOR: #5999d9 !important; BORDER-RIGHT-WIDTH: 1px !important; BORDER-TOP-COLOR: #5999d9 !important; BACKGROUND: #b3d3f4; BORDER-TOP-WIDTH: 1px !important; BORDER-BOTTOM-WIDTH: 1px !important; COLOR: #1561ac !important; BORDER-RIGHT-COLOR: #5999d9 !important; BORDER-LEFT-COLOR: #5999d9 !important; BORDER-LEFT-WIDTH: 1px !important
+}
+.crayon-theme-classic .crayon-striped-line.crayon-marked-line {
+	BACKGROUND: #faf8d1
+}
+.crayon-theme-classic .crayon-striped-num.crayon-marked-num {
+	BACKGROUND: #9ec5ec; COLOR: #105395 !important
+}
+.crayon-theme-classic .crayon-top.crayon-marked-line {
+	BORDER-TOP-STYLE: solid !important
+}
+.crayon-theme-classic .crayon-top.crayon-marked-num {
+	BORDER-TOP-STYLE: solid !important
+}
+.crayon-theme-classic .crayon-bottom.crayon-marked-line {
+	BORDER-BOTTOM-STYLE: solid !important
+}
+.crayon-theme-classic .crayon-bottom.crayon-marked-num {
+	BORDER-BOTTOM-STYLE: solid !important
+}
+.crayon-theme-classic .crayon-info {
+	BORDER-BOTTOM: #b1af5e 1px solid; BACKGROUND: #faf9d7; COLOR: #7e7d34
+}
+.crayon-theme-classic .crayon-toolbar {
+	BORDER-BOTTOM: #bbb 1px solid; BACKGROUND: #ddd
+}
+.crayon-theme-classic .crayon-toolbar > DIV {
+	FLOAT: left !important
+}
+.crayon-theme-classic .crayon-toolbar .crayon-tools {
+	FLOAT: right !important
+}
+.crayon-theme-classic .crayon-title {
+	COLOR: #333 !important
+}
+.crayon-theme-classic .crayon-language {
+	COLOR: #999 !important
+}
+.crayon-theme-classic .crayon-button {
+	BACKGROUND-COLOR: #ddd
+}
+.crayon-theme-classic .crayon-button:hover {
+	BACKGROUND-COLOR: #eee; COLOR: #666
+}
+.crayon-theme-classic .crayon-pressed.crayon-button:hover {
+	BACKGROUND-COLOR: #eee; COLOR: #666
+}
+.crayon-theme-classic .crayon-pressed.crayon-button {
+	BACKGROUND-COLOR: #bcbcbc; COLOR: #fff
+}
+.crayon-theme-classic .crayon-pressed.crayon-button:active {
+	BACKGROUND-COLOR: #bcbcbc; COLOR: #fff
+}
+.crayon-theme-classic .crayon-button:active {
+	BACKGROUND-COLOR: #bcbcbc; COLOR: #fff
+}
+.crayon-theme-classic .crayon-pre .crayon-c {
+	COLOR: #ff8000 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-s {
+	COLOR: #008000 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-p {
+	COLOR: #b85c00 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-ta {
+	COLOR: #ff0000 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-k {
+	COLOR: #800080 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-st {
+	COLOR: #800080 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-r {
+	COLOR: #800080 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-t {
+	COLOR: #800080 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-m {
+	COLOR: #800080 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-i {
+	COLOR: #000 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-e {
+	COLOR: #004ed0 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-v {
+	COLOR: #002d7a !important
+}
+.crayon-theme-classic .crayon-pre .crayon-cn {
+	COLOR: #ce0000 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-o {
+	COLOR: #006fe0 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-sy {
+	COLOR: #333 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-n {
+	FONT-STYLE: italic; COLOR: #666 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-f {
+	COLOR: #999 !important
+}
+.crayon-theme-classic .crayon-pre .crayon-h {
+	COLOR: #006fe0 !important
+}

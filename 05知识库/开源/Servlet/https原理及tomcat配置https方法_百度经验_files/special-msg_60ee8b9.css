@@ -1,0 +1,123 @@
+.dialog-dubangbang {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.dialog-dubangbang .ui-widget-header {
+	DISPLAY: none; HEIGHT: 0px
+}
+.dialog-dubangbang .ui-dialog-buttonpane {
+	DISPLAY: none; HEIGHT: 0px
+}
+.dialog-dubangbang .ui-dialog-content {
+	OVERFLOW: visible
+}
+.dialog-dubangbang header {
+	POSITION: relative; PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: #73c372; PADDING-TOP: 15px
+}
+.dialog-dubangbang H1 {
+	TEXT-ALIGN: center; COLOR: #fff; FONT-SIZE: 26px
+}
+.dialog-dubangbang .content {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 20px; LINE-HEIGHT: 1.5; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: #fff; FONT-SIZE: 18px; PADDING-TOP: 20px
+}
+.dialog-dubangbang SPAN {
+	COLOR: #ff6c00
+}
+.dialog-dubangbang EM {
+	COLOR: #ff6c00
+}
+.dialog-dubangbang EM {
+	FONT-STYLE: normal
+}
+.dialog-dubangbang SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; FONT-SIZE: 24px; PADDING-TOP: 0px
+}
+.dialog-dubangbang .close-btn {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 10px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; WIDTH: 164px; PADDING-RIGHT: 0px; BACKGROUND: #67b66e; COLOR: #fff; FONT-SIZE: 22px; PADDING-TOP: 10px; border-radius: 5px
+}
+.dialog-dubangbang .close-x {
+	POSITION: absolute; MARGIN-TOP: -13px; WIDTH: 24px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 25px; TOP: 50%; RIGHT: 15px
+}
+.dialog-dubangbang .i-smile {
+	POSITION: absolute; WIDTH: 211px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 134px; TOP: -50px; LEFT: -40px
+}
+.income-share-dialog {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.income-share-dialog A {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px
+}
+.income-share-dialog .ui-dialog-titlebar {
+	BACKGROUND: #39b349; COLOR: #fff
+}
+.income-share-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+	WIDTH: 13px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 13px
+}
+.income-share-dialog .ui-dialog-content {
+	POSITION: relative; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.income-share-dialog .ui-dialog-content .sun {
+	POSITION: absolute; WIDTH: 181px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 182px; MARGIN-LEFT: -90px; TOP: -20px; LEFT: 50%
+}
+.income-share-dialog .ui-dialog-content .money {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 100%; TOP: 130px; LEFT: 0px
+}
+.income-share-dialog .ui-dialog-content .money SPAN {
+	LINE-HEIGHT: 26px; MARGIN: 0px 5px; HEIGHT: 26px; COLOR: #f9aa33; FONT-SIZE: 26px
+}
+.income-share-dialog .ui-dialog-content .share-container {
+	POSITION: absolute; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 100%; BOTTOM: 0px; PADDING-RIGHT: 0px; BACKGROUND: #f4f4f4; HEIGHT: 130px; BORDER-TOP: #e8e8e8 1px solid; PADDING-TOP: 0px
+}
+.income-share-dialog .ui-dialog-content .share-container .bdsharebuttonbox {
+	MARGIN: 20px auto 0px; WIDTH: 160px
+}
+.income-share-dialog .ui-dialog-content .share-container .desc {
+	MARGIN-TOP: 20px
+}
+.income-share-dialog .ui-dialog-content .share-container .desc A {
+	COLOR: #519af2
+}
+.income-share-dialog .ui-dialog-content .share-container .desc A:link {
+	COLOR: #519af2
+}
+.income-share-dialog .ui-dialog-content .share-container .bdshare-button-style0-32 .bds_tsina {
+	BACKGROUND-POSITION: 0px -104px
+}
+.income-share-dialog .ui-dialog-content .share-container .bdshare-button-style0-32 .bds_qzone {
+	BACKGROUND-POSITION: 0px -52px
+}
+.income-share-dialog .ui-dialog-content .share-container .bdshare-button-style0-32 .bds_tqq {
+	BACKGROUND-POSITION: 0px -260px
+}
+.income-share-dialog .ui-dialog-buttonpane {
+	DISPLAY: none; HEIGHT: 0px
+}
+#bdshare_weixin_qrcode_dialog {
+	Z-INDEX: 111001
+}
+.bdshare_popup_box {
+	Z-INDEX: 111000
+}
+.income-share-dialog .ui-dialog-content .sun {
+	BACKGROUND-POSITION: 0px 0px
+}
+.dialog-dubangbang .i-smile {
+	BACKGROUND-POSITION: -184px 0px
+}
+.dialog-dubangbang .close-x {
+	BACKGROUND-POSITION: -184px -137px
+}
+.income-share-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+	BACKGROUND-POSITION: -211px -137px
+}
+.income-share-dialog .ui-dialog-content .sun {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/special-msg_z_5bf9cae.png)
+}
+.dialog-dubangbang .i-smile {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/special-msg_z_5bf9cae.png)
+}
+.dialog-dubangbang .close-x {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/special-msg_z_5bf9cae.png)
+}
+.income-share-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common-jquery/pkg/special-msg_z_5bf9cae.png)
+}

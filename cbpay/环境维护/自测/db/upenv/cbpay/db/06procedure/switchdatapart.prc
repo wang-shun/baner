@@ -1,0 +1,111 @@
+create or replace procedure switchdatapart
+is
+-----------------------------------------------------
+--功能：将分区表数据备份，删除，新建表分区
+--时间：2016年6月7日
+--作者：zhangxiaoyun
+--版本：v1.0
+--
+--
+------------------------------------------------------
+       var_partCount number := 10;      --数据库中保留的表分区个数
+       var_dataPartSize number := 40;    --数据库中每个表分区中保留n天数据
+       var_dataKeepInterval number :=var_partCount*var_dataPartSize;--数据库中保留数据总天数
+       var_delDate varchar2(8) ;--获取var_dataKeepInterval天前的日期
+       var_newDate varchar2(8) ;--获取var_dataPartSize天后的日期
+       var_newDate2 varchar2(8);--获取var_dataPartSize天后的日期
+       var_delDataPartName varchar2(50);
+       var_newDataPartName varchar2(50);
+       var_count number;
+       var_userName varchar2(10) := 'CBPAY';
+       var_currentDate varchar2(8);
+       var_tableName varchar2(200);
+       var_status varchar2(50);
+       var_maxPartName varchar2(50);
+       var_tableList1 varchar2(200):='b_merchant_order,B_BUY_EXG_CTRL,b_buy_exg_det,b_foreign_currency_rate,B_PAYMENT_FLOW,b_account_transfer_flow,b_sell_exg_ctrl,b_sell_exg_det,b_transfer_file_info,';
+       var_tableList2 varchar2(200):='TRANS_LOG,TRANS_MSG_LOG,TRANS_MSG_LOG_STAMP,';
+begin
+------------------------------开始获取当前业务日期--------------------------------
+       select acdt into var_currentDate from plat_date_param t ;
+       var_delDate :=  to_char(to_date(var_currentDate,'YYYYMMDD')-var_dataKeepInterval,'YYMMDD');
+       var_newDate := to_char(to_date(var_currentDate,'YYYYMMDD')+var_dataPartSize,'YYMMDD');
+       var_newDate2 := to_char(to_date(var_currentDate,'YYYYMMDD')+var_dataPartSize,'YYYYMMDD');
+------------------------------开始处理业务表数据----------------------------------
+  while(instr(var_tableList1,',')>0)
+  loop
+    var_tableName:=substr(var_tableList1,0,instr(var_tableList1,',',1)-1);
+    var_tableName:=upper(var_tableName);
+    var_tableList1:=substr(var_tableList1,instr(var_tableList1,',',1)+1);
+    var_delDataPartName := var_tableName||'_'||var_delDate;
+    var_status := '开始操作';
+    tool_pro(var_currentDate,var_tableName,'','',var_status,'insert');
+    --检查是否需要删除表分区
+    select count(1) into var_count  from all_tab_partitions t where t.table_owner=var_userName and t.table_name=var_tableName and t.partition_name=var_delDataPartName;
+    if var_count>0 then
+      --备份数据，删除表分区
+      var_status := '开始备份数据';
+      tool_pro(var_currentDate,var_tableName,'',var_delDataPartName,var_status,'update');
+      execute immediate 'insert into H_'||var_tableName||' select * from '||var_tableName||' partition ('||var_delDataPartName||')';
+      --开始删除表分区
+      var_status := '开始删除表分区';
+      tool_pro(var_currentDate,var_tableName,'',var_delDataPartName,var_status,'update');
+      execute immediate 'alter table '||var_tableName||' drop partition '||var_delDataPartName;
+      --新增表分区
+      var_status := '开始新增表分区';
+      var_newDataPartName:=var_tableName||'_'||var_newDate;
+      tool_pro(var_currentDate,var_tableName,var_newDataPartName,var_delDataPartName,var_status,'update');
+      var_maxPartName:=var_tableName||'_MAX';
+      execute immediate 'alter table '||var_tableName||' drop partition '||var_maxPartName;
+      execute immediate 'alter table '||var_tableName||' add partition '||var_newDataPartName||' values less than ('''||var_newDate2||''') tablespace CBPAY_JOURNAL';
+      execute immediate 'alter table '||var_tableName||' add partition '||var_maxPartName||' values less than (MAXVALUE) tablespace CBPAY_JOURNAL';
+
+      var_status := '完成操作';
+      tool_pro(var_currentDate,var_tableName,var_newDataPartName,var_delDataPartName,var_status,'update');
+
+    elsif var_count=0 then
+      var_status := '完成操作 不需要删除表分区';
+      tool_pro(var_currentDate,var_tableName,'',var_delDataPartName,var_status,'update');
+    end if;
+  end loop;
+  ------------------------------处理业务表数据处理结束----------------------------------
+
+  ------------------------------开始处理平台日志部分----------------------------------
+  while(instr(var_tableList2,',')>0)
+  loop
+    var_tableName:=substr(var_tableList2,0,instr(var_tableList2,',',1)-1);
+    var_tableName:=upper(var_tableName);
+    var_tableList2:=substr(var_tableList2,instr(var_tableList2,',',1)+1);
+    var_delDataPartName := var_tableName||'_'||var_delDate;
+    var_status := '开始操作';
+    tool_pro(var_currentDate,var_tableName,'','',var_status,'insert');
+    --检查是否需要删除表分区
+    select count(1) into var_count  from all_tab_partitions t where t.table_owner=var_userName and t.table_name=var_tableName and t.partition_name=var_delDataPartName;
+    if var_count>0 then
+      --开始删除表分区
+      var_status := '开始删除表分区';
+      tool_pro(var_currentDate,var_tableName,'',var_delDataPartName,var_status,'update');
+      execute immediate 'alter table '||var_tableName||' drop partition '||var_delDataPartName;
+      --新增表分区
+      var_status := '开始新增表分区';
+      var_newDataPartName:=var_tableName||'_'||var_newDate;
+      tool_pro(var_currentDate,var_tableName,var_newDataPartName,var_delDataPartName,var_status,'update');
+      var_maxPartName:=var_tableName||'_MAX';
+      execute immediate 'alter table '||var_tableName||' drop partition '||var_maxPartName;
+      execute immediate 'alter table '||var_tableName||' add partition '||var_newDataPartName||' values less than ('''||var_newDate2||''') tablespace CBPAY_JOURNAL';
+      execute immediate 'alter table '||var_tableName||' add partition '||var_maxPartName||' values less than (MAXVALUE) tablespace CBPAY_JOURNAL';
+
+      var_status := '完成操作';
+      tool_pro(var_currentDate,var_tableName,var_newDataPartName,var_delDataPartName,var_status,'update');
+
+    elsif var_count=0 then
+      var_status := '完成操作 不需要删除表分区';
+      tool_pro(var_currentDate,var_tableName,'',var_delDataPartName,var_status,'update');
+    end if;
+  end loop;
+  ------------------------------平台日志部分完成----------------------------------
+  exception
+    when OTHERS then
+      errorlog_pro(var_currentDate,'switchdatapart',SQLCODE,SQLERRM,dbms_utility.format_error_backtrace);
+      RAISE;
+end switchdatapart;
+/

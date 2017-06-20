@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cbp002_1">
+	<include>MERCHANT_CLI_1</include>
+	<field name="body" >
+		<format type="virtual"  level="2" />
+	</field>
+	 <field name="exQuoteDate">
+             <format type="s" length="8"/>
+	 </field>
+	 <field name="exQuoteTime">
+	 	<format type="s" length="6"/>
+	 </field>
+	 <field name="currency">
+	 	<format type="s" length="4"/>
+	 </field>
+	 <field name="exBuyPrice">
+	 	<format type="s" length="18"/>
+	 </field>
+</formula>

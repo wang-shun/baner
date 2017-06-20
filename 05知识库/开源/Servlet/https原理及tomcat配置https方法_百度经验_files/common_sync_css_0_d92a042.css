@@ -1,0 +1,2388 @@
+.footer {
+	TEXT-ALIGN: center; FONT: 12px/1.5 Arial; WHITE-SPACE: nowrap; COLOR: #77c; CLEAR: both
+}
+.footer A:link {
+	TEXT-ALIGN: center; FONT: 12px/1.5 Arial; WHITE-SPACE: nowrap; COLOR: #77c; CLEAR: both
+}
+.footer A:visited {
+	TEXT-ALIGN: center; FONT: 12px/1.5 Arial; WHITE-SPACE: nowrap; COLOR: #77c; CLEAR: both
+}
+.nav {
+	MARGIN: 13px auto 0px; FONT-FAMILY: "Microsoft Yahei", "Î¢ÈíÑÅºÚ", arial, "ËÎÌå", sans-serif; BACKGROUND: #65666d; HEIGHT: 40px
+}
+.nav .nav-wrap {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 980px
+}
+.nav .main-menu LI {
+	FLOAT: left; HEIGHT: 40px
+}
+.nav .main-menu A {
+	Z-INDEX: 1000; POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 42px; MARGIN: 0px auto; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 23px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 22px; ZOOM: 1; DISPLAY: block; BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/nav/img/line_d6714b4.png) no-repeat 0px 13px; FLOAT: left; HEIGHT: 40px; COLOR: #fff; FONT-SIZE: 16px; OVERFLOW: hidden; TEXT-DECORATION: none; PADDING-TOP: 0px; _line-height: 44px
+}
+.nav .main-menu A:visited {
+	COLOR: #fff
+}
+.nav .main-menu A:hover {
+	Z-INDEX: 1001; BORDER-LEFT: #4e5155 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 22px; BACKGROUND: #55575c; MARGIN-RIGHT: -1px; BORDER-RIGHT: #4e5155 1px solid; PADDING-TOP: 0px
+}
+.nav .main-menu .current {
+	Z-INDEX: 1003
+}
+.nav .main-menu .current A {
+	Z-INDEX: 1003; BORDER-LEFT: #3e4144 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 22px; BACKGROUND: #4e5054; MARGIN-RIGHT: -1px; BORDER-RIGHT: #3e4144 1px solid; PADDING-TOP: 0px
+}
+.nav .main-menu .current .dir-icon {
+	BACKGROUND-POSITION: -190px -130px
+}
+.nav .main-menu LI.last {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/nav/img/line_d6714b4.png) no-repeat right 13px
+}
+.nav .main-menu .all-category {
+	POSITION: relative
+}
+.nav .main-menu .all-category A {
+	PADDING-RIGHT: 35px
+}
+.nav .main-menu .all-category A:hover {
+	PADDING-RIGHT: 35px
+}
+.nav .main-menu .all-category A.all-category-hover {
+	Z-INDEX: 1002; POSITION: relative; BORDER-LEFT: #4e5155 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 35px; BACKGROUND: #55575c; MARGIN-RIGHT: -1px; BORDER-RIGHT: #4e5155 1px solid; PADDING-TOP: 0px
+}
+.nav .main-menu .dir-icon {
+	Z-INDEX: 1003; POSITION: absolute; WIDTH: 7px; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/nav-share.png) no-repeat -190px -134px; HEIGHT: 4px; TOP: 18px; CURSOR: pointer; LEFT: 62px; _overflow: hidden
+}
+.nav .main-menu .dir-icon-hover {
+	BACKGROUND-POSITION: -190px -130px
+}
+.nav .share-exp-e {
+	WIDTH: 202px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/nav-share.png) no-repeat 0px 0px; FLOAT: right; HEIGHT: 40px
+}
+.nav .share-exp-e:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+.nav .share-exp-e:active {
+	BACKGROUND-POSITION: 0px -80px
+}
+.nav .category-list {
+	Z-INDEX: 1100; BORDER-BOTTOM: #999 1px solid; POSITION: absolute; BORDER-LEFT: #999 1px solid; WIDTH: 195px; BACKGROUND: #fcfcfc; BORDER-TOP: 0px; TOP: 40px; BORDER-RIGHT: #999 1px solid; LEFT: 77px
+}
+.nav .category-list LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 25px; WIDTH: 59px; PADDING-RIGHT: 0px; FLOAT: left; LETTER-SPACING: 1px; PADDING-TOP: 13px
+}
+.nav .category-list LI.first-line {
+	PADDING-TOP: 17px
+}
+.nav .category-list LI.last-line {
+	PADDING-BOTTOM: 17px
+}
+.nav .category-list LI.even {
+	PADDING-LEFT: 27px; PADDING-RIGHT: 20px
+}
+.nav .category-list A:link {
+	COLOR: #2d64b3
+}
+.nav .category-list A:visited {
+	COLOR: #2d64b3
+}
+.pg {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 12px; LINE-HEIGHT: 24px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 583px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-FAMILY: arial; HEIGHT: 24px; FONT-SIZE: 13px; PADDING-TOP: 12px
+}
+.pg A {
+	BORDER-BOTTOM: #e7ecf0 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #e7ecf0 1px solid; LINE-HEIGHT: 24px; WIDTH: 25px; DISPLAY: inline-block; COLOR: #0000cd; BORDER-TOP: #e7ecf0 1px solid; MARGIN-RIGHT: 5px; BORDER-RIGHT: #e7ecf0 1px solid; TEXT-DECORATION: none
+}
+.pg .padding8 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 8px; WIDTH: auto; PADDING-RIGHT: 8px; PADDING-TOP: 0px
+}
+.pg B {
+	TEXT-ALIGN: center; WIDTH: 25px; DISPLAY: inline-block; COLOR: #000; MARGIN-RIGHT: 5px
+}
+.pg A:hover {
+	BACKGROUND-COLOR: #e9f1f7
+}
+.album-box-layer {
+	Z-INDEX: 10000; POSITION: fixed; FILTER: alpha(opacity=85); BACKGROUND-COLOR: #333; WIDTH: 100%; HEIGHT: 100%; OVERFLOW: hidden; TOP: 0px; LEFT: 0px; opacity: .9
+}
+.album-playlist-container {
+	POSITION: relative; MARGIN: 0px auto; HEIGHT: 100%; OVERFLOW: hidden
+}
+.album-playlist {
+	POSITION: absolute
+}
+.album-box {
+	Z-INDEX: 10001; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; LEFT: 0px
+}
+.album-box-content {
+	POSITION: relative; TEXT-ALIGN: center
+}
+.album-box-content .img-wrap {
+	BACKGROUND-COLOR: #fff; WIDTH: 890px; PADDING-RIGHT: 10px; OVERFLOW: hidden
+}
+.album-box-bottom {
+	POSITION: absolute; BACKGROUND-COLOR: #000; WIDTH: 100%; BOTTOM: 0px; HEIGHT: 66px
+}
+.tangram-scrollbar-track {
+	BACKGROUND-COLOR: #fff
+}
+.manual-box.album-box-bottom {
+	POSITION: absolute; FILTER: alpha(opacity=85); BACKGROUND-COLOR: #333; BOTTOM: 0px; HEIGHT: 40px; COLOR: #fff; opacity: .85; _background-color: #1c1c1c
+}
+.manual-box.album-box-bottom .manual-box-wrap {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 900px; HEIGHT: 100%; OVERFLOW: hidden
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-download {
+	LINE-HEIGHT: 3; TEXT-INDENT: 35px; WIDTH: 80px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/manual-download-icon.png) no-repeat 15px center; FLOAT: left; HEIGHT: 40px; COLOR: #fff; FONT-SIZE: 14px; TEXT-DECORATION: none
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-pager {
+	TEXT-ALIGN: center; WIDTH: 100px; FONT-FAMILY: ËÎÌå; FLOAT: right; HEIGHT: 40px; FONT-SIZE: 14px
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-pager .m-p-inner {
+	POSITION: relative; TOP: 8px
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-pager .m-p-i {
+	MARGIN: 0px 5px; DISPLAY: inline-block
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-pager #m-pager {
+	BORDER-BOTTOM: #5e5e5e 1px solid; POSITION: relative; TEXT-ALIGN: center; BORDER-LEFT: #5e5e5e 1px solid; BACKGROUND-COLOR: #4a4a4a; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 29px; FONT-FAMILY: ËÎÌå; HEIGHT: 23px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: #5e5e5e 1px solid; TOP: -1px; BORDER-RIGHT: #5e5e5e 1px solid
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-pager .border-hover#m-pager {
+	BORDER-BOTTOM: #e1e1e1 1px solid; BORDER-LEFT: #e1e1e1 1px solid; BORDER-TOP: #e1e1e1 1px solid; BORDER-RIGHT: #e1e1e1 1px solid
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-zoom {
+	FLOAT: right
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-zoom .manual-zoom-lager {
+	BORDER-LEFT: #5e5e5e 1px solid; WIDTH: 40px; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/manaul-zoom-lager.png) no-repeat center center; HEIGHT: 40px; BORDER-RIGHT: #5e5e5e 1px solid
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-zoom .manual-zoom-smaller {
+	WIDTH: 40px; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/manaul-zoom-smaller.png) no-repeat center center; HEIGHT: 40px; BORDER-RIGHT: #5e5e5e 1px solid
+}
+.manual-box.album-box-bottom .manual-box-wrap .manual-zoom .bg-hover {
+	FILTER: alpha(opacity=100); BACKGROUND-COLOR: #000; CURSOR: pointer; opacity: 1
+}
+.manual-box.album-box-bottom .manual-box-wrap .bg-hover {
+	FILTER: alpha(opacity=100); BACKGROUND-COLOR: #000; CURSOR: pointer; opacity: 1
+}
+.album-box-bottom IMG {
+	BORDER-BOTTOM: #000 2px solid; FILTER: alpha(opacity=40); BORDER-LEFT: #000 2px solid; MARGIN: 8px 4px; WIDTH: 65px; HEIGHT: 50px; OVERFLOW: hidden; BORDER-TOP: #000 2px solid; CURSOR: pointer; BORDER-RIGHT: #000 2px solid; opacity: .4; -webkit-transition: ease-in-out, .3s; -moz-transition: ease-in-out, .3s; -ms-transition: ease-in-out, .3s; -o-transition: ease-in-out, .3s; transition: ease-in-out, .3s
+}
+.album-box-bottom IMG:hover {
+	FILTER: alpha(opacity=100); opacity: 1
+}
+.album-box-bottom IMG.current {
+	BORDER-BOTTOM: #4eaf32 2px solid; FILTER: alpha(opacity=100); BORDER-LEFT: #4eaf32 2px solid; BORDER-TOP: #4eaf32 2px solid; BORDER-RIGHT: #4eaf32 2px solid; opacity: 1
+}
+.album-box A.close-btn {
+	Z-INDEX: 10002; POSITION: absolute; WIDTH: 55px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/album-close-btn.png) no-repeat 20px 20px; HEIGHT: 55px; TOP: 0px; CURSOR: pointer; RIGHT: 0px
+}
+.album-box A.close-btn:hover {
+	BACKGROUND-POSITION: 20px -27px
+}
+.left-area {
+	Z-INDEX: 10001; POSITION: absolute; FILTER: alpha(opacity=0); BACKGROUND: #fff; TOP: 0px; opacity: 0
+}
+.right-area {
+	Z-INDEX: 10001; POSITION: absolute; FILTER: alpha(opacity=0); BACKGROUND: #fff; TOP: 0px; opacity: 0
+}
+.left-area {
+	CURSOR: url(http://img.baidu.com/img/iknow/exp/global/pic-left-arrow.cur); LEFT: 0px
+}
+.right-area {
+	CURSOR: url(http://img.baidu.com/img/iknow/exp/global/pic-right-arrow.cur); RIGHT: 0px
+}
+.first-last-tip {
+	Z-INDEX: 1004; POSITION: absolute; WIDTH: 181px; HEIGHT: 51px
+}
+.first-tip {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/album-fist-tip.png) no-repeat 0px 0px; _background: 0 0
+}
+.last-tip {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/album-last-tip.png) no-repeat 0px 0px; _background: 0 0
+}
+.next-series {
+	TEXT-ALIGN: center; LINE-HEIGHT: 3.5; FONT-FAMILY: Î¢ÈíÑÅºÚ; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/album-next-series.png) no-repeat 0px 0px; COLOR: #fff; FONT-SIZE: 14px; _background: 0 0
+}
+.next-series A {
+	COLOR: #fff; TEXT-DECORATION: underline
+}
+.fis-inline-block {
+	DISPLAY: inline-block; VERTICAL-ALIGN: middle; -moz-box-orient: vertical
+}
+.captcha-box {
+	MARGIN: 20px
+}
+.captcha-box .captcha-input {
+	LINE-HEIGHT: 36px; HEIGHT: 36px
+}
+.captcha-box .captcha-input DL {
+	DISPLAY: inline-block; VERTICAL-ALIGN: middle; -moz-box-orient: vertical
+}
+.captcha-box .captcha-input .captcha-input-status {
+	DISPLAY: inline-block; VERTICAL-ALIGN: middle; -moz-box-orient: vertical
+}
+.captcha-box .captcha-input .captcha-input-title {
+	FLOAT: left; HEIGHT: 36px; FONT-SIZE: 14px; MARGIN-RIGHT: 10px
+}
+.captcha-box .captcha-input DL {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; WIDTH: 223px; OVERFLOW: hidden; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.captcha-box .captcha-input DL DT {
+	WIDTH: 45px; HEIGHT: 34px; OVERFLOW: hidden
+}
+.captcha-box .captcha-input DL DD {
+	WIDTH: 45px; HEIGHT: 34px; OVERFLOW: hidden
+}
+.captcha-box .captcha-input DL DD {
+	BACKGROUND-POSITION: -1000px 50%; FLOAT: left; BORDER-RIGHT: #ddd 1px solid
+}
+.captcha-box .captcha-input DL DT.captcha-backspace {
+	WIDTH: 40px; BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/captcha/sudoku/img/del_56c6545.png) no-repeat; FLOAT: right; CURSOR: pointer; MARGIN-RIGHT: -1px
+}
+.captcha-box .captcha-content {
+	MARGIN: 0px auto; WIDTH: 186px
+}
+.captcha-box .captcha-content .captcha-content-tip {
+	MARGIN-TOP: 5px; COLOR: #666; FONT-SIZE: 12px
+}
+.captcha-box .captcha-content .error.captcha-content-tip {
+	COLOR: red
+}
+.captcha-box .captcha-content .captcha-img-wrap {
+	WIDTH: 110px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px 3px; HEIGHT: 36px; VERTICAL-ALIGN: middle; -moz-box-orient: vertical
+}
+.captcha-box .captcha-content .captcha-img-change {
+	COLOR: #2d64b3
+}
+.captcha-box .captcha-content .captcha-grid-buttons {
+	MARGIN-TOP: 5px; OVERFLOW: hidden
+}
+.captcha-box .captcha-content .captcha-grid-buttons A {
+	BORDER-BOTTOM: #bfbfbf 1px solid; BORDER-LEFT: #e0e0e0 1px solid; MARGIN: 0px 5px 5px 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; ZOOM: 1; DISPLAY: block; FLOAT: left; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.captcha-box .captcha-content .captcha-grid-buttons A DIV {
+	WIDTH: 54px; BACKGROUND-POSITION: -1000px 50%; HEIGHT: 40px; CURSOR: pointer
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-1 {
+	BACKGROUND-POSITION: -4px -32px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-4 {
+	BACKGROUND-POSITION: 0px -83px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-7 {
+	BACKGROUND-POSITION: -2px -135px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-2 {
+	BACKGROUND-POSITION: -53px -39px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-5 {
+	BACKGROUND-POSITION: -53px -85px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-8 {
+	BACKGROUND-POSITION: -53px -135px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-3 {
+	BACKGROUND-POSITION: -96px -38px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-6 {
+	BACKGROUND-POSITION: -96px -86px
+}
+.captcha-box .captcha-content .captcha-grid-buttons A .captcha-btn-9 {
+	BACKGROUND-POSITION: -96px -135px
+}
+.blue-book-dialog {
+	border-radius: 6px
+}
+.income-book-dialog {
+	border-radius: 6px
+}
+.blue-book-dialog .tangram-dialog-title {
+	Z-INDEX: 1000; POSITION: absolute; TOP: 6px; RIGHT: 6px
+}
+.income-book-dialog .tangram-dialog-title {
+	Z-INDEX: 1000; POSITION: absolute; TOP: 6px; RIGHT: 6px
+}
+.blue-book-dialog .tangram-dialog-title .tangram-dialog-title-inner {
+	DISPLAY: none
+}
+.income-book-dialog .tangram-dialog-title .tangram-dialog-title-inner {
+	DISPLAY: none
+}
+.blue-book-dialog .tangram-dialog-title .tangram-dialog-close {
+	WIDTH: 46px; HEIGHT: 46px; TOP: -30px; RIGHT: -30px
+}
+.income-book-dialog .tangram-dialog-title .tangram-dialog-close {
+	WIDTH: 46px; HEIGHT: 46px; TOP: -30px; RIGHT: -30px
+}
+.blue-book-dialog .tangram-dialog-content .pop-alert-info {
+	POSITION: relative; ZOOM: 1
+}
+.income-book-dialog .tangram-dialog-content .pop-alert-info {
+	POSITION: relative; ZOOM: 1
+}
+.blue-book-dialog .tangram-dialog-content .pop-alert-info .dialog-content {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #fff; HEIGHT: 125px; PADDING-TOP: 125px
+}
+.income-book-dialog .tangram-dialog-content .pop-alert-info .dialog-content {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #fff; HEIGHT: 125px; PADDING-TOP: 125px
+}
+.blue-book-dialog .tangram-dialog-content .pop-alert-info .dialog-content .upgrade-tip {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 18px/24px ""; PADDING-TOP: 15px
+}
+.income-book-dialog .tangram-dialog-content .pop-alert-info .dialog-content .upgrade-tip {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 18px/24px ""; PADDING-TOP: 15px
+}
+.blue-book-dialog .tangram-dialog-footer .pop-alert-btn {
+	BOTTOM: 18px; RIGHT: 132px
+}
+.income-book-dialog .tangram-dialog-footer .pop-alert-btn {
+	BOTTOM: 18px; RIGHT: 132px
+}
+.blue-book-dialog .tangram-dialog-footer .pop-alert-btn .g-btn-com {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #459123 3px solid; BORDER-LEFT: 0px; BACKGROUND-COLOR: #72c14f; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 137px; HEIGHT: 34px; COLOR: #fff; FONT-SIZE: 16px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px; border-radius: 4px; text-shadow: 1px 0 1px #6a6a6a
+}
+.income-book-dialog .tangram-dialog-footer .pop-alert-btn .g-btn-com {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #459123 3px solid; BORDER-LEFT: 0px; BACKGROUND-COLOR: #72c14f; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 137px; HEIGHT: 34px; COLOR: #fff; FONT-SIZE: 16px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px; border-radius: 4px; text-shadow: 1px 0 1px #6a6a6a
+}
+.blue-book-dialog .tangram-dialog-footer .pop-alert-btn .g-btn-com:hover {
+	BACKGROUND-COLOR: #69bc44
+}
+.income-book-dialog .tangram-dialog-footer .pop-alert-btn .g-btn-com:hover {
+	BACKGROUND-COLOR: #69bc44
+}
+.blue-book-dialog {
+	BORDER-BOTTOM: #316ca8 8px solid; BORDER-LEFT: #316ca8 8px solid; BACKGROUND-COLOR: #316ca8; BORDER-TOP: #316ca8 8px solid; BORDER-RIGHT: #316ca8 8px solid
+}
+.blue-book-dialog .tangram-dialog-title .tangram-dialog-close {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/check-bluebook-upgrade/close_cbd63d2.png) no-repeat
+}
+.blue-book-dialog .tangram-dialog-content {
+	BORDER-BOTTOM: #6593bf 6px solid; BORDER-LEFT: #6593bf 6px solid; BORDER-TOP: #6593bf 6px solid; BORDER-RIGHT: #6593bf 6px solid
+}
+.blue-book-dialog .tangram-dialog-content .dialog-content {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/check-bluebook-upgrade/book_6915c1a.png) #fff no-repeat 50% 28px
+}
+.blue-book-dialog .tangram-dialog-content .dialog-content .upgrade-tip {
+	COLOR: #326da9
+}
+.income-book-dialog {
+	BORDER-BOTTOM: #ce520e 8px solid; BORDER-LEFT: #ce520e 8px solid; BACKGROUND-COLOR: #ce520e; BORDER-TOP: #ce520e 8px solid; BORDER-RIGHT: #ce520e 8px solid
+}
+.income-book-dialog .tangram-dialog-title .tangram-dialog-close {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/check-bluebook-upgrade/close-income_8400caa.png) no-repeat
+}
+.income-book-dialog .tangram-dialog-content {
+	BORDER-BOTTOM: #faa532 6px solid; BORDER-LEFT: #faa532 6px solid; BORDER-TOP: #faa532 6px solid; BORDER-RIGHT: #faa532 6px solid
+}
+.income-book-dialog .tangram-dialog-content .dialog-content {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/check-bluebook-upgrade/income_085fe71.png) #fff no-repeat 50% 28px
+}
+.income-book-dialog .tangram-dialog-content .dialog-content .upgrade-tip {
+	COLOR: #ce520e
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+HR {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LEGEND {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BUTTON {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT: 12px/1.5 arial, "ËÎÌå", sans-serif
+}
+BUTTON {
+	FONT: 12px/1.5 arial, "ËÎÌå", sans-serif
+}
+SELECT {
+	FONT: 12px/1.5 arial, "ËÎÌå", sans-serif
+}
+TEXTAREA {
+	FONT: 12px/1.5 arial, "ËÎÌå", sans-serif
+}
+H1 {
+	FONT-SIZE: 100%
+}
+H2 {
+	FONT-SIZE: 100%
+}
+H3 {
+	FONT-SIZE: 100%
+}
+H4 {
+	FONT-SIZE: 100%
+}
+H5 {
+	FONT-SIZE: 100%
+}
+H6 {
+	FONT-SIZE: 100%
+}
+ADDRESS {
+	FONT-STYLE: normal
+}
+CITE {
+	FONT-STYLE: normal
+}
+DFN {
+	FONT-STYLE: normal
+}
+VAR {
+	FONT-STYLE: normal
+}
+CODE {
+	FONT-FAMILY: courier new, courier, monospace
+}
+KBD {
+	FONT-FAMILY: courier new, courier, monospace
+}
+PRE {
+	FONT-FAMILY: courier new, courier, monospace
+}
+SAMP {
+	FONT-FAMILY: courier new, courier, monospace
+}
+SMALL {
+	FONT-SIZE: 12px
+}
+UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+OL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+SUP {
+	VERTICAL-ALIGN: text-top
+}
+SUB {
+	VERTICAL-ALIGN: text-bottom
+}
+LEGEND {
+	COLOR: #000
+}
+FIELDSET {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+BUTTON {
+	FONT-SIZE: 100%
+}
+SELECT {
+	FONT-SIZE: 100%
+}
+TEXTAREA {
+	FONT-SIZE: 100%
+}
+EMBED {
+	DISPLAY: block; CLEAR: both
+}
+TABLE {
+	BORDER-SPACING: 0; BORDER-COLLAPSE: collapse
+}
+.w984 {
+	WIDTH: 984px
+}
+.clear {
+	CLEAR: both
+}
+.hide {
+	DISPLAY: none
+}
+BODY {
+	WORD-BREAK: break-all
+}
+header {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+section {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+aside {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+footer {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+header {
+	DISPLAY: block
+}
+footer {
+	DISPLAY: block
+}
+article {
+	DISPLAY: block
+}
+section {
+	DISPLAY: block
+}
+hgroup {
+	DISPLAY: block
+}
+nav {
+	DISPLAY: block
+}
+figure {
+	DISPLAY: block
+}
+BODY {
+	BACKGROUND: url(about:blank) #fff fixed 0px 0px
+}
+.header {
+	WIDTH: 980px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto
+}
+.body {
+	WIDTH: 980px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto
+}
+.footer {
+	WIDTH: 980px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto
+}
+.body-wrapper {
+	MARGIN: 0px auto
+}
+.footer {
+	PADDING-BOTTOM: 30px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 30px
+}
+.l-main-col {
+	DISPLAY: inline; FLOAT: left
+}
+.l-aside {
+	WIDTH: 280px; FLOAT: left
+}
+.grid-980 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-960 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-730 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-710 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-690 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-290 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-270 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-250 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-210 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-80 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-70 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-60 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-30 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-10 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.grid-980 {
+	WIDTH: 980px
+}
+.grid-960 {
+	WIDTH: 960px
+}
+.grid-730 {
+	WIDTH: 730px
+}
+.grid-710 {
+	WIDTH: 710px
+}
+.grid-690 {
+	WIDTH: 690px
+}
+.grid-290 {
+	WIDTH: 290px
+}
+.grid-270 {
+	WIDTH: 270px
+}
+.grid-250 {
+	WIDTH: 250px
+}
+.grid-210 {
+	WIDTH: 210px
+}
+.grid-80 {
+	WIDTH: 80px
+}
+.grid-70 {
+	WIDTH: 70px
+}
+.grid-60 {
+	WIDTH: 60px
+}
+.grid-30 {
+	WIDTH: 30px
+}
+.grid-10 {
+	WIDTH: 10px
+}
+.header {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.body A {
+	COLOR: #2d64b3; TEXT-DECORATION: none
+}
+.body A:hover {
+	TEXT-DECORATION: underline
+}
+.body A:visited {
+	COLOR: #2d64b3; TEXT-DECORATION: none
+}
+.block {
+	DISPLAY: block
+}
+.inline {
+	DISPLAY: inline
+}
+.inline-block {
+	DISPLAY: inline-block
+}
+.link-color {
+	COLOR: #017492
+}
+.tx-right {
+	TEXT-ALIGN: right
+}
+.tx-left {
+	TEXT-ALIGN: left
+}
+.right {
+	FLOAT: right
+}
+.left {
+	FLOAT: left
+}
+.mt15 {
+	MARGIN-TOP: 15px
+}
+.mt10 {
+	MARGIN-TOP: 10px
+}
+.mt4 {
+	MARGIN-TOP: 4px
+}
+.center {
+	TEXT-ALIGN: center
+}
+.f-1f83a1 {
+	COLOR: #1f83a1
+}
+.f-666 {
+	COLOR: #666
+}
+.f-999 {
+	COLOR: #999
+}
+.f-red {
+	COLOR: red
+}
+.gray {
+	COLOR: #666
+}
+.red {
+	COLOR: red
+}
+.blue {
+	COLOR: #017492
+}
+.fbold {
+	FONT-WEIGHT: 700
+}
+.f18 {
+	FONT-SIZE: 18px
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.f12 {
+	FONT-SIZE: 12px
+}
+.no-bd-bottom {
+	BORDER-BOTTOM-STYLE: none
+}
+INPUT.toline {
+	BORDER-BOTTOM: #666 1px solid; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+TD.c {
+	TEXT-ALIGN: center; PADDING-RIGHT: 0px
+}
+TH.c {
+	TEXT-ALIGN: center; PADDING-RIGHT: 0px
+}
+TD.l {
+	TEXT-ALIGN: left; PADDING-LEFT: 0px
+}
+TH.l {
+	TEXT-ALIGN: left; PADDING-LEFT: 0px
+}
+TD.r {
+	TEXT-ALIGN: right; PADDING-RIGHT: 0px
+}
+TH.r {
+	TEXT-ALIGN: right; PADDING-RIGHT: 0px
+}
+.border-padding {
+	BORDER-BOTTOM: #f7f8f8 1px solid; BORDER-LEFT: #f7f8f8 1px solid; PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #f1f2f2; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BORDER-TOP: #f7f8f8 1px solid; BORDER-RIGHT: #f7f8f8 1px solid; PADDING-TOP: 1px
+}
+.border-outer {
+	BORDER-BOTTOM: #e9eaea 1px solid; BORDER-LEFT: #e9eaea 1px solid; BORDER-TOP: #e9eaea 1px solid; BORDER-RIGHT: #e9eaea 1px solid
+}
+.border-inner {
+	BORDER-BOTTOM: #cbd9db 1px solid; BORDER-LEFT: #cbd9db 1px solid; BACKGROUND-COLOR: #fff; BORDER-TOP: #cbd9db 1px solid; BORDER-RIGHT: #cbd9db 1px solid
+}
+#ti-numRight {
+	LINE-HEIGHT: 35px
+}
+#ti-numError {
+	LINE-HEIGHT: 35px
+}
+#ti-numError {
+	COLOR: red; FONT-SIZE: 14px
+}
+EM#ti-numLen {
+	MARGIN: 0px 5px; FONT-SIZE: 20px; VERTICAL-ALIGN: -2px
+}
+.advise {
+	BORDER-BOTTOM: #f7f8f8 1px solid; BORDER-LEFT: #f7f8f8 1px solid; PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #f1f2f2; MARGIN-TOP: 4px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BORDER-TOP: #f7f8f8 1px solid; BORDER-RIGHT: #f7f8f8 1px solid; PADDING-TOP: 1px
+}
+.tousu {
+	MARGIN: 15px; DISPLAY: block
+}
+.protocol {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+.clearfix:after {
+	LINE-HEIGHT: 0; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; FONT-SIZE: 0px; CONTENT: '.'
+}
+.clearfix {
+	ZOOM: 1
+}
+.bc-f3fafc {
+	BACKGROUND: #f3fafc
+}
+.bc-ffa242 {
+	COLOR: #ffa242
+}
+.border-e1e1e1 {
+	BORDER-BOTTOM: #e1e1e1 1px solid; BORDER-LEFT: #e1e1e1 1px solid; BORDER-TOP: #e1e1e1 1px solid; BORDER-RIGHT: #e1e1e1 1px solid
+}
+.line-1FABC9 {
+	COLOR: #1fabc9
+}
+.pl30 {
+	PADDING-LEFT: 30px
+}
+.pl20 {
+	PADDING-LEFT: 20px
+}
+.pb15 {
+	PADDING-BOTTOM: 15px
+}
+.pb20 {
+	PADDING-BOTTOM: 20px
+}
+.mt8 {
+	MARGIN-TOP: 8px
+}
+.mt35 {
+	MARGIN-TOP: 35px
+}
+.mt30 {
+	MARGIN-TOP: 30px
+}
+.mt25 {
+	MARGIN-TOP: 25px
+}
+.mt20 {
+	MARGIN-TOP: 20px
+}
+.mt15 {
+	MARGIN-TOP: 15px
+}
+.mb35 {
+	MARGIN-BOTTOM: 35px
+}
+.mb30 {
+	MARGIN-BOTTOM: 30px
+}
+.mb25 {
+	MARGIN-BOTTOM: 25px
+}
+.mb20 {
+	MARGIN-BOTTOM: 20px
+}
+.mb15 {
+	MARGIN-BOTTOM: 15px
+}
+.pt25 {
+	PADDING-TOP: 25px
+}
+.wd775 {
+	WIDTH: 775px
+}
+.wd185 {
+	WIDTH: 185px
+}
+.ml25 {
+	MARGIN-LEFT: 25px
+}
+.ml20 {
+	MARGIN-LEFT: 20px
+}
+.ht190 {
+	HEIGHT: 190px
+}
+.ht160 {
+	HEIGHT: 160px
+}
+.wd725 {
+	WIDTH: 725px
+}
+.title-bar {
+	LINE-HEIGHT: 33px; PADDING-LEFT: 12px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) repeat-x 0px -596px; HEIGHT: 33px
+}
+.title-bar H3 {
+	FONT-SIZE: 14px
+}
+.border-ffb500 {
+	BORDER-BOTTOM: #ffb500 1px solid; BORDER-LEFT: #ffb500 1px solid; BORDER-TOP: #ffb500 1px solid; BORDER-RIGHT: #ffb500 1px solid
+}
+.border-cbd9db {
+	BORDER-BOTTOM: #cbd9db 1px solid; BORDER-LEFT: #cbd9db 1px solid; BORDER-TOP: #cbd9db 1px solid; BORDER-RIGHT: #cbd9db 1px solid
+}
+.border-add6df {
+	BORDER-BOTTOM: #add6df 1px solid; BORDER-LEFT: #add6df 1px solid; BORDER-TOP: #add6df 1px solid; BORDER-RIGHT: #add6df 1px solid
+}
+.border-c1dee2 {
+	BORDER-BOTTOM: #c1dee2 1px solid; BORDER-LEFT: #c1dee2 1px solid; BORDER-TOP: #c1dee2 1px solid; BORDER-RIGHT: #c1dee2 1px solid
+}
+.border-e1e1e1 {
+	BORDER-BOTTOM: #e1e1e1 1px solid; BORDER-LEFT: #e1e1e1 1px solid; BORDER-TOP: #e1e1e1 1px solid; BORDER-RIGHT: #e1e1e1 1px solid
+}
+.no-border-rect .hd {
+	BORDER-BOTTOM: #c1dee2 1px solid; PADDING-BOTTOM: 4px; LINE-HEIGHT: 16px; MARGIN-BOTTOM: -2px
+}
+.no-border-rect .bd {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/home/bg.png) no-repeat 0px -603px; PADDING-TOP: 17px
+}
+.i-suc {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-good-exp {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-video {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-insert-img {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-insert-img-over {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-insert-img-down {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-excel-comment {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-del-comment {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-del-excel {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-add-excel {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.mark {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.tick {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-score {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-ul {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-new {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-original {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-msg-close {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.i-suc {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 18px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px -69px; PADDING-TOP: 0px
+}
+.i-good-exp {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: 2px; PADDING-TOP: 0px
+}
+.i-video {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; WIDTH: 12px; PADDING-RIGHT: 0px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -20px; HEIGHT: 13px; PADDING-TOP: 0px
+}
+.i-original {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; WIDTH: 15px; PADDING-RIGHT: 0px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -919px; HEIGHT: 16px; VERTICAL-ALIGN: -2px; PADDING-TOP: 0px; _vertical-align: auto
+}
+.i-excel-comment {
+	WIDTH: 13px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -652px; HEIGHT: 13px; VERTICAL-ALIGN: middle
+}
+.i-del-comment {
+	PADDING-LEFT: 15px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -668px; HEIGHT: 13px
+}
+.i-del-excel {
+	PADDING-LEFT: 14px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -702px; HEIGHT: 13px
+}
+.i-add-excel {
+	PADDING-LEFT: 14px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -684px; HEIGHT: 13px
+}
+.i-insert-img {
+	DISPLAY: inline-block; BACKGROUND-POSITION: 0px -589px; HEIGHT: 16px
+}
+.i-insert-img:hover {
+	DISPLAY: inline-block; BACKGROUND-POSITION: 0px -610px; HEIGHT: 16px
+}
+.i-insert-img-over {
+	DISPLAY: inline-block; BACKGROUND-POSITION: 0px -610px; HEIGHT: 16px
+}
+.i-insert-img:active {
+	DISPLAY: inline-block; BACKGROUND-POSITION: 0px -631px; HEIGHT: 16px
+}
+.i-insert-img-down {
+	DISPLAY: inline-block; BACKGROUND-POSITION: 0px -631px; HEIGHT: 16px
+}
+.i-score {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px -50px; PADDING-TOP: 1px
+}
+.mark {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 30px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -225px -209px; HEIGHT: 24px; COLOR: #333; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.tick {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 34px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -225px -313px; HEIGHT: 24px; COLOR: #333; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.followed-vote-pop {
+	MARGIN: 20px 0px 0px 52px
+}
+.mlt54 {
+	MARGIN: 7px 0px; PADDING-LEFT: 3px; COLOR: #666
+}
+.mlt54 A {
+	COLOR: #2d64b3
+}
+.ml54 {
+	PADDING-LEFT: 2px
+}
+.i-ul {
+	PADDING-LEFT: 12px; BACKGROUND-POSITION: -17px -455px
+}
+.i-new {
+	TEXT-INDENT: -9999px; WIDTH: 21px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -886px; HEIGHT: 11px; FONT-SIZE: 11px
+}
+.i-msg-close {
+	LINE-HEIGHT: 20; MARGIN-TOP: -5px; WIDTH: 19px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/close_icon.gif) no-repeat 0px 0px; FLOAT: right; HEIGHT: 20px; CURSOR: pointer; MARGIN-RIGHT: -5px; _display: inline
+}
+.i-msg-close:hover {
+	BACKGROUND-POSITION: 0px -20px
+}
+.i-msg-close:active {
+	BACKGROUND-POSITION: 0px -40px
+}
+.author-icon-lv1 {
+	WIDTH: 16px; ZOOM: 1; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/usr_lv_ico.png) no-repeat; HEIGHT: 16px; VERTICAL-ALIGN: text-top
+}
+.author-icon-lv2 {
+	WIDTH: 16px; ZOOM: 1; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/usr_lv_ico.png) no-repeat; HEIGHT: 16px; VERTICAL-ALIGN: text-top
+}
+.author-icon-lv3 {
+	WIDTH: 16px; ZOOM: 1; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/usr_lv_ico.png) no-repeat; HEIGHT: 16px; VERTICAL-ALIGN: text-top
+}
+.author-icon-lv2 {
+	BACKGROUND-POSITION: 0px -29px
+}
+.author-icon-lv3 {
+	BACKGROUND-POSITION: 0px -59px
+}
+.author-title-lv1 {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/navigator-qb.png) no-repeat 0px 0px; HEIGHT: 16px; VERTICAL-ALIGN: text-top; MARGIN-RIGHT: 5px
+}
+.author-title-lv2 {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/navigator-qb.png) no-repeat 0px 0px; HEIGHT: 16px; VERTICAL-ALIGN: text-top; MARGIN-RIGHT: 5px
+}
+.author-title-lv1 {
+	WIDTH: 55px; BACKGROUND-POSITION: -49px 0px; HEIGHT: 17px
+}
+.author-title-lv2 {
+	WIDTH: 44px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 17px
+}
+.g-btn-com {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-long {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-2long {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-com-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-long-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-2long-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-com:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+.g-btn-com-hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+.g-btn-long {
+	BACKGROUND-POSITION: -90px 0px
+}
+.g-btn-long:hover {
+	BACKGROUND-POSITION: -90px -40px
+}
+.g-btn-long-hover {
+	BACKGROUND-POSITION: -90px -40px
+}
+.g-btn-cancel {
+	BACKGROUND-POSITION: -90px 0px; COLOR: #66c557
+}
+.g-btn-cancel:hover {
+	BACKGROUND-POSITION: -90px -40px
+}
+.g-btn-2long {
+	WIDTH: 110px; BACKGROUND-POSITION: -180px 0px
+}
+.g-btn-2long:hover {
+	BACKGROUND-POSITION: -180px -40px
+}
+.g-btn-2long-hover {
+	BACKGROUND-POSITION: -180px -40px
+}
+.g-btn-disabled {
+	COLOR: gray
+}
+.g-ipt {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; HEIGHT: 22px; FONT-SIZE: 14px; PADDING-TOP: 3px
+}
+.b-release {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-release-noinput {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-reply-release {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-reply-release-noinput {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-followed {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-vote {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-small-followed {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-small-vote {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_button.png) no-repeat 0px 0px
+}
+.b-release {
+	WIDTH: 94px; DISPLAY: inline-block; BACKGROUND-POSITION: -206px -639px; HEIGHT: 31px; CURSOR: pointer
+}
+.b-release-noinput {
+	WIDTH: 94px; DISPLAY: inline-block; BACKGROUND-POSITION: -206px -711px; HEIGHT: 31px; CURSOR: pointer
+}
+.b-release:hover {
+	BACKGROUND-POSITION: -206px -675px
+}
+.b-reply-release-noinput {
+	WIDTH: 57px; DISPLAY: inline-block; BACKGROUND-POSITION: -243px -115px; HEIGHT: 26px
+}
+.b-reply-release {
+	WIDTH: 57px; DISPLAY: inline-block; BACKGROUND-POSITION: -243px -81px; HEIGHT: 26px
+}
+.b-followed {
+	WIDTH: 101px; DISPLAY: inline-block; BACKGROUND-POSITION: -199px -150px; HEIGHT: 27px
+}
+.b-followed:hover {
+	BACKGROUND-POSITION: -199px -180px
+}
+.b-vote {
+	WIDTH: 101px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -773px; HEIGHT: 27px
+}
+.b-vote:hover {
+	BACKGROUND-POSITION: -109px -773px
+}
+.b-small-vote {
+	WIDTH: 73px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -808px; HEIGHT: 22px
+}
+.b-small-vote:hover {
+	BACKGROUND-POSITION: -81px -808px
+}
+.b-small-vote:active {
+	BACKGROUND-POSITION: -162px -808px
+}
+.b-small-followed {
+	WIDTH: 61px; DISPLAY: inline-block; BACKGROUND-POSITION: 0px -838px; HEIGHT: 22px
+}
+.b-small-followed:hover {
+	BACKGROUND-POSITION: -81px -838px
+}
+.b-small-followed:active {
+	BACKGROUND-POSITION: -162px -838px
+}
+#editorBD .edui-editor {
+	Z-INDEX: 1000 !important
+}
+.rank LI {
+	PADDING-BOTTOM: 2px; MARGIN-TOP: 3px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/home/bg.png) no-repeat 0px 0px; PADDING-TOP: 0px
+}
+.rank LI SPAN {
+	FLOAT: right; COLOR: #999
+}
+.rank .no1 {
+	BACKGROUND-POSITION: 0px -124px
+}
+.rank .no2 {
+	BACKGROUND-POSITION: 0px -144px
+}
+.rank .no3 {
+	BACKGROUND-POSITION: 0px -165px
+}
+.rank .no4 {
+	BACKGROUND-POSITION: 0px -186px
+}
+.rank .no5 {
+	BACKGROUND-POSITION: 0px -207px
+}
+.rank .no6 {
+	BACKGROUND-POSITION: 0px -228px
+}
+.rank .no7 {
+	BACKGROUND-POSITION: 0px -249px
+}
+.rank .no8 {
+	BACKGROUND-POSITION: 0px -270px
+}
+.rank .no9 {
+	BACKGROUND-POSITION: 0px -291px
+}
+.rank .no10 {
+	BACKGROUND-POSITION: 0px -312px
+}
+.pop-alert-info {
+	MARGIN: 0px 10px; FONT-SIZE: 14px
+}
+.pop-alert-btn {
+	POSITION: absolute; BOTTOM: 25px; RIGHT: 40px
+}
+.tangram-dialog {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.tangram-dialog-title {
+	BORDER-BOTTOM: #f2f2f2 1px solid; LINE-HEIGHT: 34px; PADDING-LEFT: 20px; BACKGROUND: #fcfcfc; COLOR: #333; FONT-SIZE: 14px; CURSOR: move; FONT-WEIGHT: 700; -moz-user-select: none
+}
+.tangram-dialog-titletext {
+	LINE-HEIGHT: 24px; MARGIN: 0px 10px
+}
+.tangram-dialog-close {
+	POSITION: absolute; WIDTH: 14px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/possportui.png) 0px -493px; HEIGHT: 13px; TOP: 11px; CURSOR: pointer; RIGHT: 11px
+}
+.tangram-dialog-close-hover {
+	BACKGROUND-POSITION: 0px -511px
+}
+.tangram-dialog-close-press {
+	BACKGROUND-POSITION: 0px -529px
+}
+.tangram-dialog-content {
+	POSITION: relative; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; PADDING-TOP: 5px
+}
+.pop-confirm-btn {
+	POSITION: absolute; BOTTOM: 15px; RIGHT: 93px
+}
+.pop-cancel-btn {
+	POSITION: absolute; BOTTOM: 15px; RIGHT: 10px
+}
+.pop-cancel-btn .g-btn-com {
+	BACKGROUND-POSITION: -90px 0px; COLOR: #66c557
+}
+.pop-cancel-btn .g-btn-com:hover {
+	BACKGROUND-POSITION: -90px -40px
+}
+.pop-cancel-btn .g-btn-com-hover {
+	BACKGROUND-POSITION: -90px -40px
+}
+.pop-confirm-btn INPUT {
+	MARGIN-RIGHT: 10px
+}
+.pop-cancel-btn INPUT {
+	MARGIN-RIGHT: 10px
+}
+.pop-confirm-info {
+	TEXT-ALIGN: left; MARGIN-TOP: 10px; MARGIN-LEFT: 10px; FONT-SIZE: 14px
+}
+.tangram-passport {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.tangram-passport-title {
+	BORDER-BOTTOM: #f2f2f2 1px solid; LINE-HEIGHT: 35px; PADDING-LEFT: 20px; BACKGROUND: #fcfcfc; FONT-SIZE: 14px; CURSOR: move; FONT-WEIGHT: 700; -moz-user-select: none
+}
+.tangram-passport-titletext {
+	LINE-HEIGHT: 24px; MARGIN: 0px 10px
+}
+.tangram-passport-content {
+	POSITION: relative; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; PADDING-TOP: 5px
+}
+.tangram-passport-close {
+	POSITION: absolute; WIDTH: 14px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/possportui.png) 0px -493px; HEIGHT: 13px; TOP: 11px; CURSOR: pointer; RIGHT: 11px
+}
+.tangram-passport-close-hover {
+	BACKGROUND-POSITION: 0px -511px
+}
+.tangram-passport-close-press {
+	BACKGROUND-POSITION: 0px -529px
+}
+.exp-dialog A {
+	OUTLINE-STYLE: none !important; OUTLINE-COLOR: invert !important; OUTLINE-WIDTH: 0px !important
+}
+.exp-dialog .exp-dialog-title {
+	LINE-HEIGHT: 48px; BACKGROUND: #f3f3f3; HEIGHT: 48px
+}
+.exp-dialog .exp-dialog-footer {
+	LINE-HEIGHT: 48px; BACKGROUND: #f3f3f3; HEIGHT: 48px
+}
+.exp-dialog .tangram-dialog-title {
+	FONT-SIZE: 18px
+}
+.exp-dialog .tangram-dialog-title .tangram-dialog-close {
+	WIDTH: 15px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 15px; TOP: 18px; RIGHT: 18px
+}
+.exp-dialog .tangram-dialog-content {
+	MARGIN: 0px
+}
+.exp-dialog .tangram-dialog-content .pop-confirm-info {
+	MARGIN: 0px
+}
+.exp-dialog .tangram-dialog-footer .pop-confirm-btn {
+	BOTTOM: 0px
+}
+.exp-dialog .tangram-dialog-footer .pop-cancel-btn {
+	BOTTOM: 0px
+}
+.exp-dialog .tangram-dialog-footer .pop-confirm-btn {
+	MARGIN-LEFT: -80px; LEFT: 50%
+}
+.exp-dialog .tangram-dialog-footer .pop-cancel-btn {
+	MARGIN-LEFT: 30px; LEFT: 50%
+}
+.exp-dialog .exp-content {
+	MARGIN: 22px 0px 0px 43px
+}
+.exp-dialog .exp-content .bear {
+	WIDTH: 118px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 172px; MARGIN-RIGHT: 36px
+}
+.exp-dialog .exp-content .bear .i-warn {
+	MARGIN: 112px 0px 0px 37px; WIDTH: 39px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 32px
+}
+.exp-dialog .exp-content .bear .i-success {
+	MARGIN: 114px 0px 0px 37px; WIDTH: 42px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 29px
+}
+.exp-dialog .exp-content .bear .i-error {
+	MARGIN: 110px 0px 0px 40px; WIDTH: 37px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 37px
+}
+.exp-dialog .exp-content .content-text {
+	WIDTH: 280px
+}
+.no-footer.exp-dialog .tangram-dialog-footer {
+	DISPLAY: none
+}
+.fav-exp-pop H3 {
+	PADDING-LEFT: 30px; MARGIN-BOTTOM: 20px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -225px -313px; COLOR: #333; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.fav-exp-pop P {
+	PADDING-LEFT: 3px; COLOR: #333; FONT-SIZE: 14px
+}
+.fav-exp-pop SPAN.icon {
+	WIDTH: 16px; DISPLAY: block; MARGIN-BOTTOM: 20px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px -1001px; FLOAT: left; HEIGHT: 16px; MARGIN-RIGHT: 10px
+}
+.fav-exp-pop .my-exp {
+	COLOR: #2d64b3
+}
+.fav-exp-pop .red {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: red; PADDING-TOP: 0px
+}
+.fav-exp-pop .black {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #000; PADDING-TOP: 0px
+}
+#pop-share {
+	MARGIN-TOP: 40px
+}
+#pop-share SPAN {
+	POSITION: relative; TOP: -2px; MARGIN-RIGHT: 8px; _top: 0
+}
+#pop-share A {
+	WIDTH: 16px; DISPLAY: inline-block; HEIGHT: 16px; MARGIN-RIGHT: 8px
+}
+.to-renren {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-qqzone {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-kaixin {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-sina {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-tencent {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-163 {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-sohu {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon.png) no-repeat 0px 0px
+}
+.to-renren {
+	BACKGROUND-POSITION: 0px -187px
+}
+.to-qqzone {
+	BACKGROUND-POSITION: 0px -208px
+}
+.to-kaixin {
+	BACKGROUND-POSITION: 0px -229px
+}
+.to-sina {
+	BACKGROUND-POSITION: 0px -249px
+}
+.to-tencent {
+	BACKGROUND-POSITION: 0px -820px
+}
+.to-sohu {
+	BACKGROUND-POSITION: 0px -842px
+}
+.to-163 {
+	BACKGROUND-POSITION: 0px -864px
+}
+.lazy-load-img {
+	DISPLAY: block; VISIBILITY: hidden
+}
+.income-share-dialog {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.income-share-dialog .income-share-dialog-title {
+	BACKGROUND: #39b349; COLOR: #fff
+}
+.income-share-dialog .income-share-dialog-title .income-share-dialog-close {
+	WIDTH: 13px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 13px
+}
+.income-share-dialog .income-share-dialog-content {
+	POSITION: relative; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.income-share-dialog .income-share-dialog-content .sun {
+	POSITION: absolute; WIDTH: 181px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 182px; MARGIN-LEFT: -90px; TOP: -20px; LEFT: 50%
+}
+.income-share-dialog .income-share-dialog-content .money {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 100%; TOP: 130px; LEFT: 0px
+}
+.income-share-dialog .income-share-dialog-content .money SPAN {
+	LINE-HEIGHT: 26px; MARGIN: 0px 5px; HEIGHT: 26px; COLOR: #f9aa33; FONT-SIZE: 26px
+}
+.income-share-dialog .income-share-dialog-content .share-container {
+	POSITION: absolute; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 100%; BOTTOM: 0px; PADDING-RIGHT: 0px; BACKGROUND: #f4f4f4; HEIGHT: 130px; BORDER-TOP: #e8e8e8 1px solid; PADDING-TOP: 0px
+}
+.income-share-dialog .income-share-dialog-content .share-container .bdsharebuttonbox {
+	MARGIN: 20px auto 0px; WIDTH: 160px
+}
+.income-share-dialog .income-share-dialog-content .share-container .desc {
+	MARGIN-TOP: 20px
+}
+.income-share-dialog .income-share-dialog-content .share-container .desc A {
+	COLOR: #519af2
+}
+.income-share-dialog .income-share-dialog-content .share-container .desc A:link {
+	COLOR: #519af2
+}
+.income-share-dialog .income-share-dialog-content .share-container .bdshare-button-style0-32 .bds_tsina {
+	BACKGROUND-POSITION: 0px -104px
+}
+.income-share-dialog .income-share-dialog-content .share-container .bdshare-button-style0-32 .bds_qzone {
+	BACKGROUND-POSITION: 0px -52px
+}
+.income-share-dialog .income-share-dialog-content .share-container .bdshare-button-style0-32 .bds_tqq {
+	BACKGROUND-POSITION: 0px -260px
+}
+#bdshare_weixin_qrcode_dialog {
+	Z-INDEX: 111001
+}
+.bdshare_popup_box {
+	Z-INDEX: 111000
+}
+.may-medal-dialog {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; FONT-FAMILY: "Microsoft Yahei", "Î¢ÈíÑÅºÚ", arial, "ËÎÌå", sans-serif; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.may-medal-dialog .tangram-dialog-title {
+	DISPLAY: none; HEIGHT: 0px
+}
+.may-medal-dialog .tangram-dialog-content {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-TOP: 0px
+}
+.may-medal-dialog .may-medal-container {
+	POSITION: relative; PADDING-BOTTOM: 26px; PADDING-LEFT: 26px; WIDTH: 790px; PADDING-RIGHT: 26px; HEIGHT: 498px; COLOR: #7e6b5b; PADDING-TOP: 26px
+}
+.may-medal-dialog .may-medal-container .pos-abs {
+	POSITION: absolute
+}
+.may-medal-dialog .may-medal-container .border-top-left {
+	WIDTH: 200px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 199px; TOP: 0px; LEFT: 0px
+}
+.may-medal-dialog .may-medal-container .border-top-right {
+	WIDTH: 200px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 200px; TOP: 0px; RIGHT: 0px
+}
+.may-medal-dialog .may-medal-container .border-bottom-left {
+	WIDTH: 200px; BOTTOM: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 201px; LEFT: 0px
+}
+.may-medal-dialog .may-medal-container .border-bottom-right {
+	WIDTH: 200px; BOTTOM: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 201px; RIGHT: 0px
+}
+.may-medal-dialog .content {
+	PADDING-BOTTOM: 16px; PADDING-LEFT: 16px; WIDTH: 758px; PADDING-RIGHT: 16px; BACKGROUND: #e6d496; HEIGHT: 468px; PADDING-TOP: 16px
+}
+.may-medal-dialog .content .content-inner {
+	WIDTH: 100%; BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/may-medal/img/bkg_a16a1db.png); HEIGHT: 100%
+}
+.may-medal-dialog .content .content-text {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 40px; WIDTH: 470px; PADDING-RIGHT: 0px; PADDING-TOP: 48px
+}
+.may-medal-dialog .content H1 {
+	LINE-HEIGHT: 36px; MARGIN-BOTTOM: 38px; FONT-SIZE: 36px
+}
+.may-medal-dialog .content P {
+	LINE-HEIGHT: 2; FONT-SIZE: 14px
+}
+.may-medal-dialog .content H2 {
+	MARGIN: 15px 0px 30px; FONT-SIZE: 20px; FONT-WEIGHT: 400
+}
+.may-medal-dialog .content .f-red {
+	COLOR: red
+}
+.may-medal-dialog .content .f-green {
+	COLOR: #36a803
+}
+.may-medal-dialog .content .f-blue {
+	COLOR: #2d64b3
+}
+.may-medal-dialog .medal-elem {
+	WIDTH: 225px; HEIGHT: 239px; TOP: 26px; RIGHT: 26px
+}
+.may-medal-dialog .gold.medal-elem {
+	BACKGROUND-REPEAT: no-repeat
+}
+.may-medal-dialog .silver.medal-elem {
+	BACKGROUND-REPEAT: no-repeat
+}
+.may-medal-dialog .bronze.medal-elem {
+	BACKGROUND-REPEAT: no-repeat
+}
+.may-medal-dialog .exp-sign {
+	WIDTH: 128px; BOTTOM: 77px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 128px; RIGHT: 87px
+}
+.may-medal-dialog .share-box {
+	MARGIN-TOP: 40px
+}
+.may-medal-dialog .share-box .guide-text {
+	DISPLAY: inline-block
+}
+.may-medal-dialog .share-box .bdsharebuttonbox {
+	DISPLAY: inline-block
+}
+.may-medal-dialog .share-box .guide-text {
+	LINE-HEIGHT: 44px; HEIGHT: 44px; VERTICAL-ALIGN: top
+}
+.may-medal-dialog .share-box .bdsharebuttonbox .bds_more {
+	BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_32.png?v=acc572ea.png) !important; BACKGROUND-POSITION: 0px 0px
+}
+.may-medal-dialog .share-box .bdsharebuttonbox .bds_tsina {
+	BACKGROUND-POSITION: 0px -104px
+}
+.may-medal-dialog .share-box .bdsharebuttonbox .bds_weixin {
+	BACKGROUND-POSITION: 0px -1612px
+}
+.may-medal-dialog .share-box .bdsharebuttonbox .bds_douban {
+	BACKGROUND-POSITION: 0px -468px
+}
+.may-medal-dialog .share-box .bdsharebuttonbox .bds_qzone {
+	BACKGROUND-POSITION: 0px -52px
+}
+.may-medal-dialog .may-x-layer {
+	WIDTH: 21px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 21px; TOP: 50px; CURSOR: pointer; RIGHT: 50px
+}
+.bdshare_dialog_box {
+	Z-INDEX: 100000 !important
+}
+.ui-note .side {
+	Z-INDEX: 100; POSITION: absolute; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/arrow.gif) no-repeat 0px 0px; OVERFLOW: hidden
+}
+.ui-note .up {
+	Z-INDEX: 100; POSITION: absolute; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/arrow.gif) no-repeat 0px 0px; OVERFLOW: hidden
+}
+.ui-note .down {
+	Z-INDEX: 100; POSITION: absolute; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/arrow.gif) no-repeat 0px 0px; OVERFLOW: hidden
+}
+.ui-note .side {
+	WIDTH: 11px; HEIGHT: 21px
+}
+.ui-note .up {
+	WIDTH: 21px; HEIGHT: 11px
+}
+.ui-note .down {
+	WIDTH: 21px; BACKGROUND-POSITION: 0px -10px; HEIGHT: 11px
+}
+.red-bao-dialog {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: 0px 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.red-bao-dialog-title {
+	DISPLAY: none
+}
+.red-bao-dialog-content {
+	BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/ui/red-bao/img/red-bao_1fe159b.png) no-repeat center 50%
+}
+.red-bao-dialog-content .red-bao-close {
+	POSITION: absolute; WIDTH: 30px; DISPLAY: block; HEIGHT: 30px; TOP: 81px; LEFT: 368px
+}
+.red-bao-dialog-content .red-bao-desc {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 210px; COLOR: #d99131; TOP: 275px; LEFT: 185px
+}
+.red-bao-dialog-content .red-bao-desc SPAN {
+	COLOR: #3368b2
+}
+.red-bao-dialog-content .num-wrap {
+	POSITION: absolute; WIDTH: 140px; TOP: 182px; LEFT: 256px
+}
+.red-bao-dialog-content .num-wrap .number {
+	WIDTH: 60px; BACKGROUND-REPEAT: no-repeat; FLOAT: left; HEIGHT: 66px
+}
+.red-bao-dialog-content .num-wrap .num-dot {
+	WIDTH: 20px; BACKGROUND-REPEAT: no-repeat; FLOAT: left; HEIGHT: 66px
+}
+.red-bao-dialog-content .num-wrap .rnum1 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum2 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum3 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum4 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum5 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum6 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum7 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum8 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum9 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.red-bao-dialog-content .num-wrap .rnum0 {
+	BACKGROUND-REPEAT: no-repeat
+}
+.tangram-scrollbar {
+	WIDTH: 100%; HEIGHT: 100%
+}
+.tangram-scrollbar-track {
+	WIDTH: 100%; HEIGHT: 100%; OVERFLOW: hidden
+}
+.tangram-scrollbar-slider {
+	WIDTH: 100%; HEIGHT: 100%
+}
+.tangram-scrollbar-slider-thumb {
+	WIDTH: 100%; HEIGHT: 100%
+}
+.tangram-scrollbar-prev {
+	FONT-SIZE: 0px
+}
+.tangram-scrollbar-next {
+	FONT-SIZE: 0px
+}
+.tangram-scrollbar-thumb-btn {
+	FONT-SIZE: 0px
+}
+.scrollbar-y {
+	BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) no-repeat 3px center
+}
+.scrollbar-y-hover {
+	BACKGROUND-POSITION: -3px center
+}
+.scrollbar-y-prev {
+	WIDTH: 9px; HEIGHT: 0px; OVERFLOW: hidden
+}
+.scrollbar-y-next {
+	WIDTH: 9px; HEIGHT: 0px; OVERFLOW: hidden
+}
+.scrollbar-y-thumb-btn {
+	POSITION: relative; WIDTH: 100%; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) no-repeat -12px center; HEIGHT: 100%
+}
+.scrollbar-y-thumb-prev {
+	POSITION: absolute; WIDTH: 100%; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) -36px 0px; HEIGHT: 4px; FONT-SIZE: 0px; TOP: 0px
+}
+.scrollbar-y-thumb-next {
+	POSITION: absolute; WIDTH: 100%; BOTTOM: 0px !important; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) -36px -4px; HEIGHT: 4px; FONT-SIZE: 0px
+}
+.scrollbar-y-thumb-btn-hover {
+	BACKGROUND-POSITION: -24px center
+}
+.scrollbar-y-thumb-btn-hover .scrollbar-y-thumb-prev {
+	BACKGROUND-POSITION: -36px -11px
+}
+.scrollbar-y-thumb-btn-hover .scrollbar-y-thumb-next {
+	BACKGROUND-POSITION: -36px -15px
+}
+.userbar {
+	Z-INDEX: 1003; POSITION: absolute; TEXT-ALIGN: right; PADDING-RIGHT: 10px; FONT: 12px arial; COLOR: #999; TOP: 4px; RIGHT: 0px
+}
+.userbar A:link {
+	COLOR: #555; TEXT-DECORATION: none
+}
+.userbar A:visited {
+	COLOR: #555; TEXT-DECORATION: none
+}
+.userbar A:hover {
+	TEXT-DECORATION: underline
+}
+.userbar .g-un {
+	FONT-WEIGHT: 700
+}
+.userbar SPAN {
+	
+}
+.userbar .my-info {
+	POSITION: relative; PADDING-BOTTOM: 5px; ZOOM: 1; DISPLAY: inline; VERTICAL-ALIGN: top
+}
+.userbar .i-arrow-down {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(http://exp.bdstatic.com/static/common/widget/userbar/img/arrow-b_0461cb3.png) no-repeat 3px 4px; HEIGHT: 16px; VERTICAL-ALIGN: middle; -moz-box-orient: vertical
+}
+.userbar .dropdown-menu {
+	BORDER-BOTTOM: #9b9b9b 1px solid; POSITION: absolute; BORDER-LEFT: #9b9b9b 1px solid; WIDTH: 70px; DISPLAY: none; BACKGROUND: #fff; BORDER-TOP: #9b9b9b 1px solid; TOP: 19px; BORDER-RIGHT: #9b9b9b 1px solid; LEFT: 2px; -moz-box-shadow: 1px 1px 2px #CCC; -webkit-box-shadow: 1px 1px 2px #CCC; box-shadow: 1px 1px 2px #CCC
+}
+.userbar .dropdown-menu A {
+	BORDER-BOTTOM: #ebebeb 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 6px; LINE-HEIGHT: 12px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; DISPLAY: block; TEXT-DECORATION: none; PADDING-TOP: 6px
+}
+.userbar .dropdown-menu A:hover {
+	BACKGROUND-COLOR: #ebebeb
+}
+.userbar .menu-show .dropdown-menu {
+	DISPLAY: block
+}
+.userbar .menu-hide .dropdown-menu {
+	DISPLAY: none
+}
+#my-income {
+	PADDING-BOTTOM: 1px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/bg_icon_v2.png) no-repeat 0px -404px; HEIGHT: 16px; PADDING-TOP: 1px
+}
+.icon-wrp {
+	MARGIN-TOP: 10px; WIDTH: 140px; HEIGHT: 24px
+}
+.icon-wrp .u-icon {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 24px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/user-badge-small.png) no-repeat; FLOAT: left; HEIGHT: 24px; MARGIN-RIGHT: 4px
+}
+.icon-wrp .cpm3 {
+	BACKGROUND-POSITION: 0px 0px
+}
+.icon-wrp .cpm4 {
+	BACKGROUND-POSITION: 0px -24px
+}
+.icon-wrp .cpm5 {
+	BACKGROUND-POSITION: 0px -48px
+}
+.icon-wrp .privilege1 {
+	BACKGROUND-POSITION: -48px 0px
+}
+.icon-wrp .privilege2 {
+	BACKGROUND-POSITION: -48px -24px
+}
+.icon-wrp .admin1 {
+	BACKGROUND-POSITION: -72px 0px
+}
+.icon-wrp .medal-gold {
+	BACKGROUND-REPEAT: no-repeat
+}
+.icon-wrp .medal-silver {
+	BACKGROUND-REPEAT: no-repeat
+}
+.icon-wrp .medal-bronze {
+	BACKGROUND-REPEAT: no-repeat
+}
+.new-share-exp {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 30px
+}
+.new-share-exp .share-exp {
+	MARGIN: 0px auto; WIDTH: 210px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/exp_new_bg.png) no-repeat 0px -70px; HEIGHT: 42px
+}
+.new-share-exp A.share-exp:hover {
+	BACKGROUND-POSITION: -220px -70px; TEXT-DECORATION: none
+}
+.new-share-exp A.share-exp:active {
+	BACKGROUND-POSITION: -440px -70px
+}
+.new-share-exp .share-exp-reward {
+	TEXT-ALIGN: left; MARGIN: 12px auto 0px; WIDTH: 210px; DISPLAY: block
+}
+.top-search-box {
+	POSITION: relative; ZOOM: 1 !important; FONT-FAMILY: arial, tahoma, "Microsoft YaHei", "ËÎÌå"; OVERFLOW: hidden
+}
+.top-search-box .inner-warp {
+	HEIGHT: 100%; MARGIN-LEFT: 152px
+}
+.top-search-box A.logo {
+	POSITION: absolute; BOTTOM: 2px; LEFT: 0px
+}
+.top-search-box A.logo IMG {
+	WIDTH: 137px; HEIGHT: 46px
+}
+.top-search-box UL.channel {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 16px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 19px
+}
+.top-search-box UL.channel LI {
+	ZOOM: 1; FLOAT: left; FONT-SIZE: 14px; MARGIN-RIGHT: 18px
+}
+.top-search-box UL.channel LI A {
+	COLOR: #555; TEXT-DECORATION: none
+}
+.top-search-box UL.channel LI A:visited {
+	COLOR: #555; TEXT-DECORATION: none
+}
+.top-search-box UL.channel LI A:hover {
+	TEXT-DECORATION: underline
+}
+.top-search-box .s-nav {
+	HEIGHT: 43px
+}
+.top-search-box A {
+	TEXT-DECORATION: underline
+}
+.top-search-box A:visited {
+	TEXT-DECORATION: underline
+}
+.top-search-box INPUT {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.top-search-form {
+	Z-INDEX: 1000; POSITION: relative; MARGIN: 0px; CLEAR: both
+}
+.top-search-form .s-ipt-wr {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #b8b8b8 1px solid; WIDTH: 508px; DISPLAY: inline-block; FLOAT: left; HEIGHT: 32px; VERTICAL-ALIGN: top; BORDER-TOP: #b8b8b8 1px solid; MARGIN-RIGHT: -1px; BORDER-RIGHT: #b8b8b8 1px solid
+}
+.top-search-form .s-ipt-wr:hover {
+	BORDER-BOTTOM-COLOR: #ababab; BORDER-TOP-COLOR: #ababab; BORDER-RIGHT-COLOR: #ababab; BORDER-LEFT-COLOR: #ababab
+}
+.top-search-form .s-ipt-wr:focus {
+	BORDER-BOTTOM-COLOR: #969696; BORDER-TOP-COLOR: #969696; BORDER-RIGHT-COLOR: #969696; BORDER-LEFT-COLOR: #969696
+}
+.top-search-form .hdi {
+	MARGIN: 5px 0px 0px 8px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 492px; FONT: 16px/22px arial, tahoma, "Microsoft YaHei", "ËÎÌå", sans-serif; HEIGHT: 22px; COLOR: #000
+}
+.top-search-form .s-btn-wr {
+	Z-INDEX: 0; WIDTH: 100px; DISPLAY: inline-block; FLOAT: left; HEIGHT: 34px; VERTICAL-ALIGN: top
+}
+.top-search-form .s-btn {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; LINE-HEIGHT: 32px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 100px; FONT-FAMILY: arial, tahoma, "Microsoft YaHei", "ËÎÌå"; BACKGROUND: #f8f8f8; FLOAT: left; HEIGHT: 34px; COLOR: #333; FONT-SIZE: 16px; BORDER-TOP: #ccc 1px solid; CURSOR: pointer; BORDER-RIGHT: #ccc 1px solid
+}
+.top-search-form .s-btn:hover {
+	BORDER-BOTTOM-COLOR: #ababab; BORDER-TOP-COLOR: #ababab; BACKGROUND: #f1f1f1; BORDER-RIGHT-COLOR: #ababab; BORDER-LEFT-COLOR: #ababab
+}
+.top-search-form .s-tools {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; DISPLAY: inline-block; FLOAT: left; COLOR: #999; PADDING-TOP: 8px
+}
+.top-search-form .s-tools A {
+	ZOOM: 1; COLOR: #3c7ce0
+}
+#top-img-box {
+	POSITION: absolute; WIDTH: 980px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right center; HEIGHT: 88px; TOP: 0px
+}
+#top-img-box DIV {
+	Z-INDEX: -1; POSITION: relative; BACKGROUND-REPEAT: no-repeat; HEIGHT: 88px; RIGHT: -30px
+}
+#top-img-link {
+	Z-INDEX: 1002; POSITION: absolute; WIDTH: 175px; DISPLAY: block; BACKGROUND: none transparent scroll repeat 0% 0%; HEIGHT: 56px; TOP: 25px; RIGHT: -19px
+}
+.jingyan-dialog {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND: #fff; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.jingyan-dialog-title {
+	BORDER-BOTTOM: #f2f2f2 1px solid; LINE-HEIGHT: 34px; PADDING-LEFT: 20px; BACKGROUND: #fcfcfc; COLOR: #333; FONT-SIZE: 14px; CURSOR: move; FONT-WEIGHT: 700; -moz-user-select: none
+}
+.jingyan-dialog-close {
+	POSITION: absolute; WIDTH: 14px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/possportui.png) 0px -493px; HEIGHT: 13px; TOP: 11px; CURSOR: pointer; RIGHT: 11px
+}
+.jingyan-dialog-close-hover {
+	BACKGROUND-POSITION: 0px -511px
+}
+.jingyan-dialog-close-press {
+	BACKGROUND-POSITION: 0px -529px
+}
+.u-btn-com {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 73px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat; HEIGHT: 30px; MARGIN-RIGHT: 10px
+}
+.jingyan-dialog-accept .u-btn-com {
+	BACKGROUND-POSITION: 0px 0px
+}
+.jingyan-dialog-accept-hover .u-btn-com:hover {
+	BACKGROUND-POSITION: 0px -30px
+}
+.jingyan-dialog-accept-hover .u-btn-com {
+	BACKGROUND-POSITION: 0px -30px
+}
+.jingyan-dialog-accept-press .u-btn-com:active {
+	BACKGROUND-POSITION: 0px -60px
+}
+.jingyan-dialog-accept-press .u-btn-com {
+	BACKGROUND-POSITION: 0px -60px
+}
+.jingyan-dialog-cancel .u-btn-com {
+	BACKGROUND-POSITION: -73px 0px
+}
+.jingyan-dialog-cancel-hover .u-btn-com:hover {
+	BACKGROUND-POSITION: -73px -30px
+}
+.jingyan-dialog-cancel-hover .u-btn-com {
+	BACKGROUND-POSITION: -73px -30px
+}
+.jingyan-dialog-cancel-press .u-btn-com:active {
+	BACKGROUND-POSITION: -73px -60px
+}
+.jingyan-dialog-cancel-press .u-btn-com {
+	BACKGROUND-POSITION: -73px -60px
+}
+.u-btn-com {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.u-pop-alert-info {
+	MARGIN: 0px 10px; FONT-SIZE: 14px
+}
+.u-pop-alert-btn {
+	POSITION: absolute; BOTTOM: 15px; LEFT: 40%
+}
+.u-pop-confirm-btn {
+	POSITION: absolute; BOTTOM: 20px; RIGHT: 93px
+}
+.u-pop-cancel-btn {
+	POSITION: absolute; BOTTOM: 20px; RIGHT: 10px
+}
+.u-pop-confirm-info {
+	TEXT-ALIGN: left; MARGIN-TOP: 10px; MARGIN-LEFT: 10px; FONT-SIZE: 14px
+}
+.g-btn-com {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-long {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-2long {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-com-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-long-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.g-btn-2long-hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 73px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/dialog_btn_bg.png) no-repeat 0px 0px; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px; BORDER-TOP: 0px; CURSOR: pointer; FONT-WEIGHT: 700; BORDER-RIGHT: 0px
+}
+.dialog-animate-main .dialog-animate {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: 0px 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.dialog-animate-main .dialog-animate-title {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: 0px 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.dialog-animate-main .dialog-animate-content {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND: 0px 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.dialog-animate-main .pop-confirm-info {
+	MARGIN: 0px
+}
+.shop-dialog-address {
+	FONT: 12px/24px arial, "Microsoft Yahei", sans-serif; COLOR: #444
+}
+.shop-dialog-address .shop-dialog-address-title {
+	BORDER-BOTTOM: 0px; BACKGROUND: #fff; HEIGHT: 22px
+}
+.shop-dialog-address .shop-dialog-address-close {
+	TOP: 8px; RIGHT: 10px
+}
+.shop-dialog-address .dialog-container {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 0px
+}
+.shop-dialog-address .hd-title {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 10px; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.shop-dialog-address .main {
+	MARGIN-BOTTOM: 10px
+}
+.shop-dialog-address .main .add-form {
+	MARGIN-BOTTOM: 20px
+}
+.shop-dialog-address .main .add-form .line {
+	MARGIN-TOP: 10px
+}
+.shop-dialog-address .main .add-form INPUT {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.shop-dialog-address .main .add-form SELECT {
+	FONT-FAMILY: "Microsoft Yahei"; FONT-SIZE: 14px
+}
+.shop-dialog-address .main .add-form LABEL {
+	TEXT-ALIGN: right; LINE-HEIGHT: 35px; DISPLAY: inline-block; HEIGHT: 35px; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 10px; -moz-box-orient: vertical
+}
+.shop-dialog-address .main .add-form LABEL.error {
+	POSITION: absolute; VISIBILITY: hidden
+}
+#lbl-province {
+	WIDTH: 104px
+}
+#lbl-address {
+	WIDTH: 104px
+}
+#lbl-name {
+	WIDTH: 104px
+}
+#lbl-zipcode {
+	WIDTH: 104px
+}
+#lbl-tel {
+	WIDTH: 104px
+}
+.shop-dialog-address .main .add-form INPUT {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; DISPLAY: inline-block; HEIGHT: 20px; VERTICAL-ALIGN: middle; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 5px; -moz-box-orient: vertical; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.shop-dialog-address .main .add-form .select {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; DISPLAY: inline-block; HEIGHT: 20px; VERTICAL-ALIGN: middle; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 5px; -moz-box-orient: vertical; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.shop-dialog-address .main .add-form .select {
+	MARGIN-RIGHT: 10px
+}
+.shop-dialog-address .main .add-form SELECT {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 20px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.shop-dialog-address .main .add-form INPUT {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px
+}
+SELECT {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px
+}
+.shop-dialog-address .main .add-form .error {
+	BORDER-BOTTOM: #d96201 1px solid; BORDER-LEFT: #d96201 1px solid; BORDER-TOP: #d96201 1px solid; BORDER-RIGHT: #d96201 1px solid
+}
+.shop-dialog-address .main .add-form .focus {
+	BORDER-BOTTOM: #4cb503 2px solid; BORDER-LEFT: #4cb503 2px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BORDER-TOP: #4cb503 2px solid; BORDER-RIGHT: #4cb503 2px solid; PADDING-TOP: 8px
+}
+#sel-province {
+	WIDTH: 79px
+}
+#sel-city {
+	WIDTH: 79px
+}
+#sel-district {
+	WIDTH: 79px
+}
+#ipt-address {
+	WIDTH: 500px
+}
+#ipt-name {
+	WIDTH: 104px
+}
+#ipt-tel {
+	WIDTH: 104px
+}
+#ipt-zipcode {
+	WIDTH: 104px
+}
+.shop-dialog-address .main .add-form .tangram-validator {
+	DISPLAY: none
+}
+.shop-dialog-address .main .add-form .info {
+	MARGIN-TOP: 14px; MARGIN-LEFT: 114px
+}
+.shop-dialog-address .main .submit-btn {
+	BORDER-BOTTOM: #dedede 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #dedede 1px solid; LINE-HEIGHT: 30px; WIDTH: 100px; DISPLAY: inline-block; HEIGHT: 30px; COLOR: #3fc700; MARGIN-LEFT: 45px; FONT-SIZE: 14px; VERTICAL-ALIGN: middle; BORDER-TOP: #dedede 1px solid; CURSOR: pointer; BORDER-RIGHT: #dedede 1px solid; TEXT-DECORATION: none; -moz-box-orient: vertical; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px
+}
+.shop-dialog-address .ft {
+	MARGIN-LEFT: 45px
+}
+.shop-dialog-address .f-red {
+	COLOR: red
+}
+.chest-msg-tip {
+	TEXT-ALIGN: center; MARGIN-TOP: 40px
+}
+.no-result {
+	TEXT-ALIGN: center; LINE-HEIGHT: 80px; HEIGHT: 80px; COLOR: #fff
+}
+.join-share-dialog {
+	MARGIN: 30px 50px 0px 60px; COLOR: #333; FONT-SIZE: 14px
+}
+.join-share-dialog A {
+	COLOR: #2d64b3
+}
+.join-share-dialog .join-progress {
+	WIDTH: 439px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/hx-popu-btn.png) no-repeat; HEIGHT: 48px
+}
+.join-share-dialog .step1 .caption {
+	MARGIN: 30px 0px
+}
+.join-share-dialog .step2 .join-progress {
+	BACKGROUND-POSITION: 0px -48px
+}
+.join-share-dialog .step2 .caption {
+	MARGIN: 25px 0px
+}
+.join-share-dialog .step3 .join-progress {
+	BACKGROUND-POSITION: 0px -96px
+}
+.join-share-dialog .step3 .begin-share-exp {
+	POSITION: absolute; TOP: 138px; LEFT: 168px
+}
+.join-share-dialog .step3 .begin-share-exp A {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 211px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/hx-popu-btn.png) no-repeat 0px -144px; HEIGHT: 51px; MARGIN-LEFT: 0px
+}
+.join-share-dialog .step3 .begin-share-exp A:hover {
+	BACKGROUND-POSITION: 0px -195px
+}
+.join-share-dialog .step3 .begin-share-exp A:active {
+	BACKGROUND-POSITION: 0px -246px
+}
+.join-share-dialog .step3 .how-write-exp {
+	POSITION: absolute; FONT-SIZE: 12px; TOP: 200px; LEFT: 168px
+}
+.join-share-dialog .agreement .no-agree-tip {
+	PADDING-LEFT: 18px; DISPLAY: none; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -235px -159px; COLOR: #f27900; MARGIN-LEFT: 40px; FONT-SIZE: 12px
+}
+.join-share-dialog .share-to-sns {
+	TEXT-ALIGN: center
+}
+.join-share-dialog .share-to-sns LI {
+	TEXT-ALIGN: center; WIDTH: 100px; FLOAT: left; COLOR: #999; FONT-SIZE: 12px
+}
+.join-share-dialog .share-to-sns LI A {
+	MARGIN: 0px 30px; WIDTH: 50px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/hx-share-icon.png) no-repeat; HEIGHT: 50px; -webkit-transition: .2s; -moz-transition: .2s; -o-transition: .2s; transition: .2s
+}
+.join-share-dialog .share-to-sns LI A:hover {
+	transform: scale(1.1); -moz-transform: scale(1.1); -webkit-transform: scale(1.1)
+}
+.join-share-dialog .share-to-sns LI A.tieba {
+	BACKGROUND-POSITION: 0px -50px
+}
+.join-share-dialog .share-to-sns LI A.qweibo {
+	BACKGROUND-POSITION: 0px -100px
+}
+.join-share-dialog .share-to-sns LI A.renren {
+	BACKGROUND-POSITION: 0px -150px
+}
+.msg-dialog-box {
+	MARGIN: 25px 40px
+}
+.msg-dialog-box A {
+	COLOR: #2d64b3
+}
+.msg-dialog-box H3 {
+	LINE-HEIGHT: 27px; PADDING-LEFT: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -226px -209px; HEIGHT: 24px; COLOR: #333; FONT-SIZE: 16px
+}
+.msg-dialog-box .caption {
+	LINE-HEIGHT: 24px; MARGIN-TOP: 5px; PADDING-LEFT: 32px; COLOR: #666; FONT-SIZE: 14px
+}
+.msg-dialog-box .confirm-dialog-btn {
+	POSITION: absolute; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: 0px; WIDTH: 73px; BOTTOM: 25px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat 0px 0px; HEIGHT: 30px; RIGHT: 40px
+}
+.msg-dialog-box .confirm-dialog-btn:hover {
+	BACKGROUND-POSITION: 0px -30px
+}
+.msg-dialog-box .confirm-dialog-btn:active {
+	BACKGROUND-POSITION: 0px -60px
+}
+.exp-dialog .tangram-dialog-title .tangram-dialog-close {
+	BACKGROUND-POSITION: -210px 0px
+}
+.exp-dialog .exp-content .bear {
+	BACKGROUND-POSITION: -107px -18px
+}
+.exp-dialog .exp-content .bear .i-warn {
+	BACKGROUND-POSITION: -186px -193px
+}
+.exp-dialog .exp-content .bear .i-success {
+	BACKGROUND-POSITION: -183px -228px
+}
+.exp-dialog .exp-content .bear .i-error {
+	BACKGROUND-POSITION: -188px -260px
+}
+.income-share-dialog .income-share-dialog-title .income-share-dialog-close {
+	BACKGROUND-POSITION: -212px -300px
+}
+.income-share-dialog .income-share-dialog-content .sun {
+	BACKGROUND-POSITION: -44px -316px
+}
+.may-medal-dialog .may-medal-container .border-top-left {
+	BACKGROUND-POSITION: -25px -501px
+}
+.may-medal-dialog .may-medal-container .border-top-right {
+	BACKGROUND-POSITION: -25px -703px
+}
+.may-medal-dialog .may-medal-container .border-bottom-left {
+	BACKGROUND-POSITION: -25px -906px
+}
+.may-medal-dialog .may-medal-container .border-bottom-right {
+	BACKGROUND-POSITION: -25px -1110px
+}
+.may-medal-dialog .gold.medal-elem {
+	BACKGROUND-POSITION: 0px -1314px
+}
+.may-medal-dialog .silver.medal-elem {
+	BACKGROUND-POSITION: 0px -1556px
+}
+.may-medal-dialog .bronze.medal-elem {
+	BACKGROUND-POSITION: 0px -1798px
+}
+.may-medal-dialog .exp-sign {
+	BACKGROUND-POSITION: -97px -2040px
+}
+.may-medal-dialog .may-x-layer {
+	BACKGROUND-POSITION: -204px -2171px
+}
+.red-bao-dialog-content .num-wrap .num-dot {
+	BACKGROUND-POSITION: -205px -2195px
+}
+.red-bao-dialog-content .num-wrap .rnum1 {
+	BACKGROUND-POSITION: -165px -2264px
+}
+.red-bao-dialog-content .num-wrap .rnum2 {
+	BACKGROUND-POSITION: -165px -2333px
+}
+.red-bao-dialog-content .num-wrap .rnum3 {
+	BACKGROUND-POSITION: -165px -2402px
+}
+.red-bao-dialog-content .num-wrap .rnum4 {
+	BACKGROUND-POSITION: -165px -2471px
+}
+.red-bao-dialog-content .num-wrap .rnum5 {
+	BACKGROUND-POSITION: -165px -2540px
+}
+.red-bao-dialog-content .num-wrap .rnum6 {
+	BACKGROUND-POSITION: -165px -2608px
+}
+.red-bao-dialog-content .num-wrap .rnum7 {
+	BACKGROUND-POSITION: -165px -2677px
+}
+.red-bao-dialog-content .num-wrap .rnum8 {
+	BACKGROUND-POSITION: -165px -2746px
+}
+.red-bao-dialog-content .num-wrap .rnum9 {
+	BACKGROUND-POSITION: -165px -2815px
+}
+.red-bao-dialog-content .num-wrap .rnum0 {
+	BACKGROUND-POSITION: -165px -2884px
+}
+.icon-wrp .medal-gold {
+	BACKGROUND-POSITION: -201px -2953px
+}
+.icon-wrp .medal-silver {
+	BACKGROUND-POSITION: -201px -2980px
+}
+.icon-wrp .medal-bronze {
+	BACKGROUND-POSITION: -201px -3007px
+}
+.exp-dialog .tangram-dialog-title .tangram-dialog-close {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.exp-dialog .exp-content .bear {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.exp-dialog .exp-content .bear .i-warn {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.exp-dialog .exp-content .bear .i-success {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.exp-dialog .exp-content .bear .i-error {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.income-share-dialog .income-share-dialog-title .income-share-dialog-close {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.income-share-dialog .income-share-dialog-content .sun {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .may-medal-container .border-top-left {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .may-medal-container .border-top-right {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .may-medal-container .border-bottom-left {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .may-medal-container .border-bottom-right {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .gold.medal-elem {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .silver.medal-elem {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .bronze.medal-elem {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .exp-sign {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.may-medal-dialog .may-x-layer {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .num-dot {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum1 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum2 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum3 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum4 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum5 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum6 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum7 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum8 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum9 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.red-bao-dialog-content .num-wrap .rnum0 {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.icon-wrp .medal-gold {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.icon-wrp .medal-silver {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}
+.icon-wrp .medal-bronze {
+	BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/common/pkg/common_sync_css_0_z_493b602.png)
+}

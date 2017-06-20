@@ -1,0 +1,867 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0056)http://www.open-open.com/lib/view/open1403403349127.html -->
+<HTML><HEAD><TITLE>C3P0的详细配置说明 - OPEN 开发经验库</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=content-type>
+<META name=robots content=index,follow>
+<META name=keywords content=C3P0,数据库连接池>
+<META name=description 
+content="C3P0是一个开放源代码的JDBC连接池，它在lib目录中与Hibernate一起发布,包括了实现jdbc3和jdbc2扩展规范说明的Connection 和Statement 池的DataSources 对象。&#13;&#10;&#13;&#10;"><LINK 
+rel="shortcut icon" href="/lib/favicon.ico"><LINK rel=copyright 
+href="http://www.open-open.com/"><LINK rel=stylesheet type=text/css 
+href="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/shCore.css"><LINK rel=stylesheet 
+type=text/css href="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/shCoreRDark.css">
+<STYLE type=text/css media="screen, projection">@import url( /lib/css/common.css );
+@import url( /lib/css/main.css );
+@import url( /lib/css/jGrowl.css );
+@import url( /lib/css/thickbox.css );
+@import url( /lib/css/jquery.ui.css );
+</STYLE>
+
+<STYLE type=text/css>.search {
+	MARGIN: 8px 0px 0px; OVERFLOW: hidden
+}
+.search .TXT {
+	FLOAT: left
+}
+.search .BTN {
+	BORDER-BOTTOM: #2d78f4 1px solid; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #3385ff; FLOAT: left; HEIGHT: 32px; COLOR: #fff; FONT-SIZE: 10.5pt; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.search .BTN:hover {
+	BACKGROUND: #2d78f4; COLOR: #fff
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+	var rooturl="/lib";
+	var wgDocKey='1403403349127';
+	var wgDocTitle=' C3P0的详细配置说明';
+	var wgDocStatusFlag='';
+	var wgUserFolders=null;
+	var wgDownFrame=null;
+	var wgCostByUser=null;
+	var wgDocFavoriteByUser=false;
+	var wgDocScoreByUser=null;
+	var wgUserLogined=0;
+	var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+
+
+</SCRIPT>
+
+<SCRIPT>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4b19e5cc155fe555484434d8338ee0af";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY id=view>
+<DIV id=topnav>
+<DIV id=Personal><A class=thickbox title=登录OPEN经验库 
+href="http://www.open-open.com/lib/members/login?keepThis=true&amp;TB_iframe=true&amp;height=177&amp;width=280" 
+?>登录</A>&nbsp;&nbsp; <A class=thickbox title=注册新的账号 
+href="http://www.open-open.com/lib/members/register?keepThis=true&amp;TB_iframe=true&amp;height=460&amp;width=710">注册</A> 
+</DIV>
+<DIV id=topmenu>
+<UL>
+  <LI><A title=Java开源 href="http://www.open-open.com/">Java开源</A></LI>
+  <LI><A title=JS脚本大全 href="http://www.open-open.com/ajax/">JS脚本</A></LI>
+  <LI><A title=OPEN家园 href="http://www.open-open.com/home/">OPEN家园</A></LI>
+  <LI><A title=OPEN文档频道 href="http://www.open-open.com/doc/">OPEN文档</A></LI>
+  <LI><A title=OPEN资讯频道 href="http://www.open-open.com/news/">OPEN资讯</A></LI>
+  <LI><A title=OPEN论坛频道 href="http://www.open-open.com/bbs">OPEN论坛</A></LI>
+  <LI><A href="http://www.open-open.com/github/">Github日报</A></LI>
+  <LI><A href="http://www.open-open.com/code/"><STRONG>OPEN代码</STRONG></A><IMG 
+  alt=最新上线 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/new.gif"></LI></UL></DIV></DIV><!--end top nav-->
+<DIV id=head>
+<DIV id=head-logo><A title=OPEN开发经验库 href="http://www.open-open.com/lib/"><IMG 
+border=0 alt=OPEN开发经验库 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/logo.jpg"></A></DIV>
+<DIV id=head-search>
+<FORM class=search accept-charset=GBK onsubmit="document.charset='GBK';" 
+method=get name=search action=/lib/search>
+<TABLE border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD align=left><INPUT style="HEIGHT: 25px; FONT-SIZE: 18px" id=searchinput 
+      class=TXT maxLength=1048 size=45 type=text name=q x-webkit-speech> <INPUT style="HEIGHT: 28px" id=searchbutton class=BTN value=经验搜索 type=submit> 
+      <INPUT id=od value=0 type=hidden name=od> &nbsp;&nbsp;&nbsp;&nbsp;<FONT 
+      style="FONT-SIZE: 9.5pt"><B>推荐：</B></FONT><A 
+      title="jQuery MiniUI，Web界面控件库！" 
+      href="http://www.miniui.com/demo/#src=datagrid/celledit.html" rel=nofollow 
+      target=_blank><FONT style="FONT-SIZE: 9.5pt" color=red><B>jQuery 
+      MiniUI，Web界面控件库！</B></FONT></A><BR></TD></TR></TBODY></TABLE></FORM></DIV>
+<DIV id=head-ad></DIV></DIV><!-- end head -->
+<DIV id=content>
+<DIV id=content-nav><A href="http://www.open-open.com/lib/list/all">所有分类</A> 
+&nbsp;&gt;&nbsp; <A href="http://www.open-open.com/lib/list/90">数据库相关</A> 
+&nbsp;&gt;&nbsp; <A href="http://www.open-open.com/lib/list/122">数据库连接池</A> 
+</DIV>
+<DIV id=view-main>
+<DIV id=view-titleh>
+<DIV id=view-title>
+<H3>C3P0的详细配置说明</H3></DIV>
+<DIV id=view-summary>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><STRONG>您的评价</STRONG>:</TD>
+    <TD>
+      <DIV id=rate class=rate-container><SPAN id=star1 class=star-big-off 
+      title=很差>&nbsp;</SPAN><SPAN id=star2 class=star-big-off 
+      title=较差>&nbsp;</SPAN><SPAN id=star3 class=star-big-off 
+      title=还行>&nbsp;</SPAN><SPAN id=star4 class=star-big-off 
+      title=不错>&nbsp;</SPAN><SPAN id=star5 class=star-big-off 
+      title=力荐>&nbsp;</SPAN></DIV></TD>
+    <TD width=30>
+      <DIV id=rate-tip></DIV></TD>
+    <TD>
+      <DIV id=favorite-container><SPAN class="icon favorite">&nbsp;</SPAN><A 
+      id=favorite 
+      href="javascript:void(0)"><STRONG>收藏该经验</STRONG></A>&nbsp;&nbsp;&nbsp;&nbsp; 
+      </DIV></TD></TR></TBODY></TABLE>
+<DIV id=favorite-box>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD width=70 align=right>文件夹</TD>
+    <TD><SELECT id=fav_folderlist name=folder> <OPTION selected 
+        value=0>请选择...</OPTION> <OPTION id=newfolder-sp disabled 
+        value="">-------------</OPTION> <OPTION 
+    value=-1>新增文件夹...</OPTION></SELECT></TD></TR>
+  <TR style="DISPLAY: none" id=newfolder-input>
+    <TD align=right>新增文件夹</TD>
+    <TD><INPUT id=fav_newfolder maxLength=50 type=text name=newfolder></TD></TR>
+  <TR>
+    <TD align=right>标签</TD>
+    <TD><INPUT id=fav_tags maxLength=135 size=20 type=text name=tags></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD colSpan=2>(多个标签用逗号分隔)</TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<DIV id=readercontainer>
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "8119760813";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</SCRIPT>
+<!-- openlibview -->
+<SCRIPT type=text/javascript src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+
+<DIV id=toc></DIV><!-- google_ad_section_start -->
+<P><SPAN 
+style="LINE-HEIGHT: 21px; FONT-FAMILY: tahoma, helvetica, arial; COLOR: #454545; FONT-SIZE: 14px">C3P0是一个开放源代码的JDBC连接池，它在lib目录中与Hibernate一起发布,包括了实现jdbc3和jdbc2扩展规范说明的Connection 
+和Statement 池的DataSources 对象。</SPAN></P>
+<P></P>
+<DIV class="dp-highlighter bg_html">
+<DIV class=bar>
+<DIV class=tools><PRE class="brush:java; toolbar: true; auto-links: false;">    c3p0.acquireIncrement=3  
+    c3p0.initialPoolSize=3  
+    c3p0.idleConnectionTestPeriod=900  
+    c3p0.minPoolSize=2  
+    c3p0.maxPoolSize=50  
+    c3p0.maxStatements=100  
+    c3p0.numHelperThreads=10  
+    c3p0.maxIdleTime=600  </PRE><A style="TEXT-INDENT: 0px" title=派生到我的代码片 
+href="https://code.csdn.net/snippets/398998/fork" 
+target=_blank></A></DIV></DIV></DIV>
+<DIV class="dp-highlighter bg_html">
+<DIV class=bar>
+<DIV class=tools><PRE class="brush:xml; toolbar: true; auto-links: false;">     &lt;property name="acquireIncrement"&gt;  
+        &lt;value&gt;${c3p0.acquireIncrement}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="initialPoolSize"&gt;  
+        &lt;value&gt;${c3p0.initialPoolSize}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="minPoolSize"&gt;  
+        &lt;value&gt;${c3p0.minPoolSize}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="maxPoolSize"&gt;  
+        &lt;value&gt;${c3p0.maxPoolSize}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="maxIdleTime"&gt;  
+        &lt;value&gt;${c3p0.maxIdleTime}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="idleConnectionTestPeriod"&gt;  
+        &lt;value&gt;${c3p0.idleConnectionTestPeriod}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="maxStatements"&gt;  
+        &lt;value&gt;${c3p0.maxStatements}&lt;/value&gt;  
+    &lt;/property&gt;  
+    &lt;property name="numHelperThreads"&gt;  
+        &lt;value&gt;${c3p0.numHelperThreads}&lt;/value&gt;  
+    &lt;/property&gt;  </PRE><A style="TEXT-INDENT: 0px" title=派生到我的代码片 
+href="https://code.csdn.net/snippets/398998/fork" 
+target=_blank></A></DIV></DIV></DIV>
+<P style="COLOR: #454545"><SPAN 
+style="LINE-HEIGHT: 21px; FONT-FAMILY: tahoma, helvetica, arial; COLOR: #454545; FONT-SIZE: 14px"><BR></SPAN></P><STRONG><SPAN 
+style="COLOR: #ff0000">下面详细介绍下配置说明：</SPAN></STRONG><BR><BR><SPAN 
+style="LINE-HEIGHT: 21px; FONT-FAMILY: tahoma, helvetica, arial; COLOR: #454545; FONT-SIZE: 14px">　　</SPAN>&lt;c3p0-config&gt;&nbsp;<BR>　　&lt;default-config&gt;&nbsp;<BR>　　&lt;!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 
+3 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="acquireIncrement"&gt;3&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="acquireRetryAttempts"&gt;30&lt;/property&gt;</P>
+<P>&nbsp;</P>　　&lt;!--两次连接中间隔时间，单位毫秒。Default: 1000 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="acquireRetryDelay"&gt;1000&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--连接关闭时默认将所有未提交的操作回滚。Default: false --&gt;&nbsp;<BR>
+<P>　　&lt;property name="autoCommitOnClose"&gt;false&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数那么&nbsp;属性 
+preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作，它将只供c3p0测试使用。Default: 
+null--&gt;&nbsp;<BR>
+<P>　　&lt;property name="automaticTestTable"&gt;Test&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效&nbsp;保留，并在下次调用getConnection() 
+的时候继续尝试获取连接。如果设为true，那么在尝试获取连接失败后该数据源将申明已断开并永久关闭。Default: false--&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="breakAfterAcquireFailure"&gt;false&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　&lt;!--当连接池用完时客户端调用getConnection()后等待获取新连接的时间，</P>
+<P>&nbsp; &nbsp; &nbsp;超时后将抛出SQLException,如设为0则无限期等待。单位毫秒。efault: 0 
+--&gt;&nbsp;</P>
+<P>　　&lt;property name="checkoutTimeout"&gt;100&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--通过实现ConnectionTester或QueryConnectionTester的类来测试连接。类名需制定全路径。&nbsp;<BR>
+<P>　　Default: com.mchange.v2.c3p0.impl.DefaultConnectionTester--&gt;&nbsp;</P>
+<P>　　&lt;property 
+name="connectionTesterClassName"&gt;&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--指定c3p0 
+libraries的路径，如果（通常都是这样）在本地即可获得那么无需设置，默认null即可&nbsp;<BR>　　Default: 
+null--&gt;&nbsp;<BR>
+<P>　　&lt;property name="factoryClassLocation"&gt;null&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--Strongly disrecommended. Setting this to true may lead to 
+subtle and bizarre bugs.&nbsp;文档原文）作者强烈建议不使用的一个属性--&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="forceIgnoreUnresolvedTransactions"&gt;false&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--每60秒检查所有连接池中的空闲连接。Default: 0 --&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="idleConnectionTestPeriod"&gt;60&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 
+--&gt;&nbsp;<BR>
+<P>　　&lt;property name="initialPoolSize"&gt;3&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="maxIdleTime"&gt;60&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--连接池中保留的最大连接数。Default: 15 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="maxPoolSize"&gt;15&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements属于单个 
+connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。如果maxStatements与 
+maxStatementsPerConnection均为0，则缓存被关闭。Default: 0--&gt;&nbsp;<BR>
+<P>　　&lt;property name="maxStatements"&gt;100&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。Default: 
+0 --&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="maxStatementsPerConnection"&gt;&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能&nbsp;通过多线程实现多个操作同时被执行。Default: 
+3--&gt;&nbsp;<BR>
+<P>　　&lt;property name="numHelperThreads"&gt;3&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--当用户调用getConnection()时使root用户成为去获取连接的用户。主要用于连接池连接非c3p0&nbsp;的数据源时。Default: 
+null--&gt;&nbsp;<BR>
+<P>　　&lt;property name="overrideDefaultUser"&gt;root&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--与overrideDefaultUser参数对应使用的一个参数。Default: 
+null--&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="overrideDefaultPassword"&gt;password&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--密码。Default: null--&gt;&nbsp;<BR>
+<P>　　&lt;property name="password"&gt;&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--定义所有连接测试都执行的测试语句。在使用连接测试的情况下这个一显著提高测试速度。注意：测试的表必须在初始数据源的时候就存在。Default: 
+null--&gt;&nbsp;<BR>
+<P>　　&lt;property name="preferredTestQuery"&gt;select id from test where 
+id=1&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--用户修改系统配置参数执行前最多等待300秒。Default: 300 --&gt;&nbsp;<BR>
+<P>　　&lt;property name="propertyCycle"&gt;300&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的&nbsp;时候都将校验其有效性。建议使用 
+idleConnectionTestPeriod或automaticTestTable&nbsp;等方法来提升连接测试的性能。Default: false 
+--&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="testConnectionOnCheckout"&gt;false&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>　　&lt;!--如果设为true那么在取得连接的同时将校验连接的有效性。Default: false 
+--&gt;&nbsp;<BR>
+<P>　　&lt;property 
+name="testConnectionOnCheckin"&gt;true&lt;/property&gt;&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　&lt;!--用户名。Default: null--&gt;&nbsp;</P>
+<P>　　&lt;property name="user"&gt;root&lt;/property&gt;</P><BR>
+<DIV class="dp-highlighter bg_html">
+<OL class=dp-xml>
+  <LI 
+  class=alt><SPAN><SPAN>在Hibernate（spring管理）中的配置：&nbsp;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><PRE class="brush:xml; toolbar: true; auto-links: false;">　　&lt;bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"&gt;   
+　　&lt;property name="driverClass"&gt;&lt;value&gt;oracle.jdbc.driver.OracleDriver&lt;/value&gt;&lt;/property&gt;   
+　　&lt;property name="jdbcUrl"&gt;&lt;value&gt;jdbc:oracle:thin:@localhost:1521:Test&lt;/value&gt;&lt;/property&gt;   
+　　&lt;property name="user"&gt;&lt;value&gt;Kay&lt;/value&gt;&lt;/property&gt;   
+　　&lt;property name="password"&gt;&lt;value&gt;root&lt;/value&gt;&lt;/property&gt;   
+　　&lt;!--连接池中保留的最小连接数。--&gt;   
+　　&lt;property name="minPoolSize" value="10" /&gt;   
+　　&lt;!--连接池中保留的最大连接数。Default: 15 --&gt;   
+　　&lt;property name="maxPoolSize" value="100" /&gt;   
+　　&lt;!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 --&gt;   
+　　&lt;property name="maxIdleTime" value="1800" /&gt;   
+　　&lt;!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 --&gt;   
+　　&lt;property name="acquireIncrement" value="3" /&gt;   
+　　&lt;property name="maxStatements" value="1000" /&gt;   
+　　&lt;property name="initialPoolSize" value="10" /&gt;   
+　　&lt;!--每60秒检查所有连接池中的空闲连接。Default: 0 --&gt;   
+　　&lt;property name="idleConnectionTestPeriod" value="60" /&gt;   
+　　&lt;!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 --&gt;   
+　　&lt;property name="acquireRetryAttempts" value="30" /&gt;   
+　　&lt;property name="breakAfterAcquireFailure" value="true" /&gt;   
+　　&lt;property name="testConnectionOnCheckout" value="false" /&gt;   
+　　&lt;/bean&gt;  </PRE>&nbsp;<PRE class="brush:xml; toolbar: true; auto-links: false;">###########################  
+### C3P0 Connection Pool###  
+###########################  
+#hibernate.c3p0.max_size 2  
+#hibernate.c3p0.min_size 2  
+#hibernate.c3p0.timeout 5000  
+#hibernate.c3p0.max_statements 100  
+#hibernate.c3p0.idle_test_period 3000  
+#hibernate.c3p0.acquire_increment 2  
+#hibernate.c3p0.validate false  
+在hibernate.cfg.xml文件里面加入如下的配置：  
+&lt;!-- 最大连接数 --&gt;  
+&lt;property name="hibernate.c3p0.max_size"&gt;20&lt;/property&gt;  
+  
+&lt;!-- 最小连接数 --&gt;  
+&lt;property name="hibernate.c3p0.min_size"&gt;5&lt;/property&gt;  
+  
+&lt;!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 --&gt;  
+&lt;property name="hibernate.c3p0.timeout"&gt;120&lt;/property&gt;  
+  
+&lt;!-- 最大的PreparedStatement的数量 --&gt;  
+&lt;property name="hibernate.c3p0.max_statements"&gt;100&lt;/property&gt;  
+  
+&lt;!-- 每隔120秒检查连接池里的空闲连接 ，单位是秒--&gt;  
+&lt;property name="hibernate.c3p0.idle_test_period"&gt;120&lt;/property&gt;  
+  
+&lt;!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 --&gt;  
+&lt;property name="hibernate.c3p0.acquire_increment"&gt;2&lt;/property&gt;  
+  
+&lt;!-- 每次都验证连接是否可用 --&gt;  
+&lt;property name="hibernate.c3p0.validate"&gt;true&lt;/property&gt;  </PRE></DIV>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 2px">
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "8119760813";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</SCRIPT>
+<!-- openlibview -->
+<SCRIPT type=text/javascript src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD class=Related vAlign=top width="49%">
+      <DIV 
+      style="BORDER-BOTTOM: #ccc 1px solid; MARGIN-TOP: 5px"><STRONG>相关资讯</STRONG> 
+      　—　<A href="http://www.open-open.com/news" rel=nofollow 
+      target=_blank>更多</A></DIV>
+      <UL>
+        <LI><A title="Java数据库连接池，C3P0 0.9.5.2 发布" 
+        href="http://www.open-open.com/news/view/68e256" rel=nofollow 
+        target=_blank>Java数据库连接池，C3P0 0.9.5.2 发布</A></LI>
+        <LI><A title="JDBC 数据库连接池 Druid发布0.1.8版本" 
+        href="http://www.open-open.com/news/view/50a5ba" rel=nofollow 
+        target=_blank>JDBC 数据库连接池 Druid发布0.1.8版本</A></LI>
+        <LI><A title="Java 数据库连接池，C3P0 0.9.2 发布" 
+        href="http://www.open-open.com/news/view/bf1736" rel=nofollow 
+        target=_blank>Java 数据库连接池，C3P0 0.9.2 发布</A></LI>
+        <LI><A title="Java数据库连接池C3P0-0.9.2-pre3 发布" 
+        href="http://www.open-open.com/news/view/10a3dc4" rel=nofollow 
+        target=_blank>Java数据库连接池C3P0-0.9.2-pre3 发布</A></LI>
+        <LI><A title="阿里巴巴数据库连接池，Druid 0.2.18 发布" 
+        href="http://www.open-open.com/news/view/579e0f" rel=nofollow 
+        target=_blank>阿里巴巴数据库连接池，Druid 0.2.18 发布</A></LI>
+        <LI><A title="JDBC监控、连接池组件，Druid 0.2.4 发布" 
+        href="http://www.open-open.com/news/view/1bf8589" rel=nofollow 
+        target=_blank>JDBC监控、连接池组件，Druid 0.2.4 发布</A></LI>
+        <LI><A title="JDBC组件 druid-0.1.16 发布" 
+        href="http://www.open-open.com/news/view/b0abed" rel=nofollow 
+        target=_blank>JDBC组件 druid-0.1.16 发布</A></LI>
+        <LI><A title="JDBC组件 druid 0.1.13 发布" 
+        href="http://www.open-open.com/news/view/6b41db" rel=nofollow 
+        target=_blank>JDBC组件 druid 0.1.13 发布</A></LI>
+        <LI><A title="Java 数据库连接池，Druid 0.2.8 发布" 
+        href="http://www.open-open.com/news/view/e376e" rel=nofollow 
+        target=_blank>Java 数据库连接池，Druid 0.2.8 发布</A></LI>
+        <LI><A title="JDBC组件 Druid 0.1.9发布" 
+        href="http://www.open-open.com/news/view/e0cd9a" rel=nofollow 
+        target=_blank>JDBC组件 Druid 0.1.9发布</A></LI>
+        <LI><A title="JDBC 连接池/监控组件，druid-0.8.3-rc1 发布下载" 
+        href="http://www.open-open.com/news/view/151b240" rel=nofollow 
+        target=_blank>JDBC 连接池/监控组件，druid-0.8.3-rc1 发布下载</A></LI>
+        <LI><A title="Druid 0.2.2 发布，JDBC组件、连接池" 
+        href="http://www.open-open.com/news/view/1cae9cd" rel=nofollow 
+        target=_blank>Druid 0.2.2 发布，JDBC组件、连接池</A></LI>
+        <LI><A title="阿里巴巴开源数据库连接池，Druid 0.2.13 发布" 
+        href="http://www.open-open.com/news/view/936f58" rel=nofollow 
+        target=_blank>阿里巴巴开源数据库连接池，Druid 0.2.13 发布</A></LI>
+        <LI><A title="JDBC 组件 Druid 0.1.11 发布" 
+        href="http://www.open-open.com/news/view/161e6b7" rel=nofollow 
+        target=_blank>JDBC 组件 Druid 0.1.11 发布</A></LI>
+        <LI><A title="Java 数据库连接池 Druid 发布 0.2.6 版本 增强内置监控功能" 
+        href="http://www.open-open.com/news/view/e36e97" rel=nofollow 
+        target=_blank>Java 数据库连接池 Druid 发布 0.2.6 版本 增强内置监控功能</A></LI>
+        <LI><A title=" 阿里巴巴开源连接池 Druid 发布 1.0.12 版本" 
+        href="http://www.open-open.com/news/view/a02e43" rel=nofollow 
+        target=_blank>阿里巴巴开源连接池 Druid 发布 1.0.12 版本</A></LI>
+        <LI><A title="数据持久层框架 Hibernate Core 4.0.0.CR3 发布" 
+        href="http://www.open-open.com/news/view/15045a2" rel=nofollow 
+        target=_blank>数据持久层框架 Hibernate Core 4.0.0.CR3 发布</A></LI>
+        <LI><A title=让你的PHP7更快之Hugepage 
+        href="http://www.open-open.com/news/view/1aa8bf0" rel=nofollow 
+        target=_blank>让你的PHP7更快之Hugepage</A></LI>
+        <LI><A title="Java 数据库连接池 Druid 发布 0.1.10 版本" 
+        href="http://www.open-open.com/news/view/163e6e1" rel=nofollow 
+        target=_blank>Java 数据库连接池 Druid 发布 0.1.10 版本</A></LI>
+        <LI><A title="Auditd - Linux 服务器安全审计工具 " 
+        href="http://www.open-open.com/news/view/7d7937" rel=nofollow 
+        target=_blank>Auditd - Linux 服务器安全审计工具 </A></LI></UL>
+      <DIV style="LINE-HEIGHT: 0; CLEAR: both; FONT-SIZE: 1px"></DIV></TD>
+    <TD width=5></TD>
+    <TD class=Relatedb vAlign=top width="49%">
+      <DIV 
+      style="BORDER-BOTTOM: #ccc 1px solid; MARGIN-TOP: 5px"><STRONG>相关文档</STRONG> 
+      　—　<A href="http://www.open-open.com/doc" rel=nofollow 
+      target=_blank>更多</A></DIV>
+      <UL>
+        <LI><A title=c3p0连接池详细配置.doc 
+        href="http://www.open-open.com/doc/view/5e4c4eff1d2343648204bc5da6806ad1" 
+        rel=nofollow target=_blank>c3p0连接池详细配置.doc</A></LI>
+        <LI><A title="DBCP ,C3P0 和 PROXOOL 配置说明书.pdf" 
+        href="http://www.open-open.com/doc/view/b999da40d6324fc5a3c28f113510e5ff" 
+        rel=nofollow target=_blank>DBCP ,C3P0 和 PROXOOL 配置说明书.pdf</A></LI>
+        <LI><A title=C3P0连接池参数属性配置.doc 
+        href="http://www.open-open.com/doc/view/59df6b3713a3403b95ac0f4d1a61057e" 
+        rel=nofollow target=_blank>C3P0连接池参数属性配置.doc</A></LI>
+        <LI><A title="c3p0 详细配置.pdf" 
+        href="http://www.open-open.com/doc/view/de76f93f85694f229ca5b95691d50fae" 
+        rel=nofollow target=_blank>c3p0 详细配置.pdf</A></LI>
+        <LI><A title=C3P0-JDBC连接池配置详解.doc 
+        href="http://www.open-open.com/doc/view/94d8a62757074881957d7232174fedf9" 
+        rel=nofollow target=_blank>C3P0-JDBC连接池配置详解.doc</A></LI>
+        <LI><A title=Java框架数据库连接池比较(c3p0,dbcp和proxool).doc 
+        href="http://www.open-open.com/doc/view/d407293793d042df93ac811e0e51771a" 
+        rel=nofollow 
+target=_blank>Java框架数据库连接池比较(c3p0,dbcp和proxool).doc</A></LI>
+        <LI><A title=c3p0-0.9.1.2-javadoc.chm 
+        href="http://www.open-open.com/doc/view/6f3b71abb295487abf83ebd2fef79f02" 
+        rel=nofollow target=_blank>c3p0-0.9.1.2-javadoc.chm</A></LI>
+        <LI><A title="DBCP ,C3P0 和 PROXOOL数据库连接池性能比较_基于Oracle9i.pdf" 
+        href="http://www.open-open.com/doc/view/d6585db0df1048d1b02bf225825ddfaf" 
+        rel=nofollow target=_blank>DBCP ,C3P0 和 
+        PROXOOL数据库连接池性能比较_基于Oracle9i.pdf</A></LI>
+        <LI><A title=Spring采用DataSource配置数据库连接的几种方法.doc 
+        href="http://www.open-open.com/doc/view/c404177c7fa74763ab3a2a923e8785cf" 
+        rel=nofollow target=_blank>Spring采用DataSource配置数据库连接的几种方法.doc</A></LI>
+        <LI><A title=c3p0开源连接池中文指南.doc 
+        href="http://www.open-open.com/doc/view/1facfc41b60443a3825401a51f9de592" 
+        rel=nofollow target=_blank>c3p0开源连接池中文指南.doc</A></LI>
+        <LI><A title="Hibernate 01 基本配置和查询_关键类 HQL 条件查询_c3p0.ppt" 
+        href="http://www.open-open.com/doc/view/03efada64e054fca9bce4443e62b576d" 
+        rel=nofollow target=_blank>Hibernate 01 基本配置和查询_关键类 HQL 
+        条件查询_c3p0.ppt</A></LI>
+        <LI><A title="Hibernate实践(2)-Java EE分布式开发.ppt" 
+        href="http://www.open-open.com/doc/view/04fba124ce414965968b2c5b940a7894" 
+        rel=nofollow target=_blank>Hibernate实践(2)-Java EE分布式开发.ppt</A></LI>
+        <LI><A title=hibernate_7、（cache与数据库连接池）.docx 
+        href="http://www.open-open.com/doc/view/f7bdc17fb5a7410ca1ed7471b5022c57" 
+        rel=nofollow target=_blank>hibernate_7、（cache与数据库连接池）.docx</A></LI>
+        <LI><A title="DBUtils 的使用,事务处理,多表操作,Oracle大数据处理.pdf" 
+        href="http://www.open-open.com/doc/view/9d88705ac80640e59d6b4911d0092e74" 
+        rel=nofollow target=_blank>DBUtils 
+的使用,事务处理,多表操作,Oracle大数据处理.pdf</A></LI>
+        <LI><A title=dbutils的使用,事务处理,多表操作,oracle大数据处理.pdf 
+        href="http://www.open-open.com/doc/view/a9247c607bb84bb5a6a5fd43fbc4fc05" 
+        rel=nofollow target=_blank>dbutils的使用,事务处理,多表操作,oracle大数据处理.pdf</A></LI>
+        <LI><A title=尝试深入数据源与连接池的Java(mgds4j)实现.pdf 
+        href="http://www.open-open.com/doc/view/85a0c7f3fb91495bbf24543cf26c3e88" 
+        rel=nofollow target=_blank>尝试深入数据源与连接池的Java(mgds4j)实现.pdf</A></LI>
+        <LI><A title="Proxool 数据连接池.ppt" 
+        href="http://www.open-open.com/doc/view/aea4f59491984bbe9ce30b86332062a4" 
+        rel=nofollow target=_blank>Proxool 数据连接池.ppt</A></LI>
+        <LI><A title=数据库连接池bonecp源码分析报告.doc 
+        href="http://www.open-open.com/doc/view/9d5b5c3600f94c6191abd215f616cc8f" 
+        rel=nofollow target=_blank>数据库连接池bonecp源码分析报告.doc</A></LI>
+        <LI><A title=Hibernate开发者指南.pdf 
+        href="http://www.open-open.com/doc/view/e1c0290cb4bf49198d4b905e759e75a9" 
+        rel=nofollow target=_blank>Hibernate开发者指南.pdf</A></LI>
+        <LI><A title="JavaEE框架 Hibernate(2).pdf" 
+        href="http://www.open-open.com/doc/view/da966cba248c4cca926c353f7adbf989" 
+        rel=nofollow target=_blank>JavaEE框架 
+  Hibernate(2).pdf</A></LI></UL></TD></TR></TBODY></TABLE>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px">
+<DIV style="MARGIN-BOTTOM: 5px" id=baiduad1></DIV></DIV>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px">
+<SCRIPT type=text/javascript><!--
+google_ad_client = "ca-pub-7963911354665843";
+/* 横向单元 */
+google_ad_slot = "6546082871";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</SCRIPT>
+
+<SCRIPT type=text/javascript src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV></DIV>
+<DIV id=view-side>
+<DIV id=upload-box class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body><A id=upload class=upload 
+href="http://www.open-open.com/lib/view/open1403403349127.html#"></A></DIV></DIV></DIV>
+<DIV class="box-blue angle-footer">
+<DIV class=box_1></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box-bg>
+<DIV class=box-title>内容信息</DIV>
+<DIV id=docinfo class=box-body>
+<DIV id=doc-score><SPAN id=score-stars class=stars-big-6 
+title=经验评价得分：3.0分>&nbsp;</SPAN><SPAN id=score-num>3.0</SPAN><BR>
+<DIV id=score-ratecount>(已有1个人评价)</DIV>
+<DIV id=score-scale><SPAN class="starscale stars-small-10" 
+title=力荐>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-8" title=不错>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-6" title=还行>&nbsp;</SPAN> 
+<DIV style="WIDTH: 100px" class=power></DIV>100%<BR><SPAN 
+class="starscale stars-small-4" title=较差>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-2" title=很差>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR></DIV></DIV>
+<DIV class=sp></DIV>
+<DIV id=doc-status><SPAN class=item>收藏：2人</SPAN> <SPAN 
+class=item>发布时间：2014-06-23 22:06:28</SPAN> </DIV></DIV></DIV></DIV>
+<DIV id=upload-box1 class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body>
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "7013382412";
+    google_ad_width = 336;
+    google_ad_height = 280;
+</SCRIPT>
+<!-- opendoclibnew -->
+<SCRIPT type=text/javascript src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV></DIV></DIV>
+<DIV id=upload-box1 class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body>
+<CENTER>
+<SCRIPT>
+document.write("<a href='https://www.jpush.cn/' target='_blank' rel='nofollow'><img src='http://static.open-open.com/300-250jgn.jpg'></a>")
+</SCRIPT>
+</CENTER></DIV></DIV></DIV>
+<DIV id=view-tag class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-title>经验标签</DIV>
+<DIV id=tag-list class=box-body><A 
+href="http://www.open-open.com/lib/tag/C3P0">C3P0</A> </DIV></DIV></DIV>
+<DIV id=view-topic class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-title>同类热门经验</DIV>
+<DIV class=box-body>
+<UL id=topic-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=DBCP,C3P0,Tomcat_JDBC 
+  href="http://www.open-open.com/lib/view/open1329182303124.html" 性能及稳定性测试><SPAN 
+  class=title>DBCP,C3P0,Tomcat_JDBC 性能及稳定性测试</SPAN></A> 
+  <DIV class=attribute><SPAN>41162次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Tomcat 
+  href="http://www.open-open.com/lib/view/open1327478028639.html" 新的数据库连接池使用教程 7 
+  Tomcat - pool jdbc><SPAN class=title>Tomcat jdbc pool - Tomcat 7 
+  新的数据库连接池使用教程</SPAN></A> 
+  <DIV class=attribute><SPAN>32023次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=druid连接池配置 
+  href="http://www.open-open.com/lib/view/open1410420296711.html"><SPAN 
+  class=title>druid连接池配置</SPAN></A> 
+  <DIV class=attribute><SPAN>22293次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Druid 
+  href="http://www.open-open.com/lib/view/open1345189962662.html" - 数据库连接池><SPAN 
+  class=title>Druid - 数据库连接池</SPAN></A> 
+  <DIV class=attribute><SPAN>27420次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Java数据库连接池比较 
+  href="http://www.open-open.com/lib/view/open1389859839742.html"><SPAN 
+  class=title>Java数据库连接池比较 </SPAN></A>
+  <DIV class=attribute><SPAN>24432次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=数据库连接池php-cp介绍 
+  href="http://www.open-open.com/lib/view/open1421983578500.html"><SPAN 
+  class=title>数据库连接池php-cp介绍</SPAN></A> 
+  <DIV class=attribute><SPAN>22142次浏览</SPAN></DIV></LI></UL></DIV></DIV></DIV>
+<DIV id=view-top-category class="box-blue angle-header">
+<DIV class=box-bg>
+<DIV class=box-title>相关经验</DIV>
+<DIV class=box-body>
+<UL id=top-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=c3p0 
+  href="http://www.open-open.com/lib/view/open1338442542120.html" target=_blank 
+  的各种详细配置说明><SPAN class=title>c3p0 的各种详细配置说明</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-10" 
+  title=经验评价得分：5.0分>&nbsp;</SPAN> <SPAN>1人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=C3P0 
+  href="http://www.open-open.com/lib/view/open1343210086271.html" target=_blank 
+  数据池的配置><SPAN class=title>C3P0 数据池的配置</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=C3P0的三种配置方式以及基本配置项详解 
+  href="http://www.open-open.com/lib/view/open1391842482520.html" 
+  target=_blank><SPAN class=title>C3P0的三种配置方式以及基本配置项详解 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=c3p0配置详解 
+  href="http://www.open-open.com/lib/view/open1329141545921.html" 
+  target=_blank><SPAN class=title>c3p0配置详解 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=关于C3P0容错和自动重连特性的研究 
+  href="http://www.open-open.com/lib/view/open1387970137796.html" 
+  target=_blank><SPAN class=title>关于C3P0容错和自动重连特性的研究</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Spring_c3p0配置详解 
+  href="http://www.open-open.com/lib/view/open1417660279152.html" 
+  target=_blank><SPAN class=title>Spring_c3p0配置详解 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=同过使用C3P0建立的对mysql数据库CRUD操作的工具类 
+  href="http://www.open-open.com/lib/view/open1388914855546.html" 
+  target=_blank><SPAN class=title>同过使用C3P0建立的对mysql数据库CRUD操作的工具类</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=DBCP,C3P0,Tomcat_JDBC 
+  href="http://www.open-open.com/lib/view/open1329182303124.html" target=_blank 
+  性能及稳定性测试><SPAN class=title>DBCP,C3P0,Tomcat_JDBC 性能及稳定性测试</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-8" 
+  title=经验评价得分：4.4分>&nbsp;</SPAN> <SPAN>5人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=c3p0:JDBC 
+  href="http://www.open-open.com/lib/view/open1350481290211.html" target=_blank 
+  Pools Resource DataSources><SPAN class=title>c3p0:JDBC DataSources/Resource 
+  Pools</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=c3p0数据库连接池实例 
+  href="http://www.open-open.com/lib/view/open1392969573505.html" 
+  target=_blank><SPAN class=title>c3p0数据库连接池实例 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=JDBC详细说明 
+  href="http://www.open-open.com/lib/view/open1386665506126.html" 
+  target=_blank><SPAN class=title>JDBC详细说明</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-9" 
+  title=经验评价得分：4.8分>&nbsp;</SPAN> <SPAN>5人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ssi框架学习总结 
+  href="http://www.open-open.com/lib/view/open1377581482589.html" 
+  target=_blank><SPAN class=title>ssi框架学习总结</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-7" 
+  title=经验评价得分：3.9分>&nbsp;</SPAN> <SPAN>10人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Spring2+struts2+ibatis整合 
+  href="http://www.open-open.com/lib/view/open1433568393546.html" 
+  target=_blank><SPAN class=title>Spring2+struts2+ibatis整合 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=JDBC：使用连接池管理连接 
+  href="http://www.open-open.com/lib/view/open1399693514337.html" 
+  target=_blank><SPAN class=title>JDBC：使用连接池管理连接</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI></UL></DIV></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_1></DIV></DIV>
+<DIV id=view-top-category class="box-blue angle-header">
+<DIV class=box-bg>
+<DIV class=box-title>相关讨论 - <A href="http://www.open-open.com/bbs" rel=nofollow 
+target=_blank>更多</A></DIV>
+<DIV class=box-body>
+<UL id=top-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=Android数据存储 
+  href="http://www.open-open.com/bbs/view/1318836024483" rel=nofollow 
+  target=_blank><SPAN class=title>Android数据存储</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=MySQL加速查询速度的独门武器：查询缓存 
+  href="http://www.open-open.com/bbs/view/1321231362967" rel=nofollow 
+  target=_blank><SPAN class=title>MySQL加速查询速度的独门武器：查询缓存</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=PHP模板之Smarty安装与使用入门教程 
+  href="http://www.open-open.com/bbs/view/1319016010156" rel=nofollow 
+  target=_blank><SPAN class=title>PHP模板之Smarty安装与使用入门教程</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=JDBC 
+  href="http://www.open-open.com/bbs/view/1320398168967" rel=nofollow 
+  target=_blank 介绍><SPAN class=title>JDBC 介绍</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=Spring中Quartz任务调度器cronexpression配置说明 
+  href="http://www.open-open.com/bbs/view/1320154164108" rel=nofollow 
+  target=_blank><SPAN 
+  class=title>Spring中Quartz任务调度器cronexpression配置说明</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=MySQL数据库服务器端核心参数详解和推荐配置之二 
+  href="http://www.open-open.com/bbs/view/1321232493921" rel=nofollow 
+  target=_blank><SPAN class=title>MySQL数据库服务器端核心参数详解和推荐配置之二</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=20步打造最安全的Nginx 
+  href="http://www.open-open.com/bbs/view/1319455592515" rel=nofollow 
+  target=_blank Web服务器><SPAN class=title>20步打造最安全的Nginx Web服务器</SPAN></A> 
+</LI></UL></DIV></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_1></DIV></DIV><!-- end top list--></DIV></DIV>
+<DIV id=footer>
+<DIV id=footer-menu><A href="http://www.open-open.com/home/1">联系我们</A> - <A 
+href="http://www.open-open.com/home/1">问题反馈</A> </DIV>
+<P>2005-2015 OPEN-OPEN, all rights reserved.</P></DIV>
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/jquery.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/thickbox.patch.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/app.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/scrolltopcontrol.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	var rooturl="/lib";
+	var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+	
+  	
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/jquery-ui.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/scrolltopcontrol.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/view.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/shCore.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/shAutoloader.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="C3P0的详细配置说明%20-%20OPEN%20开发经验库_files/jquery.jgrowl_minimized.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+  	scrolltotop.offset(95,165);
+	scrolltotop.init();
+  </SCRIPT>
+
+<SCRIPT type=text/javascript>
+SyntaxHighlighter.autoloader(
+	'applescript			/lib/syntaxhighlighter_3.0.83/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		/lib/syntaxhighlighter_3.0.83/scripts/shBrushAS3.js',
+	'bash shell				/lib/syntaxhighlighter_3.0.83/scripts/shBrushBash.js',
+	'coldfusion cf			/lib/syntaxhighlighter_3.0.83/scripts/shBrushColdFusion.js',
+	'cpp c					/lib/syntaxhighlighter_3.0.83/scripts/shBrushCpp.js',
+	'obj-c objc				/lib/syntaxhighlighter_3.0.83/scripts/shBrushObjC.js',
+	'c# c-sharp csharp		/lib/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js',
+	'css					/lib/syntaxhighlighter_3.0.83/scripts/shBrushCss.js',
+	'delphi pascal			/lib/syntaxhighlighter_3.0.83/scripts/shBrushDelphi.js',
+	'diff patch pas			/lib/syntaxhighlighter_3.0.83/scripts/shBrushDiff.js',
+	'erl erlang				/lib/syntaxhighlighter_3.0.83/scripts/shBrushErlang.js',
+	'groovy					/lib/syntaxhighlighter_3.0.83/scripts/shBrushGroovy.js',
+	'haxe hx				/lib/syntaxhighlighter_3.0.83/scripts/shBrushHaxe.js',
+	'java					/lib/syntaxhighlighter_3.0.83/scripts/shBrushJava.js',
+	'jfx javafx				/lib/syntaxhighlighter_3.0.83/scripts/shBrushJavaFX.js',
+	'js jscript javascript	/lib/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js',
+	'perl pl				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPerl.js',
+	'php					/lib/syntaxhighlighter_3.0.83/scripts/shBrushPhp.js',
+	'text plain				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPlain.js',
+	'py python				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPython.js',
+	'ruby rails ror rb		/lib/syntaxhighlighter_3.0.83/scripts/shBrushRuby.js',
+	'scala					/lib/syntaxhighlighter_3.0.83/scripts/shBrushScala.js',
+	'sql					/lib/syntaxhighlighter_3.0.83/scripts/shBrushSql.js',
+	'vb vbnet				/lib/syntaxhighlighter_3.0.83/scripts/shBrushVb.js',
+	'xml xhtml xslt html	/lib/syntaxhighlighter_3.0.83/scripts/shBrushXml.js'
+);
+SyntaxHighlighter.all();
+</SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript>
+//生成目录索引列表
+function GenerateContentList()
+{
+    var jquery_h3_list = $('#readercontainer h3');//如果你的章节标题不是h3,只需要将这里的h3换掉即可
+    if(jquery_h3_list.length>0)
+    {
+        var content = '<a name="_labelTop"></a>';
+        content    += '<div id="navCategory" style="border-bottom:1px #dfdfdf solid;margin-bottom:5px">';
+        content    += '<p style="font-size:18px;margin:0"><b>阅读目录</b></p>';
+        content    += '<ul>';
+        for(var i =0;i<jquery_h3_list.length;i++)
+        {
+	    if(i==0){
+              var go_to_top = '<div style="text-align: right"><a name="_label' + i + '"></a></div>';
+	    }else
+	    {
+		var go_to_top = '<div style="text-align: right"><a href="#_labelTop">回到顶部</a><a name="_label' + i + '"></a></div>';
+	    }
+            $(jquery_h3_list[i]).before(go_to_top);
+            var li_content = '<li><a href="#_label' + i + '">' + $(jquery_h3_list[i]).text() + '</a></li>';
+            content += li_content;
+        }
+        content    += '</ul>';
+        content    += '</div>';
+        if($('#readercontainer').length != 0 )
+        {
+            $($('#readercontainer')[0]).prepend(content);
+        }
+    }else{
+GenerateContentList2()
+    }  
+}
+
+function GenerateContentList2()
+{
+    var jquery_h3_list = $('#readercontainer h2');//如果你的章节标题不是h2,只需要将这里的h2换掉即可
+    if(jquery_h3_list.length>0)
+    {
+        var content = '<a name="_labelTop"></a>';
+        content    += '<div id="navCategory" style="border-bottom:1px #dfdfdf solid;margin-bottom:5px">';
+        content    += '<p style="font-size:18px;margin:0"><b>阅读目录</b></p>';
+        content    += '<ul>';
+        for(var i =0;i<jquery_h3_list.length;i++)
+        {
+	    if(i==0){
+              var go_to_top = '<div style="text-align: right"><a name="_label' + i + '"></a></div>';
+	    }else
+	    {
+		var go_to_top = '<div style="text-align: right"><a href="#_labelTop">回到顶部</a><a name="_label' + i + '"></a></div>';
+	    }
+            $(jquery_h3_list[i]).before(go_to_top);
+            var li_content = '<li><a href="#_label' + i + '">' + $(jquery_h3_list[i]).text() + '</a></li>';
+            content += li_content;
+        }
+        content    += '</ul>';
+        content    += '</div>';
+        if($('#readercontainer').length != 0 )
+        {
+            $($('#toc')[0]).prepend(content);
+        }
+    }    
+}
+
+GenerateContentList();
+</SCRIPT>
+
+<SCRIPT>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</SCRIPT>
+<!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=slide&amp;img=0&amp;pos=right&amp;uid=6734290"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+var bds_config={"bdTop":256};
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</SCRIPT>
+<!-- Baidu Button END --></BODY></HTML>

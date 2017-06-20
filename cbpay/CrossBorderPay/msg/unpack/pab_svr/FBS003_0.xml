@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="FBS003_0">
+	<field name="Result" >
+			<format type="virtual" level="1" />
+	</field>	
+	<field name="REGISTER_DATE">
+		<format type="s" length="8" necessary="true"  />
+	</field>
+	
+	<field name="PRICE">
+		<format type="s" length="12" necessary="true" />
+	</field>
+	
+	<field name="CLIENT_EXCHANGE_RATE">
+		<format type="s" length="12" necessary="true" />
+	</field>
+	
+	<field name="DISCOUNT_TYPE">
+		<format type="s" length="1" necessary="false" />
+	</field>
+	
+	<field name="DIS_AMT">
+		<format type="s" length="17" necessary="false" />
+	</field>
+	
+	<field name="AMT">
+		<format type="s" length="17" necessary="true" />
+	</field>
+	
+	<field name="TRAN_AMT">
+		<format type="s" length="17" necessary="true" />
+	</field>
+	
+	<field name="SALE_CCY">
+		<format type="s" length="3" necessary="true"  />
+	</field>
+	
+	<field name="BUY_CCY">
+		<format type="s" length="3" necessary="true"  />
+	</field>
+
+	<field name="SELL_ACCT_NO">
+		<format type="s" length="32" necessary="false"  />
+	</field>
+	
+	<field name="BUY_ACCT_NO">
+		<format type="s" length="32" necessary="false"  />
+	</field>
+	
+	<field name="SALE_AMOUNT">
+		<format type="s" length="17" necessary="true"  />
+	</field>
+	
+	<field name="BUY_AMOUNT">
+		<format type="s" length="17" necessary="true"  />
+	</field>
+	
+	<field name="DATE_TIME">
+		<format type="s" length="14" necessary="false"  />
+	</field>
+	
+	<field name="EXCEED_FLAG">
+		<format type="s" length="1" necessary="false"  />
+	</field>
+
+	<field name="PROCESS_STATUS">
+		<format type="s" length="1" necessary="true"  />
+	</field>
+	
+	<field name="PROCESS_MSG">
+		<format type="s" length="50" necessary="true"  />
+	</field>
+</formula>

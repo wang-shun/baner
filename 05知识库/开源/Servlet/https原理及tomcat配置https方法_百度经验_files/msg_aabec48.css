@@ -1,0 +1,69 @@
+.msg-container {
+	WIDTH: 180px
+}
+.msg-container .msg-detail {
+	DISPLAY: none
+}
+.msg-container .msg-brief {
+	HEIGHT: 18px
+}
+.msg-container .msg-brief P {
+	COLOR: #2d64b3
+}
+.msg-container .msg-brief P B {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #ff7800; PADDING-TOP: 0px
+}
+.msg-container .msg-brief .close-msg {
+	WIDTH: 14px; DISPLAY: none; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/notice-icon.png) no-repeat 0px -40px; FLOAT: right; HEIGHT: 14px; CURSOR: pointer
+}
+.msg-container .hover.msg-brief P {
+	DISPLAY: none
+}
+.msg-container .hover.msg-brief .close-msg {
+	DISPLAY: block
+}
+.msg-container .n-item {
+	POSITION: relative; PADDING-BOTTOM: 4px; PADDING-LEFT: 10px; PADDING-RIGHT: 13px; HEIGHT: 18px; PADDING-TOP: 4px
+}
+.msg-container .n-item A {
+	FLOAT: left
+}
+.msg-container .n-item A:hover {
+	TEXT-DECORATION: none
+}
+.msg-container .n-item B {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #ff7800; FONT-SIZE: 12px; CURSOR: pointer; PADDING-TOP: 0px
+}
+.msg-container .n-item SPAN {
+	WIDTH: 19px; FLOAT: right; HEIGHT: 18px
+}
+.msg-container .n-item .item-close {
+	POSITION: absolute; LINE-HEIGHT: 18; WIDTH: 19px; DISPLAY: none; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/close_icon.gif) no-repeat 0px 0px; HEIGHT: 18px; TOP: 5px; CURSOR: pointer; RIGHT: -2px
+}
+.msg-container .n-item:hover .item-close {
+	DISPLAY: inline-block
+}
+.msg-container .n-cms-in {
+	POSITION: relative; HEIGHT: auto; BORDER-TOP: #f8f0db 1px solid
+}
+.msg-container .n-cms-in SPAN {
+	POSITION: absolute; TOP: 4px; RIGHT: 6px
+}
+.msg-container .n-cms {
+	POSITION: relative; PADDING-BOTTOM: 4px; PADDING-LEFT: 10px; PADDING-RIGHT: 25px; HEIGHT: auto; PADDING-TOP: 4px
+}
+.msg-container .n-cms SPAN {
+	POSITION: absolute; TOP: 4px; RIGHT: 6px
+}
+.msg-container .has-border-top {
+	BORDER-TOP: #f8f0db 1px solid
+}
+.que-rol-pop {
+	MARGIN: 25px 20px 0px; FONT-FAMILY: "Microsoft Yahei", "Î¢ÈíÑÅºÚ", arial, "ËÎÌå", sans-serif
+}
+.que-rol-pop H3 {
+	PADDING-LEFT: 30px; MARGIN-BOTTOM: 15px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/uc/uc-income-sprite.png) no-repeat -225px -313px; COLOR: #333; FONT-SIZE: 16px; FONT-WEIGHT: 700
+}
+.que-rol-pop P {
+	PADDING-LEFT: 3px; COLOR: #333; FONT-SIZE: 14px
+}

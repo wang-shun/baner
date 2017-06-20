@@ -1,0 +1,168 @@
+git安装完成后需要执行下面两个命令设置当前用户
+
+git config --global user.name "zxywithal"
+git config --global user.email "zxywithal@163.com"
+
+一）常规使用
+	1.创建版本库
+		git init
+		在本地创建目录后切换到对应目录执行命令"git init"
+		
+	2.提交版本
+		git add  filename1 filename2
+		git add -f App.class  如果一个文件在.gitignore文件中，强制提交某个文件，
+		git commit -m ”版本记录“
+		
+		git status   查看当前被修改过的文件
+		git diff filename  查看修改内容
+		
+	3.版本回退
+		git reset --hard commit_id
+		git log命令显示从最近到最远的提交日志
+		在Git中，用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，
+		上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+		git reflog用来记录每一次命令
+		HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+		穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+		要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本
+		
+	4.清理修改
+		git checkout -- readme.txt
+		git reset HEAD file
+		命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+		一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+		一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+		总之，就是让这个文件回到最近一次git commit或git add时的状态。
+		
+		场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+		场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+		场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库
+		
+	5.删除文件
+		git rm
+		
+		现在资源管理器中删除文件
+		然后调用git rm
+		在调用git commit
+		或者发现删错了
+		git checkout -- filename 直接将文件回退到上一个版本
+		
+二）分支管理
+
+	1.创建分支
+		git branch	浏览现有分支
+		git branch dev  创建分支
+		git checkout master	切换到指定分支
+		git merge dev	和dev分支合并
+		git branch -d dev	删除指定分支
+		git branch -D dev 强行删除，即使dev分支上有没有提交的修改液可以删除
+		git branch --set-upstream dev origin/dev	设置本地分支和远端分支的对应关系
+		
+		通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+		
+		如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+		git merge --no-ff -m "merge with no-ff" dev    禁用fastflorward模式的Merge
+
+
+三）工作现场保存
+	git stash
+	Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+	git stash list命令查看保留的工作现场列表
+	git stash apply [stashid]恢复后，stash内容并不删除
+	git stash drop  [stashid] 删除
+	git stash pop [stashid] 恢复的同时把stash内容也删了
+
+四）多人协作
+	当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin
+	git remote 查看远程库的信息
+	git remote -v 显示详细信息
+	git push origin master 推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上
+	git pull 拉去远端的文件
+	
+	多人协作的工作模式通常是这样：
+	
+	首先，可以试图用git push origin branch-name推送自己的修改；
+	如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+	如果合并有冲突，则解决冲突，并在本地提交；
+	没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+	如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name
+五）标签管理
+	首先，切换到需要打标签的分支上
+	默认标签是打在最新提交的commit上的
+	git tag	查看当前所有标签
+	git show <tagname>查看标签信息
+	git tag <name>	打一个新标签
+	git tag -a <name> -m "version 0.1 released" 3628164		还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字
+	git tag v0.9 commit_id 指定commitid打标签
+	
+	git tag -d v0.1	删除标签
+	git push origin <tagname>	推送某个标签到远端
+	git push origin --tags		一次性推送全部尚未推送到远程的本地标签
+	如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除
+	git tag -d v0.9
+	然后，从远程删除。删除命令也是push，但是格式如下
+	git push origin :refs/tags/v0.9
+	
+	默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？
+
+	方法是找到历史提交的commit id，然后打上就可以了：
+	git tag v0.9 commit_id
+	
+六）自定义
+	git config --global color.ui true
+	你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等
+	在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+	不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。
+	所有配置文件可以直接在线浏览：https://github.com/github/gitignore
+	.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查
+	
+	
+	git config --global alias.st status   从此以后就可以git st 代替git status了
+	git config --global alias.co checkout
+	git config --global alias.ci commit
+	git config --global alias.br branch
+	
+	--global参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用
+	
+	在撤销修改一节中，我们知道，命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区。既然是一个unstage操作，就可以配置一个unstage别名
+	git config --global alias.unstage 'reset HEAD'
+	git unstage test.py实际上执行的是git reset HEAD test.py
+	配置一个git last，让其显示最后一次提交信息：git config --global alias.last 'log -1'
+	
+	git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+七）配置文件
+	配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。
+	
+	配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中：
+		===========================
+		[core]
+		    repositoryformatversion = 0
+		    filemode = true
+		    bare = false
+		    logallrefupdates = true
+		    ignorecase = true
+		    precomposeunicode = true
+		[remote "origin"]
+		    url = git@github.com:michaelliao/learngit.git
+		    fetch = +refs/heads/*:refs/remotes/origin/*
+		[branch "master"]
+		    remote = origin
+		    merge = refs/heads/master
+		[alias]
+		    last = log -1
+		==============================
+
+	别名就在[alias]后面，要删除别名，直接把对应的行删掉即可。
+	
+	而当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中
+		================
+		[alias]
+		    co = checkout
+		    ci = commit
+		    br = branch
+		    st = status
+		[user]
+		    name = Your Name
+		    email = your@email.com
+====================

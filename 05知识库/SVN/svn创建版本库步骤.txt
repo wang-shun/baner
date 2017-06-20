@@ -1,0 +1,13 @@
+新建版本库步骤
+1.建立物理目录
+	批量新建目录：mkdir -p /opt/svndata/xiaobei
+	说明/opt/svndata/是环境上svn数据的主目录
+		testSvn是新建版本库名称
+2.创建svn版本库
+	svnadmin create /opt/svndata/xiaobei 	
+3.复制用户名密码的配置，使其所有版本库共用
+	cp -rf /opt/svndata/common_doc/conf   /opt/svndata/xiaobei/
+4.添加新用户
+	htpasswd /opt/svndata/access.conf hejiandong(用户名)
+	说明：如果用户名不存在，svn默认新建用户名。如果用户名已经存在svn默认做密码重置动作
+5.注意testSvn目录读写权限

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ctb004_0">
+	<include>CRONTAB_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	<!-- update by tianguangzhao 2016/4/26 新增划转类型和商户号-->
+        <field name="merchantNo">
+                <format type="s" length="12" necessary="true" default_value="AAAAAAAAAAAA"  />
+        </field>
+	<field name="transType">
+	        <format type="s" length="02" necessary="true" />
+	</field>
+	<field name="merOrderId">
+		<format type="s" length="32" necessary="true" />
+	</field>
+</formula>

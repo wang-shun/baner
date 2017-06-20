@@ -1,0 +1,1017 @@
+.csdn-toolbar {
+	BORDER-BOTTOM: #e9e9e9 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: #fff; COLOR: #333; FONT-SIZE: 0.75em; PADDING-TOP: 0px
+}
+.csdn-toolbar * {
+	BOX-SIZING: content-box; -webkit-box-sizing: content-box; -moz-box-sizing: content-box
+}
+.csdn-toolbar *:before {
+	BOX-SIZING: content-box; -webkit-box-sizing: content-box; -moz-box-sizing: content-box
+}
+.csdn-toolbar *:after {
+	BOX-SIZING: content-box; -webkit-box-sizing: content-box; -moz-box-sizing: content-box
+}
+.csdn-toolbar DIV {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar DL {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar DT {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar DD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar UL {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar LI {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H1 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H2 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H3 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H4 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H5 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar H6 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar PRE {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar CODE {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar FORM {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar FIELDSET {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar LEGEND {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar INPUT {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar TEXTAREA {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar P {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar BLOCKQUOTE {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar TH {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar TABLE {
+	BORDER-SPACING: 0; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed
+}
+.csdn-toolbar FIELDSET {
+	BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px
+}
+.csdn-toolbar IMG {
+	BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px
+}
+.csdn-toolbar ADDRESS {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar CAPTION {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar CITE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar CODE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar DFN {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar EM {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar STRONG {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar TH {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar VAR {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+.csdn-toolbar UL {
+	LIST-STYLE-TYPE: none
+}
+.csdn-toolbar CAPTION {
+	TEXT-ALIGN: left
+}
+.csdn-toolbar TH {
+	TEXT-ALIGN: left
+}
+.csdn-toolbar .clearfix:before {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .clearfix:after {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .clearfix:after {
+	CLEAR: both
+}
+.csdn-toolbar .clearfix {
+	OVERFLOW: visible
+}
+.csdn-toolbar .col-sm-2 {
+	FLOAT: left
+}
+.csdn-toolbar H1 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H2 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H3 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H4 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H5 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H6 {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5em; MARGIN: 0px; FONT-FAMILY: "Helvetica", "Tahoma, Arial", "sans-serif"; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar H1 {
+	FONT-SIZE: 3em
+}
+.csdn-toolbar H2 {
+	FONT-SIZE: 2.5em
+}
+.csdn-toolbar H3 {
+	FONT-SIZE: 2em
+}
+.csdn-toolbar H4 {
+	FONT-SIZE: 1.5em
+}
+.csdn-toolbar H5 {
+	FONT-SIZE: 1.16em
+}
+.csdn-toolbar H6 {
+	FONT-SIZE: 1em
+}
+.csdn-toolbar TEXTAREA {
+	resize: none
+}
+.csdn-toolbar A:link {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.csdn-toolbar A:visited {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.csdn-toolbar A:hover {
+	COLOR: #c00; TEXT-DECORATION: none
+}
+.csdn-toolbar H1 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H1 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H2 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H2 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H3 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H3 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H4 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H4 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H5 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H5 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H6 A:link {
+	COLOR: #333
+}
+.csdn-toolbar H6 A:visited {
+	COLOR: #333
+}
+.csdn-toolbar H1 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar H2 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar H3 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar H4 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar H5 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar H6 A:hover {
+	COLOR: #c00
+}
+.csdn-toolbar A:focus {
+	OUTLINE-STYLE: none
+}
+.csdn-toolbar A.f-blue:link {
+	COLOR: #2981a9; TEXT-DECORATION: none
+}
+.csdn-toolbar A.f-blue:visited {
+	COLOR: #2981a9; TEXT-DECORATION: none
+}
+.csdn-toolbar A.f-blue:visited {
+	COLOR: #025d87; TEXT-DECORATION: none
+}
+.csdn-toolbar A.f-undline:link {
+	TEXT-DECORATION: underline
+}
+.csdn-toolbar A.f-undline:visited {
+	TEXT-DECORATION: underline
+}
+.csdn-toolbar A.f-undline:visited {
+	TEXT-DECORATION: underline
+}
+.csdn-toolbar .col-sm-1 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-2 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-3 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-4 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-5 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-6 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-7 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-8 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-9 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-10 {
+	FLOAT: left
+}
+.csdn-toolbar .col-sm-11 {
+	FLOAT: left
+}
+.csdn-toolbar .form-horizontal .form-group:after {
+	CLEAR: both
+}
+.csdn-toolbar .form-horizontal .form-group:before {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .form-horizontal .form-group:after {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .col-sm-12 {
+	WIDTH: 100%
+}
+.csdn-toolbar .col-sm-11 {
+	WIDTH: 91.66%
+}
+.csdn-toolbar .col-sm-10 {
+	WIDTH: 86.33%
+}
+.csdn-toolbar .col-sm-9 {
+	WIDTH: 75%
+}
+.csdn-toolbar .col-sm-8 {
+	WIDTH: 66.66%
+}
+.csdn-toolbar .col-sm-7 {
+	WIDTH: 58.33%
+}
+.csdn-toolbar .col-sm-6 {
+	WIDTH: 50%
+}
+.csdn-toolbar .col-sm-5 {
+	WIDTH: 41.66%
+}
+.csdn-toolbar .col-sm-4 {
+	WIDTH: 33.33%
+}
+.csdn-toolbar .col-sm-3 {
+	WIDTH: 25%
+}
+.csdn-toolbar .col-sm-2 {
+	WIDTH: 16.66%
+}
+.csdn-toolbar .col-sm-1 {
+	WIDTH: 8.33%
+}
+.csdn-toolbar .pull-left {
+	FLOAT: left
+}
+.csdn-toolbar .pull-right {
+	FLOAT: right
+}
+.csdn-toolbar A {
+	COLOR: #999; FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+.csdn-toolbar A:hover {
+	COLOR: #333
+}
+.csdn-toolbar DL {
+	MARGIN: 0px; FONT-SIZE: 12px
+}
+.csdn-toolbar UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar LI {
+	BORDER-BOTTOM: #eee 0px solid; POSITION: relative; BORDER-LEFT: #eee 1px solid; LIST-STYLE-TYPE: none; WIDTH: 40px; BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: left; HEIGHT: 40px; BORDER-TOP: #eee 0px solid; BORDER-RIGHT: #fff 1px solid
+}
+.csdn-toolbar .hide {
+	DISPLAY: none
+}
+.csdn-toolbar .open .dropdown-menu {
+	MIN-WIDTH: 70px; DISPLAY: block; TOP: 23px; border-radius: 0
+}
+.csdn-toolbar .open .dropdown-menu LI {
+	BORDER-BOTTOM: 0px; TEXT-ALIGN: center; BORDER-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 10px; FLOAT: left; HEIGHT: auto; COLOR: #333; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.csdn-toolbar INPUT:focus {
+	BORDER-BOTTOM-COLOR: #9cf; BORDER-TOP-COLOR: #9cf; BORDER-RIGHT-COLOR: #9cf; BORDER-LEFT-COLOR: #9cf; box-shadow: none
+}
+.csdn-toolbar TEXTAREA:focus {
+	BORDER-BOTTOM-COLOR: #9cf; BORDER-TOP-COLOR: #9cf; BORDER-RIGHT-COLOR: #9cf; BORDER-LEFT-COLOR: #9cf; box-shadow: none
+}
+.csdn-toolbar .form-horizontal .form-group {
+	MARGIN: 0px 0px 10px
+}
+.csdn-toolbar .form-horizontal .form-group .ft {
+	PADDING-LEFT: 12px; WIDTH: 362px; MARGIN-LEFT: 25px
+}
+.csdn-toolbar .form-horizontal .control-label {
+	BOX-SIZING: border-box; TEXT-ALIGN: right; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 38px; PADDING-RIGHT: 10px; PADDING-TOP: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box
+}
+.csdn-toolbar .form-control {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.4285; BACKGROUND-COLOR: #fff; PADDING-LEFT: 7px; WIDTH: 100%; PADDING-RIGHT: 7px; DISPLAY: block; HEIGHT: 28px; COLOR: #555; FONT-SIZE: 14px; VERTICAL-ALIGN: middle; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 0px; border-radius: 0; box-shadow: none; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s
+}
+.csdn-toolbar TEXTAREA.form-control {
+	HEIGHT: 70px; PADDING-TOP: 5px
+}
+.csdn-toolbar .nobg {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.csdn-toolbar .icon-hasnotes-sm {
+	BACKGROUND-IMAGE: url(../images/f_icon.png)
+}
+.csdn-toolbar .icon-enter-sm {
+	BACKGROUND-IMAGE: url(../images/f_icon.png)
+}
+.csdn-toolbar .write-icon {
+	BACKGROUND-IMAGE: url(../images/f_icon.png)
+}
+.csdn-toolbar .icon-enter-sm {
+	BACKGROUND-POSITION: 0px -192px
+}
+.csdn-toolbar .icon {
+	BACKGROUND-IMAGE: url(../images/f_icon.png); Z-INDEX: 1001; POSITION: relative; MARGIN: 10px auto 0px; WIDTH: 20px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 1px 1px; HEIGHT: 20px; FONT-SIZE: 16px
+}
+.csdn-toolbar .icon .wrap {
+	BORDER-BOTTOM: #ccc 1px solid; POSITION: absolute; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 7px; PADDING-LEFT: 7px; PADDING-RIGHT: 7px; DISPLAY: none; BACKGROUND: #fff; FONT-SIZE: 12px; BORDER-TOP: #ccc 1px solid; TOP: 30px; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 7px; box-shadow: 0px 3px 2px rgba(0,0,0,0.15)
+}
+.csdn-toolbar .icon .curr-icon-wrap {
+	BORDER-BOTTOM: #fff 1px solid; POSITION: absolute; WIDTH: 41px; HEIGHT: 3px; TOP: -4px
+}
+.csdn-toolbar .on {
+	BORDER-BOTTOM-COLOR: #ccc; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #fff; BORDER-TOP-COLOR: #ccc; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-COLOR: #ccc; BORDER-LEFT-COLOR: #ccc; BORDER-LEFT-WIDTH: 1px
+}
+.csdn-toolbar .on .wrap {
+	DISPLAY: block
+}
+.csdn-toolbar .container {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.csdn-toolbar .container:before {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .container:after {
+	DISPLAY: table; CONTENT: " "
+}
+.csdn-toolbar .btn {
+	BACKGROUND-IMAGE: none; BOX-SIZING: border-box; BORDER-BOTTOM: transparent 1px solid; TEXT-ALIGN: center; BORDER-LEFT: transparent 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 0px; WIDTH: 80px; PADDING-RIGHT: 0px; DISPLAY: inline-block; WHITE-SPACE: nowrap; MARGIN-BOTTOM: 0px; HEIGHT: 28px; COLOR: #fff; FONT-SIZE: 14px; VERTICAL-ALIGN: middle; BORDER-TOP: transparent 1px solid; CURSOR: pointer; FONT-WEIGHT: normal; BORDER-RIGHT: transparent 1px solid; PADDING-TOP: 0px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; border-radius: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none
+}
+.csdn-toolbar .btn:focus {
+	OUTLINE-STYLE: dotted; OUTLINE-COLOR: #333; OUTLINE-WIDTH: thin; outline-offset: -2px
+}
+.csdn-toolbar .btn:hover {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.csdn-toolbar .btn:focus {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.csdn-toolbar .btn:active {
+	BACKGROUND-IMAGE: none; OUTLINE-WIDTH: 0px; box-shadow: inset 0 3px 5px rgba(0,0,0,0.125); -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,0.125)
+}
+.csdn-toolbar .disabled.btn {
+	CURSOR: not-allowed; box-shadow: none; -webkit-box-shadow: none; pointer-events: none; opacity: 0.65
+}
+.csdn-toolbar [disabled].btn {
+	CURSOR: not-allowed; box-shadow: none; -webkit-box-shadow: none; pointer-events: none; opacity: 0.65
+}
+.csdn-toolbar FIELDSET[disabled] .btn {
+	CURSOR: not-allowed; box-shadow: none; -webkit-box-shadow: none; pointer-events: none; opacity: 0.65
+}
+.csdn-toolbar .btn:hover {
+	COLOR: #fff
+}
+.csdn-toolbar .btn:focus {
+	COLOR: #fff
+}
+.csdn-toolbar .btn-default:hover {
+	BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #ebebeb; BORDER-TOP-COLOR: #adadad; COLOR: #eee; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad
+}
+.csdn-toolbar .btn-default:focus {
+	BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #ebebeb; BORDER-TOP-COLOR: #adadad; COLOR: #eee; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad
+}
+.csdn-toolbar .btn-default:active {
+	BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #ebebeb; BORDER-TOP-COLOR: #adadad; COLOR: #eee; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad
+}
+.csdn-toolbar .active.btn-default {
+	BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #ebebeb; BORDER-TOP-COLOR: #adadad; COLOR: #eee; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad
+}
+.csdn-toolbar .open .btn-default.dropdown-toggle {
+	BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #ebebeb; BORDER-TOP-COLOR: #adadad; COLOR: #eee; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad
+}
+.csdn-toolbar .btn-default:hover {
+	BACKGROUND-COLOR: #666
+}
+.csdn-toolbar .btn-default:focus {
+	BACKGROUND-COLOR: #666
+}
+.csdn-toolbar .btn-default {
+	BACKGROUND-COLOR: #999
+}
+.csdn-toolbar .btn-primary {
+	BACKGROUND-COLOR: #dc3c00
+}
+.csdn-toolbar .btn-primary:hover {
+	BACKGROUND-COLOR: #b43200
+}
+.csdn-toolbar .btn-primary:focus {
+	BACKGROUND-COLOR: #b43200
+}
+.csdn-toolbar .loginlink {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px; DISPLAY: none; BACKGROUND: none transparent scroll repeat 0% 0%; HEIGHT: 20px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 10px
+}
+.csdn-toolbar .logo {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; HEIGHT: 40px; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.csdn-toolbar .logo .icon {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 40px; PADDING-RIGHT: 0px; DISPLAY: block; BACKGROUND-POSITION: 0px 0px; FLOAT: left; HEIGHT: 40px; PADDING-TOP: 0px
+}
+.csdn-toolbar .logo .img {
+	BACKGROUND-IMAGE: url(../images/f_name.png); WIDTH: 120px; FLOAT: left; HEIGHT: 40px; MARGIN-LEFT: 10px
+}
+.csdn-toolbar .none {
+	BACKGROUND-POSITION: 0px 45px
+}
+.csdn-toolbar .blog-icon {
+	BACKGROUND-POSITION: 0px -52px
+}
+.csdn-toolbar .down-icon {
+	BACKGROUND-POSITION: 0px -102px
+}
+.csdn-toolbar .bbs-icon {
+	BACKGROUND-POSITION: 0px -152px
+}
+.csdn-toolbar .space-icon {
+	BACKGROUND-POSITION: 0px -202px
+}
+.csdn-toolbar .code-icon {
+	BACKGROUND-POSITION: 0px -252px
+}
+.csdn-toolbar .share-icon {
+	BACKGROUND-POSITION: 0px -305px
+}
+.csdn-toolbar .tag-icon {
+	BACKGROUND-POSITION: 0px -354px
+}
+.csdn-toolbar .dashboard-icon {
+	BACKGROUND-POSITION: 0px -403px
+}
+.csdn-toolbar .news-icon {
+	BACKGROUND-POSITION: 0px 16px
+}
+.csdn-toolbar .tag-icon {
+	BACKGROUND-POSITION: 0px -354px
+}
+.csdn-toolbar .notify-icon {
+	BACKGROUND-POSITION: 0px -456px
+}
+.csdn-toolbar .ask-icon {
+	BACKGROUND-POSITION: 0px -503px
+}
+.csdn-toolbar .search .icon {
+	BACKGROUND-POSITION: 0px -130px
+}
+.csdn-toolbar .search .wrap {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 400px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.csdn-toolbar .search .wrap .border {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.csdn-toolbar .search .wrap INPUT {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; PADDING-LEFT: 5px; WIDTH: 356px; PADDING-RIGHT: 5px; HEIGHT: 26px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar .search .wrap INPUT:focus {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; OUTLINE-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.csdn-toolbar .search .wrap .btn {
+	HEIGHT: 26px
+}
+.csdn-toolbar .search .wrap .icon-enter-sm {
+	POSITION: absolute; MARGIN-TOP: 4px; WIDTH: 20px; HEIGHT: 18px; RIGHT: 15px
+}
+.csdn-toolbar .on .on-search-icon {
+	BACKGROUND-POSITION: -20px -130px
+}
+.csdn-toolbar .on .on-search-icon .wrap {
+	RIGHT: -221px
+}
+.csdn-toolbar .on .on-search-icon .curr-icon-wrap {
+	RIGHT: 209px
+}
+.csdn-toolbar .unlogin .search {
+	BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 1px
+}
+.csdn-toolbar .unlogin .search .wrap {
+	RIGHT: -53px
+}
+.csdn-toolbar .unlogin .search .curr-icon-wrap {
+	RIGHT: 41px
+}
+.csdn-toolbar .favor .icon {
+	BACKGROUND-POSITION: 0px -111px
+}
+.csdn-toolbar .favor .favor-btns {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.csdn-toolbar .favor .favor-btns .btn {
+	MARGIN-LEFT: 4px
+}
+.csdn-toolbar .favor .wrap {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; PADDING-TOP: 20px
+}
+.csdn-toolbar .favor .checkbox LABEL {
+	DISPLAY: block
+}
+.csdn-toolbar .favor .share {
+	POSITION: static; MARGIN: 2px 5px 0px 0px; HEIGHT: 14px; VERTICAL-ALIGN: middle
+}
+.csdn-toolbar .on .on-favor-icon {
+	BACKGROUND-POSITION: -20px -111px
+}
+.csdn-toolbar .on .on-favor-icon .wrap {
+	WIDTH: 400px; HEIGHT: 230px; RIGHT: -179px
+}
+.csdn-toolbar .on .on-favor-icon .curr-icon-wrap {
+	RIGHT: 167px
+}
+.csdn-toolbar .on .on-favor-icon .last {
+	MARGIN-RIGHT: 0px
+}
+.csdn-toolbar .on .on-favor-icon .favor-form .alert {
+	DISPLAY: none
+}
+.csdn-toolbar .on .on-favor-icon .favor-form .error .alert {
+	MARGIN: 5px 0px 0px 81px; WIDTH: 300px; DISPLAY: block
+}
+.csdn-toolbar .on .on-favor-icon .favor-failed {
+	TEXT-ALIGN: center; MARGIN-TOP: 60px
+}
+.csdn-toolbar .on .on-favor-icon .favor-success {
+	TEXT-ALIGN: center; MARGIN-TOP: 60px
+}
+.csdn-toolbar .on .on-favor-icon .favor-failed .msg {
+	LINE-HEIGHT: 40px; FONT-SIZE: 18px; VERTICAL-ALIGN: top
+}
+.csdn-toolbar .on .on-favor-icon .favor-success .msg {
+	LINE-HEIGHT: 40px; FONT-SIZE: 18px; VERTICAL-ALIGN: top
+}
+.csdn-toolbar .on .on-favor-icon .favor-failed .btns {
+	TEXT-ALIGN: center; MARGIN-TOP: 10px
+}
+.csdn-toolbar .on .on-favor-icon .favor-success .btns {
+	TEXT-ALIGN: center; MARGIN-TOP: 10px
+}
+.csdn-toolbar .on .on-favor-icon .favor-failed .btns A {
+	MARGIN-LEFT: 10px
+}
+.csdn-toolbar .on .on-favor-icon .favor-success .btns A {
+	MARGIN-LEFT: 10px
+}
+.csdn-toolbar .share {
+	MARGIN-TOP: 50px; BACKGROUND: #f00; HEIGHT: 100px
+}
+.csdn-toolbar x:unknown {
+	MARGIN-TOP: 50px; BACKGROUND: #f00; HEIGHT: 100px
+}
+.csdn-toolbar x:unknown {
+	MARGIN-TOP: 50px; BACKGROUND: #f00; HEIGHT: 100px
+}
+.csdn-toolbar .notify .on-notify-icon {
+	DISPLAY: block !important
+}
+.csdn-toolbar .notify .icon {
+	BACKGROUND-POSITION: 0px -90px
+}
+.csdn-toolbar .notify .icon-hasnotes-sm {
+	Z-INDEX: 1002; POSITION: absolute; WIDTH: 10px; BACKGROUND-POSITION: -23px -196px; HEIGHT: 10px; TOP: 9px; LEFT: 23px
+}
+.csdn-toolbar .notify .number {
+	Z-INDEX: 1002; POSITION: absolute; TEXT-ALIGN: center; LINE-HEIGHT: 14px; WIDTH: 12px; BACKGROUND: #dc3c00 0px 0px; HEIGHT: 13px; COLOR: #fff; FONT-SIZE: 12px; TOP: 9px; LEFT: 24px
+}
+.csdn-toolbar #header_notice_num {
+	DISPLAY: none; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.csdn-toolbar .csdn_note {
+	DISPLAY: block !important
+}
+.csdn-toolbar .csdn_note .close1 {
+	DISPLAY: none
+}
+.csdn-toolbar .csdn_note .go_all {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: right
+}
+.csdn-toolbar .csdn_note .read_all {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: right
+}
+.csdn-toolbar .csdn_note .go_back {
+	LINE-HEIGHT: 39px
+}
+.csdn-toolbar .csdn_note .detail_con {
+	MIN-HEIGHT: 312px !important
+}
+.csdn-toolbar .csdn_note .notifications .count_down {
+	COLOR: #ccc
+}
+.csdn-toolbar .csdn_note .notifications .list DT {
+	LINE-HEIGHT: 27px
+}
+.csdn-toolbar .csdn_note .notifications .menu_title A {
+	MARGIN-RIGHT: 5px
+}
+.csdn-toolbar .on .on-notify-icon {
+	BACKGROUND-POSITION: -20px -90px
+}
+.csdn-toolbar .on .on-notify-icon .wrap {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 450px !important; PADDING-RIGHT: 0px; RIGHT: -137px !important; PADDING-TOP: 0px; LEFT: auto !important
+}
+.csdn-toolbar .on .on-notify-icon .curr-icon-wrap {
+	RIGHT: 125px
+}
+.csdn-toolbar .on .on-notify-icon .csdn_note .box {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; TOP: 0px; BORDER-RIGHT: 0px; LEFT: 0px; box-shadow: none
+}
+.csdn-toolbar .on .on-notify-icon .last {
+	MARGIN-RIGHT: 0px
+}
+.csdn-toolbar .ugc .icon {
+	BACKGROUND-POSITION: 0px -70px
+}
+.csdn-toolbar .ugc .p-news .icon {
+	BACKGROUND-POSITION: -42px -52px
+}
+.csdn-toolbar .ugc .p-news:hover .icon {
+	BACKGROUND-POSITION: -62px -52px
+}
+.csdn-toolbar .ugc .p-down .icon {
+	BACKGROUND-POSITION: -42px -72px
+}
+.csdn-toolbar .ugc .p-down:hover .icon {
+	BACKGROUND-POSITION: -62px -72px
+}
+.csdn-toolbar .ugc .p-doc .icon {
+	BACKGROUND-POSITION: -42px -72px
+}
+.csdn-toolbar .ugc .p-doc:hover .icon {
+	BACKGROUND-POSITION: -62px -72px
+}
+.csdn-toolbar .ugc .p-ask .icon {
+	BACKGROUND-POSITION: -42px -131px
+}
+.csdn-toolbar .ugc .p-ask:hover .icon {
+	BACKGROUND-POSITION: -62px -131px
+}
+.csdn-toolbar .ugc .c-obj .icon {
+	BACKGROUND-POSITION: -42px -92px
+}
+.csdn-toolbar .ugc .c-obj:hover .icon {
+	BACKGROUND-POSITION: -62px -92px
+}
+.csdn-toolbar .ugc .c-code .icon {
+	BACKGROUND-POSITION: -42px -191px
+}
+.csdn-toolbar .ugc .c-code:hover .icon {
+	BACKGROUND-POSITION: -62px -191px
+}
+.csdn-toolbar .ugc .p-src .icon {
+	BACKGROUND-POSITION: -42px -170px
+}
+.csdn-toolbar .ugc .p-src:hover .icon {
+	BACKGROUND-POSITION: -62px -170px
+}
+.csdn-toolbar .ugc .p-blog .icon {
+	BACKGROUND-POSITION: -42px -111px
+}
+.csdn-toolbar .ugc .p-blog:hover .icon {
+	BACKGROUND-POSITION: -62px -111px
+}
+.csdn-toolbar .ugc .p-bbs .icon {
+	BACKGROUND-POSITION: -42px -132px
+}
+.csdn-toolbar .ugc .p-bbs:hover .icon {
+	BACKGROUND-POSITION: -62px -132px
+}
+.csdn-toolbar .ugc .c-grop .icon {
+	BACKGROUND-POSITION: -42px -152px
+}
+.csdn-toolbar .ugc .c-grop:hover .icon {
+	BACKGROUND-POSITION: -62px -152px
+}
+.csdn-toolbar .on .on-ugc-icon {
+	BACKGROUND-POSITION: -20px -70px
+}
+.csdn-toolbar .on .on-ugc-icon .wrap {
+	PADDING-BOTTOM: 12px; PADDING-LEFT: 0px; WIDTH: 161px; PADDING-RIGHT: 0px; RIGHT: -95px; PADDING-TOP: 12px
+}
+.csdn-toolbar .on .on-ugc-icon DL {
+	MARGIN: 0px
+}
+.csdn-toolbar .on .on-ugc-icon DL DT {
+	WIDTH: 100%; FONT-WEIGHT: normal
+}
+.csdn-toolbar .on .on-ugc-icon DL DT EM.icon {
+	MARGIN: 0px 8px 0px 0px; WIDTH: 16px; FLOAT: left; HEIGHT: 16px
+}
+.csdn-toolbar .on .on-ugc-icon DL DT SPAN {
+	LINE-HEIGHT: 12px; MARGIN-TOP: 3px; DISPLAY: block; FLOAT: left; HEIGHT: 12px
+}
+.csdn-toolbar .on .on-ugc-icon DL DT A {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 10px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px; DISPLAY: block; PADDING-TOP: 10px
+}
+.csdn-toolbar .on .on-ugc-icon DL DT A:hover {
+	BACKGROUND: #eee; COLOR: #333
+}
+.csdn-toolbar .on .on-ugc-icon .curr-icon-wrap {
+	RIGHT: 83px
+}
+.csdn-toolbar .on .on-ugc-icon .last {
+	MARGIN-RIGHT: 0px
+}
+.csdn-toolbar .profile .icon {
+	BACKGROUND-POSITION: 0px 1px
+}
+.csdn-toolbar .profile .curr-icon-img {
+	MARGIN: 0px; WIDTH: 20px; DISPLAY: block; HEIGHT: 20px
+}
+.csdn-toolbar .on .settings {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 0px -150px; MARGIN-RIGHT: 2px; PADDING-TOP: 0px
+}
+.csdn-toolbar .on .quit {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 0px -170px; PADDING-TOP: 0px
+}
+.csdn-toolbar .on .on-profile-icon {
+	BACKGROUND-POSITION: -20px 0px; FONT-SIZE: 12px
+}
+.csdn-toolbar .on .on-profile-icon .wrap {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 251px; PADDING-RIGHT: 0px; RIGHT: -53px; PADDING-TOP: 0px
+}
+.csdn-toolbar .on .on-profile-icon .curr-icon-wrap {
+	RIGHT: 41px
+}
+.csdn-toolbar .on .on-profile-icon .bd {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; PADDING-TOP: 20px
+}
+.csdn-toolbar .on .on-profile-icon .bd .write-icon {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND-POSITION: -78px -50px; PADDING-TOP: 3px
+}
+.csdn-toolbar .on .on-profile-icon .bd .img {
+	WIDTH: 100px; MARGIN-RIGHT: 7px
+}
+.csdn-toolbar .on .on-profile-icon .bd .info {
+	TEXT-ALIGN: left; WIDTH: 103px; WORD-WRAP: break-word; FLOAT: right
+}
+.csdn-toolbar .on .on-profile-icon .bd .info .nickname {
+	FONT-SIZE: 14px
+}
+.csdn-toolbar .on .on-profile-icon .bd .info A {
+	PADDING-BOTTOM: 5px; DISPLAY: block
+}
+.csdn-toolbar .on .on-profile-icon .bd .info .fill-dec {
+	COLOR: #666
+}
+.csdn-toolbar .on .on-profile-icon .ft {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 40px; BACKGROUND-COLOR: #f5f5f5; PADDING-LEFT: 20px; PADDING-RIGHT: 12px; PADDING-TOP: 0px
+}
+.csdn-toolbar .on .on-profile-icon .ft .icon-cog {
+	MARGIN-TOP: -1px; WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(../images/f_icon.png) no-repeat -2px -152px; HEIGHT: 16px; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 2px
+}
+.csdn-toolbar .on .on-profile-icon .ft .icon-signout {
+	MARGIN-TOP: -1px; WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(../images/f_icon.png) no-repeat -2px -152px; HEIGHT: 16px; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 2px
+}
+.csdn-toolbar .on .on-profile-icon .ft .icon-signout {
+	BACKGROUND-POSITION: -2px -172px
+}
+.csdn-toolbar .on .on-profile-icon .ft A {
+	LINE-HEIGHT: 40px
+}
+.csdn-toolbar .on .on-profile-icon .ft .pull-right {
+	MARGIN-TOP: 13px
+}
+.csdn-toolbar .on .on-profile-icon .ft .pull-right .out {
+	DISPLAY: none
+}
+.csdn-toolbar .on .on-profile-icon .ft .pull-right:hover .out {
+	BORDER-BOTTOM: #999 1px solid; POSITION: absolute; TEXT-ALIGN: center; BORDER-LEFT: #999 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 16px; PADDING-LEFT: 2px; WIDTH: 32px; PADDING-RIGHT: 2px; DISPLAY: block; BACKGROUND: #f5f5f5; HEIGHT: 16px; COLOR: #666; BORDER-TOP: #999 1px solid; TOP: -12px; RIGHT: -10px; BORDER-RIGHT: #999 1px solid; PADDING-TOP: 2px; border-radius: 5px
+}
+.csdn-toolbar .on .on-profile-icon .ft A:hover .settings {
+	BACKGROUND-POSITION: -20px -150px
+}
+.csdn-toolbar .on .on-profile-icon .ft A:hover .quit {
+	BACKGROUND-POSITION: -20px -170px
+}
+.csdn-toolbar .apps {
+	BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-COLOR: #eee; BORDER-LEFT-WIDTH: 1px
+}
+.csdn-toolbar .apps .icon {
+	BACKGROUND-POSITION: 0px -51px
+}
+.csdn-toolbar .on.apps {
+	BORDER-RIGHT-WIDTH: 1px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-COLOR: #ccc; BORDER-LEFT-WIDTH: 1px
+}
+.csdn-toolbar .hasnew {
+	BACKGROUND-IMAGE: url(../images/f_icon.png); Z-INDEX: 1002; POSITION: absolute; WIDTH: 10px; BACKGROUND-POSITION: -23px -196px; HEIGHT: 10px; TOP: 9px; LEFT: 23px
+}
+.csdn-toolbar .on .on-apps-icon {
+	BACKGROUND-POSITION: -20px -51px
+}
+.csdn-toolbar .on .on-apps-icon .wrap {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; WIDTH: 310px; PADDING-RIGHT: 20px; RIGHT: -11px; PADDING-TOP: 0px
+}
+.csdn-toolbar .on .on-apps-icon .curr-icon-wrap {
+	RIGHT: 0px
+}
+.csdn-toolbar .on .on-apps-icon .detail {
+	WIDTH: 90px; FLOAT: left; FONT-SIZE: 14px; MARGIN-RIGHT: 20px
+}
+.csdn-toolbar .on .on-apps-icon .detail DT {
+	BORDER-BOTTOM: #666 1px solid; LINE-HEIGHT: 31px; MARGIN-TOP: 15px; COLOR: #333; FONT-WEIGHT: bold
+}
+.csdn-toolbar .on .on-apps-icon .detail DD {
+	BORDER-BOTTOM: #ddd 1px solid; LINE-HEIGHT: 31px
+}
+.csdn-toolbar .on .on-apps-icon .detail DD A {
+	COLOR: #333
+}
+.csdn-toolbar .on .on-apps-icon .last.detail {
+	MARGIN-RIGHT: 0px
+}
+.csdn-toolbar .unlogin .loginlink {
+	LINE-HEIGHT: 24px; BORDER-RIGHT-STYLE: none; WIDTH: 60px; DISPLAY: block; HEIGHT: 20px; FONT-SIZE: 12px
+}
+.csdn-toolbar .unlogin .favor {
+	DISPLAY: none
+}
+.csdn-toolbar .unlogin .notify {
+	DISPLAY: none
+}
+.csdn-toolbar .unlogin .ugc {
+	DISPLAY: none
+}
+.csdn-toolbar .unlogin .profile {
+	DISPLAY: none
+}
+.csdn_notice_tip {
+	DISPLAY: none !important
+}
+.csdn-toolbar-skin-black {
+	BORDER-BOTTOM-STYLE: none; BACKGROUND: #48525e; HEIGHT: 40px
+}
+.csdn-toolbar-skin-black LI {
+	BORDER-LEFT: #74797e 1px solid; HEIGHT: 40px; BORDER-RIGHT: #48525e 1px solid
+}
+.csdn-toolbar-skin-black LI.on {
+	WIDTH: 40px; HEIGHT: 40px; BORDER-RIGHT: #fff 1px solid
+}
+.csdn-toolbar-skin-black .icon .wrap {
+	TOP: 30px
+}
+.csdn-toolbar-skin-black .icon .curr-icon-wrap {
+	WIDTH: 41px
+}
+.csdn-toolbar-skin-black .apps {
+	BORDER-RIGHT-COLOR: #74797e
+}
+.csdn-toolbar-skin-black .on .on-apps-icon .wrap {
+	RIGHT: -12px
+}
+.csdn-toolbar-skin-black .loginlink {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #ddd
+}
+.csdn-toolbar-skin-black .loginlink A {
+	COLOR: #ddd
+}
+.csdn-toolbar-skin-black .loginlink A:hover {
+	COLOR: #fefefe
+}
+.csdn-toolbar-skin-black .blog-icon {
+	BACKGROUND-POSITION: -162px -52px
+}
+.csdn-toolbar-skin-black .down-icon {
+	BACKGROUND-POSITION: -162px -102px
+}
+.csdn-toolbar-skin-black .bbs-icon {
+	BACKGROUND-POSITION: -162px -152px
+}
+.csdn-toolbar-skin-black .space-icon {
+	BACKGROUND-POSITION: -162px -202px
+}
+.csdn-toolbar-skin-black .code-icon {
+	BACKGROUND-POSITION: -162px -252px
+}
+.csdn-toolbar-skin-black .share-icon {
+	BACKGROUND-POSITION: -162px -305px
+}
+.csdn-toolbar-skin-black .tag-icon {
+	BACKGROUND-POSITION: -162px -354px
+}
+.csdn-toolbar-skin-black .dashboard-icon {
+	BACKGROUND-POSITION: -162px -403px
+}
+.csdn-toolbar-skin-black .news-icon {
+	BACKGROUND-POSITION: -162px -3px
+}
+.csdn-toolbar-skin-black .tag-icon {
+	BACKGROUND-POSITION: -162px -354px
+}
+.csdn-toolbar-skin-black .notify-icon {
+	BACKGROUND-POSITION: -162px -456px
+}
+.csdn-toolbar-skin-black .ask-icon {
+	BACKGROUND-POSITION: -162px -503px
+}
+.navbar-fixed-top {
+	Z-INDEX: 1030; POSITION: fixed; RIGHT: 0px; LEFT: 0px
+}
+.navbar-fixed-bottom {
+	Z-INDEX: 1030; POSITION: fixed; RIGHT: 0px; LEFT: 0px
+}
+.navbar-fixed-top {
+	TOP: 0px
+}
+.csdn-toolbar .icon-signout {
+	LINE-HEIGHT: 40px
+}
+.csdn-toolbar .on .on-profile-icon .ft .icon-cog:before {
+	DISPLAY: none
+}
+.csdn-toolbar .on .on-profile-icon .ft .icon-signout:before {
+	DISPLAY: none
+}

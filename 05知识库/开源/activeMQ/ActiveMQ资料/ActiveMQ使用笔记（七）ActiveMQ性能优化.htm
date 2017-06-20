@@ -1,0 +1,855 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://www.huaishao8.com/config/activemq/198.html -->
+<HTML lang=zh-CN 
+prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><HEAD><TITLE>ActiveMQ使用笔记（七）ActiveMQ性能优化</TITLE>
+<META charset=UTF-8><LINK rel=profile href="http://gmpg.org/xfn/11"><LINK 
+rel=stylesheet type=text/css href="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/style.css" 
+media=all><LINK rel=pingback href="http://www.huaishao8.com/xmlrpc.php"><!-- SEO Ultimate (http://www.seodesignsolutions.com/wordpress-seo/) -->
+<META content=article property="og:type">
+<META content=ActiveMQ使用笔记（七）ActiveMQ性能优化 property="og:title">
+<META content=http://www.huaishao8.com/config/activemq/198.html 
+property="og:url">
+<META content=2012-05-07 property="article:published_time">
+<META content=2012-05-07 property="article:modified_time">
+<META content=http://www.huaishao8.com/author/admin property="article:author">
+<META content=ActiveMQ property="article:tag">
+<META content=实施配置 property="article:tag">
+<META content=ActiveMQ property="article:tag">
+<META content=性能优化 property="article:tag">
+<META content=淮少吧 property="og:site_name">
+<META name=twitter:card content=summary><!-- /SEO Ultimate --><LINK 
+title="淮少吧 » Feed" rel=alternate type=application/rss+xml 
+href="http://www.huaishao8.com/feed"><LINK title="淮少吧 » 评论Feed" rel=alternate 
+type=application/rss+xml href="http://www.huaishao8.com/comments/feed"><LINK 
+title="淮少吧 » ActiveMQ使用笔记（七）ActiveMQ性能优化评论Feed" rel=alternate 
+type=application/rss+xml 
+href="http://www.huaishao8.com/config/activemq/198.html/feed">
+<SCRIPT type=text/javascript>
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.huaishao8.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</SCRIPT>
+
+<STYLE type=text/css>IMG.wp-smiley {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px !important; MARGIN: 0px 0.07em; PADDING-LEFT: 0px !important; WIDTH: 1em !important; PADDING-RIGHT: 0px !important; DISPLAY: inline !important; BACKGROUND: none transparent scroll repeat 0% 0%; HEIGHT: 1em !important; VERTICAL-ALIGN: -0.1em !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; box-shadow: none
+}
+IMG.emoji {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px !important; MARGIN: 0px 0.07em; PADDING-LEFT: 0px !important; WIDTH: 1em !important; PADDING-RIGHT: 0px !important; DISPLAY: inline !important; BACKGROUND: none transparent scroll repeat 0% 0%; HEIGHT: 1em !important; VERTICAL-ALIGN: -0.1em !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; box-shadow: none
+}
+</STYLE>
+<LINK id=crayon-css rel=stylesheet type=text/css 
+href="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/crayon.min.css" media=all><LINK 
+id=crayon-theme-classic-css rel=stylesheet type=text/css 
+href="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/classic.css" media=all><LINK 
+id=crayon-font-courier-new-css rel=stylesheet type=text/css 
+href="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/courier-new.css" media=all><!-- This site uses the Google Analytics by Yoast plugin v5.4.6 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<SCRIPT type=text/javascript>
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-35589948-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</SCRIPT>
+<!-- / Google Analytics by Yoast -->
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/jquery-migrate.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411","dfw":"\u514d\u6253\u6270\u5199\u4f5c\u6a21\u5f0f","strong":"\u7c97\u4f53","strongClose":"\u5173\u95ed\u7c97\u4f53\u6807\u7b7e","em":"\u659c\u4f53","emClose":"\u5173\u95ed\u659c\u4f53\u6807\u7b7e","link":"\u63d2\u5165\u94fe\u63a5","blockquote":"\u5757\u5f15\u7528","blockquoteClose":"\u5173\u95ed\u5757\u5f15\u7528\u6807\u7b7e","del":"\u5220\u9664\u7684\u6587\u5b57\uff08\u5220\u9664\u7ebf\uff09","delClose":"\u5173\u95ed\u5220\u9664\u7ebf\u6807\u7b7e","ins":"\u63d2\u5165\u7684\u6587\u5b57","insClose":"\u5173\u95ed\u63d2\u5165\u7684\u6587\u5b57\u6807\u7b7e","image":"\u63d2\u5165\u56fe\u50cf","ul":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","ulClose":"\u5173\u95ed\u9879\u76ee\u7b26\u53f7\u5217\u8868\u6807\u7b7e","ol":"\u7f16\u53f7\u5217\u8868","olClose":"\u5173\u95ed\u7f16\u53f7\u5217\u8868\u6807\u7b7e","li":"\u5217\u8868\u9879\u76ee","liClose":"\u5173\u95ed\u5217\u8868\u9879\u76ee\u6807\u7b7e","code":"\u4ee3\u7801","codeClose":"\u5173\u95ed\u4ee3\u7801\u6807\u7b7e","more":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e"};
+/* ]]> */
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/quicktags.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.7.1","is_admin":"0","ajaxurl":"http:\/\/www.huaishao8.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+var CrayonTagEditorSettings = {"home_url":"http:\/\/www.huaishao8.com","css":"crayon-te","css_selected":"crayon-selected","code_css":"#crayon-code","url_css":"#crayon-url","url_info_css":"#crayon-te-url-info","lang_css":"#crayon-lang","title_css":"#crayon-title","mark_css":"#crayon-mark","range_css":"#crayon-range","inline_css":"crayon-inline","inline_hide_css":"crayon-hide-inline","inline_hide_only_css":"crayon-hide-inline-only","hl_css":"#crayon-highlight","switch_html":"#content-html","switch_tmce":"#content-tmce","tinymce_button_generic":".mce-btn","tinymce_button":"a.mce_crayon_tinymce,.mce-i-crayon_tinymce","tinymce_button_unique":"mce_crayon_tinymce","tinymce_highlight":"mce-active","submit_css":"#crayon-te-ok","cancel_css":"#crayon-te-cancel","content_css":"#crayon-te-content","dialog_title_css":"#crayon-te-title","submit_wrapper_css":"#crayon-te-submit-wrapper","data_value":"data-value","attr_sep":":","css_sep":"_","fallback_lang":"java","add_text":"Add Code","edit_text":"Edit Code","quicktag_text":"crayon","submit_add":"\u63d2\u5165","submit_edit":"\u4fdd\u5b58","bar":"#crayon-te-bar","bar_content":"#crayon-te-bar-content","extensions":{"scpt":"applescript","applescript":"applescript","swf":"as","fla":"as","cs":"c#","h":"c++","hh":"c++","hpp":"c++","hxx":"c++","h++":"c++","cc":"c++","cpp":"c++","cxx":"c++","c++":"c++","pas":"delphi","java":"java","class":"java","jar":"java","mv":"miva","mvc":"miva","mvt":"miva","m":"objc","mm":"objc","psc":"papyrus","pl":"perl","py":"python","pyw":"python","pyc":"python","pyo":"python","pyd":"python","rb":"ruby","rbx":"ruby","rhtml":"ruby","vbs":"vb"}};
+var CrayonSyntaxSettings = {"version":"2.7.1","is_admin":"0","ajaxurl":"http:\/\/www.huaishao8.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/crayon.te.min.js"></SCRIPT>
+<LINK title=RSD rel=EditURI type=application/rsd+xml 
+href="http://www.huaishao8.com/xmlrpc.php?rsd"><LINK rel=wlwmanifest 
+type=application/wlwmanifest+xml 
+href="http://www.huaishao8.com/wp-includes/wlwmanifest.xml"><LINK 
+title=ActiveMQ使用笔记（六）ActiveMQ主备配置 rel=prev 
+href="http://www.huaishao8.com/config/activemq/183.html"><LINK 
+title=ActiveMQ使用笔记（八）使用过程中出现的问题 rel=next 
+href="http://www.huaishao8.com/config/activemq/201.html">
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"><LINK rel=canonical 
+href="http://www.huaishao8.com/config/activemq/198.html"><LINK rel=shortlink 
+href="http://www.huaishao8.com/?p=198"></HEAD>
+<BODY class="single single-post postid-198 single-format-standard">
+<DIV id=wrapper class=hfeed>
+<DIV id=header>
+<DIV id=masthead>
+<DIV id=branding role=banner>
+<DIV id=site-title><SPAN><A title=淮少吧 href="http://www.huaishao8.com/" 
+rel=home>淮少吧</A> </SPAN></DIV>
+<DIV id=site-description>游荡于技术海洋</DIV><IMG class=ls_lazyimg alt="" 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/blank_1x1.gif" width=940 height=198 
+file="http://www.huaishao8.com/wp-content/themes/twentyten/images/headers/inkwell.jpg"><NOSCRIPT><IMG 
+alt="" src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/inkwell.jpg" width=940 
+height=198></NOSCRIPT> </DIV><!-- #branding -->
+<DIV id=access role=navigation>
+<DIV class="skip-link screen-reader-text"><A title=跳至正文 
+href="http://www.huaishao8.com/config/activemq/198.html#content">跳至正文</A></DIV>
+<DIV class=menu>
+<UL>
+  <LI><A href="http://www.huaishao8.com/">首页</A></LI></UL></DIV></DIV><!-- #access --></DIV><!-- #masthead --></DIV><!-- #header -->
+<DIV id=main>
+<DIV id=container>
+<DIV id=content role=main>
+<DIV id=nav-above class=navigation>
+<DIV class=nav-previous><A 
+href="http://www.huaishao8.com/config/activemq/183.html" rel=prev><SPAN 
+class=meta-nav>←</SPAN> ActiveMQ使用笔记（六）ActiveMQ主备配置</A></DIV>
+<DIV class=nav-next><A href="http://www.huaishao8.com/config/activemq/201.html" 
+rel=next>ActiveMQ使用笔记（八）使用过程中出现的问题 <SPAN class=meta-nav>→</SPAN></A></DIV></DIV><!-- #nav-above -->
+<DIV id=post-198 
+class="post-198 post type-post status-publish format-standard hentry category-activemq category-config tag-activemq tag-28">
+<H1 class=entry-title>ActiveMQ使用笔记（七）ActiveMQ性能优化</H1>
+<DIV class=entry-meta><SPAN class="meta-prep meta-prep-author">发表于</SPAN><A 
+title=10:22 href="http://www.huaishao8.com/config/activemq/198.html" 
+rel=bookmark><SPAN class=entry-date>2012/05/07</SPAN></A><SPAN 
+class=meta-sep>由</SPAN><SPAN class="author vcard"><A class="url fn n" 
+title=查看所有由淮少发布的文章 href="http://www.huaishao8.com/author/admin">淮少</A></SPAN> 
+</DIV><!-- .entry-meta -->
+<DIV class=entry-content>
+<H3>1、目标策略</H3>
+<P>在节点destinationPolicy配置策略，可以对单个或者所有的主题和队列进行设置，使用流量监控，当消息达到memoryLimit的时候，ActiveMQ会减慢消息的产生甚至阻塞，destinationPolicy的配置如下：</P>
+<P></P><!-- Crayon Syntax Highlighter v2.7.1 -->
+<DIV style="MARGIN-TOP: 12px; MARGIN-BOTTOM: 12px" 
+id=crayon-569c5d4ac6962066663702 
+class="crayon-syntax crayon-theme-classic crayon-font-courier-new crayon-os-pc print-yes notranslate" 
+data-settings=" minimize scroll-mouseover">
+<DIV class=crayon-toolbar data-settings=" show"><SPAN class=crayon-title></SPAN>
+<DIV class=crayon-tools>
+<DIV class="crayon-button crayon-nums-button" title=切换是否显示行编号>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-plain-button" title=纯文本显示代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-wrap-button" title=切换自动换行>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-expand-button" title=点击展开代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-copy-button" title=复制代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-popup-button" title=在新窗口中显示代码>
+<DIV class=crayon-button-icon></DIV></DIV><SPAN 
+class=crayon-language>Java</SPAN></DIV></DIV>
+<DIV class=crayon-info></DIV>
+<DIV class=crayon-plain-wrap><TEXTAREA style="tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4; -webkit-tab-size: 4" class="crayon-plain print-no" wrap=soft readOnly data-settings="dblclick">&lt;destinationPolicy&gt;
+    &lt;policyMap&gt;
+      &lt;policyEntries&gt;
+        &lt;policyEntry topic="&gt;" producerFlowControl="true" memoryLimit="1mb"&gt;
+          &lt;pendingSubscriberPolicy&gt;
+            &lt;vmCursor /&gt;
+          &lt;/pendingSubscriberPolicy&gt;
+        &lt;/policyEntry&gt;
+        &lt;policyEntry queue="&gt;" producerFlowControl="true" memoryLimit="1mb"&gt;
+          &lt;!-- Use VM cursor for better latency
+               For more information, see:              
+               http://activemq.apache.org/message-cursors.html              
+          &lt;pendingQueuePolicy&gt;
+            &lt;vmQueueCursor/&gt;
+          &lt;/pendingQueuePolicy&gt;
+          --&gt;
+        &lt;/policyEntry&gt;
+      &lt;/policyEntries&gt;
+    &lt;/policyMap&gt;
+&lt;/destinationPolicy&gt;</TEXTAREA></DIV>
+<DIV class=crayon-main>
+<TABLE class=crayon-table>
+  <TBODY>
+  <TR class=crayon-row>
+    <TD class="crayon-nums " data-settings="show">
+      <DIV class=crayon-nums-content>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6962066663702-1">1</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-2">2</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6962066663702-3">3</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-4">4</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6962066663702-5">5</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-6">6</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6962066663702-7">7</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-8">8</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6962066663702-9">9</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-10">10</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6962066663702-11">11</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-12">12</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6962066663702-13">13</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-14">14</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6962066663702-15">15</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-16">16</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6962066663702-17">17</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-18">18</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6962066663702-19">19</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6962066663702-20">20</DIV></DIV></TD>
+    <TD class=crayon-code>
+      <DIV 
+      style="tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4; -webkit-tab-size: 4" 
+      class=crayon-pre>
+      <DIV id=crayon-569c5d4ac6962066663702-1 class=crayon-line><SPAN 
+      class="crayon-e ">&lt;destinationPolicy&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-2 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;policyMap&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-3 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;policyEntries&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-4 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-e>policyEntry </SPAN><SPAN 
+      class=crayon-v>topic</SPAN><SPAN class=crayon-o>=</SPAN><SPAN 
+      class=crayon-s>"&gt;"</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-v>producerFlowControl</SPAN><SPAN 
+      class=crayon-o>=</SPAN><SPAN class=crayon-s>"true"</SPAN><SPAN 
+      class=crayon-h> </SPAN><SPAN class=crayon-v>memoryLimit</SPAN><SPAN 
+      class=crayon-o>=</SPAN><SPAN class=crayon-s>"1mb"</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-5 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;pendingSubscriberPolicy&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-6 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-v>vmCursor</SPAN><SPAN 
+      class=crayon-h> </SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-7 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>pendingSubscriberPolicy</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-8 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>policyEntry</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-9 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-e>policyEntry </SPAN><SPAN 
+      class=crayon-v>queue</SPAN><SPAN class=crayon-o>=</SPAN><SPAN 
+      class=crayon-s>"&gt;"</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-v>producerFlowControl</SPAN><SPAN 
+      class=crayon-o>=</SPAN><SPAN class=crayon-s>"true"</SPAN><SPAN 
+      class=crayon-h> </SPAN><SPAN class=crayon-v>memoryLimit</SPAN><SPAN 
+      class=crayon-o>=</SPAN><SPAN class=crayon-s>"1mb"</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-10 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>!</SPAN><SPAN 
+      class=crayon-o>--</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-st>Use</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-e>VM </SPAN><SPAN class=crayon-e>cursor </SPAN><SPAN 
+      class=crayon-st>for</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-e>better </SPAN><SPAN class=crayon-e>latency</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-11 class=crayon-line><SPAN 
+      class=crayon-e>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN class=crayon-st>For</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-e>more </SPAN><SPAN class=crayon-v>information</SPAN><SPAN 
+      class=crayon-sy>,</SPAN><SPAN class=crayon-h> </SPAN><SPAN 
+      class=crayon-v>see</SPAN><SPAN class=crayon-o>:</SPAN><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-12 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN class=crayon-v>http</SPAN><SPAN class=crayon-o>:</SPAN><SPAN 
+      class=crayon-c>//activemq.apache.org/message-cursors.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-13 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;pendingQueuePolicy&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-14 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-v>vmQueueCursor</SPAN><SPAN 
+      class=crayon-o>/</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-15 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>pendingQueuePolicy</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-16 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>--</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-17 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>policyEntry</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-18 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>policyEntries</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-19 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>policyMap</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6962066663702-20 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>destinationPolicy</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV><!-- [Format Time: 0.0080 seconds] -->
+<P></P>
+<P>producerFlowControl表示是否监控流量，默认为true，如果设置为false，消息就会存在磁盘中以防止内存溢出；memoryLimit表示在producerFlowControl=”true”的情况下，消息存储在内存中最大量，当消息达到这个值时，ActiveMQ会减慢消息的产生甚至阻塞。policyEntry的属性参考：<A 
+onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://activemq.apache.org/per-destination-policies.html', 'http://activemq.apache.org/per-destination-policies.html']);" 
+href="http://activemq.apache.org/per-destination-policies.html">http://activemq.apache.org/per-destination-policies.html</A></P>
+<P>当producer发送的持久化消息到达broker之后，broker首先会把它保存在持久存储中。接下来，如果发现当前有活跃的consumer，如果这个consumer消费消息的速度能跟上producer生产消息的速度，那么ActiveMQ会直接把消息传递给broker内部跟这个consumer关联的dispatch 
+queue；如果当前没有活跃的consumer或者consumer消费消息的速度跟不上producer生产消息的速度，那么ActiveMQ会使用Pending 
+Message Cursors保存对消息的引用。在需要的时候，Pending Message 
+Cursors把消息引用传递给broker内部跟这个consumer关联的dispatch queue。以下是两种Pending Message 
+Cursors：</P>
+<P>VM Cursor:在内存中保存消息的引用。</P>
+<P>File Cursor:首先在内存中保存消息的引用，如果内存使用量达到上限，那么会把消息引用保存到临时文件中。</P>
+<P>在缺省情况下，ActiveMQ 会根据使用的Message Store来决定使用何种类型的Message 
+Cursors，但是你可以根据destination来配置Message Cursors。</P>
+<P>对于topic，可以使用的pendingSubscriberPolicy 
+有vmCursor和fileCursor。可以使用的PendingDurableSubscriberMessageStoragePolicy有</P>
+<P>vmDurableCursor 和 
+fileDurableSubscriberCursor；对于queue，可以使用的pendingQueuePolicy有vmQueueCursor 和 
+fileQueueCursor。</P>
+<P>Message Cursors的使用参考：<A 
+onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://activemq.apache.org/message-cursors.html', 'http://activemq.apache.org/message-cursors.html']);" 
+href="http://activemq.apache.org/message-cursors.html">http://activemq.apache.org/message-cursors.html</A></P>
+<H3>2、存储设置</H3>
+<P>设置消息在内存、磁盘中存储的大小，配置如下：</P>
+<P></P><!-- Crayon Syntax Highlighter v2.7.1 -->
+<DIV style="MARGIN-TOP: 12px; MARGIN-BOTTOM: 12px" 
+id=crayon-569c5d4ac6976261777873 
+class="crayon-syntax crayon-theme-classic crayon-font-courier-new crayon-os-pc print-yes notranslate" 
+data-settings=" minimize scroll-mouseover">
+<DIV class=crayon-toolbar data-settings=" show"><SPAN class=crayon-title></SPAN>
+<DIV class=crayon-tools>
+<DIV class="crayon-button crayon-nums-button" title=切换是否显示行编号>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-plain-button" title=纯文本显示代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-wrap-button" title=切换自动换行>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-expand-button" title=点击展开代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-copy-button" title=复制代码>
+<DIV class=crayon-button-icon></DIV></DIV>
+<DIV class="crayon-button crayon-popup-button" title=在新窗口中显示代码>
+<DIV class=crayon-button-icon></DIV></DIV><SPAN 
+class=crayon-language>Java</SPAN></DIV></DIV>
+<DIV class=crayon-info></DIV>
+<DIV class=crayon-plain-wrap><TEXTAREA style="tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4; -webkit-tab-size: 4" class="crayon-plain print-no" wrap=soft readOnly data-settings="dblclick">&lt;systemUsage&gt;
+  &lt;systemUsage&gt;
+      &lt;memoryUsage&gt;
+          &lt;memoryUsage limit="20 mb"/&gt;
+      &lt;/memoryUsage&gt;
+      &lt;storeUsage&gt;
+          &lt;storeUsage limit="1 gb"/&gt;
+      &lt;/storeUsage&gt;
+      &lt;tempUsage&gt;
+          &lt;tempUsage limit="100 mb"/&gt;
+      &lt;/tempUsage&gt;
+  &lt;/systemUsage&gt;
+&lt;/systemUsage&gt;</TEXTAREA></DIV>
+<DIV class=crayon-main>
+<TABLE class=crayon-table>
+  <TBODY>
+  <TR class=crayon-row>
+    <TD class="crayon-nums " data-settings="show">
+      <DIV class=crayon-nums-content>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6976261777873-1">1</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-2">2</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6976261777873-3">3</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-4">4</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6976261777873-5">5</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-6">6</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6976261777873-7">7</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-8">8</DIV>
+      <DIV class=crayon-num data-line="crayon-569c5d4ac6976261777873-9">9</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-10">10</DIV>
+      <DIV class=crayon-num 
+data-line="crayon-569c5d4ac6976261777873-11">11</DIV>
+      <DIV class="crayon-num crayon-striped-num" 
+      data-line="crayon-569c5d4ac6976261777873-12">12</DIV>
+      <DIV class=crayon-num 
+      data-line="crayon-569c5d4ac6976261777873-13">13</DIV></DIV></TD>
+    <TD class=crayon-code>
+      <DIV 
+      style="tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4; -webkit-tab-size: 4" 
+      class=crayon-pre>
+      <DIV id=crayon-569c5d4ac6976261777873-1 class=crayon-line><SPAN 
+      class="crayon-e ">&lt;systemUsage&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-2 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;systemUsage&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-3 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;memoryUsage&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-4 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-e>memoryUsage </SPAN><SPAN 
+      class=crayon-v>limit</SPAN><SPAN class=crayon-o>=</SPAN><SPAN 
+      class=crayon-s>"20 mb"</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-5 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>memoryUsage</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-6 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;storeUsage&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-7 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-e>storeUsage </SPAN><SPAN 
+      class=crayon-v>limit</SPAN><SPAN class=crayon-o>=</SPAN><SPAN 
+      class=crayon-s>"1 gb"</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-8 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>storeUsage</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-9 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class="crayon-e ">&lt;tempUsage&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-10 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-e>tempUsage </SPAN><SPAN 
+      class=crayon-v>limit</SPAN><SPAN class=crayon-o>=</SPAN><SPAN 
+      class=crayon-s>"100 mb"</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-11 class=crayon-line><SPAN 
+      class=crayon-h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>tempUsage</SPAN><SPAN class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-12 
+      class="crayon-line crayon-striped-line"><SPAN 
+      class=crayon-h>&nbsp;&nbsp;</SPAN><SPAN class=crayon-o>&lt;</SPAN><SPAN 
+      class=crayon-o>/</SPAN><SPAN class=crayon-v>systemUsage</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV>
+      <DIV id=crayon-569c5d4ac6976261777873-13 class=crayon-line><SPAN 
+      class=crayon-o>&lt;</SPAN><SPAN class=crayon-o>/</SPAN><SPAN 
+      class=crayon-v>systemUsage</SPAN><SPAN 
+      class=crayon-o>&gt;</SPAN></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV><!-- [Format Time: 0.0037 seconds] -->
+<P></P>
+<P>memoryUsage表示ActiveMQ使用的内存，这个值要大于等于destinationPolicy中设置的所有队列的内存之和。</P>
+<P>storeUsage表示持久化存储文件的大小。</P>
+<P>tempUsage表示非持久化消息存储的临时内存大小。</P></DIV><!-- .entry-content -->
+<DIV class=entry-utility>此条目发表在<A 
+href="http://www.huaishao8.com/category/config/activemq" 
+rel="category tag">ActiveMQ</A>, <A 
+href="http://www.huaishao8.com/category/config" 
+rel="category tag">实施配置</A>分类目录，贴了<A 
+href="http://www.huaishao8.com/tag/activemq" rel=tag>ActiveMQ</A>, <A 
+href="http://www.huaishao8.com/tag/%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96" 
+rel=tag>性能优化</A>标签。将<A title=链向ActiveMQ使用笔记（七）ActiveMQ性能优化的固定链接 
+href="http://www.huaishao8.com/config/activemq/198.html" 
+rel=bookmark>固定链接</A>加入收藏夹。 </DIV><!-- .entry-utility --></DIV><!-- #post-## -->
+<DIV id=nav-below class=navigation>
+<DIV class=nav-previous><A 
+href="http://www.huaishao8.com/config/activemq/183.html" rel=prev><SPAN 
+class=meta-nav>←</SPAN> ActiveMQ使用笔记（六）ActiveMQ主备配置</A></DIV>
+<DIV class=nav-next><A href="http://www.huaishao8.com/config/activemq/201.html" 
+rel=next>ActiveMQ使用笔记（八）使用过程中出现的问题 <SPAN class=meta-nav>→</SPAN></A></DIV></DIV><!-- #nav-below -->
+<DIV id=comments>
+<DIV id=respond class=comment-respond>
+<H3 id=reply-title class=comment-reply-title>发表评论 <SMALL><A 
+style="DISPLAY: none" id=cancel-comment-reply-link 
+href="http://www.huaishao8.com/config/activemq/198.html#respond" 
+rel=nofollow>取消回复</A></SMALL></H3>
+<P class=must-log-in>要发表评论，您必须先<A 
+href="http://www.huaishao8.com/wp-login.php?redirect_to=http%3A%2F%2Fwww.huaishao8.com%2Fconfig%2Factivemq%2F198.html">登录</A>。</P></DIV><!-- #respond --></DIV><!-- #comments --></DIV><!-- #content --></DIV><!-- #container -->
+<DIV id=primary class=widget-area role=complementary>
+<UL class=xoxo>
+  <LI id=calendar-4 class="widget-container widget_calendar">
+  <DIV id=calendar_wrap>
+  <TABLE id=wp-calendar>
+    <CAPTION>2016年一月</CAPTION>
+    <THEAD>
+    <TR>
+      <TH title=星期一 scope=col>一</TH>
+      <TH title=星期二 scope=col>二</TH>
+      <TH title=星期三 scope=col>三</TH>
+      <TH title=星期四 scope=col>四</TH>
+      <TH title=星期五 scope=col>五</TH>
+      <TH title=星期六 scope=col>六</TH>
+      <TH title=星期日 scope=col>日</TH></TR></THEAD>
+    <TFOOT>
+    <TR>
+      <TD id=prev colSpan=3><A href="http://www.huaishao8.com/date/2015/04">« 
+        四</A></TD>
+      <TD class=pad>&nbsp;</TD>
+      <TD id=next class=pad colSpan=3>&nbsp;</TD></TR></TFOOT>
+    <TBODY>
+    <TR>
+      <TD class=pad colSpan=4>&nbsp;</TD>
+      <TD>1</TD>
+      <TD>2</TD>
+      <TD>3</TD></TR>
+    <TR>
+      <TD>4</TD>
+      <TD>5</TD>
+      <TD>6</TD>
+      <TD>7</TD>
+      <TD>8</TD>
+      <TD>9</TD>
+      <TD>10</TD></TR>
+    <TR>
+      <TD>11</TD>
+      <TD>12</TD>
+      <TD>13</TD>
+      <TD>14</TD>
+      <TD>15</TD>
+      <TD>16</TD>
+      <TD>17</TD></TR>
+    <TR>
+      <TD id=today>18</TD>
+      <TD>19</TD>
+      <TD>20</TD>
+      <TD>21</TD>
+      <TD>22</TD>
+      <TD>23</TD>
+      <TD>24</TD></TR>
+    <TR>
+      <TD>25</TD>
+      <TD>26</TD>
+      <TD>27</TD>
+      <TD>28</TD>
+      <TD>29</TD>
+      <TD>30</TD>
+      <TD>31</TD></TR></TBODY></TABLE></DIV></LI>
+  <LI id=tag_cloud-3 class="widget-container widget_tag_cloud">
+  <H3 class=widget-title>标签</H3>
+  <DIV class=tagcloud><A style="FONT-SIZE: 22pt" class=tag-link-36 title=10个话题 
+  href="http://www.huaishao8.com/tag/activemq">ActiveMQ</A> <A 
+  style="FONT-SIZE: 13.675pt" class=tag-link-39 title=3个话题 
+  href="http://www.huaishao8.com/tag/egit">EGit</A> <A 
+  style="FONT-SIZE: 11.405pt" class=tag-link-23 title=2个话题 
+  href="http://www.huaishao8.com/tag/freemarker">Freemarker</A> <A 
+  style="FONT-SIZE: 21.243pt" class=tag-link-38 title=9个话题 
+  href="http://www.huaishao8.com/tag/java">Java</A> <A 
+  style="FONT-SIZE: 11.405pt" class=tag-link-16 title=2个话题 
+  href="http://www.huaishao8.com/tag/javascript">Javascript</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-30 title=1个话题 
+  href="http://www.huaishao8.com/tag/log4j">log4j</A> <A style="FONT-SIZE: 8pt" 
+  class=tag-link-24 title=1个话题 href="http://www.huaishao8.com/tag/mail">Mail</A> 
+  <A style="FONT-SIZE: 8pt" class=tag-link-26 title=1个话题 
+  href="http://www.huaishao8.com/tag/master">Master</A> <A 
+  style="FONT-SIZE: 11.405pt" class=tag-link-17 title=2个话题 
+  href="http://www.huaishao8.com/tag/mongodb">MongoDB</A> <A 
+  style="FONT-SIZE: 11.405pt" class=tag-link-18 title=2个话题 
+  href="http://www.huaishao8.com/tag/morphia">Morphia</A> <A 
+  style="FONT-SIZE: 13.675pt" class=tag-link-37 title=3个话题 
+  href="http://www.huaishao8.com/tag/mysql">MySql</A> <A style="FONT-SIZE: 8pt" 
+  class=tag-link-25 title=1个话题 
+  href="http://www.huaishao8.com/tag/network">Network</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-22 title=1个话题 
+  href="http://www.huaishao8.com/tag/sitemesh">Sitemesh</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-27 title=1个话题 
+  href="http://www.huaishao8.com/tag/slave">Slave</A> <A style="FONT-SIZE: 8pt" 
+  class=tag-link-21 title=1个话题 
+  href="http://www.huaishao8.com/tag/spring">Spring</A> <A 
+  style="FONT-SIZE: 15.567pt" class=tag-link-20 title=4个话题 
+  href="http://www.huaishao8.com/tag/struts2">Struts2</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-19 title=1个话题 
+  href="http://www.huaishao8.com/tag/tomcat">Tomcat</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-14 title=1个话题 
+  href="http://www.huaishao8.com/tag/%e5%ae%89%e5%85%a8%e6%80%a7">安全性</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-29 title=1个话题 
+  href="http://www.huaishao8.com/tag/%e5%bc%82%e5%b8%b8%e9%97%ae%e9%a2%98">异常问题</A> 
+  <A style="FONT-SIZE: 8pt" class=tag-link-28 title=1个话题 
+  href="http://www.huaishao8.com/tag/%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">性能优化</A> 
+  <A style="FONT-SIZE: 13.675pt" class=tag-link-15 title=3个话题 
+  href="http://www.huaishao8.com/tag/%e6%8c%81%e4%b9%85%e5%8c%96">持久化</A> <A 
+  style="FONT-SIZE: 8pt" class=tag-link-33 title=1个话题 
+  href="http://www.huaishao8.com/tag/%e8%99%9a%e6%8b%9f%e6%9c%ba">虚拟机</A></DIV></LI>
+  <LI id=linkcat-9 class="widget-container widget_links">
+  <H3 class=widget-title>我的朋友</H3>
+  <UL class="xoxo blogroll">
+    <LI><A title=NELLING的博客 
+    onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.nelling0o0.com/', 'NELL']);" 
+    href="http://www.nelling0o0.com/" rel=friend target=_blank>NELL</A></LI>
+    <LI><A 
+    onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.muliba.net/', '木篱笆']);" 
+    href="http://www.muliba.net/" rel="friend co-worker" 
+    target=_blank>木篱笆</A></LI>
+    <LI><A title=水墨的博客 
+    onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.shui-mo.com', '水墨']);" 
+    href="http://www.shui-mo.com/" rel=friend 
+target=_blank>水墨</A></LI></UL></LI></UL></DIV><!-- #primary .widget-area --></DIV><!-- #main -->
+<DIV id=footer role=contentinfo>
+<DIV id=colophon>
+<DIV id=site-info><A title=淮少吧 href="http://www.huaishao8.com/" rel=home>淮少吧 
+</A><A style="PADDING-LEFT: 20px" href="http://www.miitbeian.gov.cn/" 
+rel="external nofollow" target=_blank>浙ICP备15030723号</A> </DIV><!-- #site-info -->
+<DIV id=site-generator><A title=优雅的个人发布平台 
+href="http://cn.wordpress.org/">自豪地采用WordPress。</A> </DIV><!-- #site-generator --></DIV><!-- #colophon --></DIV><!-- #footer --></DIV><!-- #wrapper --><!-- Images Lazyload and Slideshow 3.3 - lazyload css and js -->
+<STYLE type=text/css>.ls_lazyimg {
+	FILTER: alpha(opacity=10); BACKGROUND: url(http://www.huaishao8.com/wp-content/plugins/images-lazyload-and-slideshow/loading.gif) no-repeat center center; opacity: 0.1
+}
+</STYLE>
+<NOSCRIPT>
+<STYLE type=text/css>.ls_lazyimg {
+	DISPLAY: none
+}
+</STYLE>
+</NOSCRIPT>
+<SCRIPT type=text/javascript>
+Array.prototype.S = String.fromCharCode(2);
+Array.prototype.in_array = function(e) {
+	var r = new RegExp(this.S+e+this.S);
+	return (r.test(this.S+this.join(this.S)+this.S));
+};
+
+Array.prototype.pull=function(content){
+	for(var i=0,n=0;i<this.length;i++){
+		if(this[i]!=content){
+			this[n++]=this[i];
+		}
+	}
+	this.length-=1;
+};
+
+jQuery(function($) {
+window._lazyimgs = $("img.ls_lazyimg");
+if (_lazyimgs.length == 0) {
+	return;
+}
+var toload_inds = [];
+var loaded_inds = [];
+var failed_inds = [];
+var failed_count = {};
+var lazyload = function() {
+	if (loaded_inds.length==_lazyimgs.length) {
+		return;
+	}
+	var threshold = 200;
+	_lazyimgs.each(function(i){
+		_self = $(this);
+		if ( _self.attr("lazyloadpass")===undefined && _self.attr("file")
+			&& ( !_self.attr("src") || (_self.attr("src") && _self.attr("file")!=_self.attr("src")) )
+			) {
+			if( (_self.offset().top) < ($(window).height()+$(document).scrollTop()+threshold)
+				&& (_self.offset().left) < ($(window).width()+$(document).scrollLeft()+threshold)
+				&& (_self.offset().top) > ($(document).scrollTop()-threshold)
+				&& (_self.offset().left) > ($(document).scrollLeft()-threshold)
+				) {
+				if (toload_inds.in_array(i)) {
+					return;
+				}
+				toload_inds.push(i);
+				if (failed_count["count"+i] === undefined) {
+					failed_count["count"+i] = 0;
+				}
+				_self.css("opacity",1);
+				$("<img ind=\""+i+"\"/>").bind("load", function(){
+					var ind = $(this).attr("ind");
+					if (loaded_inds.in_array(ind)) {
+						return;
+					}
+					loaded_inds.push(ind);
+					var _img = _lazyimgs.eq(ind);
+					_img.attr("src",_img.attr("file")).css("background-image","none").attr("lazyloadpass","1");
+				}).bind("error", function(){
+					var ind = $(this).attr("ind");
+					if (!failed_inds.in_array(ind)) {
+						failed_inds.push(ind);
+					}
+					failed_count["count"+ind]++;
+					if (failed_count["count"+ind] < 2) {
+						toload_inds.pull(ind);
+					}
+				}).attr("src", _self.attr("file"));
+			}
+		}
+	});
+}
+lazyload();
+var ins;
+$(window).scroll(function(){clearTimeout(ins);ins=setTimeout(lazyload,100);});
+$(window).resize(function(){clearTimeout(ins);ins=setTimeout(lazyload,100);});
+});
+
+jQuery(function($) {
+var calc_image_height = function(_img) {
+	var width = _img.attr("width");
+	var height = _img.attr("height");
+	if ( !(width && height && width>=300) ) return;
+	var now_width = _img.width();
+	var now_height = parseInt(height * (now_width/width));
+	_img.css("height", now_height);
+}
+var fix_images_height = function() {
+	_lazyimgs.each(function() {
+		calc_image_height($(this));
+	});
+}
+fix_images_height();
+$(window).resize(fix_images_height);
+});
+</SCRIPT>
+<!-- Images Lazyload and Slideshow 3.3 - lazyload css and js END -->
+<DIV style="TEXT-ALIGN: center" id=su-footer-links></DIV><LINK id=buttons-css 
+rel=stylesheet type=text/css 
+href="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/buttons.min.css" media=all>
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/comment-reply.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+/* <![CDATA[ */
+var userSettings = {"url":"\/","uid":"0","time":"1453088074","secure":""};
+/* ]]> */
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/utils.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/editor.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+/* <![CDATA[ */
+var wpLinkL10n = {"title":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","update":"\u66f4\u65b0","save":"\u6dfb\u52a0\u94fe\u63a5","noTitle":"(\u65e0\u6807\u9898)","noMatchesFound":"\u672a\u627e\u5230\u7ed3\u679c\u3002"};
+/* ]]> */
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/wplink.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+		tinyMCEPreInit = {
+			baseURL: "http://www.huaishao8.com/wp-includes/js/tinymce",
+			suffix: ".min",
+						mceInit: {'comment':{theme:"modern",skin:"lightgray",language:"zh",formats:{alignleft: [{selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li", styles: {textAlign:"left"}},{selector: "img,table,dl.wp-caption", classes: "alignleft"}],aligncenter: [{selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li", styles: {textAlign:"center"}},{selector: "img,table,dl.wp-caption", classes: "aligncenter"}],alignright: [{selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li", styles: {textAlign:"right"}},{selector: "img,table,dl.wp-caption", classes: "alignright"}],strikethrough: {inline: "del"}},relative_urls:false,remove_script_host:false,convert_urls:false,browser_spellcheck:true,fix_list_elements:true,entities:"38,amp,60,lt,62,gt",entity_encoding:"raw",keep_styles:false,cache_suffix:"wp-mce-4205-20150910",preview_styles:"font-family font-size font-weight font-style text-decoration text-transform",end_container_on_empty_block:true,wpeditimage_disable_captions:false,wpeditimage_html5_captions:false,plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpemoji,wpgallery,wplink,wpdialogs,wptextpattern,wpview,image",external_plugins:{"crayon_tinymce":"http:\/\/www.huaishao8.com\/wp-content\/plugins\/crayon-syntax-highlighter\/util\/tag-editor\/crayon_tinymce.js"},content_css:"http://www.huaishao8.com/wp-includes/css/dashicons.min.css?ver=4.3.2,http://www.huaishao8.com/wp-includes/js/tinymce/skins/wordpress/wp-content.css?ver=4.3.2",selector:"#comment",resize:"vertical",menubar:false,wpautop:true,indent:false,toolbar1:"bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,fullscreen,wp_adv,separator,crayon_tinymce",toolbar2:"formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help",toolbar3:"",toolbar4:"",tabfocus_elements:":prev,:next",body_class:"comment post-type-post post-status-publish post-format-standard locale-zh-cn",extended_valid_elements:",pre[*],code[*],iframe[*]"}},
+			qtInit: {'comment':{id:"comment",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,more,close"}},
+			ref: {plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpemoji,wpgallery,wplink,wpdialogs,wptextpattern,wpview,image",theme:"modern",language:"zh"},
+			load_ext: function(url,lang){var sl=tinymce.ScriptLoader;sl.markDone(url+'/langs/'+lang+'.js');sl.markDone(url+'/langs/'+lang+'_dlg.js');}
+		};
+		</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/tinymce.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/plugin.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+tinymce.addI18n( 'zh', {"New document":"\u65b0\u6587\u6863","Formats":"\u683c\u5f0f","Headings":"\u6807\u9898","Heading 1":"\u4e00\u7ea7\u6807\u9898","Heading 2":"\u4e8c\u7ea7\u6807\u9898","Heading 3":"\u4e09\u7ea7\u6807\u9898","Heading 4":"\u56db\u7ea7\u6807\u9898","Heading 5":"\u4e94\u7ea7\u6807\u9898","Heading 6":"\u516d\u7ea7\u6807\u9898","Blocks":"\u5757","Paragraph":"\u6bb5\u843d","Blockquote":"\u5757\u5f15\u7528","Preformatted":"\u9884\u683c\u5f0f\u5316","Address":"\u5730\u5740","Inline":"\u884c\u5185","Underline":"\u4e0b\u5212\u7ebf","Strikethrough":"\u5220\u9664\u7ebf","Subscript":"\u4e0b\u6807","Superscript":"\u4e0a\u6807","Clear formatting":"\u6e05\u9664\u683c\u5f0f","Bold":"\u7c97\u4f53","Italic":"\u659c\u4f53","Code":"\u4ee3\u7801","Source code":"\u6e90\u4ee3\u7801","Font Family":"\u5b57\u4f53","Font Sizes":"\u5b57\u53f7","Align center":"\u5c45\u4e2d\u5bf9\u9f50","Align right":"\u53f3\u5bf9\u9f50","Align left":"\u5de6\u5bf9\u9f50","Justify":"\u4e24\u7aef\u5bf9\u9f50","Increase indent":"\u589e\u52a0\u7f29\u8fdb\u91cf","Decrease indent":"\u51cf\u5c11\u7f29\u8fdb\u91cf","Cut":"\u526a\u5207","Copy":"\u590d\u5236","Paste":"\u7c98\u5e16","Select all":"\u5168\u9009","Undo":"\u64a4\u9500","Redo":"\u91cd\u505a","Ok":"\u786e\u5b9a","Cancel":"\u53d6\u6d88","Close":"\u5173\u95ed","Visual aids":"\u89c6\u89c9\u8f85\u52a9","Bullet list":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","Numbered list":"\u7f16\u53f7\u5217\u8868","Square":"\u5b9e\u5fc3\u65b9\u5757","Default":"\u9ed8\u8ba4","Circle":"\u5706\u5708","Disc":"\u5706\u70b9","Lower Greek":"\u5c0f\u5199\u5e0c\u814a\u5b57\u6bcd","Lower Alpha":"\u5c0f\u5199\u82f1\u6587\u5b57\u6bcd","Upper Alpha":"\u5927\u5199\u82f1\u6587\u5b57\u6bcd","Upper Roman":"\u5927\u5199\u7f57\u9a6c\u6570\u5b57","Lower Roman":"\u5c0f\u5199\u7f57\u9a6c\u6570\u5b57","Name":"\u540d\u5b57","Anchor":"\u951a","Anchors":"\u951a","Document properties":"\u6587\u6863\u5c5e\u6027","Robots":"\u673a\u5668\u4eba","Title":"\u6807\u9898","Keywords":"\u5173\u952e\u8bcd","Encoding":"\u7f16\u7801","Description":"\u56fe\u50cf\u63cf\u8ff0","Author":"\u4f5c\u8005","Insert\/edit image":"\u63d2\u5165\u6216\u7f16\u8f91\u56fe\u50cf","General":"\u5e38\u89c4","Advanced":"\u9ad8\u7ea7","Source":"\u6e90","Border":"\u8fb9\u6846","Constrain proportions":"\u4fdd\u6301\u957f\u5bbd\u6bd4","Vertical space":"\u5782\u76f4\u95f4\u9694","Image description":"\u56fe\u50cf\u63cf\u8ff0","Style":"\u6837\u5f0f","Dimensions":"\u5c3a\u5bf8","Insert image":"\u63d2\u5165\u56fe\u50cf","Insert date\/time":"\u63d2\u5165\u65e5\u671f\u3001\u65f6\u95f4","Insert\/edit video":"\u63d2\u5165\u6216\u7f16\u8f91\u89c6\u9891","Poster":"\u6d77\u62a5","Alternative source":"\u5907\u7528\u6e90","Paste your embed code below:":"\u8bf7\u5c06\u5d4c\u5165\u4ee3\u7801\u8d34\u5165\u4e0b\u65b9\uff1a","Insert video":"\u63d2\u5165\u89c6\u9891","Embed":"\u5d4c\u5165","Special character":"\u7279\u6b8a\u5b57\u7b26","Right to left":"\u4ece\u53f3\u5230\u5de6","Left to right":"\u4ece\u5de6\u5230\u53f3","Emoticons":"\u8868\u60c5\u7b26\u53f7","Nonbreaking space":"\u4e0d\u95f4\u65ad\u7a7a\u683c","Page break":"\u5206\u9875\u7b26","Paste as text":"\u7c98\u8d34\u4e3a\u6587\u672c","Preview":"\u9884\u89c8","Print":"\u6253\u5370","Save":"\u4fdd\u5b58","Fullscreen":"\u5168\u5c4f","Horizontal line":"\u6c34\u5e73\u7ebf","Horizontal space":"\u6c34\u5e73\u95f4\u9694","Restore last draft":"\u6062\u590d\u4e0a\u4e00\u8349\u7a3f","Insert\/edit link":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","Remove link":"\u79fb\u9664\u94fe\u63a5","Color":"\u989c\u8272","Custom color":"\u81ea\u5b9a\u4e49\u989c\u8272","Custom...":"\u81ea\u5b9a\u4e49\u2026","No color":"\u65e0\u989c\u8272","Could not find the specified string.":"\u65e0\u6cd5\u627e\u5230\u6307\u5b9a\u7684\u5b57\u7b26\u4e32\u3002","Replace":"\u66ff\u6362","Next":"\u4e0b\u4e00\u4e2a","Prev":"\u4e0a\u4e00\u4e2a","Whole words":"\u5339\u914d\u6574\u8bcd","Find and replace":"\u67e5\u627e\u548c\u66ff\u6362","Replace with":"\u66ff\u6362\u4e3a","Find":"\u67e5\u627e","Replace all":"\u5168\u90e8\u66ff\u6362","Match case":"\u5339\u914d\u5927\u5c0f\u5199","Spellcheck":"\u62fc\u5199\u68c0\u67e5","Finish":"\u5b8c\u6210","Ignore all":"\u5168\u90e8\u5ffd\u7565","Ignore":"\u5ffd\u7565","Add to Dictionary":"\u6dfb\u52a0\u5230\u8bcd\u5178","Insert table":"\u63d2\u5165\u8868\u683c","Delete table":"\u5220\u9664\u8868\u683c","Table properties":"\u8868\u683c\u5c5e\u6027","Row properties":"\u8868\u683c\u884c\u5c5e\u6027","Cell properties":"\u5355\u5143\u683c\u5c5e\u6027","Border color":"\u8fb9\u6846\u989c\u8272","Row":"\u884c","Rows":"\u884c","Column":"\u5217","Cols":"\u5217","Cell":"\u5355\u5143\u683c","Header cell":"\u8868\u5934\u5355\u5143\u683c","Header":"\u8868\u5934","Body":"\u4e3b\u4f53","Footer":"\u6ce8\u811a","Insert row before":"\u5728\u4e0a\u65b9\u63d2\u5165\u884c","Insert row after":"\u5728\u4e0b\u65b9\u63d2\u5165\u884c","Insert column before":"\u5728\u524d\u65b9\u63d2\u5165\u5217","Insert column after":"\u5728\u540e\u65b9\u63d2\u5165\u5217","Paste row before":"\u5728\u4e0a\u65b9\u7c98\u8d34\u8868\u683c\u884c","Paste row after":"\u5728\u4e0b\u65b9\u7c98\u8d34\u8868\u683c\u884c","Delete row":"\u5220\u9664\u884c","Delete column":"\u5220\u9664\u5217","Cut row":"\u526a\u5207\u8be5\u884c","Copy row":"\u590d\u5236\u8be5\u884c","Merge cells":"\u5408\u5e76\u5355\u5143\u683c","Split cell":"\u62c6\u5206\u5355\u5143\u683c","Height":"\u9ad8\u5ea6","Width":"\u5bbd\u5ea6","Caption":"\u8bf4\u660e","Alignment":"\u5bf9\u9f50\u65b9\u5f0f","H Align":"\u6a2a\u5411\u5bf9\u9f50","Left":"\u5de6","Center":"\u4e2d","Right":"\u53f3","None":"\u65e0","V Align":"\u7eb5\u5411\u5bf9\u9f50","Top":"\u9876\u90e8","Middle":"\u4e2d\u90e8","Bottom":"\u5e95\u90e8","Row group":"\u884c\u7ec4","Column group":"\u5217\u7ec4","Row type":"\u884c\u7c7b\u578b","Cell type":"\u5355\u5143\u683c\u7c7b\u578b","Cell padding":"\u5355\u5143\u683c\u5185\u8fb9\u8ddd","Cell spacing":"\u5355\u5143\u683c\u95f4\u8ddd","Scope":"\u8303\u56f4","Insert template":"\u63d2\u5165\u6a21\u677f","Templates":"\u6a21\u677f","Background color":"\u80cc\u666f\u989c\u8272","Text color":"\u6587\u5b57\u989c\u8272","Show blocks":"\u663e\u793a\u5757","Show invisible characters":"\u663e\u793a\u4e0d\u53ef\u89c1\u5b57\u7b26","Words: {0}":"\u8bcd\u6570\uff1a{0}","Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off.":"\u5f53\u524d\u5904\u4e8e\u7eaf\u6587\u672c\u7c98\u8d34\u6a21\u5f0f\uff0c\u7c98\u8d34\u7684\u5185\u5bb9\u5c06\u88ab\u89c6\u4f5c\u7eaf\u6587\u672c\u3002\n\n\u5982\u679c\u60a8\u5e0c\u671b\u4eceMicrosoft Word\u7c98\u8d34\u5bcc\u6587\u672c\u5185\u5bb9\uff0c\u8bf7\u5c06\u6b64\u9009\u9879\u5173\u95ed\u3002\u7f16\u8f91\u5668\u5c06\u81ea\u52a8\u6e05\u7406\u4eceWord\u7c98\u8d34\u6765\u7684\u6587\u672c\u3002","Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help":"\u5bcc\u6587\u672c\u533a\u57df\u3002\u6309Alt-Shift-H\u67e5\u9605\u5e2e\u52a9\u3002","You have unsaved changes are you sure you want to navigate away?":"\u79bb\u5f00\u8fd9\u4e2a\u9875\u9762\uff0c\u60a8\u6240\u505a\u7684\u66f4\u6539\u5c06\u4e22\u5931\u3002","Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X\/C\/V keyboard shortcuts instead.":"\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u76f4\u63a5\u8bbf\u95ee\u526a\u8d34\u677f\uff0c\u8bf7\u4f7f\u7528\u952e\u76d8\u5feb\u6377\u952e\u6216\u6d4f\u89c8\u5668\u7684\u7f16\u8f91\u83dc\u5355\u3002","Insert":"\u63d2\u5165","File":"\u6587\u4ef6","Edit":"\u7f16\u8f91","Tools":"\u5de5\u5177","View":"\u67e5\u770b","Table":"\u8868\u683c","Format":"\u683c\u5f0f","Toolbar Toggle":"\u663e\u793a\/\u9690\u85cf\u5de5\u5177\u680f","Insert Read More tag":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e","Insert Page Break tag":"\u63d2\u5165\u5206\u9875\u6807\u7b7e","Read more...":"\u9605\u8bfb\u66f4\u591a\u2026","Distraction-free writing mode":"\u514d\u6253\u6270\u5199\u4f5c\u6a21\u5f0f","No alignment":"\u65e0\u5bf9\u9f50","Remove":"\u79fb\u9664","Edit ":"\u7f16\u8f91","Keyboard Shortcuts":"\u952e\u76d8\u5feb\u6377\u952e","Default shortcuts,":"\u9ed8\u8ba4\u5feb\u6377\u65b9\u5f0f\uff0c","Additional shortcuts,":"\u989d\u5916\u7684\u5feb\u6377\u65b9\u5f0f\uff0c","Focus shortcuts:":"\u7126\u70b9\u5feb\u6377\u65b9\u5f0f\uff1a","Inline toolbar (when an image, link or preview is selected)":"\u5185\u8054\u5de5\u5177\u680f\uff08\u5f53\u56fe\u7247\u3001\u94fe\u63a5\u6216\u9884\u89c8\u88ab\u9009\u4e2d\u65f6\uff09","Editor menu (when enabled)":"\u7f16\u8f91\u83dc\u5355\uff08\u5982\u88ab\u542f\u7528\uff09","Editor toolbar":"\u7f16\u8f91\u5de5\u5177\u680f","Elements path":"\u5143\u7d20\u8def\u5f84","Ctrl + Alt + letter:":"Ctrl+Alt+\u5b57\u6bcd\uff1a","Shift + Alt + letter:":"Shift+Alt+\u5b57\u6bcd\uff1a","Cmd + letter:":"Cmd+\u5b57\u6bcd\uff1a","Ctrl + letter:":"Ctrl+\u5b57\u6bcd\uff1a","Letter":"\u5b57\u6bcd","Action":"\u64cd\u4f5c","To move focus to other buttons use Tab or the arrow keys. To return focus to the editor press Escape or use one of the buttons.":"\u8981\u79fb\u52a8\u7126\u70b9\u5230\u5176\u4ed6\u6309\u94ae\uff0c\u8bf7\u4f7f\u7528Tab\u6216\u7bad\u5934\u952e\uff1b\u8981\u5c06\u7126\u70b9\u79fb\u56de\u7f16\u8f91\u5668\uff0c\u8bf7\u6309Esc\u6216\u4f7f\u7528\u4efb\u610f\u4e00\u4e2a\u6309\u94ae\u3002","When starting a new paragraph with one of these formatting shortcuts followed by a space, the formatting will be applied automatically. Press Backspace or Escape to undo.":"\u5f53\u4f7f\u7528\u8fd9\u4e9b\u683c\u5f0f\u5feb\u6377\u952e\u540e\u8ddf\u7a7a\u683c\u6765\u521b\u5efa\u65b0\u6bb5\u843d\u65f6\uff0c\u8fd9\u4e9b\u683c\u5f0f\u4f1a\u88ab\u81ea\u52a8\u5e94\u7528\u3002\u6309\u9000\u683c\u6216\u9000\u51fa\u952e\u6765\u64a4\u9500\u3002","The following formatting shortcuts are replaced when pressing Enter. Press Escape or the Undo button to undo.":"\u4ee5\u4e0b\u683c\u5f0f\u5feb\u6377\u952e\u5728\u6309\u56de\u8f66\u952e\u65f6\u88ab\u66ff\u6362\u3002\u8bf7\u6309\u9000\u51fa\u6216\u64a4\u9500\u952e\u6765\u64a4\u9500\u3002"});
+tinymce.ScriptLoader.markDone( 'http://www.huaishao8.com/wp-includes/js/tinymce/langs/zh.js' );
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用笔记（七）ActiveMQ性能优化_files/wp-langs-en.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+		tinyMCEPreInit.load_ext("http://www.huaishao8.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor", "zh");
+tinymce.PluginManager.load("crayon_tinymce", "http://www.huaishao8.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/crayon_tinymce.js");
+
+var ajaxurl = "/wp-admin/admin-ajax.php";
+		( function() {
+			var init, id, $wrap;
+
+			if ( typeof tinymce !== 'undefined' ) {
+				for ( id in tinyMCEPreInit.mceInit ) {
+					init = tinyMCEPreInit.mceInit[id];
+					$wrap = tinymce.$( '#wp-' + id + '-wrap' );
+
+					if ( ( $wrap.hasClass( 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( id ) ) && ! init.wp_skip_init ) {
+						tinymce.init( init );
+
+						if ( ! window.wpActiveEditor ) {
+							window.wpActiveEditor = id;
+						}
+					}
+				}
+			}
+
+			if ( typeof quicktags !== 'undefined' ) {
+				for ( id in tinyMCEPreInit.qtInit ) {
+					quicktags( tinyMCEPreInit.qtInit[id] );
+
+					if ( ! window.wpActiveEditor ) {
+						window.wpActiveEditor = id;
+					}
+				}
+			}
+		}());
+		</SCRIPT>
+
+<DIV style="DISPLAY: none" id=wp-link-backdrop></DIV>
+<DIV style="DISPLAY: none" id=wp-link-wrap class=wp-core-ui>
+<FORM id=wp-link tabIndex=-1><INPUT id=_ajax_linking_nonce value=392792c298 
+type=hidden name=_ajax_linking_nonce> 
+<DIV id=link-modal-title>插入或编辑链接<BUTTON id=wp-link-close type=button><SPAN 
+class=screen-reader-text>关闭</SPAN></BUTTON> </DIV>
+<DIV id=link-selector>
+<DIV id=link-options>
+<P class=howto>输入目标URL</P>
+<DIV><LABEL><SPAN>URL</SPAN><INPUT id=wp-link-url type=text></LABEL> </DIV>
+<DIV class=wp-link-text-field><LABEL><SPAN>链接文本</SPAN><INPUT id=wp-link-text 
+type=text></LABEL> </DIV>
+<DIV class=link-target><LABEL><SPAN>&nbsp;</SPAN><INPUT id=wp-link-target 
+type=checkbox> 在新窗口或标签页打开链接</LABEL> </DIV></DIV>
+<P class=howto><A id=wp-link-search-toggle 
+href="http://www.huaishao8.com/config/activemq/198.html#">或链接到站点中的内容</A></P>
+<DIV id=search-panel>
+<DIV class=link-search-wrapper><LABEL><SPAN class=search-label>搜索</SPAN> <INPUT 
+id=wp-link-search class=link-search-field type=search autocomplete="off"> <SPAN 
+class=spinner></SPAN></LABEL></DIV>
+<DIV id=search-results class=query-results tabIndex=0>
+<UL></UL>
+<DIV class=river-waiting><SPAN class=spinner></SPAN></DIV></DIV>
+<DIV id=most-recent-results class=query-results tabIndex=0>
+<DIV id=query-notice-message class=query-notice><EM 
+class=query-notice-default>未指定搜索条件。自动显示近期条目。</EM> <EM 
+class="query-notice-hint screen-reader-text">搜索或使用上下方向键来选择一项。</EM> </DIV>
+<UL></UL>
+<DIV class=river-waiting><SPAN class=spinner></SPAN></DIV></DIV></DIV></DIV>
+<DIV class=submitbox>
+<DIV id=wp-link-cancel><A class="submitdelete deletion" 
+href="http://www.huaishao8.com/config/activemq/198.html#">取消</A> </DIV>
+<DIV id=wp-link-update><INPUT id=wp-link-submit class="button button-primary" value=添加链接 type=submit name=wp-link-submit> 
+</DIV></DIV></FORM></DIV></BODY></HTML>

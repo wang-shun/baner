@@ -1,0 +1,642 @@
+BODY {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: #fff; COLOR: #555; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+A {
+	COLOR: #555; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #2883c5; TEXT-DECORATION: underline
+}
+H2 {
+	LINE-HEIGHT: 32px; FONT-SIZE: 14px
+}
+STRONG {
+	LINE-HEIGHT: 32px; COLOR: #2883c5; FONT-SIZE: 14px
+}
+EM {
+	FONT-STYLE: normal
+}
+B {
+	COLOR: #333
+}
+.clearBoth {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 0px; CLEAR: both; PADDING-TOP: 0px; _display: inline
+}
+.clear {
+	OVERFLOW-X: hidden; OVERFLOW-Y: hidden; ZOOM: 1; OVERFLOW: auto
+}
+#top {
+	MARGIN: auto; WIDTH: 980px
+}
+.topnav {
+	LINE-HEIGHT: 32px; BACKGROUND: url(../images/topbg.gif) repeat-x
+}
+.topnav UL {
+	WIDTH: 600px; BACKGROUND: url(../images/topbg.gif) repeat-x; FLOAT: left
+}
+.topnav UL LI {
+	MARGIN: 0px 20px; DISPLAY: inline; FLOAT: left
+}
+.topnav UL LI SPAN A {
+	COLOR: #f90; TEXT-DECORATION: underline
+}
+.maintopLeft UL LI FONT A {
+	COLOR: #f90; TEXT-DECORATION: underline
+}
+.navright {
+	FLOAT: right; MARGIN-RIGHT: 20px; _margin-top: 5px
+}
+.logo {
+	MARGIN: 10px; FLOAT: left
+}
+.topright {
+	BACKGROUND-COLOR: #eeeccc; MARGIN: 0px; WIDTH: 700px; FLOAT: right; HEIGHT: 86px; COLOR: #000000
+}
+.topright UL {
+	MARGIN: 10px
+}
+.topright UL LI {
+	LINE-HEIGHT: 24px; TEXT-INDENT: 10px; WIDTH: 85px; FLOAT: left; FONT-SIZE: 14px
+}
+.topmenu {
+	WIDTH: 740px; FLOAT: left
+}
+.topmenu UL LI {
+	LINE-HEIGHT: 24px; MARGIN: 5px; FLOAT: left
+}
+.search_txt {
+	FLOAT: right
+}
+.search_btn {
+	FLOAT: right
+}
+.search_txt {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; LINE-HEIGHT: 22px; TEXT-INDENT: 5px; WIDTH: 280px; BACKGROUND: #fff; HEIGHT: 21px; COLOR: #ccc; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.search_btn {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 85px; BACKGROUND: url(../images/dingyue.gif) no-repeat; HEIGHT: 23px; MARGIN-LEFT: 5px; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+#menu {
+	LINE-HEIGHT: 36px; MARGIN: auto; WIDTH: 100%; BACKGROUND: url(../images/zx_menubg.jpg) repeat-x; HEIGHT: 36px; COLOR: #fff; PADDING-TOP: 7px
+}
+.menucontent {
+	MARGIN: auto; WIDTH: 980px
+}
+.menuleft {
+	WIDTH: 360px; FLOAT: left
+}
+.menuleft LI {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 36px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 0px
+}
+.menuright LI {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 36px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 0px
+}
+.menuleft LI {
+	TEXT-ALIGN: center; WIDTH: 100px; HEIGHT: 36px
+}
+.menuleft LI A {
+	DISPLAY: block; COLOR: #fff; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.menuleft LI A:hover {
+	WIDTH: 107px; BACKGROUND: url(../images/zx_menuhover.jpg) no-repeat; HEIGHT: 36px; COLOR: #2883c5; TEXT-DECORATION: none
+}
+.menuright {
+	WIDTH: 580px; FLOAT: right
+}
+.menuright LI A {
+	COLOR: #fff
+}
+.menuright LI A:hover {
+	COLOR: #fe0000
+}
+.curMenu A {
+	WIDTH: 107px; BACKGROUND: url(../images/zx_menuhover.jpg) no-repeat; HEIGHT: 36px
+}
+.curMenu A SPAN {
+	COLOR: #2883c5
+}
+#mainpage {
+	MARGIN: auto; WIDTH: 980px
+}
+.maintop {
+	MARGIN-TOP: 10px; WIDTH: 980px; HEIGHT: 250px
+}
+.maintopleft {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 252px; FLOAT: left; HEIGHT: 248px; OVERFLOW: hidden; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.title {
+	BORDER-BOTTOM: #d9d9d9 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; COLOR: #2883c5; PADDING-TOP: 0px
+}
+.title SPAN {
+	FLOAT: right
+}
+.hleft {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; WIDTH: 232px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 5px
+}
+.hleft LI {
+	WIDTH: 232px; MARGIN-BOTTOM: 5px; FLOAT: left
+}
+.hleft LI P {
+	FLOAT: left
+}
+.hleft LI P IMG {
+	MARGIN-RIGHT: 10px
+}
+.hleft LI B {
+	LINE-HEIGHT: 20px; WIDTH: 122px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 20px; COLOR: #f60; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+.hleft LI SPAN {
+	WIDTH: 122px; TEXT-OVERFLOW: ellipsis; FLOAT: left; OVERFLOW: hidden
+}
+.ls {
+	PADDING-BOTTOM: 1px; PADDING-LEFT: 8px; WIDTH: 224px; TEXT-OVERFLOW: ellipsis; PADDING-RIGHT: 1px; WHITE-SPACE: nowrap; HEIGHT: 20px; OVERFLOW: hidden; PADDING-TOP: 1px
+}
+.banner {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; MARGIN: 0px 10px; WIDTH: 466px; FLOAT: left; HEIGHT: 250px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.banner UL {
+	MARGIN-LEFT: 10px
+}
+.banner UL LI {
+	LIST-STYLE-TYPE: disc; MARGIN: 1px 2px 2px 5px; WIDTH: 220px; FLOAT: left
+}
+.maintopright {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 236px; FLOAT: left; HEIGHT: 248px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.maintopright UL {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+.maintopright UL LI {
+	LINE-HEIGHT: 22px; PADDING-LEFT: 8px; WIDTH: 208px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(../images/ls.jpg) no-repeat left center; FLOAT: left; HEIGHT: 23px; OVERFLOW: hidden
+}
+.life03_c {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; LIST-STYLE-IMAGE: none; PADDING-TOP: 5px
+}
+.life03_c LI {
+	LINE-HEIGHT: 22px; PADDING-LEFT: 5px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 23px; OVERFLOW: hidden
+}
+.banner02 {
+	MARGIN-TOP: 10px; WIDTH: 980px
+}
+.mainbox {
+	MARGIN-TOP: 10px
+}
+.mainleft {
+	WIDTH: 930px; FLOAT: left
+}
+.mainleft1 {
+	WIDTH: 730px; FLOAT: left
+}
+.hs {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; MARGIN-BOTTOM: 10px; HEIGHT: 335px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.hs01 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px; _padding: 5px
+}
+.hs02 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px; _padding: 5px
+}
+.hs01 LI {
+	MARGIN: 5px; WIDTH: 343px; FLOAT: left
+}
+.hs01 LI A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 22px; DISPLAY: block; COLOR: #2883c5
+}
+.food01 LI A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 22px; DISPLAY: block; COLOR: #2883c5
+}
+.life03_img LI A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 22px; DISPLAY: block; COLOR: #2883c5
+}
+.hs02 LI {
+	MARGIN: 5px 20px; PADDING-LEFT: 8px; WIDTH: 300px; BACKGROUND: url(../images/ls.jpg) no-repeat left center; FLOAT: left; _margin: 5px 15px
+}
+.hs02 LI SPAN {
+	FLOAT: right
+}
+.life {
+	WIDTH: 732px; MARGIN-BOTTOM: 10px; HEIGHT: 337px; CLEAR: both
+}
+.life01 {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 359px; FLOAT: left; HEIGHT: 335px; OVERFLOW: hidden; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.life02 {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; WIDTH: 359px; FLOAT: left; HEIGHT: 325px; MARGIN-LEFT: 10px; OVERFLOW: hidden; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.life01 UL {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 339px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px
+}
+.life02 DL {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 339px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px
+}
+.life01 UL LI {
+	LINE-HEIGHT: 28px; PADDING-LEFT: 8px; WIDTH: 331px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(../images/ls.jpg) no-repeat left center; HEIGHT: 28px; OVERFLOW: hidden
+}
+.food02 LI {
+	LINE-HEIGHT: 28px; PADDING-LEFT: 8px; WIDTH: 331px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(../images/ls.jpg) no-repeat left center; HEIGHT: 28px; OVERFLOW: hidden
+}
+.life02 DL {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 8px; MARGIN: 5px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 8px
+}
+.life02 DL DT {
+	FLOAT: left; MARGIN-RIGHT: 10px
+}
+.life02 DL DD {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 8px; WIDTH: 221px; BACKGROUND: url(../images/ls.jpg) no-repeat left center; FLOAT: left; HEIGHT: 24px; OVERFLOW: hidden
+}
+.food {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 730px; MARGIN-BOTTOM: 10px; HEIGHT: 335px; CLEAR: both; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.food01 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px
+}
+.food02 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px
+}
+.food01 LI {
+	MARGIN: 5px 10px; WIDTH: 216px; FLOAT: left; _margin: 5px 6px
+}
+.food02 LI {
+	MARGIN: 0px 10px; WIDTH: 208px; FLOAT: left; _margin: 0 6px
+}
+.sidebar {
+	WIDTH: 238px; FLOAT: left; MARGIN-LEFT: 10px; OVERFLOW: hidden; _margin-left: 8px
+}
+.life03 {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 236px; MARGIN-BOTTOM: 10px; HEIGHT: 335px; CLEAR: both; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.life03_img {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; WIDTH: 236px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 10px; _padding: 5px 0
+}
+.life03_img LI {
+	MARGIN: 0px 8px; WIDTH: 100px; FLOAT: left; _margin: 0 6px
+}
+.spic {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; WIDTH: 65px; PADDING-RIGHT: 5px; FLOAT: left; PADDING-TOP: 5px
+}
+.spic LI {
+	MARGIN-BOTTOM: 5px
+}
+.sli {
+	WIDTH: 150px; FLOAT: left; MARGIN-RIGHT: 5px
+}
+.sli LI {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 8px; WIDTH: 142px; BACKGROUND: url(../images/ls.jpg) no-repeat left center; HEIGHT: 24px; OVERFLOW: hidden
+}
+#foot {
+	MARGIN: 5px auto auto; WIDTH: 980px; COLOR: #949494
+}
+.foottop {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 20px; WIDTH: 938px; PADDING-RIGHT: 20px; MARGIN-BOTTOM: 8px; BACKGROUND: #f8f8f8; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 8px
+}
+.foottop UL {
+	LINE-HEIGHT: 24px; MARGIN: 5px 15px; WIDTH: 275px; FLOAT: left; _margin: 5px 12px
+}
+.foottop UL LI SPAN {
+	COLOR: #0088a0
+}
+.footnav {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 5px; WIDTH: 970px; PADDING-RIGHT: 5px; FLOAT: left; PADDING-TOP: 0px
+}
+.footnav A {
+	COLOR: #949494
+}
+.copyR {
+	TEXT-ALIGN: center
+}
+.copyR SPAN {
+	MARGIN: 5px 10px
+}
+.find {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; CLEAR: both; BORDER-TOP: medium none; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.fcate {
+	BORDER-BOTTOM: #999 1px solid; POSITION: relative; BORDER-LEFT: #999 1px solid; PADDING-LEFT: 5px; WIDTH: 500px; BACKGROUND: #fff; FLOAT: left; HEIGHT: 25px; BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid; PADDING-TOP: 5px
+}
+.fcate SELECT {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: #fff; COLOR: #555; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.fcate INPUT {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: #fff; COLOR: #555; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.fcate SELECT {
+	PADDING-LEFT: 5px; WIDTH: 100px
+}
+.fcate INPUT {
+	BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; LINE-HEIGHT: 20px; PADDING-LEFT: 10px; WIDTH: 250px; BACKGROUND: #fff; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LEFT: 100px
+}
+.search_btn2 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 69px; BACKGROUND: url(../images/zx_search.gif) no-repeat; FLOAT: left; HEIGHT: 31px; MARGIN-LEFT: 10px; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.cur_search {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; HEIGHT: 32px; CLEAR: both; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 0px
+}
+.cur_search EM {
+	COLOR: #f00
+}
+.food_ass {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; MARGIN-TOP: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.search_food {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 10px; LINE-HEIGHT: 26px; MARGIN: 5px 10px; PADDING-LEFT: 10px; WIDTH: 690px; PADDING-RIGHT: 10px; PADDING-TOP: 10px; _margin: 5px
+}
+.search_food DT {
+	WIDTH: 700px; COLOR: #f60; CLEAR: both; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.search_foot DD {
+	WIDTH: 690px
+}
+.sd EM {
+	FLOAT: right
+}
+.sd P {
+	COLOR: #2883c5; FONT-SIZE: 14px
+}
+.sd P A {
+	COLOR: #2883c5
+}
+.simg {
+	MARGIN-BOTTOM: 10px
+}
+.hot {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; MARGIN-TOP: 10px; WIDTH: 236px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.hotli {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.hotimg {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.hotli LI {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 8px; WIDTH: 208px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(../images/ls.jpg) no-repeat left center; HEIGHT: 24px; OVERFLOW: hidden
+}
+.food_c LI {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 8px; WIDTH: 208px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(../images/ls.jpg) no-repeat left center; HEIGHT: 24px; OVERFLOW: hidden
+}
+.hotimg LI {
+	LINE-HEIGHT: 24px; WIDTH: 216px; MARGIN-BOTTOM: 8px
+}
+.hotimg LI A {
+	TEXT-ALIGN: center; DISPLAY: block; COLOR: #2883c5
+}
+.bnone {
+	BORDER-BOTTOM: medium none
+}
+.pagging {
+	MARGIN: 10px 0px; PADDING-LEFT: 120px; HEIGHT: 40px; CLEAR: both
+}
+.num {
+	MARGIN-TOP: 5px; FLOAT: right
+}
+.pagging A {
+	BORDER-BOTTOM: #c2d5e3 1px solid; BORDER-LEFT: #c2d5e3 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: block; BACKGROUND: #faf9f5; FLOAT: left; VERTICAL-ALIGN: middle; BORDER-TOP: #c2d5e3 1px solid; MARGIN-RIGHT: 4px; BORDER-RIGHT: #c2d5e3 1px solid; PADDING-TOP: 2px
+}
+.pagging_left {
+	TEXT-INDENT: 15px; DISPLAY: block; BACKGROUND: url(../images/icon10.gif) no-repeat left center
+}
+.pagging_right {
+	PADDING-RIGHT: 15px; DISPLAY: block; BACKGROUND: url(../images/icon11.gif) no-repeat right center
+}
+.food_c {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 10px; MARGIN: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.food_c LI {
+	LINE-HEIGHT: 28px; WIDTH: 690px; HEIGHT: 28px
+}
+.food_c LI A {
+	WIDTH: 530px
+}
+.food_c LI SPAN {
+	FLOAT: right; MARGIN-RIGHT: 10px
+}
+.fbg {
+	BACKGROUND: #f0f5f8
+}
+.c_position {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; WIDTH: 960px; PADDING-RIGHT: 10px; PADDING-TOP: 8px
+}
+.yh_detail {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 20px; PADDING-LEFT: 40px; WIDTH: 650px; PADDING-RIGHT: 40px; MARGIN-BOTTOM: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 20px
+}
+.yh_detail H2 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 32px; COLOR: #f60
+}
+.yh_detail P IMG {
+	MARGIN: 10px 0px
+}
+.sdetail {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 24px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; MARGIN-BOTTOM: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.kfc {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 194px; PADDING-RIGHT: 10px; MARGIN-BOTTOM: 10px; BACKGROUND: #efefef; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.kfc SPAN {
+	TEXT-ALIGN: center; DISPLAY: block; COLOR: #0e689b
+}
+.kfc SPAN IMG {
+	MARGIN-BOTTOM: 8px
+}
+.sdetail P A {
+	TEXT-ALIGN: right; DISPLAY: block; COLOR: #0e689b; TEXT-DECORATION: underline
+}
+.coupons {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; WIDTH: 720px; PADDING-RIGHT: 5px; MARGIN-BOTTOM: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.coupons_list {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; WIDTH: 720px; PADDING-RIGHT: 5px; MARGIN-BOTTOM: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.coupons UL LI {
+	BORDER-BOTTOM: #e3e0c0 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #e3e0c0 1px solid; LINE-HEIGHT: 28px; MARGIN: 5px; WIDTH: 168px; BACKGROUND: #f8f5d8; FLOAT: left; COLOR: #c25700; BORDER-TOP: #e3e0c0 1px solid; BORDER-RIGHT: #e3e0c0 1px solid
+}
+.coupons_list {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 710px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.coupons_list P SPAN {
+	LINE-HEIGHT: 32px; FLOAT: right; MARGIN-RIGHT: 20px
+}
+.coupons_list P SPAN B {
+	FONT-SIZE: 14px; MARGIN-RIGHT: 40px
+}
+.coupons_list UL {
+	BORDER-BOTTOM: #d9d9d9 1px dashed; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 690px; PADDING-RIGHT: 10px; CLEAR: both; PADDING-TOP: 10px
+}
+.coupons_list UL LI {
+	WIDTH: 690px
+}
+.ctitle B {
+	LINE-HEIGHT: 40px; COLOR: #f60; FONT-SIZE: 14px
+}
+.cd {
+	LINE-HEIGHT: 40px
+}
+.cd SPAN {
+	COLOR: #0e689b
+}
+.cd EM {
+	FLOAT: right; MARGIN-RIGHT: 20px
+}
+.city_nav {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; MARGIN-BOTTOM: 10px; OVERFLOW: hidden; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.city_nav UL {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 216px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.city_nav UL LI {
+	MARGIN: 5px; WHITE-SPACE: nowrap; FLOAT: left
+}
+.city_nav UL LI A {
+	DISPLAY: block; WHITE-SPACE: nowrap
+}
+.city_nav UL LI A:hover {
+	COLOR: #2883c5
+}
+.zxdetail {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; WIDTH: 930px; PADDING-RIGHT: 20px; MARGIN-BOTTOM: 10px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid; PADDING-TOP: 10px
+}
+.detail_title H1 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 5px; LINE-HEIGHT: 40px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/titleline.jpg) no-repeat center bottom; HEIGHT: 40px; COLOR: #2883c5; FONT-SIZE: 24px; PADDING-TOP: 5px
+}
+.writer SPAN {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 32px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+.detail_title2 {
+	BORDER-BOTTOM: #ddebf6 1px solid; BORDER-LEFT: #ddebf6 1px solid; PADDING-BOTTOM: 10px; TEXT-INDENT: 24px; MARGIN: 10px 0px; PADDING-LEFT: 10px; WIDTH: 910px; PADDING-RIGHT: 10px; BACKGROUND: #f2f8fc; BORDER-TOP: #ddebf6 1px solid; BORDER-RIGHT: #ddebf6 1px solid; PADDING-TOP: 10px
+}
+.detail_title2 SPAN {
+	MARGIN-LEFT: 20px
+}
+.detail_c P {
+	LINE-HEIGHT: 24px; TEXT-INDENT: 24px; MARGIN: 10px 0px
+}
+.others {
+	LINE-HEIGHT: 24px; MARGIN: 30px 0px; PADDING-LEFT: 250px; CLEAR: both; FONT-WEIGHT: bold
+}
+.related {
+	MARGIN: 10px 0px
+}
+.related UL LI A {
+	LINE-HEIGHT: 28px; PADDING-LEFT: 8px; DISPLAY: block; BACKGROUND: url(../images/ls2.jpg) no-repeat left center; COLOR: #2883c5
+}
+.thislabel {
+	MARGIN: 20px 0px
+}
+.shareto {
+	MARGIN: 20px 0px
+}
+.thislabel P SPAN {
+	MARGIN: 5px 15px 5px 0px
+}
+.shareto {
+	HEIGHT: 40px
+}
+.shareto B {
+	FLOAT: left; FONT-SIZE: 14px; MARGIN-RIGHT: 10px
+}
+.shareto A {
+	MARGIN: 0px 5px; DISPLAY: block; FLOAT: left
+}
+.comments {
+	WIDTH: 732px; MARGIN-BOTTOM: 10px; CLEAR: both
+}
+.com_title {
+	BORDER-BOTTOM: #ddebf6 1px solid; BORDER-LEFT: #ddebf6 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #f2f8fc; BORDER-TOP: #ddebf6 1px solid; BORDER-RIGHT: #ddebf6 1px solid; PADDING-TOP: 0px
+}
+.com_title SPAN {
+	LINE-HEIGHT: 32px; FLOAT: right
+}
+.com_title SPAN EM {
+	COLOR: #f00
+}
+.com_more {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 20px; WIDTH: 712px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+.com_more LI {
+	POSITION: relative; MARGIN: 10px 0px; WIDTH: 710px; FLOAT: left; CLEAR: both
+}
+.com_more DT {
+	TEXT-ALIGN: center; WIDTH: 52px; FLOAT: left; MARGIN-RIGHT: 10px
+}
+.com_more DT IMG {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; WIDTH: 50px; BORDER-TOP: #d9d9d9 1px solid; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.com_more DT SPAN {
+	TEXT-ALIGN: center; WIDTH: 52px; DISPLAY: block
+}
+.com_list {
+	BORDER-BOTTOM: #ebebeb 1px solid; BORDER-LEFT: #ebebeb 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; WIDTH: 626px; PADDING-RIGHT: 10px; FLOAT: left; HEIGHT: 40px; BORDER-TOP: #ebebeb 1px solid; BORDER-RIGHT: #ebebeb 1px solid; PADDING-TOP: 5px
+}
+.com_time {
+	LINE-HEIGHT: 32px; PADDING-RIGHT: 20px; WHITE-SPACE: nowrap; FLOAT: right
+}
+.icon04 {
+	Z-INDEX: 30; POSITION: absolute; WIDTH: 11px; BACKGROUND: url(../images/icon04.gif) no-repeat; HEIGHT: 7px; TOP: -6px; LEFT: 150px
+}
+.want_com {
+	BORDER-BOTTOM: #cdcdcd 1px solid; BORDER-LEFT: #cdcdcd 1px solid; PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; WIDTH: 690px; PADDING-RIGHT: 20px; MARGIN-BOTTOM: 10px; BACKGROUND: #eeeeee; CLEAR: both; BORDER-TOP: #cdcdcd 1px solid; BORDER-RIGHT: #cdcdcd 1px solid; PADDING-TOP: 20px
+}
+.want_com TEXTAREA {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; WIDTH: 688px; HEIGHT: 100px; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.want_com P SPAN {
+	MARGIN-TOP: 10px; DISPLAY: block; FLOAT: left; MARGIN-RIGHT: 20px
+}
+.want_com P SPAN INPUT {
+	MARGIN-TOP: 5px; MARGIN-LEFT: 60px
+}
+.newimg LI {
+	TEXT-ALIGN: center; MARGIN: 5px 8px; WIDTH: 100px; FLOAT: left; _margin: 5px
+}
+.pgcls {
+	MARGIN-TOP: 10px; PADDING-LEFT: 10px; WIDTH: 230px; FLOAT: left
+}
+.pgcls UL {
+	LIST-STYLE-IMAGE: none
+}
+.pgcls UL LI {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FLOAT: left; PADDING-TOP: 5px
+}
+.treediv {
+	BORDER-BOTTOM: #ccc 1px solid; POSITION: fixed; BORDER-LEFT: #ccc 1px solid; MARGIN-TOP: 10px; WIDTH: 260px; FLOAT: left; MARGIN-LEFT: 10px; OVERFLOW: auto; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; LEFT: 15px
+}
+.treenav {
+	BORDER-BOTTOM: #d9d9d9 1px solid; BORDER-LEFT: #d9d9d9 1px solid; BACKGROUND-COLOR: #eeeeee; HEIGHT: 110px; OVERFLOW: hidden; BORDER-TOP: #d9d9d9 1px solid; FONT-WEIGHT: bold; BORDER-RIGHT: #d9d9d9 1px solid
+}
+.treenav LI {
+	PADDING-BOTTOM: 5px; MARGIN: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FLOAT: left; PADDING-TOP: 5px
+}

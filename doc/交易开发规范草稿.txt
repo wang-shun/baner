@@ -1,0 +1,11 @@
+1.对商户的交易码以cbp打头                    tranfromid   MERCHANT_CLI
+2.收银台发到平台的交易码以chs打头            tranfromid   CASHIER_CLI
+3.console发到平台的交易以col打头             tranfromid   CONSOLE_CLI 
+4.由平台自身发起的交易以ctb打头							 tranfromid   PLATFORM_CLI
+4.由平台自身完成的服务交易码以act打头				 serverid			PLATFORM_SVR
+5.交易码定位六位  例如：cbp001     chs001     col001
+
+[IN_cluster0_20160308135122047000010
+
+packmsg|baseservice|true,registermsg|baseservice|true,sysspecailhander|baseservice|false,umb_svr|protocolservice|false,registermsg|baseservice|false,unpackmsg|baseservice|false,rescodeconvert|baseservice|false,sendsms|businessservice|true
+

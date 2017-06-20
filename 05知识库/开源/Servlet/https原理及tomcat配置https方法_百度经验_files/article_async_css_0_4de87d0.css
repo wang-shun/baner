@@ -1,0 +1,69 @@
+.app-dl-mdl {
+	BORDER-BOTTOM: #f1f1f1 1px solid; HEIGHT: 79px
+}
+.app-dl-icon {
+	TEXT-ALIGN: center; WIDTH: 94px; FLOAT: left; HEIGHT: 69px; BORDER-RIGHT: #f1f1f1 1px solid; PADDING-TOP: 10px
+}
+.app-dl-icon IMG {
+	WIDTH: 48px; HEIGHT: 48px
+}
+.app-dl-info {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; WIDTH: 346px; PADDING-RIGHT: 10px; FLOAT: left; HEIGHT: 79px; BORDER-RIGHT: #f1f1f1 1px solid; PADDING-TOP: 0px
+}
+.app-dl-info .app-dl-titl {
+	BORDER-BOTTOM: #f1f1f1 1px dashed; LINE-HEIGHT: 39px; HEIGHT: 39px; COLOR: #666
+}
+.app-dl-info .mdl-item-name {
+	COLOR: #666
+}
+.app-dl-info .mdl-item-value {
+	COLOR: #333
+}
+.app-dl-info .app-dl-meta {
+	LINE-HEIGHT: 39px; HEIGHT: 39px; FONT-SIZE: 12px
+}
+.app-dl-info .app-dl-meta .s-line {
+	POSITION: relative; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: inline-block; COLOR: #f1f1f1; TOP: -1px; FONT-WEIGHT: 400; PADDING-TOP: 0px
+}
+.app-dl-link {
+	FLOAT: left; HEIGHT: 79px
+}
+.app-dl-link A {
+	MARGIN: 15px 19px 5px; WIDTH: 106px; DISPLAY: block; BACKGROUND: url(http://exp.bdstatic.com/static/article/widget/ui/auto-app/app_dl_icon_7eeadd8.png) no-repeat; HEIGHT: 30px
+}
+.app-dl-link SPAN {
+	COLOR: #ccc; MARGIN-LEFT: 10px; FONT-SIZE: 12px
+}
+.scroll-tip {
+	POSITION: absolute; WIDTH: 133px; BACKGROUND: url(http://exp.bdstatic.com/static/article/widget/ui/auto-locate-pic/img/scroll-step_193b85c.png) no-repeat; HEIGHT: 133px; TOP: 0px; LEFT: 0px
+}
+.list-icon-link {
+	TEXT-ALIGN: center; LINE-HEIGHT: 32px; WIDTH: 32px; DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ico_bg.png) no-repeat 0px -68px; HEIGHT: 34px; COLOR: #fff; FONT-SIZE: 16px; CURSOR: pointer; TEXT-DECORATION: none
+}
+.list-icon-current {
+	BACKGROUND-POSITION: 0px 0px
+}
+.list-icon-link:hover {
+	BACKGROUND-POSITION: 0px 0px; TEXT-DECORATION: none
+}
+.list-icon-link:visited {
+	COLOR: #fff
+}
+.unorder-ico-group {
+	
+}
+.unorder-ico-group .list-icon-link {
+	WIDTH: 11px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ico_s_bg.png) no-repeat 0px -26px; HEIGHT: 13px; OVERFLOW: hidden
+}
+.unorder-ico-group .list-icon-current {
+	BACKGROUND-POSITION: 0px 0px
+}
+.complex-unorder-first {
+	MARGIN-LEFT: -11px
+}
+.complex-unorder-first .unorder-ico-group {
+	PADDING-LEFT: 11px
+}
+.complex-order-first .unorder-ico-group {
+	PADDING-LEFT: 12px
+}

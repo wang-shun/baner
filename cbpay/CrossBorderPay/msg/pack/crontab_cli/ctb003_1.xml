@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ctb003_1">
+	<include>CRONTAB_CLI_1</include>
+	<field name="body">
+	         <format type="virtual"  level="2"/>
+	</field>
+	<field name="tranState">
+	         <format type="s" length="2" necessary="true"  />
+	</field>
+</formula>

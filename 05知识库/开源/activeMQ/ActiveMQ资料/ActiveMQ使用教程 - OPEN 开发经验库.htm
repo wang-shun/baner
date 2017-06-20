@@ -1,0 +1,860 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0056)http://www.open-open.com/lib/view/open1397717007859.html -->
+<HTML><HEAD><TITLE>ActiveMQ使用教程 - OPEN 开发经验库</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=content-type>
+<META name=robots content=index,follow>
+<META name=keywords content=ActiveMQ,ActiveMQ>
+<META name=description 
+content="ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现,尽管JMS规范出台已经是很久的事情了,但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。 &#13;&#10;"><LINK 
+rel="shortcut icon" href="/lib/favicon.ico"><LINK rel=copyright 
+href="http://www.open-open.com/"><LINK rel=stylesheet type=text/css 
+href="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/shCore.css"><LINK rel=stylesheet 
+type=text/css href="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/shCoreRDark.css">
+<STYLE type=text/css media="screen, projection">@import url( /lib/css/common.css );
+@import url( /lib/css/main.css );
+@import url( /lib/css/jGrowl.css );
+@import url( /lib/css/thickbox.css );
+@import url( /lib/css/jquery.ui.css );
+</STYLE>
+
+<STYLE type=text/css>.search {
+	MARGIN: 8px 0px 0px; OVERFLOW: hidden
+}
+.search .TXT {
+	FLOAT: left
+}
+.search .BTN {
+	BORDER-BOTTOM: #2d78f4 1px solid; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #3385ff; FLOAT: left; HEIGHT: 32px; COLOR: #fff; FONT-SIZE: 10.5pt; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.search .BTN:hover {
+	BACKGROUND: #2d78f4; COLOR: #fff
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+	var rooturl="/lib";
+	var wgDocKey='1397717007859';
+	var wgDocTitle='ActiveMQ使用教程';
+	var wgDocStatusFlag='';
+	var wgUserFolders=null;
+	var wgDownFrame=null;
+	var wgCostByUser=null;
+	var wgDocFavoriteByUser=false;
+	var wgDocScoreByUser=null;
+	var wgUserLogined=0;
+	var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+
+
+</SCRIPT>
+
+<SCRIPT>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4b19e5cc155fe555484434d8338ee0af";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY id=view>
+<DIV id=topnav>
+<DIV id=Personal><A class=thickbox title=登录OPEN经验库 
+href="http://www.open-open.com/lib/members/login?keepThis=true&amp;TB_iframe=true&amp;height=177&amp;width=280" 
+?>登录</A>&nbsp;&nbsp; <A class=thickbox title=注册新的账号 
+href="http://www.open-open.com/lib/members/register?keepThis=true&amp;TB_iframe=true&amp;height=460&amp;width=710">注册</A> 
+</DIV>
+<DIV id=topmenu>
+<UL>
+  <LI><A title=Java开源 href="http://www.open-open.com/">Java开源</A></LI>
+  <LI><A title=JS脚本大全 href="http://www.open-open.com/ajax/">JS脚本</A></LI>
+  <LI><A title=OPEN家园 href="http://www.open-open.com/home/">OPEN家园</A></LI>
+  <LI><A title=OPEN文档频道 href="http://www.open-open.com/doc/">OPEN文档</A></LI>
+  <LI><A title=OPEN资讯频道 href="http://www.open-open.com/news/">OPEN资讯</A></LI>
+  <LI><A title=OPEN论坛频道 href="http://www.open-open.com/bbs">OPEN论坛</A></LI>
+  <LI><A href="http://www.open-open.com/github/">Github日报</A></LI>
+  <LI><A href="http://www.open-open.com/code/"><STRONG>OPEN代码</STRONG></A><IMG 
+  alt=最新上线 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/new.gif"></LI></UL></DIV></DIV><!--end top nav-->
+<DIV id=head>
+<DIV id=head-logo><A title=OPEN开发经验库 href="http://www.open-open.com/lib/"><IMG 
+border=0 alt=OPEN开发经验库 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/logo.jpg"></A></DIV>
+<DIV id=head-search>
+<FORM class=search accept-charset=GBK onsubmit="document.charset='GBK';" 
+method=get name=search action=/lib/search>
+<TABLE border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD align=left><INPUT style="HEIGHT: 25px; FONT-SIZE: 18px" id=searchinput 
+      class=TXT maxLength=1048 size=45 type=text name=q x-webkit-speech> <INPUT style="HEIGHT: 28px" id=searchbutton class=BTN value=经验搜索 type=submit> 
+      <INPUT id=od value=0 type=hidden name=od> &nbsp;&nbsp;&nbsp;&nbsp;<FONT 
+      style="FONT-SIZE: 9.5pt"><B>推荐：</B></FONT><A 
+      title="jQuery MiniUI，Web界面控件库！" 
+      href="http://www.miniui.com/demo/#src=datagrid/celledit.html" rel=nofollow 
+      target=_blank><FONT style="FONT-SIZE: 9.5pt" color=red><B>jQuery 
+      MiniUI，Web界面控件库！</B></FONT></A><BR></TD></TR></TBODY></TABLE></FORM></DIV>
+<DIV id=head-ad></DIV></DIV><!-- end head -->
+<DIV id=content>
+<DIV id=content-nav><A href="http://www.open-open.com/lib/list/all">所有分类</A> 
+&nbsp;&gt;&nbsp; <A href="http://www.open-open.com/lib/list/75">服务器软件</A> 
+&nbsp;&gt;&nbsp; <A href="http://www.open-open.com/lib/list/86">消息系统</A> 
+&nbsp;&gt;&nbsp; <A href="http://www.open-open.com/lib/list/108">ActiveMQ</A> 
+</DIV>
+<DIV id=view-main>
+<DIV id=view-titleh>
+<DIV id=view-title>
+<H3>ActiveMQ使用教程</H3></DIV>
+<DIV id=view-summary>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><STRONG>您的评价</STRONG>:</TD>
+    <TD>
+      <DIV id=rate class=rate-container><SPAN id=star1 class=star-big-off 
+      title=很差>&nbsp;</SPAN><SPAN id=star2 class=star-big-off 
+      title=较差>&nbsp;</SPAN><SPAN id=star3 class=star-big-off 
+      title=还行>&nbsp;</SPAN><SPAN id=star4 class=star-big-off 
+      title=不错>&nbsp;</SPAN><SPAN id=star5 class=star-big-off 
+      title=力荐>&nbsp;</SPAN></DIV></TD>
+    <TD width=30>
+      <DIV id=rate-tip></DIV></TD>
+    <TD>
+      <DIV id=favorite-container><SPAN class="icon favorite">&nbsp;</SPAN><A 
+      id=favorite 
+      href="javascript:void(0)"><STRONG>收藏该经验</STRONG></A>&nbsp;&nbsp;&nbsp;&nbsp; 
+      </DIV></TD></TR></TBODY></TABLE>
+<DIV id=favorite-box>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD width=70 align=right>文件夹</TD>
+    <TD><SELECT id=fav_folderlist name=folder> <OPTION selected 
+        value=0>请选择...</OPTION> <OPTION id=newfolder-sp disabled 
+        value="">-------------</OPTION> <OPTION 
+    value=-1>新增文件夹...</OPTION></SELECT></TD></TR>
+  <TR style="DISPLAY: none" id=newfolder-input>
+    <TD align=right>新增文件夹</TD>
+    <TD><INPUT id=fav_newfolder maxLength=50 type=text name=newfolder></TD></TR>
+  <TR>
+    <TD align=right>标签</TD>
+    <TD><INPUT id=fav_tags maxLength=135 size=20 type=text name=tags></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD colSpan=2>(多个标签用逗号分隔)</TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<DIV id=readercontainer>
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "8119760813";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</SCRIPT>
+<!-- openlibview -->
+<SCRIPT type=text/javascript src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+
+<DIV id=toc></DIV><!-- google_ad_section_start -->
+<P><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">ActiveMQ 
+是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS 
+Provider实现,尽管JMS规范出台已经是很久的事情了,但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。&nbsp;</SPAN><BR><BR><STRONG>ActiveMQ特性列表</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">1. 
+多种语言和协议编写客户端。语言: Java, C, C++, C#, Ruby, Perl, Python, PHP。应用协议: OpenWire,Stomp 
+REST,WS Notification,XMPP,AMQP&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">2. 
+完全支持JMS1.1和J2EE 1.4规范 (持久化,XA消息,事务)&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">3. 
+对Spring的支持,ActiveMQ可以很容易内嵌到使用Spring的系统里面去,而且也支持Spring2.0的特性&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">4. 
+通过了常见J2EE服务器(如 Geronimo,JBoss 4, GlassFish,WebLogic)的测试,其中通过JCA 1.5 resource 
+adaptors的配置,可以让ActiveMQ可以自动的部署到任何兼容J2EE 1.4 商业服务器上&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">5. 
+支持多种传送协议:in-VM,TCP,SSL,NIO,UDP,JGroups,JXTA&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">6. 
+支持通过JDBC和journal提供高速的消息持久化&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">7. 
+从设计上保证了高性能的集群,客户端-服务器,点对点&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">8. 
+支持Ajax&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">9. 
+支持与Axis的整合&nbsp;</SPAN><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">10. 
+可以很容易得调用内嵌JMS provider,进行测试&nbsp;</SPAN><BR><BR><STRONG>1：下载 ActiveMQ 5.6.0 
+Release&nbsp;</STRONG><BR><BR><A href="http://activemq.apache.org/download.html" 
+rel=nofollow target=_blank>http://activemq.apache.org/download.html</A><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">放到d盘&nbsp;</SPAN><BR><BR><IMG 
+style="WIDTH: 684px; HEIGHT: 251px" title=点击查看原始大小图片 alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_839.png" width=725 
+height=283><BR><BR><STRONG>2：运行apache-activemq服务：双击 activemq.bat</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><IMG 
+alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_634.png" width=347 
+height=175><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><STRONG>3：效果</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><IMG 
+style="WIDTH: 697px; HEIGHT: 348px" title=点击查看原始大小图片 alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_132.png" width=951 
+height=459><BR><BR><STRONG>4：所需jar包</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><IMG 
+alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_903.png" width=443 
+height=418></P>
+<P><STRONG>5：spring配置文件applicationContext.xml</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN></P><PRE class="brush:xml;toolbar: true; auto-links: false;">&lt;?xml&nbsp;version="1.0"&nbsp;encoding="UTF-8"?&gt;
+&lt;!DOCTYPE&nbsp;beans&nbsp;PUBLIC&nbsp;"-//SPRING//DTD&nbsp;BEAN//EN"&nbsp;"http://www.springframework.org/dtd/spring-beans.dtd"&gt;
+&lt;beans&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id="connectionFactory"&nbsp;class="org.apache.activemq.ActiveMQConnectionFactory"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="brokerURL"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;tcp://localhost:61616?wireFormat.maxInactivityDuration=0&lt;/value&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/property&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id="jmsTemplate"&nbsp;class="org.springframework.jms.core.JmsTemplate"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="connectionFactory"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;bean="connectionFactory"/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/property&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id="destination"&nbsp;class="org.apache.activemq.command.ActiveMQQueue"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&nbsp;index="0"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;MessageQueue&lt;/value&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/constructor-arg&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;
+&lt;/beans&gt;</PRE>
+<P></P>
+<P><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">这时主要是配置activemq服务信息与实现springjms的对应接口&nbsp;</SPAN><BR><BR><STRONG>6：消息产生者</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN></P><PRE class="brush:java;toolbar: true; auto-links: false;">package&nbsp;test;
+import&nbsp;javax.jms.JMSException;
+import&nbsp;javax.jms.Message;
+import&nbsp;javax.jms.Session;
+
+import&nbsp;org.springframework.jms.core.MessageCreator;
+
+/**
+&nbsp;*&nbsp;消息产生者
+&nbsp;*&nbsp;User:&nbsp;liuwentao
+&nbsp;*&nbsp;Time:&nbsp;12-6-14&nbsp;上午11:31
+&nbsp;*/
+public&nbsp;class&nbsp;MyMessageCreator&nbsp;implements&nbsp;MessageCreator&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;n&nbsp;=&nbsp;0;
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;String&nbsp;str1&nbsp;=&nbsp;"这个是第&nbsp;";
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;String&nbsp;str2&nbsp;=&nbsp;"&nbsp;个测试消息！";
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;str&nbsp;=&nbsp;"";
+&nbsp;&nbsp;&nbsp;&nbsp;@Override
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Message&nbsp;createMessage(Session&nbsp;paramSession)&nbsp;throws&nbsp;JMSException&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("MyMessageCreator&nbsp;&nbsp;n="&nbsp;+&nbsp;n);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n&nbsp;==&nbsp;9)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//在这个例子中表示第9次调用时，发送结束消息
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;paramSession.createTextMessage("end");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str1&nbsp;+&nbsp;n&nbsp;+&nbsp;str2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;paramSession.createTextMessage(str);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</PRE>
+<P></P>
+<P><STRONG>7：发送消息方</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN></P><PRE class="brush:java;toolbar: true; auto-links: false;">package&nbsp;test;
+import&nbsp;javax.jms.Destination;
+
+import&nbsp;org.springframework.context.ApplicationContext;
+import&nbsp;org.springframework.context.support.ClassPathXmlApplicationContext;
+import&nbsp;org.springframework.jms.core.JmsTemplate;
+/**
+&nbsp;*&nbsp;发送消息方
+&nbsp;*&nbsp;User:&nbsp;liuwentao
+&nbsp;*&nbsp;Time:&nbsp;12-6-14&nbsp;上午11:29
+&nbsp;*/
+public&nbsp;class&nbsp;MessageSender&nbsp;extends&nbsp;Thread&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String&nbsp;args[])&nbsp;throws&nbsp;Exception&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;configLocations&nbsp;=&nbsp;new&nbsp;String[]&nbsp;{"test/applicationContext.xml"};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationContext&nbsp;context&nbsp;=&nbsp;new&nbsp;ClassPathXmlApplicationContext(configLocations);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JmsTemplate&nbsp;jmsTemplate&nbsp;=&nbsp;(JmsTemplate)&nbsp;context.getBean("jmsTemplate");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;destination&nbsp;=&nbsp;(Destination)&nbsp;context.getBean("destination");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;&nbsp;100;&nbsp;i++)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("发送&nbsp;i="&nbsp;+&nbsp;i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//消息产生者
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyMessageCreator&nbsp;myMessageCreator&nbsp;=&nbsp;new&nbsp;MyMessageCreator();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myMessageCreator.n&nbsp;=&nbsp;i;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jmsTemplate.send(destination,&nbsp;myMessageCreator);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sleep(10000);//10秒后发送下一条消息
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</PRE>
+<P></P>
+<P><STRONG>8：消息接收方</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN></P><PRE class="brush:java;toolbar: true; auto-links: false;">package&nbsp;test;
+import&nbsp;javax.jms.Destination;
+import&nbsp;javax.jms.TextMessage;
+
+import&nbsp;org.springframework.context.ApplicationContext;
+import&nbsp;org.springframework.context.support.ClassPathXmlApplicationContext;
+import&nbsp;org.springframework.jms.core.JmsTemplate;
+/**
+&nbsp;*&nbsp;消息接收方
+&nbsp;*&nbsp;User:&nbsp;liuwentao
+&nbsp;*&nbsp;Time:&nbsp;12-6-14&nbsp;上午11:32
+&nbsp;*/
+public&nbsp;class&nbsp;MessageReciver{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String&nbsp;args[])&nbsp;throws&nbsp;Exception&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;configLocations&nbsp;=&nbsp;new&nbsp;String[]&nbsp;{"test/applicationContext.xml"};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationContext&nbsp;context&nbsp;=&nbsp;new&nbsp;ClassPathXmlApplicationContext(configLocations);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JmsTemplate&nbsp;jmsTemplate&nbsp;=&nbsp;(JmsTemplate)&nbsp;context.getBean("jmsTemplate");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;destination&nbsp;=&nbsp;(Destination)&nbsp;context.getBean("destination");
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextMessage&nbsp;msg&nbsp;=&nbsp;null;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//是否继续接收消息
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isContinue&nbsp;=&nbsp;true;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(isContinue)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;(TextMessage)&nbsp;jmsTemplate.receive(destination);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("收到消息&nbsp;:"&nbsp;+&nbsp;msg.getText());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(msg.getText().equals("end"))&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isContinue&nbsp;=&nbsp;false;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("收到退出消息，程序要退出！");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("程序退出了！");
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</PRE>
+<P></P>
+<P><STRONG>9：测试</STRONG><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">运行 
+发送方和接收方 (顺序随便) main文件，效果如下：&nbsp;</SPAN><BR><BR><IMG 
+style="WIDTH: 463px; HEIGHT: 173px" alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_175.png" width=621 
+height=259><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><IMG 
+alt=ActiveMQ使用教程 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/20140417144535_814.png" width=406 
+height=191><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">&nbsp;</SPAN><BR><BR><SPAN 
+style="LINE-HEIGHT: 25px; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Helvetica, Tahoma, Arial, sans-serif; FONT-SIZE: 14px">注：即使 
+接收方启动晚，或者 发送方关闭了， 接收方都会正常接收完所有数据&nbsp;</SPAN></P></DIV>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 2px">
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "8119760813";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</SCRIPT>
+<!-- openlibview -->
+<SCRIPT type=text/javascript src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD class=Related vAlign=top width="49%">
+      <DIV 
+      style="BORDER-BOTTOM: #ccc 1px solid; MARGIN-TOP: 5px"><STRONG>相关资讯</STRONG> 
+      　—　<A href="http://www.open-open.com/news" rel=nofollow 
+      target=_blank>更多</A></DIV>
+      <UL>
+        <LI><A title="新一代ActiveMQ消息系统，Apache Apollo 1.0" 
+        href="http://www.open-open.com/news/view/1bf6591" rel=nofollow 
+        target=_blank>新一代ActiveMQ消息系统，Apache Apollo 1.0</A></LI>
+        <LI><A title=JAVA中利用ActiveMQ收发消息 
+        href="http://www.open-open.com/news/view/2c8b8c" rel=nofollow 
+        target=_blank>JAVA中利用ActiveMQ收发消息</A></LI>
+        <LI><A title="Apache ActiveMQ 5.7.0 发布，Java开源消息中间件" 
+        href="http://www.open-open.com/news/view/186b44b" rel=nofollow 
+        target=_blank>Apache ActiveMQ 5.7.0 发布，Java开源消息中间件</A></LI>
+        <LI><A title="JMS 消息服务器，ActiveMQ 5.12.0 发布" 
+        href="http://www.open-open.com/news/view/1f6c863" rel=nofollow 
+        target=_blank>JMS 消息服务器，ActiveMQ 5.12.0 发布</A></LI>
+        <LI><A title="开源JMS消息器，ActiveMQ 5.6.0 发布" 
+        href="http://www.open-open.com/news/view/dfc38d" rel=nofollow 
+        target=_blank>开源JMS消息器，ActiveMQ 5.6.0 发布</A></LI>
+        <LI><A title="JMS 消息服务器，ActiveMQ 5.12.1 发布" 
+        href="http://www.open-open.com/news/view/704c34" rel=nofollow 
+        target=_blank>JMS 消息服务器，ActiveMQ 5.12.1 发布</A></LI>
+        <LI><A title="NServiceBus 4.0加入了对RabbitMQ和ActiveMQ的支持" 
+        href="http://www.open-open.com/news/view/1ef14da" rel=nofollow 
+        target=_blank>NServiceBus 4.0加入了对RabbitMQ和ActiveMQ的支持</A></LI>
+        <LI><A title="Apache Artemis 1.0.0 发布，嵌入式消息服务 " 
+        href="http://www.open-open.com/news/view/e8169e" rel=nofollow 
+        target=_blank>Apache Artemis 1.0.0 发布，嵌入式消息服务 </A></LI>
+        <LI><A title=GitHub上整理的一些工具 
+        href="http://www.open-open.com/news/view/22e2a8" rel=nofollow 
+        target=_blank>GitHub上整理的一些工具</A></LI>
+        <LI><A title="IT资源管理平台，Hyperic HQ 5.0 Beta 发布" 
+        href="http://www.open-open.com/news/view/1c38c5e" rel=nofollow 
+        target=_blank>IT资源管理平台，Hyperic HQ 5.0 Beta 发布</A></LI>
+        <LI><A title="开源 Wiki 知识管理平台，GeniusWiki 3.2 发布" 
+        href="http://www.open-open.com/news/view/1a235a5" rel=nofollow 
+        target=_blank>开源 Wiki 知识管理平台，GeniusWiki 3.2 发布</A></LI>
+        <LI><A title="Tomcat企业版 Apache TomEE 1.5 发布" 
+        href="http://www.open-open.com/news/view/852980" rel=nofollow 
+        target=_blank>Tomcat企业版 Apache TomEE 1.5 发布</A></LI>
+        <LI><A title="Apache TomEE通过Java EE 6 Web Profile认证" 
+        href="http://www.open-open.com/news/view/145f569" rel=nofollow 
+        target=_blank>Apache TomEE通过Java EE 6 Web Profile认证</A></LI>
+        <LI><A 
+        title="WildFly 10 CR 2 发布 - Java EE 7, Java 8, Hibernate 5, JavaScript 支持热加载" 
+        href="http://www.open-open.com/news/view/1b2cc0f" rel=nofollow 
+        target=_blank>WildFly 10 CR 2 发布 - Java EE 7, Java 8, Hibernate 5, 
+        JavaScript 支持热加载</A></LI>
+        <LI><A title="Apache UIMA Java SDK 2.7.0 发布" 
+        href="http://www.open-open.com/news/view/3e69b7" rel=nofollow 
+        target=_blank>Apache UIMA Java SDK 2.7.0 发布</A></LI>
+        <LI><A title="规则路由和中间引擎，Camel 2.11.3 发布" 
+        href="http://www.open-open.com/news/view/d749f9" rel=nofollow 
+        target=_blank>规则路由和中间引擎，Camel 2.11.3 发布</A></LI>
+        <LI><A title="Apache TomEE 1.5.1 发布，企业版Tomcat" 
+        href="http://www.open-open.com/news/view/1e3e6c4" rel=nofollow 
+        target=_blank>Apache TomEE 1.5.1 发布，企业版Tomcat</A></LI>
+        <LI><A title="应用监控系统，HawtIO 1.4.55 发布" 
+        href="http://www.open-open.com/news/view/917470" rel=nofollow 
+        target=_blank>应用监控系统，HawtIO 1.4.55 发布</A></LI>
+        <LI><A title="Java规则引擎 Apache Camel 2.9.0 发布" 
+        href="http://www.open-open.com/news/view/4a6223" rel=nofollow 
+        target=_blank>Java规则引擎 Apache Camel 2.9.0 发布</A></LI>
+        <LI><A title="Java 规则引擎， Apache Camel 2.9.1 发布" 
+        href="http://www.open-open.com/news/view/15a89cf" rel=nofollow 
+        target=_blank>Java 规则引擎， Apache Camel 2.9.1 发布</A></LI></UL>
+      <DIV style="LINE-HEIGHT: 0; CLEAR: both; FONT-SIZE: 1px"></DIV></TD>
+    <TD width=5></TD>
+    <TD class=Relatedb vAlign=top width="49%">
+      <DIV 
+      style="BORDER-BOTTOM: #ccc 1px solid; MARGIN-TOP: 5px"><STRONG>相关文档</STRONG> 
+      　—　<A href="http://www.open-open.com/doc" rel=nofollow 
+      target=_blank>更多</A></DIV>
+      <UL>
+        <LI><A title="ActiveMQ 培训教程.ppt" 
+        href="http://www.open-open.com/doc/view/f66458ed709441ac81e0e345e42a9045" 
+        rel=nofollow target=_blank>ActiveMQ 培训教程.ppt</A></LI>
+        <LI><A title="Apache ActiveMQ教程.pdf" 
+        href="http://www.open-open.com/doc/view/c358c605ec054b5694cf04d21bf1d8a1" 
+        rel=nofollow target=_blank>Apache ActiveMQ教程.pdf</A></LI>
+        <LI><A title="Apache ActiveMQ 教程.pdf" 
+        href="http://www.open-open.com/doc/view/2873bb17a4c345328e25ddd0762de144" 
+        rel=nofollow target=_blank>Apache ActiveMQ 教程.pdf</A></LI>
+        <LI><A title=apache+activemq教程.pdf 
+        href="http://www.open-open.com/doc/view/9a7ca6cc8040433bb82aa28777ab9bc2" 
+        rel=nofollow target=_blank>apache+activemq教程.pdf</A></LI>
+        <LI><A title="Apache ActiveMQ教程.pdf" 
+        href="http://www.open-open.com/doc/view/5aacf3d27c2c45cda81ae9abcba614cb" 
+        rel=nofollow target=_blank>Apache ActiveMQ教程.pdf</A></LI>
+        <LI><A title="Apache ActiveMQ教程.doc" 
+        href="http://www.open-open.com/doc/view/0d112974965447b19a9cc1adf9d1dc33" 
+        rel=nofollow target=_blank>Apache ActiveMQ教程.doc</A></LI>
+        <LI><A title="Apache ActiveMQ教程.pdf" 
+        href="http://www.open-open.com/doc/view/313dd2439d884feab8cbd6a6641fc20d" 
+        rel=nofollow target=_blank>Apache ActiveMQ教程.pdf</A></LI>
+        <LI><A title="Apache ActiveMQ 教程.pdf" 
+        href="http://www.open-open.com/doc/view/77c784cffcbd4e7393041e8aa9a82dff" 
+        rel=nofollow target=_blank>Apache ActiveMQ 教程.pdf</A></LI>
+        <LI><A title="Apache ActiveMQ 教程.pdf" 
+        href="http://www.open-open.com/doc/view/f9ea2958f99b4248a83c8b5713f4db43" 
+        rel=nofollow target=_blank>Apache ActiveMQ 教程.pdf</A></LI>
+        <LI><A title="ActiveMQ 学习教程.doc" 
+        href="http://www.open-open.com/doc/view/a56cede7fecf449caacc8114044f5c7b" 
+        rel=nofollow target=_blank>ActiveMQ 学习教程.doc</A></LI>
+        <LI><A title=ActiveMQ5.0实战.doc 
+        href="http://www.open-open.com/doc/view/ce192ff66a994f61a483e3ccb44dec9c" 
+        rel=nofollow target=_blank>ActiveMQ5.0实战.doc</A></LI>
+        <LI><A title=ActiveMQ的使用入门.pdf 
+        href="http://www.open-open.com/doc/view/a72438e53d8340629086f73f4fc1ea36" 
+        rel=nofollow target=_blank>ActiveMQ的使用入门.pdf</A></LI>
+        <LI><A title=Spring集成ActiveMQ配置.docx 
+        href="http://www.open-open.com/doc/view/52694ffce3ad4d458c3681894c8e1693" 
+        rel=nofollow target=_blank>Spring集成ActiveMQ配置.docx</A></LI>
+        <LI><A title="JMS &amp; ActiveMQ @淘宝.pptx" 
+        href="http://www.open-open.com/doc/view/3b246745f327459dba48b29e35b0f8fd" 
+        rel=nofollow 
+        target=_blank>http://www.open-open.com/doc/view/3b246745f327459dba48b29e35b0f8fd</A></LI>
+        <LI><A title="ActiveMQ 入门.doc" 
+        href="http://www.open-open.com/doc/view/298f89b78e0242b9a2110558d326f5ff" 
+        rel=nofollow target=_blank>ActiveMQ 入门.doc</A></LI>
+        <LI><A title=ActiveMQ集群的使用与配置.doc 
+        href="http://www.open-open.com/doc/view/8b49b143c5044b03854d9be23f92feda" 
+        rel=nofollow target=_blank>ActiveMQ集群的使用与配置.doc</A></LI>
+        <LI><A title="ActiveMQ 入门.doc" 
+        href="http://www.open-open.com/doc/view/9fae34fd0f6d47aa9fcb22b158e2769e" 
+        rel=nofollow target=_blank>ActiveMQ 入门.doc</A></LI>
+        <LI><A title="ActiveMQ 入门.doc" 
+        href="http://www.open-open.com/doc/view/40ed36e3335e44959778bce8ba424ac7" 
+        rel=nofollow target=_blank>ActiveMQ 入门.doc</A></LI>
+        <LI><A title="ActiveMQ 配置参考手册.doc" 
+        href="http://www.open-open.com/doc/view/1af6112ac4c04f3ca572ab266a341088" 
+        rel=nofollow target=_blank>ActiveMQ 配置参考手册.doc</A></LI>
+        <LI><A title="ActiveMQ 配置参考手册.doc" 
+        href="http://www.open-open.com/doc/view/ae5192f8a9a8492481275e9dee8bbf2a" 
+        rel=nofollow target=_blank>ActiveMQ 
+配置参考手册.doc</A></LI></UL></TD></TR></TBODY></TABLE>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px">
+<DIV style="MARGIN-BOTTOM: 5px" id=baiduad1></DIV></DIV>
+<DIV style="MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px">
+<SCRIPT type=text/javascript><!--
+google_ad_client = "ca-pub-7963911354665843";
+/* 横向单元 */
+google_ad_slot = "6546082871";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</SCRIPT>
+
+<SCRIPT type=text/javascript src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV></DIV>
+<DIV id=view-side>
+<DIV id=upload-box class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body><A id=upload class=upload 
+href="http://www.open-open.com/lib/view/open1397717007859.html#"></A></DIV></DIV></DIV>
+<DIV class="box-blue angle-footer">
+<DIV class=box_1></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box-bg>
+<DIV class=box-title>内容信息</DIV>
+<DIV id=docinfo class=box-body>
+<DIV id=doc-score><SPAN id=score-stars class=stars-big-10 
+title=经验评价得分：5.0分>&nbsp;</SPAN><SPAN id=score-num>5.0</SPAN><BR>
+<DIV id=score-ratecount>(已有2个人评价)</DIV>
+<DIV id=score-scale><SPAN class="starscale stars-small-10" 
+title=力荐>&nbsp;</SPAN> 
+<DIV style="WIDTH: 100px" class=power></DIV>100%<BR><SPAN 
+class="starscale stars-small-8" title=不错>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-6" title=还行>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-4" title=较差>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR><SPAN 
+class="starscale stars-small-2" title=很差>&nbsp;</SPAN> 
+<DIV style="WIDTH: 0px" class=power></DIV>0%<BR></DIV></DIV>
+<DIV class=sp></DIV>
+<DIV id=doc-status><SPAN class=item>收藏：1人</SPAN> <SPAN 
+class=item>发布时间：2014-04-17 14:46:26</SPAN> </DIV></DIV></DIV></DIV>
+<DIV id=upload-box1 class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body>
+<SCRIPT type=text/javascript>
+    google_ad_client = "ca-pub-7963911354665843";
+    google_ad_slot = "7013382412";
+    google_ad_width = 336;
+    google_ad_height = 280;
+</SCRIPT>
+<!-- opendoclibnew -->
+<SCRIPT type=text/javascript src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/f.txt">
+</SCRIPT>
+</DIV></DIV></DIV>
+<DIV id=upload-box1 class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-body>
+<CENTER>
+<SCRIPT>
+document.write("<a href='https://www.jpush.cn/' target='_blank' rel='nofollow'><img src='http://static.open-open.com/300-250jgn.jpg'></a>")
+</SCRIPT>
+</CENTER></DIV></DIV></DIV>
+<DIV id=view-tag class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-title>经验标签</DIV>
+<DIV id=tag-list class=box-body><A 
+href="http://www.open-open.com/lib/tag/ActiveMQ">ActiveMQ</A> </DIV></DIV></DIV>
+<DIV id=view-topic class="box-blue angle">
+<DIV class=box-bg>
+<DIV class=box-title>同类热门经验</DIV>
+<DIV class=box-body>
+<UL id=topic-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ简单介绍+简单实例 
+  href="http://www.open-open.com/lib/view/open1388994166156.html"><SPAN 
+  class=title>ActiveMQ简单介绍+简单实例</SPAN></A> 
+  <DIV class=attribute><SPAN>21607次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ学习笔记 
+  href="http://www.open-open.com/lib/view/open1341994106166.html"><SPAN 
+  class=title>ActiveMQ学习笔记</SPAN></A> 
+  <DIV class=attribute><SPAN>24048次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ实现负载均衡+高可用部署方案 
+  href="http://www.open-open.com/lib/view/open1400126457817.html"><SPAN 
+  class=title>ActiveMQ实现负载均衡+高可用部署方案</SPAN></A> 
+  <DIV class=attribute><SPAN>31612次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ持久化方式 
+  href="http://www.open-open.com/lib/view/open1371822097588.html"><SPAN 
+  class=title>ActiveMQ持久化方式 </SPAN></A>
+  <DIV class=attribute><SPAN>27497次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ实战之 
+  href="http://www.open-open.com/lib/view/open1328079945062.html" 
+  Topic发布订阅消息><SPAN class=title>ActiveMQ实战之 Topic发布订阅消息 </SPAN></A>
+  <DIV class=attribute><SPAN>33703次浏览</SPAN></DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ实战之 
+  href="http://www.open-open.com/lib/view/open1328080134718.html" 
+  Queue点对点消息><SPAN class=title>ActiveMQ实战之 Queue点对点消息 </SPAN></A>
+  <DIV class=attribute><SPAN>25291次浏览</SPAN></DIV></LI></UL></DIV></DIV></DIV>
+<DIV id=view-top-category class="box-blue angle-header">
+<DIV class=box-bg>
+<DIV class=box-title>相关经验</DIV>
+<DIV class=box-body>
+<UL id=top-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=使用Apache 
+  href="http://www.open-open.com/lib/view/open1326272321702.html" target=_blank 
+  ActiveMQ><SPAN class=title>使用Apache ActiveMQ</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-4" 
+  title=经验评价得分：2.3分>&nbsp;</SPAN> <SPAN>3人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ 
+  href="http://www.open-open.com/lib/view/open1446779470201.html" target=_blank 
+  使用说明><SPAN class=title>ActiveMQ 使用说明</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=使用spring 
+  href="http://www.open-open.com/lib/view/open1411816724078.html" target=_blank 
+  ActiveMQ 总结 +><SPAN class=title>使用spring + ActiveMQ 总结</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ的使用 
+  href="http://www.open-open.com/lib/view/open1421305200390.html" 
+  target=_blank><SPAN class=title>ActiveMQ的使用</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ 
+  href="http://www.open-open.com/lib/view/open1421043546140.html" target=_blank 
+  使用示例><SPAN class=title>ActiveMQ 使用示例</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Apache 
+  href="http://www.open-open.com/lib/view/open1372569507706.html" target=_blank 
+  ActiveMQ消息中间件的基本使用><SPAN class=title>Apache ActiveMQ消息中间件的基本使用 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-8" 
+  title=经验评价得分：4.0分>&nbsp;</SPAN> <SPAN>2人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=使用 
+  href="http://www.open-open.com/lib/view/open1369096885607.html" target=_blank 
+  实现异步日志 Spring 和 Log4j、ActiveMQ><SPAN class=title>使用 Log4j、ActiveMQ 和 Spring 
+  实现异步日志</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ 
+  href="http://www.open-open.com/lib/view/open1379380277474.html" target=_blank 
+  监控软件：ActiveMqMonitor><SPAN class=title>ActiveMQ 监控软件：ActiveMqMonitor 
+  </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ基本介绍 
+  href="http://www.open-open.com/lib/view/open1398221582765.html" 
+  target=_blank><SPAN class=title>ActiveMQ基本介绍</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Spring整合ActiveMQ实践 
+  href="http://www.open-open.com/lib/view/open1427335482652.html" 
+  target=_blank><SPAN class=title>Spring整合ActiveMQ实践</SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ持久化方式 
+  href="http://www.open-open.com/lib/view/open1409930819713.html" 
+  target=_blank><SPAN class=title>ActiveMQ持久化方式 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=ActiveMQ持久化方式 
+  href="http://www.open-open.com/lib/view/open1371822097588.html" 
+  target=_blank><SPAN class=title>ActiveMQ持久化方式 </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-8" 
+  title=经验评价得分：4.3分>&nbsp;</SPAN> <SPAN>3人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=Spring整合ActiveMQ 
+  href="http://www.open-open.com/lib/view/open1385946130892.html" 
+  target=_blank><SPAN class=title>Spring整合ActiveMQ </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-6" 
+  title=经验评价得分：3.0分>&nbsp;</SPAN> <SPAN>1人评</SPAN> </DIV></LI>
+  <LI><SPAN class=samelist></SPAN><A title=开源消息总线ActiveMQ 
+  href="http://www.open-open.com/lib/view/open1418004872370.html" 
+  target=_blank><SPAN class=title>开源消息总线ActiveMQ </SPAN></A><BR>
+  <DIV class=attribute><SPAN class="score stars-small-0" 
+  title=经验评价得分：0.0分>&nbsp;</SPAN> <SPAN>0人评</SPAN> </DIV></LI></UL></DIV></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_1></DIV></DIV>
+<DIV id=view-top-category class="box-blue angle-header">
+<DIV class=box-bg>
+<DIV class=box-title>相关讨论 - <A href="http://www.open-open.com/bbs" rel=nofollow 
+target=_blank>更多</A></DIV>
+<DIV class=box-body>
+<UL id=top-list class=file-shortlist>
+  <LI><SPAN class=samelist></SPAN><A title=[转]百万级访问网站前期的技术准备 
+  href="http://www.open-open.com/bbs/view/1324366561827" rel=nofollow 
+  target=_blank><SPAN class=title>[转]百万级访问网站前期的技术准备</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=JIRA使用教程 
+  href="http://www.open-open.com/bbs/view/1436926307381" rel=nofollow 
+  target=_blank><SPAN class=title>JIRA使用教程</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=VIM 
+  href="http://www.open-open.com/bbs/view/1319865864077" rel=nofollow 
+  target=_blank 使用教程><SPAN class=title>VIM 使用教程</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=PHP模板之Smarty安装与使用入门教程 
+  href="http://www.open-open.com/bbs/view/1319016010156" rel=nofollow 
+  target=_blank><SPAN class=title>PHP模板之Smarty安装与使用入门教程</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=76个JavaScript教程资源免费下载 
+  href="http://www.open-open.com/bbs/view/1372818526987" rel=nofollow 
+  target=_blank><SPAN class=title>76个JavaScript教程资源免费下载</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=Java入门教程学习 
+  href="http://www.open-open.com/bbs/view/1318332443124" rel=nofollow 
+  target=_blank><SPAN class=title>Java入门教程学习</SPAN></A> </LI>
+  <LI><SPAN class=samelist></SPAN><A title=Android视频教程AlphaAnimation详解 
+  href="http://www.open-open.com/bbs/view/1423121969826" rel=nofollow 
+  target=_blank><SPAN class=title>Android视频教程AlphaAnimation详解</SPAN></A> 
+</LI></UL></DIV></DIV>
+<DIV class=box_3></DIV>
+<DIV class=box_2></DIV>
+<DIV class=box_1></DIV></DIV><!-- end top list--></DIV></DIV>
+<DIV id=footer>
+<DIV id=footer-menu><A href="http://www.open-open.com/home/1">联系我们</A> - <A 
+href="http://www.open-open.com/home/1">问题反馈</A> </DIV>
+<P>2005-2015 OPEN-OPEN, all rights reserved.</P></DIV>
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/jquery.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/thickbox.patch.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/app.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/scrolltopcontrol.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	var rooturl="/lib";
+	var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+	
+  	
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/jquery-ui.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/scrolltopcontrol.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/view.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/shCore.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/shAutoloader.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="ActiveMQ使用教程%20-%20OPEN%20开发经验库_files/jquery.jgrowl_minimized.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+  	scrolltotop.offset(95,165);
+	scrolltotop.init();
+  </SCRIPT>
+
+<SCRIPT type=text/javascript>
+SyntaxHighlighter.autoloader(
+	'applescript			/lib/syntaxhighlighter_3.0.83/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		/lib/syntaxhighlighter_3.0.83/scripts/shBrushAS3.js',
+	'bash shell				/lib/syntaxhighlighter_3.0.83/scripts/shBrushBash.js',
+	'coldfusion cf			/lib/syntaxhighlighter_3.0.83/scripts/shBrushColdFusion.js',
+	'cpp c					/lib/syntaxhighlighter_3.0.83/scripts/shBrushCpp.js',
+	'obj-c objc				/lib/syntaxhighlighter_3.0.83/scripts/shBrushObjC.js',
+	'c# c-sharp csharp		/lib/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js',
+	'css					/lib/syntaxhighlighter_3.0.83/scripts/shBrushCss.js',
+	'delphi pascal			/lib/syntaxhighlighter_3.0.83/scripts/shBrushDelphi.js',
+	'diff patch pas			/lib/syntaxhighlighter_3.0.83/scripts/shBrushDiff.js',
+	'erl erlang				/lib/syntaxhighlighter_3.0.83/scripts/shBrushErlang.js',
+	'groovy					/lib/syntaxhighlighter_3.0.83/scripts/shBrushGroovy.js',
+	'haxe hx				/lib/syntaxhighlighter_3.0.83/scripts/shBrushHaxe.js',
+	'java					/lib/syntaxhighlighter_3.0.83/scripts/shBrushJava.js',
+	'jfx javafx				/lib/syntaxhighlighter_3.0.83/scripts/shBrushJavaFX.js',
+	'js jscript javascript	/lib/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js',
+	'perl pl				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPerl.js',
+	'php					/lib/syntaxhighlighter_3.0.83/scripts/shBrushPhp.js',
+	'text plain				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPlain.js',
+	'py python				/lib/syntaxhighlighter_3.0.83/scripts/shBrushPython.js',
+	'ruby rails ror rb		/lib/syntaxhighlighter_3.0.83/scripts/shBrushRuby.js',
+	'scala					/lib/syntaxhighlighter_3.0.83/scripts/shBrushScala.js',
+	'sql					/lib/syntaxhighlighter_3.0.83/scripts/shBrushSql.js',
+	'vb vbnet				/lib/syntaxhighlighter_3.0.83/scripts/shBrushVb.js',
+	'xml xhtml xslt html	/lib/syntaxhighlighter_3.0.83/scripts/shBrushXml.js'
+);
+SyntaxHighlighter.all();
+</SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript>
+//生成目录索引列表
+function GenerateContentList()
+{
+    var jquery_h3_list = $('#readercontainer h3');//如果你的章节标题不是h3,只需要将这里的h3换掉即可
+    if(jquery_h3_list.length>0)
+    {
+        var content = '<a name="_labelTop"></a>';
+        content    += '<div id="navCategory" style="border-bottom:1px #dfdfdf solid;margin-bottom:5px">';
+        content    += '<p style="font-size:18px;margin:0"><b>阅读目录</b></p>';
+        content    += '<ul>';
+        for(var i =0;i<jquery_h3_list.length;i++)
+        {
+	    if(i==0){
+              var go_to_top = '<div style="text-align: right"><a name="_label' + i + '"></a></div>';
+	    }else
+	    {
+		var go_to_top = '<div style="text-align: right"><a href="#_labelTop">回到顶部</a><a name="_label' + i + '"></a></div>';
+	    }
+            $(jquery_h3_list[i]).before(go_to_top);
+            var li_content = '<li><a href="#_label' + i + '">' + $(jquery_h3_list[i]).text() + '</a></li>';
+            content += li_content;
+        }
+        content    += '</ul>';
+        content    += '</div>';
+        if($('#readercontainer').length != 0 )
+        {
+            $($('#readercontainer')[0]).prepend(content);
+        }
+    }else{
+GenerateContentList2()
+    }  
+}
+
+function GenerateContentList2()
+{
+    var jquery_h3_list = $('#readercontainer h2');//如果你的章节标题不是h2,只需要将这里的h2换掉即可
+    if(jquery_h3_list.length>0)
+    {
+        var content = '<a name="_labelTop"></a>';
+        content    += '<div id="navCategory" style="border-bottom:1px #dfdfdf solid;margin-bottom:5px">';
+        content    += '<p style="font-size:18px;margin:0"><b>阅读目录</b></p>';
+        content    += '<ul>';
+        for(var i =0;i<jquery_h3_list.length;i++)
+        {
+	    if(i==0){
+              var go_to_top = '<div style="text-align: right"><a name="_label' + i + '"></a></div>';
+	    }else
+	    {
+		var go_to_top = '<div style="text-align: right"><a href="#_labelTop">回到顶部</a><a name="_label' + i + '"></a></div>';
+	    }
+            $(jquery_h3_list[i]).before(go_to_top);
+            var li_content = '<li><a href="#_label' + i + '">' + $(jquery_h3_list[i]).text() + '</a></li>';
+            content += li_content;
+        }
+        content    += '</ul>';
+        content    += '</div>';
+        if($('#readercontainer').length != 0 )
+        {
+            $($('#toc')[0]).prepend(content);
+        }
+    }    
+}
+
+GenerateContentList();
+</SCRIPT>
+
+<SCRIPT>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</SCRIPT>
+<!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=slide&amp;img=0&amp;pos=right&amp;uid=6734290"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+var bds_config={"bdTop":256};
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</SCRIPT>
+<!-- Baidu Button END --></BODY></HTML>

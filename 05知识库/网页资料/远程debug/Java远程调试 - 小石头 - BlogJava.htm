@@ -1,0 +1,850 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	Java远程调试 - 小石头 - BlogJava
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta id="metaKeywords" name="keywords" content="Java远程调试" /><link type="text/css" rel="stylesheet" href="/css/common.css" /><link id="MainCss" type="text/css" rel="stylesheet" href="http://www.blogjava.net/Skins/Valentine/style.css" /><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/yongbing/rss.aspx" /></head>
+<body>
+    <form name="Form1" method="post" action="221179.html" onsubmit="javascript:return WebForm_OnSubmit();" id="Form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="
+__VIEWSTATE" value="" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=hCqqcDq62xC48aLO1-oizzph91mftTcpBQYAMmX9y1_MEKckib0uai68YudFFqahbIRj8ZaZB19FpMr30&amp;t=635295382417495136" type="text/javascript"></script>
+
+<script language=JavaScript>
+									function ctlent(evt,id)
+											{
+												if(evt.ctrlKey && evt.keyCode == 13)
+												{	
+													try
+													{
+														TempSave(id);
+													}
+													catch(ex)
+													{
+													}
+													finally
+													{
+													    __doPostBack('AjaxHolder$PostComment$btnSubmit','')
+													}
+												}
+		
+												}</script>
+												<script language=JavaScript>function SetReplyAuhor(author){document.getElementById('AjaxHolder_PostComment_tbComment').value+="@"+author+"\n";document.getElementById('AjaxHolder_PostComment_tbComment').focus();return false}</script>
+<script src="/ScriptResource.axd?d=TB76SHHPXs0c-M9_tGhAxuTARlsiSpe5Dn70CMDyMu0Be8A_MPH2Z7oqJoDwyxmBxB28VcgK9C-XqFdMNI_DuigegyGH79krj7asDjvAKLqzs7DlCIm2xb4oSA4lM05RrYsRw4Ulp-jfriIG0&amp;t=635295382417495136" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=-BecoVNwDVCZ4TW3gB_ZzPWfgjCQ_C64O4hNc3pweA4UGq0B-lWFnUMMAtqURN0AZF_f7fxk9s5U1gsq0foUhwHdXezBbn_OgCN5EL300MOu7Jb-c7WU_a2OCK01&amp;t=634979389729873750" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=4npu1eCN6HUVuTPPO5YDuuBNC2hrBvTsGEVYQhhAo9CX_hfoT2Mz1UGnoo5C32pPXZvBizBLMnY0_szRgrGRkyv7-BsG0CvEejE8Vl3Xt8nd-D_58kXSDmaBFOFFj7w3EMKivQ2&amp;t=634979389729873750" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+        
+<!--done-->
+<TABLE cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+<TR>
+	<TD width=184 background="/skins/Valentine/images/banner1.gif"></TD>
+	<TD background="/skins/Valentine/images/banner.gif">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/yongbing/">小石头</a><br>
+		<span style="font-size:12px;color:#4371A6;padding-left:20;">Excellence in any department can be attained only by the labor of a lifetime; it is not to be purchased at a lesser price.</span>
+	</div>
+</div>
+</TD>
+	<TD width=295 background="/skins/Valentine/images/banner2.gif"></TD>
+</TR>
+</TABLE>
+<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.blogjava.net/">BlogJava</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_MyHomeLink" class="mainmenu" href="http://www.blogjava.net/yongbing/">首页</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewPostLink" class="mainmenu" href="http://www.blogjava.net/yongbing/admin/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewArticleLink" class="mainmenu" href="/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_ContactLink" accesskey="9" class="mainmenu" href="http://www.blogjava.net/yongbing/contact.aspx?id=1">联系</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Syndication" class="mainmenu" href="http://www.blogjava.net/yongbing/rss">聚合</a><a id="MyLinks1_XMLLink" href="http://www.blogjava.net/yongbing/rss"><img src="http://www.blogjava.net/images/xml.gif" style="border-width:0px;" /></a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Admin" class="menu" href="http://www.blogjava.net/yongbing/admin/EditPosts.aspx">管理</a>
+</div>
+<div id="mytopmenu">
+	
+		<DIV id="mystats">
+			
+<!--done-->
+<div class="blogStats">
+posts - 91,comments - 22,trackbacks - 0
+
+</div></DIV>
+	
+</div>
+<div id="leftcontent" style="display:none">
+	
+		<DIV id="leftcontentcontainer">
+			<table id="Calendar1_entryCal" class="Cal" cellspacing="0" cellpadding="0" title="日历" border="0" style="border-width:1px;border-style:solid;border-collapse:collapse;border:0px">
+	<tr><td colspan="7" style="background-color:Transparent;"><table class="CalTitle" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+		<tr><td class="CalNextPrev" style="width:15%;"><a href="javascript:__doPostBack('Calendar1$entryCal','V5783')" style="color:Black" title="转到上一个月">&lt;</a></td><td align="center" style="width:70%;">2015年12月</td><td class="CalNextPrev" align="right" style="width:15%;"><a href="javascript:__doPostBack('Calendar1$entryCal','V5844')" style="color:Black" title="转到下一个月">&gt;</a></td></tr>
+	</table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center" style="width:14%;">29</td><td class="CalOtherMonthDay" align="center" style="width:14%;">30</td><td align="center" style="width:14%;">1</td><td align="center" style="width:14%;">2</td><td align="center" style="width:14%;">3</td><td align="center" style="width:14%;">4</td><td class="CalWeekendDay" align="center" style="width:14%;">5</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">6</td><td align="center" style="width:14%;">7</td><td align="center" style="width:14%;">8</td><td align="center" style="width:14%;">9</td><td align="center" style="width:14%;">10</td><td align="center" style="width:14%;">11</td><td class="CalWeekendDay" align="center" style="width:14%;">12</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">13</td><td align="center" style="width:14%;">14</td><td align="center" style="width:14%;">15</td><td align="center" style="width:14%;">16</td><td align="center" style="width:14%;">17</td><td align="center" style="width:14%;">18</td><td class="CalWeekendDay" align="center" style="width:14%;">19</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">20</td><td align="center" style="width:14%;">21</td><td align="center" style="width:14%;">22</td><td align="center" style="width:14%;">23</td><td align="center" style="width:14%;">24</td><td class="CalTodayDay" align="center" style="width:14%;">25</td><td class="CalWeekendDay" align="center" style="width:14%;">26</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">27</td><td align="center" style="width:14%;">28</td><td align="center" style="width:14%;">29</td><td align="center" style="width:14%;">30</td><td align="center" style="width:14%;">31</td><td class="CalOtherMonthDay" align="center" style="width:14%;">1</td><td class="CalOtherMonthDay" align="center" style="width:14%;">2</td></tr><tr><td class="CalOtherMonthDay" align="center" style="width:14%;">3</td><td class="CalOtherMonthDay" align="center" style="width:14%;">4</td><td class="CalOtherMonthDay" align="center" style="width:14%;">5</td><td class="CalOtherMonthDay" align="center" style="width:14%;">6</td><td class="CalOtherMonthDay" align="center" style="width:14%;">7</td><td class="CalOtherMonthDay" align="center" style="width:14%;">8</td><td class="CalOtherMonthDay" align="center" style="width:14%;">9</td></tr>
+</table>
+<br>
+			
+<!--done-->
+<div class="newsItem">
+	当我们大喊一声“不！我要这样走！”时，我们就成熟了。
+</div>
+
+			
+<h3>常用链接</h3>
+<ul>
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl01_lnkLinkItem" href="http://www.blogjava.net/yongbing/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl02_lnkLinkItem" href="http://www.blogjava.net/yongbing/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl03_lnkLinkItem" href="http://www.blogjava.net/yongbing/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl04_lnkLinkItem" href="http://www.blogjava.net/yongbing/RecentComments.html">最新评论</a></li>
+	</ul>
+<H3>留言簿<span style="font-size:11px;font-weight:normal;">(10)</span></H3>
+<ul>
+	<li>
+		<a id="SingleColumn1_ctl01_lnkMessages" href="http://www.blogjava.net/yongbing/Contact.aspx?id=1">给我留言</a>
+	<li>
+		<a id="SingleColumn1_ctl01_lnkPublicMsgView" href="http://www.blogjava.net/yongbing/default.aspx?opt=msg">查看公开留言</a>
+	<li>
+		<a id="SingleColumn1_ctl01_lnkPrivateMsgView" href="http://www.blogjava.net/yongbing/admin/MyMessages.aspx">查看私人留言</a>
+	</li>
+</ul>
+
+<!--done-->
+
+		<h1 class = "catListTitle">随笔分类</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/20193.html">Jakarta Commons(7)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to Jakarta Commons(7)" class="listitem" href="http://www.blogjava.net/yongbing/category/20193.html/rss"><img title="Subscribe to Jakarta Commons(7)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/20362.html">JIRA(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to JIRA(2)" class="listitem" href="http://www.blogjava.net/yongbing/category/20362.html/rss"><img title="Subscribe to JIRA(2)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/20194.html">maven、ant(8)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to maven、ant(8)" class="listitem" href="http://www.blogjava.net/yongbing/category/20194.html/rss"><img title="Subscribe to maven、ant(8)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/20337.html">Subversion(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to Subversion(16)" class="listitem" href="http://www.blogjava.net/yongbing/category/20337.html/rss"><img title="Subscribe to Subversion(16)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/20192.html">批处理学习(6)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to 批处理学习(6)" class="listitem" href="http://www.blogjava.net/yongbing/category/20192.html/rss"><img title="Subscribe to 批处理学习(6)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/18981.html">每天学一点(15)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to 每天学一点(15)" class="listitem" href="http://www.blogjava.net/yongbing/category/18981.html/rss"><img title="Subscribe to 每天学一点(15)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/18982.html">每月一本书(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to 每月一本书(2)" class="listitem" href="http://www.blogjava.net/yongbing/category/18982.html/rss"><img title="Subscribe to 每月一本书(2)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/18985.html">生活感悟(21)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to 生活感悟(21)" class="listitem" href="http://www.blogjava.net/yongbing/category/18985.html/rss"><img title="Subscribe to 生活感悟(21)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "catListTitle">随笔档案</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2009/10.html">2009年10月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2008/04.html">2008年4月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2008/03.html">2008年3月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2007/10.html">2007年10月 (2)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2007/06.html">2007年6月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2007/03.html">2007年3月 (21)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2007/02.html">2007年2月 (52)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/yongbing/archive/2007/01.html">2007年1月 (9)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "catListTitle">文章分类</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/18984.html">我的java学习(8)</a><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl01_RssLink" title="Subscribe to 我的java学习(8)" class="listitem" href="http://www.blogjava.net/yongbing/category/18984.html/rss"><img title="Subscribe to 我的java学习(8)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/19025.html">私人领域(2)</a><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl02_RssLink" title="Subscribe to 私人领域(2)" class="listitem" href="http://www.blogjava.net/yongbing/category/19025.html/rss"><img title="Subscribe to 私人领域(2)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/yongbing/category/18983.html">转载区(4)</a><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl03_RssLink" title="Subscribe to 转载区(4)" class="listitem" href="http://www.blogjava.net/yongbing/category/18983.html/rss"><img title="Subscribe to 转载区(4)" src="/Images/xml.gif" style="border-width:0px;" /></a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "catListTitle">文章档案</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/yongbing/archives/2008/08.html">2008年8月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/yongbing/archives/2007/07.html">2007年7月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/yongbing/archives/2007/05.html">2007年5月 (1)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/yongbing/archives/2007/02.html">2007年2月 (3)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/yongbing/archives/2007/01.html">2007年1月 (8)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "catListTitle">Blogger's</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/beansoft/">BeanSoft </a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/BlueDavy/">BlueDavy(Plugin Architecture)</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/pyjiang/">Recreating Myself</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl04_Link" class="listitem" href="http://java.sun.com/docs/books/tutorial/uiswing/examples/components/index.html">swing</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl05_Link" class="listitem" href="http://www.eclipseworld.org/bbs/index.php">中国Eclipse社区</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/calvin/">江南白衣</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/lewhwa">网路冷眼</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl08_Link" class="listitem" href="http://www.infoxa.com/">西安信息资源网</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl09_Link" class="listitem" href="http://www.blogjava.net/zbw25/">读书、思考、生活</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl10_Link" class="listitem" href="http://www.blogjava.net/badboyryan/">谈笑有鸿儒，往来无白丁</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl11_Link" class="listitem" href="http://www.blogjava.net/chengang/">陈刚</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl12_Link" class="listitem" href="http://gocom.primeton.com/modules/eclipse/">面向构件与SOA社区 </a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "catListTitle">Java站点</h1>
+		
+				<ul class = "catList">
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl01_Link" class="listitem" href="http://www.ibm.com/developerworks/cn/">IBM developerWorks 中国</a></li>
+			
+				<li class = "catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl02_Link" class="listitem" href="http://javaresearch.org/">Java Research</a></li>
+			
+				</ul>
+			
+	
+
+
+<script language="JavaScript">
+function SearchGoogle(key,evt,site)
+		{
+			if(evt.keyCode==13 || evt.keyCode==0 || evt.type =='click')
+			{
+				key.focus();
+				var keystr = encodeURIComponent(key.value);
+				url = "http://www.google.com/search?q=";
+				url = url+keystr;
+				url += "&ie=UTF-8&oe=GB2312&hl=zh-CN&domains="+site+"&sitesearch="+site;
+				window.location=url;
+				return false;
+			}
+		}
+</script>
+<H3>搜索</H3>
+<ul>
+	<li>
+		<li><input style="WIDTH: 130px" type="text" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/yongbing')">&nbsp;<input onclick="SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/yongbing')" type="button" value="搜索" name="sa">
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__3808bc1_RSSHyperlink1" href="http://www.blogjava.net/yongbing/CommentsRSS.aspx"><img src="/images/xml.gif" style="border-width:0px;" /></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__3808bc1_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2013/05/03/99506.html#398753">1. re: 主题：不要一辈子靠技术生存 </a>
+			</li>
+			<li style="word-break:break-all">
+				偏激了
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--fndcz</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__3808bc1_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2013/03/07/183519.html#396161">2. re: JIRA + MySQL + Confluence 安装</a>
+			</li>
+			<li style="word-break:break-all">
+				详细信息在这里的数量是美妙的因为如果你基本上已经写上这一专题的书。你的博客是美好的愿望是熟悉这种主题更多的人。很好的资料 ；请保持写作 ！
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--homepage</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__3808bc1_CommentList_ctl03_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2012/08/02/92394.html#384601">3. re: 通过构造XML数据流下载成Excel文件[转]</a>
+			</li>
+			<li style="word-break:break-all">
+				这真心要感谢微软大大们的努力以及开放出这个东西！
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--随便你叫</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__3808bc1_CommentList_ctl04_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2012/02/21/101752.html#370414">4. re: SVNService(将svn作为windows服务运行的工具)</a>
+			</li>
+			<li style="word-break:break-all">
+				win7下 可执行的SVNService.exe 运行不了？
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--11</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__3808bc1_CommentList_ctl05_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2010/09/03/101982.html#330913">5. re: subversion-jira-plugin 实现JIRA和subversion的集成[未登录]</a>
+			</li>
+			<li style="word-break:break-all">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--kevin</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__3ca175d_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/04/101744.html">1. 浅谈cvs vss和svn 的对比(4626)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ca175d_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2008/03/03/183519.html">2. JIRA + MySQL + Confluence 安装(4509)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ca175d_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/06/102276.html">3. 配置httpd，Apache的HTTP Subversion服务器(3576)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ca175d_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/04/101752.html">4. SVNService(将svn作为windows服务运行的工具)(3223)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ca175d_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/05/101982.html">5. subversion-jira-plugin 实现JIRA和subversion的集成(2612)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__2da11df_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2008/03/03/183519.html">1. JIRA + MySQL + Confluence 安装(4)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2da11df_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/05/101982.html">2. subversion-jira-plugin 实现JIRA和subversion的集成(4)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2da11df_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/02/14/99786.html">3. 常用电脑的人养眼绝招,大家都要保护眼睛哦(3)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2da11df_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/02/12/99506.html">4. 主题：不要一辈子靠技术生存 (3)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2da11df_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/yongbing/archive/2007/03/05/101938.html">5. 录屏工具(1)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</DIV>
+	
+</div>
+<div id="centercontent">
+	
+					
+<!--done-->
+<div class = "post">
+	<div class = "postTitle">
+		<a id="viewpost1_TitleUrl" class="postTitle2" href="http://www.blogjava.net/yongbing/articles/221179.html">Java远程调试</a>
+	</div>
+	<h2 class="diaryTitle">JAVA的远程调试方法- -</h2>
+<strong>Tag</strong>： <a href="http://tag.bokee.com/SearchTag.b?span=1&amp;wd=JAVA" target="_blank">JAVA</a> &nbsp;&nbsp; <a href="http://tag.bokee.com/SearchTag.b?span=1&amp;wd=DEBUG" target="_blank">DEBUG</a> &nbsp;&nbsp; <a href="http://tag.bokee.com/SearchTag.b?span=1&amp;wd=REMOTE" target="_blank">REMOTE</a> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p>首先，JAVA自身支持调试功能，并提供了一个简单的调试工具－－JDB，类似于功能强大的GDB，JDB也是一个字符界面的调试环境，并支持设置断点，支持线程线级的调试。<br />
+<br />
+JAVA的调试方法如下：<br />
+1。首先支持JVM，并设置参数，使之工作在DEBUG模式下，加入参数：-Xdebug -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo<br />
+其中，-Xdebug是通知JVM工作在DEBUG模式下，-Xrunjdwp是通知JVM使用(java debug wire protocol)来运行调试环境。该参数同时了一系列的调试选项：<br />
+transport指定了调试数据的传送方式，dt_socket是指用SOCKET模式，另有dt_shmem指用共享内存方式，其中，dt_shmem只适用于Windows平台。<br />
+server参数是指是否支持在server模式的VM中.<br />
+onthrow指明，当产生该类型的Exception时，JVM就会中断下来，进行调式。该参数可选。<br />
+launch指明，当JVM被中断下来时，执行的可执行程序。该参数可选<br />
+suspend指明，是否在调试客户端建立起来后，再执行JVM。<br />
+onuncaught(=y或n)指明出现uncaught exception 后，是否中断JVM的执行.<br />
+<br />
+2。启动调试工具。<br />
+最简单的调试工具就是上面提到的JDB，以上述调试用JVM为例，可以用下面的命运行启动JDB：<br />
+jdb -connect com.sun.jdi.SocketAttach:port=5432,hostname=192.168.11.213<br />
+另外，还有好多的可视化调试工具，如 eclipse,jsawt等等。Eclipses可用 ant debug来建立一个调试方法。<br />
+</p>
+<br />
+<br />
+其实就是使用了JDK的JPDA，在启动服务器（Jboss或者Tomcat等）的命令行参数里面加上：<br />
+-Xdebug -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n<br />
+<br />
+<br />
+<h4 id="subjcns!30EBEBD8BCD440DC!158" style="margin-bottom: 0px">Java远程调试</h4>
+<div class="bvMsg" id="msgcns!30EBEBD8BCD440DC!158">
+<p>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,address=3999,suspend=n
+<p>-XDebug&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 启用调试。<br />
+-Xnoagent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 禁用默认sun.tools.debug调试器。<br />
+-Djava.compiler=NONE&nbsp; 禁止 JIT 编译器的加载。<br />
+-Xrunjdwp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 加载JDWP的JPDA参考执行实例。<br />
+transport&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于在调试程序和 VM 使用的进程之间通讯。<br />
+dt_socket&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 套接字传输。<br />
+dt_shmem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 共享内存传输，仅限于 Windows。<br />
+server=y/n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VM 是否需要作为调试服务器执行。<br />
+address=3999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 调试服务器的端口号，客户端用来连接服务器的端口号。<br />
+suspend=y/n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否在调试客户端建立连接之后启动 VM 。
+<p>Resin:<br />
+RESIN_HOME\bin\httpd.exe -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n
+<p>Tomcat:<br />
+在catalina.sh/bat 的最上面加上：SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 即可。
+<p>Weblogic:<br />
+在startWebLogic.bat加上：set JAVA_OPTIONS=-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+<p>启动App server后，在ide下通过debug remote java application并侦听相应的debug端口
+<p>Eclipse Rcp:
+<p>java -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,suspend=y,server=y,address=8000 -cp F:/rcp/plugins/org.eclipse.equinox.launcher_1.0.0.v20070606.jar org.eclipse.equinox.launcher.Main -application rcp.application -data F:/rcp/workspace -os win32 -ws win32 -arch x86 -nl en_US
+<p>-Xdebug -Xnoagent等参数需要放在main class前面<br />
+<p><font color="#0066a7"><a href="http://dn.codegear.com/cn/article/33654">http://dn.codegear.com/cn/article/33654</a><br />
+<a href="http://www.eclipsezone.com/eclipse/forums/t53459.html">http://www.eclipsezone.com/eclipse/forums/t53459.html</a><br />
+<a href="http://articles.techrepublic.com.com/5100-10878_11-6139512.html">http://articles.techrepublic.com.com/5100-10878_11-6139512.html</a><br />
+<a href="http://www.lifevv.com/tenyo/doc/20070918003423784.html">http://www.lifevv.com/tenyo/doc/20070918003423784.html</a></font><a href="http://www.eclipsezone.com/eclipse/forums/t53459.html"></a></p>
+</div>
+
+	<div class = "postDesc">posted on 2008-08-10 22:29 <a href='http://www.blogjava.net/yongbing/'>小石头</a> 阅读(11440) <a href='#Post'>评论(0)</a> &nbsp;<a href="http://www.blogjava.net/yongbing/admin/EditArticles.aspx?postid=221179">编辑</a> &nbsp;<a href="http://www.blogjava.net/yongbing/AddToFavorite.aspx?id=221179">收藏</a>  所属分类: <a href='http://www.blogjava.net/yongbing/category/18984.html'>我的java学习</a> </div>
+</div>
+<img src ="http://www.blogjava.net/yongbing/aggbug/221179.html?webview=1" width = "1" height = "1" />
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/yongbing/articles/221179.html"
+dc:identifier="http://www.blogjava.net/yongbing/articles/221179.html"
+dc:title="Java远程调试"
+trackback:ping="http://www.blogjava.net/yongbing/services/trackbacks/221179.aspx" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxHolder$scriptmanager1', document.getElementById('Form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tAjaxHolder$UpdatePanel1'], [], [], 90);
+//]]>
+</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    
+<style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style>
+<!--Beging Temp Save-->
+<STYLE>.userData { BEHAVIOR: url(#default#userdata) }
+	</STYLE>
+<DIV class="userData" id="CommentsPersistDiv"></DIV>
+
+<script type="text/javascript">
+function pageLoad()
+{
+    Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(handleInitializeRequest);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(handleEndRequest);
+}
+
+function handleInitializeRequest(sender, args)
+{
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    var eid = args.get_postBackElement().id;
+    if (eid.indexOf("DeleteLink")>0) 
+    {
+       args.get_postBackElement().innerHTML = "<font color='red'>正在删除...</font>";         
+    }    
+    else if (eid.indexOf("btnSubmit")>0) 
+    {
+       document.getElementById("AjaxHolder_PostComment_ltSubmitMsg").innerHTML="正在提交...";
+       document.getElementById("AjaxHolder_PostComment_btnSubmit").disabled = true;       
+    }   
+    else if(eid.indexOf("refreshList")>0)
+    {
+        document.getElementById("AjaxHolder_PostComment_refreshList").innerHTML="<font color='red'>正在刷新...</font>";
+    }
+   
+}	
+
+function TempSave(ElementID)
+{
+	try
+	{
+	CommentsPersistDiv.setAttribute("CommentContent",document.getElementById(ElementID).value);
+	CommentsPersistDiv.save("CommentXMLStore");
+	}
+	catch(ex)
+	{
+	}
+	
+}
+function Restore(ElementID)
+{
+	CommentsPersistDiv.load("CommentXMLStore");
+	document.getElementById(ElementID).value=CommentsPersistDiv.getAttribute("CommentContent");
+}	
+			
+			
+</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align:right;margin-right:10px;margin-bottom:5px;font-size:12px"><a href="/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_refreshList" href="javascript:__doPostBack('AjaxHolder$PostComment$refreshList','')">刷新评论列表</a>&nbsp;&nbsp;</div>
+<div class="commentform">
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color:Red;"></span>
+<br />
+<a name="Feedback"></a>
+	<TABLE cellSpacing="1" cellPadding="1" border="0">	
+		<tr>
+		<td id="AjaxHolder_PostComment_tdOnCommentForm" colspan="3" style="line-height:1.5">		
+		</td>
+	
+		</tr>
+		<div id="AjaxHolder_PostComment_divCommnentArea">
+		<TR>
+			<TD colSpan="3"></TD>
+		</TR>
+		<TR>
+			<TD width="75"></TD>
+			<TD></TD>
+			<TD></TD>
+		</TR>
+		<TR>
+			<TD></TD>
+			<TD colSpan="2">
+			<a href="http://job.cnblogs.com/" target="_blank">找优秀程序员，就在博客园</a>
+			<!--<a href="http://www.cnblogs.com" target="_blank">博客园</a>&nbsp;  <a href="http://q.cnblogs.com/" target="_blank">博问</a>&nbsp; <a href="http://news.cnblogs.com" target="_blank">IT新闻</a>&nbsp; <a href="http://job.cnblogs.com/cate-java_programmer/" target="_blank">Java程序员招聘</a>-->
+			</TD>
+		</TR>
+		<TR>
+			<TD width="55">标题</TD>
+			<TD><input name="AjaxHolder$PostComment$tbTitle" type="text" value="re: Java远程调试" id="AjaxHolder_PostComment_tbTitle" class="commenttb" style="width:320" /></TD>
+			<TD><span id="AjaxHolder_PostComment_RequiredFieldValidator1" style="color:Red;visibility:hidden;">请输入标题</span></TD>
+		</TR>
+		<TR>
+			<TD>姓名</TD>
+			<TD><input name="AjaxHolder$PostComment$tbName" type="text" id="AjaxHolder_PostComment_tbName" class="commenttb" style="width:320" /></TD>
+			<TD><span id="AjaxHolder_PostComment_RequiredFieldValidator2" style="color:Red;visibility:hidden;">请输入你的姓名</span></TD>
+		</TR>
+		<TR>
+			<TD>主页</TD>
+			<TD><input name="AjaxHolder$PostComment$tbUrl" type="text" id="AjaxHolder_PostComment_tbUrl" class="commenttb" style="width:320" /></TD>
+			<TD><FONT face="宋体"></FONT></TD>
+		</TR>
+		<tr>
+			<td align="left" colSpan="3">
+				<table id="AjaxHolder_PostComment_tbCaptchaImage" class="CommentForm" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td colspan="3">
+							<span id="AjaxHolder_PostComment_Requiredfieldvalidator4" style="color:Red;display:none;">请输入验证码</span>
+							<span id="AjaxHolder_PostComment_lblImage" style="color:Red;font-weight:bold;"></span>
+						</td>
+		</tr>
+		<tr>
+			<td width="78">验证码</td>
+			<td><input name="AjaxHolder$PostComment$CodeNumberTextBox" type="text" id="AjaxHolder_PostComment_CodeNumberTextBox" />*&nbsp;&nbsp;<img src="http://www.blogjava.net/Modules/CaptchaImage/JpegImage.aspx?cacheid=20151225111232"/></td>
+			<td align="left"></td>
+		</tr>
+	</table>
+	
+			</td>
+		</tr>
+		<TR>
+			<TD colSpan="3">内容(请不要发表任何与政治相关的内容)
+				<span id="AjaxHolder_PostComment_RequiredFieldValidator3" style="color:Red;visibility:hidden;">请输入评论内容</span><BR>
+				<textarea name="AjaxHolder$PostComment$tbComment" rows="10" cols="50" id="AjaxHolder_PostComment_tbComment" class="commentTextBox" onkeydown="ctlent(event,'AjaxHolder_PostComment_tbComment')" style="Width:480;Height:220"></textarea></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+		<span id="AjaxHolder_PostComment_Message" style="color:Red;"></span>
+		</td>
+		<TR>
+			<TD colSpan="3"><input id="AjaxHolder_PostComment_chkRemember" type="checkbox" name="AjaxHolder$PostComment$chkRemember" checked="checked" tabindex="-1" /><label for="AjaxHolder_PostComment_chkRemember">Remember Me?</label></TD>
+		</TR>
+		<TR>
+			<TD height="23"><input type="submit" name="AjaxHolder$PostComment$btnSubmit" value="提交" onclick="TempSave('AjaxHolder_PostComment_tbComment');WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;AjaxHolder$PostComment$btnSubmit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="AjaxHolder_PostComment_btnSubmit" class="commentButton" />
+				</TD>
+			<td colSpan="2" height="23">&nbsp;
+				<a id="AjaxHolder_PostComment_lnkLogin" href="http://www.blogjava.net/login.aspx?ReturnURL=http://www.blogjava.net/yongbing/articles/221179.html&amp;SourceURL=/yongbing/articles/221179.html">登录</a>&nbsp;&nbsp;<!--<a id="AjaxHolder_PostComment_linkLoginComment" OnClick="if(document.getElementById('AjaxHolder_PostComment_tbComment').value != '') return confirm('未提交的评论内容将会丢失, 你真的要进入高级评论吗?');" href="http://www.blogjava.net/yongbing/articles/221179.html?login=1#Post">使用高级评论</a>&nbsp;&nbsp;<a href="http://www.blogjava.net/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<A href="#Top">返回页首</A>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_lbRestore" OnClick="Restore('AjaxHolder_PostComment_tbComment'); return false;" href="/yongbing/articles/221179.html#Post">恢复上次提交</a>&nbsp;&nbsp;-->&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+		</TR>
+		<TR>
+			<TD colSpan="3"><label class="CtrlEnter">[使用Ctrl+Enter键可以直接提交]</label></TD>
+		</TR>
+		</div>
+		
+		<TR>
+			<TD colSpan="3"><!--该文被作者在 2008-08-10 22:32 编辑过--></TD>
+		</TR>
+		<!--
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>	
+		-->	
+		<TR>
+		<TD colSpan="3">
+		
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1090369/blogjava_blogpost_bottom', [300, 250], 'div-gpt-ad-1364133350381-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+<!-- blogjava_blogpost_bottom -->
+<div id='div-gpt-ad-1364133350381-0' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1364133350381-0'); });
+</script>
+</div>
+<br/>
+
+		</TD>
+		</TR>
+		<tr>			
+		<td colspan="3">
+		
+		</td>
+		</tr>
+		<TR>
+		<TD colSpan="3"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="1">网站导航:<div id="blogsite">
+			<a href="http://www.cnblogs.com" title="开发者的网上家园">博客园</a>&nbsp;&nbsp;
+			<a href="http://news.cnblogs.com">IT新闻</a>&nbsp;&nbsp;
+			<a href="http://kb.cnblogs.com">知识库</a>&nbsp;&nbsp;
+			<a href="http://www.cppblog.com">C++博客</a>&nbsp;&nbsp;
+			<a href="http://job.cnblogs.com">程序员招聘</a>&nbsp;&nbsp;
+			<a href="/yongbing/articles/221179.html?opt=admin">管理</a>
+			</div>
+		</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top:0px;padding-left:0px;">
+		
+			<li style='list-style:none;display:none'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl01_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/221179.html">Java远程调试</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/94322.html">[转]半角和全角的转换</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/93150.html">收藏blog</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/93146.html">Quartz Cron Expression [转]</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/92394.html">通过构造XML数据流下载成Excel文件[转]</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl06_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/92392.html">根据RS取值的条数,动态生成EXCEL的工作簿[转] </a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl07_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/92382.html">用JXL写EXCEL方法的封装[转] </a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl08_Hyperlink1" href="http://www.blogjava.net/yongbing/articles/92035.html">一个将数字转换为人民币大写的程序</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</TD>
+		</TR>	
+		<TR>
+			<TD colSpan="3">&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+				</TD>
+		</TR>		
+	</TABLE>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color:Red;display:none;">
+
+	</div>
+
+</div>
+
+				
+</div>
+
+<!--done-->
+<div class="footer">
+	
+	Copyright &copy;2015 小石头 Powered By<a href="/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com">沪江博客</a>
+</div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("AjaxHolder_PostComment_ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2"), document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var AjaxHolder_PostComment_RequiredFieldValidator1 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator1"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1");
+AjaxHolder_PostComment_RequiredFieldValidator1.controltovalidate = "AjaxHolder_PostComment_tbTitle";
+AjaxHolder_PostComment_RequiredFieldValidator1.errormessage = "请输入标题";
+AjaxHolder_PostComment_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator1.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator2 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator2"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2");
+AjaxHolder_PostComment_RequiredFieldValidator2.controltovalidate = "AjaxHolder_PostComment_tbName";
+AjaxHolder_PostComment_RequiredFieldValidator2.errormessage = "请输入你的姓名";
+AjaxHolder_PostComment_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator2.initialvalue = "";
+var AjaxHolder_PostComment_Requiredfieldvalidator4 = document.all ? document.all["AjaxHolder_PostComment_Requiredfieldvalidator4"] : document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4");
+AjaxHolder_PostComment_Requiredfieldvalidator4.controltovalidate = "AjaxHolder_PostComment_CodeNumberTextBox";
+AjaxHolder_PostComment_Requiredfieldvalidator4.errormessage = "请输入验证码";
+AjaxHolder_PostComment_Requiredfieldvalidator4.display = "Dynamic";
+AjaxHolder_PostComment_Requiredfieldvalidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_Requiredfieldvalidator4.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator3 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator3"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3");
+AjaxHolder_PostComment_RequiredFieldValidator3.controltovalidate = "AjaxHolder_PostComment_tbComment";
+AjaxHolder_PostComment_RequiredFieldValidator3.errormessage = "请输入评论内容";
+AjaxHolder_PostComment_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator3.initialvalue = "";
+var AjaxHolder_PostComment_ValidationSummary1 = document.all ? document.all["AjaxHolder_PostComment_ValidationSummary1"] : document.getElementById("AjaxHolder_PostComment_ValidationSummary1");
+AjaxHolder_PostComment_ValidationSummary1.showmessagebox = "True";
+AjaxHolder_PostComment_ValidationSummary1.showsummary = "False";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('AjaxHolder_PostComment_ValidationSummary1').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('AjaxHolder_PostComment_ValidationSummary1'));
+}
+Sys.Application.initialize();
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2'));
+}
+
+document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3'));
+}
+//]]>
+</script>
+</form>
+    <script type="text/javascript" src="/script/ShowHidden.js"></script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-476124-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</body>
+</html>

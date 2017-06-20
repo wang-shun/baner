@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="cbp002_0">
+	<include>MERCHANT_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  />
+	</field>
+	<field name="purchaserId">
+		<format type="s" length="64" necessary="true" frommsg="true" />
+	</field>
+	<field name="orderId">
+		<format type="s" length="64" necessary="true" frommsg="true" />
+	</field>
+	<field name="orderDate">
+		<format type="s" length="8" necessary="true" frommsg="true" />
+	</field>
+	<field name="backParam">
+		<format type="s" length="7" necessary="false" frommsg="true" />
+	</field>
+</formula>

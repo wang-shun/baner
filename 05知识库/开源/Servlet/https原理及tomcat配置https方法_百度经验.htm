@@ -1,0 +1,709 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html -->
+<HTML><HEAD><TITLE>https原理及tomcat配置https方法_百度经验</TITLE><!--STATUS OK-->
+<META content=IE=Edge http-equiv=X-UA-Compatible>
+<META charset=utf-8>
+<SCRIPT>
+    // pc和mobile端会稍有不同，必须严格按照该文档来部署
+    void function(g,f,j,c,h,d,b){g.alogObjectName=h,g[h]=g[h]||function(){(g[h].q=g[h].q||[]).push(arguments)},g[h].l=g[h].l||+new Date,d=f.createElement(j),d.async=!0,d.src=c,b=f.getElementsByTagName(j)[0],b.parentNode.insertBefore(d,b)}(window,document,"script","http://img.baidu.com/hunter/alog/alog.min.js","alog");void function(){function c(){return;}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date);alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:c,tti:c,page_ready:c}}();void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</SCRIPT>
+
+<META name=keywords content=https原理及tomcat配置https方法,httpstomcat,互联网,游戏/数码>
+<META name=description 
+content=https原理及tomcat配置https方法,一、什么是HTTPS在说HTTPS之前先说说什么是HTTP，HTTP就是我们平时浏览网页时候使用的一种协议。HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全。为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（SecureSocketLayer...>
+<SCRIPT>(function(){window.PDC={_timing:{},_opt:{sample:0.01},_analyzer:{loaded:false,url:"http://static.tieba.baidu.com/tb/pms/wpo.pda.js?v=2.9",callbacks:[]},_render_start:+new Date,extend:function(b,a){for(property in b){a[property]=b[property]}return a},metadata:function(){var c=this._opt;var e={env:{user:(c.is_login==true?1:0),product_id:c.product_id,page_id:PDC._is_sample(c.sample)?c.page_id:0},render_start:this._render_start,timing:this._timing}; var a=[];var d=c.special_pages||[];for(var b=0;b<d.length;b++){if(PDC._is_sample(d[b]["sample"])){a.push(d[b]["id"])}}if(a.length>0){e.env["special_id"]="["+a.join(",")+"]"}return e},init:function(a){this.extend(a,this._opt)},mark:function(a,b){this._timing[a]=b||+new Date},view_start:function(){this.mark("vt")},tti:function(){this.mark("tti")},page_ready:function(){this.mark("fvt")},first_screen:function(){var b=document.getElementsByTagName("img"),g=document.getElementsByTagName("IFRAME"),c=+new Date; var j=[],e=this;function f(i){var l=0;l=window.pageYOffset?window.pageYOffset:document.documentElement.scrollTop;try{l+=i.getBoundingClientRect().top}catch(k){}finally{return l}}this._setFS=function(){var m=e._opt["fsHeight"]||document.documentElement.clientHeight;for(var l=0;l<j.length;l++){var n=j[l],k=n.img,p=n.time,o=f(k);if(o>0&&o<m){c=p>c?p:c}}e._timing.fs=c};var h=function(){if(this.removeEventListener){this.removeEventListener("load",h,false)}j.push({img:this,time:+new Date})}; for(var a=0;a<b.length;a++){(function(){var i=b[a];if(i.addEventListener){!i.complete&&i.addEventListener("load",h,false)}else{if(i.attachEvent){i.attachEvent("onreadystatechange",function(){if(i.readyState=="complete"){h.call(i,h)}})}}})()}for(var a=0,d=g.length;a<d;a++){(function(){var i=g[a];if(i.attachEvent){i.attachEvent("onload",function(){h.call(i,h)})}else{i.addEventListener("load",h,false)}})()}}};if(document.attachEvent){window.attachEvent("onload",function(){PDC.mark("let"); PDC._setFS&&PDC._setFS();PDC._opt.ready!==false&&PDC._load_analyzer()})}else{window.addEventListener("load",function(){PDC.mark("lt")},false)}})();</SCRIPT>
+
+<SCRIPT type=text/javascript>!function(){var n={},e={};n.context=function(n,r){var t=arguments.length;if(t>1)e[n]=r;else if(1==t){if("object"!=typeof n)return e[n];for(var i in n)n.hasOwnProperty(i)&&(e[i]=n[i])}else if(0==t)return e},"F"in window||(window.F=n)}();;</SCRIPT>
+<!--[if lt IE 9]>
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/html5.js"></SCRIPT>
+<![endif]-->
+<SCRIPT type=text/javascript>var arrBaiduAds = [],bdAdsPrefix = '___bd_ads__',effBaiduAds = []; function BaiduAdsDisplay(index, wrapId) { if(typeof(arrBaiduAds[index])!="undefined" && arrBaiduAds[index]!=""){ effBaiduAds.push(index); document.write('<div id="'+ bdAdsPrefix + index + '">' + arrBaiduAds[index] + '</div>'); } }</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/m.js"></SCRIPT>
+
+<SCRIPT>var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "//hm.baidu.com/hm.js?46c8852ae89f7d9526f0082fafa15edd"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();</SCRIPT>
+<LINK rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/common_sync_css_0_d92a042.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/common_async_css_0_29661d1.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/article_sync_css_0_544f07f.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/article_async_css_0_4de87d0.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/redbox_12741a0.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/userbar_ac49b6c.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/special-msg_60ee8b9.css"><LINK 
+rel=stylesheet type=text/css 
+href="https原理及tomcat配置https方法_百度经验_files/msg_aabec48.css"><LINK rel=stylesheet 
+type=text/css href="https原理及tomcat配置https方法_百度经验_files/jquery-ui_258993d.css">
+<SCRIPT>PDC.mark("ht");</SCRIPT>
+
+<SCRIPT> alog('speed.set', 'ht', +new Date); </SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.7601.17622"></HEAD>
+<BODY>
+<SCRIPT type=text/javascript>var screen_width = parseInt(window.screen.width); if(screen_width < 1200){ document.write('<div class="small-screen">'); }else{ document.write('<div class="wide-screen">'); }</SCRIPT>
+<HEADER class=header>
+<DIV id=usrbar class=userbar><A 
+href="http://jingyan.baidu.com/">百度经验</A>&nbsp;|&nbsp;<A 
+href="http://zhidao.baidu.com/" target=_blank>百度知道</A>&nbsp;|&nbsp;<A 
+href="http://www.baidu.com/" rel=nofollow target=_blank>百度首页</A>&nbsp;|&nbsp;<A 
+id=usrbar-login href="https://passport.baidu.com/v2/?login" 
+rel=nofollow>登录</A>&nbsp;|&nbsp;<A id=top-reg-link 
+href="https://passport.baidu.com/v2/?reg&amp;tpl=exp&amp;u=" rel=nofollow 
+target=_blank>注册</A></DIV>
+<DIV id=top-search-box class=top-search-box>
+<DIV class=inner-warp>
+<DIV class=s-nav><A class=logo href="http://jingyan.baidu.com/"><IMG alt=百度经验 
+src="https原理及tomcat配置https方法_百度经验_files/logo_1e63520.png" width=137 
+height=46></A>
+<UL class=channel>
+  <LI><A href="http://news.baidu.com/" rel=nofollow 
+  log="type:3100,menu:1">新闻</A></LI>
+  <LI><A href="http://www.baidu.com/" rel=nofollow 
+  log="type:3100,menu:2">网页</A></LI>
+  <LI><A href="http://tieba.baidu.com/" rel=nofollow 
+  log="type:3100,menu:3">贴吧</A></LI>
+  <LI><A href="http://zhidao.baidu.com/" log="type:3100,menu:4">知道</A></LI>
+  <LI><STRONG>经验</STRONG></LI>
+  <LI><A href="http://music.baidu.com/" rel=nofollow 
+  log="type:3100,menu:5">音乐</A></LI>
+  <LI><A href="http://image.baidu.com/" rel=nofollow 
+  log="type:3100,menu:6">图片</A></LI>
+  <LI><A href="http://video.baidu.com/" rel=nofollow 
+  log="type:3100,menu:7">视频</A></LI>
+  <LI><A href="http://map.baidu.com/" rel=nofollow 
+  log="type:3100,menu:8">地图</A></LI>
+  <LI><A href="http://baike.baidu.com/" rel=nofollow 
+  log="type:3100,menu:9">百科</A></LI>
+  <LI><A href="http://wenku.baidu.com/" rel=nofollow 
+  log="type:3100,menu:10">文库</A></LI></UL></DIV>
+<FORM id=top-search-form class=top-search-form method=get name=top-search-form 
+action=/search>
+<DIV class=box><SPAN class=s-ipt-wr><INPUT id=kw class=hdi tabIndex=1 
+maxLength=256 size=46 name=word autoComplete="off" 
+x-webkit-grammar="bUIltin:search" x-webkit-speech></SPAN><SPAN class=s-btn-wr><INPUT id=sb class=s-btn value=搜索经验 type=submit></SPAN><SPAN 
+class=s-tools><A href="http://www.baidu.com/search/jingyan_help.html" 
+rel=nofollow target=_blank>帮助</A></SPAN>
+<DIV class=clearfix></DIV></DIV></FORM></DIV></DIV></HEADER><NAV class=nav>
+<DIV id=nav-wrap class=nav-wrap>
+<UL class=main-menu alog-group="main-menu">
+  <LI><A href="http://jingyan.baidu.com/" target=_self 
+  log="type:2000,pos:common_menu,menu:1">首页</A></LI>
+  <LI id=all-category-e class=all-category><A id=all-category-a-e class=cat-flag 
+  href="javascript:void(0)" log="type:2000,pos:common_menu,menu:7">分类</A><SPAN 
+  id=dir-icon-e class="dir-icon cat-flag"></SPAN></LI>
+  <LI><A href="http://jingyan.baidu.com/magazine/home" target=_blank 
+  log="type:2000,pos:common_menu,menu:2">杂志</A></LI>
+  <LI><A href="http://jingyan.baidu.com/task" rel=nofollow target=_blank 
+  log="type:2000,pos:common_menu,menu:3">任务</A></LI>
+  <LI><A href="http://jingyan.baidu.com/usersign" target=_blank 
+  log="type:2000,pos:common_menu,menu:8">签到</A></LI>
+  <LI><A href="http://jingyan.baidu.com/user/income" rel=nofollow target=_blank 
+  log="type:2000,pos:common_menu,menu:6">回享计划</A></LI>
+  <LI><A href="http://jingyan.baidu.com/shop" target=_blank 
+  log="type:2000,pos:common_menu,menu:9">商城</A></LI>
+  <LI class=last><A class=last href="http://zhidao.baidu.com/" target=_blank 
+  log="type:2000,pos:common_menu,menu:10">知道</A></LI></UL><A id=share-exp-e 
+class=share-exp-e href="http://jingyan.baidu.com/edit/content" rel=nofollow 
+target=_blank></A>
+<UL style="DISPLAY: none" id=category-list-e class=category-list>
+  <LI class=first-line><A href="http://jingyan.baidu.com/list/1" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">美食/营养</A></LI>
+  <LI class="even first-line"><A href="http://jingyan.baidu.com/list/10" 
+  target=_blank log="type:2000,pos:common_menu,menu:7">游戏/数码</A></LI>
+  <LI><A href="http://jingyan.baidu.com/list/37" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">手工/爱好</A></LI>
+  <LI class=even><A href="http://jingyan.baidu.com/list/50" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">生活/家居</A></LI>
+  <LI><A href="http://jingyan.baidu.com/list/73" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">健康/养生</A></LI>
+  <LI class=even><A href="http://jingyan.baidu.com/list/86" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">运动/户外</A></LI>
+  <LI><A href="http://jingyan.baidu.com/list/93" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">职场/理财</A></LI>
+  <LI class=even><A href="http://jingyan.baidu.com/list/101" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">情感/交际</A></LI>
+  <LI class=last-line><A href="http://jingyan.baidu.com/list/108" target=_blank 
+  log="type:2000,pos:common_menu,menu:7">母婴/教育</A></LI>
+  <LI class="even last-line"><A href="http://jingyan.baidu.com/list/123" 
+  target=_blank 
+log="type:2000,pos:common_menu,menu:7">时尚/美容</A></LI></UL></DIV></NAV><SECTION 
+class=body-wrapper>
+<DIV id=breadcrumb class=breadcrumb>
+<DIV id=bread-wrap class=bread-wrap><A 
+href="http://jingyan.baidu.com/">百度经验</A>&nbsp;&gt;&nbsp;<A 
+href="http://jingyan.baidu.com/list/10">游戏/数码</A>&nbsp;&gt;&nbsp;互联网</DIV></DIV>
+<DIV class="content-container clearfix">
+<DIV id=main-content class=main-content><ARTICLE id=exp-article 
+class=exp-article>
+<DIV class="exp-title no-thumbs clearfix">
+<H1 title=https原理及tomcat配置https方法>https原理及tomcat配置https方法</H1>
+<UL class=exp-info>
+  <LI><SPAN class=ico-ori></SPAN></LI>
+  <LI class=blank>|</LI>
+  <LI>浏览：<SPAN class=views>17288</SPAN></LI>
+  <LI class=blank>|</LI>
+  <LI>更新：<TIME>2014-02-08 14:09</TIME></LI></UL></DIV>
+<DIV class="wgt-shifu shifu-top"><A class=clearfix 
+href="http://shifu.baidu.com/?fr=exp-qb-pc" target=_blank>
+<DIV class="right fake-btn">一键约师傅</DIV>
+<H4><I><SPAN>百度师傅</SPAN></I><SPAN 
+class=shifu-text>百度师傅，专治各种手机、电脑问题</SPAN></H4></A></DIV>
+<SCRIPT>
+    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+</SCRIPT>
+
+<DIV id=format-exp class="exp-content format-exp" alog-group="exp-content"><SPAN 
+class=_copr>百度经验:jingyan.baidu.com</SPAN>
+<DIV class=exp-content-block>
+<DIV class="exp-content-body exp-brief-step">
+<DIV class=exp-content-listblock>
+<DIV class=content-listblock-text>
+<P>一、 什么是HTTPS</P>
+<P>在说HTTPS之前先说说什么是HTTP，HTTP就是我们平时浏览网页时候使用的一种协议。HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全。为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure 
+Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。SSL目前的版本是3.0，被IETF（Internet 
+Engineering Task Force）定义在RFC 6101中，之后IETF对SSL 3.0进行了升级，于是出现了TLS（Transport Layer 
+Security） 1.0，定义在RFC 
+2246。实际上我们现在的HTTPS都是用的TLS协议，但是由于SSL出现的时间比较早，并且依旧被现在浏览器所支持，因此SSL依然是HTTPS的代名词，但无论是TLS还是SSL都是上个世纪的事情，SSL最后一个版本是3.0，今后TLS将会继承SSL优良血统继续为我们进行加密服务。目前TLS的版本是1.2，定义在RFC 
+5246中，暂时还没有被广泛的使用。</P>
+<P></P>
+<P>二、 Https的工作原理</P>
+<P>&nbsp; &nbsp; 
+HTTPS在传输数据之前需要客户端（浏览器）与服务端（网站）之间进行一次握手，在握手过程中将确立双方加密传输数据的密码信息。TLS/SSL协议不仅仅是一套加密传输的协议，更是一件经过艺术家精心设计的艺术品，TLS/SSL中使用了非对称加密，对称加密以及HASH算法。握手过程的简单描述如下：</P>
+<P>1.浏览器将自己支持的一套加密规则发送给网站。</P>
+<P>2.网站从中选出一组加密算法与HASH算法，并将自己的身份信息以证书的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及证书的颁发机构等信息。</P>
+<P>3.获得网站证书之后浏览器要做以下工作：</P>
+<P>a) 
+验证证书的合法性（颁发证书的机构是否合法，证书中包含的网站地址是否与正在访问的地址一致等），如果证书受信任，则浏览器栏里面会显示一个小锁头，否则会给出证书不受信的提示。</P>
+<P>b) 如果证书受信任，或者是用户接受了不受信的证书，浏览器会生成一串随机数的密码，并用证书中提供的公钥加密。</P>
+<P>c) 使用约定好的HASH计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有信息发送给网站。</P>
+<P></P>
+<P>4.网站接收浏览器发来的数据之后要做以下的操作：</P>
+<P>a) 使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证HASH是否与浏览器发来的一致。</P>
+<P>b) 使用密码加密一段握手消息，发送给浏览器。</P>
+<P>5.浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密。</P>
+<P>这里浏览器与网站互相发送加密的握手消息并验证，目的是为了保证双方都获得了一致的密码，并且可以正常的加密解密数据，为后续真正数据的传输做一次测试。另外，HTTPS一般使用的加密与HASH算法如下：</P>
+<P>非对称加密算法：RSA，DSA/DSS</P>
+<P>对称加密算法：AES，RC4，3DES</P>
+<P>HASH算法：MD5，SHA1，SHA256</P>
+<P>其中非对称加密算法用于在握手过程中加密生成的密码，对称加密算法用于对真正传输的数据进行加密，而HASH算法用于验证数据的完整性。由于浏览器生成的密码是整个数据加密的关键，因此在传输的时候使用了非对称加密算法对其加密。非对称加密算法会生成公钥和私钥，公钥只能用于加密数据，因此可以随意传输，而网站的私钥用于对数据进行解密，所以网站都会非常小心的保管自己的私钥，防止泄漏。</P>
+<P>TLS握手过程中如果有任何错误，都会使加密连接断开，从而阻止了隐私信息的传输。</P></DIV></DIV></DIV></DIV><SPAN 
+class=_copr>百度经验:jingyan.baidu.com</SPAN>
+<DIV class=exp-content-block>
+<H2 class=exp-content-head><A href="javascript:;" name=section-2></A>工具/原料</H2>
+<DIV class=exp-content-body>
+<UL class="exp-content-unorderlist ">
+  <LI class="exp-content-list list-item-1">
+  <DIV class=content-list-text>
+  <P>利用tomcat服务器配置https双向认证</P></DIV></LI></UL></DIV></DIV><SPAN 
+class=_copr>百度经验:jingyan.baidu.com</SPAN>
+<DIV class=exp-content-block>
+<H2 class=exp-content-head><A href="javascript:;" name=section-3></A>方法/步骤</H2>
+<DIV class=exp-content-body>
+<OL class=exp-conent-orderlist>
+  <LI class="exp-content-list list-item-1">
+  <DIV class=list-icon>1</DIV>
+  <DIV class=content-list-text>
+  <P>为服务器生成证书</P>
+  <P>“运行”控制台，进入%JAVA_HOME%/bin目录，使用如下命令进入目录：</P>
+  <P>cd “c:\Program Files\Java\jdk1.6.0_11\bin”&nbsp;</P>
+  <P>使用keytool为Tomcat生成证书，假定目标机器的域名是“localhost”，keystore文件存放在“D:\home\tomcat.keystore”，口令为“password”，使用如下命令生成：</P>
+  <P>keytool -genkey -v -alias tomcat -keyalg RSA -keystore 
+  D:\home\tomcat.keystore -validity 36500 
+  (参数简要说明：“D:\home\tomcat.keystore”含义是将证书文件的保存路径，证书文件名称是tomcat.keystore 
+  ；“-validity 36500”含义是证书有效期，36500表示100年，默认值是90天 “tomcat”为自定义证书名称)。</P>
+  <P></P>
+  <P>在命令行填写必要参数：</P>
+  <P>A、 输入keystore密码：此处需要输入大于6个字符的字符串。</P>
+  <P>B、 “您的名字与姓氏是什么？”这是必填项，并且必须是TOMCAT部署主机的域名或者IP[如：gbcom.com 或者 
+  10.1.25.251]（就是你将来要在浏览器中输入的访问地址），否则浏览器会弹出警告窗口，提示用户证书与所在域不匹配。在本地做开发测试时，应填入“localhost”。</P>
+  <P>C、 
+  你的组织单位名称是什么？”、“您的组织名称是什么？”、“您所在城市或区域名称是什么？”、“您所在的州或者省份名称是什么？”、“该单位的两字母国家代码是什么？”可以按照需要填写也可以不填写直接回车，在系统询问“正确吗？”时，对照输入信息，如果符合要求则使用键盘输入字母“y”，否则输入“n”重新填写上面的信息。</P>
+  <P>D、 
+  输入&lt;tomcat&gt;的主密码，这项较为重要，会在tomcat配置文件中使用，建议输入与keystore的密码一致，设置其它密码也可以，完成上述输入后，直接回车则在你在第二步中定义的位置找到生成的文件。</P></DIV></LI>
+  <LI class="exp-content-list list-item-2">
+  <DIV class=list-icon>2</DIV>
+  <DIV class=content-list-text>
+  <P>为客户端生成证书</P>
+  <P>为浏览器生成证书，以便让服务器来验证它。为了能将证书顺利导入至IE和Firefox，证书格式应该是PKCS12，因此，使用如下命令生成：</P>
+  <P>keytool -genkey -v -alias mykey -keyalg RSA -storetype PKCS12 -keystore 
+  D:\home\mykey.p12 （mykey为自定义）。</P>
+  <P>对应的证书库存放在“D:\home\mykey.p12”，客户端的CN可以是任意值。双击mykey.p12文件，即可将证书导入至浏览器（客户端）。</P></DIV></LI>
+  <LI class="exp-content-list list-item-3">
+  <DIV class=list-icon>3</DIV>
+  <DIV class=content-list-text>
+  <P>让服务器信任客户端证书</P>
+  <P>由于是双向SSL认证，服务器必须要信任客户端证书，因此，必须把客户端证书添加为服务器的信任认证。由于不能直接将PKCS12格式的证书库导入，必须先把客户端证书导出为一个单独的CER文件，使用如下命令：</P>
+  <P>keytool -export -alias mykey -keystore D:\home\mykey.p12 -storetype PKCS12 
+  -storepass password -rfc -file D:\home\mykey.cer&nbsp;</P>
+  <P>(mykey为自定义与客户端定义的mykey要一致，password是你设置的密码)。通过以上命令，客户端证书就被我们导出到“D:\home\mykey.cer”文件了。</P>
+  <P>下一步，是将该文件导入到服务器的证书库，添加为一个信任证书使用命令如下：</P>
+  <P>&nbsp; &nbsp; &nbsp;keytool -import -v -file D:\home\mykey.cer -keystore 
+  D:\home\tomcat.keystore</P>
+  <P>通过list命令查看服务器的证书库，可以看到两个证书，一个是服务器证书，一个是受信任的客户端证书：</P>
+  <P>keytool -list -keystore D:\home\tomcat.keystore 
+  (tomcat为你设置服务器端的证书名)。</P></DIV></LI>
+  <LI class="exp-content-list list-item-4">
+  <DIV class=list-icon>4</DIV>
+  <DIV class=content-list-text>
+  <P>让客户端信任服务器证书</P>
+  <P>由于是双向SSL认证，客户端也要验证服务器证书，因此，必须把服务器证书添加到浏览的“受信任的根证书颁发机构”。由于不能直接将keystore格式的证书库导入，必须先把服务器证书导出为一个单独的CER文件，使用如下命令：</P>
+  <P>keytool -keystore D:\home\tomcat.keystore -export -alias tomcat -file 
+  D:\home\tomcat.cer (tomcat为你设置服务器端的证书名)。</P>
+  <P>通过以上命令，服务器证书就被我们导出到“D:\home\tomcat.cer”文件了。双击tomcat.cer文件，按照提示安装证书，将证书填入到“受信任的根证书颁发机构”。</P></DIV></LI>
+  <LI class="exp-content-list list-item-5">
+  <DIV class=list-icon>5</DIV>
+  <DIV class=content-list-text>
+  <P>配置Tomcat服务器</P>
+  <P>打开Tomcat根目录下的/conf/server.xml，找到Connector port="8443"配置段，修改为如下：</P>
+  <P></P>
+  <P>&lt;Connector port="8443" 
+  protocol="org.apache.coyote.http11.Http11NioProtocol"</P>
+  <P>SSLEnabled="true" maxThreads="150" scheme="https"</P>
+  <P>secure="true" clientAuth="true" sslProtocol="TLS"</P>
+  <P>keystoreFile="D:\\home\\tomcat.keystore" keystorePass="123456"</P>
+  <P>truststoreFile="D:\\home\\tomcat.keystore" truststorePass="123456" 
+/&gt;</P>
+  <P>（tomcat要与生成的服务端证书名一致）</P>
+  <P>属性说明：</P>
+  <P></P>
+  <P>clientAuth:设置是否双向验证，默认为false，设置为true代表双向验证</P>
+  <P>keystoreFile:服务器证书文件路径</P>
+  <P>keystorePass:服务器证书密码</P>
+  <P>truststoreFile:用来验证客户端证书的根证书，此例中就是服务器证书</P>
+  <P>truststorePass:根证书密码</P></DIV></LI>
+  <LI class="exp-content-list list-item-6">
+  <DIV class=list-icon>6</DIV>
+  <DIV class=content-list-text>
+  <P>测试</P>
+  <P>在浏览器中输入:https://localhost:8443/，会弹出选择客户端证书界面，点击“确定”，会进入tomcat主页，地址栏后会有“锁”图标，表示本次会话已经通过HTTPS双向验证，接下来的会话过程中所传输的信息都已经过SSL信息加密。</P></DIV>
+  <DIV class=last-item><SPAN 
+class=last-item-end>END</SPAN></DIV></LI></OL></DIV></DIV>
+<DIV id=auto-app-placehold></DIV>
+<SCRIPT>window.PDC && PDC.first_screen && PDC.first_screen();</SCRIPT>
+
+<DIV class=prompt><SPAN 
+class=prompt-ico></SPAN>经验内容仅供参考，如果您需解决具体问题(尤其法律、医学等领域)，建议您详细咨询相关领域专业人士。</DIV>
+<DIV class="f12 origin-notice" data-test="1"><A id=report-t-exp class=jubao 
+href="javascript:void(0)" rel=nofollow target=_blank>举报</A><SPAN 
+class=i-original></SPAN><SPAN><EM>作者声明：</EM>本篇经验系本人依照真实经历原创，未经许可，谢绝转载。</SPAN></DIV>
+<DIV class="wgt-shifu "><A class=clearfix 
+href="http://shifu.baidu.com/?fr=exp-qb-pc" target=_blank>
+<DIV class="right fake-btn">一键约师傅</DIV>
+<H4><I><SPAN>百度师傅</SPAN></I><SPAN 
+class=shifu-text>百度师傅，专治各种手机、电脑问题</SPAN></H4></A></DIV></DIV></ARTICLE>
+<DIV id=wgt-comments class=wgt-comments>
+<DIV class="cmt-btn-w clearfix">
+<DIV class=vote-btn-wrp>
+<DIV id=cmt-btn-vote class="cmt-btn cmt-btn-vote">
+<DIV class="btn-bg btn-l-bg"></DIV>
+<DIV class="btn-bg btn-m-bg"><SPAN class=a-t>投票<SPAN 
+class=a-num>(51)</SPAN></SPAN><SPAN class=a-h>已投票(<SPAN id=v-a-num 
+class=a-num>51</SPAN>)</SPAN></DIV>
+<DIV class=btn-r-bg></DIV></DIV><SPAN style="DISPLAY: none" id=a-a 
+class=a-a>+1</SPAN></DIV>
+<DIV class=hads-btn-wrp>
+<DIV id=cmt-btn-hads class="cmt-btn cmt-btn-hads">
+<DIV class="btn-bg btn-l-bg"></DIV>
+<DIV class="btn-bg btn-m-bg"><SPAN class=a-t>有得<SPAN 
+class=a-num>(0)</SPAN></SPAN></DIV>
+<DIV class=btn-r-bg></DIV></DIV></DIV>
+<DIV class=ques-btn-wrp>
+<DIV id=cmt-btn-ques class="cmt-btn cmt-btn-ques">
+<DIV class="btn-bg btn-l-bg"></DIV>
+<DIV class="btn-bg btn-m-bg"><SPAN class=a-t>我有疑问<SPAN 
+class=a-num>(0)</SPAN></SPAN></DIV>
+<DIV class="btn-bg btn-r-bg"></DIV></DIV></DIV></DIV>
+<DIV style="DISPLAY: none" id=vote-box-e class="reply-box vote-box">
+<DIV class=reply-arrow><EM>◆</EM><SPAN>◆</SPAN></DIV>
+<DIV class=reply-outter>
+<P class=v-tit>说说为什么给这篇经验投票吧！</P>
+<UL class="v-extra clearfix">
+  <LI><A class=intr-txt 
+  href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#">写的太赞</A></LI>
+  <LI><A class=intr-txt 
+  href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#">帮到了我</A></LI>
+  <LI><A class=intr-txt 
+  href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#">作者很棒</A></LI>
+  <LI><A class=intr-txt 
+  href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#">因为任性</A></LI></UL>
+<P 
+class=v-ipt><TEXTAREA id=v-ipt-txt class=v-ipt-txt type="text"></TEXTAREA><LABEL 
+class=placeholder for=v-ipt-txt>我为什么投票...</LABEL></P>
+<P class=vote-spt><INPUT id=v-sub-btn class=v-sub-btn value=发布 type=submit><SPAN 
+id=vote-tip-span class=vote-tip-span>你还可以输入500字</SPAN></P></DIV></DIV>
+<DIV style="DISPLAY: none" id=hads-box-e class="reply-box hads-box">
+<DIV class=reply-arrow><EM>◆</EM><SPAN>◆</SPAN></DIV>
+<DIV class=reply-outter>
+<DIV class=ipt-hads-box>
+<DIV class=hads-ipt>
+<SCRIPT style="WIDTH: 646px; HEIGHT: 90px" id=feel-editor 
+type=text/plain></SCRIPT>
+
+<DIV id=feel-editor-cp></DIV></DIV>
+<P class=hads-spt><INPUT id=hads-sub-btn class="hads-sub-btn hads-dis-btn" disabled value=发布 type=submit><SPAN 
+class=had-dis-tip>非回享用户暂时不能发布经验“有得”&nbsp;<A 
+href="http://jingyan.baidu.com/user/income" 
+target=_blank>如何加入回享？</A></SPAN><SPAN id=had-tip-span 
+class=had-tip-span>你还可以输入1000字</SPAN></P></DIV>
+<DIV id=hads-list class=hads-list></DIV></DIV></DIV>
+<DIV style="DISPLAY: none" id=ques-box-e class="reply-box ques-box">
+<DIV class=reply-arrow><EM>◆</EM><SPAN>◆</SPAN></DIV>
+<DIV class=reply-outter>
+<DIV class=ipt-ques-box>
+<P class=ques-ipt><TEXTAREA id=ques-ipt-txt class=ques-ipt-txt type="text"></TEXTAREA><LABEL 
+class=placeholder for=ques-ipt-txt>如对这篇经验有疑问，可反馈给作者，经验作者会尽力为您解决！</LABEL></P>
+<P class=ques-spt><INPUT id=ques-sub-btn class=ques-sub-btn value=提交疑问 type=submit><SPAN 
+id=que-tip-span class=que-tip-span>你还可以输入500字</SPAN></P></DIV>
+<DIV id=ques-list class=ques-list></DIV></DIV></DIV></DIV>
+<DIV class=main-content-bottom>
+<DIV id=relate-explist class=exp-item-list>
+<H3 class=clearfix><A id=change-relate-exp class="right change-relate-exp" 
+href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#" 
+log="type:2019, pos:relate_change, page:article">换一批</A>相关经验</H3>
+<UL id=relate-explist-container alog-group="relate-explist">
+  <LI class=related-exp-link><A 
+  href="http://jingyan.baidu.com/article/295430f1ca648c0c7e005035.html" 
+  target=_blank 
+  log="type:2019, pos:relate_title, page:article&#13;&#10;                                        ,weddingGroup:G0                                        ">IIS7/IIS8全站https访问的配置方法</A><EM 
+  class=has-img></EM><SPAN class=exp-vote-num><SPAN 
+  class=vote-ico></SPAN>0</SPAN><SPAN class=exp-date>2015.04.22</SPAN></LI>
+  <LI class=related-exp-link><A 
+  href="http://jingyan.baidu.com/article/15622f24164f7efdfdbea56b.html" 
+  target=_blank 
+  log="type:2019, pos:relate_title, page:article&#13;&#10;                                        ,weddingGroup:G0                                        ">Tomcat全局/局部https访问配置方法</A><EM 
+  class=has-img></EM><SPAN class=exp-vote-num><SPAN 
+  class=vote-ico></SPAN>0</SPAN><SPAN class=exp-date>2015.03.18</SPAN></LI>
+  <LI class=related-exp-link><A 
+  href="http://jingyan.baidu.com/article/48b558e33752ae7f38c09ae8.html" 
+  target=_blank 
+  log="type:2019, pos:relate_title, page:article&#13;&#10;                                        ,weddingGroup:G0                                        ">Apache全局/局部https访问配置方法是？</A><EM 
+  class=has-img></EM><SPAN class=exp-vote-num><SPAN 
+  class=vote-ico></SPAN>1</SPAN><SPAN class=exp-date>2015.03.11</SPAN></LI>
+  <LI class=related-exp-link><A 
+  href="http://jingyan.baidu.com/article/d5c4b52b251e22da560dc51b.html" 
+  target=_blank 
+  log="type:2019, pos:relate_title, page:article&#13;&#10;                                        ,weddingGroup:G0                                        ">tomcat7.0详细配置方法？</A><EM 
+  class=has-img></EM><SPAN class=exp-vote-num><SPAN 
+  class=vote-ico></SPAN>18</SPAN><SPAN class=exp-date>2012.11.05</SPAN></LI>
+  <LI class=related-exp-link><A 
+  href="http://jingyan.baidu.com/article/ab0b563089b6acc15bfa7d48.html" 
+  target=_blank 
+  log="type:2019, pos:relate_title, page:article&#13;&#10;                                        ,weddingGroup:G0                                        ">一台电脑同时运行多个tomcat配置方法</A><SPAN 
+  class=exp-vote-num><SPAN class=vote-ico></SPAN>0</SPAN><SPAN 
+  class=exp-date>2015.09.21</SPAN></LI></UL></DIV>
+<DIV class=tag-explist><STRONG>相关标签</STRONG><SPAN class=exp-tag></SPAN></DIV>
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/esl.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>require.config({paths: { ecom: 'http://s1.bdstatic.com/r/www/cache/biz/ecom'}});</SCRIPT>
+
+<DIV id=bottom-ads-container class=bottom-ads-container>
+<DIV id=bottom-text-ads-wrap class=bottom-text-ads></DIV>
+<DIV id=BAIDU_AD_706067 class=bottom-pic-ads>
+<SCRIPT>BAIDU_CLB_fillSlot("706067");</SCRIPT>
+</DIV></DIV></DIV></DIV><ASIDE id=aside class=main-aside>
+<DIV class=wgt-income-money>
+<DIV class=income-title></DIV>
+<DIV class=income-money><SPAN>今日支出</SPAN>
+<DIV id=income-money-num class=income-money-num>
+<DIV class="digital-container clearfix"><SPAN class=num0></SPAN><SPAN 
+class=num0></SPAN><SPAN class=num0></SPAN><SPAN 
+class=num0></SPAN></DIV></DIV><SPAN>元</SPAN></DIV><A class=link 
+href="http://jingyan.baidu.com/user/income" target=_blank 
+log="pos:income-money,page:article,type:2019">写经验 有钱赚 &gt;&gt;</A></DIV>
+<DIV class=aside-wrap>
+<DIV id=wgt-author class=wgt-author>
+<DIV class=author-wrap>
+<DIV class=author-normal>
+<DIV class="base-info clearfix">
+<DIV class="author-portrait left"><A 
+href="http://jingyan.baidu.com/user/npublic?un=sp19890108" rel=nofollow 
+target=_blank 
+log="type:20150831,pos:uinfo&#13;&#10;                                ,weddingGroup:G0                                ">
+<DIV class=portrait-cover></DIV><IMG 
+src="https原理及tomcat配置https方法_百度经验_files/991073703139383930313038d816.jpg"></A></DIV>
+<DIV class="author-info left">
+<H2><A title=sp19890108 
+href="http://jingyan.baidu.com/user/npublic?un=sp19890108" rel=nofollow 
+target=_blank 
+log="type:20150831,pos:uinfo&#13;&#10;                                ,weddingGroup:G0                                ">sp19890108</A></H2>
+<DIV class=icon-wrp>
+<DIV class=icon-huiz><A class="u-icon cpm3" title=签约作者 
+href="http://jingyan.baidu.com/help?page=income-author" rel=nofollow 
+target=_blank></A></DIV></DIV><A id=follow-user-e 
+class="u-follow-btn follow-btn" href="javascript:;" 
+log="type:20150831,pos:uinfo&#13;&#10;                                ,weddingGroup:G0                                "></A></DIV></DIV>
+<DIV id=userResume class=user-resume></DIV></DIV></DIV>
+<DIV class=usr-explist>
+<H3>作者的经验</H3>
+<UL alog-group="usr-explist">
+  <LI><A title="Pro Spring Security 中文版详解（000-目录版）" 
+  href="http://jingyan.baidu.com/article/77b8dc7feb3d016174eab6e7.html" 
+  target=_blank log="type:1000,pos:author_title">Pro Spring Security 
+  中文版详解（00...</A></LI>
+  <LI><A title="Pro Spring Security 中文版详解（001-第一章）" 
+  href="http://jingyan.baidu.com/article/7082dc1c71c577e40a89bde7.html" 
+  target=_blank log="type:1000,pos:author_title">Pro Spring Security 
+  中文版详解（00...</A></LI>
+  <LI><A title="Pro Spring Security 中文版详解（002-介绍）" 
+  href="http://jingyan.baidu.com/article/020278116bc18d1bcc9ce5e7.html" 
+  target=_blank log="type:1000,pos:author_title">Pro Spring Security 
+  中文版详解（00...</A></LI>
+  <LI><A title="Spring Security 3.x 入门教程详解1" 
+  href="http://jingyan.baidu.com/article/ceb9fb10c286a18cad2ba0e7.html" 
+  target=_blank log="type:1000,pos:author_title">Spring Security 3.x 
+  入门教程详解1</A></LI>
+  <LI><A title=正则表达式符号详解 
+  href="http://jingyan.baidu.com/article/75ab0bcbc96922d6864db2da.html" 
+  target=_blank 
+log="type:1000,pos:author_title">正则表达式符号详解</A></LI></UL></DIV></DIV>
+<DIV class=aside-pro-container>
+<DIV class=wgt-cms-banner>
+<DIV id=cms-slide-wrap class=cms-slide-wrap>
+<DIV id=cms-slide-img class=cms-slide-img><A 
+href="http://jingyan.baidu.com/activity/rescue" rel=nofollow target=_blank 
+log="type:cmsbanner,location:qb,menu:1,type:20151014,pos:expand                ,weddingGroup:G0                                "><IMG 
+class=lazy-load-img alt=解救DU帮帮 
+data-src="http://jingyan.baidu.com/event/img/252162dubangbang.jpg"></A><A 
+style="DISPLAY: none" href="http://jingyan.baidu.com/activity/skill" 
+rel=nofollow target=_blank 
+log="type:cmsbanner,location:qb,menu:2,type:20151014,pos:expand                ,weddingGroup:G0                                "><IMG 
+class=lazy-load-img alt=十万个生活技能 
+data-src="http://jingyan.baidu.com/event/250-160.png"></A><A 
+style="DISPLAY: none" href="http://bj.nuomi.com/film/9736" rel=nofollow 
+target=_blank 
+log="type:cmsbanner,location:qb,menu:3,type:20151014,pos:expand                ,weddingGroup:G0                                "><IMG 
+class=lazy-load-img alt=百度糯米 
+data-src="http://jingyan.baidu.com/event/jingyanyexunlongjue.jpg"></A></DIV>
+<DIV id=cms-slide-btn class=cms-slide-btn><A hideFocus class="sli-btn on" 
+href="javascript:;" rel=nofollow>•</A><A hideFocus class=sli-btn 
+href="javascript:;" rel=nofollow>•</A><A hideFocus class=sli-btn 
+href="javascript:;" rel=nofollow>•</A></DIV></DIV></DIV>
+<DIV id=aside-ads-container class=aside-ads-container>
+<DIV id=aside-text-ads-wrap class=aside-text-ads></DIV>
+<DIV id=BAIDU_AD_706066 class=aside-pic-ads>
+<SCRIPT>BAIDU_CLB_fillSlot("706066");</SCRIPT>
+</DIV></DIV></DIV><SPAN class=tousu>如要投诉，请到<A class=tousu-address 
+href="http://tousu.baidu.com/jingyan/add#2" rel=nofollow 
+target=_blank>百度经验投诉中心</A>，如要提出意见、建议， 请到<A 
+href="http://tieba.baidu.com/f?kw=%B0%D9%B6%C8%BE%AD%D1%E9%B9%DC%C0%ED" 
+rel=nofollow target=_blank>百度经验管理吧</A>反馈。</SPAN></DIV></ASIDE></DIV>
+<DIV class="line mt40"></DIV>
+<DIV class=magzine-list>
+<H2 class=page-column>热门杂志</H2>
+<DIV class=page-column>
+<UL class=clearfix alog-group="magzine-list">
+  <LI class=first-li>
+  <DIV class=m-cv><IMG class=lazy-load-img 
+  data-src="http://a.hiphotos.baidu.com/exp/whcrop=160,120/sign=fcc1aee4e4cd7b89e9396cc160547f96/f9dcd100baa1cd115a4ddc0ebb12c8fcc3ce2d20.jpg"><SPAN 
+  class=m-bg></SPAN><SPAN>第1期</SPAN></DIV><STRONG>你不知道的iPad技巧</STRONG>
+  <DIV class=m-sn><SPAN></SPAN>2780次分享</DIV><A 
+  href="http://jingyan.baidu.com/magazine/6872" target=_blank 
+  log="type:5003,expGroup:G0"></A></LI>
+  <LI>
+  <DIV class=m-cv><IMG class=lazy-load-img 
+  data-src="http://h.hiphotos.baidu.com/exp/whcrop=160,120/sign=88fb042399504fc2a20ae6478aadda20/faf2b2119313b07e6d55d8230ed7912397dd8c35.jpg"><SPAN 
+  class=m-bg></SPAN><SPAN>第1期</SPAN></DIV><STRONG>win7电脑那些事</STRONG>
+  <DIV class=m-sn><SPAN></SPAN>4865次分享</DIV><A 
+  href="http://jingyan.baidu.com/magazine/6454" target=_blank 
+  log="type:5003,expGroup:G0"></A></LI>
+  <LI>
+  <DIV class=m-cv><IMG class=lazy-load-img 
+  data-src="http://e.hiphotos.baidu.com/exp/whcrop=160,120/sign=274a35929045d688a357e4e6cbb2402f/18d8bc3eb13533fa663c6f8faad3fd1f40345b8d.jpg"><SPAN 
+  class=m-bg></SPAN><SPAN>第2期</SPAN></DIV><STRONG>新人玩转百度经验</STRONG>
+  <DIV class=m-sn><SPAN></SPAN>832次分享</DIV><A 
+  href="http://jingyan.baidu.com/magazine/17909" target=_blank 
+  log="type:5003,expGroup:G0"></A></LI>
+  <LI>
+  <DIV class=m-cv><IMG class=lazy-load-img 
+  data-src="http://e.hiphotos.baidu.com/exp/whcrop=160,120/sign=5d1c2ce157fbb2fb347e0e50203a1d95/a08b87d6277f9e2f03fa39b41d30e924b999f3ba.jpg"><SPAN 
+  class=m-bg></SPAN><SPAN>第1期</SPAN></DIV><STRONG>Win8.1实用小技巧</STRONG>
+  <DIV class=m-sn><SPAN></SPAN>2134次分享</DIV><A 
+  href="http://jingyan.baidu.com/magazine/17761" target=_blank 
+  log="type:5003,expGroup:G0"></A></LI>
+  <LI>
+  <DIV class=m-cv><IMG class=lazy-load-img 
+  data-src="http://c.hiphotos.baidu.com/exp/whcrop=160,120/sign=c8aa99ae13dfa9ecfd7b00550da0ca32/a8773912b31bb051c260489a347adab44aede038.jpg"><SPAN 
+  class=m-bg></SPAN><SPAN>第1期</SPAN></DIV><STRONG>小白装大神</STRONG>
+  <DIV class=m-sn><SPAN></SPAN>1195次分享</DIV><A 
+  href="http://jingyan.baidu.com/magazine/17450" target=_blank 
+  log="type:5003,expGroup:G0"></A></LI></UL></DIV></DIV>
+<DIV id=wgt-like class=wgt-like>
+<DIV class=help-tip></DIV>
+<DIV class=btn-wrapper><A id=like-btn class=like-btn 
+href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#"><I></I><SPAN 
+id=like-num class=like-num>112</SPAN><SPAN style="DISPLAY: none" id=add-one 
+class=add-one>+1</SPAN></A><A id=dislike-btn class=dislike-btn 
+href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#"><I></I></A></DIV>
+<DIV id=like-feedback class="like-feedback hide">
+<DIV id=feedback-content class=feedback-content></DIV><A id=close-like-tip 
+class=close-like-tip 
+href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#"></A></DIV></DIV>
+<SCRIPT id=tpl-like type=text/template><div class="like-content"> <h1>非常高兴<br/>这篇经验帮到了你</h1> <p>您也可以分享自己的经验，<br/>帮助更多的人</p> <a href="/user/income" target="_blank">帮助更多的人 >></a> </div></SCRIPT>
+</SECTION><FOOTER class=footer>©2015Baidu&nbsp;&nbsp;<A 
+href="http://www.baidu.com/duty/" rel=nofollow 
+target=_blank>使用百度前必读</A>&nbsp;&nbsp;<A 
+href="http://www.baidu.com/search/jingyan_help.html#经验协议" rel=nofollow 
+target=_blank>百度经验协议</A>&nbsp;&nbsp;<A 
+href="http://www.baidu.com/search/jingyan_editor.html" rel=nofollow 
+target=_blank>作者创作作品协议</A>
+<SCRIPT type=text/javascript>if(window.console){ var cons = console; if(cons){ cons.log("这位看代码的童鞋，不如来和我们一起为百度经验添砖加瓦吧！"); cons.log("有意求职者，请邮件至：%cjobs_zhidao@baidu.com %c(邮件请注明来自:console)","color:red;font-weight:bold;","color:#666"); } }</SCRIPT>
+</FOOTER>
+<SCRIPT>
+    alog('speed.set', 'drt', +new Date); //请利用js框架在domreday时调用该代码，或在body的尾部
+</SCRIPT>
+
+<SCRIPT>
+    window.alogObjectConfig = {
+        product: '132',  
+        page: '132_1207',  
+        monkey_page: '',  
+        speed_page: '',  
+ 
+        speed: {
+            sample: '0.04'   
+        },
+ 
+        monkey: {
+            sample: '0.04'   
+        },
+ 
+        exception: { 
+            sample: '0.04'   
+        },
+ 
+        feature: {
+            sample: '0.04'   
+        },
+ 
+        cus: {
+            sample: '0'   
+        },
+ 
+        csp: {
+            sample: '0.04',  
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    void function(e,t,n,a,r,o){function c(t){e.attachEvent?e.attachEvent("onload",t,!1):e.addEventListener&&e.addEventListener("load",t)}function i(e,n,a){a=a||15;var r=new Date;r.setTime((new Date).getTime()+1e3*a),t.cookie=e+"="+escape(n)+";path=/;expires="+r.toGMTString()}function s(e){var n=t.cookie.match(new RegExp("(^| )"+e+"=([^;]*)(;|$)"));return null!=n?unescape(n[2]):null}function d(){var e=s("PMS_JT");if(e){i("PMS_JT","",-1);try{e=eval(e)}catch(n){e={}}e.r&&t.referrer.replace(/#.*/,"")!=e.r||alog("speed.set","wt",e.s)}}c(function(){alog("speed.set","lt",+new Date),r=t.createElement(n),r.async=!0,r.src=a+"?v="+~(new Date/864e5),o=t.getElementsByTagName(n)[0],o.parentNode.insertBefore(r,o)}),d()}(window,document,"script","http://img.baidu.com/hunter/alog/dp.min.js");
+</SCRIPT>
+
+<SCRIPT type=text/javascript>if(typeof PDC != 'undefined'){ PDC.init({ is_login : 0, sample : 0.2, product_id : 132, page_id : 4 }); } F.context({ "common":'/common', "uoper": '/uoperation', "edit": '/edit/', "isVersionExist" : '/common/isVersionExist', "isLogin" : 0,  "isAdmin": 0, "isOriginal":1, "username": '', "writerId": 'sp19890108', "followedNum": 0, "votedNum": 0, "totalVotedNum": 0, "maxFollowVote": 9999999, "ucFollowing": '/user/nuc/following', "ucFavorexp": '/user/nuc/favorexp', "eid": 'a948d6515d3e850a2dcd2ee6', "comment": '/comment/', "hi": 'http://hiphotos.baidu.com/exp/abpic/item/', "authorUname": 'sp19890108', "COMMENT_MAX_LEN" : "600", "REPLY_MAX_LEN": 200, "isFavor":0, "expFavorNum": 152, "ucFavorexp": '/user/nuc/favorexp', "title": 'https原理及tomcat配置https方法', 'push-tag-title': 'https原理及tomcat配置https方法', "logo": 'http://img.baidu.com/img/iknow/exp/logo_uui.jpg', "feedbackSuc": 112, "feedbackFail": 7, "MAX_SUC_FAIL_TIMES": 999999, "relateExpCount": 10, "relateTagPicCount": 0, "introduction":'', "resume": "", "isManual": "", "hasDownUrl": "", "downUrl": "", "nextSeries": "", "BdStoken" : "636428c07e0a2745cb2a402fb8a7f48e", "bdstt" : "1451457192", "expGroup":'G1' });</SCRIPT>
+
+<SCRIPT type=text/javascript>BAIDU_CLB_preloadSlots("706066","706067");</SCRIPT>
+ 
+<DIV id=wgt-exp-share class=wgt-exp-share>
+<DIV class=wrp-exp-share><A id=w-share class=w-share 
+href="javascript:void(0)"><SPAN class=w-txt>分享</SPAN></A><A id=w-favor 
+class=w-favor href="javascript:void(0)"><SPAN class=w-txt>收藏</SPAN></A><A 
+id=w-jmags class=w-jmags href="javascript:void(0)"><SPAN 
+class=w-txt>加入<BR>杂志</SPAN></A><A id=w-gotop class=w-gotop 
+href="javascript:void(0)"><SPAN class=w-txt>返回<BR>顶部</SPAN></A></DIV>
+<DIV style="DISPLAY: none" id=bdshare 
+class="bdshare_t bds_tools get-codes-bdshare exp-share-wgt"><A id=bds_tsina_btn 
+class=bds_tsina log="type:3002,menu:1"><SPAN class=w-txt>新浪<BR>微博</SPAN></A><A 
+class=bds_qzone log="type:3002,menu:2"><SPAN class=w-txt>QQ<BR>空间</SPAN></A><A 
+id=bds-weixin-btn class=bds-weixin log="type:3002,menu:6"></A><A class=bds_tqq 
+log="type:3002,menu:3"><SPAN class=w-txt>腾讯<BR>微博</SPAN></A><A class=bds_renren 
+log="type:3002,menu:4"><SPAN class=w-txt>人人</SPAN></A><A class=bds_mshare 
+log="type:3002,menu:5"><SPAN class=w-txt>一键<BR>分享</SPAN></A></DIV>
+<DIV id=weixin-wrap-wgt class=wx-wrp-wgt>
+<DIV class=wx-arrow><SPAN>◆</SPAN></DIV>
+<DIV id=qrcode-wrp class=qrcode-wrp></DIV><SPAN>请扫描分享到朋友圈</SPAN></DIV></DIV>
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=5827690"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>function getImgsByClassName (className) { var all = document.getElementsByTagName('img'); var elements = new Array(); for (var e = 0; e < all.length; e++) { if (all[e].className.indexOf(className) > -1) { elements[elements.length] = all[e]; break; } } return elements; } var sharePicture,bds_config; var context = '';  var imgs = getImgsByClassName("exp-image-default"); if(imgs != null && imgs.length > 0){ sharePicture = imgs[0].getAttribute('data-src') || imgs[0].src; } sharePicture = sharePicture || 'http://img.baidu.com/img/iknow/exp/logo_beta_normal.jpg'; var shareText = document.title.replace(/_百度经验$/,'')+'_分享自@百度经验'; bds_config = { bdMiniWindow : 1, 'snsKey':{ 'tsina':'1214333208' }, 'bdText':shareText, 'bdPic':sharePicture, 'searchPic' : 0, 'weiboText':context }; document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</SCRIPT>
+
+<DIV id=top-nav-bar class=top-nav-bar>
+<DIV class=container><A id=top-login class=top-login href="javascript:;">登录</A>
+<DIV class=container2><A class=toplogo title=百度经验 
+href="http://jingyan.baidu.com/"></A>
+<DIV class=topsearch>
+<DIV id=topsubmit class=topsubmit title=搜索经验></DIV>
+<FORM id=ftop method=get action=/search target=_self><INPUT id=topword 
+class=toptextinput type=text name=word></FORM></DIV>
+<DIV class=topbtns><A class="topbtn votebtn" 
+href="http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html#"><SPAN 
+id=top-vote-num>51</SPAN></A><A id=top-favo-btn 
+class="topbtn favobtn"></A></DIV></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>var pageId = "jingyan-article2";</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/monkey.jingyan.min.js"></SCRIPT>
+
+<SCRIPT>(function(){PDC.extend({_navTiming:window.performance&&performance.timing,ready:(function(callback){var readyBound=false,readyList=[],DOMContentLoaded,isReady=false; if(document.addEventListener){DOMContentLoaded=function(){document.removeEventListener("DOMContentLoaded",DOMContentLoaded,false);ready()}}else{if(document.attachEvent){DOMContentLoaded=function(){ if(document.readyState==="complete"){document.detachEvent("onreadystatechange",DOMContentLoaded);ready()}}}}function ready(){if(!isReady){isReady=true;for(var i=0,j=readyList.length;i<j;i++){ readyList[i]()}}}function doScrollCheck(){try{document.documentElement.doScroll("left")}catch(e){setTimeout(doScrollCheck,1);return}ready()}function bindReady(){if(readyBound){return}readyBound=true; if(document.addEventListener){document.addEventListener("DOMContentLoaded",DOMContentLoaded,false);window.addEventListener("load",ready,false)}else{if(document.attachEvent){document.attachEvent("onreadystatechange",DOMContentLoaded); window.attachEvent("onload",ready);var toplevel=false;try{toplevel=window.frameElement==null}catch(e){}if(document.documentElement.doScroll&&toplevel){doScrollCheck()}}}}bindReady();return function(callback){ isReady?callback():readyList.push(callback)}})(),Cookie:{set:function(name,value,max_age){max_age=max_age||10;var exp=new Date();exp.setTime(new Date().getTime()+max_age*1000);document.cookie=name+"="+escape(value)+";path=/;expires="+exp.toGMTString()},get:function(name){ var arr=document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));if(arr!=null){return unescape(arr[2])}return null},remove:function(name){this.set(name,"",-1)}},_is_sample:function(ratio){if(!PDC._random){PDC._random=Math.random()}return PDC._random<=ratio},_load_analyzer:function(){var special_pages=this._opt.special_pages||[]; var radios=[this._opt.sample];for(var i=0;i<special_pages.length;i++){radios.push(special_pages[i]["sample"])}var radio=Math.max.apply(null,radios);if(PDC._is_sample(radio)==false){return}PDC._analyzer.loaded=true;PDC._load_js(PDC._analyzer.url,function(){var callbacks=PDC._analyzer.callbacks;for(var i=0,l=callbacks.length;i<l;i++){callbacks[i]()}})},_load_js:function(url,callback){ var script=document.createElement("script");script.setAttribute("type","text/javascript");script.setAttribute("src",url);script.onload=script.onreadystatechange=function(){if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){script.onload=script.onreadystatechange=null;if(typeof callback==="function"){callback(url,true)}}};script.onerror=function(e){if(typeof callback==="function"){callback(url,false)}}; document.getElementsByTagName("head")[0].appendChild(script)},send:function(){if(PDC._analyzer.loaded==true){WPO_PDA.send()}else{PDC._load_analyzer();PDC._analyzer.callbacks.push(function(){WPO_PDA.send()})}}},PDC);!function(){var Cookie=PDC.Cookie,jt=Cookie.get("PMS_JT"),isset=false;if(jt){Cookie.remove("PMS_JT");jt=eval(jt);if(!jt.r||document.referrer.replace(/#.*/,"")==jt.r){(PDC._render_start-jt.s)>100&&PDC.mark("wt",(PDC._render_start-jt.s))}} function findParent(tagname,el){var flag=0;if((el.nodeName||el.tagName).toLowerCase()===tagname.toLowerCase()){return el}while(el=el.parentNode){flag++;if((el.nodeName||el.tagName).toLowerCase()===tagname.toLowerCase()){return el}if(flag>=4){return null}}return null}function clickHandle(e){var e=e||window.event;var target=e.target||e.srcElement;var from=findParent("a",target);if(from){var url=from.getAttribute("href");if(!/^#|javascript:/.test(url)){Cookie.set("PMS_JT",'({"s":'+(+new Date)+',"r":"'+document.URL.replace(/#.*/,"")+'"})');isset=true}}} if(document.attachEvent){document.attachEvent("onclick",clickHandle)}else{document.addEventListener("click",clickHandle,false)}}();PDC.ready(function(){PDC.mark("drt")});if(document.attachEvent){window.attachEvent("onload",function(){PDC.mark("lt")},false)}else{window.addEventListener("load",function(){PDC.mark("let");PDC._setFS&&PDC._setFS();PDC._opt.ready!==false&&PDC._load_analyzer()})}})();</SCRIPT>
+
+<DIV></DIV>
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/common_sync_js_0_f6d8e8d.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>require.resourceMap({"res":{"common:widget/lib/tangram/fx/move/move.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/fx/move/move_4f6a3cf.js","pkg":"common:p1","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/tangram/fx/create/create.js"]},"common:widget/ui/red-bao/red-bao.js":{"url":"http://exp.bdstatic.com/static/common/widget/ui/red-bao/red-bao_5d7852c.js","pkg":"common:p11","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/dialog/dialog.js"]},"common:widget/lib/tangram/ui/Carousel/Carousel.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/ui/Carousel/Carousel_9ed0987.js","pkg":"common:p2","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/tangram/uiBase/uiBase.js"]},"activity:widget/ui/redbox/redbox.js":{"url":"http://exp.bdstatic.com/static/activity/widget/ui/redbox/redbox_58a8c80.js","pkg":"activity:p2","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/dialog/dialog.js"]},"common-jquery:widget/lib/jquery/jquery.js":{"url":"http://exp.bdstatic.com/static/common-jquery/widget/lib/jquery/jquery_250bf24.js","pkg":"common-jquery:p0"},"common-jquery:widget/js/util/event/event.js":{"url":"http://exp.bdstatic.com/static/common-jquery/widget/js/util/event/event_7282486.js","pkg":"common-jquery:p1","deps":["common-jquery:widget/lib/jquery/jquery.js"]},"common:widget/lib/tangram/base/base.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/base/base_e37cc01.js","pkg":"common:p0"},"common:widget/ui/image-lazy-loader/image-lazy-loader.js":{"url":"http://exp.bdstatic.com/static/common/widget/ui/image-lazy-loader/image-lazy-loader_97a5ef9.js","pkg":"common:p12","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/image-lazy-loader/base.js","common:widget/lib/tangram/fx/fadeIn/fadeIn.js"]},"common:widget/ui/sug/sug.js":{"url":"http://exp.bdstatic.com/static/common/widget/ui/sug/sug_680d5bf.js","pkg":"common:p12","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/cookie/cookie.js","common:widget/lib/tangram/ui/Suggestion/Suggestion.js","common:widget/ui/log/log.js","common:widget/lib/tangram/ui/Suggestion/coverable/coverable.js","common:widget/lib/tangram/ui/Suggestion/data/data.js","common:widget/lib/tangram/ui/Suggestion/fixWidth/fixWidth.js","common:widget/lib/tangram/ui/Suggestion/input/input.js"]},"article:widget/exp-title/exp-title.js":{"url":"http://exp.bdstatic.com/static/article/widget/exp-title/exp-title_4551e32.js","pkg":"article:p0","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/ajax/ajax.js"]},"article:widget/ui/article-log/article-log.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/article-log/article-log_8cb2f12.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/log/log.js"]},"article:widget/ui/auto-app/auto-app.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/auto-app/auto-app_e7463c8.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/log/log.js"]},"article:widget/ui/auto-locate-pic/auto-locate-pic.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/auto-locate-pic/auto-locate-pic_bd81efb.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/dialog/dialog.js","common:widget/lib/fis/event/event.js"]},"article:widget/ui/image-lazy-loader/base.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/image-lazy-loader/base_25dddb6.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js"]},"article:widget/ui/image-lazy-loader/image-lazy-loader.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/image-lazy-loader/image-lazy-loader_ed63f16.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","article:widget/ui/image-lazy-loader/base.js","common:widget/lib/tangram/fx/fadeIn/fadeIn.js"]},"article:widget/ui/lazyload/lazyload.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/lazyload/lazyload_6fca430.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/tangram/fx/fadeIn/fadeIn.js","common:widget/lib/fis/event/event.js"]},"article:widget/ui/step-num/step-num.js":{"url":"http://exp.bdstatic.com/static/article/widget/ui/step-num/step-num_a5b98c6.js","pkg":"article:p3","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/fis/event/event.js"]}},"pkg":{"common:p12":{"url":"http://exp.bdstatic.com/static/common/pkg/common_async_js_1_27a4959.js"},"article:p3":{"url":"http://exp.bdstatic.com/static/article/pkg/article_async_js_0_eccebb9.js"}}});</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/common_async_js_0_18c6036.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/common_sync_js_1_940600c.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/common_sync_js_2_fa2e9a7.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/comment_e553a36.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/return_60f55cc.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/framework_4ccefb6.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/base_d45097d.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="https原理及tomcat配置https方法_百度经验_files/article_sync_js_0_17d105a.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>!function(){require.async("common:widget/baidu-tongji/baidu-tongji.js", function(B){ B.init('37419464342341379836'); });}();
+!function(){ require.async(['common:widget/lib/tangram/base/base.js', 'common:widget/ui/login/login.js', 'common:widget/lib/fis/event/event.js'], function(T,login,et){ T.dom.ready(function(){ if (T.g("usrbar-login")){ T.on('usrbar-login','click',function(ev){ var ec = et.eventCenter; ec.fire('login.check', {}); T.event.preventDefault(ev); }); } if(T.g("top-reg-link")){ var reg = T.g("top-reg-link"); reg.setAttribute("href",reg.getAttribute("href")+encodeURIComponent(location.href)); } }) }); }();
+!function(){require.async(["common:widget/ui/sug/sug.js", "common:widget/lib/tangram/base/base.js", "common:widget/ui/cookie/cookie.js"],function(sug,T,cookie){ T.dom.ready(function(){ if(cookie.get("EXP_HIDESUG")!="1"){ sug.init("kw"); } }); }); require.async(["common:widget/lib/tangram/base/base.js", "common:widget/ui/log/log.js"], function(T,log){ window.T = T; T.dom.ready(function(){ var channelEls = T.dom.query(".channel a"); T.each(channelEls, function(item, key) { var logParams = T.dom.getAttr(item, 'log'); if (logParams) { T.on(item, 'mousedown', function(ev) { var logJson = T.json.parse("({"+logParams+"})"); log.imageReq("http://jingyan.baidu.com/static/article/ui/log/log.gif?type=top_tab_click&menu="+ logJson['menu'] +"&t=" + (new Date()).getTime()); }); } }); }); });}();
+!function(){require.async(["common:widget/lib/tangram/base/base.js", "common:widget/nav/nav.js"], function(T, nav){ var hiddenCategoryId = "category-list-e"; T.dom.ready(function(){ nav.init(); }); });}();
+!function(){require.async(["common:widget/lib/tangram/base/base.js", "article:widget/exp-title/exp-title.js"], function(T, title){ T.dom.ready(function(){ if(T.dom.g("ver-edt")){ T.event.on("ver-edt","click",function(event){ title.editNewVersion(F.context("eid")); T.event.stop(event); }); } }); });}();
+!function(){require.async("article:widget/shifu/shifu.js", function(Shifu){ Shifu.init([{"text":"\u4e3a\u4f60\u7684\u7535\u8111\u7cfb\u7edf\uff0c\u9009\u4e00\u4e2a\u9760\u8c31\u5e08\u5085\uff01","url":"http:\/\/shifu.baidu.com\/service\/CZXT?fr=exp-qb-pc&cityCode=131"},{"text":"\u6700\u5feb\u7684\u5230\u5bb6\u670d\u52a1\uff0c\u6700\u4f18\u8d28\u7684\u7535\u8111\u6e05\u7070\uff01","url":"http:\/\/shifu.baidu.com\/service\/DNQH?fr=exp-qb-pc&cityCode=131"},{"text":"\u9ad8\u8d28\u5c4f\u548c\u597d\u5e08\u5085\uff0c\u62ef\u6551\u4f60\u7684\u788e\u5c4f\u673a","url":"http:\/\/shifu.baidu.com\/service\/SPXL?fr=exp-qb-pc&cityCode=131"}]); });}();
+!function(){require.async('article:widget/ui/auto-app/auto-app.js', function(app){ app.init('https原理及tomcat配置https方法','httpstomcat'); })}();
+!function(){require.async(["common:widget/lib/tangram/base/base.js", "article:widget/content/detail/detail.js", "article:widget/ui/lazyload/lazyload.js"],function(T, detail, lazyloader){ T.dom.ready(function(){ detail.init(); lazyloader({ imgCls : "lazy-load-img", container : "exp-detail" }); }); });}();
+!function(){require.async('article:widget/content/impeach/impeach.js',function(T){ });}();
+!function(){require.async("article:widget/shifu/shifu.js", function(Shifu){ Shifu.init([{"text":"\u4e3a\u4f60\u7684\u7535\u8111\u7cfb\u7edf\uff0c\u9009\u4e00\u4e2a\u9760\u8c31\u5e08\u5085\uff01","url":"http:\/\/shifu.baidu.com\/service\/CZXT?fr=exp-qb-pc&cityCode=131"},{"text":"\u6700\u5feb\u7684\u5230\u5bb6\u670d\u52a1\uff0c\u6700\u4f18\u8d28\u7684\u7535\u8111\u6e05\u7070\uff01","url":"http:\/\/shifu.baidu.com\/service\/DNQH?fr=exp-qb-pc&cityCode=131"},{"text":"\u9ad8\u8d28\u5c4f\u548c\u597d\u5e08\u5085\uff0c\u62ef\u6551\u4f60\u7684\u788e\u5c4f\u673a","url":"http:\/\/shifu.baidu.com\/service\/SPXL?fr=exp-qb-pc&cityCode=131"}]); });}();
+!function(){require.async('article:widget/comments/exp-hads/exp-hads.js', function(comments){ });}();
+!function(){F.context({ 'portrait': 'http:\/\/himg.bdimg.com\/sys\/portrait\/item\/00000000.jpg', 'feel_num': 0, 'ques_done_num': 0, 'noCommentCode': 0 }); require.async(['common:widget/lib/tangram/base/base.js', 'article:widget/comments/comments.js'], function(T, comments){ });}();
+!function(){require.async("article:widget/relate-explist/relate-explist.js", function(R){ R.init([{"eid":4858990,"main_status":"2","sub_status":"0","create_time":"1429674028","audit_time":"1429677620","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"5066692","favor_count":"1","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"\u64cd\u4f5c\u7cfb\u7edf","eidEnc":"295430f1ca648c0c7e005035","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1429677620,"voteNum":0,"title":"IIS7\/IIS8\u5168\u7ad9https\u8bbf\u95ee\u7684\u914d\u7f6e\u65b9\u6cd5","firstimg":"0865b518972bd40714df7bc67e899e510fb309b5","abs":"","createTime":"2015.04.22"},{"eid":4782523,"main_status":"2","sub_status":"0","create_time":"1426649989","audit_time":"1426651070","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"4952396","favor_count":"0","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"989723741","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740611","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"NetBeans","eidEnc":"15622f24164f7efdfdbea56b","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1426651070,"voteNum":0,"title":"Tomcat\u5168\u5c40\/\u5c40\u90e8https\u8bbf\u95ee\u914d\u7f6e\u65b9\u6cd5","firstimg":"245e8bcad1c8a78612d0c24e6309c93d71cf50bd","abs":"","createTime":"2015.03.18"},{"eid":4748982,"main_status":"2","sub_status":"0","create_time":"1426045763","audit_time":"1426047186","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"4930558","favor_count":"0","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"1","op_uid":"242322539","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740603","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"\u64cd\u4f5c\u7cfb\u7edf","eidEnc":"48b558e33752ae7f38c09ae8","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1426047186,"voteNum":1,"title":"Apache\u5168\u5c40\/\u5c40\u90e8https\u8bbf\u95ee\u914d\u7f6e\u65b9\u6cd5\u662f\uff1f","firstimg":"bd70426034a85edfd638eb484d540923dc5475e1","abs":"","createTime":"2015.03.11"},{"eid":789015,"main_status":"2","sub_status":"0","create_time":"1352093206","audit_time":"1352093712","cid":16,"uid":"231385288","uip":"974300090","uname":"\u51b7\u67491991","spam_flag":"0","ori_writer":"","vid":"815222","favor_count":"11","succ_num":"11","fail_num":"6","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"2","vote_num":"18","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat7.0","eidEnc":"d5c4b52b251e22da560dc51b","succNum":11,"writer":"\u51b7\u67491991","releaseTime":1352093712,"voteNum":18,"title":"tomcat7.0\u8be6\u7ec6\u914d\u7f6e\u65b9\u6cd5\uff1f","firstimg":"91ae68c6a7efce1b96b09933af51f3deb58f6574","abs":"","createTime":"2012.11.05"},{"eid":5298059,"main_status":"2","sub_status":"0","create_time":"1442826850","audit_time":"1442826986","cid":16,"uid":"218044559","uip":"3673808130","uname":"739568808","spam_flag":"0","ori_writer":"","vid":"5539001","favor_count":"1","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"832715409","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740606","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat,java,\u670d\u52a1\u5668,tomcat\u914d\u7f6e","eidEnc":"ab0b563089b6acc15bfa7d48","succNum":0,"writer":"739568808","releaseTime":1442826986,"voteNum":0,"title":"\u4e00\u53f0\u7535\u8111\u540c\u65f6\u8fd0\u884c\u591a\u4e2atomcat\u914d\u7f6e\u65b9\u6cd5","firstimg":"","abs":"","createTime":"2015.09.21"},{"eid":491387,"main_status":"2","sub_status":"0","create_time":"1337737924","audit_time":"1337743047","cid":11,"uid":"152696243","uip":"1873699419","uname":"\u4e07\u7b11\u723d","spam_flag":"0","ori_writer":"","vid":"509224","favor_count":"423","succ_num":"430","fail_num":"13","ext_flag":"1","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"48","vote_num":"144","op_uid":"0","op_uname":"","mag_count":"2","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat","eidEnc":"4853e1e53465271909f72690","succNum":430,"writer":"\u4e07\u7b11\u723d","releaseTime":1337743047,"voteNum":144,"title":"\u600e\u6837\u7ed9Myeclipse\u914d\u7f6etomcat\u670d\u52a1\u5668","firstimg":"4e0b3ea4462309f7e22134ac720e0cf3d6cad687","abs":"","createTime":"2012.05.23"},{"eid":2576945,"main_status":"2","sub_status":"0","create_time":"1393824470","audit_time":"1393825230","cid":122,"uid":"29252208","uip":"1991940103","uname":"penguinhe2006","spam_flag":"1","ori_writer":"","vid":"2662056","favor_count":"0","succ_num":"7","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"849590477","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740608","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"https","eidEnc":"1709ad80a99afe4634c4f0c3","succNum":7,"writer":"penguinhe2006","releaseTime":1393825230,"voteNum":0,"title":"Liberty(WLP)\u914d\u7f6e\u5355\u9879SSL(https)\u65b9\u5f0f\u8bbf\u95ee","firstimg":"a583631ed21b0ef4a9afaf1fdfc451da80cb3ee8","abs":"","createTime":"2014.03.03"},{"eid":1959949,"main_status":"2","sub_status":"64","create_time":"1377309505","audit_time":"1377314761","cid":16,"uid":"404219550","uip":"2091226538","uname":"idea_wj","spam_flag":"1","ori_writer":"","vid":"2012345","favor_count":"442","succ_num":"382","fail_num":"14","ext_flag":"1","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"9","vote_num":"347","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"3","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":1,"is_manual":0,"ques_doing_num":4,"feel_num":1,"tags":"eclipse,tomcat","eidEnc":"ca2d939dd90183eb6d31ce79","succNum":382,"writer":"idea_wj","releaseTime":1377314761,"voteNum":347,"title":"\u624b\u628a\u624b\u56fe\u6587\u6559\u4f60eclipse\u4e0b\u5982\u4f55\u914d\u7f6etomcat","firstimg":"d041a4a1cd11728b47801ef9c9fcc3cec2fd2c78","abs":"","createTime":"2013.08.24"},{"eid":1918172,"main_status":"2","sub_status":"2","create_time":"1376751050","audit_time":"1376757345","cid":36,"uid":"404219550","uip":"3082477719","uname":"idea_wj","spam_flag":"0","ori_writer":"","vid":"1969347","favor_count":"122","succ_num":"54","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"1","vote_num":"44","op_uid":"147303415","op_uname":"\u77e5\u9053\u7ba1\u7406\u545807","mag_count":"3","is_impeach":0,"is_season":0,"is_recom":1,"is_nominate":0,"is_manual":0,"tags":"eclipse,tomcat7","ques_doing_num":2,"eidEnc":"ab69b270ccc4792ca7189fd6","succNum":54,"writer":"idea_wj","releaseTime":1376757345,"voteNum":44,"title":"eclipse\u4e0b\u914d\u7f6etomcat7\u7684\u51e0\u4e2a\u91cd\u8981\u95ee\u9898,\u503c\u5f97\u4e00\u770b","firstimg":"7e7f7909c93d70cf22ef18d9f9dcd100bba12b89","abs":"","createTime":"2013.08.17"},{"eid":2285187,"main_status":"2","sub_status":"0","create_time":"1384957700","audit_time":"1384959890","cid":36,"uid":"372565194","uip":"1884996110","uname":"dengxiuqian","spam_flag":"1","ori_writer":"","vid":"2352111","favor_count":"43","succ_num":"28","fail_num":"1","ext_flag":"0","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"1","vote_num":"9","op_uid":"147303415","op_uname":"\u77e5\u9053\u7ba1\u7406\u545807","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat","ques_doing_num":1,"eidEnc":"597a064397d47a312a52434f","succNum":28,"writer":"dengxiuqian","releaseTime":1384959890,"voteNum":9,"title":"MyEclipse\u4e2d\u5982\u4f55\u914d\u7f6etomcat\u670d\u52a1\u5668","firstimg":"72ccb7773912b31b67f2ea378418367adbb4e1d7","abs":"","createTime":"2013.11.20"}]); });}();
+!function(){F.context({ 'weddingGroup':'G0', 'keyWord': 'httpstomcat', 'wordKey': 'httpstomcat', 'arrayKeyExists': '1', 'expAllKey': 'https%D4%AD%C0%ED%BC%B0tomcat%C5%E4%D6%C3https%B7%BD%B7%A8', 'aspRefer':'http:\/\/www.baidu.com\/link?url=CtPoZ7j6XhTZ_7KoPemzrrqiSi73JwmM2toc24BmARl1Kmt_d0pnQUS0O34biW9MQWkBfOkK18nZbK_wnA_lG_PZ53xGTkIGKcdRru83s6_&wd=&eqid=b74d38d50001830300000003568379f1', 'title':'https原理及tomcat配置https方法' }); require.async('article:widget/ad/bottom-ads/bottom-ads.js', function(Dd){ Dd.init(); });}();
+!function(){require.async(["common:widget/lib/tangram/base/base.js", "article:widget/income-money/digital/digital.js"], function(T, digital){ window.digital = digital; T.dom.ready(function(){ var d = new digital({ containerId: "income-money-num", num: 1021.84, realtimeUpdate: 1, addInterval: 2000 }); }); });}();
+!function(){require.async(["common:widget/ui/user/introduction/introduction.js", "common:widget/ui/user/resume/resume.js", "common:widget/lib/tangram/base/base.js", "article:widget/author/author.js", "article:widget/ui/image-lazy-loader/image-lazy-loader.js"],function(intro,resume,T,author){ T.dom.ready(function(){ if(T.dom.g("modify-resume")){ resume.init("modify-resume"); } author.initFollow("follow-user-e"); }); });}();
+!function(){require.async(['common:widget/lib/tangram/base/base.js', 'article:widget/cms-banner-ads/cms-banner-ads.js'], function(T, cmsbanner){ T.dom.ready(function(){ cmsbanner.init(); }); });}();
+!function(){T.dom.ready(function(){ require.async(["common:widget/lib/tangram/base/base.js", "common:widget/ui/log/log.js"], function(T, Log){ Log.send(location.href, 2021, { 'ads': 'qb_pv' }); if('G0' == 'G2'){ Log.send(location.href, 2021, { 'ads': 'qb_has_zhixin' }); } else{ Log.send(location.href, 2021, { 'ads': 'qb_no_zhixin' }); } }); });}();
+!function(){require.async(["common:widget/lib/tangram/base/base.js"],function(T){ T.dom.ready(function(){ T.event.on(T.dom.q('tousu-address')[0],'click',function(e){ T.event.getTarget(e).href = "http://tousu.baidu.com/jingyan/add?link=" + window.top.location.href + "#2"; }) }); });}();
+!function(){ F.context('relateExp', { count: 10, list: [{"eid":4858990,"main_status":"2","sub_status":"0","create_time":"1429674028","audit_time":"1429677620","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"5066692","favor_count":"1","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"\u64cd\u4f5c\u7cfb\u7edf","eidEnc":"295430f1ca648c0c7e005035","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1429677620,"voteNum":0,"title":"IIS7\/IIS8\u5168\u7ad9https\u8bbf\u95ee\u7684\u914d\u7f6e\u65b9\u6cd5","firstimg":"0865b518972bd40714df7bc67e899e510fb309b5","abs":"","createTime":"2015.04.22"},{"eid":4782523,"main_status":"2","sub_status":"0","create_time":"1426649989","audit_time":"1426651070","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"4952396","favor_count":"0","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"989723741","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740611","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"NetBeans","eidEnc":"15622f24164f7efdfdbea56b","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1426651070,"voteNum":0,"title":"Tomcat\u5168\u5c40\/\u5c40\u90e8https\u8bbf\u95ee\u914d\u7f6e\u65b9\u6cd5","firstimg":"245e8bcad1c8a78612d0c24e6309c93d71cf50bd","abs":"","createTime":"2015.03.18"},{"eid":4748982,"main_status":"2","sub_status":"0","create_time":"1426045763","audit_time":"1426047186","cid":36,"uid":"963204360","uip":"1962902542","uname":"\u9633\u5149\u7684\u9ed8\u9ed802","spam_flag":"0","ori_writer":"\u666f\u5b89\u7f51\u7edc","vid":"4930558","favor_count":"0","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"1","op_uid":"242322539","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740603","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"\u64cd\u4f5c\u7cfb\u7edf","eidEnc":"48b558e33752ae7f38c09ae8","succNum":0,"writer":"\u9633\u5149\u7684\u9ed8\u9ed802","releaseTime":1426047186,"voteNum":1,"title":"Apache\u5168\u5c40\/\u5c40\u90e8https\u8bbf\u95ee\u914d\u7f6e\u65b9\u6cd5\u662f\uff1f","firstimg":"bd70426034a85edfd638eb484d540923dc5475e1","abs":"","createTime":"2015.03.11"},{"eid":789015,"main_status":"2","sub_status":"0","create_time":"1352093206","audit_time":"1352093712","cid":16,"uid":"231385288","uip":"974300090","uname":"\u51b7\u67491991","spam_flag":"0","ori_writer":"","vid":"815222","favor_count":"11","succ_num":"11","fail_num":"6","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"2","vote_num":"18","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat7.0","eidEnc":"d5c4b52b251e22da560dc51b","succNum":11,"writer":"\u51b7\u67491991","releaseTime":1352093712,"voteNum":18,"title":"tomcat7.0\u8be6\u7ec6\u914d\u7f6e\u65b9\u6cd5\uff1f","firstimg":"91ae68c6a7efce1b96b09933af51f3deb58f6574","abs":"","createTime":"2012.11.05"},{"eid":5298059,"main_status":"2","sub_status":"0","create_time":"1442826850","audit_time":"1442826986","cid":16,"uid":"218044559","uip":"3673808130","uname":"739568808","spam_flag":"0","ori_writer":"","vid":"5539001","favor_count":"1","succ_num":"0","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"3","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"832715409","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740606","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat,java,\u670d\u52a1\u5668,tomcat\u914d\u7f6e","eidEnc":"ab0b563089b6acc15bfa7d48","succNum":0,"writer":"739568808","releaseTime":1442826986,"voteNum":0,"title":"\u4e00\u53f0\u7535\u8111\u540c\u65f6\u8fd0\u884c\u591a\u4e2atomcat\u914d\u7f6e\u65b9\u6cd5","firstimg":"","abs":"","createTime":"2015.09.21"},{"eid":491387,"main_status":"2","sub_status":"0","create_time":"1337737924","audit_time":"1337743047","cid":11,"uid":"152696243","uip":"1873699419","uname":"\u4e07\u7b11\u723d","spam_flag":"0","ori_writer":"","vid":"509224","favor_count":"423","succ_num":"430","fail_num":"13","ext_flag":"1","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"48","vote_num":"144","op_uid":"0","op_uname":"","mag_count":"2","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat","eidEnc":"4853e1e53465271909f72690","succNum":430,"writer":"\u4e07\u7b11\u723d","releaseTime":1337743047,"voteNum":144,"title":"\u600e\u6837\u7ed9Myeclipse\u914d\u7f6etomcat\u670d\u52a1\u5668","firstimg":"4e0b3ea4462309f7e22134ac720e0cf3d6cad687","abs":"","createTime":"2012.05.23"},{"eid":2576945,"main_status":"2","sub_status":"0","create_time":"1393824470","audit_time":"1393825230","cid":122,"uid":"29252208","uip":"1991940103","uname":"penguinhe2006","spam_flag":"1","ori_writer":"","vid":"2662056","favor_count":"0","succ_num":"7","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"2","is_spread":"0","share_num":"0","vote_num":"0","op_uid":"849590477","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740608","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"https","eidEnc":"1709ad80a99afe4634c4f0c3","succNum":7,"writer":"penguinhe2006","releaseTime":1393825230,"voteNum":0,"title":"Liberty(WLP)\u914d\u7f6e\u5355\u9879SSL(https)\u65b9\u5f0f\u8bbf\u95ee","firstimg":"a583631ed21b0ef4a9afaf1fdfc451da80cb3ee8","abs":"","createTime":"2014.03.03"},{"eid":1959949,"main_status":"2","sub_status":"64","create_time":"1377309505","audit_time":"1377314761","cid":16,"uid":"404219550","uip":"2091226538","uname":"idea_wj","spam_flag":"1","ori_writer":"","vid":"2012345","favor_count":"442","succ_num":"382","fail_num":"14","ext_flag":"1","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"9","vote_num":"347","op_uid":"242325014","op_uname":"\u7ecf\u9a8c\u5206\u4eab\u7ba1\u740605","mag_count":"3","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":1,"is_manual":0,"ques_doing_num":4,"feel_num":1,"tags":"eclipse,tomcat","eidEnc":"ca2d939dd90183eb6d31ce79","succNum":382,"writer":"idea_wj","releaseTime":1377314761,"voteNum":347,"title":"\u624b\u628a\u624b\u56fe\u6587\u6559\u4f60eclipse\u4e0b\u5982\u4f55\u914d\u7f6etomcat","firstimg":"d041a4a1cd11728b47801ef9c9fcc3cec2fd2c78","abs":"","createTime":"2013.08.24"},{"eid":1918172,"main_status":"2","sub_status":"2","create_time":"1376751050","audit_time":"1376757345","cid":36,"uid":"404219550","uip":"3082477719","uname":"idea_wj","spam_flag":"0","ori_writer":"","vid":"1969347","favor_count":"122","succ_num":"54","fail_num":"0","ext_flag":"0","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"1","vote_num":"44","op_uid":"147303415","op_uname":"\u77e5\u9053\u7ba1\u7406\u545807","mag_count":"3","is_impeach":0,"is_season":0,"is_recom":1,"is_nominate":0,"is_manual":0,"tags":"eclipse,tomcat7","ques_doing_num":2,"eidEnc":"ab69b270ccc4792ca7189fd6","succNum":54,"writer":"idea_wj","releaseTime":1376757345,"voteNum":44,"title":"eclipse\u4e0b\u914d\u7f6etomcat7\u7684\u51e0\u4e2a\u91cd\u8981\u95ee\u9898,\u503c\u5f97\u4e00\u770b","firstimg":"7e7f7909c93d70cf22ef18d9f9dcd100bba12b89","abs":"","createTime":"2013.08.17"},{"eid":2285187,"main_status":"2","sub_status":"0","create_time":"1384957700","audit_time":"1384959890","cid":36,"uid":"372565194","uip":"1884996110","uname":"dengxiuqian","spam_flag":"1","ori_writer":"","vid":"2352111","favor_count":"43","succ_num":"28","fail_num":"1","ext_flag":"0","has_video":"0","is_original":"1","state":"1","is_spread":"0","share_num":"1","vote_num":"9","op_uid":"147303415","op_uname":"\u77e5\u9053\u7ba1\u7406\u545807","mag_count":"0","is_impeach":0,"is_season":0,"is_recom":0,"is_nominate":0,"is_manual":0,"tags":"tomcat","ques_doing_num":1,"eidEnc":"597a064397d47a312a52434f","succNum":28,"writer":"dengxiuqian","releaseTime":1384959890,"voteNum":9,"title":"MyEclipse\u4e2d\u5982\u4f55\u914d\u7f6etomcat\u670d\u52a1\u5668","firstimg":"72ccb7773912b31b67f2ea378418367adbb4e1d7","abs":"","createTime":"2013.11.20"}] });  require.async("article:widget/like/like.js");}();
+!function(){(function() { try { document.execCommand("BackgroundImageCache", false, true); } catch(err) {} require.async(['common:widget/lib/tangram/base/base.js', 'common:widget/ui/login/login.js', 'common:widget/ui/msg/msg.js', 'common:widget/ui/top-search-box/top-search-box.js', 'common:widget/ui/log/log.js'], function(T,login,msg,search,log) { T.dom.ready( function() { msg.init(); search.init(); log.init({ query : 'a', evtType : 'mousedown' }); }); });  F.context({ "isLogin" : 0, "hi": "http://hiphotos.baidu.com/exp/abpic/item/" });  F.context({ 'submit_follow' : '/submit/follow', 'submit_vote' : '/submit/vote', 'submit_author' : '/submit/author', 'submit_user' : '/submit/user', 'submit_favor' : '/submit/favor', 'submit_notice' : '/submit/notice', 'common_isLogin' : '/common/isLogin', 'common_isVersionExist' : '/common/isVersionExist', 'common_isTitleValid' : '/common/isTitleValid', 'common_needToTitle' : '/common/needToTitle', 'asyncreq' : '/asyncreq', 'submit_comment' : '/submit/comment', 'submit_feedback' : '/submit/exp' }); })();}();
+!function(){ require.async(["common:widget/lib/tangram/base/base.js", 'common:widget/lib/fis/event/event.js'], function(T, EC){ var ec = EC.eventCenter; T.dom.ready(function(){ T.sio.callByBrowser('http://cbjs.baidu.com/js/o.js', function(){ BAIDU_CLB_addOrientation('jylistid',"36"); BAIDU_CLB_addOrientation('jyarticleid',"2520420"); setTimeout(function(){ var baidu_dan_wrapper_706066 = T.g('baidu_dan_wrapper_706066'); if(baidu_dan_wrapper_706066){ T.dom.setStyle(baidu_dan_wrapper_706066, 'z_index', 100); } var baidu_dan_wrapper_706067 = T.g('baidu_dan_wrapper_706067'); if(baidu_dan_wrapper_706067){ T.dom.setStyle(baidu_dan_wrapper_706067, 'z_index', 100); } },1000); });  T.on(window,'scroll',function(){ ec.fire('like.show'); });  }); }); require.async(['article:widget/ui/article-log/article-log.js'],function(articleLog){ articleLog.init(); });  require.async('article:widget/ui/step-num/step-num.js',function(stepNum){ stepNum.init(); }); }();
+!function(){require.async(["common:widget/lib/tangram/base/base.js", "article:widget/exp-share/exp-share.js"], function(T, expShare){ T.dom.ready(function(){ expShare.init(); }); });}();
+!function(){require.async(["article:widget/top-nav-bar/top-nav-bar.js"], function(navbar){ navbar.init(); });}();
+!function(){   require.async('common:widget/ui/log/log.js', function(log){ log.send(location.href, 20150831, { pos: 'display', expGroup: F.context('expGroup') || 'G0' }); });}();</SCRIPT>
+<!--19925257640878533642123014-->
+<SCRIPT> var _trace_page_logid = 1992525764; </SCRIPT>
+</BODY></HTML>

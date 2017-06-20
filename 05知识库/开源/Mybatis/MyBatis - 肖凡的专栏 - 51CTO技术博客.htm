@@ -1,0 +1,1035 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/analytics.js" async=""></script><script id="allmobilize" charset="utf-8" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/allmobilize.js"></script><style type="text/css"></style><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>MyBatis - 肖凡的专栏 - 51CTO技术博客</title>
+<meta name="description" content="肖凡的专栏 (http://legend2011.blog.51cto.com)">
+<meta name="keywords" content="肖凡的专栏">
+<meta http-equiv="Cache-Control" content="private">
+<!-- base href="http://legend2011.blog.51cto.com/" -->
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/def.js"></script>
+<script language="javascript" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/message.js" type="text/javascript"></script>
+<script language="javascript" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/user_comment.js" type="text/javascript"></script>
+<script language="javascript" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/base2.js" type="text/javascript"></script>
+<script language="javascript" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/dialog_utf8.js" type="text/javascript"></script>
+<link href="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/30.css" rel="stylesheet" type="text/css">
+<link rel="alternate" href="http://legend2011.blog.51cto.com/rss.php?uid=3018495" type="application/rss+xml" title="RSS 2.0">
+<link rel="edituri" type="application/rsd+xml" title="rsd" href="http://legend2011.blog.51cto.com/xmlrpc.php?rsd=1">
+<link href="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/header_master_top.css" rel="stylesheet" type="text/css">
+<link href="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/base.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	.mainNav li a{display:inline-block}
+</style>
+<script>
+var myid = "";
+function add_flink(){
+	if(myid==""){
+
+        var refurlk = "http://legend2011.blog.51cto.com";
+
+				//commentSubmit("",refurlk);
+				location.href="http://home.51cto.com/index.php?reback="+encodeURIComponent(encodeURIComponent(refurlk));
+				
+				return false;
+	}else{
+		var mtk = "c099ae6c6f15cf18d2c2da4add4ddfa0";
+      		var url='/mod/edit_flink.php?type=addflink&uid=3018495&flink=http://legend2011.blog.51cto.com&mtk='+mtk;
+		var ajax = InitAjax1();
+		ajax.open("GET", url, true);
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				/*if(myid == 5290427){
+					alert(ajax.responseText);
+				}*/
+				if(ajax.responseText==""){
+					alert("添加成功。");
+				}
+				if(ajax.responseText=="1"){
+				alert("链接指向自己。");
+				}
+				if(ajax.responseText=="2"){
+				alert("友情链接已存在。")
+				}
+				if(ajax.responseText=="4"){
+					alert("验证已过期。")
+					}
+			}
+		}
+		ajax.send(null);
+	}
+
+
+
+}
+function sendmessage(){
+
+	var refurlk = "http://legend2011.blog.51cto.com";
+
+	if(myid){
+		return true;
+	}else{
+		commentSubmit("",refurlk);
+		return false;
+	}
+}
+function copylink(ourl){
+	if(!ourl){
+		var clipBoardContent = "http://legend2011.blog.51cto.com";
+	}else{
+		var clipBoardContent = ourl;
+	}
+	window.clipboardData.setData("Text",clipBoardContent);
+	alert("复制成功!");
+	return false;
+}
+function correctPNG() {
+if (document.getElementById('blog_touxian'))
+{
+var img = document.getElementById('blog_touxian');
+      var imgName = img.src.toUpperCase()
+      var imgID = (img.id) ? "id='" + img.id + "' " : ""
+      var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+      var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+      var imgStyle = "display:inline-block;" + img.style.cssText
+      if (img.align == "left") imgStyle = "float:left;" + imgStyle
+      if (img.align == "right") imgStyle = "float:right;" + imgStyle
+      if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+      var strNewHTML = "<span " + imgID + imgClass + imgTitle
+         + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+         + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+         + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" ;
+      img.outerHTML = strNewHTML;
+}
+}
+//window.attachEvent("onload", correctPNG);
+window.onload=correctPNG;
+
+function copy(){
+var text=document.getElementById("txtUser").value;
+if(copy2Clipboard(text)!=false){ 
+alert("复制成功了！ "); 
+} 
+}
+function copy2Clipboard(txt){ 
+if(window.clipboardData){ 
+window.clipboardData.clearData(); 
+window.clipboardData.setData("Text",txt); 
+}else if(navigator.userAgent.indexOf("Opera")!=-1){ 
+window.location=txt; 
+}else if(window.netscape){ 
+try{ 
+netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect"); 
+} 
+catch(e){ 
+alert("您使用的浏览器不支持此复制功能，请使用Ctrl+C或鼠标右键。"); 
+return false; 
+} 
+var clip=Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard); 
+if(!clip)return; 
+var trans=Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable); 
+if(!trans)return; 
+trans.addDataFlavor('text/unicode'); 
+var str=new Object(); 
+var len=new Object(); 
+var str=Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString); 
+var copytext=txt;str.data=copytext; 
+trans.setTransferData("text/unicode",str,copytext.length*2); 
+var clipid=Components.interfaces.nsIClipboard; 
+if(!clip)return false; 
+clip.setData(trans,null,clipid.kGlobalClipboard); 
+return true;
+} 
+}
+
+function mod_close(){
+  document.getElementById('mod_tg').style.display="none";
+}
+
+function match_invite(uid) {
+    var url='/mod/match_invite.php';
+	var ajax = InitAjax();
+    var re = 'uid=' + uid;
+	ajax.open("POST", url, true);
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	ajax.send(re);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            if(ajax.responseText == 1){
+                alert("邀请信息已经发送成功。");
+            } else if(ajax.responseText=="-1"){
+                alert("邀请失败，请稍候再试。");
+            } else if(ajax.responseText=="2"){
+                alert("该用户已经报名了。")
+            }
+        }
+    }
+}
+
+</script>
+<style type="text/css">
+/*
+.artContent img {max-width:450px !important;}
+.showContent img{max-width:650px!important;}
+*/
+
+.artContent img{max-width: 450px; width:expression(this.width > 450 ? "450px" : this.width)}
+/*
+.showContent img{max-width: 450px; width:expression(this.width > 650 ? "650px" : this.width)}
+*/
+
+
+</style>
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/share.js"></script><link href="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/slide_share.css" rel="stylesheet"></head>
+
+<body>
+
+<div id="home_top">
+<div class="top_nav" style="width:990px;">
+<div class="left" style="margin-top:10px; width:440px;"><a href="http://blog.51cto.com/" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/head_blog_sibebar_logo.gif" style="margin-top:-4px;" align="absmiddle"></a><a target="_blank" href="http://www.51cto.com/">51CTO首页</a><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/top_bg_xian.gif" style="margin-top:-4px;" align="absmiddle" height="25" width="16"><a href="http://blog.51cto.com/" target="_blank">51CTO博客</a><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/top_bg_xian.gif" style="margin-top:-4px;" align="absmiddle" height="25" width="16"><a href="http://home.51cto.com/?reback=http%253A%252F%252Flegend2011.blog.51cto.com%252F3018495%252Fd-5">我的博客</a><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/top_bg_xian.gif" style="margin-top:-4px;" align="absmiddle" height="25" width="16">
+
+<a target="_blank" href="http://blog.51cto.com/search.php">搜索</a>
+<a href="javascript:void(0);" style="color: rgb(255, 0, 0); text-decoration: underline;" id="showMessagerDim">每日博报</a>
+</div>
+
+<div class="right" style="width:550px;">
+<div class="more"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/top_shequ.gif" align="absmiddle" height="16" width="27"><a target="_blank" style="color:#C00" href="http://gaozhao.51cto.com/">招聘</a><a style="color: rgb(204, 0, 0);" target="_blank" href="http://edu.51cto.com/">学院</a><a target="_blank" href="http://bbs.51cto.com/">论坛</a><a target="_blank" href="http://blog.51cto.com/">博客</a><a target="_blank" href="http://down.51cto.com/">下载</a><a href="javascript:viod(0);" onmouseout="popupClose()" onmouseover="show(3,this)">更多<img style="padding-left: 4px;" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/nav_ico1.gif" align="absmiddle"></a>            </div>            <span id="login_status"><div class="login" style="padding-top:8px; text-align:right;"><a href="http://home.51cto.com/index?reback=http://legend2011.blog.51cto.com/3018495/d-5" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://legend2011.blog.51cto.com/3018495/d-5" target="_self">注册</a></div></span>                </div>    </div></div>
+
+
+
+<div style="display: none; top: 27px; left: 1132px;" class="subMenu3" id="s3" onmouseover="popupNoClose()" onmouseout="popupClose()">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" style="color:red;" target="_blank">题库</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank">招聘</a></li>
+</ul>
+</div>
+<!--简导航end-->
+
+
+
+<div class="headerBox">
+<div class="header">
+<div class="header_l">
+<div class="logo_blogname">
+
+
+<div class="blogLogo">
+<a href="http://blog.51cto.com/blogcommend/13" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/blogLogo02.png" height="70px;" width="161px;"></a>
+</div>
+
+
+<div class="blogName">
+<a href="http://legend2011.blog.51cto.com/"><h1>肖凡的专栏</h1></a>
+</div>
+</div><!--logo_blogname end-->
+<div class="blogLink">
+
+<a href="http://legend2011.blog.51cto.com/">http://legend2011.blog.51cto.com</a> <input id="txtUser" size="32" value="http://legend2011.blog.51cto.com" type="hidden">   <a href="javascript:void(0);" onclick="copy();">【复制】</a> <a href="http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"></a><a href="http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank">【订阅】</a>
+
+</div>
+
+
+
+</div><!--header_l end-->
+<div class="header_r">
+<div class="blogInfo"><span><a href="http://legend2011.blog.51cto.com/3018495/o" title="察看NashMaster2011所有原创文章">原创</a>:70</span><span><a href="http://legend2011.blog.51cto.com/3018495/t" title="察看NashMaster2011所有翻译文章">翻译</a>:0</span><span><a href="http://legend2011.blog.51cto.com/3018495/c" title="察看NashMaster2011所有转载文章">转载</a>:0</span></div>
+<div class="blogNav"><a href="http://legend2011.blog.51cto.com/">博 客</a>|<a href="http://home.51cto.com/apps/photo/index.php?s=/Index/photos/uid/3018495">图库</a>|<a href="http://legend2011.blog.51cto.com/addblog.php">写博文</a>|<a href="http://51ctoblog.blog.51cto.com/all/26414/4" target="_blank">帮 助</a></div>
+</div>
+</div>
+<!--header end-->
+</div><!--headerBox end-->
+<div class="mainNav">
+<span class="mainNavT"></span>
+<ul>
+<li><a href="http://legend2011.blog.51cto.com/">首页</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-1">JAVA基础知识</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-6">Hibernate</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-7">C</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-9">Linux</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-2">javascript</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-3">教育、学习方法</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-4">社会、生活</a></li>|<li><a href="http://legend2011.blog.51cto.com/3018495/d-8">IT业界</a></li>
+</ul>
+<span class="mainNavB"></span>
+</div>
+<!--mainNav end-->
+
+
+
+
+<div class="blogMain">
+<div class="blogLeft" id="layout_0" style="min-height: 500px;width:240">
+
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/mydateline.htm"></script><div class="date box"><div class="title"><h2>2016 6.8 Wed</h2></div><div class="modCon"><table align="center" border="0" cellpadding="0" cellspacing="0" width="90%"><tbody><tr><td align="center">日</td><td align="center">一</td><td align="center">二</td><td align="center">三</td><td align="center">四</td><td align="center">五</td><td align="center">六</td></tr><tr align="center"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr align="center"><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr><tr align="center"><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr><tr align="center"><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr><tr align="center"><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td colspan="7" align="center"><a href="http://legend2011.blog.51cto.com/blog.php?uid=3018495&amp;m=6&amp;y=2015">&#171;</a> 年 <a href="http://legend2011.blog.51cto.com/blog.php?uid=3018495&amp;m=6&amp;y=2017">&#187;</a> 2016	- 6 <a href="http://legend2011.blog.51cto.com/blog.php?uid=3018495&amp;m=5&amp;y=2016">&#171;</a> 月 <a href="http://legend2011.blog.51cto.com/blog.php?uid=3018495&amp;m=7&amp;y=2016">&#187;</a></td></tr></tbody></table></div><span class="modBot"></span></div>
+
+<div class="search box">
+<div class="title"><h2>搜索BLOG文章</h2></div>
+<div class="modCon">
+<form method="post" action="search.php?">
+<input name="step" value="2" type="hidden">
+<input name="authorid" value="3018495" type="hidden">
+<input name="sch_area" value="S" type="hidden">
+<input class="searchInput" name="keyword" type="text">
+<input value="提 交" class="searchBtn" type="submit">
+</form>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--search end-->
+
+<div class="notice box lh22">
+<div class="title"><h2>公告</h2></div>
+<div class="modCon">
+<b></b><p></p><p></p>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--notice end-->
+<div class="box moduleUser">
+<div class="title">
+<h2>NashMaster2011 的BLOG</h2>
+</div>
+<div class="modCon">
+
+<div class="userImage"> <script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/userface.htm"></script><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_002.jpg" id="userface"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="crumbs">
+<a href="http://home.51cto.com/index.php?s=/space/3018495#message" class="writeMessage" target="_blank">写留言</a><a href="http://edu.51cto.com/lecturer/user_id-3018495.html" class="inCircle" target="_blank">学TA的课程</a><a href="http://home.51cto.com/index.php?s=/Notify/write/uid/3018495" target="_blank" class="message">发消息</a> <a href="http://legend2011.blog.51cto.com/" onclick="add_flink(3018495);return false" class="joinLinks">加友情链接</a><a href="http://home.51cto.com/index.php?s=/space/3018495" target="_blank" class="joinFriends">进家园 加好友</a>
+</div>
+
+<div style="width:239px;height:64px;display:none;">
+
+
+<div style="float:left;"><p style="padding:15px 0 0 28px; line-height:20px;">2012年度IT博客大赛<br><a target="_blank" href="http://blog.51cto.com/contest2012/#top10000" style="color:#F00; text-decoration:underline;">十大杰出IT博客诞生</a></p></div>
+<div style="float:right;"><a target="_blank" href="http://blog.51cto.com/contest2012/3018495"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/blog_match_endlook.jpg" style="margin:23px 20px 0 0;" height="27" width="57"></a></div>
+
+
+
+<div class="clear"></div>
+</div>
+
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><div class="infoList box">
+<div class="title">
+<h2>博客统计信息</h2>
+</div>
+<div class="modCon">
+<p>
+<span class="infoListHead"><a href="http://blog.51cto.com/blogcommend" target="_blank" class="operlink"><b>51CTO博客之星</b></a> <br></span>
+用户名：NashMaster2011<br>
+文章数：72<br>
+评论数：1087<br>
+访问量：948354<br>
+无忧币：10086<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客积分</a>：4338<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客等级</a>：7<br>
+注册日期：2011-04-25<br>
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/blogno1countdown.htm"></script>
+
+</p>
+</div>
+<span class="modBot"></span>
+</div>
+
+<div class="friendLink box">
+<div class="title">
+  <h2>友情链接</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://edu.51cto.com/" title="IT精品课程" target="_blank">IT精品课程</a></li>
+
+<li><a href="http://oldboy.blog.51cto.com/" title="老男孩linux运维" target="_blank">老男孩linux运维</a> <img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/tubiao3.gif" alt="本周内更新"></li>
+
+<li><a href="http://yunli.blog.51cto.com/" title="李云" target="_blank">李云</a></li>
+
+<li><a href="http://51ctoblog.blog.51cto.com/" title="51CTO博客开发" target="_blank">51CTO博客开发</a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--friendLink end-->
+
+<div class="hotArt box">
+<div class="title">
+<h2>热门文章</h2>
+</div>
+<div class="modCon">
+<ul>
+<li><a href="http://legend2011.blog.51cto.com/3018495/553255">Windows下PATH等环境变量..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/980150">MyBatis MapperScannerCo..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/973579">MyBatis一对多双向关联—..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/1030804">MyBatis多参数传递之Map..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/985907">MyBatis collection的两..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/908956">MyBatis入门示例——MyBa..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/1015003">MyBatis多参数传递之注解..</a></li>
+<li><a href="http://legend2011.blog.51cto.com/3018495/690362">关于该不该上JAVA培训班..</a></li>
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="newComments box">
+<div class="title">
+<h2 class="fl">最新评论</h2>
+
+
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://3318186.blog.51cto.com/" class="operlink" target="_blank"><b>mathytht</b></a>：<a href="http://legend2011.blog.51cto.com/3018495/946579" target="_blank">我理解有误 ，configuration.xml可..</a></li>
+
+<li><a href="http://3318186.blog.51cto.com/" class="operlink" target="_blank"><b>mathytht</b></a>：<a href="http://legend2011.blog.51cto.com/3018495/946579" target="_blank">即不需要 在beans.xml配置这个bean|..</a></li>
+
+<li><a href="http://3318186.blog.51cto.com/" class="operlink" target="_blank"><b>mathytht</b></a>：<a href="http://legend2011.blog.51cto.com/3018495/946579" target="_blank">我觉得可以精简配置，不使用configu..</a></li>
+
+<li><a href="http://3318186.blog.51cto.com/" class="operlink" target="_blank"><b>mathytht</b></a>：<a href="http://legend2011.blog.51cto.com/3018495/946579" target="_blank">需要的jar包如下 commons-dbcp-1...</a></li>
+
+<li><a href="http://3318186.blog.51cto.com/" class="operlink" target="_blank"><b>mathytht</b></a>：<a href="http://legend2011.blog.51cto.com/3018495/908956" target="_blank">用我的办法不用删除 configuration...</a></li>
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+
+<div class="myComments box">
+<div class="title">
+<h2>我最近发表的评论</h2>
+</div>
+<div class="modCon">
+<dl>
+
+<dt>对 <a href="http://legend2011.blog.51cto.com/3018495/946579" target="_blank">MyBatis与Spring..</a> 回复</dt>
+<dd>回复 dabing69221: 发现什么问题..</dd>
+
+<dt>对 <a href="http://legend2011.blog.51cto.com/3018495/778715" target="_blank">教育的本质是什么..</a> 回复</dt>
+<dd>回复 家长沙龙: 互联网已经在改变..</dd>
+
+<dt>对 <a href="http://legend2011.blog.51cto.com/3018495/778715" target="_blank">教育的本质是什么..</a> 回复</dt>
+<dd>回复 家长沙龙: 引入商业模式，教..</dd>
+
+<dt>对 <a href="http://legend2011.blog.51cto.com/3018495/888848" target="_blank">ant的下载与安装&amp;..</a> 回复</dt>
+<dd>回复 梅洪洋: 谢谢支持，(*∩_∩*..</dd>
+
+<dt>对 <a href="http://legend2011.blog.51cto.com/3018495/1600478" target="_blank">MyBatis中如何通..</a> 回复</dt>
+<dd>回复 全蛋: 多提建议，大家共同进..</dd>
+
+</dl>
+</div>
+<span class="modBot"></span>
+</div>
+<!--myComments end-->
+
+<div class="blogRss box">
+<div class="title">
+  <h2>订阅我的博客</h2></div>
+<div class="modCon"> <a href="http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_sub_c1s17.gif" height="21" width="65"></a><br>
+  <a href="http://fusion.google.com/add?feedurl=http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_subshot01_google.gif" alt="google reader" height="20" width="108"></a>
+  <a href="http://www.xianguo.com/subscribe.php?url=http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_subshot01_xianguo.gif" alt="鲜果" height="20" width="108"></a>
+  <a href="http://mail.qq.com/cgi-bin/feed?u=http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_subshot01_qq.gif" alt="QQ邮箱" height="20" width="108"></a>
+  <a href="http://reader.youdao.com/b.do?keyfrom=51cto&amp;url=http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_subshot01_youdao.gif" alt="有道" height="20" width="108"></a>
+  <a href="http://www.zhuaxia.com/add_channel.php?url=http://legend2011.blog.51cto.com/rss.php?uid=3018495" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/icon_subshot01_zhuaxia.gif" alt="抓虾" height="20" width="108"></a></div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+<!--blogRss end-->
+
+<div class="hotBlogArt box">
+<div class="title">
+  <h2 class="fl">51CTO推荐博文</h2>
+  <a href="" class="fr">更多&gt;&gt;</a></div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://shanker.blog.51cto.com/1189689/1785797" title="记一次Marathon被黑过程" target="_blank">记一次Marathon被黑过程</a></li>
+
+<li><a href="http://gaowenlong.blog.51cto.com/451336/1786749" title="VBS判断本地账户密码过期邮件提醒" target="_blank">VBS判断本地账户密码过期邮件提醒</a></li>
+
+<li><a href="http://arkling.blog.51cto.com/2844506/1786571" title="Linux自建yum仓及相关知识详解" target="_blank">Linux自建yum仓及相关知识详解</a></li>
+
+<li><a href="http://5323197.blog.51cto.com/5313197/1786744" title="linux部署pxe+kickstart批量安装linux操作系统实施方案" target="_blank">linux部署pxe+kickstart批量安装l..</a></li>
+
+<li><a href="http://fengwan.blog.51cto.com/508652/1786556" title="OpenVPN使用用户名密码验证(文本/MySQL)" target="_blank">OpenVPN使用用户名密码验证(文本/..</a></li>
+
+<li><a href="http://nolinux.blog.51cto.com/4824967/1786656" title="ES报错Result window is too large问题处理" target="_blank">ES报错Result window is too larg..</a></li>
+
+<li><a href="http://3060674.blog.51cto.com/3050674/1786502" title="跟Alex学Python之- 你真的了解Python的变量赋值原理么？" target="_blank">跟Alex学Python之- 你真的了解Pyt..</a></li>
+
+<li><a href="http://kaifly.blog.51cto.com/3209616/1786586" title="Python实现MySQL DBA小工具一例" target="_blank">Python实现MySQL DBA小工具一例</a></li>
+
+<li><a href="http://lidongni.blog.51cto.com/2554605/1774599" title="让Veritas数据高可用容灾释放你的双手" target="_blank">让Veritas数据高可用容灾释放你的..</a></li>
+
+<li><a href="http://sery.blog.51cto.com/10037/1755451" title="破墙而入看电视" target="_blank">破墙而入看电视</a></li>
+
+<li><a href="http://yangsir.blog.51cto.com/1549/1738717" title="51CTO稿酬标准2016版正式发布！" target="_blank">51CTO稿酬标准2016版正式发布！</a></li>
+
+<li><a href="http://babyfenei.blog.51cto.com/443861/1735133" title="Cacti图形数据自动导出脚本(一)" target="_blank">Cacti图形数据自动导出脚本(一)</a></li>
+
+<li><a href="http://lanxiaomi.blog.51cto.com/4554767/1768930" title="我动了十年的老代码…" target="_blank">我动了十年的老代码…</a></li>
+
+<li><a href="http://vmcloud.blog.51cto.com/3499815/1732701" title="雾里散步——这次聊聊自已" target="_blank">雾里散步——这次聊聊自已</a></li>
+
+<li><a href="http://gaozhao.blog.51cto.com/10590028/1727601" title="【产品日记】V1.2版本发版——顺便暴几个小管" target="_blank">【产品日记】V1.2版本发版——顺..</a></li>
+
+<li><a href="http://10401926.blog.51cto.com/10391926/1665054" title="欢迎加入51CTO官方博客QQ群112163514" target="_blank">欢迎加入51CTO官方博客QQ群112163514</a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--hotBlogArt end-->
+
+</div>
+<!--left end-->
+
+<div class="blogRight" id="layout_1" style="min-height: 500px;width:750">
+<div class="box art">
+<div class="title">
+<h2 class="fl">文章</h2>
+<a href="http://legend2011.blog.51cto.com/all/3018495" class="fr">文章列表&gt;&gt;</a></div>
+<div class="modCon">
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1604009">MyBatis中如何通过继承SqlSessionDaoSuppo..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2015-01-14 16:43:03</div></div>
+<div class="artContent mt10" style="max-width:600px;">     
+（本文示例工程源代码下载地址：http://down.51cto.com/data/1975295）    
+在上一篇博文的最后，介绍了使用@PostConstruct注解标注StudentDao的init方法，这样在Spring完成依赖注入后此方法即会
+被Spring..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1604009">阅读</a>(1182)|<a href="http://legend2011.blog.51cto.com/3018495/1604009#replay">回复</a>(0)|<a href="javascript:void(0);" onclick="openFavoulist(1604009)">赞</a>(1)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1604009">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1600478">MyBatis中如何通过继承SqlSessionDaoSuppo..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2015-01-08 00:14:12</div></div>
+<div class="artContent mt10" style="max-width:600px;">     
+（本文示例完整源代码与数据库脚本下载地址：http://down.51cto.com/data/1970833）    
+在MyBatis中，当我们编写好访问数据库的映射器接口后，MapperScannerConfigurer就能自动成批地帮助我们根据这些接..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1600478">阅读</a>(2578)|<a href="http://legend2011.blog.51cto.com/3018495/1600478#replay">回复</a>(2)|<a href="javascript:void(0);" onclick="openFavoulist(1600478)">赞</a>(1)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1600478">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1436480">如何在MyBatis-3.2.7中使用Log4j2 rc2——..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2014-07-09 22:10:34</div></div>
+<div class="artContent mt10" style="max-width:600px;">      
+前天我上传了我的MyBatis系列课程（http://edu.51cto.com/course/course_id-1110.html）的第六
+讲，主要内容是如何使用Log4j2（具体版本为v2.0-rc1）为MyBatis 3.2.7配置日志..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1436480">阅读</a>(1860)|<a href="http://legend2011.blog.51cto.com/3018495/1436480#replay">回复</a>(4)|<a href="javascript:void(0);" onclick="openFavoulist(1436480)">赞</a>(2)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1436480">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1401407">MyBatis多对多关联查询示例——MyBatis学..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2014-04-23 22:29:34</div></div>
+<div class="artContent mt10" style="max-width:600px;">     MyBatis系列的上一篇博客发表时，笑笑还没有出生。转眼间八个月过去了，他已经是个大宝宝了。这么长时间未更新MyBatis系列的博客，想来真是罪过。不过有了宝宝之后，的确会分散自己很大一部分精力。    ..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1401407">阅读</a>(6120)|<a href="http://legend2011.blog.51cto.com/3018495/1401407#replay">回复</a>(12)|<a href="javascript:void(0);" onclick="openFavoulist(1401407)">赞</a>(5)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1401407">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1270547">MyBatis多对多保存示例——MyBatis学习笔..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2013-08-11 21:57:31</div></div>
+<div class="artContent mt10" style="max-width:600px;">     前几天有网友问到MyBatis多对多的问题，不过愧对网友厚爱的是，最近一直忙，直到现在才有时间处理此事。今天就先写一个多对多保存的示例，算是对这位网友的初步回应，以后会有更多相关的博文发表。    为..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1270547">阅读</a>(8380)|<a href="http://legend2011.blog.51cto.com/3018495/1270547#replay">回复</a>(11)|<a href="javascript:void(0);" onclick="openFavoulist(1270547)">赞</a>(7)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1270547">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1239139">Spring声明式事务管理示例——MyBatis学习..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2013-07-02 00:48:44</div></div>
+<div class="artContent mt10" style="max-width:600px;">     在本系列文章的《MyBatis与Spring集成示例续》中，介绍了Spring的编程式事务管理。网友dabing69221提出讲一下MyBatis与Spring整合的声明式事务管理，今天就根据这一知识点，对上文的示例进行改进。..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1239139">阅读</a>(10245)|<a href="http://legend2011.blog.51cto.com/3018495/1239139#replay">回复</a>(5)|<a href="javascript:void(0);" onclick="openFavoulist(1239139)">赞</a>(2)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1239139">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1173787">MyBatis多参数传递之混合方式——MyBatis..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2013-04-08 14:31:05</div></div>
+<div class="artContent mt10" style="max-width:600px;">     在本系列文章的《MyBatis多参数传递之Map方式示例》一文中，网友mashiguang提问如下的方法如何传递参数：publicListfindStudents(Mapconditions,&amp;nb..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1173787">阅读</a>(11184)|<a href="http://legend2011.blog.51cto.com/3018495/1173787#replay">回复</a>(6)|<a href="javascript:void(0);" onclick="openFavoulist(1173787)">赞</a>(2)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1173787">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1131629">MyBatis中的N+1问题——MyBatis学习笔记之..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2013-02-04 11:28:23</div></div>
+<div class="artContent mt10" style="max-width:600px;">     掐指一算，居然三个多月没有写MyBatis的博客了，一直在瞎忙，真是罪过！o(╯□╰)o    网友xunke515在看完《MyBatisass..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1131629">阅读</a>(11184)|<a href="http://legend2011.blog.51cto.com/3018495/1131629#replay">回复</a>(6)|<a href="javascript:void(0);" onclick="openFavoulist(1131629)">赞</a>(2)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1131629">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1030804">MyBatis多参数传递之Map方式示例——MyBat..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2012-10-18 17:03:33</div></div>
+<div class="artContent mt10" style="max-width:600px;">     前面的文章介绍了MyBatis多参数传递的注解、参数默认命名等方式，今天介绍Map的方式。仍然以前面的分页查询教师信息的方法findTeacherByPage为例（示例源代码下载地址..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1030804">阅读</a>(43360)|<a href="http://legend2011.blog.51cto.com/3018495/1030804#replay">回复</a>(26)|<a href="javascript:void(0);" onclick="openFavoulist(1030804)">赞</a>(4)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1030804">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+<div class="blogList">
+<div class="artHead">
+  <div>
+
+	<span class="artType01" style="margin-right: 5px;"><a href="javascript:void(0)">原创</a></span>
+
+  <h3 class="artTitle"><a href="http://legend2011.blog.51cto.com/3018495/1024869">MyBatis多参数传递之默认命名方式示例——..</a>
+
+  <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/indextj.gif" height="15" width="15"></a>
+
+
+  </h3>
+  </div>
+<div class="time">2012-10-14 00:51:03</div></div>
+<div class="artContent mt10" style="max-width:600px;">     上文讲到了MyBatis多参数传递的注解方式，今天看另外一种方式，也就是参数默认命名的方式。还是以上文的分页查询教师信息的方法findTeacherByPage为例。    一、具..</div>
+
+<!--artContent end-->
+<div class="artFoot"><span class="fl">类别：<a href="http://legend2011.blog.51cto.com/3018495/d-5">MyBatis</a>|<a href="http://legend2011.blog.51cto.com/3018495/1024869">阅读</a>(9466)|<a href="http://legend2011.blog.51cto.com/3018495/1024869#replay">回复</a>(3)|<a href="javascript:void(0);" onclick="openFavoulist(1024869)">赞</a>(0)</span><span class="fr"><a href="http://legend2011.blog.51cto.com/3018495/1024869">阅读全文&gt;&gt;</a> </span></div>
+</div>
+<!--blogList end-->
+
+
+
+<div class="pages"><a href="http://legend2011.blog.51cto.com/3018495/d-5/p-1">&nbsp;&lt;&lt;&nbsp;</a>&nbsp;&nbsp;<b>1</b>&nbsp; <a href="http://legend2011.blog.51cto.com/3018495/d-5/p-2">&nbsp;2&nbsp;</a> <input size="2" style="height: 16px; border:1px solid #E5E5E5;" onkeydown="javascript: if(event.keyCode==13) window.location='/3018495/d-5/p-'+this.value;" type="text"> <a href="http://legend2011.blog.51cto.com/3018495/d-5/p-2">&nbsp;&gt;&gt;&nbsp;</a>&nbsp;&nbsp;页数 ( 1/2 )</div>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+<div class="box recentGuests">
+<div class="title">
+<h2>最近访客</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://11651594.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_002.gif"></a>
+<p><a href="http://11651594.blog.51cto.com/">七诺</a></p>
+
+</li><li><a href="http://410532.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_008.gif"></a>
+<p><a href="http://410532.blog.51cto.com/">panho..</a></p>
+
+</li><li><a href="http://7896620.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_004.gif"></a>
+<p><a href="http://7896620.blog.51cto.com/">心之也海</a></p>
+
+</li><li><a href="http://2003801.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_005.gif"></a>
+<p><a href="http://2003801.blog.51cto.com/">45297..</a></p>
+
+</li><li><a href="http://warmcolor.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_003.jpg"></a>
+<p><a href="http://warmcolor.blog.51cto.com/">warmc..</a></p>
+
+</li><li><a href="http://7359414.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_003.gif"></a>
+<p><a href="http://7359414.blog.51cto.com/">jadec..</a></p>
+
+</li><li><a href="http://7523335.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_007.gif"></a>
+<p><a href="http://7523335.blog.51cto.com/">CHENS..</a></p>
+
+</li><li><a href="http://11402383.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar.gif"></a>
+<p><a href="http://11402383.blog.51cto.com/">IT学..</a></p>
+
+</li><li><a href="http://ylcodes01.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_004.jpg"></a>
+<p><a href="http://ylcodes01.blog.51cto.com/">40353..</a></p>
+
+</li><li><a href="http://11390206.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_009.gif"></a>
+<p><a href="http://11390206.blog.51cto.com/">xiaox..</a></p>
+
+</li><li><a href="http://5772804.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar_006.gif"></a>
+<p><a href="http://5772804.blog.51cto.com/">不之间</a></p>
+
+</li><li><a href="http://chenchaop.blog.51cto.com/"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/avatar.jpg"></a>
+<p><a href="http://chenchaop.blog.51cto.com/">chenc..</a></p>
+
+</li></ul>
+<span class="clear"></span>
+</div>
+<span class="modBot"></span>
+</div>
+
+</div>
+<!--center end-->
+
+<div class="rightIndex" id="layout_3" style="min-height: 500px;width:0%">
+</div>
+<!--right end-->
+
+</div>
+<!--blogMian end-->
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/header.htm"></script>
+<script language="javascript">
+function openFavoulist(tid)
+	{
+		window.open ('http://blog.51cto.com/mod/favourlist.php?tid=' + tid,'newwindow','height=300,width=500,top=400,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no,z-look=yes');
+	}
+</script>
+
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/jquery-1.js"></script>
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/jquery.js"></script>
+<link href="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/blog_top.css" rel="stylesheet" type="text/css">
+	<!-- Baidu Button BEGIN fav1 -->
+	<script>
+var bds_config = {'wbUid':1706976420};
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","sqq","tsina","qzone","bdysc","renren","tqq","tieba","douban","bdhome","taobao","hi","youdao"], 'bdPic':'http://blog.51cto.com/attachment/201305/173413310.jpg',"bdStyle":"1","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"right","bdTop":"100"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<div id="message" class="blogpop" style="background-color: rgb(255, 255, 255); z-index: 100; width: 389px; height: 196px; position: absolute; display: none; bottom: 0px; right: 0px; overflow: hidden; top: 423px;"><iframe style="width:800px;height:536px;top:0px;left:0px;position:absolute;visibility:inherit;z-index:-1;" frameborder="0"></iframe>
+<div style="height:36px;background:url(http://blog.51cto.com/image/blog_top/popbgx.jpg) repeat-x; position:relative;width:387px;border-right-color:#2668B7;border-right-width:2px;border-right-style:solid 2px #2668B7;"><span style="right:10px;padding:12px 0 0;position:absolute;top:0"><span style="margin-right:80px;color:#828282;width:190px;padding:10px 0 0 10px;font-size:14px">每日博报 精彩不止一点</span><img title="关闭" id="message_close" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/close.jpg" alt="关闭"></span><div style="width:387px;height:36px;left:0;overflow:hidden; text-indent:-999em;background:url(http://blog.51cto.com/image/blog_top/hdtit.jpg) no-repeat;border-right:solid 2px #2668B7;"><a style="display: block; height: 36px;width:138px;" target="_blank" href="http://blog.51cto.com/"></a>
+</div>
+<div style="clear:both;"></div>
+</div>
+	<div id="message_content" style="border-top:none;font-family:Microsoft YaHei;font-size:12px;width:389px;height:160pxpx;text-align:left;overflow:hidden;">
+	<script type="text/javascript"><!--//<![CDATA[
+	   var m3_u = (location.protocol=='https:'?'https://gg.51cto.com/www/delivery/ajs.php':'http://gg3.51cto.com/www/delivery/ajs.php');
+	   var m3_r = Math.floor(Math.random()*99999999999);
+	   if (!document.MAX_used) document.MAX_used = ',';
+	   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+	   document.write ("?zoneid=454");
+	   document.write ('&amp;cb=' + m3_r);
+	   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+	   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+	   document.write ("&amp;loc=" + escape(window.location));
+	   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+	   if (document.context) document.write ("&context=" + escape(document.context));
+	   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+	   document.write ("'><\/scr"+"ipt>");
+	//]]>--></script><script type="text/javascript" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/ajs.php"></script><div class="blogpopMain">
+<div class="l">
+<a target="_blank" href="http://edu.51cto.com/pack/view/id-627.html"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/wKiom1dGkqqiho95AACmJWqb_VY314.jpg" height="105" width="105"></a>
+<p>
+<a target="_blank" href="http://edu.51cto.com/pack/view/id-627.html">2016年5月软考网工真题详解</a></p>
+</div>
+<div class="r">
+<h4 style="text-align:left;">
+<a target="_blank" href="http://beanxyz.blog.51cto.com/5570417/1784596">PowerShell 抓取网页表格</a>
+</h4>
+<ul>
+<li>
+<a target="_blank" href="http://lilinji.blog.51cto.com/5441000/1784726">防暴力破解 Fail2Ban之Python</a>
+</li>
+<li>
+<a target="_blank" href="http://x.51cto.com/" style="color:red">CTO训练营，限时特惠，火速入营</a>
+</li>
+<li>
+<a target="_blank" href="http://reinember.blog.51cto.com/2919431/1784569">Azure之把IT的钱花在刀刃上</a></li>
+<li><a target="_blank" href="http://51edu.blog.51cto.com/8899635/1775394" style="color:red">有奖征文：我在学院不得不说的收获</a></li>
+</ul>
+</div>
+</div><div id="beacon_86294a0fc5" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/lg.gif" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+
+	</div>
+</div>
+<style>
+.backToTop {
+    display: none;
+	WIDTH: 45px;
+	height:45px;
+	BOTTOM: 20px;
+     position: fixed;
+    _position: absolute;
+    right: 140px;
+    bottom: 10px;
+    _bottom: "auto";
+    cursor: pointer;
+    opacity: .6;
+    filter: Alpha(opacity=60);
+	text-indent:-9999px;
+}
+.tops { background:url(/images/.jpg) no-repeat center center; }
+</style>
+
+<div style="width:150px; height:300px; position:fixed; top:25%;left:0; z-index:100; _position:absolute; _margin-top: 0; _top:expression(documentElement.scrollTop+(documentElement.clientHeight-this.offsetHeight)/2+50);" id="f_close_box"> 
+
+<img usemap="#Map1" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/wKioL1VHFCjRwiyNAAB-jIackwQ674.jpg" border="0"> 
+<map id="Map1" name="Map1"> 
+<area onclick="document.getElementById('f_close_box').style.display='none';" href="javascript:void(0);" coords="124,7,143,25" shape="rect"> 
+</map> 
+
+</div>
+<script>
+(function() {
+	  $('#showMessagerDim').show();
+	   var _html = $("#addTop").html();
+	  if(get_cookie('blog_top')==''){
+//		 show_pop();
+	     jQuery.messager.showblogtop('', _html);
+	     $("#message").find("#adTop").show();
+	     var date=new Date();
+	     var test = date.getTime();
+	     document.cookie="blog_top=yes;domain=.blog.51cto.com;expires="+date.toGMTString()+";path=/;";
+	     }
+	    $("#showMessagerDim").click(function(){
+	    	jQuery.messager.showblogtop('', _html);
+			$("#message").find("#adTop").show();
+			//removeIframe();
+		});
+		
+		function get_cookie(Name) {
+		    var search = Name + "=";
+		    var returnvalue = "";
+		    if (document.cookie.length > 0) {
+		        offset = document.cookie.indexOf(search);
+		        if (offset != -1) {
+		            offset += search.length;
+
+		            end1 = document.cookie.indexOf(";", offset);
+
+		            if (end1 == -1)
+		            end1 = document.cookie.length;
+		            returnvalue=unescape(document.cookie.substring(offset, end1));
+		        }
+		    }
+		    return returnvalue;
+		}
+	})();
+
+</script>
+
+
+<style>
+.vlist{ margin:10px 10px; height:65px;}
+.vlist a img{ float:left; margin-right:10px;}
+.vlist dl{ text-align:left;}
+.vlist dl dt{ height:40px;line-height: 20px; overflow:hidden; padding-top:5px;}
+.vlist dl dt,.vlist dl dt a{ color:#262626;}
+.vlist dl dd,.vlist dl dd a{ color:#777;}
+
+.video-icon{
+    position: relative;
+}
+.video-icon a.i_video {
+    background: url("http://www.51cto.com/images/homepage/Images/eduplay.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 25px;
+    left:31px;
+    position: absolute;
+    top:22px;
+    width: 25px;
+    z-index: 10;
+}
+</style>
+<!-- Baidu Button END -->
+<script type="text/javascript">
+jQuery(function() {
+	jQuery('.blog_match_yq').click(function(){
+		var wind_uid = '';
+		if(!wind_uid){
+			alert("请先登录！");
+			return false;
+		}
+		jQuery.ajax({
+			   type: "POST",
+			   url:"/contest2012/index.php?mod=sendmsg",
+			   dataType: "html",
+			   data: "vuid=" + 3018495,
+			   success: function(data) {
+					if(data == 0)
+					{
+						alert("查无此人！");
+						return false;
+					}else if(data == 1){
+						alert("请先登录！");
+						return false;
+					}else if(data == 2){
+						alert("不能邀请自己！");
+						return false;
+					}else if(data == 22){  
+						alert("邀请信息已发出！");
+						return false;
+					}
+			   }
+		  });
+	});
+})
+</script>
+
+
+
+
+<div class="clear"></div>
+<!-- <script>
+jQuery(function(){
+	var html= "<div id=\"sogou_se_tgbar\" style=\"text-align:center;margin:0px auto 2px auto;clear:both;background:url(http://home.51cto.com/public/images/notice/sogou_se_tgbar_bg_final1.gif) repeat-x;width:950px;color:#000;font-size:13px;height:36px;z-index:21474836471\"><div style=\"float:left;cursor:pointer;width:910px;text-align:center;border-left:solid #efbf00 1px;height:32px; line-height:32px;txt-align:center;\"><span style=\"\">	<a href=\"http://51ctoblog.blog.51cto.com/26414/1093282\">【新年祝福征集】51CTO社区年底嘉年华活动正在征集博主祝福语，祝福以红包的形式随机的赠送给访问51CTO的网友 点此送祝福>></a></span></div><div onclick=\"document.getElementById('sogou_se_tgbar').style.display = 'none';\" style=\"float:right;width:20px;cursor:pointer;height:28px;padding:4px 8px 0px 8px;border-right:solid #efbf00 1px\"><img style=\"border:none;margin:4px 0px 0px 0px;\" src=\"http://home.51cto.com/public/images/notice/sogou_se_tgbar_close_final1.gif\"></div></div>"
+	jQuery('body').prepend(html);
+})
+</script> -->
+
+<div id="footer">
+  <div id="innerFooter">
+	<center>
+		<small>
+			Copyright By 51CTO.COM 版权所有<br><br>
+			<a href="http://blog.51cto.com/" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/copyright.jpg"></a>
+	  </small>
+	</center>
+  </div>
+</div>
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/index.htm" charset="utf-8"></script>
+<div style="display:none">
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/count.js"></script><script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/count.htm"></script><script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/scroll.js"></script>
+
+<div style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2283d46608159c3b39fc9f1178809c21' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=2283d46608159c3b39fc9f1178809c21" target="_blank"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/21.gif" border="0" height="20" width="20"></a>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57622524-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</div>
+<iframe scrolling="no" src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/pageview.htm" frameborder="0" height="0" width="0"></iframe>
+</div>
+<div style="display:none;"><script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/stat.php" language="JavaScript"></script><script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=4274540" target="_blank" title="站长统计"><img src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/pic.gif" border="0" hspace="0" vspace="0"></a><div>
+<script src="MyBatis%20-%20%E8%82%96%E5%87%A1%E7%9A%84%E4%B8%93%E6%A0%8F%20-%2051CTO%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2_files/poptop.js"></script>
+
+
+
+</div></div><div data-bd-bind="1465366874352" class="bdshare-slide-button-box bdshare-slide-style-r6" style="top: 100px; width: 0px; z-index: 99999; right: 0px;"><a style="left: -24px;" href="#" onclick="return false;" class="bdshare-slide-button"></a><div style="width: 0px; display: none;" class="bdshare-slide-list-box"><div class="bdshare-slide-top">分享到</div><div class="bdshare-slide-list"><ul style="width: 226px;" class="bdshare-slide-list-ul"></ul></div><div style="width: 226px;" class="bdshare-slide-bottom"><a href="#" onclick="return false;" class="slide-more" data-cmd="more">更多...</a></div></div></div></body></html>

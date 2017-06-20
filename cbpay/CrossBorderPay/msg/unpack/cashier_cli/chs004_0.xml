@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="chs004_0">
+	<include>CASHIER_CLI_1</include>
+	<field name="body">
+		<format type="virtual"  />
+	</field>
+		<field name="bankName">
+		<format type="s" length="256"   frommsg="true" />
+	</field>
+	<field name="accountNo">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+		<field name="accountName">
+		<format type="s" length="256" frommsg="true" />
+	</field>
+		<field name="accountType">
+		<format type="s" length="2"  frommsg="true" default_value="00" />
+	</field>
+		<field name="certType">
+		<format type="s" length="1"  frommsg="true" />
+	</field>
+		<field name="certNo">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+		<field name="mobileNo">
+		<format type="s" length="16"  frommsg="true" />
+	</field>
+	<field name="email">
+		<format type="s" length="20"  frommsg="true" necessary="false" />
+	</field>
+	<field name="nickName">
+		<format type="s" length="30"  frommsg="true" necessary="false" />
+	</field>
+	<field name="purchaserId">
+		<format type="s" length="20"  frommsg="true" />
+	</field>
+	<field name="phoneVerCode">
+	        <format type="s" length="10" necessary="true" frommsg="true" />
+	</field>
+	<field name="phoneToken">
+	        <format type="s" length="50"  frommsg="true" />
+	</field>
+</formula>
+  

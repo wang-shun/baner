@@ -1,0 +1,15 @@
+create or replace procedure errorlog_pro(PLATDATE in varchar2,PRONAME in varchar2,ERRORCODE in varchar2,ERRORMSG in varchar2,STACKTRACE in varchar2)
+  is
+--------------------------------
+--日期：2016年6月7日
+--作者：zhangxiaoyun
+--功能：登记存储过程异常日志
+--------------------------------
+begin
+  insert into proerrlog (platdate, proname, errorcode, ERRORMSG, STACKTRACE) 
+	values 
+	(PLATDATE, PRONAME, ERRORCODE, ERRORMSG, STACKTRACE);
+    
+  commit;--提交数据
+end errorlog_pro;
+/

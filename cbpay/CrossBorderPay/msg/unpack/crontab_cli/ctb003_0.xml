@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formula id="ctb003_0">
+ <include>CRONTAB_CLI_1</include>
+	 <field name="body">
+		<format type="virtual"  level="2"/>
+	</field>
+	 <field name="merchantNo">
+	            <format type="s" length="12" necessary="true" default_value="AAAAAAAAAAAA"  />
+	  </field>
+    <field name="transType">
+       	<format type="s" length="02" necessary="true" />
+    </field>
+    <field name="listSize">
+        <format type="s" length="6" necessary="true" />
+    </field>
+   <compositField name="orderList" sizeRef="listSize">
+   	 <field name="orderList">
+       <format type="virtual"  level="1"/>
+     </field>
+     <field name="merchantId">
+             <format type="s" length="32" necessary="true" />
+     </field>
+      <field name="orderDate">
+             <format type="s" length="8" necessary="true" />
+      </field>
+     <field name="orderId">
+             <format type="s" length="30" necessary="true" />
+      </field>
+    </compositField>
+</formula>
