@@ -42,7 +42,7 @@
 
 
 8,配置Web console的端口
-在配置文件中，可以通过修改nioConnector的port属性来修改Web console的缺省端口：
+在配置文件conf/jetty.xml中，可以通过修改nioConnector的port属性来修改Web console的缺省端口：
    Xml代码
        <jetty xmlns="http://mortbay.com/schemas/jetty/1.0">
            <connectors>

@@ -1,18 +1,13 @@
 package com.ztkx.transplat.platformutil.db.c3p0;
 
-import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import org.apache.log4j.Logger;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.DataSources;
 import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
+import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.sql.*;
 
 /**
  * 数据源工具类
@@ -112,7 +107,9 @@ public class DataSourceUtil {
 	public static void closeConnect(Connection con) {
 		try {
 			if (con != null && !con.isClosed()) {
-				con.commit();
+				if (!con.getAutoCommit()) {
+					con.commit();
+				}
 				// c3p0的connection类的close方法不是将连接关闭而是将连接回收到资源池中，close方法被c3p0重写了。
 				con.close();
 			}

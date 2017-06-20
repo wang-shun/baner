@@ -1,16 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>trans_plat</artifactId>
-        <groupId>org.inn</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../cbpay/pom.xml</relativePath>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-
+     
+        <modelVersion>4.0.0</modelVersion>
+    <groupId>org.inn</groupId>
     <artifactId>baner</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>baner</name>
     <url>http://maven.apache.org</url>
 
