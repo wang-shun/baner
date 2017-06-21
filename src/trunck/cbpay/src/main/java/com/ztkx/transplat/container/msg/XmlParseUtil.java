@@ -100,7 +100,7 @@ public class XmlParseUtil {
 
 		String superLevel = formateEle.attributeValue(MsgConstantField.ATTR_SUPER_LEVEL);
 		if(StringUtils.isNotEmpty(superLevel)){
-			ff.setSuper_level(Integer.parseInt(superField.trim()));
+			ff.setSuper_level(Integer.parseInt(superLevel.trim()));
 		}
 
 		field.setFieldFormat(ff);

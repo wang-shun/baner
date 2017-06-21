@@ -275,16 +275,18 @@ public class JsonMsgUnpackerEngine {
     }
 
     private static Deque<Field> prepareSuperField(MsgXmlDescriber msgXmlDescriber, Field field) {
-        int superLevel;
+
         String superFieldName;
         Field superField = field;
+        int superLevel = superField.getFieldFormat().getSuper_level();
         Deque<Field> queue = new LinkedList<>();
-        do {
+        while(superLevel!=0){
+            //父节点的级别为0，说明当前节点已经是顶层元素
             superLevel = superField.getFieldFormat().getSuper_level();
             superFieldName = superField.getFieldFormat().getSuper_field();
             superField = msgXmlDescriber.getVirtualField(superFieldName, superLevel);
             queue.push(superField);
-        } while (superLevel != 1);
+        }
 
         return queue;
     }
