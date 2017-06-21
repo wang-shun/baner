@@ -1,12 +1,5 @@
 package com.ztkx.transplat.container.preload;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.initdata.ConfXmlFormateData;
 import com.ztkx.transplat.container.javabean.ConfXmlFormate;
@@ -16,6 +9,12 @@ import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.msg.MsgXmlDescriber;
 import com.ztkx.transplat.reload.ReloadAble;
+import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -58,6 +57,7 @@ public class XmlFilePreloader implements CommonPreloadInterface,ReloadAble,Invok
 					xmlPath.append(File.separator).append("unpack").append(File.separator).append(confXmlFormate.getPath());
 					logger.info("load msg xml ["+xmlPath.toString()+"]");
 					MsgXmlDescriber describer = XmlParser.parse(xmlPath.toString());
+					logger.debug("xml file content ["+describer+"]");
 					unpackMap.put(confXmlFormate.getSystemid()+ConstantConfigField.TABLE_PRI_KEY_SEPARATOR+confXmlFormate.getTrancode(), describer);
 				}else if(confXmlFormate.getType().equals(ConstantConfigField.CONF_XML_FORMATE_TYPE_PACK)){
 					xmlPath.append(File.separator).append("pack").append(File.separator).append(confXmlFormate.getPath());

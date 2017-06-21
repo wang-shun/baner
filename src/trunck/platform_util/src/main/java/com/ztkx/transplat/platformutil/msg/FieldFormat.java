@@ -96,14 +96,22 @@ public class FieldFormat {
 	public void setFill_char(int fill_char) {
 		this.fill_char = fill_char;
 	}
+
 	@Override
 	public String toString() {
-		return "FieldFormat [type=" + type + ", length=" + length
-				+ ", default_value=" + default_value + ", necessary="
-				+ necessary + ", function=" + function + ", fill_type="
-				+ fill_type + ", convert=" + convert + ", fill_char="
-				+ fill_char + ", frommsg=" + frommsg + ", level=" + level + "]";
+		return "FieldFormat{" +
+				"type='" + type + '\'' +
+				", length=" + length +
+				", default_value='" + default_value + '\'' +
+				", necessary=" + necessary +
+				", function='" + function + '\'' +
+				", fill_type='" + fill_type + '\'' +
+				", convert='" + convert + '\'' +
+				", fill_char=" + fill_char +
+				", frommsg=" + frommsg +
+				", level=" + level +
+				", super_field='" + super_field + '\'' +
+				", super_level=" + super_level +
+				'}';
 	}
-	
-	
 }

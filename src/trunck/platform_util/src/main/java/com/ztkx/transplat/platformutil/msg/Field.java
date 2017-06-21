@@ -27,10 +27,13 @@ public class Field {
 	public void setFieldFormat(FieldFormat fieldFormat) {
 		this.fieldFormat = fieldFormat;
 	}
+
 	@Override
 	public String toString() {
-		return "Field [name=" + name + ", fieldFormat=" + fieldFormat
-				+ ", listField=" + listField + "]";
+		return "Field{" +
+				"name='" + name + '\'' +
+				", fieldFormat=" + fieldFormat +
+				", listField=" + listField +
+				'}';
 	}
-	
 }

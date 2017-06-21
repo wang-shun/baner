@@ -205,6 +205,8 @@ public class JsonMsgUnpackerEngine {
                 Deque<Field> queue = prepareSuperField(msgXmlDescriber, f);
                 //跟进queue将当前字段的上级节点逐个取出来
                 prepareVirMap(virtualMap, queue, rootobj);
+
+                continue;
             }
 
             //判断当前字段是否需要从报文中获取
@@ -260,17 +262,18 @@ public class JsonMsgUnpackerEngine {
     }
 
     private static Deque<Field> prepareComSuperField(MsgXmlDescriber msgXmlDescriber, CompositField cf) {
-        int superLevel = cf.getSuper_level();
-        String superFieldName =  cf.getSuper_field();
+
+        String superFieldName =  null;
         Field superField = null;
         Deque<Field> queue = new LinkedList<>();
-        do {
+
+        for(int superLevel = cf.getSuper_level();superLevel!=0;){
+            superFieldName =  cf.getSuper_field();
             superField = msgXmlDescriber.getVirtualField(superFieldName, superLevel);
             queue.push(superField);
             superLevel = superField.getFieldFormat().getSuper_level();
             superFieldName = superField.getFieldFormat().getSuper_field();
-        } while (superLevel != 1);
-
+        }
         return queue;
     }
 
@@ -278,9 +281,9 @@ public class JsonMsgUnpackerEngine {
 
         String superFieldName;
         Field superField = field;
-        int superLevel = superField.getFieldFormat().getSuper_level();
         Deque<Field> queue = new LinkedList<>();
-        while(superLevel!=0){
+
+        for(int superLevel = superField.getFieldFormat().getSuper_level();superLevel!=0;){
             //父节点的级别为0，说明当前节点已经是顶层元素
             superLevel = superField.getFieldFormat().getSuper_level();
             superFieldName = superField.getFieldFormat().getSuper_field();

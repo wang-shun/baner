@@ -1,5 +1,7 @@
 package com.ztkx.transplat.platformutil.msg;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Map;
  * @author zhangxiaoyun
  */
 public class MsgXmlDescriber {
+	static Logger logger = Logger.getLogger(MsgXmlDescriber.class);
 	private String id ;
 	private List<String> include = new ArrayList<String>();
 	private List<Field> list = new ArrayList<Field>();
@@ -41,7 +44,9 @@ public class MsgXmlDescriber {
 		return list;
 	}
 	public void setList(List<Field> list) {
-		this.list.addAll(list);
+		for (Field field : list) {
+			addField(field);
+		}
 	}
 	/**
 	 * 添加field字段
@@ -52,6 +57,7 @@ public class MsgXmlDescriber {
 	public void addField(Field field){
 		list.add(field);
 		if(field.getFieldFormat().getType().equals(MsgConstantField.ATTR_TYPE_VIRTUAL)){
+			logger.debug("virtual field key ["+field.getName()+"_"+field.getFieldFormat().getLevel()+"]");
 			virtualMap.put(field.getName()+"_"+field.getFieldFormat().getLevel(),field);
 		}
 	}
@@ -66,12 +72,16 @@ public class MsgXmlDescriber {
 	public void setCf(CompositField cf) {
 		this.cf = cf;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MsgXmlDescriber [id=" + id + ", include=" + include + ", list="
-				+ list + ", cf=" + cf + "]";
+		return "MsgXmlDescriber{" +
+				"id='" + id + '\'' +
+				", include=" + include +
+				", list=" + list +
+				", virtualMap=" + virtualMap +
+				", cf=" + cf +
+				", filePaht='" + filePaht + '\'' +
+				'}';
 	}
-	
-	
 }

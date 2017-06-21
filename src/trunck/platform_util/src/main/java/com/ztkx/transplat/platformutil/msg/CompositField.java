@@ -66,4 +66,16 @@ public class CompositField {
 	public List<Field> getList(){
 		return list;
 	}
+
+	@Override
+	public String toString() {
+		return "CompositField{" +
+				"super_level=" + super_level +
+				", super_field='" + super_field + '\'' +
+				", outPut=" + outPut +
+				", list=" + list +
+				", sizeRef='" + sizeRef + '\'' +
+				", name='" + name + '\'' +
+				'}';
+	}
 }
