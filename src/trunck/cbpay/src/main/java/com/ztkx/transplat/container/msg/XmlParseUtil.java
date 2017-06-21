@@ -98,6 +98,11 @@ public class XmlParseUtil {
 			ff.setSuper_field(superField.trim());
 		}
 
+		String superLevel = formateEle.attributeValue(MsgConstantField.ATTR_SUPER_LEVEL);
+		if(StringUtils.isNotEmpty(superLevel)){
+			ff.setSuper_level(Integer.parseInt(superField.trim()));
+		}
+
 		field.setFieldFormat(ff);
 		
 		return field;

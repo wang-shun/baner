@@ -31,6 +31,7 @@ public class MsgConstantField {
 	public static final String ATTR_FROMMSG="frommsg";	//
 	public static final String ATTR_DEFAULT_VALUE="default_value";	//
 	public static final String ATTR_SUPER_FIELD="super_field";	//
+	public static final String ATTR_SUPER_LEVEL="super_level";	//
 	public static final String ATTR_FILL_CHAR="fill_char";	//
 	public static final String ATTR_FILL_TYPE="fill_type";	//
 	public static final String ATTR_FUNCTION="function";	//
@@ -39,7 +40,8 @@ public class MsgConstantField {
 	public static final String ATTR_CONVERT="convert";	//
 	public static final String ATTR_LEVEL="level";	//
 	public static final String ATTR_OUTPUT="output";	//
-	
+
+
 	
 	/**
 	 * 属性值
