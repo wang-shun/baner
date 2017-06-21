@@ -33,7 +33,7 @@ public class MybatisUtil {
                 logger.info("mybatis configuration file is " + (filePath + fileName));
                 InputStream inputStream = new FileInputStream(filePath+fileName);
                 SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-                SqlSessionFactory factory = builder.build(inputStream);
+                factory = builder.build(inputStream);
                 // 获取数据源信息，数据库名称，URL，最大线程数等；
             } catch (Exception e) {
                 logger.error("create SqlSessionFactory error", e);
