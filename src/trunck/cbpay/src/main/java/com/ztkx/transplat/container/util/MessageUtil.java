@@ -1,17 +1,37 @@
 package com.ztkx.transplat.container.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import com.alibaba.fastjson.JSONObject;
 
 import javax.jms.BytesMessage;
 import javax.jms.JMSException;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Map;
 
 public class MessageUtil {
-	
+
+	/**
+	 * 从json中获取交易码字段
+	 * @param msg json报文
+	 * @param labelName
+	 * @return
+	 * @throws XMLStreamException
+     */
+	public static String getTranCodeByJson(String msg,String labelName) throws XMLStreamException{
+		String tranCode = null;
+		try {
+			JSONObject jsonObject = JSONObject.parseObject(msg);
+			iteratorJson(jsonObject, labelName, tranCode);
+		}finally{
+
+		}
+		return tranCode;
+
+	}
 	
 	/**
 	 * 根据报文解析出 对应某个字段
@@ -89,5 +109,23 @@ public class MessageUtil {
 			}
 		}
 
+	}
+
+	private static void iteratorJson(JSONObject jsonObject,String labelName,String tranCode) {
+
+		for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
+			if (tranCode == null) {
+				Object value = entry.getValue();
+				if (value instanceof JSONObject) {
+					JSONObject tmpObj = (JSONObject) value;
+					iteratorJson(tmpObj,labelName,tranCode);
+				}
+				if (labelName.equals(entry.getKey())) {
+					tranCode = String.valueOf(value);
+				}
+			}else{
+				break;
+			}
+		}
 	}
 }

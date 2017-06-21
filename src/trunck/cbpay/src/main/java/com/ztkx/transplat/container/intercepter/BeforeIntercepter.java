@@ -1,15 +1,5 @@
 package com.ztkx.transplat.container.intercepter;
 
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Map;
-
-import javax.jms.BytesMessage;
-import javax.jms.JMSException;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.constant.ContainerConstantField;
 import com.ztkx.transplat.container.constant.ErrorCodeConstant;
@@ -33,6 +23,14 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.msg.Field;
 import com.ztkx.transplat.platformutil.msg.KeyMsgDescriber;
 import com.ztkx.transplat.platformutil.msg.MsgConstantField;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
+import javax.jms.BytesMessage;
+import javax.jms.JMSException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
 /**
  * in和out容器钱拦截器
  * in容器前拦截器作用：
@@ -182,13 +180,20 @@ public class BeforeIntercepter implements CommonIntercepter {
 								ContextUtil.setErrorCode(ErrorCodeConstant.BASE_PLA000010, context);
 								return context;
 							}
+						} else if (msgFormat.equals(MsgConstantField.ATTR_TYPE_JSON)) {
+							try {
+								tranCode.append(MessageUtil.getTranCodeByJson(msg,fieldName));
+							} catch (Exception e) {
+								logger.error("String msg convert byte exception",e);
+								ContextUtil.setErrorCode(ErrorCodeConstant.BASE_PLA000010, context);
+								return context;
+							}
 						}
 					}else if(listField.size()>1){
 						/**
 						 * 如果渠道的交易码是多个字段拼接而成
 						 * 代码以后再补
 						 */
-						
 					}
 					context.getSDO().TRANCODE=tranCode.toString();
 				}
