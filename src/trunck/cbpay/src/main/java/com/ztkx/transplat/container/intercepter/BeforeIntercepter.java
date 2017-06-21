@@ -180,7 +180,7 @@ public class BeforeIntercepter implements CommonIntercepter {
 								ContextUtil.setErrorCode(ErrorCodeConstant.BASE_PLA000010, context);
 								return context;
 							}
-						} else if (msgFormat.equals(MsgConstantField.ATTR_TYPE_JSON)) {
+						} else if (msgFormat.equals(MsgConstantField.ATTR_FORMAT_JSON)) {
 							try {
 								tranCode.append(MessageUtil.getTranCodeByJson(msg,fieldName));
 							} catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.ztkx.transplat.container.service.serviceimp;
 
+import com.ztkx.transplat.container.msg.unpack.JsonMsgUnpackerEngine;
 import org.apache.log4j.Logger;
 
 import com.ztkx.transplat.container.constant.ErrorCodeConstant;
@@ -65,8 +66,16 @@ public class UnpackMsgBaseService implements BaseService {
 					logger.error("unpack exception",e);
 				}
 				break;
-			case MsgConstantField.ATTR_FORMAT_FIX:
-				//如果是定长报文
+			case MsgConstantField.ATTR_FORMAT_JSON:
+				//如果是json报文
+				try {
+					JsonMsgUnpackerEngine.unpack(context, msgXmlDescriber);
+				} catch (Exception e) {
+					if(context.getErrorCode() == null){
+						context.setErrorCode(ErrorCodeConstant.BASE_PLA000008);
+					}
+					logger.error("unpack exception",e);
+				}
 				break;
 			default:
 				break;

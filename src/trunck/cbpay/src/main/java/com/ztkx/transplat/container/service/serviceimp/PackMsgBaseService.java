@@ -1,10 +1,7 @@
 package com.ztkx.transplat.container.service.serviceimp;
 
-import javax.xml.stream.XMLStreamException;
-
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.constant.ErrorCodeConstant;
+import com.ztkx.transplat.container.msg.pack.JsonMsgPackerEngine;
 import com.ztkx.transplat.container.msg.pack.XmlMsgPackerEngine;
 import com.ztkx.transplat.container.preload.KeyMsgConfPreloader;
 import com.ztkx.transplat.container.preload.XmlFilePreloader;
@@ -15,6 +12,9 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.msg.KeyMsgDescriber;
 import com.ztkx.transplat.platformutil.msg.MsgConstantField;
 import com.ztkx.transplat.platformutil.msg.MsgXmlDescriber;
+import org.apache.log4j.Logger;
+
+import javax.xml.stream.XMLStreamException;
 /**
  * 容器拆包调用基础服务
  * @author zhangxiaoyun
@@ -63,8 +63,16 @@ public class PackMsgBaseService implements BaseService {
 					logger.error("unpack exception",e);
 				}
 				break;
-			case MsgConstantField.ATTR_FORMAT_FIX:
-				//如果是定长报文
+			case MsgConstantField.ATTR_FORMAT_JSON:
+				//如果json报文
+				try {
+					JsonMsgPackerEngine.pack(context, msgXmlDescriber);
+				} catch (XMLStreamException e) {
+					if(context.getErrorCode() == null){
+						context.setErrorCode(ErrorCodeConstant.BASE_PLA000009);
+					}
+					logger.error("unpack exception",e);
+				}
 				break;
 			default:
 				break;

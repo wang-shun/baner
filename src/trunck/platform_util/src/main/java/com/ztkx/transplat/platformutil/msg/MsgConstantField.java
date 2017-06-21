@@ -48,6 +48,7 @@ public class MsgConstantField {
 	public static final String ATTR_FROM_URL="url";	//  from属性的值
 	public static final String ATTR_FROM_MSG="msg";	// from属性的值
 	public static final String ATTR_FORMAT_XML="xml";	// format属性的值
+	public static final String ATTR_FORMAT_JSON="json";	// format属性的值
 	public static final String ATTR_FORMAT_FIX="fix";	// format属性的值
 	public static final String ATTR_TYPE_VIRTUAL="virtual";	// type属性的virtual值
 	public static final String ATTR_TYPE_S="s";	// type属性的s值
