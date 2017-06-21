@@ -198,11 +198,15 @@ public class JsonMsgUnpackerEngine {
             Field f = fieldList.get(i);
             fieldName = f.getName();
             FieldFormat ff = f.getFieldFormat();
-
+            if (logger.isDebugEnabled()) {
+                logger.debug("the field " + fieldName + " level [" + ff.getLevel() + "] type is [" + ff.getType() + "] the default is [" + ff.getDefault_value() + "] super_field [" + ff.getSuper_field() + "] super_levle [" + ff.getSuper_level() + "]");
+            }
             //如果是virtual类型的字段，需要将字段名称
             if (ff.getType().equals(MsgConstantField.ATTR_TYPE_VIRTUAL)) {
-
                 Deque<Field> queue = prepareSuperField(msgXmlDescriber, f);
+                if (logger.isDebugEnabled()) {
+                    logger.debug("the field " + fieldName + " paraent node size ["+queue.size()+"]");
+                }
                 //跟进queue将当前字段的上级节点逐个取出来
                 prepareVirMap(virtualMap, queue, rootobj);
 
@@ -213,9 +217,6 @@ public class JsonMsgUnpackerEngine {
             if (!isParseFromMsg(fieldName, ff)) {
                 if (StringUtils.isNotBlank(ff.getDefault_value())) {
                     context.setFieldStr(fieldName, ff.getDefault_value(), CommonContext.SCOPE_GLOBAL);
-                    if (logger.isDebugEnabled()) {
-                        logger.debug("the field " + fieldName + " type is [" + ff.getType() + "] the default is [" + ff.getDefault_value() + "]");
-                    }
                 }
                 continue;
             }
@@ -334,7 +335,7 @@ public class JsonMsgUnpackerEngine {
         String fileName = field.getName();
         String suerFieldName = field.getFieldFormat().getSuper_field();
         int superFieldLevel = field.getFieldFormat().getSuper_level();
-        //先根据付节点的id和level确认父节点，在从父节点中获取字段内容
+        //先根据父节点的id和level确认父节点，在从父节点中获取字段内容
         String value = virtualMap.get(suerFieldName + "_" + superFieldLevel).getString(fileName);
         return value;
     }
