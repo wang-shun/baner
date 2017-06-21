@@ -25,7 +25,7 @@ public class MessageUtil {
 		String tranCode = null;
 		try {
 			JSONObject jsonObject = JSONObject.parseObject(msg);
-			iteratorJson(jsonObject, labelName, tranCode);
+			tranCode = iteratorJson(jsonObject, labelName);
 		}finally{
 
 		}
@@ -111,14 +111,14 @@ public class MessageUtil {
 
 	}
 
-	private static void iteratorJson(JSONObject jsonObject,String labelName,String tranCode) {
-
+	private static String iteratorJson(JSONObject jsonObject,String labelName) {
+		String tranCode = null;
 		for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
 			if (tranCode == null) {
 				Object value = entry.getValue();
 				if (value instanceof JSONObject) {
 					JSONObject tmpObj = (JSONObject) value;
-					iteratorJson(tmpObj,labelName,tranCode);
+					tranCode = iteratorJson(tmpObj,labelName);
 				}
 				if (labelName.equals(entry.getKey())) {
 					tranCode = String.valueOf(value);
@@ -127,5 +127,12 @@ public class MessageUtil {
 				break;
 			}
 		}
+		return tranCode;
+	}
+
+	public static void main(String[] args) throws XMLStreamException {
+		String msg = "{\"message\":{\"data\":{\"head\":{\"tranCode\":\"Ban001\",\"trandate\":\"20170621\",\"trantime\":\"100200\",\"respcode\":\"\",\"respmsg\":\"\"},\"body\":{\"mobileno\":\"18210497358\",\"nickname\":\"哈哈\",\"passwd\":\"\",}},\"sign\":\"\"}}";
+		System.out.println(getTranCodeByJson(msg,"tranCode"));
+		System.out.println("wwwwwwwwwww");
 	}
 }
