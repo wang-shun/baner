@@ -63,6 +63,7 @@ public class XmlFilePreloader implements CommonPreloadInterface,ReloadAble,Invok
 					xmlPath.append(File.separator).append("pack").append(File.separator).append(confXmlFormate.getPath());
 					logger.info("load msg xml ["+xmlPath.toString()+"]");
 					MsgXmlDescriber describer = XmlParser.parse(xmlPath.toString());
+					logger.debug("xml file content ["+describer+"]");
 					packMap.put(confXmlFormate.getSystemid()+ConstantConfigField.TABLE_PRI_KEY_SEPARATOR+confXmlFormate.getTrancode(), describer);
 				}
 			}catch(Exception e){
