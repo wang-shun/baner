@@ -93,7 +93,13 @@ public class JsonMsgPackerEngine {
         }
         //顶层节点的level为1，只会存在一个顶层节点
         Field rootField = virtualFieldMap.get(1).get(0);
-        return virtualMap.get(rootField.getName() + "_" + rootField.getFieldFormat().getLevel());
+        //数据执行到这儿的格式为
+        //rootField.getName() + "_" + rootField.getFieldFormat().getLevel()="message_1"  内容为{"data":{"head":{"trancode":""},"body":{}}}
+        //所以啊缺少message顶层标签
+        Map<String, Object> topLayer = new HashMap<>();
+        Map<String, Object> topLayerVal = virtualMap.get(rootField.getName() + "_" + rootField.getFieldFormat().getLevel());
+        topLayer.put(rootField.getName(), topLayerVal);
+        return topLayer;
     }
 
     /**
