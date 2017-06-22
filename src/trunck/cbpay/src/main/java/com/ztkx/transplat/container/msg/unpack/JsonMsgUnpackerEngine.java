@@ -199,7 +199,7 @@ public class JsonMsgUnpackerEngine {
             fieldName = f.getName();
             FieldFormat ff = f.getFieldFormat();
             if (logger.isDebugEnabled()) {
-                logger.debug("the field " + fieldName + " level [" + ff.getLevel() + "] type is [" + ff.getType() + "] the default is [" + ff.getDefault_value() + "] super_field [" + ff.getSuper_field() + "] super_levle [" + ff.getSuper_level() + "]");
+                logger.debug("the field [" + fieldName + "] level [" + ff.getLevel() + "] type is [" + ff.getType() + "] the default is [" + ff.getDefault_value() + "] super_field [" + ff.getSuper_field() + "] super_levle [" + ff.getSuper_level() + "]");
             }
             //如果是virtual类型的字段，需要将字段名称
             if (ff.getType().equals(MsgConstantField.ATTR_TYPE_VIRTUAL)) {
