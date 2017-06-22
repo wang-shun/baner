@@ -76,7 +76,8 @@ public class JsonMsgPackerEngine {
         });
 
         for (int i = 0; i < levelArray.length; i++) {
-            List<Field> fields = virtualFieldMap.get(i+1);
+            int levle = levelArray[i];
+            List<Field> fields = virtualFieldMap.get(levle);
             for (Field field : fields) {
                 String superName = field.getFieldFormat().getSuper_field();
                 int superLevel = field.getFieldFormat().getSuper_level();
