@@ -67,10 +67,11 @@ public class JsonMsgPackerEngine {
 
         Integer[] levelArray = virtualFieldMap.keySet().toArray(new Integer[1]);
 
+        //按levle从大到小排序
         Arrays.sort(levelArray, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o1.compareTo(o2);
+                return o2.compareTo(o1);
             }
         });
 
