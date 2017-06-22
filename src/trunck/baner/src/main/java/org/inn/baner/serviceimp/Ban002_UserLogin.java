@@ -39,10 +39,11 @@ public class Ban002_UserLogin implements BusinessService {
 				logger.warn("user pwd error ["+BErrorCode.PWDERROR.desc+"]");
 				ContextUtil.setErrorCode(BErrorCode.PWDERROR.code, context);
 			}else{
+				context.setFieldStr(Ban.nickname,user.getNickname(),CommonContext.SCOPE_GLOBAL);
 				logger.info("user regist succ");
 			}
 
-			context.setFieldStr(Ban.nickname,user.getNickname(),CommonContext.SCOPE_GLOBAL);
+
 
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
