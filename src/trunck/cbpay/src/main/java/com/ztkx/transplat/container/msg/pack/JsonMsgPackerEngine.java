@@ -75,7 +75,7 @@ public class JsonMsgPackerEngine {
         });
 
         for (int i = 0; i < levelArray.length; i++) {
-            List<Field> fields = virtualFieldMap.get(i);
+            List<Field> fields = virtualFieldMap.get(i+1);
             for (Field field : fields) {
                 String superName = field.getFieldFormat().getSuper_field();
                 int superLevel = field.getFieldFormat().getSuper_level();
@@ -205,15 +205,12 @@ public class JsonMsgPackerEngine {
                     case MsgConstantField.ATTR_TYPE_S:
                         //给字段赋值
                         String value = execFieldFunction(f, context, ff);
-
-                        if(logger.isDebugEnabled()){
-                            logger.debug("the field <"+fieldName+"> type is <"+ff.getType()+"> value is <"+value+">");
-                        }
                         /**
                          * 判断字段值是否超过最大长度
                          * 如果超过最大长度则截掉超过以后的内容
                          */
                         if(isOverLenth(fieldName,value,ff)){
+                            logger.warn("the field <"+fieldName+"> overLength value is <"+value+">");
                             value = value.substring(0, ff.getLength());
                         }
                         if(logger.isDebugEnabled()){
