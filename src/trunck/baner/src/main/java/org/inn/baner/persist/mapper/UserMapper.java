@@ -55,9 +55,9 @@ public interface UserMapper {
      */
     @Insert({
         "insert into user (mobileno, nickname, ",
-        "passwd)",
+        "passwd, followtopic)",
         "values (#{mobileno,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, ",
-        "#{passwd,jdbcType=VARCHAR})"
+        "#{passwd,jdbcType=VARCHAR}, #{followtopic,jdbcType=VARCHAR})"
     })
     int insert(User record);
 
@@ -80,7 +80,8 @@ public interface UserMapper {
     @Results({
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
-        @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR)
+        @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
+        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR)
     })
     List<User> selectByExample(UserExample example);
 
@@ -92,14 +93,15 @@ public interface UserMapper {
      */
     @Select({
         "select",
-        "mobileno, nickname, passwd",
+        "mobileno, nickname, passwd, followtopic",
         "from user",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
     @Results({
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
-        @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR)
+        @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
+        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR)
     })
     User selectByPrimaryKey(String mobileno);
 
@@ -139,7 +141,8 @@ public interface UserMapper {
     @Update({
         "update user",
         "set nickname = #{nickname,jdbcType=VARCHAR},",
-          "passwd = #{passwd,jdbcType=VARCHAR}",
+          "passwd = #{passwd,jdbcType=VARCHAR},",
+          "followtopic = #{followtopic,jdbcType=VARCHAR}",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(User record);

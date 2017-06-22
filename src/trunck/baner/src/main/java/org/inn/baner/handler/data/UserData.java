@@ -34,6 +34,30 @@ public class UserData extends AbstractTMMybatis {
 		}
 	}
 
+	/**
+	 * 插入用户信息
+	 * @param user
+	 * @throws HandlerException
+	 */
+	public int update(User user) throws HandlerException {
+		int res = -1;
+		try {
+			//初始化sqlSession
+			getSqlSession();
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			res = userMapper.updateByPrimaryKeySelective(user);
+			if (logger.isDebugEnabled()) {
+				logger.debug("update table " + tableName + " success  count =[" + res + "] ");
+			}
+		} catch (HandlerException e) {
+			logger.error("exec sql error", e);
+			throw new HandlerException(e);
+		}finally {
+			relaceResource();
+		}
+		return res;
+	}
+
 	public User qryByMobile(String mobileno) throws HandlerException {
 		User user = null;
 		try {

@@ -15,4 +15,5 @@ public class Ban {
     public static final String createtime = "createtime";
     public static final String updatetime = "updatetime";
     public static final String iszan = "iszan";
+    public static final String followtopic = "followtopic";
 }
