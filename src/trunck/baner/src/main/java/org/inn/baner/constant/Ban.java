@@ -11,6 +11,7 @@ public class Ban {
     public static final String lists = "lists";
     public static final String topicid = "topicid";
     public static final String postid = "postid";
+    public static final String postname = "postname";
     public static final String context = "context"; //内容
     public static final String createtime = "createtime";
     public static final String updatetime = "updatetime";

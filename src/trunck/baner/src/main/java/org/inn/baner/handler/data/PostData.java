@@ -18,6 +18,30 @@ public class PostData extends AbstractTMMybatis {
 	Logger logger = Logger.getLogger(PostData.class);
 	static String tableName = "post";
 
+	/**
+	 * 插入帖子信息
+	 * @param post
+	 * @throws HandlerException
+	 */
+	public int insertRecord(Post post) throws HandlerException {
+		int count = -1;
+		try {
+			//初始化sqlSession
+			getSqlSession();
+			PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
+			count = postMapper.insert(post);
+			if (logger.isDebugEnabled()) {
+				logger.debug("insert table " + tableName + " success ! insert count =[" + count + "] ");
+			}
+		} catch (HandlerException e) {
+			logger.error("exec sql error", e);
+			throw new HandlerException(e);
+		}finally {
+			relaceResource();
+		}
+		return count;
+	}
+
 	public List<Post> qryByTopicId(int topicid) throws HandlerException {
 		List<Post> postList = null;
 		try {

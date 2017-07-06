@@ -1,11 +1,11 @@
 package com.ztkx.transplat.platformutil.baseconfig;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
-import org.apache.log4j.Logger;
 
 /**
  * 平台所以配置的对外接口
@@ -21,6 +21,9 @@ public class BaseConfig {
 	private BaseConfig(String filename) {
 		FileInputStream inStream = null;
 		try {
+			if(null == filename){
+				filename = this.getClass().getResource("/").getPath()+"/"+"baseConf.properties";
+			}
 			inStream = new FileInputStream(new File(filename));
 			confPro= new Properties();
 			confPro.load(inStream);
@@ -50,6 +53,17 @@ public class BaseConfig {
 				}
 			}
 			
+		}
+		return baseConfig;
+	}
+
+	public static BaseConfig getInstence() {
+		if (baseConfig == null) {
+			synchronized (BaseConfig.class) {
+				if (baseConfig == null) {
+					baseConfig = new BaseConfig(null);
+				}
+			}
 		}
 		return baseConfig;
 	}
