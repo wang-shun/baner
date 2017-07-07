@@ -5,13 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>trans_plat</name>
-    <modules>
-        <module>../../../../../java_workspace/baner/springframework_test</module>
-    </modules>
     <groupId>org.inn</groupId>
     <artifactId>trans_plat</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

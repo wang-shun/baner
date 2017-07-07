@@ -1,13 +1,14 @@
 package com.ztkx.transplat.platformutil.zkutil;
 
-import com.msds.config.ZkServerConfig;
-import lombok.extern.slf4j.Slf4j;
+import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
+import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessLock;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,34 +24,32 @@ import java.util.concurrent.TimeUnit;
  * 调用unlock()释放当前锁
  * </pre>
  */
-@Slf4j
 public class ZkMutexLock {
-	
+
+	private static Logger log = Logger.getLogger(ZkMutexLock.class);
 	private String lockRootPath;
-	private ZkServerConfig config;
 	private CuratorFramework zkClient;
 	ThreadLocal<InterProcessLock> lockLocal = new  ThreadLocal<InterProcessLock>();
 	private int getLockWaitTime;//重试次数
 	
 	private static ZkMutexLock instance = null;
 	
-	public static ZkMutexLock getInstance(ZkServerConfig config,String lockRootPath){
+	public static ZkMutexLock getInstance(String lockRootPath){
 		if(instance==null){
 			synchronized (ZkMutexLock.class) {
 				if(instance==null){
-					instance = new ZkMutexLock(config,lockRootPath);
+					instance = new ZkMutexLock(lockRootPath);
 				}
 			}
 		}
 		return instance;
 	}
 
-	private ZkMutexLock(ZkServerConfig config,String lockRootPath) {
-		this.config = config;
+	private ZkMutexLock(String lockRootPath) {
 		//链接zk的时候，如果链接失败间隔一秒重试，共重试3次
 		RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-		zkClient = CuratorFrameworkFactory.newClient(config.getServerAddress(), retryPolicy);
-		this.getLockWaitTime = config.getGetLockWaitTime();
+		zkClient = CuratorFrameworkFactory.newClient(BaseConfig.getConfig(ConstantConfigField.ZKADDRESS), retryPolicy);
+		this.getLockWaitTime = Integer.parseInt(BaseConfig.getConfig(ConstantConfigField.LOCKWAITTIME));
 		this.lockRootPath = lockRootPath;
 		this.zkClient.start();
 	}

@@ -8,7 +8,8 @@ package com.ztkx.transplat.platformutil.baseconfig;
  */
 public class ConstantConfigField {
 
-	public static final String ZKADDRESS = "zkaddress"; // 流水号缓冲池大小配置
+	public static final String ZKADDRESS = "zkaddress"; // zk地址和端口
+	public static final String LOCKWAITTIME = "lockwaittime"; // 如果连接失败重试次数
 	public static final String CONTEXTPOOLSIZE = "contextPoolSize"; // 交易上下文初始化大小配置
 	public static final String FLOWNOPOOLSIZE = "flowNoPoolSize"; // 流水号缓冲池大小配置
 	public static final String THREADPOOLSIZE = "threadPoolSize"; // 交易上下文初始化大小配置
