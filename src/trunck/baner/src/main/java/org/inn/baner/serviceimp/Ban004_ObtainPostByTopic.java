@@ -46,27 +46,31 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 			postData = new PostData();
 			userData = new UserData();
 			topicData = new TopicData();
-
-			postList = postData.qryByTopicId(topicId);
+			String[] topicidArr = topicId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
-			for (Post post : postList) {
-				Map<String,Object> map = BeanUtil.objToMap(post);
-				map.put(Ban.postid, post.getPostid());
-				map.put(Ban.topicname, topicData.qryById(post.getTopicid()).getTopicdesc());
-				map.put(Ban.mobileno, post.getCreatormobileno());
-				map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
-				map.put(Ban.postname, post.getPostname());
-				map.put(Ban.postdesc, post.getPostdesc());
-				map.put(Ban.context, new String(post.getContext()));
-				map.put(Ban.zantimes, post.getZantimes());
+			for (String topicidItem : topicidArr) {
 
-				Date createTime = post.getCreatetime();
-				map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
-				map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));
-				mapArrayList.add(map);
+				postList = postData.qryByTopicId(topicidItem);
+				for (Post post : postList) {
+					Map<String,Object> map = BeanUtil.objToMap(post);
+					map.put(Ban.postid, post.getPostid());
+					map.put(Ban.topicname, topicData.qryById(post.getTopicid()).getTopicdesc());
+					map.put(Ban.mobileno, post.getCreatormobileno());
+					map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
+					map.put(Ban.postname, post.getPostname());
+					map.put(Ban.postdesc, post.getPostdesc());
+					map.put(Ban.context, new String(post.getContext()));
+					map.put(Ban.zantimes, post.getZantimes());
+					map.put(Ban.topicid, post.getTopicid());
+					Date createTime = post.getCreatetime();
+					map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
+					map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));
+					mapArrayList.add(map);
+				}
 			}
+
 			context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);
-			context.setFieldStr(Ban.size, String.valueOf(postList.size()), CommonContext.SCOPE_GLOBAL);
+			context.setFieldStr(Ban.size, String.valueOf(mapArrayList.size()), CommonContext.SCOPE_GLOBAL);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
