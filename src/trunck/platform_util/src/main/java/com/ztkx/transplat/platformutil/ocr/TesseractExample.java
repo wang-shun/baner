@@ -1,3 +1,4 @@
+/*
 package com.ztkx.transplat.platformutil.ocr;
 
 import net.sourceforge.tess4j.ITesseract;
@@ -21,4 +22,4 @@ public class TesseractExample {
             System.err.println(e.getMessage());
         }
     }
-}
+}*/
