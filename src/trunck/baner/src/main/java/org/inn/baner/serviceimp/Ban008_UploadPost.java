@@ -5,6 +5,7 @@ import com.ztkx.transplat.container.service.ServiceException;
 import com.ztkx.transplat.container.service.intface.BusinessService;
 import com.ztkx.transplat.container.util.ContextUtil;
 import com.ztkx.transplat.platformutil.context.CommonContext;
+import com.ztkx.transplat.platformutil.flowno.ZKFlowNoPoolManager;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
@@ -41,7 +42,7 @@ public class Ban008_UploadPost implements BusinessService {
 		post.setCreatormobileno(mobileno);
 		post.setTopicid(topicid);
 		post.setPostname(postname);
-		post.setPostid();
+		post.setPostid(ZKFlowNoPoolManager.getInstance().getSequence("6", Ban.postidseq));
 		post.setContext(Base64.decodeBase64(postContext));
 		post.setZantimes(0);
 		post.setCreatetime(new Date());
