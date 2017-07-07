@@ -35,8 +35,8 @@ public class ZKFlowNoPoolManager {
 	private String zkAddress = null;
 	
 	private ZKFlowNoPoolManager(){
-		String sizeStr = BaseConfig.getInstence().getConfig(ConstantConfigField.FLOWNOPOOLSIZE);
-		zkAddress = BaseConfig.getInstence().getConfig(ConstantConfigField.ZKADDRESS);
+		String sizeStr = BaseConfig.getConfig(ConstantConfigField.FLOWNOPOOLSIZE);
+		zkAddress = BaseConfig.getConfig(ConstantConfigField.ZKADDRESS);
 		log.info("zkAddress ["+zkAddress+"]");
 		if(null != sizeStr && !sizeStr.equals("")){
 			poolSize = Integer.parseInt(sizeStr);
