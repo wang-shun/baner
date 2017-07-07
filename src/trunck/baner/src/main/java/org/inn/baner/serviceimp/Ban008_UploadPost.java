@@ -31,19 +31,19 @@ public class Ban008_UploadPost implements BusinessService {
 		String mobileno = context.getFieldStr(Ban.mobileno,CommonContext.SCOPE_GLOBAL);
 		String topicid = context.getFieldStr(Ban.topicid,CommonContext.SCOPE_GLOBAL);
 		String postname = context.getFieldStr(Ban.postname,CommonContext.SCOPE_GLOBAL);
-		String postContext = context.getFieldStr(Ban.followtopic,CommonContext.SCOPE_GLOBAL);
+		String postContext = context.getFieldStr(Ban.context,CommonContext.SCOPE_GLOBAL);
 
 		logger.info("mobileno ["+mobileno+"]");
 		logger.info("topicid ["+topicid+"]");
 		logger.info("postname ["+postname+"]");
-		logger.info("postContext ["+postContext+"]");
+		logger.info("postContext ["+new String(Base64.decodeBase64(postContext))+"]");
 
 		Post post = new Post();
 		post.setCreatormobileno(mobileno);
 		post.setTopicid(topicid);
 		post.setPostname(postname);
 		post.setPostid(ZKFlowNoPoolManager.getInstance().getSequence("6", Ban.postidseq));
-		post.setContext(Base64.decodeBase64(postContext));
+		post.setContext(postContext.getBytes());
 		post.setZantimes(0);
 		post.setCreatetime(new Date());
 		PostData postData  = null;

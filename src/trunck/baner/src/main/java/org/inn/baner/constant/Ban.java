@@ -13,11 +13,14 @@ public class Ban {
     public static final String size = "size";
     public static final String lists = "lists";
     public static final String topicid = "topicid";
+    public static final String topicname = "topicname";
     public static final String postid = "postid";
     public static final String postname = "postname";
-    public static final String context = "context"; //内容
+    public static final String postdesc = "postdesc";
+    public static final String context = "context"; //帖子内容
     public static final String createtime = "createtime";
     public static final String updatetime = "updatetime";
     public static final String iszan = "iszan";
+    public static final String zantimes = "zantimes";
     public static final String followtopic = "followtopic";
 }

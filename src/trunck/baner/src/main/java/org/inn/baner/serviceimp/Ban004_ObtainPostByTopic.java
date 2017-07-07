@@ -7,12 +7,12 @@ import com.ztkx.transplat.container.util.ContextUtil;
 import com.ztkx.transplat.platformutil.baseUtil.BeanUtil;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.time.TimeUtil;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.PostData;
+import org.inn.baner.handler.data.UserData;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,14 +38,26 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 
 		List<Post> postList = null;
 		PostData postData = null;
+		UserData userData = null;
 		try {
 
 			postData = new PostData();
+			userData = new UserData();
+
+
 			postList = postData.qryByTopicId(topicId);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
 			for (Post post : postList) {
 				Map<String,Object> map = BeanUtil.objToMap(post);
-				map.put(Ban.context, Base64.encodeBase64String(post.getContext()));
+				map.put(Ban.postid, post.getPostid());
+				map.put(Ban.topicname, "哈哈");
+				map.put(Ban.mobileno, post.getCreatormobileno());
+				map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
+				map.put(Ban.postname, post.getPostname());
+				map.put(Ban.postdesc, post.getPostdesc());
+				map.put(Ban.context, new String(post.getContext()));
+				map.put(Ban.zantimes, post.getZantimes());
+
 				Date createTime = post.getCreatetime();
 				map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
 				map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));
