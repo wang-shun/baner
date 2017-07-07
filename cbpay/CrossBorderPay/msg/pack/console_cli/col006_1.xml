@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<formula id="ctb010_1">
-	<include>CONSOLE_CLI_1</include>
-	<field name="body">
-		<format type="virtual"  level="2"/>
-	</field>
-</formula>

@@ -12,6 +12,6 @@
         update post set zantimes=zantimes-1 where topicid=#{topicid} and postid=#{postid}
     </update>
     <select resultMap="postMap" id="qryByTopicId" parameterType="java.lang.String">
-        select * from  post where topicid=#{topicid}
+        select * from  post where topicid=#{topicid} order by createtime desc
     </select>
 </mapper>
