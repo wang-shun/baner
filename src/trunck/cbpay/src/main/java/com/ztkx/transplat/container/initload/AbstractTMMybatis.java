@@ -1,11 +1,9 @@
 package com.ztkx.transplat.container.initload;
 
 import com.ztkx.transplat.container.HandlerException;
-import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
 import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -62,6 +60,7 @@ public abstract class AbstractTMMybatis implements TransactionMMybatis {
 
 		if(isRelaseConn && sqlSession != null){
 			MybatisUtil.closeSqlSession(sqlSession);
+			sqlSession = null;
 		}
 	}
 }

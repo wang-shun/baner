@@ -2,6 +2,7 @@ package com.ztkx.transplat.platformutil.db.mybatis;
 
 import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -73,6 +74,8 @@ public class MybatisUtil {
                 // c3p0的connection类的close方法不是将连接关闭而是将连接回收到资源池中，close方法被c3p0重写了。
                 session.close();
             }
+        } catch (PersistenceException e) {
+            logger.error("closeConnect error !", e);
         } catch (Throwable e) {
             logger.error("closeConnect error !", e);
         }

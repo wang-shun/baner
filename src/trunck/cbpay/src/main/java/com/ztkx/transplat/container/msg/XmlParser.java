@@ -1,18 +1,13 @@
 package com.ztkx.transplat.container.msg;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ztkx.transplat.container.preload.ModulesConfPreloader;
+import com.ztkx.transplat.platformutil.msg.*;
+import com.ztkx.transplat.platformutil.xml.Dom4jXmlUtil;
 import org.apache.commons.lang.StringUtils;
 import org.dom4j.Element;
 
-import com.ztkx.transplat.container.preload.ModulesConfPreloader;
-import com.ztkx.transplat.platformutil.msg.CompositField;
-import com.ztkx.transplat.platformutil.msg.Field;
-import com.ztkx.transplat.platformutil.msg.ModulesDescriber;
-import com.ztkx.transplat.platformutil.msg.MsgConstantField;
-import com.ztkx.transplat.platformutil.msg.MsgXmlDescriber;
-import com.ztkx.transplat.platformutil.xml.Dom4jXmlUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 将拆包的xml配置解析为MsgXmlDescriber内存对象
@@ -109,7 +104,20 @@ public class XmlParser {
 		if(StringUtils.isNotEmpty(outputStr)){
 			compositField.setOutPut(Boolean.parseBoolean(outputStr));
 		}
-		
+
+		/**
+		 * 2017-07-07 新增 循环标签的上级节点和级别，只有json报文使用
+		 */
+		String superField = element.attributeValue(MsgConstantField.ATTR_SUPER_FIELD);
+		if(StringUtils.isNotEmpty(superField)){
+			compositField.setSuper_field(superField.trim());
+		}
+
+		String superLevel = element.attributeValue(MsgConstantField.ATTR_SUPER_LEVEL);
+		if(StringUtils.isNotEmpty(superLevel)){
+			compositField.setSuper_level(Integer.parseInt(superLevel));
+		}
+
 		List<Element> eleList = element.elements("field");
 		for(int i = 0;i<eleList.size();i++){
 			Element eleField = eleList.get(i);
@@ -117,6 +125,8 @@ public class XmlParser {
 			Field field = XmlParseUtil.obtainField(eleField);
 			compositField.setField(field);
 		}
+
+
 		describer.setCf(compositField);
 	}
 

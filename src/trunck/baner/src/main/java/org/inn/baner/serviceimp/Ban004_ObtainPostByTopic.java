@@ -66,7 +66,7 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 				mapArrayList.add(map);
 			}
 			context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);
-
+			context.setFieldStr(Ban.size, String.valueOf(postList.size()), CommonContext.SCOPE_GLOBAL);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
