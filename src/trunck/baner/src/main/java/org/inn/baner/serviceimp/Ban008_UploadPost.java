@@ -46,6 +46,8 @@ public class Ban008_UploadPost implements BusinessService {
 		post.setContext(postContext.getBytes());
 		post.setZantimes(0);
 		post.setCreatetime(new Date());
+		post.setUpdatetime(new Date());
+
 		PostData postData  = null;
 		try {
 			postData = new PostData();

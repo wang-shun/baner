@@ -12,6 +12,7 @@ import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.PostData;
+import org.inn.baner.handler.data.TopicData;
 import org.inn.baner.handler.data.UserData;
 
 import java.util.ArrayList;
@@ -39,18 +40,19 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 		List<Post> postList = null;
 		PostData postData = null;
 		UserData userData = null;
+		TopicData topicData = null;
 		try {
 
 			postData = new PostData();
 			userData = new UserData();
-
+			topicData = new TopicData();
 
 			postList = postData.qryByTopicId(topicId);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
 			for (Post post : postList) {
 				Map<String,Object> map = BeanUtil.objToMap(post);
 				map.put(Ban.postid, post.getPostid());
-				map.put(Ban.topicname, "哈哈");
+				map.put(Ban.topicname, topicData.qryById(post.getTopicid()).getTopicdesc());
 				map.put(Ban.mobileno, post.getCreatormobileno());
 				map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
 				map.put(Ban.postname, post.getPostname());

@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.persist.mapper.PostMapper;
-import org.inn.baner.persist.mapper.PostMapperDIY;
 
 import java.util.HashMap;
 import java.util.List;
@@ -51,8 +50,7 @@ public class PostData extends AbstractTMMybatis {
 			Map<String, Object> para = new HashMap<>();
 			para.put(Ban.topicid, topicid);
 
-			PostMapperDIY postMapper = sqlSession.getMapper(PostMapperDIY.class);
-			postList = postMapper.qryByTopicId(topicid);
+			postList = sqlSession.selectList("org.inn.baner.persist.mapper.PostMapperDIY.qryByTopicId",topicid);
 
 			if (logger.isDebugEnabled()) {
 				logger.debug("qry table " + tableName + " success list size ["+postList.size()+"]");
@@ -76,7 +74,7 @@ public class PostData extends AbstractTMMybatis {
 			para.put(Ban.topicid, topicid);
 			para.put(Ban.postid, postid);
 
-			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapper.zan",para);
+			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapperDIY.zan",para);
 			if (logger.isDebugEnabled()) {
 				logger.debug("update table " + tableName + " success update row  size ["+res+"]");
 			}
@@ -99,7 +97,7 @@ public class PostData extends AbstractTMMybatis {
 			para.put(Ban.topicid, topicid);
 			para.put(Ban.postid, postid);
 
-			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapper.cancleZan",para);
+			res = sqlSession.update("org.inn.baner.persist.mapper.PostMapperDIY.cancleZan",para);
 
 			if (logger.isDebugEnabled()) {
 				logger.debug("update table " + tableName + " success update row  size ["+res+"]");
