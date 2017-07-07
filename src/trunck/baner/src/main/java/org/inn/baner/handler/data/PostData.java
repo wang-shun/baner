@@ -42,7 +42,7 @@ public class PostData extends AbstractTMMybatis {
 		return count;
 	}
 
-	public List<Post> qryByTopicId(int topicid) throws HandlerException {
+	public List<Post> qryByTopicId(String topicid) throws HandlerException {
 		List<Post> postList = null;
 		try {
 			//初始化sqlSession

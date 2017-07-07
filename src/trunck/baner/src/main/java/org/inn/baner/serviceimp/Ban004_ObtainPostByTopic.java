@@ -10,13 +10,10 @@ import com.ztkx.transplat.platformutil.time.TimeUtil;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
-import org.inn.baner.bean.Topic;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.PostData;
-import org.inn.baner.handler.data.TopicData;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +32,7 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 	@Override
 	public CommonContext service(CommonContext context) throws ServiceException {
 
-		int topicId = Integer.parseInt(context.getFieldStr(Ban.topicid));
+		String topicId = context.getFieldStr(Ban.topicid,CommonContext.SCOPE_GLOBAL);
 		String dateFormate = "yyyyMMdd HH:mm:ss";
 		logger.info("topicid ["+topicId+"]");
 
