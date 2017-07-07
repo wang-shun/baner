@@ -2,12 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.inn.baner.persist.mapper.PostMapper">
-
+<mapper namespace="org.inn.baner.persist.mapper.PostMapperDIY">
+    <resultMap id="postMap" type="org.inn.baner.bean.Post">
+    </resultMap>
     <update id="zan">
         update post set zantimes=zantimes+1 where topicid=#{topicid} and postid=#{postid}
     </update>
     <update id="cancleZan">
         update post set zantimes=zantimes-1 where topicid=#{topicid} and postid=#{postid}
     </update>
+    <select resultMap="postMap" id="qryByTopicId" parameterType="java.lang.String">
+        select * from  post where topicid=#{topicid}
+    </select>
 </mapper>

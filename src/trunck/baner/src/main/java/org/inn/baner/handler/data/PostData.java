@@ -5,9 +5,9 @@ import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.initload.AbstractTMMybatis;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
-import org.inn.baner.bean.PostExample;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.persist.mapper.PostMapper;
+import org.inn.baner.persist.mapper.PostMapperDIY;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,11 +48,11 @@ public class PostData extends AbstractTMMybatis {
 			//初始化sqlSession
 			getSqlSession();
 
-			PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
-			PostExample postExample = new PostExample();
-			postExample.createCriteria().andTopicidEqualTo(topicid);
+			Map<String, Object> para = new HashMap<>();
+			para.put(Ban.topicid, topicid);
 
-			postList = postMapper.selectByExample(postExample);
+			PostMapperDIY postMapper = sqlSession.getMapper(PostMapperDIY.class);
+			postList = postMapper.qryByTopicId(topicid);
 
 			if (logger.isDebugEnabled()) {
 				logger.debug("qry table " + tableName + " success list size ["+postList.size()+"]");
