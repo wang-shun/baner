@@ -55,9 +55,11 @@ public interface UserlocMapper {
      */
     @Insert({
         "insert into userloc (mobileno, createtime, ",
-        "areacode, locationdesc)",
+        "areacode, locationdesc, ",
+        "latitude, longitude)",
         "values (#{mobileno,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, ",
-        "#{areacode,jdbcType=VARCHAR}, #{locationdesc,jdbcType=VARCHAR})"
+        "#{areacode,jdbcType=VARCHAR}, #{locationdesc,jdbcType=VARCHAR}, ",
+        "#{latitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR})"
     })
     int insert(Userloc record);
 
@@ -81,7 +83,9 @@ public interface UserlocMapper {
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="areacode", property="areacode", jdbcType=JdbcType.VARCHAR),
-        @Result(column="locationdesc", property="locationdesc", jdbcType=JdbcType.VARCHAR)
+        @Result(column="locationdesc", property="locationdesc", jdbcType=JdbcType.VARCHAR),
+        @Result(column="latitude", property="latitude", jdbcType=JdbcType.VARCHAR),
+        @Result(column="longitude", property="longitude", jdbcType=JdbcType.VARCHAR)
     })
     List<Userloc> selectByExample(UserlocExample example);
 
@@ -93,7 +97,7 @@ public interface UserlocMapper {
      */
     @Select({
         "select",
-        "mobileno, createtime, areacode, locationdesc",
+        "mobileno, createtime, areacode, locationdesc, latitude, longitude",
         "from userloc",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
@@ -101,7 +105,9 @@ public interface UserlocMapper {
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="areacode", property="areacode", jdbcType=JdbcType.VARCHAR),
-        @Result(column="locationdesc", property="locationdesc", jdbcType=JdbcType.VARCHAR)
+        @Result(column="locationdesc", property="locationdesc", jdbcType=JdbcType.VARCHAR),
+        @Result(column="latitude", property="latitude", jdbcType=JdbcType.VARCHAR),
+        @Result(column="longitude", property="longitude", jdbcType=JdbcType.VARCHAR)
     })
     Userloc selectByPrimaryKey(String mobileno);
 
@@ -142,7 +148,9 @@ public interface UserlocMapper {
         "update userloc",
         "set createtime = #{createtime,jdbcType=TIMESTAMP},",
           "areacode = #{areacode,jdbcType=VARCHAR},",
-          "locationdesc = #{locationdesc,jdbcType=VARCHAR}",
+          "locationdesc = #{locationdesc,jdbcType=VARCHAR},",
+          "latitude = #{latitude,jdbcType=VARCHAR},",
+          "longitude = #{longitude,jdbcType=VARCHAR}",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Userloc record);

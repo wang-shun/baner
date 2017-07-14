@@ -11,6 +11,8 @@ import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.UserLocData;
 
+import java.util.Date;
+
 /**
  * 登记用户的位置信息
  * @author zhangxiaoyun
@@ -24,14 +26,19 @@ public class Ban006_RegistAddress implements BusinessService {
 	@Override
 	public CommonContext service(CommonContext context) throws ServiceException {
 
-		int topicId = Integer.parseInt(context.getFieldStr(Ban.topicid,CommonContext.SCOPE_GLOBAL));
-		int postId = Integer.parseInt(context.getFieldStr(Ban.postid,CommonContext.SCOPE_GLOBAL));
-		String iszan = context.getFieldStr(Ban.iszan,CommonContext.SCOPE_GLOBAL);
+		String latitude = context.getFieldStr(Ban.latitude,CommonContext.SCOPE_GLOBAL);
+		String  longitude = context.getFieldStr(Ban.longitude,CommonContext.SCOPE_GLOBAL);
+		String  mobileno = context.getFieldStr(Ban.mobileno,CommonContext.SCOPE_GLOBAL);
 
-		logger.info("topicid ["+topicId+"]");
-		logger.info("postId ["+postId+"]");
-		logger.info("iszan ["+iszan+"]");
-		Userloc userLoc = context.getBean(Userloc.class);
+		logger.info("latitude ["+latitude+"]");
+		logger.info("longitude ["+longitude+"]");
+		logger.info("mobileno ["+mobileno+"]");
+		Userloc userLoc = new Userloc();
+		userLoc.setMobileno(mobileno);
+		userLoc.setCreatetime(new Date());
+		userLoc.setLatitude(latitude);
+		userLoc.setLongitude(longitude);
+
 		UserLocData userLocData = null;
 		try {
 			userLocData = new UserLocData();

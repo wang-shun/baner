@@ -23,4 +23,6 @@ public class Ban {
     public static final String iszan = "iszan";
     public static final String zantimes = "zantimes";
     public static final String followtopic = "followtopic";
+    public static final String latitude = "latitude";   //精度
+    public static final String longitude = "longitude"; //维度
 }

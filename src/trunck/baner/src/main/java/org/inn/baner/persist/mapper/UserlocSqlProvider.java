@@ -62,6 +62,14 @@ public class UserlocSqlProvider {
             sql.VALUES("locationdesc", "#{locationdesc,jdbcType=VARCHAR}");
         }
         
+        if (record.getLatitude() != null) {
+            sql.VALUES("latitude", "#{latitude,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLongitude() != null) {
+            sql.VALUES("longitude", "#{longitude,jdbcType=VARCHAR}");
+        }
+        
         return sql.toString();
     }
 
@@ -81,6 +89,8 @@ public class UserlocSqlProvider {
         sql.SELECT("createtime");
         sql.SELECT("areacode");
         sql.SELECT("locationdesc");
+        sql.SELECT("latitude");
+        sql.SELECT("longitude");
         sql.FROM("userloc");
         applyWhere(sql, example, false);
         
@@ -120,6 +130,14 @@ public class UserlocSqlProvider {
             sql.SET("locationdesc = #{record.locationdesc,jdbcType=VARCHAR}");
         }
         
+        if (record.getLatitude() != null) {
+            sql.SET("latitude = #{record.latitude,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLongitude() != null) {
+            sql.SET("longitude = #{record.longitude,jdbcType=VARCHAR}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -138,6 +156,8 @@ public class UserlocSqlProvider {
         sql.SET("createtime = #{record.createtime,jdbcType=TIMESTAMP}");
         sql.SET("areacode = #{record.areacode,jdbcType=VARCHAR}");
         sql.SET("locationdesc = #{record.locationdesc,jdbcType=VARCHAR}");
+        sql.SET("latitude = #{record.latitude,jdbcType=VARCHAR}");
+        sql.SET("longitude = #{record.longitude,jdbcType=VARCHAR}");
         
         UserlocExample example = (UserlocExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -164,6 +184,14 @@ public class UserlocSqlProvider {
         
         if (record.getLocationdesc() != null) {
             sql.SET("locationdesc = #{locationdesc,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLatitude() != null) {
+            sql.SET("latitude = #{latitude,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLongitude() != null) {
+            sql.SET("longitude = #{longitude,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("mobileno = #{mobileno,jdbcType=VARCHAR}");
