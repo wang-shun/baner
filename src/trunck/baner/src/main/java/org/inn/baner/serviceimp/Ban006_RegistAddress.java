@@ -5,6 +5,7 @@ import com.ztkx.transplat.container.service.ServiceException;
 import com.ztkx.transplat.container.service.intface.BusinessService;
 import com.ztkx.transplat.container.util.ContextUtil;
 import com.ztkx.transplat.platformutil.context.CommonContext;
+import com.ztkx.transplat.platformutil.time.TimeUtil;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Userloc;
 import org.inn.baner.constant.Ban;
@@ -34,6 +35,8 @@ public class Ban006_RegistAddress implements BusinessService {
 		logger.info("longitude ["+longitude+"]");
 		logger.info("mobileno ["+mobileno+"]");
 		Userloc userLoc = new Userloc();
+		String platdate = TimeUtil.getCurrentTime(null);
+		userLoc.setPlatdate(platdate);
 		userLoc.setMobileno(mobileno);
 		userLoc.setCreatetime(new Date());
 		userLoc.setLatitude(latitude);
@@ -42,7 +45,13 @@ public class Ban006_RegistAddress implements BusinessService {
 		UserLocData userLocData = null;
 		try {
 			userLocData = new UserLocData();
-			int res = userLocData.insertRecord(userLoc);
+			Userloc userloc = userLocData.qry(platdate, mobileno);
+			int res = -1;
+			if (userloc != null) {
+				res = userLocData.insertRecord(userLoc);
+			}else{
+				res = userLocData.update(userLoc);
+			}
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);

@@ -12,7 +12,7 @@ import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.UserData;
 
 /**
- * 上传帖子
+ * 查询关注
  * @author zhangxiaoyun
  * 2016-3-15 16:24:11
  * <p>Company:ztkx</p>

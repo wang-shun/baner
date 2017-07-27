@@ -33,15 +33,23 @@ public class Ban001_UserRegist implements BusinessService {
 		logger.info("passwd [" + passwd + "]");
 		UserData userData = null;
 		try {
-			User user = new User();
-			user.setMobileno(mobileno);
-			user.setNickname(nickName);
-			user.setPasswd(passwd);
-
 			userData = new UserData();
-			userData.insertRecord(user);
-			logger.info("user regist succ");
 
+			User user = userData.qryByMobile(mobileno);
+			if (user != null) {
+				user = new User();
+				user.setMobileno(mobileno);
+				user.setNickname(nickName);
+				user.setPasswd(passwd);
+				userData.insertRecord(user);
+				logger.info("user regist succ");
+			}else{
+				user.setNickname(nickName);
+				user.setPasswd(passwd);
+				user.setFollowtopic(passwd);
+				userData.update(user);
+				logger.info("user [" + user.getMobileno() + "] update succ");
+			}
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ["+BErrorCode.FAIL.desc+"]",e);

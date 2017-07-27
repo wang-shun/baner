@@ -46,6 +46,10 @@ public class UserlocSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("userloc");
         
+        if (record.getPlatdate() != null) {
+            sql.VALUES("platdate", "#{platdate,jdbcType=VARCHAR}");
+        }
+        
         if (record.getMobileno() != null) {
             sql.VALUES("mobileno", "#{mobileno,jdbcType=VARCHAR}");
         }
@@ -82,10 +86,11 @@ public class UserlocSqlProvider {
     public String selectByExample(UserlocExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("mobileno");
+            sql.SELECT_DISTINCT("platdate");
         } else {
-            sql.SELECT("mobileno");
+            sql.SELECT("platdate");
         }
+        sql.SELECT("mobileno");
         sql.SELECT("createtime");
         sql.SELECT("areacode");
         sql.SELECT("locationdesc");
@@ -113,6 +118,10 @@ public class UserlocSqlProvider {
         
         SQL sql = new SQL();
         sql.UPDATE("userloc");
+        
+        if (record.getPlatdate() != null) {
+            sql.SET("platdate = #{record.platdate,jdbcType=VARCHAR}");
+        }
         
         if (record.getMobileno() != null) {
             sql.SET("mobileno = #{record.mobileno,jdbcType=VARCHAR}");
@@ -152,6 +161,7 @@ public class UserlocSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("userloc");
         
+        sql.SET("platdate = #{record.platdate,jdbcType=VARCHAR}");
         sql.SET("mobileno = #{record.mobileno,jdbcType=VARCHAR}");
         sql.SET("createtime = #{record.createtime,jdbcType=TIMESTAMP}");
         sql.SET("areacode = #{record.areacode,jdbcType=VARCHAR}");
@@ -194,6 +204,7 @@ public class UserlocSqlProvider {
             sql.SET("longitude = #{longitude,jdbcType=VARCHAR}");
         }
         
+        sql.WHERE("platdate = #{platdate,jdbcType=VARCHAR}");
         sql.WHERE("mobileno = #{mobileno,jdbcType=VARCHAR}");
         
         return sql.toString();
