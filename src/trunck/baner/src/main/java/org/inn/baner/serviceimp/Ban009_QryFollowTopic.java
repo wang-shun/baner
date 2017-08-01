@@ -34,6 +34,8 @@ public class Ban009_QryFollowTopic implements BusinessService {
 
 			User user = userData.qryByMobile(mobileno);
 			context.setFieldStr(Ban.followtopic, user.getFollowtopic(), CommonContext.SCOPE_GLOBAL);
+			context.setFieldStr(Ban.mobileno, user.getMobileno(), CommonContext.SCOPE_GLOBAL);
+			context.setFieldStr(Ban.nickname, user.getNickname(), CommonContext.SCOPE_GLOBAL);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
