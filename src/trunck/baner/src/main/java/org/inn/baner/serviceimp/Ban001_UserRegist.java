@@ -36,7 +36,7 @@ public class Ban001_UserRegist implements BusinessService {
 			userData = new UserData();
 
 			User user = userData.qryByMobile(mobileno);
-			if (user != null) {
+			if (user == null) {
 				user = new User();
 				user.setMobileno(mobileno);
 				user.setNickname(nickName);

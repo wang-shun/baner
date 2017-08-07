@@ -47,7 +47,7 @@ public class JsonMsgPackerEngine {
             rootMap = getRootMap(virtualMap, virtualFieldMap);
 
             String msg = JSON.toJSONString(rootMap);
-            logger.info("pack msg is ["+msg+"]");
+            logger.debug("pack msg is ["+msg+"]");
             context.setOrginalField(msg);
         }
         finally{
