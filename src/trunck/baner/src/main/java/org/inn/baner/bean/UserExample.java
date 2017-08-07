@@ -473,6 +473,76 @@ public class UserExample {
             addCriterion("followtopic not between", value1, value2, "followtopic");
             return (Criteria) this;
         }
+
+        public Criteria andBaneridIsNull() {
+            addCriterion("banerid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridIsNotNull() {
+            addCriterion("banerid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridEqualTo(String value) {
+            addCriterion("banerid =", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridNotEqualTo(String value) {
+            addCriterion("banerid <>", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridGreaterThan(String value) {
+            addCriterion("banerid >", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridGreaterThanOrEqualTo(String value) {
+            addCriterion("banerid >=", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridLessThan(String value) {
+            addCriterion("banerid <", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridLessThanOrEqualTo(String value) {
+            addCriterion("banerid <=", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridLike(String value) {
+            addCriterion("banerid like", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridNotLike(String value) {
+            addCriterion("banerid not like", value, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridIn(List<String> values) {
+            addCriterion("banerid in", values, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridNotIn(List<String> values) {
+            addCriterion("banerid not in", values, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridBetween(String value1, String value2) {
+            addCriterion("banerid between", value1, value2, "banerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBaneridNotBetween(String value1, String value2) {
+            addCriterion("banerid not between", value1, value2, "banerid");
+            return (Criteria) this;
+        }
     }
 
     /**

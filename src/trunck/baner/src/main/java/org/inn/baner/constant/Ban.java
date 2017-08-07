@@ -25,4 +25,5 @@ public class Ban {
     public static final String followtopic = "followtopic";
     public static final String latitude = "latitude";   //经度
     public static final String longitude = "longitude"; //纬度
+    public static final String banerid = "banerid"; //纬度
 }
