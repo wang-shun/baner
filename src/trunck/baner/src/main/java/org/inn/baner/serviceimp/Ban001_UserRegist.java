@@ -5,6 +5,7 @@ import com.ztkx.transplat.container.service.ServiceException;
 import com.ztkx.transplat.container.service.intface.BusinessService;
 import com.ztkx.transplat.container.util.ContextUtil;
 import com.ztkx.transplat.platformutil.context.CommonContext;
+import com.ztkx.transplat.platformutil.flowno.ZKFlowNoPoolManager;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.User;
 import org.inn.baner.constant.Ban;
@@ -36,17 +37,26 @@ public class Ban001_UserRegist implements BusinessService {
 			userData = new UserData();
 
 			User user = userData.qryByMobile(mobileno);
-			if (user != null) {
+			if (user == null) {
 				user = new User();
 				user.setMobileno(mobileno);
 				user.setNickname(nickName);
 				user.setPasswd(passwd);
+				String banid = ZKFlowNoPoolManager.getInstance().getSequence("5",Ban.banerid);
+				logger.info("banerId ["+banid+"]");
+				user.setBanerid(banid);
 				userData.insertRecord(user);
 				logger.info("user regist succ");
 			}else{
 				user.setNickname(nickName);
 				user.setPasswd(passwd);
 				user.setFollowtopic(passwd);
+				if ("".equals(user.getBanerid()) || user.getBanerid() == null) {
+					//访问zk获取唯一流水号
+					String banid = ZKFlowNoPoolManager.getInstance().getSequence("5",Ban.banerid);
+					logger.info("banerId ["+banid+"]");
+					user.setBanerid(banid);
+				}
 				userData.update(user);
 				logger.info("user [" + user.getMobileno() + "] update succ");
 			}

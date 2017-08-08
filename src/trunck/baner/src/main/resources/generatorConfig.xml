@@ -8,7 +8,7 @@
 			<property name="suppressAllComments" value="false" />
 		</commentGenerator>
 
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.30.12.66:3306/baner" userId="baner" password="123456" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.30.2.102:3306/baner" userId="baner" password="123456" />
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
@@ -20,17 +20,20 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
+		<!--
         <table  tableName="post" >
 			<columnOverride column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
 			<columnOverride column="updatetime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
         </table>
 		<table  tableName="topic" >
 		</table>
+		-->
 		<table  tableName="user" >
 		</table>
+		<!--
 		<table  tableName="userloc" >
 		</table>
-
+		-->
 	</context>
 
 </generatorConfiguration>

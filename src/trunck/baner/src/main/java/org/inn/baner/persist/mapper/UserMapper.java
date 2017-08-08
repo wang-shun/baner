@@ -55,9 +55,11 @@ public interface UserMapper {
      */
     @Insert({
         "insert into user (mobileno, nickname, ",
-        "passwd, followtopic)",
+        "passwd, followtopic, ",
+        "banerid)",
         "values (#{mobileno,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, ",
-        "#{passwd,jdbcType=VARCHAR}, #{followtopic,jdbcType=VARCHAR})"
+        "#{passwd,jdbcType=VARCHAR}, #{followtopic,jdbcType=VARCHAR}, ",
+        "#{banerid,jdbcType=VARCHAR})"
     })
     int insert(User record);
 
@@ -81,7 +83,8 @@ public interface UserMapper {
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
         @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
-        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR)
+        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR),
+        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR)
     })
     List<User> selectByExample(UserExample example);
 
@@ -93,7 +96,7 @@ public interface UserMapper {
      */
     @Select({
         "select",
-        "mobileno, nickname, passwd, followtopic",
+        "mobileno, nickname, passwd, followtopic, banerid",
         "from user",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
@@ -101,7 +104,8 @@ public interface UserMapper {
         @Result(column="mobileno", property="mobileno", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
         @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
-        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR)
+        @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR),
+        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR)
     })
     User selectByPrimaryKey(String mobileno);
 
@@ -142,7 +146,8 @@ public interface UserMapper {
         "update user",
         "set nickname = #{nickname,jdbcType=VARCHAR},",
           "passwd = #{passwd,jdbcType=VARCHAR},",
-          "followtopic = #{followtopic,jdbcType=VARCHAR}",
+          "followtopic = #{followtopic,jdbcType=VARCHAR},",
+          "banerid = #{banerid,jdbcType=VARCHAR}",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(User record);
