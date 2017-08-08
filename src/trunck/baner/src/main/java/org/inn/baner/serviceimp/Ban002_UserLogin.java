@@ -40,6 +40,7 @@ public class Ban002_UserLogin implements BusinessService {
 				ContextUtil.setErrorCode(BErrorCode.PWDERROR.code, context);
 			}else{
 				context.setFieldStr(Ban.nickname,user.getNickname(),CommonContext.SCOPE_GLOBAL);
+				context.setFieldStr(Ban.banerid,user.getBanerid(),CommonContext.SCOPE_GLOBAL);
 				logger.info("user regist succ");
 			}
 
