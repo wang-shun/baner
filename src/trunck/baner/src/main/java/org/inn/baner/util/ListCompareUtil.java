@@ -37,6 +37,19 @@ public class ListCompareUtil implements Comparator {
     }
 
     /**
+     * 倒排序
+     * @param objects
+     * @param clazz
+     * @param fieldsList
+     */
+    public void mySortDesc(List objects,Class clazz,String[] fieldsList){
+        mysort(objects,clazz,fieldsList);
+        Collections.reverse(objects);
+    }
+
+
+
+    /**
      * 排序逻辑实现（不可直接调用）
      * @param o1
      * @param o2
