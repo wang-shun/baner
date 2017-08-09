@@ -6,6 +6,7 @@ package org.inn.baner.constant;
 public class Ban {
 
     public static final String postidseq = "postidseq";
+    public static final String commentidseq = "commentidseq";
 
     public static final String mobileno = "mobileno";
     public static final String nickname = "nickname";
@@ -26,4 +27,9 @@ public class Ban {
     public static final String latitude = "latitude";   //经度
     public static final String longitude = "longitude"; //纬度
     public static final String banerid = "banerid"; //纬度
+
+
+    public static final String parentcommentid = "parentcommentid";
+    public static final String commentid = "commentid";
+
 }
