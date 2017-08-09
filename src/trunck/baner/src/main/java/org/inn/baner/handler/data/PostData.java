@@ -5,6 +5,7 @@ import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.initload.AbstractTMMybatis;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
+import org.inn.baner.bean.PostExample;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.persist.mapper.PostMapper;
 
@@ -109,5 +110,18 @@ public class PostData extends AbstractTMMybatis {
 			relaceResource();
 		}
 		return res;
+	}
+
+	/**
+	 * delete post by mobileNo and postId
+	 * @param mobileNo
+	 * @param postId
+	 * @return
+	 */
+	public int deletePost(String mobileNo,String postId){
+		PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
+		PostExample postExample = new PostExample();
+		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo).andPostidEqualTo(postId);
+		return  postMapper.deleteByExample(postExample);
 	}
 }
