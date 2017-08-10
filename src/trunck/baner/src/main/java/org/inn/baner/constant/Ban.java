@@ -31,5 +31,7 @@ public class Ban {
 
     public static final String parentcommentid = "parentcommentid";
     public static final String commentid = "commentid";
+    public static final String childlist = "childlist";
+    public static final String childsize = "childsize";
 
 }
