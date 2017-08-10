@@ -113,13 +113,13 @@ public class PostData extends AbstractTMMybatis {
 	}
 
 	/**
-	 * delete post by mobileNo and postId
+	 * delete post by mobileNo and postId 20170810
 	 * @param mobileNo
 	 * @param postId
 	 * @return
 	 */
-	public int deletePost(String mobileNo,String postId){
-		PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
+	public int deletePost(String mobileNo,String postId) throws HandlerException {
+		PostMapper postMapper = getSqlSession(true).getMapper(PostMapper.class);//自动提交
 		PostExample postExample = new PostExample();
 		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo).andPostidEqualTo(postId);
 		return  postMapper.deleteByExample(postExample);
