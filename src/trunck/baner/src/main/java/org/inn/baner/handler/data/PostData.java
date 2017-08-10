@@ -124,4 +124,17 @@ public class PostData extends AbstractTMMybatis {
 		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo).andPostidEqualTo(postId);
 		return  postMapper.deleteByExample(postExample);
 	}
+
+	/**
+	 * select post by mobile no
+	 * @param mobileNo
+	 * @return
+	 * @throws HandlerException
+	 */
+	public List<Post> qryByTopicMobileNo(String mobileNo) throws HandlerException {
+		PostMapper postMapper = getSqlSession(false).getMapper(PostMapper.class);//自动提交
+		PostExample postExample = new PostExample();
+		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo);
+		return postMapper.selectByExample(postExample);
+	}
 }
