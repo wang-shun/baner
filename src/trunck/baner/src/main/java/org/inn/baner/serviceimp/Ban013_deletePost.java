@@ -21,7 +21,7 @@ public class Ban013_deletePost  implements BusinessService {
     public CommonContext service(CommonContext context) throws ServiceException {
 
         String mobileno = context.getFieldStr(Ban.mobileno,CommonContext.SCOPE_GLOBAL);
-        String topicId = context.getFieldStr(Ban.topicid,CommonContext.SCOPE_GLOBAL);
+        String topicId = context.getFieldStr(Ban.postid,CommonContext.SCOPE_GLOBAL);
 
         PostData postData = new PostData();
 
