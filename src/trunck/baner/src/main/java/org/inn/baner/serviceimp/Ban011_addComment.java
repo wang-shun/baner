@@ -34,7 +34,7 @@ public class Ban011_addComment implements BusinessService {
 		String commentContext = context.getFieldStr(Ban.context,CommonContext.SCOPE_GLOBAL);
 
 		logger.info("mobileno ["+mobileno+"]");
-		logger.info("topicid ["+postid+"]");
+		logger.info("postid ["+postid+"]");
 		logger.info("parentcommentid ["+parentcommentid+"]");
 		logger.info("commentContext ["+new String(Base64.decodeBase64(commentContext))+"]");
 
