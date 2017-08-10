@@ -68,6 +68,7 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                 Map<String,Object> map = BeanUtil.objToMap(comment);
                 map.put(Ban.commentid, comment.getCommentid());
                 map.put(Ban.postid, comment.getPostid());
+                map.put(Ban.parentcommentid, comment.getParentcommentid());
                 map.put(Ban.mobileno, comment.getCreatormobileno());
                 map.put(Ban.nickname, userData.qryByMobile(comment.getCreatormobileno()).getNickname());
                 map.put(Ban.context, new String(comment.getContext()));
