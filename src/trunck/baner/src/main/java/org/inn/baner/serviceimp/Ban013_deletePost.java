@@ -29,10 +29,8 @@ public class Ban013_deletePost  implements BusinessService {
 
             int res = postData.deletePost(mobileno,topicId);
             if(res>0){
-                context.setFieldStr("delete success",CommonContext.SCOPE_GLOBAL);
                 logger.info("post delete succ");
             }else{
-                context.setFieldStr("delete failed",CommonContext.SCOPE_GLOBAL);
                 logger.info("post delete failed");
             }
         }catch (Exception e){
