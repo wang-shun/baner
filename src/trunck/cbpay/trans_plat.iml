@@ -11,7 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="platform_util" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: javax:jms:1.0" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
@@ -24,6 +26,14 @@
     <orderEntry type="library" name="Maven: commons-net:commons-net:3.4" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.curator:curator-recipes:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.curator:curator-client:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:16.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.curator:curator-framework:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: com.101tec:zkclient:0.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.zookeeper:zookeeper:3.4.8" level="project" />
+    <orderEntry type="library" name="Maven: jline:jline:0.9.94" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty:3.7.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.2.14.v20151106" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.2.14.v20151106" level="project" />
@@ -33,6 +43,5 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:5.1.34" level="project" />
     <orderEntry type="library" name="Maven: com.oracle:ojdbc6:11.2.0.1.0" level="project" />
-    <orderEntry type="module" module-name="platform_util" />
   </component>
 </module>
