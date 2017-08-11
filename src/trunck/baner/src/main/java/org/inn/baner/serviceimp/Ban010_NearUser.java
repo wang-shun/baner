@@ -6,7 +6,6 @@ import com.ztkx.transplat.container.service.intface.BusinessService;
 import com.ztkx.transplat.container.util.ContextUtil;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.time.TimeUtil;
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Userloc;
 import org.inn.baner.bean.UserlocDis;
@@ -40,7 +39,9 @@ public class Ban010_NearUser implements BusinessService {
             userLocData = new UserLocData();
             Userloc userloc = userLocData.getLastLoc(mobileno);
             List<Userloc> list = userLocData.qryByPlatDate(date);
+            logger.info("near user query step 1 succ: query list and userloc");
             LinkedList<UserlocDis> disList = sortByDistance(userloc,list);
+            logger.info("near user query step 2 succ: sort list ");
 
             List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
             for (UserlocDis userlocDis : disList) {
@@ -48,6 +49,7 @@ public class Ban010_NearUser implements BusinessService {
                     //跳过自身
                     continue;
                 }
+                System.out.println(userlocDis.getMobileno()+","+userlocDis.getDistance());
                 Map<String, Object> map = new HashMap<>();
                 map.put(Ban.mobileno, userlocDis.getMobileno());
                 map.put(Ban.latitude, userlocDis.getLatitude());
@@ -56,6 +58,7 @@ public class Ban010_NearUser implements BusinessService {
             }
             context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);
             context.setFieldStr(Ban.size, String.valueOf(mapArrayList.size()), CommonContext.SCOPE_GLOBAL);
+            logger.info("near user query succ , size = "+mapArrayList.size());
         } catch (Exception e) {
             ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
             logger.error("buss service exec exception ", e);
@@ -71,7 +74,9 @@ public class Ban010_NearUser implements BusinessService {
                     Double.valueOf(tmp.getLongitude()),
                     Double.valueOf(tmp.getLatitude()));
             UserlocDis userlocDis = new UserlocDis();
-            BeanUtils.copyProperties(userlocDis,tmp);
+            userlocDis.setMobileno(tmp.getMobileno());
+            userlocDis.setLatitude(tmp.getLatitude());
+            userlocDis.setLongitude(tmp.getLongitude());
             userlocDis.setDistance(distance);
             if(disList.size()==0 || (disList.size()>0 && distance < disList.getFirst().getDistance())){
                 //与最小的比较

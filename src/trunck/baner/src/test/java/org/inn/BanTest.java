@@ -18,6 +18,7 @@ import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
  */
 public class BanTest {
     CbpayContext cbpayContext;
+    boolean test = false;
 
     @Before
     public void init(){
@@ -53,7 +54,7 @@ public class BanTest {
 
     @Test
     public void ban006(){
-        if(false) {
+        if(test) {
             cbpayContext.setObj("mobileno", "15588888888", CommonContext.SCOPE_GLOBAL);
             cbpayContext.setObj("latitude", "39.93440159999999", CommonContext.SCOPE_GLOBAL);
             cbpayContext.setObj("longitude", "116.31404664", CommonContext.SCOPE_GLOBAL);
@@ -68,7 +69,7 @@ public class BanTest {
 
     @Test
     public void ban010(){
-        if(false) {
+        if(test) {
             cbpayContext.setObj("mobileno", "15588888888", CommonContext.SCOPE_GLOBAL);
             Ban010_NearUser ban010Service = new Ban010_NearUser();
             try {
