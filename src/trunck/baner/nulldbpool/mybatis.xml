@@ -37,7 +37,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="org/inn/baner/persist/mapper/PostMapperDIY.xml"/>
-        <package name="org.inn.mappers"/>
+            <mapper resource="org/inn/baner/persist/mapper/PostMapperDIY.xml"/>
+        <package name="org.inn.baner.persist.mapper"/>
     </mappers>
 </configuration>
