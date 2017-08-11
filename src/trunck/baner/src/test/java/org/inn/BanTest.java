@@ -1,5 +1,7 @@
 package org.inn;
 
+import org.inn.baner.serviceimp.Ban006_RegistAddress;
+import org.inn.baner.serviceimp.Ban010_NearUser;
 import org.inn.baner.serviceimp.Ban012_ObtainCommentByPost;
 import org.inn.baner.serviceimp.Ban014_selectPost;
 import org.junit.Before;
@@ -46,6 +48,34 @@ public class BanTest {
             ban014Service.service(cbpayContext);
         } catch (ServiceException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void ban006(){
+        if(false) {
+            cbpayContext.setObj("mobileno", "15588888888", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("latitude", "39.93440159999999", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("longitude", "116.31404664", CommonContext.SCOPE_GLOBAL);
+            Ban006_RegistAddress ban006Service = new Ban006_RegistAddress();
+            try {
+                ban006Service.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void ban010(){
+        if(false) {
+            cbpayContext.setObj("mobileno", "15588888888", CommonContext.SCOPE_GLOBAL);
+            Ban010_NearUser ban010Service = new Ban010_NearUser();
+            try {
+                ban010Service.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
