@@ -1,6 +1,7 @@
 package org.inn.baner.serviceimp;
 
 
+import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.service.ServiceException;
 import com.ztkx.transplat.container.service.intface.BusinessService;
 import com.ztkx.transplat.container.util.ContextUtil;
@@ -26,12 +27,12 @@ import java.util.*;
 public class Ban012_ObtainCommentByPost implements BusinessService {
 
 	private Logger logger = Logger.getLogger(Ban012_ObtainCommentByPost.class);
+    private String dateFormate = "yyyyMMdd HH:mm:ss";
 
 	@Override
 	public CommonContext service(CommonContext context) throws ServiceException {
 
 		String postId = context.getFieldStr(Ban.postid,CommonContext.SCOPE_GLOBAL);
-		String dateFormate = "yyyyMMdd HH:mm:ss";
 		logger.info("postId ["+postId+"]");
 
 		List<Comment> commentList = null;
@@ -73,23 +74,7 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                 map.put(Ban.nickname, userData.qryByMobile(comment.getCreatormobileno()).getNickname());
                 map.put(Ban.context, new String(comment.getContext()));
                 map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, comment.getCreatetime()));
-                if(parentCommentMap.get(comment.getCommentid()) != null){
-                    //该评论有子评论
-                    List<Map<String, Object>> childList = new ArrayList<Map<String, Object>>();
-                    for(Comment childComment : parentCommentMap.get(comment.getCommentid())){
-                        Map<String,Object> childMap = BeanUtil.objToMap(childComment);
-                        map.put(Ban.commentid, childComment.getCommentid());
-                        map.put(Ban.postid, childComment.getPostid());
-                        map.put(Ban.parentcommentid, childComment.getParentcommentid());
-                        map.put(Ban.mobileno, childComment.getCreatormobileno());
-                        map.put(Ban.nickname, userData.qryByMobile(childComment.getCreatormobileno()).getNickname());
-                        map.put(Ban.context, new String(childComment.getContext()));
-                        map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, childComment.getCreatetime()));
-                        childList.add(childMap);
-                    }
-                    map.put(Ban.childlist,childList);
-                    map.put(Ban.childsize,childList.size());
-                }
+                fillChildList(map,comment,parentCommentMap,userData);
                 mapArrayList.add(map);
             }
 
@@ -101,4 +86,25 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
 		}
 		return context;
 	}
+
+	private void fillChildList(Map<String,Object> resultMap,Comment parentComment,Map<String,List<Comment>> parentCommentMap,UserData userData) throws HandlerException {
+        if(parentCommentMap.get(parentComment.getCommentid()) != null){
+            //该评论有子评论
+            List<Map<String, Object>> childList = new ArrayList<Map<String, Object>>();
+            for(Comment childComment : parentCommentMap.get(parentComment.getCommentid())){
+                Map<String,Object> childMap = BeanUtil.objToMap(childComment);
+                childMap.put(Ban.commentid, childComment.getCommentid());
+                childMap.put(Ban.postid, childComment.getPostid());
+                childMap.put(Ban.parentcommentid, childComment.getParentcommentid());
+                childMap.put(Ban.mobileno, childComment.getCreatormobileno());
+                childMap.put(Ban.nickname, userData.qryByMobile(childComment.getCreatormobileno()).getNickname());
+                childMap.put(Ban.context, new String(childComment.getContext()));
+                childMap.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, childComment.getCreatetime()));
+                fillChildList(childMap,childComment,parentCommentMap,userData);
+                childList.add(childMap);
+            }
+            resultMap.put(Ban.childlist,childList);
+            resultMap.put(Ban.childsize,childList.size());
+        }
+    }
 }
