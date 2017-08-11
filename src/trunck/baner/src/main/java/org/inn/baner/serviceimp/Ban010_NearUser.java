@@ -88,7 +88,7 @@ public class Ban010_NearUser implements BusinessService {
             }else{
                 //依次与原列表中距离比较，并按顺序插入
                 int i=1;
-                while(i<=disList.size()){
+                while(i<disList.size()){
                     if(distance > disList.get(i).getDistance()){
                         disList.add(i,userlocDis);
                         break;
