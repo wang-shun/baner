@@ -11,6 +11,7 @@ import org.inn.baner.bean.Userloc;
 import org.inn.baner.bean.UserlocDis;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
+import org.inn.baner.handler.data.UserData;
 import org.inn.baner.handler.data.UserLocData;
 
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +36,7 @@ public class Ban010_NearUser implements BusinessService {
         logger.info("mobileno [" + mobileno + "]");
         logger.info("platdate [" + date + "]");
         UserLocData userLocData = null;
+        UserData userData = new UserData();
         try {
             userLocData = new UserLocData();
             Userloc userloc = userLocData.getLastLoc(mobileno);
@@ -52,8 +54,10 @@ public class Ban010_NearUser implements BusinessService {
                 System.out.println(userlocDis.getMobileno()+","+userlocDis.getDistance());
                 Map<String, Object> map = new HashMap<>();
                 map.put(Ban.mobileno, userlocDis.getMobileno());
+                map.put(Ban.nickname, userData.qryByMobile(userlocDis.getMobileno()).getNickname());
                 map.put(Ban.latitude, userlocDis.getLatitude());
                 map.put(Ban.longitude, userlocDis.getLongitude());
+                map.put(Ban.distance, String.valueOf(userlocDis.getDistance()));
                 mapArrayList.add(map);
             }
             context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);

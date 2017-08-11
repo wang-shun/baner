@@ -34,4 +34,5 @@ public class Ban {
     public static final String childlist = "childlist";
     public static final String childsize = "childsize";
 
+    public static final String distance = "distance";
 }
