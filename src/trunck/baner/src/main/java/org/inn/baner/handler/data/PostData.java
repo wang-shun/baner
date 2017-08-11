@@ -135,6 +135,6 @@ public class PostData extends AbstractTMMybatis {
 		PostMapper postMapper = getSqlSession(false).getMapper(PostMapper.class);//自动提交
 		PostExample postExample = new PostExample();
 		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo);
-		return postMapper.selectByExample(postExample);
+		return postMapper.selectByExampleWithBLOBs(postExample);
 	}
 }
