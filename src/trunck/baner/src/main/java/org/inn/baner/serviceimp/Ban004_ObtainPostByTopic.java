@@ -69,6 +69,7 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 				map.put(Ban.context, new String(post.getContext()));
 				map.put(Ban.zantimes, post.getZantimes());
 				map.put(Ban.topicid, post.getTopicid());
+                map.put(Ban.isAnon, post.getIsanon());
 				Date createTime = post.getCreatetime();
 				map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
 				map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));

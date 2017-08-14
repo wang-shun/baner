@@ -60,12 +60,12 @@ public interface PostMapper {
         "creatormobileno, postname, ",
         "postdesc, zantimes, ",
         "createtime, updatetime, ",
-        "context)",
+        "isanon, context)",
         "values (#{postid,jdbcType=VARCHAR}, #{topicid,jdbcType=VARCHAR}, ",
         "#{creatormobileno,jdbcType=VARCHAR}, #{postname,jdbcType=VARCHAR}, ",
         "#{postdesc,jdbcType=VARCHAR}, #{zantimes,jdbcType=INTEGER}, ",
         "#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, ",
-        "#{context,jdbcType=LONGVARBINARY})"
+        "#{isanon,jdbcType=INTEGER}, #{context,jdbcType=LONGVARBINARY})"
     })
     int insert(Post record);
 
@@ -94,6 +94,7 @@ public interface PostMapper {
         @Result(column="zantimes", property="zantimes", jdbcType=JdbcType.INTEGER),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="isanon", property="isanon", jdbcType=JdbcType.INTEGER),
         @Result(column="context", property="context", jdbcType=JdbcType.LONGVARBINARY)
     })
     List<Post> selectByExampleWithBLOBs(PostExample example);
@@ -113,7 +114,8 @@ public interface PostMapper {
         @Result(column="postdesc", property="postdesc", jdbcType=JdbcType.VARCHAR),
         @Result(column="zantimes", property="zantimes", jdbcType=JdbcType.INTEGER),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP)
+        @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="isanon", property="isanon", jdbcType=JdbcType.INTEGER)
     })
     List<Post> selectByExample(PostExample example);
 
@@ -126,7 +128,7 @@ public interface PostMapper {
     @Select({
         "select",
         "postid, topicid, creatormobileno, postname, postdesc, zantimes, createtime, ",
-        "updatetime, context",
+        "updatetime, isanon, context",
         "from post",
         "where postid = #{postid,jdbcType=VARCHAR}",
           "and topicid = #{topicid,jdbcType=VARCHAR}"
@@ -140,6 +142,7 @@ public interface PostMapper {
         @Result(column="zantimes", property="zantimes", jdbcType=JdbcType.INTEGER),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="isanon", property="isanon", jdbcType=JdbcType.INTEGER),
         @Result(column="context", property="context", jdbcType=JdbcType.LONGVARBINARY)
     })
     Post selectByPrimaryKey(PostKey key);
@@ -194,6 +197,7 @@ public interface PostMapper {
           "zantimes = #{zantimes,jdbcType=INTEGER},",
           "createtime = #{createtime,jdbcType=TIMESTAMP},",
           "updatetime = #{updatetime,jdbcType=TIMESTAMP},",
+          "isanon = #{isanon,jdbcType=INTEGER},",
           "context = #{context,jdbcType=LONGVARBINARY}",
         "where postid = #{postid,jdbcType=VARCHAR}",
           "and topicid = #{topicid,jdbcType=VARCHAR}"
@@ -213,7 +217,8 @@ public interface PostMapper {
           "postdesc = #{postdesc,jdbcType=VARCHAR},",
           "zantimes = #{zantimes,jdbcType=INTEGER},",
           "createtime = #{createtime,jdbcType=TIMESTAMP},",
-          "updatetime = #{updatetime,jdbcType=TIMESTAMP}",
+          "updatetime = #{updatetime,jdbcType=TIMESTAMP},",
+          "isanon = #{isanon,jdbcType=INTEGER}",
         "where postid = #{postid,jdbcType=VARCHAR}",
           "and topicid = #{topicid,jdbcType=VARCHAR}"
     })

@@ -35,4 +35,5 @@ public class Ban {
     public static final String childsize = "childsize";
 
     public static final String distance = "distance";
+    public static final String isAnon = "isAnon";
 }

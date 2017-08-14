@@ -1,9 +1,6 @@
 package org.inn;
 
-import org.inn.baner.serviceimp.Ban006_RegistAddress;
-import org.inn.baner.serviceimp.Ban010_NearUser;
-import org.inn.baner.serviceimp.Ban012_ObtainCommentByPost;
-import org.inn.baner.serviceimp.Ban014_selectPost;
+import org.inn.baner.serviceimp.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +15,7 @@ import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
  */
 public class BanTest {
     CbpayContext cbpayContext;
-    boolean test = false;
+    boolean test = true;
 
     @Before
     public void init(){
@@ -74,6 +71,19 @@ public class BanTest {
             Ban010_NearUser ban010Service = new Ban010_NearUser();
             try {
                 ban010Service.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void ban004(){
+        if(test) {
+            cbpayContext.setObj("topicid", "002", CommonContext.SCOPE_GLOBAL);
+            Ban004_ObtainPostByTopic banService = new Ban004_ObtainPostByTopic();
+            try {
+                banService.service(cbpayContext);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
