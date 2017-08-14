@@ -33,7 +33,7 @@ public class Ban001_UserRegist implements BusinessService {
 		logger.info("mobileno [" + mobileno + "]");
 		logger.info("nickName [" + nickName + "]");
 		logger.info("passwd [" + passwd + "]");
-        logger.info("passwd [" + job + "]");
+        logger.info("job [" + job + "]");
 		UserData userData = null;
 		try {
 			userData = new UserData();
