@@ -22,6 +22,7 @@ public class BanTest {
     public void init(){
         BaseConfig.getInstence();
         MybatisUtil.getInstance();
+        BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"172.30.2.102:2181");
         cbpayContext = new CbpayContext();
         cbpayContext.init();
     }
@@ -100,7 +101,33 @@ public class BanTest {
             cbpayContext.setObj("context", new String(Base64Util.encode("test".getBytes())), CommonContext.SCOPE_GLOBAL);
             Ban008_UploadPost banService = new Ban008_UploadPost();
             try {
-                BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"172.30.2.102:2181");
+                banService.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void ban009(){
+        if(test) {
+            cbpayContext.setObj("mobileno", "13141243080", CommonContext.SCOPE_GLOBAL);
+            Ban009_QryFollowTopic banService = new Ban009_QryFollowTopic();
+            try {
+                banService.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void ban002(){
+        if(test) {
+            cbpayContext.setObj("mobileno", "13141243080", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("job", "附魔师", CommonContext.SCOPE_GLOBAL);
+            Ban001_UserRegist banService = new Ban001_UserRegist();
+            try {
                 banService.service(cbpayContext);
             } catch (ServiceException e) {
                 e.printStackTrace();
