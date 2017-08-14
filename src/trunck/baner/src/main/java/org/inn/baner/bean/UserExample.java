@@ -543,6 +543,76 @@ public class UserExample {
             addCriterion("banerid not between", value1, value2, "banerid");
             return (Criteria) this;
         }
+
+        public Criteria andJobIsNull() {
+            addCriterion("job is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobIsNotNull() {
+            addCriterion("job is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobEqualTo(String value) {
+            addCriterion("job =", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNotEqualTo(String value) {
+            addCriterion("job <>", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobGreaterThan(String value) {
+            addCriterion("job >", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobGreaterThanOrEqualTo(String value) {
+            addCriterion("job >=", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobLessThan(String value) {
+            addCriterion("job <", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobLessThanOrEqualTo(String value) {
+            addCriterion("job <=", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobLike(String value) {
+            addCriterion("job like", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNotLike(String value) {
+            addCriterion("job not like", value, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobIn(List<String> values) {
+            addCriterion("job in", values, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNotIn(List<String> values) {
+            addCriterion("job not in", values, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobBetween(String value1, String value2) {
+            addCriterion("job between", value1, value2, "job");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNotBetween(String value1, String value2) {
+            addCriterion("job not between", value1, value2, "job");
+            return (Criteria) this;
+        }
     }
 
     /**

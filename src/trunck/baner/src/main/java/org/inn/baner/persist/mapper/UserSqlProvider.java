@@ -66,6 +66,10 @@ public class UserSqlProvider {
             sql.VALUES("banerid", "#{banerid,jdbcType=VARCHAR}");
         }
         
+        if (record.getJob() != null) {
+            sql.VALUES("job", "#{job,jdbcType=VARCHAR}");
+        }
+        
         return sql.toString();
     }
 
@@ -86,6 +90,7 @@ public class UserSqlProvider {
         sql.SELECT("passwd");
         sql.SELECT("followtopic");
         sql.SELECT("banerid");
+        sql.SELECT("job");
         sql.FROM("user");
         applyWhere(sql, example, false);
         
@@ -129,6 +134,10 @@ public class UserSqlProvider {
             sql.SET("banerid = #{record.banerid,jdbcType=VARCHAR}");
         }
         
+        if (record.getJob() != null) {
+            sql.SET("job = #{record.job,jdbcType=VARCHAR}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -148,6 +157,7 @@ public class UserSqlProvider {
         sql.SET("passwd = #{record.passwd,jdbcType=VARCHAR}");
         sql.SET("followtopic = #{record.followtopic,jdbcType=VARCHAR}");
         sql.SET("banerid = #{record.banerid,jdbcType=VARCHAR}");
+        sql.SET("job = #{record.job,jdbcType=VARCHAR}");
         
         UserExample example = (UserExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -178,6 +188,10 @@ public class UserSqlProvider {
         
         if (record.getBanerid() != null) {
             sql.SET("banerid = #{banerid,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getJob() != null) {
+            sql.SET("job = #{job,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("mobileno = #{mobileno,jdbcType=VARCHAR}");

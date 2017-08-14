@@ -28,10 +28,12 @@ public class Ban001_UserRegist implements BusinessService {
 		String mobileno = context.getFieldStr(Ban.mobileno, CommonContext.SCOPE_GLOBAL);
 		String nickName = context.getFieldStr(Ban.nickname, CommonContext.SCOPE_GLOBAL);
 		String passwd = context.getFieldStr(Ban.passwd, CommonContext.SCOPE_GLOBAL);
+        String job = context.getFieldStr(Ban.job, CommonContext.SCOPE_GLOBAL);
 
 		logger.info("mobileno [" + mobileno + "]");
 		logger.info("nickName [" + nickName + "]");
 		logger.info("passwd [" + passwd + "]");
+        logger.info("passwd [" + job + "]");
 		UserData userData = null;
 		try {
 			userData = new UserData();
@@ -42,6 +44,7 @@ public class Ban001_UserRegist implements BusinessService {
 				user.setMobileno(mobileno);
 				user.setNickname(nickName);
 				user.setPasswd(passwd);
+                user.setJob(job);
 				String banid = ZKFlowNoPoolManager.getInstance().getSequence("5",Ban.banerid);
 				logger.info("banerId ["+banid+"]");
 				user.setBanerid(banid);
@@ -51,6 +54,7 @@ public class Ban001_UserRegist implements BusinessService {
 				user.setNickname(nickName);
 				user.setPasswd(passwd);
 				user.setFollowtopic(passwd);
+                user.setJob(job);
 				if ("".equals(user.getBanerid()) || user.getBanerid() == null) {
 					//访问zk获取唯一流水号
 					String banid = ZKFlowNoPoolManager.getInstance().getSequence("5",Ban.banerid);

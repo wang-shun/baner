@@ -1,20 +1,11 @@
 package org.inn.baner.persist.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.DeleteProvider;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.inn.baner.bean.User;
 import org.inn.baner.bean.UserExample;
+
+import java.util.List;
 
 public interface UserMapper {
     /**
@@ -56,10 +47,10 @@ public interface UserMapper {
     @Insert({
         "insert into user (mobileno, nickname, ",
         "passwd, followtopic, ",
-        "banerid)",
+        "banerid, job)",
         "values (#{mobileno,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, ",
         "#{passwd,jdbcType=VARCHAR}, #{followtopic,jdbcType=VARCHAR}, ",
-        "#{banerid,jdbcType=VARCHAR})"
+        "#{banerid,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR})"
     })
     int insert(User record);
 
@@ -84,7 +75,8 @@ public interface UserMapper {
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
         @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
         @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR),
-        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR)
+        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR),
+        @Result(column="job", property="job", jdbcType=JdbcType.VARCHAR)
     })
     List<User> selectByExample(UserExample example);
 
@@ -96,7 +88,7 @@ public interface UserMapper {
      */
     @Select({
         "select",
-        "mobileno, nickname, passwd, followtopic, banerid",
+        "mobileno, nickname, passwd, followtopic, banerid, job",
         "from user",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
@@ -105,7 +97,8 @@ public interface UserMapper {
         @Result(column="nickname", property="nickname", jdbcType=JdbcType.VARCHAR),
         @Result(column="passwd", property="passwd", jdbcType=JdbcType.VARCHAR),
         @Result(column="followtopic", property="followtopic", jdbcType=JdbcType.VARCHAR),
-        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR)
+        @Result(column="banerid", property="banerid", jdbcType=JdbcType.VARCHAR),
+        @Result(column="job", property="job", jdbcType=JdbcType.VARCHAR)
     })
     User selectByPrimaryKey(String mobileno);
 
@@ -147,7 +140,8 @@ public interface UserMapper {
         "set nickname = #{nickname,jdbcType=VARCHAR},",
           "passwd = #{passwd,jdbcType=VARCHAR},",
           "followtopic = #{followtopic,jdbcType=VARCHAR},",
-          "banerid = #{banerid,jdbcType=VARCHAR}",
+          "banerid = #{banerid,jdbcType=VARCHAR},",
+          "job = #{job,jdbcType=VARCHAR}",
         "where mobileno = #{mobileno,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(User record);
