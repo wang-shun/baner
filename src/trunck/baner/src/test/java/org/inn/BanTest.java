@@ -1,21 +1,22 @@
 package org.inn;
 
-import org.inn.baner.serviceimp.*;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.ztkx.transplat.container.service.ServiceException;
 import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
+import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.context.imp.CbpayContext;
 import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
+import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
+import org.inn.baner.serviceimp.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Created by nightblue on 2017/8/8.
  */
 public class BanTest {
     CbpayContext cbpayContext;
-    boolean test = true;
+    boolean test = false;
 
     @Before
     public void init(){
@@ -83,6 +84,23 @@ public class BanTest {
             cbpayContext.setObj("topicid", "002", CommonContext.SCOPE_GLOBAL);
             Ban004_ObtainPostByTopic banService = new Ban004_ObtainPostByTopic();
             try {
+                banService.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Test
+    public void ban008(){
+        if(test) {
+            cbpayContext.setObj("mobileno", "13141243080", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("topicid", "002", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("postname", "test", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("isAnon", "1", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("context", new String(Base64Util.encode("test".getBytes())), CommonContext.SCOPE_GLOBAL);
+            Ban008_UploadPost banService = new Ban008_UploadPost();
+            try {
+                BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"172.30.2.102:2181");
                 banService.service(cbpayContext);
             } catch (ServiceException e) {
                 e.printStackTrace();
