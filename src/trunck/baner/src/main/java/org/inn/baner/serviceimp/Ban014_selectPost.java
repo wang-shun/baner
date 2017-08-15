@@ -10,12 +10,12 @@ import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
+import org.inn.baner.handler.data.CommentData;
 import org.inn.baner.handler.data.PostData;
 import org.inn.baner.handler.data.TopicData;
 import org.inn.baner.handler.data.UserData;
 import org.inn.baner.util.ListCompareUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +39,7 @@ public class Ban014_selectPost implements BusinessService {
         PostData postData = new PostData();
         TopicData topicData = new TopicData();
         UserData userData = new UserData();
+        CommentData commentData = new CommentData();
 
         List<Post> postList = postData.qryByTopicMobileNo(mobileno);
 
@@ -56,6 +57,7 @@ public class Ban014_selectPost implements BusinessService {
             map.put(Ban.context, new String(post.getContext()));
             map.put(Ban.zantimes, post.getZantimes());
             map.put(Ban.topicid, post.getTopicid());
+            map.put(Ban.commentCount, commentData.countByPostId(post.getPostid()));
             Date createTime = post.getCreatetime();
             map.put(Ban.createtime, TimeUtil.dateFormate(dateFormate, createTime));
             map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));

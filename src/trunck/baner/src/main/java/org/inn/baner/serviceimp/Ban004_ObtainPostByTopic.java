@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
+import org.inn.baner.handler.data.CommentData;
 import org.inn.baner.handler.data.PostData;
 import org.inn.baner.handler.data.TopicData;
 import org.inn.baner.handler.data.UserData;
@@ -42,11 +43,13 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 		PostData postData = null;
 		UserData userData = null;
 		TopicData topicData = null;
+        CommentData commentData = null;
 		try {
 
 			postData = new PostData();
 			userData = new UserData();
 			topicData = new TopicData();
+            commentData = new CommentData();
 			String[] topicidArr = topicId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
 			for (String topicidItem : topicidArr) {
@@ -70,6 +73,7 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 				map.put(Ban.zantimes, post.getZantimes());
 				map.put(Ban.topicid, post.getTopicid());
                 map.put(Ban.isAnon, post.getIsanon());
+                map.put(Ban.commentCount, commentData.countByPostId(post.getPostid()));
 				Date createTime = post.getCreatetime();
 				map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
 				map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));

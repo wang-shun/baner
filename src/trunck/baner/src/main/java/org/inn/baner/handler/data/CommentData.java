@@ -62,4 +62,27 @@ public class CommentData extends AbstractTMMybatis {
 		}
 		return commentList;
 	}
+
+    public long countByPostId(String postId) throws HandlerException {
+        long num=0L;
+        try {
+            //初始化sqlSession
+            getSqlSession();
+            CommentExample example = new CommentExample();
+            example.createCriteria().andPostidEqualTo(postId);
+
+            CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
+            num = commentMapper.countByExample(example);
+
+            if (logger.isDebugEnabled()) {
+                logger.debug("qry table " + tableName + " success count size ["+num+"]");
+            }
+        } catch (HandlerException e) {
+            logger.error("exec sql error", e);
+            throw new HandlerException(e);
+        }finally {
+            relaceResource();
+        }
+        return num;
+    }
 }
