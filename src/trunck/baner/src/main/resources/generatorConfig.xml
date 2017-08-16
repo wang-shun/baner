@@ -25,19 +25,19 @@
 			<columnOverride column="createtime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
 			<columnOverride column="updatetime" javaType="java.util.Date" jdbcType="TIMESTAMP"></columnOverride>
         </table>
-        <table  tableName="topic" >
-        </table>
         <table  tableName="user" >
         </table>
-        -->
         <table  tableName="label" >
         </table>
         <table  tableName="label_subject" >
         </table>
+        -->
 		<!--
 		<table  tableName="userloc" >
 		</table>
 		-->
+        <table  tableName="topic" >
+        </table>
 	</context>
 
 </generatorConfiguration>

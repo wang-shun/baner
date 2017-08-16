@@ -9,6 +9,7 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.time.TimeUtil;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
+import org.inn.baner.bean.Topic;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
 import org.inn.baner.handler.data.CommentData;
@@ -52,12 +53,14 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
             commentData = new CommentData();
 			String[] topicidArr = topicId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
+            postList = new ArrayList<>();
 			for (String topicidItem : topicidArr) {
-				if (postList==null){
-					postList = postData.qryByTopicId(topicidItem);
-				}else{
-					postList.addAll(postData.qryByTopicId(topicidItem));//各版块整合数据
-				}
+                postList.addAll(postData.qryByTopicId(topicidItem));//各版块整合数据
+                //若该主题有子主题，则查询其子主题的文章
+                List<Topic> list = topicData.qryChildById(topicidItem);
+                for(Topic topic : list){
+                    postList.addAll(postData.qryByTopicId(topic.getTopicid()));
+                }
 			}
 			new ListCompareUtil().mySortDesc(postList,Post.class,new String [] {"createtime"});//0808修改根据创建时间排序
 

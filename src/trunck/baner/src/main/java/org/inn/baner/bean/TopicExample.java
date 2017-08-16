@@ -403,6 +403,76 @@ public class TopicExample {
             addCriterion("creatormobileno not between", value1, value2, "creatormobileno");
             return (Criteria) this;
         }
+
+        public Criteria andParenttopicidIsNull() {
+            addCriterion("parenttopicid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidIsNotNull() {
+            addCriterion("parenttopicid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidEqualTo(String value) {
+            addCriterion("parenttopicid =", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidNotEqualTo(String value) {
+            addCriterion("parenttopicid <>", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidGreaterThan(String value) {
+            addCriterion("parenttopicid >", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidGreaterThanOrEqualTo(String value) {
+            addCriterion("parenttopicid >=", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidLessThan(String value) {
+            addCriterion("parenttopicid <", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidLessThanOrEqualTo(String value) {
+            addCriterion("parenttopicid <=", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidLike(String value) {
+            addCriterion("parenttopicid like", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidNotLike(String value) {
+            addCriterion("parenttopicid not like", value, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidIn(List<String> values) {
+            addCriterion("parenttopicid in", values, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidNotIn(List<String> values) {
+            addCriterion("parenttopicid not in", values, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidBetween(String value1, String value2) {
+            addCriterion("parenttopicid between", value1, value2, "parenttopicid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParenttopicidNotBetween(String value1, String value2) {
+            addCriterion("parenttopicid not between", value1, value2, "parenttopicid");
+            return (Criteria) this;
+        }
     }
 
     /**
