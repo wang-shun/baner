@@ -7,14 +7,12 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.context.imp.CbpayContext;
 import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
 import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
-import org.inn.baner.bean.Label;
+import org.inn.baner.bean.Subject;
 import org.inn.baner.serviceimp.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by nightblue on 2017/8/8.
@@ -158,25 +156,10 @@ public class BanTest {
     @Test
     public void RecommendTest(){
         if(test) {
-            List<Label> list = new ArrayList<>();
-            Label label001 = new Label();
-            label001.setLabelid("001");
-            Label label002 = new Label();
-            label002.setLabelid("002");
-            Label label006 = new Label();
-            label006.setLabelid("006");
-
-            list.add(label001);
-            list.add(label002);
-            list.add(label006);
-
             RecommendService recommendService = new RecommendService();
-            Map result = recommendService.selectRefSubject("post",list);
-            List<String> resultList = new ArrayList<>();
-
-            for (Object o : result.entrySet()) {
-                Map.Entry entry = (Map.Entry) o;
-                System.out.println(entry.getKey() + " : " + entry.getValue());
+            List<Subject> result = recommendService.selectRefSubject("post","000401");
+            for (Subject subject : result) {
+                System.out.println(subject.toString());
             }
         }
     }
