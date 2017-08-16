@@ -62,4 +62,34 @@ public class LabelSubjectData extends AbstractTMMybatis {
 		return labelSubjectList;
 	}
 
+    /**
+     * 根据主体id，查询该主题标签列表
+     * @param subject
+     * @param subjectId
+     * @return
+     * @throws HandlerException
+     */
+    public List<LabelSubject> qryBySubjectId(String subject,String subjectId) throws HandlerException {
+        List<LabelSubject> labelSubjectList = null;
+        try {
+            //初始化sqlSession
+            getSqlSession();
+            LabelSubjectExample example = new LabelSubjectExample();
+            example.createCriteria().andSubjectidEqualTo(subjectId).andSubjectEqualTo(subject);
+
+            LabelSubjectMapper labelSubjectMapper = sqlSession.getMapper(LabelSubjectMapper.class);
+            labelSubjectList = labelSubjectMapper.selectByExample(example);
+
+            if (logger.isDebugEnabled()) {
+                logger.debug("qry table " + tableName + " success list size ["+labelSubjectList.size()+"]");
+            }
+        } catch (HandlerException e) {
+            logger.error("exec sql error", e);
+            throw new HandlerException(e);
+        }finally {
+            relaceResource();
+        }
+        return labelSubjectList;
+    }
+
 }

@@ -2,7 +2,6 @@ package org.inn.baner.serviceimp;
 
 import com.ztkx.transplat.container.HandlerException;
 import org.apache.log4j.Logger;
-import org.inn.baner.bean.Label;
 import org.inn.baner.bean.LabelSubject;
 import org.inn.baner.handler.data.LabelSubjectData;
 
@@ -22,17 +21,18 @@ public class RecommendService {
 
     /**
      * 根据标签推荐关联主体
-     * 入参为主体名，以及需要关联满足的
-     * 出参为主体id及权重Map，key为主体id，value为该主体id关联入参标签的数量
+     * 入参为主体名，以及该主体id
+     * 出参为关联的主体id及权重Map，key为关联主体id，value为该关联主体id关联入参标签的数量
      *
-     * @param list
+     * @param subjectId
      * @return
      */
-    public Map<String,Integer> selectRefSubject(String subject,List<Label> list){
+    public Map<String,Integer> selectRefSubject(String subject,String subjectId){
         LabelSubjectData labelSubjectData = new LabelSubjectData();
         Map<String,Integer> resultMap = new HashMap<>();
         try {
-            for(Label label : list){
+            List<LabelSubject> list = labelSubjectData.qryBySubjectId(subject,subjectId);
+            for(LabelSubject label : list){
                 List<LabelSubject> labelSubjectList = labelSubjectData.qryByLabelId(subject,label.getLabelid());
                 for(LabelSubject labelSubject : labelSubjectList){
                     if(resultMap.containsKey(labelSubject.getSubjectid())){
