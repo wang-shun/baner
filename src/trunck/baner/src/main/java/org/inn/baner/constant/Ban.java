@@ -15,6 +15,7 @@ public class Ban {
     public static final String lists = "lists";
     public static final String topicid = "topicid";
     public static final String topicname = "topicname";
+    public static final String topicdesc = "topicdesc";
     public static final String postid = "postid";
     public static final String postname = "postname";
     public static final String postdesc = "postdesc";
@@ -38,4 +39,6 @@ public class Ban {
     public static final String distance = "distance";
     public static final String isAnon = "isAnon";
     public static final String job = "job";
+    public static final String parenttopicid = "parenttopicid";
+    public static final String topiclogo = "topiclogo";
 }

@@ -163,4 +163,16 @@ public class BanTest {
             }
         }
     }
+
+    @Test
+    public void ban003(){
+        if(test) {
+            Ban003_ObtainTopic banService = new Ban003_ObtainTopic();
+            try {
+                banService.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
