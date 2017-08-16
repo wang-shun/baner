@@ -27,11 +27,26 @@ public class BanTest {
     public void init(){
         BaseConfig.getInstence();
         MybatisUtil.getInstance();
-        BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"172.30.2.102:2181");
+        BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"localhost:2181");
         cbpayContext = new CbpayContext();
         cbpayContext.init();
     }
 
+    @Test
+    public void ban011(){
+        if(test) {
+            cbpayContext.setObj("mobileno", "15588888888", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("postid", "000804", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("parentcommentid", "", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("context", new String(Base64Util.encode("测试评论".getBytes())), CommonContext.SCOPE_GLOBAL);
+            Ban011_addComment banService = new Ban011_addComment();
+            try {
+                banService.service(cbpayContext);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Test
     public void ban012(){
@@ -101,9 +116,9 @@ public class BanTest {
         if(test) {
             cbpayContext.setObj("mobileno", "13141243080", CommonContext.SCOPE_GLOBAL);
             cbpayContext.setObj("topicid", "002", CommonContext.SCOPE_GLOBAL);
-            cbpayContext.setObj("postname", "test", CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("postname", "测试贴", CommonContext.SCOPE_GLOBAL);
             cbpayContext.setObj("isAnon", "1", CommonContext.SCOPE_GLOBAL);
-            cbpayContext.setObj("context", new String(Base64Util.encode("test".getBytes())), CommonContext.SCOPE_GLOBAL);
+            cbpayContext.setObj("context", new String(Base64Util.encode("测试帖子".getBytes())), CommonContext.SCOPE_GLOBAL);
             Ban008_UploadPost banService = new Ban008_UploadPost();
             try {
                 banService.service(cbpayContext);
@@ -142,7 +157,7 @@ public class BanTest {
 
     @Test
     public void RecommendTest(){
-        if(true) {
+        if(test) {
             List<Label> list = new ArrayList<>();
             Label label001 = new Label();
             label001.setLabelid("001");
