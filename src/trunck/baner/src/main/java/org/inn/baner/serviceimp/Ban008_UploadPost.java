@@ -8,9 +8,11 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.flowno.ZKFlowNoPoolManager;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
+import org.inn.baner.bean.LabelSubject;
 import org.inn.baner.bean.Post;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
+import org.inn.baner.handler.data.LabelSubjectData;
 import org.inn.baner.handler.data.PostData;
 
 import java.util.Date;
@@ -56,6 +58,13 @@ public class Ban008_UploadPost implements BusinessService {
 			postData = new PostData();
 
 			int res = postData.insertRecord(post);
+
+			//发表文章时，新建文章标签
+            LabelSubject labelSubject = new LabelSubject();
+            labelSubject.setLabelid(post.getTopicid());
+            labelSubject.setSubject("post");
+            labelSubject.setSubjectid(post.getPostid());
+            new LabelSubjectData().insertRecord(labelSubject);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
