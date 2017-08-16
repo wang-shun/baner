@@ -74,7 +74,10 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                 map.put(Ban.nickname, userData.qryByMobile(comment.getCreatormobileno()).getNickname());
                 map.put(Ban.context, new String(comment.getContext()));
                 map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, comment.getCreatetime()));
-                fillChildList(map,comment,parentCommentMap,userData);
+                List<Map<String, Object>> childList = new ArrayList<Map<String, Object>>();
+                fillChildList(childList,comment,parentCommentMap,userData);
+                map.put(Ban.childlist,childList);
+                map.put(Ban.childsize,childList.size());
                 mapArrayList.add(map);
             }
 
@@ -87,10 +90,9 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
 		return context;
 	}
 
-	private void fillChildList(Map<String,Object> resultMap,Comment parentComment,Map<String,List<Comment>> parentCommentMap,UserData userData) throws HandlerException {
+	private void fillChildList(List<Map<String, Object>> childList,Comment parentComment,Map<String,List<Comment>> parentCommentMap,UserData userData) throws HandlerException {
         if(parentCommentMap.get(parentComment.getCommentid()) != null){
             //该评论有子评论
-            List<Map<String, Object>> childList = new ArrayList<Map<String, Object>>();
             for(Comment childComment : parentCommentMap.get(parentComment.getCommentid())){
                 Map<String,Object> childMap = BeanUtil.objToMap(childComment);
                 childMap.put(Ban.commentid, childComment.getCommentid());
@@ -100,11 +102,9 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                 childMap.put(Ban.nickname, userData.qryByMobile(childComment.getCreatormobileno()).getNickname());
                 childMap.put(Ban.context, new String(childComment.getContext()));
                 childMap.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, childComment.getCreatetime()));
-                fillChildList(childMap,childComment,parentCommentMap,userData);
+                fillChildList(childList,childComment,parentCommentMap,userData);
                 childList.add(childMap);
             }
-            resultMap.put(Ban.childlist,childList);
-            resultMap.put(Ban.childsize,childList.size());
         }
     }
 }
