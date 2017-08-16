@@ -64,6 +64,7 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                     }
                 }
             }
+            int size = parentCommentList.size();
             //将结果进行遍历，拼装返回报文
             for(Comment comment : parentCommentList){
                 Map<String,Object> map = BeanUtil.objToMap(comment);
@@ -79,10 +80,11 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
                 map.put(Ban.childlist,childList);
                 map.put(Ban.childsize,childList.size());
                 mapArrayList.add(map);
+                size += childList.size();
             }
 
 			context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);
-			context.setFieldStr(Ban.size, String.valueOf(mapArrayList.size()), CommonContext.SCOPE_GLOBAL);
+			context.setFieldStr(Ban.size, String.valueOf(size), CommonContext.SCOPE_GLOBAL);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
