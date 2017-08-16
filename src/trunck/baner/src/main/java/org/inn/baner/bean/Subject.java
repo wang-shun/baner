@@ -8,7 +8,6 @@ package org.inn.baner.bean;
  */
 public class Subject {
     private String subjectid;
-    private String subject;
     private int weight;
 
     public String getSubjectid() {
@@ -22,15 +21,6 @@ public class Subject {
     public int getWeight() {
         return weight;
     }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public void setWeight(int weight) {
         this.weight = weight;
     }
@@ -45,8 +35,7 @@ public class Subject {
             return false;
         }else{
             //主体类型及id一致，则认为该主体一致
-            if(this.subject.equals(((Subject) obj).getSubject())
-                    && this.subjectid.equals(((Subject) obj).getSubjectid())){
+            if(this.subjectid.equals(((Subject) obj).getSubjectid())){
                 return true;
             }
         }
@@ -57,7 +46,6 @@ public class Subject {
     public String toString() {
         final StringBuffer sb = new StringBuffer("Subject{");
         sb.append("subjectid='").append(subjectid).append('\'');
-        sb.append(", subject='").append(subject).append('\'');
         sb.append(", weight=").append(weight);
         sb.append('}');
         return sb.toString();

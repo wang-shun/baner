@@ -40,8 +40,6 @@ public class RecommendService {
                     if(!subjectId.equals(labelSubject.getSubjectid())){//跳过自身
                         Subject subjectObj = new Subject();
                         subjectObj.setSubjectid(labelSubject.getSubjectid());
-                        subjectObj.setSubject(labelSubject.getSubject());
-
                         if(resultList.contains(subjectObj)){
                             resultList.get(resultList.indexOf(subjectObj)).addWeight(1);
                         }else{
