@@ -65,7 +65,7 @@ public class AcCoreData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordById(String id) throws HandlerException {
-
+		return null;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class AcCoreData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByAcno(String acno) throws HandlerException {
-
+		return null;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class AcCoreData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByOwnerid(String acno) throws HandlerException {
-
+		return null;
 	}
 
 }

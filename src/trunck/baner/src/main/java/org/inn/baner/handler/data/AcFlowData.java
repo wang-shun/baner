@@ -65,7 +65,7 @@ public class AcFlowData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByPlatflow(String platflow) throws HandlerException {
-
+		return null;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class AcFlowData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByAcno(String acno) throws HandlerException {
-
+		return null;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class AcFlowData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByOwnerid(String acno) throws HandlerException {
-
+		return null;
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class AcFlowData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByOutflowno(String outflowno) throws HandlerException {
-
+		return null;
 	}
 
 }
