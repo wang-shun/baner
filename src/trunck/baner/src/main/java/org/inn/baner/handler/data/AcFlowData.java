@@ -97,6 +97,7 @@ public class AcFlowData extends AbstractTMMybatis {
 	 * @throws HandlerException
 	 */
 	public User qryRecordByOwnerid(String acno) throws HandlerException {
+		
 		return null;
 	}
 
