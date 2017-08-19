@@ -80,7 +80,7 @@ public class AcCoreSqlProvider {
         }
         
         if (record.getBalance() != null) {
-            VALUES("balance", "#{balance,jdbcType=DECIMAL}");
+            VALUES("balance", "#{balance,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {
@@ -178,7 +178,7 @@ public class AcCoreSqlProvider {
         }
         
         if (record.getBalance() != null) {
-            SET("balance = #{record.balance,jdbcType=DECIMAL}");
+            SET("balance = #{record.balance,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {
@@ -224,7 +224,7 @@ public class AcCoreSqlProvider {
         SET("acname = #{record.acname,jdbcType=VARCHAR}");
         SET("ownerid = #{record.ownerid,jdbcType=CHAR}");
         SET("ownername = #{record.ownername,jdbcType=VARCHAR}");
-        SET("balance = #{record.balance,jdbcType=DECIMAL}");
+        SET("balance = #{record.balance,jdbcType=NUMERIC}");
         SET("ccy = #{record.ccy,jdbcType=CHAR}");
         SET("stat = #{record.stat,jdbcType=CHAR}");
         SET("actype = #{record.actype,jdbcType=CHAR}");
@@ -264,7 +264,7 @@ public class AcCoreSqlProvider {
         }
         
         if (record.getBalance() != null) {
-            SET("balance = #{balance,jdbcType=DECIMAL}");
+            SET("balance = #{balance,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {

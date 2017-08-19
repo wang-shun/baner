@@ -84,7 +84,7 @@ public class RedFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            VALUES("amount", "#{amount,jdbcType=DECIMAL}");
+            VALUES("amount", "#{amount,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {
@@ -187,7 +187,7 @@ public class RedFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            SET("amount = #{record.amount,jdbcType=DECIMAL}");
+            SET("amount = #{record.amount,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {
@@ -234,7 +234,7 @@ public class RedFlowSqlProvider {
         SET("providername = #{record.providername,jdbcType=CHAR}");
         SET("consumerid = #{record.consumerid,jdbcType=CHAR}");
         SET("consumername = #{record.consumername,jdbcType=CHAR}");
-        SET("amount = #{record.amount,jdbcType=DECIMAL}");
+        SET("amount = #{record.amount,jdbcType=NUMERIC}");
         SET("ccy = #{record.ccy,jdbcType=CHAR}");
         SET("stat = #{record.stat,jdbcType=CHAR}");
         SET("recordedtime = #{record.recordedtime,jdbcType=TIMESTAMP}");
@@ -278,7 +278,7 @@ public class RedFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            SET("amount = #{amount,jdbcType=DECIMAL}");
+            SET("amount = #{amount,jdbcType=NUMERIC}");
         }
         
         if (record.getCcy() != null) {

@@ -76,7 +76,7 @@ public class AcFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            VALUES("amount", "#{amount,jdbcType=DECIMAL}");
+            VALUES("amount", "#{amount,jdbcType=NUMERIC}");
         }
         
         if (record.getTrantype() != null) {
@@ -179,7 +179,7 @@ public class AcFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            SET("amount = #{record.amount,jdbcType=DECIMAL}");
+            SET("amount = #{record.amount,jdbcType=NUMERIC}");
         }
         
         if (record.getTrantype() != null) {
@@ -232,7 +232,7 @@ public class AcFlowSqlProvider {
         SET("acno = #{record.acno,jdbcType=VARCHAR}");
         SET("ownerid = #{record.ownerid,jdbcType=CHAR}");
         SET("ownername = #{record.ownername,jdbcType=VARCHAR}");
-        SET("amount = #{record.amount,jdbcType=DECIMAL}");
+        SET("amount = #{record.amount,jdbcType=NUMERIC}");
         SET("trantype = #{record.trantype,jdbcType=CHAR}");
         SET("outflowno = #{record.outflowno,jdbcType=VARCHAR}");
         SET("fromsysid = #{record.fromsysid,jdbcType=VARCHAR}");
@@ -270,7 +270,7 @@ public class AcFlowSqlProvider {
         }
         
         if (record.getAmount() != null) {
-            SET("amount = #{amount,jdbcType=DECIMAL}");
+            SET("amount = #{amount,jdbcType=NUMERIC}");
         }
         
         if (record.getTrantype() != null) {

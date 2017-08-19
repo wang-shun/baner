@@ -72,7 +72,7 @@ public class ActivitySqlProvider {
         }
         
         if (record.getTotal() != null) {
-            VALUES("total", "#{total,jdbcType=DECIMAL}");
+            VALUES("total", "#{total,jdbcType=NUMERIC}");
         }
         
         if (record.getQuota() != null) {
@@ -80,11 +80,11 @@ public class ActivitySqlProvider {
         }
         
         if (record.getMinamount() != null) {
-            VALUES("minamount", "#{minamount,jdbcType=DECIMAL}");
+            VALUES("minamount", "#{minamount,jdbcType=NUMERIC}");
         }
         
         if (record.getMaxamount() != null) {
-            VALUES("maxamount", "#{maxamount,jdbcType=DECIMAL}");
+            VALUES("maxamount", "#{maxamount,jdbcType=NUMERIC}");
         }
         
         if (record.getCreatetime() != null) {
@@ -195,7 +195,7 @@ public class ActivitySqlProvider {
         }
         
         if (record.getTotal() != null) {
-            SET("total = #{record.total,jdbcType=DECIMAL}");
+            SET("total = #{record.total,jdbcType=NUMERIC}");
         }
         
         if (record.getQuota() != null) {
@@ -203,11 +203,11 @@ public class ActivitySqlProvider {
         }
         
         if (record.getMinamount() != null) {
-            SET("minamount = #{record.minamount,jdbcType=DECIMAL}");
+            SET("minamount = #{record.minamount,jdbcType=NUMERIC}");
         }
         
         if (record.getMaxamount() != null) {
-            SET("maxamount = #{record.maxamount,jdbcType=DECIMAL}");
+            SET("maxamount = #{record.maxamount,jdbcType=NUMERIC}");
         }
         
         if (record.getCreatetime() != null) {
@@ -267,10 +267,10 @@ public class ActivitySqlProvider {
         SET("id = #{record.id,jdbcType=VARCHAR}");
         SET("name = #{record.name,jdbcType=VARCHAR}");
         SET("actitype = #{record.actitype,jdbcType=CHAR}");
-        SET("total = #{record.total,jdbcType=DECIMAL}");
+        SET("total = #{record.total,jdbcType=NUMERIC}");
         SET("quota = #{record.quota,jdbcType=INTEGER}");
-        SET("minamount = #{record.minamount,jdbcType=DECIMAL}");
-        SET("maxamount = #{record.maxamount,jdbcType=DECIMAL}");
+        SET("minamount = #{record.minamount,jdbcType=NUMERIC}");
+        SET("maxamount = #{record.maxamount,jdbcType=NUMERIC}");
         SET("createtime = #{record.createtime,jdbcType=TIMESTAMP}");
         SET("starttime = #{record.starttime,jdbcType=TIMESTAMP}");
         SET("endtime = #{record.endtime,jdbcType=TIMESTAMP}");
@@ -306,7 +306,7 @@ public class ActivitySqlProvider {
         }
         
         if (record.getTotal() != null) {
-            SET("total = #{total,jdbcType=DECIMAL}");
+            SET("total = #{total,jdbcType=NUMERIC}");
         }
         
         if (record.getQuota() != null) {
@@ -314,11 +314,11 @@ public class ActivitySqlProvider {
         }
         
         if (record.getMinamount() != null) {
-            SET("minamount = #{minamount,jdbcType=DECIMAL}");
+            SET("minamount = #{minamount,jdbcType=NUMERIC}");
         }
         
         if (record.getMaxamount() != null) {
-            SET("maxamount = #{maxamount,jdbcType=DECIMAL}");
+            SET("maxamount = #{maxamount,jdbcType=NUMERIC}");
         }
         
         if (record.getCreatetime() != null) {

@@ -1,5 +1,6 @@
 package org.inn.baner.bean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -415,52 +416,52 @@ public class ActivityExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalEqualTo(Long value) {
+        public Criteria andTotalEqualTo(BigDecimal value) {
             addCriterion("total =", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotEqualTo(Long value) {
+        public Criteria andTotalNotEqualTo(BigDecimal value) {
             addCriterion("total <>", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGreaterThan(Long value) {
+        public Criteria andTotalGreaterThan(BigDecimal value) {
             addCriterion("total >", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGreaterThanOrEqualTo(Long value) {
+        public Criteria andTotalGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("total >=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalLessThan(Long value) {
+        public Criteria andTotalLessThan(BigDecimal value) {
             addCriterion("total <", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalLessThanOrEqualTo(Long value) {
+        public Criteria andTotalLessThanOrEqualTo(BigDecimal value) {
             addCriterion("total <=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalIn(List<Long> values) {
+        public Criteria andTotalIn(List<BigDecimal> values) {
             addCriterion("total in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotIn(List<Long> values) {
+        public Criteria andTotalNotIn(List<BigDecimal> values) {
             addCriterion("total not in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalBetween(Long value1, Long value2) {
+        public Criteria andTotalBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("total between", value1, value2, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotBetween(Long value1, Long value2) {
+        public Criteria andTotalNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("total not between", value1, value2, "total");
             return (Criteria) this;
         }
@@ -535,52 +536,52 @@ public class ActivityExample {
             return (Criteria) this;
         }
 
-        public Criteria andMinamountEqualTo(Long value) {
+        public Criteria andMinamountEqualTo(BigDecimal value) {
             addCriterion("minamount =", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountNotEqualTo(Long value) {
+        public Criteria andMinamountNotEqualTo(BigDecimal value) {
             addCriterion("minamount <>", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountGreaterThan(Long value) {
+        public Criteria andMinamountGreaterThan(BigDecimal value) {
             addCriterion("minamount >", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountGreaterThanOrEqualTo(Long value) {
+        public Criteria andMinamountGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("minamount >=", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountLessThan(Long value) {
+        public Criteria andMinamountLessThan(BigDecimal value) {
             addCriterion("minamount <", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountLessThanOrEqualTo(Long value) {
+        public Criteria andMinamountLessThanOrEqualTo(BigDecimal value) {
             addCriterion("minamount <=", value, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountIn(List<Long> values) {
+        public Criteria andMinamountIn(List<BigDecimal> values) {
             addCriterion("minamount in", values, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountNotIn(List<Long> values) {
+        public Criteria andMinamountNotIn(List<BigDecimal> values) {
             addCriterion("minamount not in", values, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountBetween(Long value1, Long value2) {
+        public Criteria andMinamountBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("minamount between", value1, value2, "minamount");
             return (Criteria) this;
         }
 
-        public Criteria andMinamountNotBetween(Long value1, Long value2) {
+        public Criteria andMinamountNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("minamount not between", value1, value2, "minamount");
             return (Criteria) this;
         }
@@ -595,52 +596,52 @@ public class ActivityExample {
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountEqualTo(Long value) {
+        public Criteria andMaxamountEqualTo(BigDecimal value) {
             addCriterion("maxamount =", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountNotEqualTo(Long value) {
+        public Criteria andMaxamountNotEqualTo(BigDecimal value) {
             addCriterion("maxamount <>", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountGreaterThan(Long value) {
+        public Criteria andMaxamountGreaterThan(BigDecimal value) {
             addCriterion("maxamount >", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountGreaterThanOrEqualTo(Long value) {
+        public Criteria andMaxamountGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("maxamount >=", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountLessThan(Long value) {
+        public Criteria andMaxamountLessThan(BigDecimal value) {
             addCriterion("maxamount <", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountLessThanOrEqualTo(Long value) {
+        public Criteria andMaxamountLessThanOrEqualTo(BigDecimal value) {
             addCriterion("maxamount <=", value, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountIn(List<Long> values) {
+        public Criteria andMaxamountIn(List<BigDecimal> values) {
             addCriterion("maxamount in", values, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountNotIn(List<Long> values) {
+        public Criteria andMaxamountNotIn(List<BigDecimal> values) {
             addCriterion("maxamount not in", values, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountBetween(Long value1, Long value2) {
+        public Criteria andMaxamountBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("maxamount between", value1, value2, "maxamount");
             return (Criteria) this;
         }
 
-        public Criteria andMaxamountNotBetween(Long value1, Long value2) {
+        public Criteria andMaxamountNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("maxamount not between", value1, value2, "maxamount");
             return (Criteria) this;
         }
