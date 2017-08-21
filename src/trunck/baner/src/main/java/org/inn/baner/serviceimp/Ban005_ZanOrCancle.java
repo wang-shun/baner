@@ -34,6 +34,8 @@ public class Ban005_ZanOrCancle implements BusinessService {
 		PostData postData = null;
 		try {
 			postData = new PostData();
+			postData.setContext(context);
+
 			if (iszan.equals("0")) {
 				postData.cancleZan(topicId, postId);
 			} else if (iszan.equals("1")) {

@@ -56,6 +56,7 @@ public class Ban008_UploadPost implements BusinessService {
 		PostData postData  = null;
 		try {
 			postData = new PostData();
+			postData.setContext(context);
 
 			int res = postData.insertRecord(post);
 

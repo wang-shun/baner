@@ -31,7 +31,6 @@ public class TopicData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return topicList;
 	}
@@ -52,7 +51,6 @@ public class TopicData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return topic;
 	}
@@ -74,7 +72,6 @@ public class TopicData extends AbstractTMMybatis {
             logger.error("exec sql error", e);
             throw new HandlerException(e);
         }finally {
-            relaceResource();
         }
         return list;
     }

@@ -45,6 +45,8 @@ public class Ban006_RegistAddress implements BusinessService {
 		UserLocData userLocData = null;
 		try {
 			userLocData = new UserLocData();
+			userLocData.setContext(context);
+
 			Userloc userloc = userLocData.qry(platdate, mobileno);
 			int res = -1;
 			if (userloc == null) {

@@ -34,7 +34,6 @@ public class UserLocData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return res;
 	}
@@ -56,7 +55,6 @@ public class UserLocData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return list;
 	}
@@ -82,7 +80,6 @@ public class UserLocData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return userloc;
 	}
@@ -102,7 +99,6 @@ public class UserLocData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return res;
 	}
@@ -132,7 +128,6 @@ public class UserLocData extends AbstractTMMybatis {
             logger.error("exec sql error", e);
             throw new HandlerException(e);
         }finally {
-            relaceResource();
         }
         return userloc;
     }

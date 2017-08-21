@@ -51,6 +51,11 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 			userData = new UserData();
 			topicData = new TopicData();
             commentData = new CommentData();
+			postData.setContext(context);
+			userData.setContext(context);
+			topicData.setContext(context);
+			commentData.setContext(context);
+
 			String[] topicidArr = topicId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
             postList = new ArrayList<>();

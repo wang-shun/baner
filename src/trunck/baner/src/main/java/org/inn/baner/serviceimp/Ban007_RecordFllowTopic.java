@@ -34,6 +34,8 @@ public class Ban007_RecordFllowTopic implements BusinessService {
 		UserData userData  = null;
 		try {
 			userData = new UserData();
+			userData.setContext(context);
+
 			int res = userData.update(user);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);

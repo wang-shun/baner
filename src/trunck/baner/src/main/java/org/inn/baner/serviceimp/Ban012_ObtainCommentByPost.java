@@ -41,7 +41,10 @@ public class Ban012_ObtainCommentByPost implements BusinessService {
 		try {
 
             commentData = new CommentData();
-			userData = new UserData();
+            commentData.setContext(context);
+
+            userData = new UserData();
+            userData.setContext(context);
 			String[] postidArr = postId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
 
