@@ -120,11 +120,11 @@ public class RunnableSynAdapterFrame implements AdapterFrame{
 				} catch (ServiceException e) {
 					// TODO Auto-generated catch block
 					logger.error("ServiceException is error",e);
-					//如果当前有业务异常回滚事务
-					MybatisUtil.rollback(context.getSqlSession());
 				}
 				if(context.getErrorCode()!=null){
 					logger.error(processService.getServiceid() +" service errorCode is ["+context.getErrorCode()+"]");
+					//如果当前有错误码回滚事务
+					MybatisUtil.rollback(context);
 				}
 			}
 			//当前步骤号自增
@@ -137,7 +137,7 @@ public class RunnableSynAdapterFrame implements AdapterFrame{
 				context.setFieldStr(ContainerConstantField.MSG_ORDER, ContainerConstantField.MSG_ORDER_THREE,CommonContext.SCOPE_GLOBAL);
 				//到分界线默认自动提交事务
 				logger.info("before send server commit transaction");
-				MybatisUtil.relace(context.getSqlSession());
+				MybatisUtil.relace(context);
 			}
 
 			//如果当前服务是最后一个业务服务默认提交事务
@@ -161,12 +161,18 @@ public class RunnableSynAdapterFrame implements AdapterFrame{
      */
 	private boolean isLastBusService(int current_step, List<ProcessService> processservice) {
 		boolean res = true;
-		for (int i = current_step + 1; i < processservice.size(); i++) {
-			if (processservice.get(i).getServicetype().equals("businessservice")) {
-				res = false;
-				break;
+		if(!processservice.get(current_step).getServicetype().equals(ConstantConfigField.SERVICE_TYPE_BUS)){
+			//如果当前不是业务服务
+			res = false;
+		}else{
+			for (int i = current_step + 1; i < processservice.size(); i++) {
+				if (processservice.get(i).getServicetype().equals("businessservice")) {
+					res = false;
+					break;
+				}
 			}
 		}
+
 		return res;
 	}
 

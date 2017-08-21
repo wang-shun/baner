@@ -2,6 +2,7 @@ package com.ztkx.transplat.platformutil.db.mybatis;
 
 import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
+import com.ztkx.transplat.platformutil.context.CommonContext;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,7 +40,7 @@ public class MybatisUtil {
     }
 
     public static void relace(SqlSession sqlSession) {
-        if (sqlSession != null) {
+        if (sqlSession != null ) {
             try {
                 sqlSession.commit();
                 // c3p0的connection类的close方法不是将连接关闭而是将连接回收到资源池中，close方法被c3p0重写了。
@@ -50,6 +51,37 @@ public class MybatisUtil {
                 logger.error("closeConnect error !", e);
             }
             sqlSession = null;
+        }
+    }
+
+    public static void relace(CommonContext context) {
+        if (context.getSqlSession() != null ) {
+            try {
+                context.getSqlSession().commit();
+                // c3p0的connection类的close方法不是将连接关闭而是将连接回收到资源池中，close方法被c3p0重写了。
+                context.getSqlSession().close();
+            } catch (PersistenceException e) {
+                logger.error("closeConnect error !", e);
+            } catch (Throwable e) {
+                logger.error("closeConnect error !", e);
+            }
+            context.setSqlSession(null);
+
+        }
+    }
+
+    public static void rollback(CommonContext context) {
+        if (context.getSqlSession() != null) {
+            try {
+                context.getSqlSession().rollback();
+                // c3p0的connection类的close方法不是将连接关闭而是将连接回收到资源池中，close方法被c3p0重写了。
+                context.getSqlSession().close();
+            } catch (PersistenceException e) {
+                logger.error("closeConnect error !", e);
+            } catch (Throwable e) {
+                logger.error("closeConnect error !", e);
+            }
+            context.setSqlSession(null);
         }
     }
 
