@@ -724,6 +724,66 @@ public class PostExample {
             addCriterion("updatetime not between", value1, value2, "updatetime");
             return (Criteria) this;
         }
+
+        public Criteria andIsanonIsNull() {
+            addCriterion("isanon is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonIsNotNull() {
+            addCriterion("isanon is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonEqualTo(Integer value) {
+            addCriterion("isanon =", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonNotEqualTo(Integer value) {
+            addCriterion("isanon <>", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonGreaterThan(Integer value) {
+            addCriterion("isanon >", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonGreaterThanOrEqualTo(Integer value) {
+            addCriterion("isanon >=", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonLessThan(Integer value) {
+            addCriterion("isanon <", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonLessThanOrEqualTo(Integer value) {
+            addCriterion("isanon <=", value, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonIn(List<Integer> values) {
+            addCriterion("isanon in", values, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonNotIn(List<Integer> values) {
+            addCriterion("isanon not in", values, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonBetween(Integer value1, Integer value2) {
+            addCriterion("isanon between", value1, value2, "isanon");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsanonNotBetween(Integer value1, Integer value2) {
+            addCriterion("isanon not between", value1, value2, "isanon");
+            return (Criteria) this;
+        }
     }
 
     /**

@@ -56,4 +56,26 @@ public class TopicData extends AbstractTMMybatis {
 		}
 		return topic;
 	}
+
+    public List<Topic> qryChildById(String parentId) throws HandlerException {
+        List<Topic> list = null;
+        try {
+            //初始化sqlSession
+            getSqlSession();
+            TopicMapper topicMapper = sqlSession.getMapper(TopicMapper.class);
+            TopicExample example = new TopicExample();
+            example.createCriteria().andParenttopicidEqualTo(parentId);
+            list = topicMapper.selectByExampleWithBLOBs(example);
+
+            if (logger.isDebugEnabled()) {
+                logger.debug("qry table " + tableName + " success");
+            }
+        } catch (HandlerException e) {
+            logger.error("exec sql error", e);
+            throw new HandlerException(e);
+        }finally {
+            relaceResource();
+        }
+        return list;
+    }
 }

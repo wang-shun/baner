@@ -58,6 +58,10 @@ public class TopicSqlProvider {
             sql.VALUES("creatormobileno", "#{creatormobileno,jdbcType=VARCHAR}");
         }
         
+        if (record.getParenttopicid() != null) {
+            sql.VALUES("parenttopicid", "#{parenttopicid,jdbcType=VARCHAR}");
+        }
+        
         if (record.getTopiclogo() != null) {
             sql.VALUES("topiclogo", "#{topiclogo,jdbcType=LONGVARBINARY}");
         }
@@ -80,6 +84,7 @@ public class TopicSqlProvider {
         }
         sql.SELECT("topicdesc");
         sql.SELECT("creatormobileno");
+        sql.SELECT("parenttopicid");
         sql.SELECT("topiclogo");
         sql.FROM("topic");
         applyWhere(sql, example, false);
@@ -106,6 +111,7 @@ public class TopicSqlProvider {
         }
         sql.SELECT("topicdesc");
         sql.SELECT("creatormobileno");
+        sql.SELECT("parenttopicid");
         sql.FROM("topic");
         applyWhere(sql, example, false);
         
@@ -141,6 +147,10 @@ public class TopicSqlProvider {
             sql.SET("creatormobileno = #{record.creatormobileno,jdbcType=VARCHAR}");
         }
         
+        if (record.getParenttopicid() != null) {
+            sql.SET("parenttopicid = #{record.parenttopicid,jdbcType=VARCHAR}");
+        }
+        
         if (record.getTopiclogo() != null) {
             sql.SET("topiclogo = #{record.topiclogo,jdbcType=LONGVARBINARY}");
         }
@@ -162,6 +172,7 @@ public class TopicSqlProvider {
         sql.SET("topicid = #{record.topicid,jdbcType=VARCHAR}");
         sql.SET("topicdesc = #{record.topicdesc,jdbcType=VARCHAR}");
         sql.SET("creatormobileno = #{record.creatormobileno,jdbcType=VARCHAR}");
+        sql.SET("parenttopicid = #{record.parenttopicid,jdbcType=VARCHAR}");
         sql.SET("topiclogo = #{record.topiclogo,jdbcType=LONGVARBINARY}");
         
         TopicExample example = (TopicExample) parameter.get("example");
@@ -182,6 +193,7 @@ public class TopicSqlProvider {
         sql.SET("topicid = #{record.topicid,jdbcType=VARCHAR}");
         sql.SET("topicdesc = #{record.topicdesc,jdbcType=VARCHAR}");
         sql.SET("creatormobileno = #{record.creatormobileno,jdbcType=VARCHAR}");
+        sql.SET("parenttopicid = #{record.parenttopicid,jdbcType=VARCHAR}");
         
         TopicExample example = (TopicExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -204,6 +216,10 @@ public class TopicSqlProvider {
         
         if (record.getCreatormobileno() != null) {
             sql.SET("creatormobileno = #{creatormobileno,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getParenttopicid() != null) {
+            sql.SET("parenttopicid = #{parenttopicid,jdbcType=VARCHAR}");
         }
         
         if (record.getTopiclogo() != null) {

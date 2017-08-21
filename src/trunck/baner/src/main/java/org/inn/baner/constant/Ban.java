@@ -6,6 +6,7 @@ package org.inn.baner.constant;
 public class Ban {
 
     public static final String postidseq = "postidseq";
+    public static final String commentidseq = "commentidseq";
 
     public static final String mobileno = "mobileno";
     public static final String nickname = "nickname";
@@ -14,6 +15,7 @@ public class Ban {
     public static final String lists = "lists";
     public static final String topicid = "topicid";
     public static final String topicname = "topicname";
+    public static final String topicdesc = "topicdesc";
     public static final String postid = "postid";
     public static final String postname = "postname";
     public static final String postdesc = "postdesc";
@@ -26,4 +28,17 @@ public class Ban {
     public static final String latitude = "latitude";   //经度
     public static final String longitude = "longitude"; //纬度
     public static final String banerid = "banerid"; //纬度
+
+
+    public static final String parentcommentid = "parentcommentid";
+    public static final String commentid = "commentid";
+    public static final String commentCount = "commentCount";
+    public static final String childlist = "childlist";
+    public static final String childsize = "childsize";
+
+    public static final String distance = "distance";
+    public static final String isAnon = "isAnon";
+    public static final String job = "job";
+    public static final String parenttopicid = "parenttopicid";
+    public static final String topiclogo = "topiclogo";
 }

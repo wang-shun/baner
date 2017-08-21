@@ -1,20 +1,11 @@
 package org.inn.baner.persist.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.DeleteProvider;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.inn.baner.bean.Topic;
 import org.inn.baner.bean.TopicExample;
+
+import java.util.List;
 
 public interface TopicMapper {
     /**
@@ -55,9 +46,11 @@ public interface TopicMapper {
      */
     @Insert({
         "insert into topic (topicid, topicdesc, ",
-        "creatormobileno, topiclogo)",
+        "creatormobileno, parenttopicid, ",
+        "topiclogo)",
         "values (#{topicid,jdbcType=VARCHAR}, #{topicdesc,jdbcType=VARCHAR}, ",
-        "#{creatormobileno,jdbcType=VARCHAR}, #{topiclogo,jdbcType=LONGVARBINARY})"
+        "#{creatormobileno,jdbcType=VARCHAR}, #{parenttopicid,jdbcType=VARCHAR}, ",
+        "#{topiclogo,jdbcType=LONGVARBINARY})"
     })
     int insert(Topic record);
 
@@ -81,6 +74,7 @@ public interface TopicMapper {
         @Result(column="topicid", property="topicid", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="topicdesc", property="topicdesc", jdbcType=JdbcType.VARCHAR),
         @Result(column="creatormobileno", property="creatormobileno", jdbcType=JdbcType.VARCHAR),
+        @Result(column="parenttopicid", property="parenttopicid", jdbcType=JdbcType.VARCHAR),
         @Result(column="topiclogo", property="topiclogo", jdbcType=JdbcType.LONGVARBINARY)
     })
     List<Topic> selectByExampleWithBLOBs(TopicExample example);
@@ -95,7 +89,8 @@ public interface TopicMapper {
     @Results({
         @Result(column="topicid", property="topicid", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="topicdesc", property="topicdesc", jdbcType=JdbcType.VARCHAR),
-        @Result(column="creatormobileno", property="creatormobileno", jdbcType=JdbcType.VARCHAR)
+        @Result(column="creatormobileno", property="creatormobileno", jdbcType=JdbcType.VARCHAR),
+        @Result(column="parenttopicid", property="parenttopicid", jdbcType=JdbcType.VARCHAR)
     })
     List<Topic> selectByExample(TopicExample example);
 
@@ -107,7 +102,7 @@ public interface TopicMapper {
      */
     @Select({
         "select",
-        "topicid, topicdesc, creatormobileno, topiclogo",
+        "topicid, topicdesc, creatormobileno, parenttopicid, topiclogo",
         "from topic",
         "where topicid = #{topicid,jdbcType=VARCHAR}"
     })
@@ -115,6 +110,7 @@ public interface TopicMapper {
         @Result(column="topicid", property="topicid", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="topicdesc", property="topicdesc", jdbcType=JdbcType.VARCHAR),
         @Result(column="creatormobileno", property="creatormobileno", jdbcType=JdbcType.VARCHAR),
+        @Result(column="parenttopicid", property="parenttopicid", jdbcType=JdbcType.VARCHAR),
         @Result(column="topiclogo", property="topiclogo", jdbcType=JdbcType.LONGVARBINARY)
     })
     Topic selectByPrimaryKey(String topicid);
@@ -165,6 +161,7 @@ public interface TopicMapper {
         "update topic",
         "set topicdesc = #{topicdesc,jdbcType=VARCHAR},",
           "creatormobileno = #{creatormobileno,jdbcType=VARCHAR},",
+          "parenttopicid = #{parenttopicid,jdbcType=VARCHAR},",
           "topiclogo = #{topiclogo,jdbcType=LONGVARBINARY}",
         "where topicid = #{topicid,jdbcType=VARCHAR}"
     })
@@ -179,7 +176,8 @@ public interface TopicMapper {
     @Update({
         "update topic",
         "set topicdesc = #{topicdesc,jdbcType=VARCHAR},",
-          "creatormobileno = #{creatormobileno,jdbcType=VARCHAR}",
+          "creatormobileno = #{creatormobileno,jdbcType=VARCHAR},",
+          "parenttopicid = #{parenttopicid,jdbcType=VARCHAR}",
         "where topicid = #{topicid,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Topic record);

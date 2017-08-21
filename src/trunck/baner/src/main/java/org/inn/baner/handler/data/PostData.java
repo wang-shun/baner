@@ -5,6 +5,7 @@ import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.initload.AbstractTMMybatis;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
+import org.inn.baner.bean.PostExample;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.persist.mapper.PostMapper;
 
@@ -109,5 +110,31 @@ public class PostData extends AbstractTMMybatis {
 			relaceResource();
 		}
 		return res;
+	}
+
+	/**
+	 * delete post by mobileNo and postId 20170810
+	 * @param mobileNo
+	 * @param postId
+	 * @return
+	 */
+	public int deletePost(String mobileNo,String postId) throws HandlerException {
+		PostMapper postMapper = getSqlSession(true).getMapper(PostMapper.class);//自动提交
+		PostExample postExample = new PostExample();
+		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo).andPostidEqualTo(postId);
+		return  postMapper.deleteByExample(postExample);
+	}
+
+	/**
+	 * select post by mobile no
+	 * @param mobileNo
+	 * @return
+	 * @throws HandlerException
+	 */
+	public List<Post> qryByTopicMobileNo(String mobileNo) throws HandlerException {
+		PostMapper postMapper = getSqlSession(false).getMapper(PostMapper.class);//自动提交
+		PostExample postExample = new PostExample();
+		postExample.createCriteria().andCreatormobilenoEqualTo(mobileNo);
+		return postMapper.selectByExampleWithBLOBs(postExample);
 	}
 }

@@ -9,11 +9,14 @@ import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.time.TimeUtil;
 import org.apache.log4j.Logger;
 import org.inn.baner.bean.Post;
+import org.inn.baner.bean.Topic;
 import org.inn.baner.constant.Ban;
 import org.inn.baner.constant.enums.BErrorCode;
+import org.inn.baner.handler.data.CommentData;
 import org.inn.baner.handler.data.PostData;
 import org.inn.baner.handler.data.TopicData;
 import org.inn.baner.handler.data.UserData;
+import org.inn.baner.util.ListCompareUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,32 +44,43 @@ public class Ban004_ObtainPostByTopic implements BusinessService {
 		PostData postData = null;
 		UserData userData = null;
 		TopicData topicData = null;
+        CommentData commentData = null;
 		try {
 
 			postData = new PostData();
 			userData = new UserData();
 			topicData = new TopicData();
+            commentData = new CommentData();
 			String[] topicidArr = topicId.split("@", -1);
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
+            postList = new ArrayList<>();
 			for (String topicidItem : topicidArr) {
+                postList.addAll(postData.qryByTopicId(topicidItem));//各版块整合数据
+                //若该主题有子主题，则查询其子主题的文章
+                List<Topic> list = topicData.qryChildById(topicidItem);
+                for(Topic topic : list){
+                    postList.addAll(postData.qryByTopicId(topic.getTopicid()));
+                }
+			}
+			new ListCompareUtil().mySortDesc(postList,Post.class,new String [] {"createtime"});//0808修改根据创建时间排序
 
-				postList = postData.qryByTopicId(topicidItem);
-				for (Post post : postList) {
-					Map<String,Object> map = BeanUtil.objToMap(post);
-					map.put(Ban.postid, post.getPostid());
-					map.put(Ban.topicname, topicData.qryById(post.getTopicid()).getTopicdesc());
-					map.put(Ban.mobileno, post.getCreatormobileno());
-					map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
-					map.put(Ban.postname, post.getPostname());
-					map.put(Ban.postdesc, post.getPostdesc());
-					map.put(Ban.context, new String(post.getContext()));
-					map.put(Ban.zantimes, post.getZantimes());
-					map.put(Ban.topicid, post.getTopicid());
-					Date createTime = post.getCreatetime();
-					map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
-					map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));
-					mapArrayList.add(map);
-				}
+			for (Post post : postList) {
+				Map<String,Object> map = BeanUtil.objToMap(post);
+				map.put(Ban.postid, post.getPostid());
+				map.put(Ban.topicname, topicData.qryById(post.getTopicid()).getTopicdesc());
+				map.put(Ban.mobileno, post.getCreatormobileno());
+				map.put(Ban.nickname, userData.qryByMobile(post.getCreatormobileno()).getNickname());
+				map.put(Ban.postname, post.getPostname());
+				map.put(Ban.postdesc, post.getPostdesc());
+				map.put(Ban.context, new String(post.getContext()));
+				map.put(Ban.zantimes, post.getZantimes());
+				map.put(Ban.topicid, post.getTopicid());
+                map.put(Ban.isAnon, post.getIsanon());
+                map.put(Ban.commentCount, commentData.countByPostId(post.getPostid()));
+				Date createTime = post.getCreatetime();
+				map.put(Ban.createtime,TimeUtil.dateFormate(dateFormate, createTime));
+				map.put(Ban.updatetime, TimeUtil.dateFormate(dateFormate, post.getUpdatetime()));
+				mapArrayList.add(map);
 			}
 
 			context.setObj(Ban.lists, mapArrayList, CommonContext.SCOPE_GLOBAL);

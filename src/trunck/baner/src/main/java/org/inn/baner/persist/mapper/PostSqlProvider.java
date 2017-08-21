@@ -78,6 +78,10 @@ public class PostSqlProvider {
             sql.VALUES("updatetime", "#{updatetime,jdbcType=TIMESTAMP}");
         }
         
+        if (record.getIsanon() != null) {
+            sql.VALUES("isanon", "#{isanon,jdbcType=INTEGER}");
+        }
+        
         if (record.getContext() != null) {
             sql.VALUES("context", "#{context,jdbcType=LONGVARBINARY}");
         }
@@ -105,6 +109,7 @@ public class PostSqlProvider {
         sql.SELECT("zantimes");
         sql.SELECT("createtime");
         sql.SELECT("updatetime");
+        sql.SELECT("isanon");
         sql.SELECT("context");
         sql.FROM("post");
         applyWhere(sql, example, false);
@@ -136,6 +141,7 @@ public class PostSqlProvider {
         sql.SELECT("zantimes");
         sql.SELECT("createtime");
         sql.SELECT("updatetime");
+        sql.SELECT("isanon");
         sql.FROM("post");
         applyWhere(sql, example, false);
         
@@ -191,6 +197,10 @@ public class PostSqlProvider {
             sql.SET("updatetime = #{record.updatetime,jdbcType=TIMESTAMP}");
         }
         
+        if (record.getIsanon() != null) {
+            sql.SET("isanon = #{record.isanon,jdbcType=INTEGER}");
+        }
+        
         if (record.getContext() != null) {
             sql.SET("context = #{record.context,jdbcType=LONGVARBINARY}");
         }
@@ -217,6 +227,7 @@ public class PostSqlProvider {
         sql.SET("zantimes = #{record.zantimes,jdbcType=INTEGER}");
         sql.SET("createtime = #{record.createtime,jdbcType=TIMESTAMP}");
         sql.SET("updatetime = #{record.updatetime,jdbcType=TIMESTAMP}");
+        sql.SET("isanon = #{record.isanon,jdbcType=INTEGER}");
         sql.SET("context = #{record.context,jdbcType=LONGVARBINARY}");
         
         PostExample example = (PostExample) parameter.get("example");
@@ -242,6 +253,7 @@ public class PostSqlProvider {
         sql.SET("zantimes = #{record.zantimes,jdbcType=INTEGER}");
         sql.SET("createtime = #{record.createtime,jdbcType=TIMESTAMP}");
         sql.SET("updatetime = #{record.updatetime,jdbcType=TIMESTAMP}");
+        sql.SET("isanon = #{record.isanon,jdbcType=INTEGER}");
         
         PostExample example = (PostExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -280,6 +292,10 @@ public class PostSqlProvider {
         
         if (record.getUpdatetime() != null) {
             sql.SET("updatetime = #{updatetime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getIsanon() != null) {
+            sql.SET("isanon = #{isanon,jdbcType=INTEGER}");
         }
         
         if (record.getContext() != null) {

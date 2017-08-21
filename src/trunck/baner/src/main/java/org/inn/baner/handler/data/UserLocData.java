@@ -106,4 +106,34 @@ public class UserLocData extends AbstractTMMybatis {
 		}
 		return res;
 	}
+
+    /**
+     * 获取该用户最近的位置信息
+     * @param mobileno
+     * @return
+     */
+    public Userloc getLastLoc(String mobileno) throws HandlerException {
+        Userloc userloc = null;
+        try {
+            //初始化sqlSession
+            getSqlSession();
+            UserlocMapper userlocMapper = sqlSession.getMapper(UserlocMapper.class);
+            UserlocExample example = new UserlocExample();
+            example.createCriteria().andMobilenoEqualTo(mobileno);
+            example.setOrderByClause(" platdate desc ");
+            List<Userloc> list = userlocMapper.selectByExample(example);
+            if (list != null && list.size() > 0) {
+                userloc = list.get(0);
+            }
+            if (logger.isDebugEnabled()) {
+                logger.debug("qry table " + tableName + " success");
+            }
+        } catch (HandlerException e) {
+            logger.error("exec sql error", e);
+            throw new HandlerException(e);
+        }finally {
+            relaceResource();
+        }
+        return userloc;
+    }
 }
