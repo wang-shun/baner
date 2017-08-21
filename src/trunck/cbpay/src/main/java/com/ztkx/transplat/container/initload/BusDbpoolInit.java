@@ -24,7 +24,7 @@ public class BusDbpoolInit {
 				//如果当前系统是服务方，就按照当前系统id去dbpool目录下找对应的数据库配置文件
 				String id = keyMsgDescriber.getId();
 				logger.info("start load system [" + id + "] dbpool ");
-				SqlSessionFactory sqlSessionFactory = MybatisUtil.loadDbpool(id);
+				SqlSessionFactory sqlSessionFactory = MybatisUtil.loadDbpool(id+".xml");
 				factoryMap.put(id, sqlSessionFactory);
 			}
 

@@ -5,7 +5,6 @@ import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.context.imp.CbpayContext;
-import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
 import com.ztkx.transplat.platformutil.enanddecrypt.Base64Util;
 import org.inn.baner.bean.Subject;
 import org.inn.baner.serviceimp.*;
@@ -24,7 +23,7 @@ public class BanTest {
     @Before
     public void init(){
         BaseConfig.getInstence();
-        MybatisUtil.getInstance();
+        //MybatisUtil.getInstance();
         BaseConfig.setConfig(ConstantConfigField.ZKADDRESS,"localhost:2181");
         cbpayContext = new CbpayContext();
         cbpayContext.init();

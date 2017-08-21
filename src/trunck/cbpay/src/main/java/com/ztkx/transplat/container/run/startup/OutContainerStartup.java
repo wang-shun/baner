@@ -108,17 +108,19 @@ public class OutContainerStartup{
 		//启动加载invoker.xml文件
 		logger.info("load system invokers start...\n");
 		InvokerManager.getInstance();
-		logger.info("load system invokers succ...\n");	
-		
-		//加载service
-		logger.info("load system service start...\n");
-		ServiceManager.getInstance();
-		logger.info("load system service succ...\n");
-		
+		logger.info("load system invokers succ...\n");
+
+
 		//启动加载preload
 		logger.info("load system preload start...\n");
 		PreLoadManager.getInstance();
 		logger.info("load system preload succ...\n");
+
+
+		//加载service
+		logger.info("load system service start...\n");
+		ServiceManager.getInstance();
+		logger.info("load system service succ...\n");
 
 		//初始化业务数据库连接池
 		logger.info("load business db pool start...\n");
