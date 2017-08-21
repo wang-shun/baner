@@ -1,5 +1,6 @@
 package com.ztkx.transplat.container.run.startup;
 
+import com.ztkx.transplat.container.initload.BusDbpoolInit;
 import com.ztkx.transplat.container.initload.InitLoaderManager;
 import com.ztkx.transplat.container.preload.PreLoadManager;
 import com.ztkx.transplat.container.protocol.ProtocolManager;
@@ -10,7 +11,6 @@ import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.imp.ContextManager;
 import com.ztkx.transplat.platformutil.db.c3p0.DataSourceUtil;
-import com.ztkx.transplat.platformutil.db.mybatis.MybatisUtil;
 import com.ztkx.transplat.platformutil.flowno.FlowNoPoolManager;
 import com.ztkx.transplat.platformutil.threadpool.ThreadPoolManager;
 import org.apache.log4j.Logger;
@@ -99,11 +99,6 @@ public class OutContainerStartup{
 		logger.info("load system db pool start...\n");
 		DataSourceUtil.getInstance();
 		logger.info("load system db pool succ...\n");
-
-		//初始化业务数据库连接池
-		logger.info("load business db pool start...\n");
-		MybatisUtil.getInstance();
-		logger.info("load business db pool succ...\n");
 		
 		//启动加载基础数据
 		logger.info("load system initloader start...\n");
@@ -124,7 +119,13 @@ public class OutContainerStartup{
 		logger.info("load system preload start...\n");
 		PreLoadManager.getInstance();
 		logger.info("load system preload succ...\n");
-		
+
+		//初始化业务数据库连接池
+		logger.info("load business db pool start...\n");
+		BusDbpoolInit.getInstance();
+		logger.info("load business db pool succ...\n");
+
+
 		//启动加载protocol
 		logger.info("begin start protocol \n");
 		ProtocolManager.getInstance();

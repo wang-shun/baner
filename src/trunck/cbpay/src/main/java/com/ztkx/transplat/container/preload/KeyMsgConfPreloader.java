@@ -1,10 +1,5 @@
 package com.ztkx.transplat.container.preload;
 
-import java.io.File;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.HandlerException;
 import com.ztkx.transplat.container.msg.KeyMsgXmlParser;
 import com.ztkx.transplat.invokerexecutor.InvokerExecutor;
@@ -12,6 +7,10 @@ import com.ztkx.transplat.platformutil.baseconfig.BaseConfig;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.msg.KeyMsgDescriber;
 import com.ztkx.transplat.reload.ReloadAble;
+import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.util.Map;
 
 /**
  * 预加载系统keyMsg.xml文件
@@ -39,7 +38,11 @@ public class KeyMsgConfPreloader implements CommonPreloadInterface,InvokerExecut
 		
 		logger.info("KeyMsgConfPreloader is finish");
 	}
-	
+
+	public static Map<String, KeyMsgDescriber> getKeyMsg() {
+		return keyMsg;
+	}
+
 	public static KeyMsgDescriber getKeyMsgDescriber(String tranFrom){
 		return keyMsg.get(tranFrom);
 	}

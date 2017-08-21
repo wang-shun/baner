@@ -1,6 +1,7 @@
 package com.ztkx.transplat.platformutil.context;
 
 import com.ztkx.transplat.platformutil.context.imp.CommonSDO;
+import org.apache.ibatis.session.SqlSession;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -268,4 +269,8 @@ public interface CommonContext extends Serializable {
 	public void setInt(String key, Integer val);
 
 	public <T> T getBean(Class<T> clazz);
+
+	public SqlSession getSqlSession();
+
+	public void setSqlSession(SqlSession sqlSession);
 }
