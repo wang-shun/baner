@@ -161,11 +161,12 @@ public class RunnableSynAdapterFrame implements AdapterFrame{
      */
 	private boolean isLastBusService(int current_step, List<ProcessService> processservice) {
 		boolean res = true;
-		if(!processservice.get(current_step).getServicetype().equals(ConstantConfigField.SERVICE_TYPE_BUS)){
+		int step = current_step-1;
+		if(!processservice.get(step).getServicetype().equals(ConstantConfigField.SERVICE_TYPE_BUS)){
 			//如果当前不是业务服务
 			res = false;
 		}else{
-			for (int i = current_step + 1; i < processservice.size(); i++) {
+			for (int i = current_step; i < processservice.size(); i++) {
 				if (processservice.get(i).getServicetype().equals("businessservice")) {
 					res = false;
 					break;

@@ -38,6 +38,7 @@ public class Ban010_NearUser implements BusinessService {
         UserLocData userLocData = null;
         UserData userData = new UserData();
         try {
+            userData.setContext(context);
             userLocData = new UserLocData();
             userLocData.setContext(context);
 

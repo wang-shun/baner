@@ -57,6 +57,8 @@ public class Ban008_UploadPost implements BusinessService {
 		try {
 			postData = new PostData();
 			postData.setContext(context);
+			LabelSubjectData labelSubjectData = new LabelSubjectData();
+			labelSubjectData.setContext(context);
 
 			int res = postData.insertRecord(post);
 
@@ -65,7 +67,7 @@ public class Ban008_UploadPost implements BusinessService {
             labelSubject.setLabelid(post.getTopicid());
             labelSubject.setSubject("post");
             labelSubject.setSubjectid(post.getPostid());
-            new LabelSubjectData().insertRecord(labelSubject);
+			labelSubjectData.insertRecord(labelSubject);
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
 			logger.error("buss service exec exception ",e);
