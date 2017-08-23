@@ -63,6 +63,9 @@ public class BeforeIntercepter implements CommonIntercepter {
 			
 			//根据交易渠道找到当前交易的keyMsg配置
 			keyMsgDescriber = KeyMsgConfPreloader.getKeyMsgDescriber(tranchannel);
+			if(keyMsgDescriber==null){
+				logger.error("not find keyMsgDescriber tranchannel ["+tranchannel+"]");
+			}
 			//1.从keyMsgDescriber中获取keyField的list
 			List<Field> listField = keyMsgDescriber.getKeyField().getList();
 			String msgFormat = keyMsgDescriber.getFormat();
@@ -204,6 +207,9 @@ public class BeforeIntercepter implements CommonIntercepter {
 			}
 			//从traninfo表中获取orpcode
 			TransInfo ti = TransInfoData.getInstance().getTransInfo(context.getSDO().tranFrom, context.getSDO().TRANCODE);
+			if(ti == null){
+				logger.error("not find TransInfo tranFrom ["+context.getSDO().tranFrom+"] TRANCODE ["+context.getSDO().TRANCODE +"]");
+			}
 			context.getSDO().TRAN_OPR=ti.getTran_opr();
 			context.getSDO().tranType = ti.getTranType();
 			context.getSDO().flatDate=PlatDateParamData.getInstance().getPlatDate();
