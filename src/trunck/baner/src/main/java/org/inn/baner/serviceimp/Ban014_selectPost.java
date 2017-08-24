@@ -40,6 +40,10 @@ public class Ban014_selectPost implements BusinessService {
         TopicData topicData = new TopicData();
         UserData userData = new UserData();
         CommentData commentData = new CommentData();
+            postData.setContext(context);
+            topicData.setContext(context);
+            userData.setContext(context);
+            commentData.setContext(context);
 
         List<Post> postList = postData.qryByTopicMobileNo(mobileno);
 

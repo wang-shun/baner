@@ -49,6 +49,7 @@ public class Ban011_addComment implements BusinessService {
 		CommentData commentData  = null;
 		try {
             commentData = new CommentData();
+			commentData.setContext(context);
 
 			int res = commentData.insertRecord(comment);
 		} catch (Exception e) {

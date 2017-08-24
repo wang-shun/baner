@@ -31,6 +31,7 @@ public class Ban009_QryFollowTopic implements BusinessService {
 		UserData userData  = null;
 		try {
 			userData = new UserData();
+			userData.setContext(context);
 
 			User user = userData.qryByMobile(mobileno);
 			context.setFieldStr(Ban.followtopic, user.getFollowtopic(), CommonContext.SCOPE_GLOBAL);

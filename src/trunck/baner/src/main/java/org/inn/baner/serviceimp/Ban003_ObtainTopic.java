@@ -34,6 +34,7 @@ public class Ban003_ObtainTopic implements BusinessService {
 		try {
 
 			topicData = new TopicData();
+			topicData.setContext(context);
 			topicList = topicData.qryAll();
 			List<Map<String, Object>> mapArrayList = new ArrayList<Map<String, Object>>();
 			for (Topic topic : topicList) {

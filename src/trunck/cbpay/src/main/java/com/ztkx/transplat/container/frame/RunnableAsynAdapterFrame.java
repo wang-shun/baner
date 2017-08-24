@@ -1,10 +1,5 @@
 package com.ztkx.transplat.container.frame;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-
 import com.ztkx.transplat.container.constant.ContainerConstantField;
 import com.ztkx.transplat.container.constant.ErrorCodeConstant;
 import com.ztkx.transplat.container.initdata.ServicesAdapterData;
@@ -23,6 +18,10 @@ import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import com.ztkx.transplat.platformutil.context.imp.ContextManager;
 import com.ztkx.transplat.platformutil.log.FlowNoContainer;
+import org.apache.log4j.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 容器同步运行时同步框架
@@ -176,8 +175,14 @@ public class RunnableAsynAdapterFrame implements AdapterFrame{
 	 * @param context
 	 * @param serviceArr
 	 */
-	private CommonContext service(CommonContext context,ProcessService service){
-		Services services = ServiceManager.getService(service.getServiceid(), service.getServicetype());
+	private CommonContext service(CommonContext context,ProcessService processService){
+		Services services = null;
+		String serviceType = processService.getServicetype();;
+		if(serviceType.equals(ConstantConfigField.SERVICE_TYPE_BUS)){
+			services = ServiceManager.getBusService(context.getSDO().serverId,processService.getServiceid());
+		}else{
+			services = ServiceManager.getService(processService.getServiceid(), serviceType);
+		}
 		try {
 			 services.service(context);
 		} catch (ServiceException e) {

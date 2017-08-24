@@ -38,7 +38,10 @@ public class Ban010_NearUser implements BusinessService {
         UserLocData userLocData = null;
         UserData userData = new UserData();
         try {
+            userData.setContext(context);
             userLocData = new UserLocData();
+            userLocData.setContext(context);
+
             Userloc userloc = userLocData.getLastLoc(mobileno);
             List<Userloc> list = userLocData.qryByPlatDate(date);
             logger.info("near user query step 1 succ: query list and userloc");

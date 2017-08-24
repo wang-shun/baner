@@ -26,6 +26,7 @@ public class Ban013_deletePost  implements BusinessService {
         PostData postData = new PostData();
 
         try {
+            postData.setContext(context);
 
             int res = postData.deletePost(mobileno,topicId);
             if(res>0){

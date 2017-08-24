@@ -34,7 +34,6 @@ public class LabelSubjectData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return count;
 	}
@@ -57,7 +56,6 @@ public class LabelSubjectData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return labelSubjectList;
 	}
@@ -87,7 +85,6 @@ public class LabelSubjectData extends AbstractTMMybatis {
             logger.error("exec sql error", e);
             throw new HandlerException(e);
         }finally {
-            relaceResource();
         }
         return labelSubjectList;
     }

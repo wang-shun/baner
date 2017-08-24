@@ -32,7 +32,6 @@ public class ConstantConfigField {
 	public static final String SERVICE_TYPE_PRO = "protocolservice";// 协议服务
 
 	public static final String DB_POOLCONFIGFILE = "dbpool.xml";
-	public static final String DB_MYBATISCONFIGFILE = "mybatis.xml";
 	public static final String KEYMSG_CONFIGFILE = "keymsg.xml";
 	public static final String MODULES_CONFIGFILE = "modules.xml";
 	public static final String INVOKER_CONFIGFILE = "invokers.xml";

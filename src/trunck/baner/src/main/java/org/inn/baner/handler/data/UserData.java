@@ -30,7 +30,6 @@ public class UserData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 	}
 
@@ -53,7 +52,6 @@ public class UserData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return res;
 	}
@@ -73,7 +71,6 @@ public class UserData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return user;
 	}

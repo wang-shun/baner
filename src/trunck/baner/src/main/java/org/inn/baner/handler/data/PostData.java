@@ -37,7 +37,6 @@ public class PostData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return count;
 	}
@@ -60,7 +59,6 @@ public class PostData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return postList;
 	}
@@ -83,7 +81,6 @@ public class PostData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return res;
 	}
@@ -107,7 +104,6 @@ public class PostData extends AbstractTMMybatis {
 			logger.error("exec sql error", e);
 			throw new HandlerException(e);
 		}finally {
-			relaceResource();
 		}
 		return res;
 	}

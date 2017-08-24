@@ -3,6 +3,7 @@ package com.ztkx.transplat.platformutil.context.imp;
 import com.ztkx.transplat.platformutil.baseconfig.ConstantConfigField;
 import com.ztkx.transplat.platformutil.context.CommonContext;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -389,5 +390,15 @@ public class CbpayContext implements CommonContext {
 			e.printStackTrace();
 		}
 		return obj;
+	}
+
+	@Override
+	public SqlSession getSqlSession() {
+		return (SqlSession) getObj("busSqlSession");
+	}
+
+	@Override
+	public void setSqlSession(SqlSession sqlSession) {
+		setObj("busSqlSession",sqlSession);
 	}
 }

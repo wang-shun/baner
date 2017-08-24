@@ -34,6 +34,8 @@ public class Ban002_UserLogin implements BusinessService {
 		try {
 
 			userData = new UserData();
+			userData.setContext(context);
+
 			User user = userData.qryByMobile(mobileno);
 			if (!user.getPasswd().equals(passwd)) {
 				logger.warn("user pwd error ["+BErrorCode.PWDERROR.desc+"]");
@@ -43,8 +45,6 @@ public class Ban002_UserLogin implements BusinessService {
 				context.setFieldStr(Ban.banerid,user.getBanerid(),CommonContext.SCOPE_GLOBAL);
 				logger.info("user regist succ");
 			}
-
-
 
 		} catch (Exception e) {
 			ContextUtil.setErrorCode(BErrorCode.FAIL.code, context);
