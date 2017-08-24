@@ -2,6 +2,7 @@ package org.inn.baner.serviceimp;
 
 import com.ztkx.transplat.container.HandlerException;
 import org.apache.log4j.Logger;
+import org.inn.baner.bean.Label;
 import org.inn.baner.bean.LabelSubject;
 import org.inn.baner.bean.Subject;
 import org.inn.baner.handler.data.LabelSubjectData;
@@ -22,9 +23,9 @@ public class RecommendService {
     private Logger logger = Logger.getLogger(this.getClass());
 
     /**
-     * 根据标签推荐关联主体
+     * 根据主体推荐关联主体
      * 入参为主体名，以及该主体id
-     * 出参为关联的主体列表，按权重从大到小排序
+     * 出参为关联的主体列表，按权重从大到小
      *
      * @param subjectId
      * @return
@@ -50,18 +51,58 @@ public class RecommendService {
                 }
             }
             //按权重，从大到小排序
-            Collections.sort(resultList, new Comparator<Subject>() {
-                @Override
-                public int compare(Subject o1, Subject o2) {
-                    if(o1.getWeight() > o2.getWeight()) return -1;
-                    else if(o1.getWeight() < o2.getWeight()) return 1;
-                    return 0;
-                }
-            });
+            sortByWeight(resultList);
         } catch (HandlerException e) {
             logger.error("recommend service exec exception ",e);
         }
-
         return resultList;
+    }
+
+    /**
+     * 根据标签推荐关联主体
+     * 入参为主体名，以及标签列表
+     * 出参为关联的主体列表，按权重从大到小排序
+     *
+     * @param list
+     * @return
+     */
+    public List<Subject> selectRefSubjectByLabel(String subject, List<Label> list){
+        LabelSubjectData labelSubjectData = new LabelSubjectData();
+        LinkedList<Subject> resultList = new LinkedList<>();
+        try {
+            for(Label label : list){
+                List<LabelSubject> labelSubjectList = labelSubjectData.qryByLabelId(subject,label.getLabelid());
+                for(LabelSubject labelSubject : labelSubjectList){
+                    Subject subjectObj = new Subject();
+                    subjectObj.setSubjectid(labelSubject.getSubjectid());
+                    if(resultList.contains(subjectObj)){
+                        resultList.get(resultList.indexOf(subjectObj)).addWeight(1);
+                    }else{
+                        subjectObj.setWeight(1);
+                        resultList.add(subjectObj);
+                    }
+                }
+            }
+            //按权重，从大到小排序
+            sortByWeight(resultList);
+        } catch (HandlerException e) {
+            logger.error("recommend service exec exception ",e);
+        }
+        return resultList;
+    }
+
+    /**
+     * 按权重，从大到小排序
+     * @param list
+     */
+    private void sortByWeight(List<Subject> list){
+        Collections.sort(list, new Comparator<Subject>() {
+            @Override
+            public int compare(Subject o1, Subject o2) {
+                if(o1.getWeight() > o2.getWeight()) return -1;
+                else if(o1.getWeight() < o2.getWeight()) return 1;
+                return 0;
+            }
+        });
     }
 }
