@@ -117,6 +117,17 @@ public class PackMsgBaseService implements BaseService {
 					logger.error("unpack exception",e);
 				}
 				break;
+			case MsgConstantField.ATTR_FORMAT_JSON:
+				//如果json报文
+				try {
+					JsonMsgPackerEngine.pack(context, msgXmlDescriber);
+				} catch (XMLStreamException e) {
+					if(context.getErrorCode() == null){
+						context.setErrorCode(ErrorCodeConstant.BASE_PLA000009);
+					}
+					logger.error("unpack exception",e);
+				}
+				break;
 			case MsgConstantField.ATTR_FORMAT_FIX:
 				//如果是定长报文
 				break;
